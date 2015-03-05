@@ -33,24 +33,11 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.ImageIcon;
-import java.awt.ComponentOrientation;
-import javax.swing.JList;
-import javax.swing.JToggleButton;
-import javax.swing.JDesktopPane;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.CardLayout;
-import javax.swing.SpringLayout;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 
 public class windowsFist {
 
 	private JFrame frame;
 	private final Action action = new SwingAction();
-	private JTree tree;
 
 	/**
 	 * Launch the application.
@@ -85,40 +72,9 @@ public class windowsFist {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		tree = new JTree();
-		tree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("Azienda1") {
-				{
-					DefaultMutableTreeNode node_1;
-					node_1 = new DefaultMutableTreeNode("Pasta");
-						node_1.add(new DefaultMutableTreeNode("Rigatoni"));
-						node_1.add(new DefaultMutableTreeNode("Tagliatelle"));
-						node_1.add(new DefaultMutableTreeNode("Linguine"));
-						node_1.add(new DefaultMutableTreeNode("Spaghetti"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Carne");
-						node_1.add(new DefaultMutableTreeNode("Maiale"));
-						node_1.add(new DefaultMutableTreeNode("Pollo"));
-						node_1.add(new DefaultMutableTreeNode("Manzo"));
-						node_1.add(new DefaultMutableTreeNode("Tacchino"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Ortaggi");
-						node_1.add(new DefaultMutableTreeNode("Zucchine"));
-						node_1.add(new DefaultMutableTreeNode("Pomodori"));
-						node_1.add(new DefaultMutableTreeNode("Melanzane"));
-						node_1.add(new DefaultMutableTreeNode("Sedano"));
-					add(node_1);
-				}
-			}
-		));
-		
-		
-		
+		JTree tree = new JTree();
 		tree.setBorder(new CompoundBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), null));
 		frame.getContentPane().add(tree, BorderLayout.WEST);
-		
-		JList list = new JList();
-		frame.getContentPane().add(list, BorderLayout.NORTH);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -127,7 +83,6 @@ public class windowsFist {
 		menuBar.add(mnFile);
 		
 		JMenu mnSottoFile = new JMenu("sotto file");
-		mnSottoFile.setIcon(new ImageIcon(windowsFist.class.getResource("/com/sun/java/swing/plaf/windows/icons/HardDrive.gif")));
 		mnFile.add(mnSottoFile);
 		
 		JMenuItem mntmKjdsnf = new JMenuItem("kjdsnf");
@@ -137,13 +92,13 @@ public class windowsFist {
 		JMenu mnModifica = new JMenu("modifica");
 		menuBar.add(mnModifica);
 		
-		JMenuItem mntmDsgfsdfg = new JMenuItem("boh");
+		JMenuItem mntmDsgfsdfg = new JMenuItem("dsgfsdfg");
 		mnModifica.add(mntmDsgfsdfg);
 		
 		JMenu mnBeatATe = new JMenu("beat a te");
 		menuBar.add(mnBeatATe);
 		
-		JCheckBoxMenuItem chckbxmntmSdfgs = new JCheckBoxMenuItem("a");
+		JCheckBoxMenuItem chckbxmntmSdfgs = new JCheckBoxMenuItem("sdfgs");
 		mnBeatATe.add(chckbxmntmSdfgs);
 	}
 
@@ -156,8 +111,5 @@ public class windowsFist {
 		}
 		public void actionPerformed(ActionEvent e) {
 		}
-	}
-	public JTree getTree() {
-		return tree;
 	}
 }

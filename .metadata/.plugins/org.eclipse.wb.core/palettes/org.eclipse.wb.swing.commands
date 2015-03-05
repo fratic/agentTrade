@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commands>
+	<moveEntry
+		id="org.eclipse.wb.swing.components.awt java.awt.Canvas"
+		category="org.eclipse.wb.swing.components.menu"
+		nextEntry="org.eclipse.wb.swing.components.menu javax.swing.JPopupMenu"/>
+	<moveCategory
+		id="org.eclipse.wb.swing.components.menu"
+		nextCategory="org.eclipse.wb.swing.components.awt"/>
+</commands>

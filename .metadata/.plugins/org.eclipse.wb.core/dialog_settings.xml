@@ -6,10 +6,22 @@
 		<item value="289" key="y"/>
 		<item value="281" key="height"/>
 	</section>
+	<section name="org.eclipse.wb.internal.core.model.util.ExposeComponentSupport$ExposeDialog">
+		<item value="457" key="x"/>
+		<item value="525" key="width"/>
+		<item value="289" key="y"/>
+		<item value="281" key="height"/>
+	</section>
 	<section name="org.eclipse.wb.internal.core.model.util.factory.FactoryCreateAction$FactoryCreateDialog">
 		<item value="246" key="x"/>
 		<item value="947" key="width"/>
 		<item value="40" key="y"/>
 		<item value="779" key="height"/>
+	</section>
+	<section name="org.eclipse.wb.internal.core.model.property.editor.string.StringPropertyDialog">
+		<item value="455" key="x"/>
+		<item value="530" key="width"/>
+		<item value="257" key="y"/>
+		<item value="346" key="height"/>
 	</section>
 </section>

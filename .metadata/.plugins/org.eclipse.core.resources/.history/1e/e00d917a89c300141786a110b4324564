@@ -51,7 +51,9 @@ public class windowsFist {
 	private JFrame frame;
 	private final Action action = new SwingAction();
 	private JTree tree;
+	private JTree tree2;
 
+	
 	/**
 	 * Launch the application.
 	 */
@@ -113,9 +115,37 @@ public class windowsFist {
 		));
 		
 		
+		tree2 = new JTree();
+		tree2.setModel(new DefaultTreeModel(
+			new DefaultMutableTreeNode("Azienda2") {
+				{
+					DefaultMutableTreeNode node_1;
+					node_1 = new DefaultMutableTreeNode("Pasta");
+						node_1.add(new DefaultMutableTreeNode("Rigatoni"));
+						node_1.add(new DefaultMutableTreeNode("Tagliatelle"));
+						node_1.add(new DefaultMutableTreeNode("Linguine"));
+						node_1.add(new DefaultMutableTreeNode("Spaghetti"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("Carne");
+						node_1.add(new DefaultMutableTreeNode("Maiale"));
+						node_1.add(new DefaultMutableTreeNode("Pollo"));
+						node_1.add(new DefaultMutableTreeNode("Manzo"));
+						node_1.add(new DefaultMutableTreeNode("Tacchino"));
+					add(node_1);
+					node_1 = new DefaultMutableTreeNode("Ortaggi");
+						node_1.add(new DefaultMutableTreeNode("Zucchine"));
+						node_1.add(new DefaultMutableTreeNode("Pomodori"));
+						node_1.add(new DefaultMutableTreeNode("Melanzane"));
+						node_1.add(new DefaultMutableTreeNode("Sedano"));
+					add(node_1);
+				}
+			}
+		));
+		
 		
 		tree.setBorder(new CompoundBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), null));
 		frame.getContentPane().add(tree, BorderLayout.WEST);
+		frame.getContentPane().add(tree2, BorderLayout.WEST);
 		
 		JList list = new JList();
 		frame.getContentPane().add(list, BorderLayout.NORTH);
