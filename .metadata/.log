@@ -1,0 +1,288 @@
+!SESSION 2015-03-05 09:46:23.865 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
+Framework arguments:  -product org.eclipse.epp.package.standard.product -product org.eclipse.epp.package.standard.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product -data C:\Users\Fratic\Documents\GitHub\agentTrade -product org.eclipse.epp.package.standard.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-03-05 09:53:27.863
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.ui 2 0 2015-03-05 09:53:27.863
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Fratic'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.wb.core 4 4 2015-03-05 10:19:30.905
+!MESSAGE Designer [1.8.0.r43x201412082350.201503051019]: Error load template file
+!STACK 1
+Java Model Exception: Core Exception [code 0] Error load template file
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:50)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: org.eclipse.core.runtime.CoreException: Error load template file
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:127)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2207)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	... 5 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.internal.swing.databinding.wizards.autobindings.SwingDatabindingProvider.performSubstitutions(SwingDatabindingProvider.java:174)
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:123)
+	... 9 more
+Caused by: org.eclipse.core.runtime.CoreException: Error load template file
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:116)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: org.eclipse.core.runtime.CoreException: Error load template file
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:127)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2207)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	... 6 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.internal.swing.databinding.wizards.autobindings.SwingDatabindingProvider.performSubstitutions(SwingDatabindingProvider.java:174)
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:123)
+	... 9 more
+!SUBENTRY 1 org.eclipse.wb.core 4 0 2015-03-05 10:19:30.906
+!MESSAGE Error load template file
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error load template file
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:127)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2207)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.internal.swing.databinding.wizards.autobindings.SwingDatabindingProvider.performSubstitutions(SwingDatabindingProvider.java:174)
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:123)
+	... 9 more
+!SUBENTRY 2 org.eclipse.wb.core 4 4 2015-03-05 10:19:30.906
+!MESSAGE Error load template file
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wb.internal.swing.databinding.wizards.autobindings.SwingDatabindingProvider.performSubstitutions(SwingDatabindingProvider.java:174)
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:123)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2207)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.eclipse.wb.core 4 4 2015-03-05 10:20:29.882
+!MESSAGE Designer [1.8.0.r43x201412082350.201503051019]: /agentTrade/src/agentTrade/principale.java already exists in target
+!STACK 1
+Java Model Exception: Core Exception [code 0] /agentTrade/src/agentTrade/principale.java already exists in target
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:50)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: Java Model Exception: Java Model Status [/agentTrade/src/agentTrade/principale.java already exists in target]
+	at org.eclipse.jdt.internal.core.CreateCompilationUnitOperation.executeOperation(CreateCompilationUnitOperation.java:104)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:793)
+	at org.eclipse.jdt.internal.core.PackageFragment.createCompilationUnit(PackageFragment.java:144)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2104)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	... 5 more
+Caused by: org.eclipse.core.runtime.CoreException: /agentTrade/src/agentTrade/principale.java already exists in target
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:116)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: Java Model Exception: Java Model Status [/agentTrade/src/agentTrade/principale.java already exists in target]
+	at org.eclipse.jdt.internal.core.CreateCompilationUnitOperation.executeOperation(CreateCompilationUnitOperation.java:104)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:793)
+	at org.eclipse.jdt.internal.core.PackageFragment.createCompilationUnit(PackageFragment.java:144)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2104)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	... 6 more
+!SUBENTRY 1 org.eclipse.wb.core 4 0 2015-03-05 10:20:29.882
+!MESSAGE /agentTrade/src/agentTrade/principale.java already exists in target
+!STACK 1
+Java Model Exception: Java Model Status [/agentTrade/src/agentTrade/principale.java already exists in target]
+	at org.eclipse.jdt.internal.core.CreateCompilationUnitOperation.executeOperation(CreateCompilationUnitOperation.java:104)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:793)
+	at org.eclipse.jdt.internal.core.PackageFragment.createCompilationUnit(PackageFragment.java:144)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2104)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+!SUBENTRY 2 org.eclipse.jdt.core 4 977 2015-03-05 10:20:29.882
+!MESSAGE /agentTrade/src/agentTrade/principale.java already exists in target
+
+!ENTRY org.eclipse.wb.core 4 4 2015-03-05 10:20:47.220
+!MESSAGE Designer [1.8.0.r43x201412082350.201503051019]: Error load template file
+!STACK 1
+Java Model Exception: Core Exception [code 0] Error load template file
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:50)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: org.eclipse.core.runtime.CoreException: Error load template file
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:127)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2207)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	... 5 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.internal.swing.databinding.wizards.autobindings.SwingDatabindingProvider.performSubstitutions(SwingDatabindingProvider.java:174)
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:123)
+	... 9 more
+Caused by: org.eclipse.core.runtime.CoreException: Error load template file
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:116)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: org.eclipse.core.runtime.CoreException: Error load template file
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:127)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2207)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	... 6 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.internal.swing.databinding.wizards.autobindings.SwingDatabindingProvider.performSubstitutions(SwingDatabindingProvider.java:174)
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:123)
+	... 9 more
+!SUBENTRY 1 org.eclipse.wb.core 4 0 2015-03-05 10:20:47.220
+!MESSAGE Error load template file
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error load template file
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:127)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2207)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.internal.swing.databinding.wizards.autobindings.SwingDatabindingProvider.performSubstitutions(SwingDatabindingProvider.java:174)
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:123)
+	... 9 more
+!SUBENTRY 2 org.eclipse.wb.core 4 4 2015-03-05 10:20:47.220
+!MESSAGE Error load template file
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wb.internal.swing.databinding.wizards.autobindings.SwingDatabindingProvider.performSubstitutions(SwingDatabindingProvider.java:174)
+	at org.eclipse.wb.internal.core.databinding.wizards.autobindings.AutomaticDatabindingFirstPage.createTypeMembers(AutomaticDatabindingFirstPage.java:123)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2207)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.eclipse.wb.core 4 4 2015-03-05 10:20:51.556
+!MESSAGE Designer [1.8.0.r43x201412082350.201503051019]: /agentTrade/src/agentTrade/Asd.java already exists in target
+!STACK 1
+Java Model Exception: Core Exception [code 0] /agentTrade/src/agentTrade/Asd.java already exists in target
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:50)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: Java Model Exception: Java Model Status [/agentTrade/src/agentTrade/Asd.java already exists in target]
+	at org.eclipse.jdt.internal.core.CreateCompilationUnitOperation.executeOperation(CreateCompilationUnitOperation.java:104)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:793)
+	at org.eclipse.jdt.internal.core.PackageFragment.createCompilationUnit(PackageFragment.java:144)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2104)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	... 5 more
+Caused by: org.eclipse.core.runtime.CoreException: /agentTrade/src/agentTrade/Asd.java already exists in target
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:116)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Caused by: Java Model Exception: Java Model Status [/agentTrade/src/agentTrade/Asd.java already exists in target]
+	at org.eclipse.jdt.internal.core.CreateCompilationUnitOperation.executeOperation(CreateCompilationUnitOperation.java:104)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:793)
+	at org.eclipse.jdt.internal.core.PackageFragment.createCompilationUnit(PackageFragment.java:144)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2104)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	... 6 more
+!SUBENTRY 1 org.eclipse.wb.core 4 0 2015-03-05 10:20:51.556
+!MESSAGE /agentTrade/src/agentTrade/Asd.java already exists in target
+!STACK 1
+Java Model Exception: Java Model Status [/agentTrade/src/agentTrade/Asd.java already exists in target]
+	at org.eclipse.jdt.internal.core.CreateCompilationUnitOperation.executeOperation(CreateCompilationUnitOperation.java:104)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:793)
+	at org.eclipse.jdt.internal.core.PackageFragment.createCompilationUnit(PackageFragment.java:144)
+	at org.eclipse.jdt.ui.wizards.NewTypeWizardPage.createType(NewTypeWizardPage.java:2104)
+	at org.eclipse.wb.internal.core.wizards.AbstractDesignWizard.finishPage(AbstractDesignWizard.java:75)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$2.run(DesignerNewElementWizard.java:114)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2345)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5332)
+	at org.eclipse.wb.internal.core.wizards.DesignerNewElementWizard$WorkbenchRunnableAdapter.run(DesignerNewElementWizard.java:208)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+!SUBENTRY 2 org.eclipse.jdt.core 4 977 2015-03-05 10:20:51.556
+!MESSAGE /agentTrade/src/agentTrade/Asd.java already exists in target
