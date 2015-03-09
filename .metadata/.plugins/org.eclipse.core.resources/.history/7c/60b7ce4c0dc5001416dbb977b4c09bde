@@ -26,7 +26,7 @@ import java.awt.Font;
 
 public class login {
 
-	private JFrame frmAgentTrade;
+	private JFrame frame;
 	private JTextField textField;
 	private JPasswordField passwordField;
 	private final Action action = new SwingAction();
@@ -39,7 +39,7 @@ public class login {
 			public void run() {
 				try {
 					login window = new login();
-					window.frmAgentTrade.setVisible(true);
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -58,19 +58,18 @@ public class login {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmAgentTrade = new JFrame();
-		frmAgentTrade.setTitle("Agent Trade | Login ");
-		frmAgentTrade.setForeground(Color.WHITE);
-		frmAgentTrade.setFont(new Font("Book Antiqua", Font.PLAIN, 12));
-		frmAgentTrade.setAlwaysOnTop(true);
-		frmAgentTrade.setBackground(Color.WHITE);
-		frmAgentTrade.setBounds(100, 100, 304, 200);
-		frmAgentTrade.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmAgentTrade.getContentPane().setLayout(new BoxLayout(frmAgentTrade.getContentPane(), BoxLayout.X_AXIS));
+		frame = new JFrame();
+		frame.setForeground(Color.WHITE);
+		frame.setFont(new Font("Book Antiqua", Font.PLAIN, 12));
+		frame.setAlwaysOnTop(true);
+		frame.setBackground(Color.WHITE);
+		frame.setBounds(100, 100, 304, 200);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.X_AXIS));
 		
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setBackground(Color.WHITE);
-		frmAgentTrade.getContentPane().add(layeredPane);
+		frame.getContentPane().add(layeredPane);
 		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setBounds(35, 47, 59, 37);
