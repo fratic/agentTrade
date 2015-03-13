@@ -45,12 +45,14 @@ import javax.swing.SpringLayout;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JSplitPane;
+import javax.swing.JButton;
 
 public class windowsFist {
 
-	private JFrame frame;
+	private JFrame frmAgentTrade;
 	private final Action action = new SwingAction();
-	private JTree tree;
+	private final Action action_1 = new SwingAction_1();
 
 	/**
 	 * Launch the application.
@@ -60,7 +62,7 @@ public class windowsFist {
 			public void run() {
 				try {
 					windowsFist window = new windowsFist();
-					window.frame.setVisible(true);
+					window.frmAgentTrade.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -79,72 +81,78 @@ public class windowsFist {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(UIManager.getColor("Button.light"));
-		frame.setBounds(100, 100, 1024, 768);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		frmAgentTrade = new JFrame();
+		frmAgentTrade.setTitle("Agent Trade");
+		frmAgentTrade.getContentPane().setBackground(UIManager.getColor("Button.light"));
+		frmAgentTrade.setBounds(100, 100, 1024, 768);
+		frmAgentTrade.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAgentTrade.getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		tree = new JTree();
-		tree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("Azienda1") {
-				{
-					DefaultMutableTreeNode node_1;
-					node_1 = new DefaultMutableTreeNode("Pasta");
-						node_1.add(new DefaultMutableTreeNode("Rigatoni"));
-						node_1.add(new DefaultMutableTreeNode("Tagliatelle"));
-						node_1.add(new DefaultMutableTreeNode("Linguine"));
-						node_1.add(new DefaultMutableTreeNode("Spaghetti"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Carne");
-						node_1.add(new DefaultMutableTreeNode("Maiale"));
-						node_1.add(new DefaultMutableTreeNode("Pollo"));
-						node_1.add(new DefaultMutableTreeNode("Manzo"));
-						node_1.add(new DefaultMutableTreeNode("Tacchino"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Ortaggi");
-						node_1.add(new DefaultMutableTreeNode("Zucchine"));
-						node_1.add(new DefaultMutableTreeNode("Pomodori"));
-						node_1.add(new DefaultMutableTreeNode("Melanzane"));
-						node_1.add(new DefaultMutableTreeNode("Sedano"));
-					add(node_1);
-				}
+		JPanel panel = new JPanel();
+		frmAgentTrade.getContentPane().add(panel, BorderLayout.NORTH);
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 			}
-		));
+		});
 		
+		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		panel.add(btnNewButton_2);
+		panel.add(btnNewButton);
 		
-		
-		tree.setBorder(new CompoundBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), null));
-		frame.getContentPane().add(tree, BorderLayout.WEST);
-		
-		JList list = new JList();
-		frame.getContentPane().add(list, BorderLayout.NORTH);
+		JButton btnNewButton_1 = new JButton("New button");
+		panel.add(btnNewButton_1);
 		
 		JMenuBar menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
+		frmAgentTrade.setJMenuBar(menuBar);
 		
-		JMenu mnFile = new JMenu("file");
+		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
-		JMenu mnSottoFile = new JMenu("sotto file");
-		mnSottoFile.setIcon(new ImageIcon(windowsFist.class.getResource("/com/sun/java/swing/plaf/windows/icons/HardDrive.gif")));
-		mnFile.add(mnSottoFile);
+		JMenuItem mntmEsci = new JMenuItem("Esci");
+		mntmEsci.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			}
+		});
+		mnFile.add(mntmEsci);
 		
-		JMenuItem mntmKjdsnf = new JMenuItem("kjdsnf");
-		mntmKjdsnf.setAction(action);
-		mnSottoFile.add(mntmKjdsnf);
-		
-		JMenu mnModifica = new JMenu("modifica");
+		JMenu mnModifica = new JMenu("Modifica");
 		menuBar.add(mnModifica);
 		
-		JMenuItem mntmDsgfsdfg = new JMenuItem("boh");
-		mnModifica.add(mntmDsgfsdfg);
-		
-		JMenu mnBeatATe = new JMenu("beat a te");
+		JMenu mnBeatATe = new JMenu("Beat a te");
 		menuBar.add(mnBeatATe);
 		
-		JCheckBoxMenuItem chckbxmntmSdfgs = new JCheckBoxMenuItem("a");
+		JCheckBoxMenuItem chckbxmntmSdfgs = new JCheckBoxMenuItem("a te");
 		mnBeatATe.add(chckbxmntmSdfgs);
+		
+		JMenu mnCliente = new JMenu("Cliente");
+		menuBar.add(mnCliente);
+		
+		JMenuItem mntmNuovoCliente = new JMenuItem("Nuovo Cliente");
+		mnCliente.add(mntmNuovoCliente);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Cerca Cliente");
+		mnCliente.add(mntmNewMenuItem);
+		
+		JMenu mnPreventivo = new JMenu("Preventivo");
+		menuBar.add(mnPreventivo);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Nuovo Preventivo");
+		mntmNewMenuItem_1.setIcon(new ImageIcon(windowsFist.class.getResource("/com/sun/java/swing/plaf/windows/icons/File.gif")));
+		mnPreventivo.add(mntmNewMenuItem_1);
+		
+		JMenu mnVendita = new JMenu("Vendita");
+		menuBar.add(mnVendita);
+		
+		JMenu mnAzienda = new JMenu("Azienda");
+		menuBar.add(mnAzienda);
 	}
 
 	private static void addPopup(Component component, final JPopupMenu popup) {
@@ -159,5 +167,13 @@ public class windowsFist {
 	}
 	public JTree getTree() {
 		return tree;
+	}
+	private class SwingAction_1 extends AbstractAction {
+		public SwingAction_1() {
+			putValue(NAME, "SwingAction_1");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
 	}
 }
