@@ -1,0 +1,103 @@
+package agentTrade;
+
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import javax.swing.UIManager;
+import java.awt.event.ActionEvent;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import javax.swing.AbstractAction;
+import javax.swing.JTabbedPane;
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JButton;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Color;
+
+public class windowsFist {
+
+	private JFrame frmAgentTrade;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					windowsFist window = new windowsFist();
+					window.frmAgentTrade.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public windowsFist() {
+		initialize();
+		frmAgentTrade.setVisible(true);
+
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmAgentTrade = new JFrame();
+		frmAgentTrade.setTitle("Agent Trade");
+		frmAgentTrade.getContentPane().setBackground(UIManager.getColor("Button.light"));
+		frmAgentTrade.setBounds(100, 100, 1024, 768);
+		frmAgentTrade.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAgentTrade.getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel = new JPanel();
+		panel.setToolTipText("");
+		panel.setBorder(UIManager.getBorder("TitledBorder.border"));
+		frmAgentTrade.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		JTabbedPane asd = new JTabbedPane(JTabbedPane.TOP);
+		asd.setBackground(Color.WHITE);
+		panel.add(asd);
+		asd.setToolTipText("");
+		
+		JTabbedPane file = new JTabbedPane(JTabbedPane.TOP);
+		file.setToolTipText("");
+		asd.addTab("File", new ImageIcon(windowsFist.class.getResource("/com/sun/javafx/scene/control/skin/modena/HTMLEditor-Paste.png")), file, "Scrivi un suggerimento");
+		
+		JTabbedPane Cliente = new JTabbedPane(JTabbedPane.TOP);
+		asd.addTab("Cliente", new ImageIcon("C:\\Users\\Fratic\\Desktop\\cliente.png"), Cliente, null);
+		
+		JTabbedPane preventivo = new JTabbedPane(JTabbedPane.TOP);
+		asd.addTab("Preventivo", new ImageIcon("C:\\Users\\Fratic\\Desktop\\preventivo.png"), preventivo, "Gestisci preventivi");
+		asd.setBackgroundAt(2, Color.WHITE);
+		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{file, preventivo, Cliente}));
+		
+	}
+
+	private static void addPopup(Component component, final JPopupMenu popup) {
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "SwingAction");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
+	
+	private class SwingAction_1 extends AbstractAction {
+		public SwingAction_1() {
+			putValue(NAME, "SwingAction_1");
+			putValue(SHORT_DESCRIPTION, "Some short description");
+		}
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
+}

@@ -7,4 +7,17 @@
 	<moveCategory
 		id="org.eclipse.wb.swing.components.menu"
 		nextCategory="org.eclipse.wb.swing.components.awt"/>
+	<addCategory
+		id="category_1445962480280"
+		name="Custom"
+		description="Container for custom components"
+		visible="true"
+		open="true"/>
+	<addComponent
+		id="custom_1445962480280"
+		name="JButton"
+		description="Creates javax.swing.JButton component."
+		visible="true"
+		class="javax.swing.JButton"
+		category="category_1445962480280"/>
 </commands>

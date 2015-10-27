@@ -26,8 +26,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.Box;
-import javax.swing.JSeparator;
 
 
 public class windowsFist {
@@ -150,8 +148,8 @@ public class windowsFist {
 		preventivo.setLayout(null);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(0, 0, 999, 109);
 		panel_2.setBackground(Color.WHITE);
+		panel_2.setBounds(0, 0, 999, 109);
 		preventivo.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -164,43 +162,34 @@ public class windowsFist {
 			}
 		});
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 110, 999, 9);
-		preventivo.add(separator);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(0, 110, 999, 576);
-		preventivo.add(panel_3);
-		panel_3.setLayout(null);
-		
 		JTree tree = new JTree();
-		tree.setBounds(0, 0, 222, 576);
-		panel_3.add(tree);
 		tree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("Dicembre") {
+			new DefaultMutableTreeNode("JTree") {
 				{
 					DefaultMutableTreeNode node_1;
-					node_1 = new DefaultMutableTreeNode("Cliente 1");
-						node_1.add(new DefaultMutableTreeNode("Fattura 1"));
-						node_1.add(new DefaultMutableTreeNode("Fattura 2"));
-						node_1.add(new DefaultMutableTreeNode("Fattura 3"));
-						node_1.add(new DefaultMutableTreeNode("Fattura 4"));
+					node_1 = new DefaultMutableTreeNode("colors");
+						node_1.add(new DefaultMutableTreeNode("blue"));
+						node_1.add(new DefaultMutableTreeNode("violet"));
+						node_1.add(new DefaultMutableTreeNode("red"));
+						node_1.add(new DefaultMutableTreeNode("yellow"));
 					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Cliente 2");
-						node_1.add(new DefaultMutableTreeNode("Fattura 1"));
-						node_1.add(new DefaultMutableTreeNode("Fattura 2"));
-						node_1.add(new DefaultMutableTreeNode("Fattura 3"));
-						node_1.add(new DefaultMutableTreeNode("Fattura 4"));
+					node_1 = new DefaultMutableTreeNode("sports");
+						node_1.add(new DefaultMutableTreeNode("basketball"));
+						node_1.add(new DefaultMutableTreeNode("soccer"));
+						node_1.add(new DefaultMutableTreeNode("football"));
+						node_1.add(new DefaultMutableTreeNode("hockey"));
 					add(node_1);
-					node_1 = new DefaultMutableTreeNode("Cliente 3");
-						node_1.add(new DefaultMutableTreeNode("Fattura 1 "));
-						node_1.add(new DefaultMutableTreeNode("Fattura 2"));
-						node_1.add(new DefaultMutableTreeNode("Fattura 3"));
-						node_1.add(new DefaultMutableTreeNode("Fattura 4"));
+					node_1 = new DefaultMutableTreeNode("food");
+						node_1.add(new DefaultMutableTreeNode("hot dogs"));
+						node_1.add(new DefaultMutableTreeNode("pizza"));
+						node_1.add(new DefaultMutableTreeNode("ravioli"));
+						node_1.add(new DefaultMutableTreeNode("bananas"));
 					add(node_1);
 				}
 			}
 		));
+		tree.setBounds(0, 108, 279, 250);
+		preventivo.add(tree);
 		
 		JPanel Cliente = new JPanel();
 		asd.addTab("Cliente", new ImageIcon("C:\\Users\\Fratic\\Desktop\\cliente.png"), Cliente, null);
