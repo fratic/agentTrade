@@ -24,10 +24,10 @@ public class SplashScreen extends JWindow {
 	        panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 	        content.add(panel, BorderLayout.CENTER);
 	        panel.setLayout(new BorderLayout(0, 0));
-		    JLabel label = new JLabel(new ImageIcon("/agent_trade.ui.img/splash.png"));
+		    //JLabel label = new JLabel(new ImageIcon("/agent_trade.ui.img/splash.png"));
 
-	        JLabel label_1 = new JLabel(new ImageIcon("C:\\Users\\Fratic\\Desktop\\splash.png"));
-	        panel.add(label_1, BorderLayout.CENTER);
+	        JLabel label = new JLabel(new ImageIcon("C:\\Users\\Fratic\\Desktop\\splash.png"));
+	        panel.add(label, BorderLayout.CENTER);
 	        JLabel copyrt = new JLabel("Copyright \u00A9 2015 Agent Trade", JLabel.CENTER);
 	        panel.add(copyrt, BorderLayout.SOUTH);
 	        
