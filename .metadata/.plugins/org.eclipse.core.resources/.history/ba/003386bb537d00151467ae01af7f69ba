@@ -1,0 +1,5 @@
+package agent_trade.view;
+
+public interface Login2 {
+
+}

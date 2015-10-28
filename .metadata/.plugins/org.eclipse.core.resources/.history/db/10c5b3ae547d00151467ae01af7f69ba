@@ -1,0 +1,23 @@
+package agent_trade.controller;
+
+import agent_trade.model.Agente;
+import modello_di_Dominio__1_iterazione.Cliente;
+
+public class Ctrl_elaboraPreventivo {
+
+	public void newPreventivo(a Agente) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void inserisciCliente(Cliente aC) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void addItem(Object aIdProdotto, Object aIdDescrizione, Object aQuantità) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void salvaPreventivo() {
+		throw new UnsupportedOperationException();
+	}
+}
