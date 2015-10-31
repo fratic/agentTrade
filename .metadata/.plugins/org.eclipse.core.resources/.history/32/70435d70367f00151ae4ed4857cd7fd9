@@ -1,0 +1,56 @@
+package agent_trade.persistentTemp;
+
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import agent_trade.model.Agente;
+
+public class Dao_System {
+
+	private static Dao_System instance;
+
+	public static Dao_System getInstance(){
+
+		return ((instance == null) ? instance = new Dao_System() : instance);	
+	}
+	
+	public Agente loadAgente(String user) {
+		/*INIZIO CARICAMENTO DA FILE*/
+		
+		StringBuffer mioSB = null; 
+		ArrayList elencoAgenti = null;
+		Iterator iteraAgenti = null;
+		try
+		{
+			FileInputStream fis = new FileInputStream("test");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			elencoAgenti = (ArrayList) ois.readObject();
+			ois.close();
+			fis.close();
+			
+			iteraAgenti = elencoAgenti.iterator();
+			Agente a = new Agente();
+			while (iteraAgenti.hasNext()) {
+				a = (Agente) iteraAgenti.next();
+
+				System.out.println("DAOAgente "+a.getCognome()+ " " +a.getNome());
+				System.out.println("USER"+user);
+				if (a.getCognome().equals(user))
+					System.out.println("DENTRO");
+					return a;
+			}
+		}
+		catch(Exception e)
+		{
+		System.out.println("Eccezione:"  + e.toString());
+		}
+		return null;
+		 
+		  
+		/*fine caricamento da file */
+	}
+	
+	
+}

@@ -7,7 +7,6 @@ import javax.swing.border.LineBorder;
 public class SplashScreen extends JWindow {
 	
 	 private static final long serialVersionUID = 0;
-	 private static final String COPYRIGHT  = "\u00a9";
 	 private static final int WIDTH = 450;
 	 private static final int HEIGHT = 250;
 	 
@@ -26,6 +25,7 @@ public class SplashScreen extends JWindow {
 	        panel.setLayout(new BorderLayout(0, 0));
 		    //JLabel label = new JLabel(new ImageIcon("/agent_trade.ui.img/splash.png"));
 
+	        //AGGIUSTARE
 	        JLabel label = new JLabel(new ImageIcon("C:\\Users\\Fratic\\Desktop\\splash.png"));
 	        panel.add(label, BorderLayout.CENTER);
 	        JLabel copyrt = new JLabel("Copyright \u00A9 2015 Agent Trade", JLabel.CENTER);

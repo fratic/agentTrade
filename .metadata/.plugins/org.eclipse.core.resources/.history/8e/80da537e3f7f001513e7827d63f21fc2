@@ -1,0 +1,54 @@
+package agent_trade.controller;
+
+import agent_trade.model.Agente;
+import agent_trade.persistentTemp.Dao_System;
+import agent_trade.ui.LoginView;
+import agent_trade.ui.PrimaryView;
+
+public class Ctrl_System {
+
+	private static Ctrl_System instance;
+	private static Agente instanceAgenteLog;
+
+
+	public static Ctrl_System getInstance(){
+
+		return ((instance == null) ? instance = new Ctrl_System() : instance);	
+	}
+	
+	public static Agente getAgenteLog(){
+
+		return ((instance == null) ? null : instanceAgenteLog);	
+	}
+
+	
+	public void login(String user, String psw) {
+		//Agente a= new Agente();
+		Agente a=Dao_System.getInstance().loadAgente(user);
+
+		if (a!=null)
+			{
+			if (a.getCognome().equals(user) && a.getPassword().equals(psw))
+			{
+				//l'istanza di agente è già creata
+			
+			PrimaryView.getInstance().setVisible(true);
+			LoginView.getInstance().setVisible(false);
+			instanceAgenteLog=a;
+			}
+			else{
+			LoginView.getInstance().setMex("Login errato");
+			//l'istanza di agente creata in precedenza, andrebbe distrutta in quanto non valida
+			}
+			}
+		else
+		{
+			LoginView.getInstance().setMex("Utente sconosciuto");
+			//anche qui andrebbe distrutta 
+			}
+		
+			
+	}
+	
+	
+}

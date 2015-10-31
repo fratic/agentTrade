@@ -24,6 +24,10 @@
 		<item value="247" key="y"/>
 		<item value="366" key="height"/>
 	</section>
+	<section name="org.eclipse.wb.internal.core.editor.actions.assistant.LayoutAssistantWindow">
+		<item value="681" key="x"/>
+		<item value="379" key="y"/>
+	</section>
 	<section name="org.eclipse.wb.internal.core.model.property.editor.string.StringPropertyDialog">
 		<item value="455" key="x"/>
 		<item value="530" key="width"/>

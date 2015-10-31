@@ -1,0 +1,16 @@
+package agent_trade.persistentTemp;
+
+public class Dao_System {
+
+	private static Dao_System instance;
+
+	public static Dao_System getInstance(){
+
+		return ((instance == null) ? instance = new Dao_System() : instance);	
+	}
+	
+	public void loadAgente(String user, String psw) {
+	}
+	
+	
+}

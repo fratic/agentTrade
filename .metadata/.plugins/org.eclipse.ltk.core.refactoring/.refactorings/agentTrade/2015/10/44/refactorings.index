@@ -5,3 +5,33 @@
 1446030889889	Rename package 'coedil99.ui.img'
 1446053400259	Rename type 'login'
 1446057818229	Delete element
+1446142802737	Rename type 'LoginView'
+1446142824325	Rename compilation unit 'Login.java'
+1446144027797	Rename compilation unit 'windowsFist.java'
+1446144402378	Delete element
+1446144469083	Rename type 'PrimaryView'
+1446144483117	Rename type 'PrimaryVieww'
+1446214520804	Rename compilation unit 'Dao.java'
+1446215867183	Rename type 'scritturaSuFile'
+1446217938723	Delete elements
+1446222259884	Delete elements
+1446222263681	Delete element
+1446223750108	Infer generic type arguments
+1446224974622	Delete element
+1446234639547	Rename type 'Agente'
+1446234650103	Rename type 'Azienda'
+1446234656188	Rename type 'Catalogo'
+1446234661144	Rename type 'Cliente'
+1446234670149	Rename type 'ClientM_e'
+1446234675212	Rename type 'DescrizioneProdotto'
+1446234682807	Rename type 'Preventivo_Item'
+1446234695311	Rename type 'Preventivo'
+1446234700865	Rename type 'Prodotto'
+1446235055654	Delete element
+1446235058356	Delete element
+1446235665174	Rename type 'M_preventivo'
+1446241056780	Rename type 'LetturaDaFile'
+1446241064734	Rename type 'ScritturaSuFile'
+1446241192822	Copy compilation units
+1446241200414	Rename type 'LetturaDaFileclienti'
+1446285646791	Copy compilation unit

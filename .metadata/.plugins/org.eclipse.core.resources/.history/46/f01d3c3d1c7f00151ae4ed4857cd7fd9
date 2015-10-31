@@ -1,0 +1,23 @@
+package agent_trade.persistentTemp;
+
+import java.io.*;
+public class LetturaDaFile
+{
+public static void main(String[] args)
+{
+StringBuffer mioSB = null; // Il “destinatario” dell'informazione letta 
+try
+{
+// Recupero il file dei dati e creo un ObjectInputStream per leggerlo
+FileInputStream fis = new FileInputStream("cvfb");
+ObjectInputStream ois = new ObjectInputStream(fis);
+mioSB = (StringBuffer) ois.readObject(); // Notate il cast !!!
+ois.close();
+System.out.println(mioSB);
+}
+catch(Exception e)
+{
+System.out.println("Eccezione:"  + e.toString());
+}
+}
+}

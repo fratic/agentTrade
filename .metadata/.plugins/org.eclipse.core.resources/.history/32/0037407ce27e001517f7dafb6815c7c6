@@ -1,0 +1,58 @@
+package agent_trade.ui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTabbedPane;
+import java.awt.Color;
+import javax.swing.UIManager;
+
+public class PrimaryView extends JFrame {
+	
+	public static PrimaryView instance;	
+
+	/**
+	 * Launch the application.
+	 */
+	/*public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PrimaryView frame = new PrimaryView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}*/
+
+	/**
+	 * Create the frame.
+	 */
+	
+	public PrimaryView() {
+		this.init();
+		this.initComponents();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1113, 1006);
+
+	}
+	
+	public static PrimaryView getInstance(){
+		if (instance==null)
+			instance = new PrimaryView();
+		return instance;	 
+	}
+	
+	public void init(){
+		
+	}
+	
+	public void initComponents(){
+
+	}
+}

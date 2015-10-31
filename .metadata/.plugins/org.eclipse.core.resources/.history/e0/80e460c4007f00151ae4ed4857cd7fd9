@@ -1,0 +1,35 @@
+package agent_trade.controller;
+
+import agent_trade.model.Agente;
+import agent_trade.model.Cliente;
+import agent_trade.ui.LoginView;
+import agent_trade.persistentTemp.Dao;
+
+
+public class Ctrl_elaboraPreventivo {
+
+	private static Ctrl_elaboraPreventivo instance;
+
+	public static Ctrl_elaboraPreventivo getInstance(){
+
+		return ((instance == null) ? instance = new Ctrl_elaboraPreventivo() : instance);	
+	}
+	
+	public void newPreventivo(String a) {
+		//throw new UnsupportedOperationException();
+		a.salva();
+
+	}
+
+	public void inserisciCliente(Cliente c) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void addItem(Object aIdProdotto, Object aIdDescrizione, Object aQuantità) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void salvaPreventivo() {
+		throw new UnsupportedOperationException();
+	}
+}

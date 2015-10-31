@@ -2,21 +2,24 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="frmAgentTrade" key="selection"/>
+		<item value="jTableModel" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="frmAgentTrade"/>
-			<item value="instance"/>
-			<item value="istance"/>
-			<item value="password"/>
+			<item value="jTableModel"/>
+			<item value="elencoClienti"/>
+			<item value="set"/>
+			<item value="antonio"/>
+			<item value="btnNew"/>
+			<item value="fattura"/>
+			<item value="bundle"/>
 			<item value="main"/>
-			<item value="setCellRenderer"/>
-			<item value="SwingAction"/>
 		</list>
 		<list key="replacehistory">
+			<item value="elencoClienti"/>
+			<item value="Preventivo"/>
 			<item value="instance"/>
 			<item value=""/>
 		</list>

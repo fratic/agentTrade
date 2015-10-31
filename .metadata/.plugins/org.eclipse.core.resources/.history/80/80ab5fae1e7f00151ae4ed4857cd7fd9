@@ -1,0 +1,43 @@
+package agent_trade.model;
+
+import java.io.Serializable;
+import java.util.Vector;
+
+import agent_trade.model.Preventivo;
+
+public class Agente implements Serializable{
+	private String idAgente;
+	private String nome;
+	private String cognome;
+	//public Vector<Preventivo> _crea = new Vector<Preventivo>();
+	
+	public Agente(){
+		
+	}
+	
+	
+	public Agente(String cognome, String nome){
+		super();
+		this.cognome=cognome;
+		this.nome=nome;			
+	}
+	
+	public String getNome(){
+		return this.nome;
+	}
+
+	public String getCognome() {
+		return cognome;
+	}
+
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	} 
+}
+

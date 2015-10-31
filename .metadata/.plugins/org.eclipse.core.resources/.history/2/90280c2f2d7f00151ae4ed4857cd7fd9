@@ -1,0 +1,19 @@
+package agent_trade.controller;
+
+import agent_trade.persistentTemp.Dao_System;
+
+public class Ctrl_System {
+
+	private static Ctrl_System instance;
+
+	public static Ctrl_System getInstance(){
+
+		return ((instance == null) ? instance = new Ctrl_System() : instance);	
+	}
+	
+	public void login(String user, String psw) {
+		Dao_System.getInstance().loadAgente(user, psw);
+	}
+	
+	
+}

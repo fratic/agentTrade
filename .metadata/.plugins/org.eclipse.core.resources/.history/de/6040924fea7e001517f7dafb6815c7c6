@@ -1,0 +1,97 @@
+package agent_trade.ui;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTabbedPane;
+import java.awt.Color;
+import javax.swing.UIManager;
+import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.Toolkit;
+import java.awt.Window.Type;
+import javax.swing.ImageIcon;
+import javax.swing.JSeparator;
+
+public class PrimaryView extends JFrame {
+	
+	public static PrimaryView instance;	
+
+	/**
+	 * Launch the application.
+	 */
+	/*public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PrimaryView frame = new PrimaryView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}*/
+
+	/**
+	 * Create the frame.
+	 */
+	
+	public PrimaryView() {
+		getContentPane().setLayout(null);
+		
+		JTabbedPane tabbedPrincipale = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPrincipale.setBounds(0, 0, 1097, 865);
+		getContentPane().add(tabbedPrincipale);
+		
+		JPanel preventivo = new JPanel();
+		tabbedPrincipale.addTab("Preventivo", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/preventivo.png")), preventivo, "Gestisci i preventivi");
+		preventivo.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(0, 0, 1003, 124);
+		preventivo.add(panel);
+		panel.setLayout(null);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(27, 23, 89, 23);
+		panel.add(btnNewButton);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(37, 266, 1003, 550);
+		preventivo.add(panel_1);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBackground(Color.BLACK);
+		separator.setBounds(37, 158, 414, -156);
+		preventivo.add(separator);
+		
+		JPanel Cliente = new JPanel();
+		tabbedPrincipale.addTab("Cliente", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/cliente.png")), Cliente, "Gestisci i clienti");
+		
+		JPanel Catalogo = new JPanel();
+		tabbedPrincipale.addTab("Catalogo", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/magazzino_icon.png")), Catalogo, null);
+		this.init();
+		this.initComponents();
+	}
+	
+	public static PrimaryView getInstance(){
+		if (instance==null)
+			instance = new PrimaryView();
+		return instance;	 
+	}
+	
+	public void init(){
+		
+	}
+	
+	public void initComponents(){
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1024, 748);
+
+	}
+}

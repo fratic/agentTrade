@@ -1,0 +1,18 @@
+package agent_trade.model;
+
+import java.util.Vector;
+import agent_trade.model.Preventivo;
+
+public class Agente {
+	private String idAgente;
+	private String nome;
+	private String cognome;
+	//public Vector<Preventivo> _crea = new Vector<Preventivo>();
+	
+	
+	public void Agente(String cognome, String nome){
+		this.cognome=cognome;
+		this.nome=nome;		
+	}
+}
+

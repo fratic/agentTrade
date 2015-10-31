@@ -1,0 +1,152 @@
+package agent_trade.ui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.JList;
+import javax.swing.RowFilter;
+
+import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.model.M_Cliente;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
+public class CercaClienteView extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JTextField textField;
+	public static CercaClienteView instance;	
+
+	private JList<M_Cliente> clienti;
+	private JTable table;
+	
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		try {
+			CercaClienteView dialog = new CercaClienteView();
+			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			dialog.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static CercaClienteView getInstance(){
+		if (instance==null)
+			instance = new CercaClienteView();
+		return instance;	 
+	}
+
+	
+	public void setElements(M_Cliente[] listData){
+		this.clienti.setListData(listData);
+	}
+	
+	private void init(){
+		this.clienti = new JList<M_Cliente>();
+	}
+	
+	
+	
+	/**
+	 * Create the dialog.
+	 */
+	public CercaClienteView() {
+		setTitle("Cerca Cliente");
+		setBounds(100, 100, 576, 324);
+		getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 560, 62);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel LabelCerca = new JLabel("Cerca Cliente");
+		LabelCerca.setBounds(34, 11, 74, 40);
+		panel.add(LabelCerca);
+		
+		textField = new JTextField();
+		textField.setBounds(118, 21, 219, 20);
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		JButton BottoneCerca = new JButton("Cerca");
+		BottoneCerca.setBounds(385, 20, 89, 23);
+		panel.add(BottoneCerca);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(0, 62, 560, 176);
+		getContentPane().add(panel_1);
+		panel_1.setLayout(null);
+		
+		/*JList list = new JList();
+		list.setBounds(10, 11, 540, 154);
+		panel_1.add(list);
+		*/
+		
+		
+		/*modifiche al table*/
+		Object[][] data = { { "A", 5 }, { "B", 2 }, { "C", 4 }, { "D", 8 } };
+	    String columnNames[] = { "Item", "Value" };
+	    TableModel model = new DefaultTableModel(data, columnNames) {
+	      /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+		public Class<?> getColumnClass(int column) {
+	        return getValueAt(0, column).getClass();
+	      }
+	      };
+	    
+	    table = new JTable(model);
+		table.setBounds(10, 12, 540, 153);
+		panel_1.add(table);
+	      
+		
+		  RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
+		      public boolean include(Entry entry) {
+		        Integer population = (Integer) entry.getValue(1);
+		        return population.intValue() > 3;
+		      }
+		    };
+		    
+		    
+		  TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
+		    sorter.setRowFilter(filter);
+		    table.setRowSorter(sorter);
+		    JScrollPane scrollPane = new JScrollPane(table);
+
+		/*fine*/
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(0, 238, 560, 47);
+		getContentPane().add(panel_2);
+		panel_2.setLayout(null);
+		
+		JButton BottoneInserisci = new JButton("Inserisci");
+		BottoneInserisci.setBounds(479, 11, 71, 23);
+		panel_2.add(BottoneInserisci);
+		
+		BottoneCerca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Ctrl_gestisciCliente.getInstance().cercaCliente(textField.getText());				
+			}
+
+		});
+	}
+}

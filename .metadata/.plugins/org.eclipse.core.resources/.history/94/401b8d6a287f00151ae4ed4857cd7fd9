@@ -1,0 +1,51 @@
+package agent_trade.persistentTemp;
+
+import java.io.*;
+import java.util.ArrayList;
+
+import agent_trade.model.Agente;
+	class ScritturaSuFile
+	{
+		
+
+		
+	public static void main(String[] args)
+	{
+		Agente ag =new Agente("fraticelli","antonio");
+		Agente ag1 =new Agente("fratix","mario");
+		Agente ag2 =new Agente("george","roberto");
+
+		//StringBuffer mioSB = new StringBuffer(ag.getNome());
+		
+		
+	try 
+	{
+	// Prima creo il “destinatario”: uno stream di scrittura su file 
+	FileOutputStream fos = new FileOutputStream("test");
+	// Ora posso scrivere l'oggetto sotto forma di stream di byte e passarlo al file 
+	ObjectOutputStream oos = new ObjectOutputStream(fos);
+	// Trasformazione dei dati in stream di byte
+	
+	
+	List list = new ArrayList();
+	list.add(ag);
+	list.add(ag1);
+	oos.writeObject(list);
+
+	
+	/*oos.writeObject(ag);
+	oos.writeObject(ag1);
+	oos.writeObject(ag2);
+*/
+	//oos.write(mioSB);
+	oos.close();
+	System.out.println("OK");
+	}
+	catch(Exception e)
+	{
+	System.out.println("Eccezione: " + e.toString());
+	}
+	}
+	
+	
+	}
