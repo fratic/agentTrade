@@ -45,8 +45,7 @@ public class Dao_System {
 		System.out.println("Eccezione:"  + e.toString());
 		}
 		return null;
-		 
-		  
+		 		  
 		/*fine caricamento da file */
 	}
 	

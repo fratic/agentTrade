@@ -1,0 +1,7 @@
+package agent_trade.model;
+
+
+public class M_Azienda {
+	private Object idAzienda;
+	private Object nome;
+}

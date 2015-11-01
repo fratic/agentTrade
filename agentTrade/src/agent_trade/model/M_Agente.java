@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 
 public class M_Agente implements Serializable{
+	
 	private String idAgente;
 	private String nome;
 	private String cognome;
 	private String password;//per il momento la lascio in chiaro cosi, poi decidpo
-	//public Vector<Preventivo> _crea = new Vector<Preventivo>();
 	
 	private static M_Agente instance;
 
@@ -29,6 +29,7 @@ public class M_Agente implements Serializable{
 		this.password=psw;
 	}
 	
+	
 	public String getIdAgente() {
 		return idAgente;
 	}
@@ -38,10 +39,6 @@ public class M_Agente implements Serializable{
 		return password;
 	}
 
-
-	
-	
-	
 	
 	public String getNome(){
 		return this.nome;

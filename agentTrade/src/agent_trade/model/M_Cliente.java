@@ -2,8 +2,6 @@ package agent_trade.model;
 
 import java.io.Serializable;
 
-//import java.util.Vector;
-//import agent_trade.model.Preventivo;
 
 public class M_Cliente implements Serializable{
 	/**
@@ -16,7 +14,6 @@ public class M_Cliente implements Serializable{
 	private String codice_fiscale;
 	private String indirizzo;
 	private String email;
-	//public Vector<Preventivo> _appartiene = new Vector<Preventivo>();
 	
 	
 	private static M_Cliente instance;

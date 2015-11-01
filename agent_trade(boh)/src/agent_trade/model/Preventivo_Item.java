@@ -1,8 +1,0 @@
-package agent_trade.model;
-
-public class Preventivo_Item {
-	private Object _idPreventivo_Item;
-	private Object _quantità;
-	public Preventivo _contiene;
-	public Prodotto _ingloba;
-}

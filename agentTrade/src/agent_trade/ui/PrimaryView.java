@@ -1,39 +1,26 @@
 package agent_trade.ui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 
 import java.awt.Color;
 
-import javax.swing.UIManager;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
 
-import java.awt.Toolkit;
-import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Component;
 
 import javax.swing.ImageIcon;
-import javax.swing.JSeparator;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
-
-import java.awt.Button;
-
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.model.M_Agente;
-import agent_trade.persistentTemp.Dao_System;
 
 public class PrimaryView extends JFrame {
 	
@@ -104,8 +91,8 @@ public class PrimaryView extends JFrame {
 		
 		JTree tree = new JTree();
 		tree.setShowsRootHandles(true);
-		tree.setRootVisible(false);
-		tree.setModel(new DefaultTreeModel(
+		tree.setRootVisible(true);
+	/*	tree.setModel(new DefaultTreeModel(
 			new DefaultMutableTreeNode("JTree") {
 				{
 					DefaultMutableTreeNode node_1;
@@ -114,22 +101,22 @@ public class PrimaryView extends JFrame {
 						node_1.add(new DefaultMutableTreeNode("Preventivo 2"));
 						node_1.add(new DefaultMutableTreeNode("Preventivo 3"));
 						node_1.add(new DefaultMutableTreeNode("Preventivo 4"));
-					add(node_1);
+					getContentPane().add(node_1);
 					node_1 = new DefaultMutableTreeNode("Novembre 2015");
 						node_1.add(new DefaultMutableTreeNode("Preventivo 1"));
 						node_1.add(new DefaultMutableTreeNode("Preventivo 2"));
 						node_1.add(new DefaultMutableTreeNode("Preventivo 3"));
 						node_1.add(new DefaultMutableTreeNode("Preventivo 4"));
-					add(node_1);
+					getContentPane().add(node_1);
 					node_1 = new DefaultMutableTreeNode("Ottobre 2015");
 						node_1.add(new DefaultMutableTreeNode("Preventivo 1 "));
 						node_1.add(new DefaultMutableTreeNode("Preventivo 2"));
 						node_1.add(new DefaultMutableTreeNode("Preventivo 3"));
 						node_1.add(new DefaultMutableTreeNode("Preventivo 4"));
-					add(node_1);
+					getContentPane().add(node_1);
 				}
 			}
-		));
+		));*/
 		tree.setBounds(10, 11, 230, 529);
 		panello_laterale_preventivo.add(tree);
 		
@@ -149,9 +136,14 @@ public class PrimaryView extends JFrame {
 		panello_menu_cliente.setBackground(Color.WHITE);
 		Cliente.add(panello_menu_cliente);
 		
-		JButton button = new JButton("New button");
-		button.setBounds(27, 23, 89, 23);
-		panello_menu_cliente.add(button);
+		JButton bottoneNuovoCliente = new JButton("Nuovo Cliente");
+		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/add_cliente.png")));
+		bottoneNuovoCliente.setBounds(27, 23, 125, 23);
+		panello_menu_cliente.add(bottoneNuovoCliente);
+		
+		JButton bottoneCercaCliente = new JButton("Cerca Cliente");
+		bottoneCercaCliente.setBounds(177, 23, 105, 23);
+		panello_menu_cliente.add(bottoneCercaCliente);
 		
 		JPanel panello_sottomenu_cliente = new JPanel();
 		panello_sottomenu_cliente.setBounds(0, 123, 1003, 551);

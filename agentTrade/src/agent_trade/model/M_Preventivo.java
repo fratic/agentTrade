@@ -1,17 +1,13 @@
 package agent_trade.model;
 
-import java.util.Vector;
 
 public class M_Preventivo {
 	private String idPreventivo;
 	private String data; //bisognerebbe creare un oggetto Data
 	private float totale;
-	//public M_Cliente appartiene;
 	private M_Agente rif_Agente;
-//	public Vector<Preventivo_Item> _contiene = new Vector<Preventivo_Item>();
 	private static M_Preventivo instance;
 
-		
 	
 	public M_Preventivo(String id, String data, float tot, M_Agente a){		
 		this.idPreventivo=id;
