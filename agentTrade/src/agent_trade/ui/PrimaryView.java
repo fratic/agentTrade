@@ -2,6 +2,7 @@ package agent_trade.ui;
 
 
 import javax.swing.JFrame;
+
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -21,11 +22,12 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.ui.nuovoPreventivo;
 
 public class PrimaryView extends JFrame {
 	
-	public static PrimaryView instance;	
-
+	private static PrimaryView instance;	
+	private JButton nuovo_preventivo;
 	/**
 	 * Launch the application.
 	 */
@@ -58,7 +60,7 @@ public class PrimaryView extends JFrame {
 		JPanel preventivo = new JPanel();
 		tabbedPrincipale.addTab("Preventivo", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/preventivo.png")), preventivo, "Gestisci i preventivi");
 		preventivo.setLayout(null);
-		
+				
 		JPanel panello_menu_preventivo = new JPanel();
 		panello_menu_preventivo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panello_menu_preventivo.setBackground(Color.WHITE);
@@ -66,7 +68,7 @@ public class PrimaryView extends JFrame {
 		preventivo.add(panello_menu_preventivo);
 		panello_menu_preventivo.setLayout(null);
 		
-		JButton nuovo_preventivo = new JButton("");
+		nuovo_preventivo = new JButton("");
 		nuovo_preventivo.setToolTipText("Crea un nuovo preventivo");
 		nuovo_preventivo.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/nuovo_icon.png")));
 		nuovo_preventivo.setBounds(20, 20, 50, 50);
@@ -120,10 +122,16 @@ public class PrimaryView extends JFrame {
 		tree.setBounds(10, 11, 230, 529);
 		panello_laterale_preventivo.add(tree);
 		
-		JPanel panello_centrale_preventivo = new JPanel();
-		panello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
-		panello_centrale_preventivo.setBounds(248, 0, 755, 551);
-		panello_sottomenu_preventivo.add(panello_centrale_preventivo);
+		JPanel pannello_centrale_preventivo = new JPanel();
+		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
+		pannello_centrale_preventivo.setBounds(248, 0, 755, 551);
+		panello_sottomenu_preventivo.add(pannello_centrale_preventivo);
+		JPanel prin= new nuovoPreventivo();
+		
+	//	prin=agent_trade.ui.nuovoPreventivo;
+	
+		pannello_centrale_preventivo.add(prin);
+
 		
 		JPanel Cliente = new JPanel();
 		tabbedPrincipale.addTab("Cliente", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/cliente.png")), Cliente, "Gestisci i clienti");
@@ -205,5 +213,9 @@ public class PrimaryView extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1024, 748);
 
+	}
+	
+	public void setEnableNewPreventivo(boolean b){
+		nuovo_preventivo.setEnabled(b);
 	}
 }

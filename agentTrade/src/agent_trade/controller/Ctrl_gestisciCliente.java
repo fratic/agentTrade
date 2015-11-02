@@ -2,7 +2,9 @@ package agent_trade.controller;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import javax.swing.table.DefaultTableModel;
+
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.CercaClienteView;
@@ -19,15 +21,22 @@ public class Ctrl_gestisciCliente {
 	
 	public void cercaCliente(String c) {
 
+		if (c== "" || c==null){
+			CercaClienteView.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
+		}
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
 		
 		if (cliente!=null )
 		{
-			((DefaultTableModel) CercaClienteView.getInstance().JTableModel).addRow(new Object[]{cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getIndirizzo(),cliente.getEmail()});
+			//((DefaultTableModel) CercaClienteView.getInstance().getJTableModel()).addRow(new Object[]{cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getIndirizzo(),cliente.getEmail()});
+			CercaClienteView.getInstance().updateTable(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getIndirizzo(),cliente.getEmail());
+		//	ArrayList ct = new ArrayList(); 
+		//	ct.add(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getIndirizzo(),cliente.getEmail());
+			//System.out.println("Cliente trovato: "+cliente.getCognome()+" "+cliente.getNome());
 		}
 		else{		
 				CercaClienteView.getInstance().setErrore("Cliente non trovato");
-				System.out.println("cliente non trovato");
+				//System.out.println("cliente non trovato");
 		}
 	}
 	

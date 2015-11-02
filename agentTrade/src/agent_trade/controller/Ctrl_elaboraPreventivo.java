@@ -3,6 +3,7 @@ package agent_trade.controller;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
+import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.CercaClienteView;
 
 
@@ -24,8 +25,9 @@ public class Ctrl_elaboraPreventivo {
 		CercaClienteView.getInstance().setVisible(true);
 	}
 
-	public void inserisciCliente(M_Cliente c) {
-		throw new UnsupportedOperationException();
+	public void inserisciCliente(String c) {
+		M_Preventivo.getInstance().setRif_Cliente(Dao_System.getInstance().cercaCliente(c));
+		System.out.println("preventivo al cliente"+M_Preventivo.getInstance().getRif_Cliente().getCognome());
 	}
 
 	public void addItem(Object aIdProdotto, Object aIdDescrizione, Object aQuantità) {

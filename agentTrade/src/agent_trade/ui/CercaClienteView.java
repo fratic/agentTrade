@@ -4,18 +4,23 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JList;
+import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 
+import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
@@ -40,7 +45,8 @@ public class CercaClienteView extends JDialog {
 	private JList<M_Cliente> clienti;
 	private static JTable table;
 	private JLabel labelError;
-	public TableModel JTableModel;
+	public static TableModel JTableModel;
+	public JButton BottoneInserisci;
 	
 
 	public void setErrore(String err) {
@@ -50,6 +56,7 @@ public class CercaClienteView extends JDialog {
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		try {
 			CercaClienteView dialog = new CercaClienteView();
@@ -59,13 +66,21 @@ public class CercaClienteView extends JDialog {
 			e.printStackTrace();
 		}
 	}
+	*/
+	
 	
 	public static CercaClienteView getInstance(){
 		if (instance==null)
 			instance = new CercaClienteView();
 		return instance;	 
 	}
-
+	
+	
+	public static TableModel getJTableModel(){
+		return JTableModel;	 
+	}
+	
+	
 	public static JTable getTableInstance(){
 		return table;	 
 	}
@@ -164,7 +179,6 @@ public class CercaClienteView extends JDialog {
         
         table.setModel(JTableModel);
 
-		
 	    JScrollPane scrollPane = new JScrollPane(table);
 	    scrollPane.setBounds(10, 11, 540, 154);
 	    panel_1.add(scrollPane);
@@ -194,25 +208,67 @@ public class CercaClienteView extends JDialog {
 		getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
-		JButton BottoneInserisci = new JButton("Inserisci");
+		BottoneInserisci = new JButton("Inserisci");
 		BottoneInserisci.setEnabled(false);
 		BottoneInserisci.setBounds(451, 11, 99, 23);
 		panel_2.add(BottoneInserisci);
 		
 		BottoneCerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().cercaCliente(textField.getText());	
 				int k=((DefaultTableModel) JTableModel).getRowCount();
 				//System.out.println("FUORI CICLO, K VALE: "+k);
 						for (int i=k-1; i>=0;i--){
 							((DefaultTableModel) JTableModel).removeRow(i);
 						}
+				Ctrl_gestisciCliente.getInstance().cercaCliente(textField.getText());	
+				
 			
 
 			}
 
 		});
 	
+		BottoneInserisci.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			/*
+			       String col1 = (String) table.getValueAt(table.getSelectedRow(), 0);
+			       String col2 = (String) table.getValueAt(table.getSelectedRow(), 1);
+			       if((col1.length() != 0) && (col2.length() != 0)) JOptionPane.showMessageDialog(null,"Contenuto riga selezionata: "+col1+" "+col2);		       
+
+*/
+				Ctrl_elaboraPreventivo.getInstance().inserisciCliente((String) table.getValueAt(table.getSelectedRow(),0));
+				CercaClienteView.getInstance().setVisible(false);
+				PrimaryView.getInstance().setEnableNewPreventivo(false);
+			}
+
+		});
+
+		
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+	/*	if(!table.isCellSelected(table.getSelectedRow(), table.getSelectedColumn()))
+ 			JOptionPane.showMessageDialog(null,"non selezionata");	
+		*/
+		table.addMouseListener(new MouseAdapter() {
+		     public void mouseClicked(MouseEvent me) {
+		    	 
+		 		BottoneInserisci.setEnabled(true);
+		 		
+		 /*		if(table.getValueAt(table.getSelectedRow(), table.getSelectedColumn())==null)
+		 			BottoneInserisci.setEnabled(false);
+		 */		
+		    	 
+		     /*  String col1 = (String) table.getValueAt(table.getSelectedRow(), 0);
+		       String col2 = (String) table.getValueAt(table.getSelectedRow(), 1);
+		       if((col1.length() != 0) && (col2.length() != 0)) JOptionPane.showMessageDialog(null,"in mouse cliccked: "+col1+" "+col2);		       
+		   */
+		     }
+		     
+		     
+		     
+		   });
+		
+		 
 	}
 	
 	public void popolaTab(ArrayList a){
@@ -222,6 +278,7 @@ int k=((DefaultTableModel) JTableModel).getRowCount();
 		for (int i=k-1; i>=0;i--){
 			((DefaultTableModel) JTableModel).removeRow(i);
 		}
+		labelError.setText("");
 		
 		
 	/*	if (k>0)
@@ -241,12 +298,31 @@ int k=((DefaultTableModel) JTableModel).getRowCount();
             ((DefaultTableModel) JTableModel).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getIndirizzo(),c.getEmail()});
 		
 			}
-		
+	}
+	
+	public void updateTable(String cognome, String nome,String cf,String indirizzo,String email){
+		int k=((DefaultTableModel) JTableModel).getRowCount();
+		//System.out.println("FUORI CICLO, K VALE: "+k);
+				for (int i=k-1; i>=0;i--){
+					((DefaultTableModel) JTableModel).removeRow(i);
+				}
+				labelError.setText("");
+				
+			//	Iterator iteraClienti = null;
+				
+			//	iteraClienti = a.iterator();
+				
+	            ((DefaultTableModel) JTableModel).addRow(new Object[]{ cognome,  nome, cf, indirizzo, email});
 
-		
-
-
-		
+				/*
+				while (iteraClienti.hasNext()) {
+					M_Cliente c = new M_Cliente();
+					c = (M_Cliente) iteraClienti.next();
+					
+		            ((DefaultTableModel) JTableModel).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getIndirizzo(),c.getEmail()});
+				
+					}
+*/
 	}
 	
 }

@@ -1,0 +1,8 @@
+-Definire uno schema comune per tutte le classi(sezione attributi, metodi di classe, di istanza ecc ecc)
+
+-aggiustare persistent in modo da essere indipendente da tutto e quindi sostituibile nella seconda iterazinoe
+
+-aggiustare la ricerca con espressioni regolari ed inserire più parametri di ricerca, da fare dopo l'esistenza del db
+
+-fare funzioni di init o reset. un esempio sono le impostazioni di base della view cerca cliente. se la riapri bisogna 
+settare di nuovo i clienti generali, il mex errore a "", il bottone disattivato e il jfield vuoto. sarebbe utile l'utilizzo del pattern observer

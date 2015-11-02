@@ -6,6 +6,11 @@ public class M_Preventivo {
 	private String data; //bisognerebbe creare un oggetto Data
 	private float totale;
 	private M_Agente rif_Agente;
+	private M_Cliente rif_Cliente;
+	public M_Cliente getRif_Cliente() {
+		return rif_Cliente;
+	}
+
 	private static M_Preventivo instance;
 
 	
@@ -57,7 +62,9 @@ public class M_Preventivo {
 		this.rif_Agente = rif_Agente;
 	}
 
-
+	public void setRif_Cliente(M_Cliente rif_Cliente) {
+		this.rif_Cliente = rif_Cliente;
+	}
 	
 	
 }

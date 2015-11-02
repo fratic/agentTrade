@@ -1,0 +1,14 @@
+package agent_trade.ui;
+
+import javax.swing.JPanel;
+
+public class nuovoPreventivo extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public nuovoPreventivo() {
+
+	}
+
+}

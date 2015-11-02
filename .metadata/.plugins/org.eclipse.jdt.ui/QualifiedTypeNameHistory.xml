@@ -6,7 +6,6 @@
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="model.entity.DocenteSet"/>
 <fullyQualifiedTypeName name="javax.swing.tree.DefaultTreeModel"/>
-<fullyQualifiedTypeName name="agent_trade.controller.Ctrl_elaboraPreventivo"/>
 <fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
@@ -21,13 +20,21 @@
 <fullyQualifiedTypeName name="agent_trade.ui.LoginView"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="agent_trade.model.M_Cliente"/>
-<fullyQualifiedTypeName name="java.awt.Component"/>
-<fullyQualifiedTypeName name="agent_trade.ui.CercaClienteView"/>
 <fullyQualifiedTypeName name="javax.swing.JTable"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="agent_trade.persistentTemp.Dao_System"/>
 <fullyQualifiedTypeName name="agent_trade.controller.Ctrl_gestisciCliente"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.swing.JDialog"/>
 <fullyQualifiedTypeName name="javax.swing.JDialog.AccessibleJDialog"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.swing.ListSelectionModel"/>
+<fullyQualifiedTypeName name="java.awt.event.MouseEvent"/>
+<fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="agent_trade.controller.Ctrl_elaboraPreventivo"/>
+<fullyQualifiedTypeName name="agent_trade.persistentTemp.Dao_System"/>
+<fullyQualifiedTypeName name="agent_trade.ui.CercaClienteView"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="agent_trade.ui.nuovoPreventivo"/>
+<fullyQualifiedTypeName name="java.awt.Component"/>
 </qualifiedTypeNameHistroy>
