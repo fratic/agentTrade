@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
-import agent_trade.ui.CercaClienteView;
+import agent_trade.ui.content.CercaClienteView;
 
 
 public class Ctrl_gestisciCliente {
@@ -21,6 +21,11 @@ public class Ctrl_gestisciCliente {
 	
 	public void cercaCliente(String c) {
 
+	/*	CercaClienteView.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
+		CercaClienteView.getInstance().setVisible(true);
+*/
+		apriViewCliente();
+		
 		if (c== "" || c==null){
 			CercaClienteView.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		}
@@ -53,6 +58,14 @@ public class Ctrl_gestisciCliente {
 			System.out.println (c.getCognome());	
 			}
 		return clienti;
-	}			
+	}
+	
+
+	public void apriViewCliente(){
+		CercaClienteView.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
+		CercaClienteView.getInstance().setVisible(true);
+
+	} 
+	
 	
 }

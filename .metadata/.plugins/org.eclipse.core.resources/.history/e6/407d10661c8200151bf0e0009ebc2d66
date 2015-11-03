@@ -1,0 +1,14 @@
+package agent_trade.ui;
+
+import javax.swing.JPanel;
+
+public class asd extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public asd() {
+
+	}
+
+}

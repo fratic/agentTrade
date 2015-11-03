@@ -1,3 +1,6 @@
+-!!!IMPORTANTE!!!--CONTROLLLARE CHE GLI STRATI SIANO INDIPENDENTI E CHE OGNI FUNZIONE DI OGNI STRATO è INDIPENDENTE
+
+
 -Definire uno schema comune per tutte le classi(sezione attributi, metodi di classe, di istanza ecc ecc)
 
 -aggiustare persistent in modo da essere indipendente da tutto e quindi sostituibile nella seconda iterazinoe

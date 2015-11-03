@@ -2,11 +2,11 @@ package agent_trade.ui;
 
 
 import javax.swing.JFrame;
-
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import java.awt.Color;
+import java.awt.EventQueue;
 
 import javax.swing.JButton;
 
@@ -17,21 +17,29 @@ import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
 import javax.swing.JTree;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.ui.nuovoPreventivo;
+import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.ui.content.CercaClienteView;
+import agent_trade.ui.content.NuovoPreventivoView;
 
 public class PrimaryView extends JFrame {
 	
 	private static PrimaryView instance;	
 	private JButton nuovo_preventivo;
+	private JPanel pannello_centrale_preventivo;
+	private JPanel prin;
+	JButton bottoneCercaCliente;
+	
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
+	
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -42,7 +50,7 @@ public class PrimaryView extends JFrame {
 				}
 			}
 		});
-	}*/
+	}
 
 	/**
 	 * Create the frame.
@@ -62,7 +70,6 @@ public class PrimaryView extends JFrame {
 		preventivo.setLayout(null);
 				
 		JPanel panello_menu_preventivo = new JPanel();
-		panello_menu_preventivo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panello_menu_preventivo.setBackground(Color.WHITE);
 		panello_menu_preventivo.setBounds(0, 0, 1003, 124);
 		preventivo.add(panello_menu_preventivo);
@@ -122,15 +129,21 @@ public class PrimaryView extends JFrame {
 		tree.setBounds(10, 11, 230, 529);
 		panello_laterale_preventivo.add(tree);
 		
-		JPanel pannello_centrale_preventivo = new JPanel();
+		pannello_centrale_preventivo = new JPanel();
 		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
-		pannello_centrale_preventivo.setBounds(248, 0, 755, 551);
+		pannello_centrale_preventivo.setBounds(260, 0, 755, 551);
 		panello_sottomenu_preventivo.add(pannello_centrale_preventivo);
-		JPanel prin= new nuovoPreventivo();
+		pannello_centrale_preventivo.setLayout(null);
+
 		
-	//	prin=agent_trade.ui.nuovoPreventivo;
-	
+		prin= new NuovoPreventivoView();
+		prin.setBounds(0, 1, 755, 97);
+		//JPanel prin= new asd();
+
 		pannello_centrale_preventivo.add(prin);
+		prin.setVisible(false);
+
+		//JLabel(prin.labelCliente).setText("sdf");
 
 		
 		JPanel Cliente = new JPanel();
@@ -146,11 +159,11 @@ public class PrimaryView extends JFrame {
 		
 		JButton bottoneNuovoCliente = new JButton("Nuovo Cliente");
 		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/add_cliente.png")));
-		bottoneNuovoCliente.setBounds(27, 23, 125, 23);
+		bottoneNuovoCliente.setBounds(27, 23, 140, 23);
 		panello_menu_cliente.add(bottoneNuovoCliente);
 		
-		JButton bottoneCercaCliente = new JButton("Cerca Cliente");
-		bottoneCercaCliente.setBounds(177, 23, 105, 23);
+		bottoneCercaCliente = new JButton("Cerca Cliente");
+		bottoneCercaCliente.setBounds(177, 23, 120, 23);
 		panello_menu_cliente.add(bottoneCercaCliente);
 		
 		JPanel panello_sottomenu_cliente = new JPanel();
@@ -197,6 +210,29 @@ public class PrimaryView extends JFrame {
 		panello_sottomenu_catalogo.add(panello_centrale_catalogo);
 		this.init();
 		this.initComponents();
+		
+		
+		bottoneCercaCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CercaClienteView.getInstance().getJTableModel();
+
+				DefaultTableModel dm =((DefaultTableModel) CercaClienteView.getInstance().getJTableModel());
+
+				int k=dm.getRowCount();
+				
+				//System.out.println("FUORI CICLO, K VALE: "+k);
+						for (int i=k-1; i>=0;i--){
+							dm.removeRow(i);
+						}
+				
+				Ctrl_gestisciCliente.getInstance().apriViewCliente();	
+				
+			}
+
+		});
+
+		
+		
 	}
 	
 	public static PrimaryView getInstance(){
@@ -217,5 +253,13 @@ public class PrimaryView extends JFrame {
 	
 	public void setEnableNewPreventivo(boolean b){
 		nuovo_preventivo.setEnabled(b);
+	}
+	
+	public void setVisibleIntestazione(boolean b){
+		prin.setVisible(b);
+	}
+	
+	public JPanel getInstanceIntestazione(){
+		return prin;
 	}
 }

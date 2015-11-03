@@ -1,0 +1,19 @@
+package agent_trade.ui;
+
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JTextPane;
+import javax.swing.JCheckBox;
+
+public class nuovoPreventivo extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public nuovoPreventivo() {
+		setLayout(null);
+		
+
+	}
+
+}

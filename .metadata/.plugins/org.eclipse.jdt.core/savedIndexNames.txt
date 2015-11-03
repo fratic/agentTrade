@@ -4,14 +4,14 @@ INDEX VERSION 1.126+C:\Users\Fratic\Documents\GitHub\agentTrade\.metadata\.plugi
 4170179749.index
 834584462.index
 3598813974.index
+2486087126.index
 391826492.index
+2338776811.index
 3454125809.index
 3991718231.index
-2338776811.index
-2486087126.index
 737842956.index
-3182301242.index
 734900227.index
+3182301242.index
 1604200090.index
 1065832147.index
 2193799835.index
