@@ -19,10 +19,9 @@ public class M_Agente implements Serializable{
 	
 	public M_Agente(){		
 	}
-	
-	
+		
 	public M_Agente(String id, String cognome, String nome, String psw){
-		super();
+		//super();
 		this.idAgente=id;
 		this.cognome=cognome;
 		this.nome=nome;	

@@ -2,9 +2,9 @@ package agent_trade.model;
 
 
 public class M_Prodotto {
-	private int _dProdotto;
+	private int idProdotto;
 	private float prezzo;
 	private String nome;
 	private String categoria;
-	//public M_DescrizioneProdotto descrive;
+	public M_DescrizioneProdotto descrizione;
 }

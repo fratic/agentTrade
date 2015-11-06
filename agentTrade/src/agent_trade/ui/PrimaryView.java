@@ -25,8 +25,15 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.model.M_Cliente;
+import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.content.CercaClienteView;
 import agent_trade.ui.content.NuovoPreventivoView;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import javax.swing.SwingConstants;
 
 public class PrimaryView extends JFrame {
 	
@@ -36,11 +43,12 @@ public class PrimaryView extends JFrame {
 	private JPanel prin;
 	private JButton bottoneCercaCliente;
 	private JTree albero;
+	private JTextField textField;
 	
 	/**
 	 * Launch the application.
 	 */
-	
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,7 +61,7 @@ public class PrimaryView extends JFrame {
 			}
 		});
 	}
-
+*/
 	/**
 	 * Create the frame.
 	 */
@@ -89,6 +97,8 @@ public class PrimaryView extends JFrame {
 			}
 
 		});
+		
+		
 			
 		JPanel panello_sottomenu_preventivo = new JPanel();
 		panello_sottomenu_preventivo.setBounds(0, 123, 1003, 551);
@@ -185,6 +195,31 @@ public class PrimaryView extends JFrame {
 		panello_centrale_catalogo.setBackground(Color.LIGHT_GRAY);
 		panello_centrale_catalogo.setBounds(248, 0, 755, 551);
 		panello_sottomenu_catalogo.add(panello_centrale_catalogo);
+		panello_centrale_catalogo.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 526, 166);
+		panello_centrale_catalogo.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(86, 37, 46, 14);
+		panel.add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBounds(155, 34, 86, 20);
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		JButton bottonrAzione = new JButton("azione");
+		bottonrAzione.setToolTipText("rthf");
+		bottonrAzione.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/Bullet-red_50.png")));
+		bottonrAzione.setBounds(284, 33, 172, 42);
+		panel.add(bottonrAzione);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
+		chckbxNewCheckBox.setBounds(102, 88, 97, 23);
+		panel.add(chckbxNewCheckBox);
 		this.init();
 		this.initComponents();
 		
@@ -209,6 +244,13 @@ public class PrimaryView extends JFrame {
 		});
 
 		
+		bottoneNuovoCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Dao_System.getInstance().nuovoCliente(new M_Cliente(12, "beato", "mirco", "sdffgs", "va pescara", "ciccio@samri.it"));	
+				Dao_System.getInstance().caricaClienti();
+			}
+
+		});
 		
 	}
 	

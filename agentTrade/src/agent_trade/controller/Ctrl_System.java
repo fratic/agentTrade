@@ -54,6 +54,6 @@ public class Ctrl_System {
 	
 	public void inizializzaSistema(){
 		//PrimaryView.getInstance().initAlberoClienti();
-		Ctrl_gestisciCliente.getInstance().caricaAlberoClienti();
+	//	Ctrl_gestisciCliente.getInstance().caricaAlberoClienti();
 	}
 }

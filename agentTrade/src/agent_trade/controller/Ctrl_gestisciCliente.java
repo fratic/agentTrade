@@ -3,11 +3,9 @@ package agent_trade.controller;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.content.CercaClienteView;
-
 
 public class Ctrl_gestisciCliente {
 
@@ -19,7 +17,6 @@ public class Ctrl_gestisciCliente {
 	}
 	
 	public void cercaCliente(String c) {
-
 
 		apriViewCercaCliente();
 		
@@ -38,33 +35,25 @@ public class Ctrl_gestisciCliente {
 		}
 	}
 	
-	//bisogna decidere il criterio di caricamento
+	//bisogna decidere il criterio di caricamento. Decidere se è adeguata questa struttura dati
 	public ArrayList caricaClienti() {
 
 		ArrayList clienti=Dao_System.getInstance().caricaClienti();
-		//Iterator iteraClienti = null;
-		
-		//iteraClienti = clienti.iterator();
-		/*M_Cliente c = new M_Cliente();
-		while (iteraClienti.hasNext()) {
-			c = (M_Cliente) iteraClienti.next();
-			System.out.println (c.getCognome());	
-			}*/
+
 		return clienti;
 	}
 	
 
 	public void apriViewCercaCliente(){
+		
 		CercaClienteView.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		CercaClienteView.getInstance().setVisible(true);
-
 	} 
 	
 	public void caricaAlberoClienti(){
 		
 	//	PrimaryView.getInstance().initAlberoClienti();
 		ArrayList clienti = caricaClienti();
-
 		Iterator iteraClienti = null;
 		iteraClienti = clienti.iterator();
 		M_Cliente c = new M_Cliente();
@@ -109,10 +98,5 @@ public class Ctrl_gestisciCliente {
 							
 							//PrimaryView.getInstance().initAlberoClienti(modello);
 							
-	}
-			
-		
-		
-	
-	
+	}	
 }

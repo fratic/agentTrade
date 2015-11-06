@@ -10,3 +10,5 @@
 -fare funzioni di init o reset. un esempio sono le impostazioni di base della view cerca cliente. se la riapri bisogna 
 settare di nuovo i clienti generali, il mex errore a "", il bottone disattivato e il jfield vuoto. sarebbe utile l'utilizzo del pattern observer
 
+
+

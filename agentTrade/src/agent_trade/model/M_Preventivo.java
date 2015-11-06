@@ -7,12 +7,16 @@ public class M_Preventivo {
 	private float totale;
 	private M_Agente rif_Agente;
 	private M_Cliente rif_Cliente;
+	private static M_Preventivo instance;
+
 	public M_Cliente getRif_Cliente() {
 		return rif_Cliente;
 	}
 
-	private static M_Preventivo instance;
+	public static M_Preventivo getInstance(){
 
+		return ((instance == null) ? instance = new M_Preventivo() : instance);	
+	}
 	
 	public M_Preventivo(String id, String data, float tot, M_Agente a){		
 		this.idPreventivo=id;
@@ -23,12 +27,6 @@ public class M_Preventivo {
 	
 	public M_Preventivo() {
 	}
-	
-	public static M_Preventivo getInstance(){
-
-		return ((instance == null) ? instance = new M_Preventivo() : instance);	
-	}
-	
 	
 	public String getIdPreventivo() {
 		return idPreventivo;
@@ -65,6 +63,5 @@ public class M_Preventivo {
 	public void setRif_Cliente(M_Cliente rif_Cliente) {
 		this.rif_Cliente = rif_Cliente;
 	}
-	
 	
 }

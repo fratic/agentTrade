@@ -1,7 +1,10 @@
 package agent_trade.persistentTemp;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -17,6 +20,9 @@ public class Dao_System {
 		return ((instance == null) ? instance = new Dao_System() : instance);	
 	}
 	
+	/*
+	__________AGENTE_________________
+	*/
 	public M_Agente loadAgente(String user) {
 		/*INIZIO CARICAMENTO DA FILE, non lasciare cosi ma creare una funzione temporanea*/
 		
@@ -50,9 +56,12 @@ public class Dao_System {
 	}
 	
 	
+	
+	/*
+	___________CLIENTE_________________
+	*/
 	public M_Cliente cercaCliente(String cognome) {
 		/*INIZIO CARICAMENTO DA FILE, non lasciare cosi ma creare una funzione temporanea*/
-		
 		StringBuffer mioSB = null; 
 		ArrayList elencoClienti = null;
 		Iterator iteraClienti = null;
@@ -96,15 +105,14 @@ public class Dao_System {
 			elencoClienti = (ArrayList) ois.readObject();
 			ois.close();
 			fis.close();
-			/*
+			
 			iteraClienti = elencoClienti.iterator();
 			M_Cliente c = new M_Cliente();
 			while (iteraClienti.hasNext()) {
 				c = (M_Cliente) iteraClienti.next();
-				if (c.getCognome().equals(cognome)){
-					return c;
-				}
-			}*/
+				System.out.println(c.getCognome()+" "+c.getNome());
+				
+			}
 			//return elencoClienti;
 		}
 		catch(Exception e)
@@ -115,6 +123,62 @@ public class Dao_System {
 		  
 		/*fine caricamento da file */
 	}
+	
+	public void nuovoCliente(M_Cliente c) {
+		try
+		{
+		
+		FileInputStream fis = new FileInputStream("clienti");
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		
+		ArrayList list = (ArrayList) ois.readObject();
+		
+		ois.close();
+		fis.close();
+		
+		
+
+		
+		//ArrayList list = new ArrayList();
+		list.add(c);
+
+		FileOutputStream fos = new FileOutputStream("clienti");
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+		oos.writeObject(list);
+		
+		
+		oos.close();
+		fos.close();
+		
+		System.out.println("OK");
+		
+		Iterator iteraClienti = list.iterator();
+		M_Cliente cl = new M_Cliente();
+		while (iteraClienti.hasNext()) {
+			cl = (M_Cliente) iteraClienti.next();
+			System.out.println("Cliente "+cl.getCognome()+ " " +cl.getNome());
+		}
+		
+		System.out.println("OK");
+
+		
+		}
+		catch(Exception e)
+		{
+		System.out.println("Eccezione: " + e.toString());
+		}
+
+	}
+	
+	public void modificaCliente(M_Cliente c){
+		
+	}
+	 
+	public void cancellaCliente(){
+		
+	}
+	
 	
 	
 }

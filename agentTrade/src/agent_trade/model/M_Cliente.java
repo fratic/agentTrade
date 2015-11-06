@@ -4,9 +4,7 @@ import java.io.Serializable;
 
 
 public class M_Cliente implements Serializable{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private int idCliente;
 	private String nome;
@@ -24,12 +22,12 @@ public class M_Cliente implements Serializable{
 	}
 	
 	public M_Cliente(){		
-		super();
+		//super();
 	}
 	
 	
 	public M_Cliente(int id, String cognome, String nome, String cf, String ind, String em){
-		super();
+		//super();
 		this.idCliente=id;
 		this.cognome=cognome;
 		this.nome=nome;	

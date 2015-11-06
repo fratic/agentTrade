@@ -9,8 +9,6 @@ import agent_trade.model.M_Cliente;
 	class ScritturaSuFileClienti
 	{
 		
-
-		
 	public static void main(String[] args)
 	{
 		M_Cliente cl =new M_Cliente(1, "graziani", "ciccio", "frtnhjyu78", "via roma 156", "asd@asd.it");
