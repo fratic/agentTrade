@@ -1,8 +1,0 @@
-package agent_trade.controller;
-
-public class Ctrl_System {
-
-	public void login(String user, String psw) {
-		throw new UnsupportedOperationException();
-	}
-}

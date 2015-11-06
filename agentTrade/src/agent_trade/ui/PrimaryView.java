@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Component;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
@@ -33,7 +34,8 @@ public class PrimaryView extends JFrame {
 	private JButton nuovo_preventivo;
 	private JPanel pannello_centrale_preventivo;
 	private JPanel prin;
-	JButton bottoneCercaCliente;
+	private JButton bottoneCercaCliente;
+	private JTree albero;
 	
 	/**
 	 * Launch the application.
@@ -98,36 +100,6 @@ public class PrimaryView extends JFrame {
 		panello_sottomenu_preventivo.add(panello_laterale_preventivo);
 		panello_laterale_preventivo.setLayout(null);
 		
-		JTree tree = new JTree();
-		tree.setShowsRootHandles(true);
-		tree.setRootVisible(true);
-	/*	tree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("JTree") {
-				{
-					DefaultMutableTreeNode node_1;
-					node_1 = new DefaultMutableTreeNode("Dicembre 2015");
-						node_1.add(new DefaultMutableTreeNode("Preventivo 1"));
-						node_1.add(new DefaultMutableTreeNode("Preventivo 2"));
-						node_1.add(new DefaultMutableTreeNode("Preventivo 3"));
-						node_1.add(new DefaultMutableTreeNode("Preventivo 4"));
-					getContentPane().add(node_1);
-					node_1 = new DefaultMutableTreeNode("Novembre 2015");
-						node_1.add(new DefaultMutableTreeNode("Preventivo 1"));
-						node_1.add(new DefaultMutableTreeNode("Preventivo 2"));
-						node_1.add(new DefaultMutableTreeNode("Preventivo 3"));
-						node_1.add(new DefaultMutableTreeNode("Preventivo 4"));
-					getContentPane().add(node_1);
-					node_1 = new DefaultMutableTreeNode("Ottobre 2015");
-						node_1.add(new DefaultMutableTreeNode("Preventivo 1 "));
-						node_1.add(new DefaultMutableTreeNode("Preventivo 2"));
-						node_1.add(new DefaultMutableTreeNode("Preventivo 3"));
-						node_1.add(new DefaultMutableTreeNode("Preventivo 4"));
-					getContentPane().add(node_1);
-				}
-			}
-		));*/
-		tree.setBounds(10, 11, 230, 529);
-		panello_laterale_preventivo.add(tree);
 		
 		pannello_centrale_preventivo = new JPanel();
 		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
@@ -174,6 +146,11 @@ public class PrimaryView extends JFrame {
 		JPanel panello_laterale_cliente = new JPanel();
 		panello_laterale_cliente.setBounds(0, 0, 250, 551);
 		panello_sottomenu_cliente.add(panello_laterale_cliente);
+		panello_laterale_cliente.setLayout(null);
+		
+		albero = new JTree();
+		albero.setBounds(10, 11, 230, 443);
+		panello_laterale_cliente.add(albero);
 		
 		JPanel pannello_centrale_cliente = new JPanel();
 		pannello_centrale_cliente.setBackground(Color.LIGHT_GRAY);
@@ -225,7 +202,7 @@ public class PrimaryView extends JFrame {
 							dm.removeRow(i);
 						}
 				
-				Ctrl_gestisciCliente.getInstance().apriViewCliente();	
+				Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();	
 				
 			}
 
@@ -261,5 +238,37 @@ public class PrimaryView extends JFrame {
 	
 	public JPanel getInstanceIntestazione(){
 		return prin;
+	}
+	
+	public void initAlberoClienti(DefaultTreeModel modello){
+		//ArrayList c= Ctrl_gestisciCliente.getInstance().caricaAlberoClienti();
+		/*albero.setModel(new DefaultTreeModel(
+				new DefaultMutableTreeNode("Elenco Clienti") {
+					{
+						DefaultMutableTreeNode node_1;
+						node_1 = new DefaultMutableTreeNode("cliente 1");
+							node_1.add(new DefaultMutableTreeNode("blfdfue"));
+							node_1.add(new DefaultMutableTreeNode("viodflet"));
+							node_1.add(new DefaultMutableTreeNode("rdfded"));
+							node_1.add(new DefaultMutableTreeNode("yfdfdfellow"));
+						add(node_1);
+						node_1 = new DefaultMutableTreeNode("cliente 2");
+							node_1.add(new DefaultMutableTreeNode("baskedfdftball"));
+							node_1.add(new DefaultMutableTreeNode("socdfdfcer"));
+							node_1.add(new DefaultMutableTreeNode("foodftball"));
+							node_1.add(new DefaultMutableTreeNode("hodfckey"));
+						add(node_1);
+						node_1 = new DefaultMutableTreeNode("cliente 3");
+							node_1.add(new DefaultMutableTreeNode("hotvbxb dogs"));
+							node_1.add(new DefaultMutableTreeNode("pibrbzza"));
+							node_1.add(new DefaultMutableTreeNode("rfgbavioli"));
+							node_1.add(new DefaultMutableTreeNode("banfbanas"));
+						add(node_1);
+					}
+				}
+			));*/
+		
+		albero.setModel(modello);
+		
 	}
 }

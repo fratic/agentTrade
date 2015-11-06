@@ -34,7 +34,7 @@ public class Ctrl_elaboraPreventivo {
 		CercaClienteView.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		CercaClienteView.getInstance().setVisible(true);*/
 		
-		Ctrl_gestisciCliente.getInstance().apriViewCliente();
+		Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();
 	}
 
 	public void inserisciCliente(String c) {

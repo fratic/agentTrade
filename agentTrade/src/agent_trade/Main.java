@@ -29,6 +29,6 @@ public class Main {
 				}
 			}
 		});
-		//qui bisogna caricare gli oggetti di cui abbiamo bisogno, naturalmente con criterio 
+			
 	}
 }
