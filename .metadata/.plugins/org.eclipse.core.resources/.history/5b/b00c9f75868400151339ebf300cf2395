@@ -3,9 +3,13 @@ package agent_trade.controller;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
+import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.CercaClienteView;
 
 
