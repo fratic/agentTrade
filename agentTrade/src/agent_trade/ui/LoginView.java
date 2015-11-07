@@ -1,6 +1,8 @@
 package agent_trade.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,29 +19,29 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
 import agent_trade.controller.Ctrl_System;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class LoginView extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private static LoginView instance;
-	private JTextField username;
-	private JLabel mex;
+	private JLayeredPane layeredPane;
 	
-	public JTextField getUsername() {
-		return username;
-	}
-	public void setUsername(String user) {
-		username.setText(user);
-	}
-	public void setMex(String m){
-		mex.setText(m);
-	}
+	private JTextField username;
 	private JTextField password; //DA SISTEMARE. FATTO SOLO PER PROVA
+	
+	private JLabel mex;
+	private JLabel labelUser;
+	private JLabel labelPass;
+	private JLabel labelInfo;
+
+	private JButton buttoneAccedi;
+	
+	private static LoginView instance;
+	
+	private static final int WIDTH = 370;
+	private static final int HEIGHT = 240;
 
 
 	/**
@@ -62,71 +64,55 @@ public class LoginView extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginView() {
+		
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screen.width-WIDTH)/2;
+        int y = (screen.height-HEIGHT)/2;
+        setBounds(x,y,WIDTH,HEIGHT);
+        
 		setTitle("Agent Trade | Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 366, 232);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JLayeredPane layeredPane = new JLayeredPane();
+		layeredPane = new JLayeredPane();
 		layeredPane.setBackground(Color.WHITE);
 		contentPane.add(layeredPane, BorderLayout.CENTER);
 		
-		JLabel label = new JLabel("Username");
-		label.setBounds(35, 47, 74, 37);
-		layeredPane.add(label);
+		labelUser = new JLabel("Username");
+		labelUser.setBounds(35, 47, 74, 37);
+		layeredPane.add(labelUser);
 		
 		username = new JTextField();
 		username.setColumns(10);
 		username.setBounds(161, 55, 130, 20);
 		layeredPane.add(username);
 		
-		JLabel label_1 = new JLabel("Password");
-		label_1.setBounds(35, 99, 74, 14);
-		layeredPane.add(label_1);
+		labelPass = new JLabel("Password");
+		labelPass.setBounds(35, 99, 74, 14);
+		layeredPane.add(labelPass);
 		
 		password = new JTextField();
 		password.setBounds(161, 96, 130, 20);
 		layeredPane.add(password);
 		
-		JButton button = new JButton("Accedi");
-		button.setBounds(201, 136, 89, 23);
-		layeredPane.add(button);
+		buttoneAccedi = new JButton("Accedi");
+		buttoneAccedi.setBounds(201, 136, 89, 23);
+		layeredPane.add(buttoneAccedi);
 		
-		JLabel label_2 = new JLabel("Inserisci le tue credenziali per accedere ad Agent Trade");
-		label_2.setBounds(10, 11, 334, 20);
-		layeredPane.add(label_2);
+		labelInfo = new JLabel("Inserisci le tue credenziali per accedere ad Agent Trade");
+		labelInfo.setBounds(10, 11, 334, 20);
+		layeredPane.add(labelInfo);
 		
 		mex = DefaultComponentFactory.getInstance().createLabel("");
 		mex.setBounds(35, 140, 156, 14);
 		layeredPane.add(mex);
 		
-		button.addActionListener(new ActionListener() {
+		buttoneAccedi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//String user=(String)username.getText();
-				//String psw=(String)password.getText();
 				Ctrl_System.getInstance().login((String)username.getText(), (String)password.getText());
-				//username.setText("recuperato-"+(String)username.getText());
-				//password.setText("recuperato-"+(String)password.getText());
-
-				
-				
-				/*
-				if((user.equals("antonio"))||true)	{			
-					//if (true){
-					//new windowsFist();
-					//frmAgentTrade.setVisible(false);
-					PrimaryView.getInstance().setVisible(true);
-					LoginView.getInstance().setVisible(false);
-
-					}
-				else
-				{
-					username.setText("");
-				 //	password.setPassword("");
-				}*/
 			}
 
 		});
@@ -137,5 +123,15 @@ public class LoginView extends JFrame {
 			instance = new LoginView();
 		
 		return instance;
+	}
+	
+	public JTextField getUsername() {
+		return username;
+	}
+	public void setUsername(String user) {
+		username.setText(user);
+	}
+	public void setMex(String m){
+		mex.setText(m);
 	}
 }

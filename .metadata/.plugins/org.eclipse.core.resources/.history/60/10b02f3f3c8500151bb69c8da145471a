@@ -1,0 +1,11 @@
+package agent_trade.model;
+
+
+public abstract class  M_Prodotto {
+	protected int idProdotto;
+	protected float prezzo;
+	protected String nome;
+	protected String categoria;
+	protected M_DescrizioneProdotto idDescrizioneProdotto;
+}
+

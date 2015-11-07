@@ -53,6 +53,7 @@ public class Ctrl_System {
 	}
 	
 	public void inizializzaSistema(){
+		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
 		//PrimaryView.getInstance().initAlberoClienti();
 	//	Ctrl_gestisciCliente.getInstance().caricaAlberoClienti();
 	}

@@ -28,7 +28,6 @@ public class SplashScreen extends JWindow {
 	        JLabel copyrt = new JLabel("Copyright \u00A9 2015 Agent Trade", JLabel.CENTER);
 	        panel.add(copyrt, BorderLayout.SOUTH);
 	        
-	        
 	        setOpacity(0.9f);
 	 }
 	

@@ -26,21 +26,14 @@ public class Ctrl_elaboraPreventivo {
 	
 		M_Preventivo.getInstance().setRif_Agente(a);
 		M_Preventivo.getInstance().setData((String)(cal.get(Calendar.DATE)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR)));	//la data andrà recuperata dal sistema e comprenderà anche l'orario
-		System.out.print("Prev fatto da: "+M_Preventivo.getInstance().getRif_Agente().getCognome()+" in data "+M_Preventivo.getInstance().getData());
-		
-		//andrebbe richamato il caso d'uso cerca cliente//in lavorazione
-		/*
-		CercaClienteView.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
-		CercaClienteView.getInstance().setVisible(true);*/
-		
 		Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();
 	}
 
+	//CO2
 	public void inserisciCliente(String c) {//in futuro, sarebbe più utile passare un oggetto cliente c e non una string con il cognome
 		
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
 		M_Preventivo.getInstance().setRif_Cliente(cliente);
-		//System.out.println("preventivo al cliente"+M_Preventivo.getInstance().getRif_Cliente().getCognome());
 		CercaClienteView.getInstance().setVisible(false);
 		PrimaryView.getInstance().setEnableNewPreventivo(false);
 		PrimaryView.getInstance().setVisibleIntestazione(true);

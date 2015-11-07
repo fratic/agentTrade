@@ -113,7 +113,7 @@ public class Dao_System {
 				System.out.println(c.getCognome()+" "+c.getNome());
 				
 			}
-			//return elencoClienti;
+			return elencoClienti;
 		}
 		catch(Exception e)
 		{
@@ -136,10 +136,6 @@ public class Dao_System {
 		ois.close();
 		fis.close();
 		
-		
-
-		
-		//ArrayList list = new ArrayList();
 		list.add(c);
 
 		FileOutputStream fos = new FileOutputStream("clienti");
@@ -147,12 +143,10 @@ public class Dao_System {
 
 		oos.writeObject(list);
 		
-		
 		oos.close();
 		fos.close();
 		
-		System.out.println("OK");
-		
+		/*	
 		Iterator iteraClienti = list.iterator();
 		M_Cliente cl = new M_Cliente();
 		while (iteraClienti.hasNext()) {
@@ -161,7 +155,7 @@ public class Dao_System {
 		}
 		
 		System.out.println("OK");
-
+		 */
 		
 		}
 		catch(Exception e)
