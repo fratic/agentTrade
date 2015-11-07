@@ -22,15 +22,14 @@ import javax.swing.tree.DefaultTreeModel;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.model.M_Cliente;
-import agent_trade.persistentTemp.Dao_System;
-import agent_trade.ui.content.CercaClienteView;
-import agent_trade.ui.content.NuovoPreventivoView;
 
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JCheckBox;
+import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
+import agent_trade.ui.content.ItemPreventivoView;
+
+
+
+import java.awt.Component;
+import javax.swing.border.TitledBorder;
 
 public class PrimaryView extends JFrame {
 	
@@ -42,6 +41,7 @@ public class PrimaryView extends JFrame {
 	
 	private JPanel pannello_centrale_preventivo;
 	private JPanel intestazione;
+	private JPanel item;
 	private JPanel preventivo;
 	private JPanel panello_menu_preventivo;
 	private JPanel panello_sottomenu_preventivo;
@@ -111,27 +111,35 @@ public class PrimaryView extends JFrame {
 		panello_menu_preventivo.add(nuovo_preventivo);
 		
 		panello_sottomenu_preventivo = new JPanel();
-		panello_sottomenu_preventivo.setBounds(0, 123, 1003, 551);
+		panello_sottomenu_preventivo.setBounds(0, 123, 1003, 586);
 		preventivo.add(panello_sottomenu_preventivo);
 		panello_sottomenu_preventivo.setLayout(null);
 		
 		panello_laterale_preventivo = new JPanel();
-		panello_laterale_preventivo.setBounds(0, 0, 250, 551);
+		panello_laterale_preventivo.setBounds(0, 0, 250, 585);
 		panello_sottomenu_preventivo.add(panello_laterale_preventivo);
 		panello_laterale_preventivo.setLayout(null);
 		
 		pannello_centrale_preventivo = new JPanel();
 		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
-		pannello_centrale_preventivo.setBounds(260, 0, 755, 551);
+		pannello_centrale_preventivo.setBounds(260, 0, 755, 585);
 		panello_sottomenu_preventivo.add(pannello_centrale_preventivo);
 		pannello_centrale_preventivo.setLayout(null);
 
 		
-		intestazione= new NuovoPreventivoView();
-		intestazione.setBounds(0, 1, 755, 97);
+		intestazione= new IntestazioneNuovoPreventivoView();
+		intestazione.setBounds(0, 1, 755, 136);
 
 		pannello_centrale_preventivo.add(intestazione);
 		intestazione.setVisible(false);
+		
+		item= new ItemPreventivoView();
+		item.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		item.setBounds(0, 138, 745, 449);
+		
+		pannello_centrale_preventivo.add(item);
+		intestazione.setVisible(false);
+
 		
 		Cliente = new JPanel();
 		tabbedPrincipale.addTab("Cliente", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/cliente.png")), Cliente, "Gestisci i clienti");
@@ -200,8 +208,13 @@ public class PrimaryView extends JFrame {
 		this.init();
 		this.initComponents();
 		
+		
+		
+		
 		bottoneCercaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+			
+				/*
 				//tutto da rifare
 				CercaClienteView.getInstance().getJTableModel();
 
@@ -213,14 +226,14 @@ public class PrimaryView extends JFrame {
 				}
 				
 				Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();	
+			*/
 			}
+			
 		});
 
 		
 		bottoneNuovoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Dao_System.getInstance().nuovoCliente(new M_Cliente(12, "felice", "natalino", "ntlflc87e21g923f", "via tarnato", "blasci@samri.it"));	
-				//Dao_System.getInstance().caricaClienti();
 			}
 		});
 		
@@ -265,6 +278,24 @@ public class PrimaryView extends JFrame {
 		return intestazione;
 	}
 	
+	public void setIntestAgente(String a){
+		((IntestazioneNuovoPreventivoView) intestazione).setAgente(a);
+	}
+	
+	public void setIntestCliente(String cognome, String nome, String indirizzo, String email){
+		((IntestazioneNuovoPreventivoView) intestazione).setCliente(cognome, nome, indirizzo, email);
+
+	}
+	
+	public void setIntestData (String data){//cambiare in oggetto data
+		((IntestazioneNuovoPreventivoView) intestazione).setData(data);
+	}
+	
+	public void setIntestNumPrev(String n){
+		((IntestazioneNuovoPreventivoView) intestazione).setNumPrev(n);
+
+	}
+	
 	public void initAlberoClienti(DefaultTreeModel modello){
 		//ArrayList c= Ctrl_gestisciCliente.getInstance().caricaAlberoClienti();
 		/*albero.setModel(new DefaultTreeModel(
@@ -295,5 +326,14 @@ public class PrimaryView extends JFrame {
 		
 		albero.setModel(modello);
 		
+	}
+
+	public void selectTabCatalogo() {
+		tabbedPrincipale.setSelectedIndex(2);
+		//tabbedPrincipale.setEnabledAt(1, false);
+	}
+
+	public void setEnableTabCliente(boolean b ) {
+		tabbedPrincipale.setEnabledAt(1, b);
 	}
 }

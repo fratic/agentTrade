@@ -1,4 +1,4 @@
-!SESSION 2015-11-04 18:05:07.173 -----------------------------------------------
+!SESSION 2015-11-07 13:53:48.800 -----------------------------------------------
 eclipse.buildId=4.3.2.M20140221-1700
 java.version=1.8.0_65
 java.vendor=Oracle Corporation
@@ -6,130 +6,1776 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
 Framework arguments:  -product org.eclipse.epp.package.standard.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-04 18:05:47.671
-!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
-Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
-The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
-this system level configuration. The Git installation location can be configured on the
-Team > Git > Configuration preference page's 'System Settings' tab.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+This is a continuation of log file C:\Users\Antonio\Documents\GitHub\agentTrade\.metadata\.bak_0.log
+Created Time: 2015-11-07 18:34:31.084
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-04 18:05:47.671
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Antonio'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2015-11-06 08:43:17.691 -----------------------------------------------
-eclipse.buildId=4.3.2.M20140221-1700
-java.version=1.8.0_65
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
-Framework arguments:  -product org.eclipse.epp.package.standard.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:31.084
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validatePasteRequest(BorderOfChildLayoutRequestValidator.java:67)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validatePasteRequest(LayoutRequestValidators.java:99)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:112)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-06 08:43:55.050
-!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
-Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
-The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
-this system level configuration. The Git installation location can be configured on the
-Team > Git > Configuration preference page's 'System Settings' tab.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:31.099
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validatePasteRequest(BorderOfChildLayoutRequestValidator.java:67)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validatePasteRequest(LayoutRequestValidators.java:99)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:112)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-06 08:43:55.050
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Antonio'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2015-11-06 13:59:19.035 -----------------------------------------------
-eclipse.buildId=4.3.2.M20140221-1700
-java.version=1.8.0_65
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
-Framework arguments:  -product org.eclipse.epp.package.standard.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:31.115
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validatePasteRequest(BorderOfChildLayoutRequestValidator.java:67)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validatePasteRequest(LayoutRequestValidators.java:99)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:112)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-06 14:00:00.961
-!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
-Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
-The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
-this system level configuration. The Git installation location can be configured on the
-Team > Git > Configuration preference page's 'System Settings' tab.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:31.131
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validatePasteRequest(BorderOfChildLayoutRequestValidator.java:67)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validatePasteRequest(LayoutRequestValidators.java:99)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:112)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-06 14:00:00.961
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Antonio'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2015-11-07 08:48:25.443 -----------------------------------------------
-eclipse.buildId=4.3.2.M20140221-1700
-java.version=1.8.0_65
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
-Framework arguments:  -product org.eclipse.epp.package.standard.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:31.146
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validatePasteRequest(BorderOfChildLayoutRequestValidator.java:67)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validatePasteRequest(LayoutRequestValidators.java:99)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:112)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-07 08:48:59.333
-!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
-Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
-The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
-this system level configuration. The Git installation location can be configured on the
-Team > Git > Configuration preference page's 'System Settings' tab.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:31.162
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validatePasteRequest(BorderOfChildLayoutRequestValidator.java:67)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validatePasteRequest(LayoutRequestValidators.java:99)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:112)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-07 08:48:59.333
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Antonio'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2015-11-07 09:46:47.220 -----------------------------------------------
-eclipse.buildId=4.3.2.M20140221-1700
-java.version=1.8.0_65
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
-Framework arguments:  -product org.eclipse.epp.package.standard.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:31.177
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validatePasteRequest(BorderOfChildLayoutRequestValidator.java:67)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validatePasteRequest(LayoutRequestValidators.java:99)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:112)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.core.resources 2 10035 2015-11-07 09:47:06.611
-!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:31.193
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validatePasteRequest(BorderOfChildLayoutRequestValidator.java:67)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validatePasteRequest(LayoutRequestValidators.java:99)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:112)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-07 09:47:53.888
-!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
-Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
-The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
-this system level configuration. The Git installation location can be configured on the
-Team > Git > Configuration preference page's 'System Settings' tab.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:31.256
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validatePasteRequest(BorderOfChildLayoutRequestValidator.java:67)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validatePasteRequest(LayoutRequestValidators.java:99)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:112)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-07 09:47:53.888
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Antonio'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2015-11-07 10:02:28.108 -----------------------------------------------
-eclipse.buildId=4.3.2.M20140221-1700
-java.version=1.8.0_65
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=it_IT
-Framework arguments:  -product org.eclipse.epp.package.standard.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:31.646
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validatePasteRequest(BorderOfChildLayoutRequestValidator.java:67)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validatePasteRequest(LayoutRequestValidators.java:99)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:112)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-07 10:02:51.858
-!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
-Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
-The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
-this system level configuration. The Git installation location can be configured on the
-Team > Git > Configuration preference page's 'System Settings' tab.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:36.418
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validateCreateRequest(BorderOfChildLayoutRequestValidator.java:60)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:109)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-11-07 10:02:51.858
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Antonio'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:36.450
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validateCreateRequest(BorderOfChildLayoutRequestValidator.java:60)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:109)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
+
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:36.465
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validateCreateRequest(BorderOfChildLayoutRequestValidator.java:60)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:109)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
+
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:36.481
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validateCreateRequest(BorderOfChildLayoutRequestValidator.java:60)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:109)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
+
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:36.497
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validateCreateRequest(BorderOfChildLayoutRequestValidator.java:60)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:109)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
+
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:36.512
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validateCreateRequest(BorderOfChildLayoutRequestValidator.java:60)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:109)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
+
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:34:36.528
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.reflect.UndeclaredThrowableException
+	at com.sun.proxy.$Proxy16.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	... 27 more
+Caused by: java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTransparentOnBorders(BorderOfChildLayoutRequestValidator.java:120)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.isTargetingToHost_containerSelected(BorderOfChildLayoutRequestValidator.java:96)
+	at org.eclipse.wb.core.gef.policy.validator.BorderOfChildLayoutRequestValidator.validateCreateRequest(BorderOfChildLayoutRequestValidator.java:60)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:109)
+	at org.eclipse.wb.gef.graphical.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:125)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.core.gef.part.AbstractComponentEditPart.getTargetEditPart(AbstractComponentEditPart.java:165)
+	at org.eclipse.wb.internal.swing.gef.part.ComponentEditPart.getTargetEditPart(ComponentEditPart.java:45)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer$2.acceptResult(GraphicalViewer.java:188)
+	at org.eclipse.wb.internal.draw2d.TargetFigureFindVisitor.endVisit(TargetFigureFindVisitor.java:62)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:253)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.draw2d.Figure.accept(Figure.java:250)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:191)
+	at org.eclipse.wb.internal.gef.graphical.GraphicalViewer.findTargetEditPart(GraphicalViewer.java:159)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.graphical.EditEventManager.mouseMove(EditEventManager.java:170)
+	... 31 more
+
+!ENTRY org.eclipse.wb.core 4 4 2015-11-07 18:34:36.606
+!MESSAGE Designer [1.8.0.r43x201412082350.201511071833]: java.lang.NullPointerException
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.getParameter(CompatibleLayoutRequestValidator.java:119)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.parentAgreeToAcceptChild(CompatibleLayoutRequestValidator.java:84)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.access$0(CompatibleLayoutRequestValidator.java:81)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator$1.runObject(CompatibleLayoutRequestValidator.java:74)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator$1.runObject(CompatibleLayoutRequestValidator.java:1)
+	at org.eclipse.wb.internal.core.utils.execution.ExecutionUtils.runObjectLog(ExecutionUtils.java:304)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.areCompatible(CompatibleLayoutRequestValidator.java:71)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.validate(CompatibleLayoutRequestValidator.java:54)
+	at org.eclipse.wb.core.gef.policy.validator.AbstractLayoutRequestValidator.validateCreateRequest(AbstractLayoutRequestValidator.java:40)
+	at org.eclipse.wb.core.gef.policy.validator.CachingLayoutRequestValidator.validateCreateRequest(CachingLayoutRequestValidator.java:51)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.tree.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:103)
+	at org.eclipse.wb.gef.tree.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:119)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.tree.TreeViewer.findTargetEditPart(TreeViewer.java:242)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.tree.TreeEventManager.mouseMove(TreeEventManager.java:134)
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	at com.sun.proxy.$Proxy15.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+
+!ENTRY org.eclipse.wb.core 4 4 2015-11-07 18:34:36.622
+!MESSAGE Designer [1.8.0.r43x201412082350.201511071833]: java.lang.NullPointerException
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.getParameter(CompatibleLayoutRequestValidator.java:119)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.parentAgreeToAcceptChild(CompatibleLayoutRequestValidator.java:84)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.access$0(CompatibleLayoutRequestValidator.java:81)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator$1.runObject(CompatibleLayoutRequestValidator.java:74)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator$1.runObject(CompatibleLayoutRequestValidator.java:1)
+	at org.eclipse.wb.internal.core.utils.execution.ExecutionUtils.runObjectLog(ExecutionUtils.java:304)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.areCompatible(CompatibleLayoutRequestValidator.java:71)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.validate(CompatibleLayoutRequestValidator.java:54)
+	at org.eclipse.wb.core.gef.policy.validator.AbstractLayoutRequestValidator.validateCreateRequest(AbstractLayoutRequestValidator.java:40)
+	at org.eclipse.wb.core.gef.policy.validator.CachingLayoutRequestValidator.validateCreateRequest(CachingLayoutRequestValidator.java:51)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.tree.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:103)
+	at org.eclipse.wb.gef.tree.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:119)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.tree.TreeViewer.findTargetEditPart(TreeViewer.java:242)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.tree.TreeEventManager.mouseMove(TreeEventManager.java:134)
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	at com.sun.proxy.$Proxy15.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+
+!ENTRY org.eclipse.wb.core 4 4 2015-11-07 18:34:36.622
+!MESSAGE Designer [1.8.0.r43x201412082350.201511071833]: java.lang.NullPointerException
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.getParameter(CompatibleLayoutRequestValidator.java:119)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.parentAgreeToAcceptChild(CompatibleLayoutRequestValidator.java:84)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.access$0(CompatibleLayoutRequestValidator.java:81)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator$1.runObject(CompatibleLayoutRequestValidator.java:74)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator$1.runObject(CompatibleLayoutRequestValidator.java:1)
+	at org.eclipse.wb.internal.core.utils.execution.ExecutionUtils.runObjectLog(ExecutionUtils.java:304)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.areCompatible(CompatibleLayoutRequestValidator.java:71)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.validate(CompatibleLayoutRequestValidator.java:54)
+	at org.eclipse.wb.core.gef.policy.validator.AbstractLayoutRequestValidator.validateCreateRequest(AbstractLayoutRequestValidator.java:40)
+	at org.eclipse.wb.core.gef.policy.validator.CachingLayoutRequestValidator.validateCreateRequest(CachingLayoutRequestValidator.java:51)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.tree.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:103)
+	at org.eclipse.wb.gef.tree.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:119)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.tree.TreeViewer.findTargetEditPart(TreeViewer.java:242)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.tree.TreeEventManager.mouseMove(TreeEventManager.java:134)
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	at com.sun.proxy.$Proxy15.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+
+!ENTRY org.eclipse.wb.core 4 4 2015-11-07 18:34:36.887
+!MESSAGE Designer [1.8.0.r43x201412082350.201511071833]: java.lang.NullPointerException
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.getParameter(CompatibleLayoutRequestValidator.java:119)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.parentAgreeToAcceptChild(CompatibleLayoutRequestValidator.java:84)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.access$0(CompatibleLayoutRequestValidator.java:81)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator$1.runObject(CompatibleLayoutRequestValidator.java:74)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator$1.runObject(CompatibleLayoutRequestValidator.java:1)
+	at org.eclipse.wb.internal.core.utils.execution.ExecutionUtils.runObjectLog(ExecutionUtils.java:304)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.areCompatible(CompatibleLayoutRequestValidator.java:71)
+	at org.eclipse.wb.core.gef.policy.validator.CompatibleLayoutRequestValidator.validate(CompatibleLayoutRequestValidator.java:54)
+	at org.eclipse.wb.core.gef.policy.validator.AbstractLayoutRequestValidator.validateCreateRequest(AbstractLayoutRequestValidator.java:40)
+	at org.eclipse.wb.core.gef.policy.validator.CachingLayoutRequestValidator.validateCreateRequest(CachingLayoutRequestValidator.java:51)
+	at org.eclipse.wb.core.gef.policy.validator.LayoutRequestValidators$1.validateCreateRequest(LayoutRequestValidators.java:90)
+	at org.eclipse.wb.gef.tree.policies.LayoutEditPolicy.isRequestCondition(LayoutEditPolicy.java:103)
+	at org.eclipse.wb.gef.tree.policies.LayoutEditPolicy.understandsRequest(LayoutEditPolicy.java:119)
+	at org.eclipse.wb.gef.core.EditPart.getUnderstandingPolicies(EditPart.java:665)
+	at org.eclipse.wb.gef.core.EditPart.getTargetEditPart(EditPart.java:757)
+	at org.eclipse.wb.gef.core.tools.TargetingTool$1.evaluate(TargetingTool.java:157)
+	at org.eclipse.wb.internal.gef.tree.TreeViewer.findTargetEditPart(TreeViewer.java:242)
+	at org.eclipse.wb.gef.core.tools.TargetingTool.updateTargetUnderMouse(TargetingTool.java:169)
+	at org.eclipse.wb.gef.core.tools.AbstractCreationTool.handleMove(AbstractCreationTool.java:73)
+	at org.eclipse.wb.gef.core.tools.Tool.mouseMove(Tool.java:426)
+	at org.eclipse.wb.internal.gef.core.EditDomain.mouseMove(EditDomain.java:266)
+	at org.eclipse.wb.internal.gef.tree.TreeEventManager.mouseMove(TreeEventManager.java:134)
+	at sun.reflect.GeneratedMethodAccessor120.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.wb.internal.draw2d.EventManager$8.invoke(EventManager.java:325)
+	at com.sun.proxy.$Proxy15.mouseMove(Unknown Source)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+
+!ENTRY org.eclipse.ui 4 0 2015-11-07 18:35:26.447
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wb.core.model.JavaInfo.canDelete(JavaInfo.java:781)
+	at org.eclipse.wb.core.model.JavaInfo.canDelete(JavaInfo.java:788)
+	at org.eclipse.wb.internal.core.editor.actions.DeleteAction.getCommand(DeleteAction.java:104)
+	at org.eclipse.wb.internal.core.editor.actions.CutAction.isEnabled(CutAction.java:78)
+	at org.eclipse.wb.internal.core.editor.actions.CutAction$1.selectionChanged(CutAction.java:45)
+	at org.eclipse.wb.internal.gef.core.AbstractEditPartViewer.fireSelectionChanged(AbstractEditPartViewer.java:202)
+	at org.eclipse.wb.internal.gef.core.AbstractEditPartViewer.setSelection(AbstractEditPartViewer.java:262)
+	at org.eclipse.wb.internal.gef.core.AbstractEditPartViewer.setSelection(AbstractEditPartViewer.java:193)
+	at org.eclipse.wb.internal.gef.tree.TreeViewer$1.widgetSelected(TreeViewer.java:180)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:248)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)
+
+!ENTRY org.eclipse.wb.core 4 4 2015-11-07 18:35:28.434
+!MESSAGE Designer [1.8.0.r43x201412082350.201511071833]: java.lang.NullPointerException
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.wb.internal.swing.model.component.ContainerInfo.refresh_fetch(ContainerInfo.java:247)
+	at org.eclipse.wb.core.model.ObjectInfo.refresh_fetch(ObjectInfo.java:645)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo.access$1(ComponentInfo.java:1)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo$3.run(ComponentInfo.java:142)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo.refresh_fetch(ComponentInfo.java:181)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo.refresh_fetch(ComponentInfo.java:140)
+	at org.eclipse.wb.internal.swing.model.component.ContainerInfo.refresh_fetch(ContainerInfo.java:251)
+	at org.eclipse.wb.core.model.ObjectInfo.refresh_fetch(ObjectInfo.java:645)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo.access$1(ComponentInfo.java:1)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo$3.run(ComponentInfo.java:142)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo.refresh_fetch(ComponentInfo.java:181)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo.refresh_fetch(ComponentInfo.java:140)
+	at org.eclipse.wb.internal.swing.model.component.ContainerInfo.refresh_fetch(ContainerInfo.java:251)
+	at org.eclipse.wb.core.model.ObjectInfo.refresh_fetch(ObjectInfo.java:645)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo.access$1(ComponentInfo.java:1)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo$3.run(ComponentInfo.java:142)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo.refresh_fetch(ComponentInfo.java:181)
+	at org.eclipse.wb.internal.swing.model.component.ComponentInfo.refresh_fetch(ComponentInfo.java:140)
+	at org.eclipse.wb.internal.swing.model.component.ContainerInfo.refresh_fetch(ContainerInfo.java:251)
+	at org.eclipse.wb.core.model.ObjectInfo$6$1.run(ObjectInfo.java:496)
+	at org.eclipse.wb.internal.core.utils.execution.ExecutionUtils.runDesignTime(ExecutionUtils.java:145)
+	at org.eclipse.wb.core.model.ObjectInfo$6.run(ObjectInfo.java:494)
+	at org.eclipse.wb.internal.swing.utils.SwingUtils$2.run(SwingUtils.java:76)
+	at java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$500(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+
+!ENTRY org.eclipse.wb.core 4 4 2015-11-07 18:36:34.101
+!MESSAGE Designer [1.8.0.r43x201412082350.201511071833]: {new: javax.swing.JScrollPane} {local-unique: scrollPane} {/new JScrollPane((Component) null)/ /panel_1.add(scrollPane)/ /scrollPane.setBounds(10, 11, 725, 349)/} is not created at before JScrollPane scrollPane=new JScrollPane((Component)null);
+ in package agent_trade.ui.content;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import java.awt.Component;
+
+import javax.swing.JTable;
+
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import agent_trade.model.M_Cliente;
+import javax.swing.ListSelectionModel;
+
+public class ItemPreventivoView extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	
+	private JPanel panel_1;
+	
+	private TableModel JTableModel;
+
+	private static ItemPreventivoView instance;
+
+	/**
+	 * Create the panel.
+	 */
+	public ItemPreventivoView() {
+		setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.MAGENTA);
+		panel.setLayout(null);
+		panel.setBounds(0, 0, 745, 449);
+		add(panel);
+		
+		panel_1 = new JPanel();
+		panel_1.setBounds(0, 0, 745, 371);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane((Component) null);
+		scrollPane.setBounds(10, 11, 725, 349);
+		panel_1.add(scrollPane);
+		
+		
+		JTableModel = new DefaultTableModel(
+                new String[][] {{"fratic", "anto", "Codice Fiscale", "Indirizzo", "e-mail" }},
+                new String[] { "Cognome", "Nome", "Codice Fiscale", "Indirizzo", "e-mail" });
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBackground(Color.LIGHT_GRAY);
+		panel_2.setBounds(0, 369, 745, 80);
+		panel.add(panel_2);
+		
+		JButton button = new JButton("");
+		button.setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
+		button.setBounds(8, 8, 45, 45);
+		panel_2.add(button);
+		
+		JLabel label = new JLabel("Imponibile");
+		label.setBounds(512, 8, 72, 14);
+		panel_2.add(label);
+		
+		JLabel label_1 = new JLabel("I.V.A.");
+		label_1.setBounds(512, 33, 46, 14);
+		panel_2.add(label_1);
+		
+		JLabel label_2 = new JLabel("Totale");
+		label_2.setBounds(512, 58, 46, 14);
+		panel_2.add(label_2);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(594, 5, 94, 20);
+		panel_2.add(textField);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(594, 30, 94, 20);
+		panel_2.add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(594, 55, 94, 20);
+		panel_2.add(textField_2);
+		
+		((DefaultTableModel) JTableModel).addRow(new Object[]{"cognome","nome","coficn","mailcn","dfsgsdg"});
+
+
+	}
+
+	
+	public void popolaTabProdottiItem(ArrayList a){
+		
+		int k=((DefaultTableModel) JTableModel).getRowCount();
+		/*for (int i=k-1; i>=0;i--){
+			((DefaultTableModel) JTableModel).removeRow(i);
+		}
+		*/
+		//labelError.setText("");
+		System.out.println("sono in popola tab prodotti "+k);
+				
+		Iterator iteraClienti = null;
+		
+		iteraClienti = a.iterator();
+		
+		while (iteraClienti.hasNext()) {
+			M_Cliente c = new M_Cliente();
+			c = (M_Cliente) iteraClienti.next();
+			System.out.println("Cognome "+c.getCognome());
+			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getIndirizzo(),c.getEmail()});
+		}
+	}
+	
+	public void updateTable(String cognome, String nome,String cf,String indirizzo,String email){
+		int k=((DefaultTableModel) JTableModel).getRowCount();
+		for (int i=k-1; i>=0;i--){
+			((DefaultTableModel) JTableModel).removeRow(i);
+		}
+            ((DefaultTableModel) JTableModel).addRow(new Object[]{ cognome,  nome, cf, indirizzo, email});
+	}
+	
+	public static ItemPreventivoView getInstance(){
+		if (instance==null)
+			instance = new ItemPreventivoView();
+		return instance;	 
+	}
+	
+	
+}
+
+!STACK 0
+org.eclipse.wb.internal.core.utils.check.AssertionFailedException: {new: javax.swing.JScrollPane} {local-unique: scrollPane} {/new JScrollPane((Component) null)/ /panel_1.add(scrollPane)/ /scrollPane.setBounds(10, 11, 725, 349)/} is not created at before JScrollPane scrollPane=new JScrollPane((Component)null);
+ in package agent_trade.ui.content;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import java.awt.Component;
+
+import javax.swing.JTable;
+
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import agent_trade.model.M_Cliente;
+import javax.swing.ListSelectionModel;
+
+public class ItemPreventivoView extends JPanel {
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	
+	private JPanel panel_1;
+	
+	private TableModel JTableModel;
+
+	private static ItemPreventivoView instance;
+
+	/**
+	 * Create the panel.
+	 */
+	public ItemPreventivoView() {
+		setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.MAGENTA);
+		panel.setLayout(null);
+		panel.setBounds(0, 0, 745, 449);
+		add(panel);
+		
+		panel_1 = new JPanel();
+		panel_1.setBounds(0, 0, 745, 371);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane((Component) null);
+		scrollPane.setBounds(10, 11, 725, 349);
+		panel_1.add(scrollPane);
+		
+		
+		JTableModel = new DefaultTableModel(
+                new String[][] {{"fratic", "anto", "Codice Fiscale", "Indirizzo", "e-mail" }},
+                new String[] { "Cognome", "Nome", "Codice Fiscale", "Indirizzo", "e-mail" });
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		panel_2.setBackground(Color.LIGHT_GRAY);
+		panel_2.setBounds(0, 369, 745, 80);
+		panel.add(panel_2);
+		
+		JButton button = new JButton("");
+		button.setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
+		button.setBounds(8, 8, 45, 45);
+		panel_2.add(button);
+		
+		JLabel label = new JLabel("Imponibile");
+		label.setBounds(512, 8, 72, 14);
+		panel_2.add(label);
+		
+		JLabel label_1 = new JLabel("I.V.A.");
+		label_1.setBounds(512, 33, 46, 14);
+		panel_2.add(label_1);
+		
+		JLabel label_2 = new JLabel("Totale");
+		label_2.setBounds(512, 58, 46, 14);
+		panel_2.add(label_2);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(594, 5, 94, 20);
+		panel_2.add(textField);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(594, 30, 94, 20);
+		panel_2.add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(594, 55, 94, 20);
+		panel_2.add(textField_2);
+		
+		((DefaultTableModel) JTableModel).addRow(new Object[]{"cognome","nome","coficn","mailcn","dfsgsdg"});
+
+
+	}
+
+	
+	public void popolaTabProdottiItem(ArrayList a){
+		
+		int k=((DefaultTableModel) JTableModel).getRowCount();
+		/*for (int i=k-1; i>=0;i--){
+			((DefaultTableModel) JTableModel).removeRow(i);
+		}
+		*/
+		//labelError.setText("");
+		System.out.println("sono in popola tab prodotti "+k);
+				
+		Iterator iteraClienti = null;
+		
+		iteraClienti = a.iterator();
+		
+		while (iteraClienti.hasNext()) {
+			M_Cliente c = new M_Cliente();
+			c = (M_Cliente) iteraClienti.next();
+			System.out.println("Cognome "+c.getCognome());
+			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getIndirizzo(),c.getEmail()});
+		}
+	}
+	
+	public void updateTable(String cognome, String nome,String cf,String indirizzo,String email){
+		int k=((DefaultTableModel) JTableModel).getRowCount();
+		for (int i=k-1; i>=0;i--){
+			((DefaultTableModel) JTableModel).removeRow(i);
+		}
+            ((DefaultTableModel) JTableModel).addRow(new Object[]{ cognome,  nome, cf, indirizzo, email});
+	}
+	
+	public static ItemPreventivoView getInstance(){
+		if (instance==null)
+			instance = new ItemPreventivoView();
+		return instance;	 
+	}
+	
+	
+}
+
+	at org.eclipse.wb.internal.core.utils.check.Assert.fail(Assert.java:235)
+	at org.eclipse.wb.internal.core.model.variable.AbstractSimpleVariableSupport.assertJavaInfoCreatedAt(AbstractSimpleVariableSupport.java:133)
+	at org.eclipse.wb.internal.core.model.variable.LocalUniqueVariableSupport.getReferenceExpression(LocalUniqueVariableSupport.java:81)
+	at org.eclipse.wb.internal.core.model.util.TemplateUtils.resolve(TemplateUtils.java:125)
+	at org.eclipse.wb.internal.core.model.util.TemplateUtils.resolve(TemplateUtils.java:81)
+	at org.eclipse.wb.core.model.JavaInfo.replaceExpression(JavaInfo.java:1000)
+	at org.eclipse.wb.internal.core.model.property.accessor.ConstructorAccessor$1.run(ConstructorAccessor.java:71)
+	at org.eclipse.wb.internal.core.utils.execution.ExecutionUtils.run(ExecutionUtils.java:324)
+	at org.eclipse.wb.internal.core.model.property.accessor.ConstructorAccessor.setExpression(ConstructorAccessor.java:69)
+	at org.eclipse.wb.internal.core.model.property.GenericPropertyImpl.setExpressionUsingAccessor(GenericPropertyImpl.java:341)
+	at org.eclipse.wb.internal.core.model.property.GenericPropertyImpl.setExpression(GenericPropertyImpl.java:297)
+	at org.eclipse.wb.internal.core.model.property.editor.ObjectPropertyEditor.setComponent0(ObjectPropertyEditor.java:215)
+	at org.eclipse.wb.internal.core.model.property.editor.ObjectPropertyEditor.access$1(ObjectPropertyEditor.java:182)
+	at org.eclipse.wb.internal.core.model.property.editor.ObjectPropertyEditor$4.run(ObjectPropertyEditor.java:174)
+	at org.eclipse.wb.internal.core.utils.execution.ExecutionUtils.run(ExecutionUtils.java:324)
+	at org.eclipse.wb.internal.core.model.property.editor.ObjectPropertyEditor.setComponent(ObjectPropertyEditor.java:172)
+	at org.eclipse.wb.internal.core.model.property.editor.ObjectPropertyEditor.openDialog(ObjectPropertyEditor.java:137)
+	at org.eclipse.wb.internal.core.model.property.editor.TextDialogPropertyEditor$1.onClick(TextDialogPropertyEditor.java:35)
+	at org.eclipse.wb.internal.core.model.property.editor.presentation.ButtonPropertyEditorPresentationImpl$4.handleEvent(ButtonPropertyEditorPresentationImpl.java:124)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1057)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4170)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1113)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:997)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:140)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:611)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:567)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:354)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:181)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:636)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:591)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1450)

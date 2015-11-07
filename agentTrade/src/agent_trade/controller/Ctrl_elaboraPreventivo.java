@@ -8,7 +8,7 @@ import agent_trade.model.M_Preventivo;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.CercaClienteView;
-import agent_trade.ui.content.NuovoPreventivoView;
+import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 
 
 public class Ctrl_elaboraPreventivo {
@@ -36,17 +36,29 @@ public class Ctrl_elaboraPreventivo {
 		M_Preventivo.getInstance().setRif_Cliente(cliente);
 		CercaClienteView.getInstance().setVisible(false);
 		PrimaryView.getInstance().setEnableNewPreventivo(false);
+		PrimaryView.getInstance().setEnableTabCliente(false);
+
 		PrimaryView.getInstance().setVisibleIntestazione(true);
 		
 		//decidere se far fare quanto segue al controller o se dare da responsabilità a qualcun altro 
 		//(es, uno strato di indirezione) altrimenti si può pensare di avere una funzione che setta tutto ciò, ma forse
 		//aumenterebbe l'accoppiamentotra il controller e la view
+		//sarebbe una buona idea fare una funzione in primary view per settare nel pannello intestazione i parametri necessari 
+		
+		/*
 		((NuovoPreventivoView) PrimaryView.getInstance().getInstanceIntestazione()).setAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
 		((NuovoPreventivoView) PrimaryView.getInstance().getInstanceIntestazione()).setData(M_Preventivo.getInstance().getData());
-		((NuovoPreventivoView) PrimaryView.getInstance().getInstanceIntestazione()).setNumPrev(/*M_Preventivo.getInstance().getNumPreventivo()*/"3");
-		
+		((NuovoPreventivoView) PrimaryView.getInstance().getInstanceIntestazione()).setNumPrev(/*M_Preventivo.getInstance().getNumPreventivo()//"3");
 		//fare un metodo di classe per il numero di preventivi 
+		
 		((NuovoPreventivoView) PrimaryView.getInstance().getInstanceIntestazione()).setCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
+		*/
+		PrimaryView.getInstance().setIntestAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
+		PrimaryView.getInstance().setIntestData(M_Preventivo.getInstance().getData());
+		PrimaryView.getInstance().setIntestNumPrev(/*M_Preventivo.getInstance().getNumPreventivo()*/"3");
+		//fare un metodo di classe per il numero di preventivi 
+		
+		PrimaryView.getInstance().setIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
 		
 	}
 
@@ -57,4 +69,13 @@ public class Ctrl_elaboraPreventivo {
 	public void salvaPreventivo() {
 		throw new UnsupportedOperationException();
 	}
+	
+	public void annullaPreventivo(){
+		//andrebbe annullato il preventivo in corso, nel senso cancellato dal db
+		
+		PrimaryView.getInstance().setEnableNewPreventivo(true);
+		PrimaryView.getInstance().setEnableTabCliente(true);
+		PrimaryView.getInstance().setVisibleIntestazione(false);
+	}
+	
 }
