@@ -2,6 +2,8 @@ package agent_trade.controller;
 
 import java.util.Calendar;
 
+import javax.swing.JDialog;
+
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
@@ -39,6 +41,7 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryView.getInstance().setEnableTabCliente(false);
 
 		PrimaryView.getInstance().setVisibleIntestazione(true);
+		PrimaryView.getInstance().setVisibleItemPreventivi(true);
 		
 		//decidere se far fare quanto segue al controller o se dare da responsabilità a qualcun altro 
 		//(es, uno strato di indirezione) altrimenti si può pensare di avere una funzione che setta tutto ciò, ma forse
@@ -62,8 +65,11 @@ public class Ctrl_elaboraPreventivo {
 		
 	}
 
-	public void addItem(Object aIdProdotto, Object aIdDescrizione, Object aQuantità) {
-		throw new UnsupportedOperationException();
+	public void addItem(String IdProdotto) {
+		System.out.println("idprodotto "+IdProdotto);
+	//	M_Prodotto p=Dao_System.getInstance().loadProdotto(IdProdotto);
+		
+		
 	}
 
 	public void salvaPreventivo() {
@@ -76,6 +82,8 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryView.getInstance().setEnableNewPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCliente(true);
 		PrimaryView.getInstance().setVisibleIntestazione(false);
+		PrimaryView.getInstance().setVisibleItemPreventivi(false);
+
 	}
 	
 }

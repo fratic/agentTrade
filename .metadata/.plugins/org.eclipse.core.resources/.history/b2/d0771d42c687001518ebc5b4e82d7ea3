@@ -1,0 +1,239 @@
+package test_interface;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.accessibility.AccessibleTableModelChange;
+import javax.swing.AbstractCellEditor;
+import javax.swing.Box;
+import javax.swing.ComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.event.ListDataListener;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+
+
+
+public class PanelFiltri extends JPanel{
+
+private JTable tabellaFiltri;
+private JComboBox comboSceltaFiltro;
+//	private NucleoMaschera datiFiltri= new NucleoMaschera();
+
+
+private ModelloTabellaFiltri modelloTabella=new ModelloTabellaFiltri();
+private ModelloComboSceltaFiltro modelloCombo=new ModelloComboSceltaFiltro();
+private EditorTabellaFiltro editorTabella=new EditorTabellaFiltro();
+
+private CellRenderer renderer= new CellRenderer();
+
+
+
+private JButton buttonAvanzaRecord=new JButton("ok");
+
+
+public static void main(String[] args) {
+    // Create a window, arrange to handle close requests
+    /*final JFrame frame = new JFrame("");
+    frame.addWindowListener(new WindowAdapter() {
+      public void windowClosing(WindowEvent e) {
+        System.exit(0);
+      }
+    });*/
+	
+	PanelFiltri a = new PanelFiltri();
+    }
+
+
+public PanelFiltri()
+{
+super();
+//	this.datiFiltri=datiFiltri;
+this.setPreferredSize(new Dimension(200,100));
+tabellaFiltri=new JTable(modelloTabella);
+comboSceltaFiltro=new JComboBox(modelloCombo);
+
+Box mainBox=Box.createVerticalBox();
+Box filtriBox=Box.createHorizontalBox();
+
+filtriBox.add(tabellaFiltri);
+filtriBox.add(Box.createHorizontalStrut(350));
+funzionalita();
+mainBox.add(filtriBox);
+addListener();
+this.add(mainBox);
+
+}
+
+public void addListener()
+{
+buttonAvanzaRecord.addMouseListener(new MouseAdapter() {
+
+public void mouseClicked(MouseEvent e)
+{
+System.out.println("sto premendo");
+}
+});
+
+
+
+
+}
+public void funzionalita()
+{
+tabellaFiltri.setGridColor(Color.white);
+for(int i=0;i<=4;i++)
+{
+tabellaFiltri.getColumnModel().getColumn(i).setCellRenderer(renderer);
+
+tabellaFiltri.getColumnModel().getColumn(i).setCellEditor(editorTabella);
+}
+
+}
+
+
+
+
+/**
+* modello tabella filtro
+* @author Rino
+*
+*/
+private class ModelloTabellaFiltri extends AbstractTableModel
+{
+
+@Override
+public int getColumnCount() {
+return 5;
+}
+
+@Override
+public int getRowCount() {
+return 5;
+}
+
+@Override
+public Object getValueAt(int riga, int colonna) {
+if(riga==0 && colonna==0)
+return "Filtra Per";
+else if(riga==0 && colonna==1)
+return 0;
+else return null;
+}
+
+
+}
+
+
+/**
+* Modello JComboBox Scelta Filtro
+* @author Rino
+*
+*/
+private class ModelloComboSceltaFiltro implements ComboBoxModel
+{
+
+@Override
+public Object getSelectedItem() {
+// TODO Auto-generated method stub
+return null;
+}
+
+@Override
+public void setSelectedItem(Object arg0) {
+// TODO Auto-generated method stub
+
+}
+
+@Override
+public void addListDataListener(ListDataListener arg0) {
+// TODO Auto-generated method stub
+
+}
+
+@Override
+public Object getElementAt(int arg0) {
+// TODO Auto-generated method stub
+return null;
+}
+
+@Override
+public int getSize() {
+// TODO Auto-generated method stub
+return 5;
+}
+
+@Override
+public void removeListDataListener(ListDataListener arg0) {
+// TODO Auto-generated method stub
+
+}
+
+}
+/**
+* renderer Tabella filtro
+* @author Rino
+*
+*/
+
+
+private class CellRenderer implements TableCellRenderer
+{
+
+@Override
+public Component getTableCellRendererComponent(JTable table,
+Object value, boolean isSelected, boolean hasFocus, int row,
+int column)
+{
+JLabel cella=new JLabel(); // Questa rappresenta la singola cella
+
+
+
+if(row==0&& column==2)
+return comboSceltaFiltro;
+
+if(value!=null)
+{
+cella.setText(value.toString());
+// cella.setBorder((Border) Color.white);
+
+if(column==1 || column==3 || column==5)
+cella.setFont(new Font("Arial",Font.PLAIN,12));
+}
+return cella;
+}
+}
+
+private class EditorTabellaFiltro extends AbstractCellEditor implements TableCellEditor
+{
+
+
+
+@Override
+public Component getTableCellEditorComponent(JTable tabella, Object arg1,
+boolean arg2, int arg3, int arg4) {
+System.out.println("ok--");
+return null;
+
+}
+
+@Override
+public Object getCellEditorValue() {
+System.out.println("ok22--");
+return null;
+}
+
+}
+} 

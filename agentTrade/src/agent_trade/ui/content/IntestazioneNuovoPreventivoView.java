@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
@@ -101,7 +102,8 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		add(altreInfoCliente);
 		
 		btnNewButton = new JButton("Aggiungi prodotti");
-		btnNewButton.setBounds(21, 106, 138, 23);
+		btnNewButton.setIcon(new ImageIcon(IntestazioneNuovoPreventivoView.class.getResource("/agent_trade/ui/img/add-item.png")));
+		btnNewButton.setBounds(282, 102, 166, 30);
 		add(btnNewButton);
 		
 		JSeparator separator = new JSeparator();
@@ -111,8 +113,11 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			PrimaryView.getInstance().selectTabCatalogo();
-			ItemPreventivoView.getInstance().popolaTabProdottiItem(Ctrl_gestisciCliente.getInstance().caricaClienti());
-
+			//ItemPreventivoView.getInstance().popolaTabProdottiItem(Ctrl_gestisciCliente.getInstance().caricaClienti());
+			//ItemPreventivoView.getInstance().popola();
+			//System.out.println("premuto add item");
+			
+			
 			}
 		});
 		

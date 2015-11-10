@@ -172,6 +172,11 @@ public class Dao_System {
 	public void cancellaCliente(){
 		
 	}
+
+	/*public M_Prodotto loadProdotto(String idProdotto) {
+		// TODO Auto-generated method stub
+		return null;
+	}*/
 	
 	
 	

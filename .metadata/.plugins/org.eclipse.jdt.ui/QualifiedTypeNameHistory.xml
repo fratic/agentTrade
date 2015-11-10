@@ -5,9 +5,11 @@
 <fullyQualifiedTypeName name="agent_trade.model.M_Prodotto"/>
 <fullyQualifiedTypeName name="agent_trade.ui.content.NuovoPreventivoView"/>
 <fullyQualifiedTypeName name="javax.swing.JDialog"/>
-<fullyQualifiedTypeName name="agent_trade.ui.PrimaryView"/>
 <fullyQualifiedTypeName name="agent_trade.controller.Ctrl_elaboraPreventivo"/>
 <fullyQualifiedTypeName name="agent_trade.ui.content.IntestazioneNuovoPreventivoView"/>
-<fullyQualifiedTypeName name="agent_trade.ui.content.ItemPreventivoView"/>
 <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
+<fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
+<fullyQualifiedTypeName name="agent_trade.ui.PrimaryView"/>
+<fullyQualifiedTypeName name="javax.swing.table.TableModel"/>
+<fullyQualifiedTypeName name="agent_trade.ui.content.ItemPreventivoView"/>
 </qualifiedTypeNameHistroy>

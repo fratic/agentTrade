@@ -8,6 +8,9 @@ public abstract class  M_Prodotto {
 	protected String categoria;
 	protected M_DescrizioneProdotto idDescrizioneProdotto;
 	
+	public M_Prodotto() {
+		
+	}
 	
 	public float getPrezzo() {
 		return prezzo;

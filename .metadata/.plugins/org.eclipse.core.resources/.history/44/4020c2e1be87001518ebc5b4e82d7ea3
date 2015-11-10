@@ -1,0 +1,14 @@
+package agent_trade.ui.content;
+
+import javax.swing.JPanel;
+
+public class ProdottiView extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public ProdottiView() {
+
+	}
+
+}

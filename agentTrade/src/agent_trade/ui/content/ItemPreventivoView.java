@@ -19,22 +19,25 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import agent_trade.model.M_Cliente;
+import agent_trade.ui.PrimaryView;
 
 import javax.swing.ListSelectionModel;
 
 public class ItemPreventivoView extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textFieldImponibile;
+	private JTextField textFieldIVA;
+	private JTextField textFieldTotale;
 	
-	private JPanel panel_1;
+	private JPanel panelloTabella;
+	private JPanel panelloRiepilogo;
 	
-	private TableModel JTableModelItem;
+	private JTable table;
+	private static TableModel JTableModel;
 	
 	private JScrollPane scrollPane;
-
 	private static ItemPreventivoView instance;
-	private JTable table;
+	
+	private JButton buttoneSalva;
 
 	/**
 	 * Create the panel.
@@ -48,114 +51,100 @@ public class ItemPreventivoView extends JPanel {
 		panel.setBounds(0, 0, 745, 449);
 		add(panel);
 		
-		panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 745, 371);
-		panel.add(panel_1);
-		panel_1.setLayout(null);
+		panelloTabella = new JPanel();
+		panelloTabella.setBounds(0, 0, 745, 371);
+		panel.add(panelloTabella);
+		panelloTabella.setLayout(null);
 		
 		
-	
-		
-		
-				
+
+		JTableModel = new DefaultTableModel(
+                new String[][] { },
+                new String[] { "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" });
+			
+  table =new JTable();
+  
+  table.setModel(JTableModel);
+
+  scrollPane = new JScrollPane(table);
+  scrollPane.setBounds(10, 11, 725, 349);
+  panelloTabella.add(scrollPane);
 
 		
-		JTableModelItem = new DefaultTableModel(
-                new String[][] {{"fratic", "anto", "Codice Fiscale", "Indirizzo", "e-mail" }},
-                new String[] { "Cognome", "Nome", "Codice Fiscale", "Indirizzo", "e-mail" });
+		
+		
+		
+		panelloRiepilogo = new JPanel();
+		panelloRiepilogo.setLayout(null);
+		panelloRiepilogo.setBackground(Color.LIGHT_GRAY);
+		panelloRiepilogo.setBounds(0, 369, 745, 80);
+		panel.add(panelloRiepilogo);
+		
+		buttoneSalva = new JButton("");
+		buttoneSalva.setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
+		buttoneSalva.setBounds(8, 8, 45, 45);
+		panelloRiepilogo.add(buttoneSalva);
+		
+		JLabel labelImponibile = new JLabel("Imponibile");
+		labelImponibile.setBounds(512, 8, 72, 14);
+		panelloRiepilogo.add(labelImponibile);
+		
+		JLabel labelIVA = new JLabel("I.V.A.");
+		labelIVA.setBounds(512, 33, 46, 14);
+		panelloRiepilogo.add(labelIVA);
+		
+		JLabel labelTotale = new JLabel("Totale");
+		labelTotale.setBounds(512, 58, 46, 14);
+		panelloRiepilogo.add(labelTotale);
+		
+		textFieldImponibile = new JTextField();
+		textFieldImponibile.setColumns(10);
+		textFieldImponibile.setBounds(594, 5, 94, 20);
+		panelloRiepilogo.add(textFieldImponibile);
+		
+		textFieldIVA = new JTextField();
+		textFieldIVA.setColumns(10);
+		textFieldIVA.setBounds(594, 30, 94, 20);
+		panelloRiepilogo.add(textFieldIVA);
+		
+		textFieldTotale = new JTextField();
+		textFieldTotale.setColumns(10);
+		textFieldTotale.setBounds(594, 55, 94, 20);
+		panelloRiepilogo.add(textFieldTotale);
+		
+		
+	}
 
-
-        table =new JTable();
-        
-        table.setModel(JTableModelItem);
-	    
-        
-        scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 11, 735, 360);
-
-		panel_1.add(scrollPane);
-
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setLayout(null);
-		panel_2.setBackground(Color.LIGHT_GRAY);
-		panel_2.setBounds(0, 369, 745, 80);
-		panel.add(panel_2);
-		
-		JButton button = new JButton("");
-		button.setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
-		button.setBounds(8, 8, 45, 45);
-		panel_2.add(button);
-		
-		JLabel label = new JLabel("Imponibile");
-		label.setBounds(512, 8, 72, 14);
-		panel_2.add(label);
-		
-		JLabel label_1 = new JLabel("I.V.A.");
-		label_1.setBounds(512, 33, 46, 14);
-		panel_2.add(label_1);
-		
-		JLabel label_2 = new JLabel("Totale");
-		label_2.setBounds(512, 58, 46, 14);
-		panel_2.add(label_2);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(594, 5, 94, 20);
-		panel_2.add(textField);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(594, 30, 94, 20);
-		panel_2.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(594, 55, 94, 20);
-		panel_2.add(textField_2);
-		
-		((DefaultTableModel) JTableModelItem).addRow(new Object[]{"cognome","nome","coficn","mailcn","dfsgsdg"});
+	public void initiz(){
 
 
 	}
-
 	
-	public void popolaTabProdottiItem(ArrayList a){
+public void popola(){
 		
-		int k=((DefaultTableModel) JTableModelItem).getRowCount();
-		for (int i=k-1; i>=0;i--){
-			((DefaultTableModel) JTableModelItem).removeRow(i);
-		}
+		//int k=((DefaultTableModel) JTableModel).getRowCount();
+		/*for (int i=k-1; i>=0;i--){
+			((DefaultTableModel) JTableModel).removeRow(i);
+		}*/
 		
-		//labelError.setText("");
-		System.out.println("sono in popola tab prodotti "+k);
+		//System.out.println("k vale: "+k);
+	//	labelError.setText("");
 				
-		Iterator iteraClienti = null;
+		//((DefaultTableModel) ItemPreventivoView.getInstance().getModel()).addColumn(new Object[]{"asd","adsf","asdf","adsf","asdf"});
 		
-		iteraClienti = a.iterator();
-		
-		k=((DefaultTableModel) JTableModelItem).getRowCount();
-		System.out.println("dopo k vale "+k);
+				
+			//((DefaultTableModel) this.JTableModel).addRow(new Object[]{"dudeuduude","adsf","asdf","adsf","asdf"});
+			 // table.setModel(JTableModel);
 
-		
-		while (iteraClienti.hasNext()) {
-			M_Cliente c = new M_Cliente();
-			c = (M_Cliente) iteraClienti.next();
-			System.out.println("Cognome "+c.getCognome());
-			((DefaultTableModel) JTableModelItem).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getIndirizzo(),c.getEmail()});
-			k=((DefaultTableModel) JTableModelItem).getRowCount();
-			System.out.println("nel ciclio k vale "+k);
-
-		
-		}
 	}
 	
 	public void updateTable(String cognome, String nome,String cf,String indirizzo,String email){
-		int k=((DefaultTableModel) JTableModelItem).getRowCount();
+		/*int k=((DefaultTableModel) JTableModelItem).getRowCount();
 		for (int i=k-1; i>=0;i--){
 			((DefaultTableModel) JTableModelItem).removeRow(i);
 		}
             ((DefaultTableModel) JTableModelItem).addRow(new Object[]{ cognome,  nome, cf, indirizzo, email});
+	*/
 	}
 	
 	public static ItemPreventivoView getInstance(){
@@ -163,6 +152,12 @@ public class ItemPreventivoView extends JPanel {
 			instance = new ItemPreventivoView();
 		return instance;	 
 	}
+	
+	public static DefaultTableModel getModel(){
+		
+		return (DefaultTableModel) JTableModel;	 
+	}
+	
 	
 	
 }
