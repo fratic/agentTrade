@@ -7,10 +7,14 @@ import javax.swing.JDialog;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
+import agent_trade.model.M_Preventivo_Item;
+import agent_trade.model.M_Prodotto;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.CercaClienteView;
 import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
+import agent_trade.ui.content.ItemPreventivoView;
+import agent_trade.ui.content.ProdottiView;
 
 
 public class Ctrl_elaboraPreventivo {
@@ -56,6 +60,8 @@ public class Ctrl_elaboraPreventivo {
 		
 		((NuovoPreventivoView) PrimaryView.getInstance().getInstanceIntestazione()).setCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
 		*/
+		
+		//si può pensare di avere una funzione setIntestazione con tutti i relatvi parametri
 		PrimaryView.getInstance().setIntestAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
 		PrimaryView.getInstance().setIntestData(M_Preventivo.getInstance().getData());
 		PrimaryView.getInstance().setIntestNumPrev(/*M_Preventivo.getInstance().getNumPreventivo()*/"3");
@@ -65,10 +71,11 @@ public class Ctrl_elaboraPreventivo {
 		
 	}
 
-	public void addItem(String IdProdotto) {
-		System.out.println("idprodotto "+IdProdotto);
-	//	M_Prodotto p=Dao_System.getInstance().loadProdotto(IdProdotto);
-		
+	public void addItem(int IdProdotto) {
+		M_Prodotto p=Dao_System.getInstance().loadProdotto(IdProdotto);
+		//M_Preventivo_Item = new M_Preventivo_Item(1, 1, rifPreventivo, idProdotto)
+		M_Preventivo.getInstance().addItem(1,1,p);
+		ItemPreventivoView.getInstance().updateTable(Integer.toString(p.getIdProdotto()), p.getNome(), p.getCategoria(), "1", Float.toString(p.getPrezzo()));
 		
 	}
 
@@ -79,6 +86,7 @@ public class Ctrl_elaboraPreventivo {
 	public void annullaPreventivo(){
 		//andrebbe annullato il preventivo in corso, nel senso cancellato dal db
 		
+		//si può pensare di avere una funzione in primary view che fa tutte queste cose e da qui si richiama con i parametri
 		PrimaryView.getInstance().setEnableNewPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCliente(true);
 		PrimaryView.getInstance().setVisibleIntestazione(false);

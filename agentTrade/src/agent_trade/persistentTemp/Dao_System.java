@@ -10,6 +10,8 @@ import java.util.Iterator;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
+import agent_trade.model.M_Panettone;
+import agent_trade.model.M_Prodotto;
 
 public class Dao_System {
 
@@ -173,10 +175,82 @@ public class Dao_System {
 		
 	}
 
-	/*public M_Prodotto loadProdotto(String idProdotto) {
-		// TODO Auto-generated method stub
+	/*
+	 ________________________PRODOTTI_______________________________
+	*/
+	
+	public M_Prodotto loadProdotto(int idProdotto) {
+		
+		StringBuffer mioSB = null; 
+		ArrayList elencoProdotti = null;
+		Iterator iteraProdotti = null;
+
+		try
+		{
+			FileInputStream fis = new FileInputStream("prodotti");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+	
+			elencoProdotti = (ArrayList) ois.readObject();
+
+			ois.close();
+			fis.close();
+
+			iteraProdotti = elencoProdotti.iterator();
+			M_Panettone p = new M_Panettone();
+			int i=0;
+			while (iteraProdotti.hasNext()) {				
+				p = (M_Panettone) iteraProdotti.next();
+				System.out.println("in dao: "+p.getNome());
+				if (idProdotto==p.getIdProdotto()){
+					return p;
+				}
+			}
+		}
+		catch(Exception e)
+		{
+		System.out.println("Eccezione:"  + e.toString());
+		}
 		return null;
-	}*/
+		}
+	
+	
+	
+	public ArrayList caricaProdotti() {
+		
+		StringBuffer mioSB = null; 
+		ArrayList elencoProdotti = null;
+		Iterator iteraProdotti = null;
+
+		try
+		{
+			FileInputStream fis = new FileInputStream("prodotti");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+	
+			elencoProdotti = (ArrayList) ois.readObject();
+
+			ois.close();
+			fis.close();
+
+			//iteraProdotti = elencoProdotti.iterator();
+			/*M_Panettone p = new M_Panettone();
+			int i=0;
+			while (iteraProdotti.hasNext()) {				
+				p = (M_Panettone) iteraProdotti.next();
+				System.out.println("in dao: "+p.getNome());
+				if (idProdotto==p.getIdProdotto()){
+					return p;
+				}
+			}*/
+			return elencoProdotti;
+		}
+		catch(Exception e)
+		{
+		System.out.println("Eccezione:"  + e.toString());
+		}
+		return null;
+		}
+
+	
 	
 	
 	

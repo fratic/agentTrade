@@ -1,5 +1,8 @@
 package agent_trade.model;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 
 public class M_Preventivo {
 	private String idPreventivo;
@@ -8,7 +11,8 @@ public class M_Preventivo {
 	private M_Agente rif_Agente;
 	private M_Cliente rif_Cliente;
 	private static M_Preventivo instance;
-
+	private ArrayList<M_Preventivo_Item> elencoItem= new ArrayList<M_Preventivo_Item>();
+	
 	public M_Cliente getRif_Cliente() {
 		return rif_Cliente;
 	}
@@ -62,6 +66,11 @@ public class M_Preventivo {
 
 	public void setRif_Cliente(M_Cliente rif_Cliente) {
 		this.rif_Cliente = rif_Cliente;
+	}
+	
+	public void addItem(int idPrevItem, int quantita, M_Prodotto idProdotto ){
+		M_Preventivo_Item it= new M_Preventivo_Item(idPrevItem, quantita, this.getInstance(), idProdotto);
+		this.elencoItem.add(it);
 	}
 	
 }

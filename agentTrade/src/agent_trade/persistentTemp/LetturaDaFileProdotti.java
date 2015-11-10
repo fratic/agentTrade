@@ -4,24 +4,25 @@ import java.awt.List;
 import java.io.*;
 import java.util.Iterator;
 import java.util.ArrayList;
+
 import agent_trade.model.M_Agente;
+import agent_trade.model.M_Panettone;
+import agent_trade.model.M_Prodotto;
 public class LetturaDaFileProdotti
 {
 
 public static void main(String[] args)
 {
 StringBuffer mioSB = null; // Il “destinatario” dell'informazione letta 
-ArrayList elencoAgenti = null;
-Iterator iteraAgenti = null;
+ArrayList elencoProdotti = null;
+Iterator iteraProdotti = null;
 
 try
 {
-// Recupero il file dei dati e creo un ObjectInputStream per leggerlo
-FileInputStream fis = new FileInputStream("agenti");
+FileInputStream fis = new FileInputStream("prodotti");
 ObjectInputStream ois = new ObjectInputStream(fis);
-//mioSB = (StringBuffer) ois.readObject(); // Notate il cast !!!
 
-elencoAgenti = (ArrayList) ois.readObject();
+elencoProdotti = (ArrayList) ois.readObject();
 
 
 /*Agente a = new Agente();
@@ -36,12 +37,15 @@ fis.close();
 //System.out.println(a.getNome());
 
 
-iteraAgenti = elencoAgenti.iterator();
-M_Agente a = new M_Agente();
-while (iteraAgenti.hasNext()) {
-	//System.out.println("dio");
-	a = (M_Agente) iteraAgenti.next();
-	System.out.println("Agente "+a.getCognome()+ " " +a.getNome()+" id: "+a.getIdAgente()+" password "+a.getPassword());
+iteraProdotti = elencoProdotti.iterator();
+M_Panettone p = new M_Panettone();
+int i=0;
+while (iteraProdotti.hasNext()) {
+	
+	p = (M_Panettone) iteraProdotti.next();
+	System.out.println(p.getCategoria());	
+	System.out.println(i);	
+i++;
 }
 }
 catch(Exception e)

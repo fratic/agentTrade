@@ -4,6 +4,7 @@ import agent_trade.model.M_Agente;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.LoginView;
 import agent_trade.ui.PrimaryView;
+import agent_trade.ui.content.ProdottiView;
 
 public class Ctrl_System {
 
@@ -56,5 +57,9 @@ public class Ctrl_System {
 		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
 		//PrimaryView.getInstance().initAlberoClienti();
 	//	Ctrl_gestisciCliente.getInstance().caricaAlberoClienti();
-	}
+		
+		ProdottiView.getInstance().initTable(Dao_System.getInstance().caricaProdotti());
+
+		
+			}
 }

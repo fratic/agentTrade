@@ -1,0 +1,59 @@
+package agent_trade.persistentTemp;
+
+import java.awt.List;
+import java.io.*;
+import java.util.ArrayList;
+
+import agent_trade.model.M_Panettone;
+import agent_trade.model.M_Prodotto;
+
+	class ScritturaSuFileProdotti
+	{
+		
+
+		
+	public static void main(String[] args)
+	{
+		M_Panettone p =new M_Panettone(1, 2, "caramella", "Dolci", true);
+		M_Panettone p1 =new M_Panettone(1, 2, "carne", "Secondo", true);
+		M_Panettone p2 =new M_Panettone(1, 2, "asdf", "oòi", true);
+		M_Panettone p3 =new M_Panettone(1, 2, "ff", "yti", true);
+		M_Panettone p4 =new M_Panettone(1, 2, "cabggrne", "gdfgh", true);
+
+
+		//StringBuffer mioSB = new StringBuffer(ag.getNome());
+		
+		
+	try 
+	{
+	// Prima creo il “destinatario”: uno stream di scrittura su file 
+	FileOutputStream fos = new FileOutputStream("prodotti");
+	// Ora posso scrivere l'oggetto sotto forma di stream di byte e passarlo al file 
+	ObjectOutputStream oos = new ObjectOutputStream(fos);
+	// Trasformazione dei dati in stream di byte
+	
+	
+	ArrayList list = new ArrayList();
+	list.add(p);
+	list.add(p1);
+
+
+	oos.writeObject(list);
+
+	
+	/*oos.writeObject(ag);
+	oos.writeObject(ag1);
+	oos.writeObject(ag2);
+*/
+	//oos.write(mioSB);
+	oos.close();
+	System.out.println("OK");
+	}
+	catch(Exception e)
+	{
+	System.out.println("Eccezione: " + e.toString());
+	}
+	}
+	
+	
+	}

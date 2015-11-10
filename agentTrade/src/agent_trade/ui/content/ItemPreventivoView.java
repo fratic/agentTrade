@@ -62,18 +62,14 @@ public class ItemPreventivoView extends JPanel {
                 new String[][] { },
                 new String[] { "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" });
 			
-  table =new JTable();
-  
-  table.setModel(JTableModel);
-
-  scrollPane = new JScrollPane(table);
-  scrollPane.setBounds(10, 11, 725, 349);
-  panelloTabella.add(scrollPane);
-
-		
-		
-		
-		
+		table =new JTable();
+	  
+		table.setModel(JTableModel);
+	
+		scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(10, 11, 725, 349);
+		panelloTabella.add(scrollPane);
+	  
 		panelloRiepilogo = new JPanel();
 		panelloRiepilogo.setLayout(null);
 		panelloRiepilogo.setBackground(Color.LIGHT_GRAY);
@@ -112,40 +108,14 @@ public class ItemPreventivoView extends JPanel {
 		textFieldTotale.setBounds(594, 55, 94, 20);
 		panelloRiepilogo.add(textFieldTotale);
 		
-		
 	}
 
-	public void initiz(){
-
-
+	
+	public void updateTable(String id, String nome, String categoria, String quantita, String prezzo)
+	{
+		((DefaultTableModel) JTableModel).addRow(new Object[]{ id, nome, categoria, quantita, prezzo});
 	}
 	
-public void popola(){
-		
-		//int k=((DefaultTableModel) JTableModel).getRowCount();
-		/*for (int i=k-1; i>=0;i--){
-			((DefaultTableModel) JTableModel).removeRow(i);
-		}*/
-		
-		//System.out.println("k vale: "+k);
-	//	labelError.setText("");
-				
-		//((DefaultTableModel) ItemPreventivoView.getInstance().getModel()).addColumn(new Object[]{"asd","adsf","asdf","adsf","asdf"});
-		
-				
-			//((DefaultTableModel) this.JTableModel).addRow(new Object[]{"dudeuduude","adsf","asdf","adsf","asdf"});
-			 // table.setModel(JTableModel);
-
-	}
-	
-	public void updateTable(String cognome, String nome,String cf,String indirizzo,String email){
-		/*int k=((DefaultTableModel) JTableModelItem).getRowCount();
-		for (int i=k-1; i>=0;i--){
-			((DefaultTableModel) JTableModelItem).removeRow(i);
-		}
-            ((DefaultTableModel) JTableModelItem).addRow(new Object[]{ cognome,  nome, cf, indirizzo, email});
-	*/
-	}
 	
 	public static ItemPreventivoView getInstance(){
 		if (instance==null)
@@ -157,7 +127,5 @@ public void popola(){
 		
 		return (DefaultTableModel) JTableModel;	 
 	}
-	
-	
-	
+
 }

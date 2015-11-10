@@ -1,16 +1,35 @@
 package agent_trade.model;
 
+import java.io.Serializable;
 
-public abstract class  M_Prodotto {
+
+public abstract class  M_Prodotto implements Serializable {
 	protected int idProdotto;
 	protected float prezzo;
 	protected String nome;
 	protected String categoria;
+	protected String Azienda; //per il momemtno string
 	protected M_DescrizioneProdotto idDescrizioneProdotto;
 	
 	public M_Prodotto() {
 		
 	}
+	
+	public M_Prodotto(int id, float prezzo, String nome, String categoria,M_DescrizioneProdotto idDes) {
+		this.idProdotto=id;
+		this.prezzo=prezzo;
+		this.nome=nome;
+		this.categoria=categoria;
+		this.idDescrizioneProdotto=idDes;
+	}
+	
+	public M_Prodotto(int id, float prezzo, String nome, String categoria) {
+		this.idProdotto=id;
+		this.prezzo=prezzo;
+		this.nome=nome;
+		this.categoria=categoria;
+	}
+	
 	
 	public float getPrezzo() {
 		return prezzo;

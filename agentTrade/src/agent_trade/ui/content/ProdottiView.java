@@ -2,6 +2,9 @@ package agent_trade.ui.content;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.StringTokenizer;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -13,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.model.M_Prodotto;
+import agent_trade.persistentTemp.Dao_System;
 
 import javax.swing.JButton;
 
@@ -32,9 +37,6 @@ public class ProdottiView extends JPanel {
 	private JButton addItem;
 	
 
-	/**
-	 * Create the panel.
-	 */
 	public ProdottiView() {
 		setLayout(null);
 		
@@ -52,27 +54,25 @@ public class ProdottiView extends JPanel {
 
 
 		JTableModel = new DefaultTableModel(
-                new String[][] { { "125", "cioccoloco", "Dolce", "Maina", "1,12", "sdff" },
-                				{ "21", "caramella", "Dolce", "Nestle", "0.05", "bottone" } },
+                new String[][] {  },
                 new String[] { "ID prodotto", "Nome", "Categoria", "Azienda", "Prezzo", "Aggiungi a preventivo" });
 					
 		  table =new JTable();
 		  		  
-	
-		  
 		  table.setModel(JTableModel);
-		  
-		 
+		  		 
 		  scrollPane = new JScrollPane(table);
 		  scrollPane.setBounds(10, 11, 725, 349);
 		  pannelloTabella.add(scrollPane);
 		  
 		
-		
 		  table.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent me) {
-					//int sel=  (int) table.getValueAt(table.getSelectedRow(),0);
-					Ctrl_elaboraPreventivo.getInstance().addItem((String)table.getValueAt(table.getSelectedRow(),0));
+					String sel= (String)table.getValueAt(table.getSelectedRow(),0);
+					System.out.println("in mpouseliste "+sel);
+				//	Ctrl_elaboraPreventivo.getInstance().addItem((Integer)table.getValueAt(table.getSelectedRow(),0));
+					Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel));
+
 				}
 		  });	
 		  
@@ -80,6 +80,26 @@ public class ProdottiView extends JPanel {
 
 
 	
+	public void updateTable(String id, String nome, String categoria, String azienda, String prezzo){
+	
+		((DefaultTableModel) JTableModel).addRow(new Object[]{ id, nome, categoria, azienda, prezzo});
+	}
+
+	
+	public void initTable(ArrayList a){
+
+		Iterator iteraProdotti = null;
+
+		iteraProdotti = a.iterator();
+		M_Prodotto p;// = new M_Prodotto();
+
+		while (iteraProdotti.hasNext()) {				
+			p = (M_Prodotto) iteraProdotti.next();
+			System.out.println("in init: "+p.getNome());
+            ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), p.getNome(), p.getCategoria(), "",Float.toString(p.getPrezzo())});
+		}
+	
+	}
 
 	
 	public static ProdottiView getInstance(){
