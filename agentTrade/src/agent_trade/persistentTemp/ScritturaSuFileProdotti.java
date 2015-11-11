@@ -1,11 +1,10 @@
 package agent_trade.persistentTemp;
 
-import java.awt.List;
 import java.io.*;
 import java.util.ArrayList;
 
-import agent_trade.model.M_Panettone;
-import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Dolci;
+import agent_trade.model.M_Latticini;
 
 	class ScritturaSuFileProdotti
 	{
@@ -14,18 +13,20 @@ import agent_trade.model.M_Prodotto;
 		
 	public static void main(String[] args)
 	{
-		M_Panettone p =new M_Panettone(1, 1, "caramella", "Dolci", true);
-		M_Panettone p1 =new M_Panettone(2, 2, "biscotti", "dolci", true);
-		M_Panettone p2 =new M_Panettone(3, 2, "vitello", "carne", true);
-		M_Panettone p3 =new M_Panettone(4, 2, "rigatoni", "pasta", true);
-		M_Panettone p4 =new M_Panettone(5, 2, "mela", "frutta", true);
-		M_Panettone p5 =new M_Panettone(6, 2, "dash", "detersivo", true);
-		M_Panettone p6 =new M_Panettone(7, 2, "olio", "alimenti", true);
-		M_Panettone p7 =new M_Panettone(8, 2, "passata", "conserve", true);
-		M_Panettone p8 =new M_Panettone(9, 2, "maionese", "salse", true);
-		M_Panettone p9 =new M_Panettone(10, 2, "lavazza", "caffe", true);
-		M_Panettone p10 =new M_Panettone(11, 2, "montepulciano", "vino", true);
-		M_Panettone p11 =new M_Panettone(12, 2, "grana", "latticini", true);
+		M_Dolci p =new M_Dolci(1, 1, "caramella", "Dolci", true);
+		M_Dolci p1 =new M_Dolci(2, 2, "biscotti", "dolci", true);
+		M_Dolci p2 =new M_Dolci(3, 2, "vitello", "carne", true);
+		M_Dolci p3 =new M_Dolci(4, 2, "rigatoni", "pasta", true);
+		M_Dolci p4 =new M_Dolci(5, 2, "mela", "frutta", true);
+		M_Dolci p5 =new M_Dolci(6, 2, "dash", "detersivo", true);
+		M_Dolci p6 =new M_Dolci(7, 2, "olio", "alimenti", true);
+		M_Dolci p7 =new M_Dolci(8, 2, "passata", "conserve", true);
+		M_Dolci p8 =new M_Dolci(9, 2, "maionese", "salse", true);
+		M_Dolci p9 =new M_Dolci(10, 2, "lavazza", "caffe", true);
+		M_Dolci p10 =new M_Dolci(11, 2, "montepulciano", "vino", true);
+		M_Latticini p11 =new M_Latticini(12, 2, "grana", "latticini", 16);
+		M_Latticini p12 =new M_Latticini(12, 2, "emmental", "latticini", 6);
+		M_Latticini p13 =new M_Latticini(12, 2, "mozzarella", "latticini", 0);
 
 
 		//StringBuffer mioSB = new StringBuffer(ag.getNome());
@@ -53,7 +54,9 @@ import agent_trade.model.M_Prodotto;
 	list.add(p9);
 	list.add(p10);
 	list.add(p11);
-	
+	list.add(p12);
+	list.add(p13);
+
 
 
 

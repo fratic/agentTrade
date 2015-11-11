@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 import agent_trade.model.M_Agente;
-import agent_trade.model.M_Panettone;
 import agent_trade.model.M_Prodotto;
 public class LetturaDaFileProdotti
 {
@@ -38,11 +37,11 @@ fis.close();
 
 
 iteraProdotti = elencoProdotti.iterator();
-M_Panettone p = new M_Panettone();
+M_Prodotto p;
 int i=0;
 while (iteraProdotti.hasNext()) {
 	
-	p = (M_Panettone) iteraProdotti.next();
+	p = (M_Prodotto) iteraProdotti.next();
 	System.out.println(p.getCategoria());	
 	System.out.println(i);	
 i++;

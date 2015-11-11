@@ -21,12 +21,13 @@ import javax.swing.tree.DefaultTreeModel;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
+
+
+
+
 import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.ItemPreventivoView;
-
-
 import agent_trade.ui.content.ProdottiView;
-
 
 import javax.swing.border.TitledBorder;
 

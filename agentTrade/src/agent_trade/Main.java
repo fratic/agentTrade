@@ -2,8 +2,8 @@ package agent_trade;
 
 import javax.swing.SwingUtilities;
 
-import agent_trade.ui.SplashScreen;
 import agent_trade.ui.LoginView;
+import agent_trade.ui.SplashScreen;
 
 public class Main {
 	

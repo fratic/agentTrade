@@ -1,8 +1,9 @@
 package agent_trade.controller;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
-import javax.swing.JDialog;
+import java.util.Iterator;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
@@ -12,9 +13,7 @@ import agent_trade.model.M_Prodotto;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.CercaClienteView;
-import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.ItemPreventivoView;
-import agent_trade.ui.content.ProdottiView;
 
 
 public class Ctrl_elaboraPreventivo {
@@ -75,12 +74,51 @@ public class Ctrl_elaboraPreventivo {
 		M_Prodotto p=Dao_System.getInstance().loadProdotto(IdProdotto);
 		//M_Preventivo_Item = new M_Preventivo_Item(1, 1, rifPreventivo, idProdotto)
 		M_Preventivo.getInstance().addItem(1,1,p);
-		ItemPreventivoView.getInstance().updateTable(Integer.toString(p.getIdProdotto()), p.getNome(), p.getCategoria(), "1", Float.toString(p.getPrezzo()));
+		ItemPreventivoView.getInstance().updateTable("rim",Integer.toString(p.getIdProdotto()), p.getNome(), p.getCategoria(), "1", Float.toString(p.getPrezzo()), "1");
+		
+		float a=M_Preventivo.calcolaTotale();
+		System.out.println("Totale fattura: "+a);
+		ItemPreventivoView.getInstance().setImponibile(Float.toString(a));
+		float c=(float) (a*0.22);
+		ItemPreventivoView.getInstance().setIva(Float.toString(c));
+		ItemPreventivoView.getInstance().setTotale(Float.toString(a+c));
+
+		
 		
 	}
 
 	public void salvaPreventivo() {
-		throw new UnsupportedOperationException();
+		
+		
+		M_Preventivo.getInstance();
+		Dao_System.getInstance().salvaPreventivo(M_Preventivo.getInstance());
+		
+		
+		//da cancellare, fatto solo per prova
+		ArrayList a = Dao_System.loadPreventivi();
+		
+		Iterator iteraPreventivi = a.iterator();
+		while (iteraPreventivi.hasNext()) {				
+
+		M_Preventivo prev= (M_Preventivo) iteraPreventivi.next();
+		System.out.println("LOAD: id:"+prev.getIdPreventivo()+" data: "+prev.getData()+" totale: "+prev.calcolaTotale()+
+				"cognome agente: "+prev.getRif_Agente().getCognome()+" cliente: "+prev.getRif_Cliente().getCognome()+
+				" "+prev.getRif_Cliente().getNome());
+		
+		ArrayList<M_Preventivo_Item> a_pr_it= prev.getElencoItem();
+		Iterator iteraPrevItem = null;
+		iteraPrevItem = (Iterator) a_pr_it.iterator();
+		M_Preventivo_Item pr_it;
+		while (iteraPrevItem.hasNext()) {				
+			pr_it = (M_Preventivo_Item) iteraPrevItem.next();
+			System.out.println("Prev item: idprod"+pr_it.getIdProdotto().getIdProdotto()+" quantita "+pr_it.getQuantita()+
+					" nome prodotto "+pr_it.idProdotto.getNome()+" prezzo "+pr_it.getIdProdotto().getPrezzo());
+		
+		}
+		}
+
+		
+		
 	}
 	
 	public void annullaPreventivo(){

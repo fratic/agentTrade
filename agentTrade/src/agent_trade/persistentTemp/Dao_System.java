@@ -1,7 +1,6 @@
 package agent_trade.persistentTemp;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -10,7 +9,7 @@ import java.util.Iterator;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
-import agent_trade.model.M_Panettone;
+import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Prodotto;
 
 public class Dao_System {
@@ -196,10 +195,10 @@ public class Dao_System {
 			fis.close();
 
 			iteraProdotti = elencoProdotti.iterator();
-			M_Panettone p = new M_Panettone();
+			M_Prodotto p;
 			int i=0;
 			while (iteraProdotti.hasNext()) {				
-				p = (M_Panettone) iteraProdotti.next();
+				p = (M_Prodotto) iteraProdotti.next();
 				System.out.println("in dao: "+p.getNome());
 				if (idProdotto==p.getIdProdotto()){
 					return p;
@@ -231,6 +230,7 @@ public class Dao_System {
 			ois.close();
 			fis.close();
 
+			//Iterator iteraProdotti = null;
 			//iteraProdotti = elencoProdotti.iterator();
 			/*M_Panettone p = new M_Panettone();
 			int i=0;
@@ -251,7 +251,101 @@ public class Dao_System {
 		}
 
 	
+	/*
+	 * _____________________PREVENTIVI_____________________
+	 */
+	
+	public static void salvaPreventivo(M_Preventivo p) {
+		
+		try 
+		{
+			FileInputStream fis = new FileInputStream("preventivi");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			ArrayList list = (ArrayList) ois.readObject();
+			
+			ois.close();
+			fis.close();
+			
+			list.add(p);
+			
+			
+
+			FileOutputStream fos = new FileOutputStream("preventivi");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+		
+			
+			//ArrayList list = new ArrayList<>();
+
+			
+			oos.writeObject(list);
+
+			//oos.writeObject(p);
+
+
+			oos.close();
+			System.out.println("salvataggio preventivo OK");		
+		}
+		
+		catch(Exception e)
+		{
+			System.out.println("Eccezione: " + e.toString());
+		}
+	}
 	
 	
+	public static ArrayList<M_Preventivo> loadPreventivi(){
+		try
+		{
+			FileInputStream fis = new FileInputStream("preventivi");
+			ObjectInputStream ois = new ObjectInputStream(fis);
 	
+			ArrayList< M_Preventivo> a =(ArrayList<M_Preventivo>) ois.readObject();
+	
+			ois.close();
+			fis.close();
+			
+			return a;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Eccezione:"  + e.toString());
+		}
+		return null;
+		
+	}
+
+	public static M_Preventivo loadPreventivo(String id){
+		try
+		{
+			FileInputStream fis = new FileInputStream("preventivi");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+	
+			ArrayList< M_Preventivo> a =(ArrayList<M_Preventivo>) ois.readObject();
+	
+			ois.close();
+			fis.close();
+			
+			Iterator iteraPreventivi = a.iterator();
+
+			M_Preventivo p;
+			
+			while (iteraPreventivi.hasNext()) {				
+				p = (M_Preventivo) iteraPreventivi.next();
+				if (p.getIdPreventivo().equals(id)){
+					return p;
+				}
+			}
+			
+			
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Eccezione:"  + e.toString());
+		}
+		return null;
+		
+	}
+
 }

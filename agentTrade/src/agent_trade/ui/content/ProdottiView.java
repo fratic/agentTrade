@@ -22,6 +22,8 @@ import agent_trade.persistentTemp.Dao_System;
 import javax.swing.JButton;
 
 import test_interface.JButtonTableExample;
+import javax.swing.JList;
+import javax.swing.JSpinner;
 
 public class ProdottiView extends JPanel {
 	
@@ -64,6 +66,7 @@ public class ProdottiView extends JPanel {
 		  scrollPane = new JScrollPane(table);
 		  scrollPane.setBounds(10, 11, 725, 349);
 		  pannelloTabella.add(scrollPane);
+		  
 		  
 		
 		  table.addMouseListener(new MouseAdapter() {

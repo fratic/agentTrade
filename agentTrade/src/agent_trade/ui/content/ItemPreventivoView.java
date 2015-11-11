@@ -8,6 +8,8 @@ import java.awt.Component;
 import javax.swing.JTable;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,6 +20,8 @@ import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
 import agent_trade.ui.PrimaryView;
 
@@ -60,7 +64,7 @@ public class ItemPreventivoView extends JPanel {
 
 		JTableModel = new DefaultTableModel(
                 new String[][] { },
-                new String[] { "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" });
+                new String[] { "Rimuovi","ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" });
 			
 		table =new JTable();
 	  
@@ -108,12 +112,21 @@ public class ItemPreventivoView extends JPanel {
 		textFieldTotale.setBounds(594, 55, 94, 20);
 		panelloRiepilogo.add(textFieldTotale);
 		
+		
+		
+		buttoneSalva.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Ctrl_elaboraPreventivo.getInstance().salvaPreventivo();	
+			}
+		});
+		
 	}
 
 	
-	public void updateTable(String id, String nome, String categoria, String quantita, String prezzo)
+	public void updateTable(String rem, String id, String nome, String categoria, String quantita, String prezzo, String parziale)
 	{
-		((DefaultTableModel) JTableModel).addRow(new Object[]{ id, nome, categoria, quantita, prezzo});
+		((DefaultTableModel) JTableModel).addRow(new Object[]{rem, id, nome, categoria, quantita, prezzo, parziale});
 	}
 	
 	
@@ -126,6 +139,18 @@ public class ItemPreventivoView extends JPanel {
 	public static DefaultTableModel getModel(){
 		
 		return (DefaultTableModel) JTableModel;	 
+	}
+	
+	public void setImponibile(String a){
+		textFieldImponibile.setText(a);
+	}
+	
+	public void setIva(String a){
+		textFieldIVA.setText(a);
+	}
+	
+	public void setTotale(String a){
+		textFieldTotale.setText(a);
 	}
 
 }
