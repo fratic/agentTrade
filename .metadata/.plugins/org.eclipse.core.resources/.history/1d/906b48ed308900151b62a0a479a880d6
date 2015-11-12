@@ -1,0 +1,14 @@
+package agent_trade.ui.content;
+
+import javax.swing.JPanel;
+
+public class AlberoPreventivi extends JPanel {
+
+	/**
+	 * Create the panel.
+	 */
+	public AlberoPreventivi() {
+
+	}
+
+}

@@ -31,6 +31,8 @@ import agent_trade.ui.content.ProdottiView;
 
 import javax.swing.border.TitledBorder;
 
+import test_interface.DynamicTreeDemo;
+
 public class PrimaryView extends JFrame {
 	
 	private static PrimaryView instance;	
@@ -59,6 +61,7 @@ public class PrimaryView extends JFrame {
 	
 	private JPanel pannelloProdotti;
 
+	private JPanel alberoPreventivi;
 	
 	private JTabbedPane tabbedPrincipale;
 	
@@ -119,9 +122,16 @@ public class PrimaryView extends JFrame {
 		panello_sottomenu_preventivo.setLayout(null);
 		
 		panello_laterale_preventivo = new JPanel();
-		panello_laterale_preventivo.setBounds(0, 0, 250, 585);
+		panello_laterale_preventivo.setBounds(0, 0, 261, 585);
 		panello_sottomenu_preventivo.add(panello_laterale_preventivo);
 		panello_laterale_preventivo.setLayout(null);
+		
+		
+		alberoPreventivi = new DynamicTreeDemo();
+		alberoPreventivi.setBounds(0, 0, 250, 585);
+		panello_laterale_preventivo.add(alberoPreventivi);
+
+		
 		
 		pannello_centrale_preventivo = new JPanel();
 		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
@@ -218,6 +228,8 @@ public class PrimaryView extends JFrame {
 		pannelloProdotti = ProdottiView.getInstance();
 		pannelloProdotti.setBounds(0, 0, 745, 449);
 		panello_centrale_catalogo.add(pannelloProdotti);
+		
+		
 
 		
 		

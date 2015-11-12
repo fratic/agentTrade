@@ -6,7 +6,5 @@ Tutte le classi in cui serve una sola istanza devono avere quanto segue (Singlet
 
 		return ((instance == null) ? instance = new nomeClasse() : instance);	
 	}
-	
-	In tali classi, costruttori PRIVATI
 _______________________________________________________________________________
 
