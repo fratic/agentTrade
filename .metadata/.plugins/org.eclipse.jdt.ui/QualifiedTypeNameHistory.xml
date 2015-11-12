@@ -27,4 +27,5 @@
 <fullyQualifiedTypeName name="agent_trade.ui.content.AlberoPreventivi"/>
 <fullyQualifiedTypeName name="agent_trade.persistentTemp.Dao_System"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="agent_trade.ui.content.RiepilogoPreventivoView"/>
 </qualifiedTypeNameHistroy>

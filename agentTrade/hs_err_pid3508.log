@@ -1,0 +1,126 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 480104 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=3508, tid=3576
+#
+# JRE version:  (8.0_65-b17) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.65-b01 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000000fe0800):  JavaThread "Unknown thread" [_thread_in_vm, id=3576, stack(0x0000000000ee0000,0x0000000000fe0000)]
+
+Stack: [0x0000000000ee0000,0x0000000000fe0000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x0000000000fe0800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=3576, stack(0x0000000000ee0000,0x0000000000fe0000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff7b4700000 - 0x00007ff7b4737000 	C:\Program Files\Java\jre1.8.0_65\bin\javaw.exe
+0x00007ff838790000 - 0x00007ff83893c000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff836120000 - 0x00007ff83625a000 	C:\WINDOWS\system32\KERNEL32.DLL
+0x00007ff835aa0000 - 0x00007ff835bb5000 	C:\WINDOWS\system32\KERNELBASE.dll
+0x00007ff834550000 - 0x00007ff8345de000 	C:\WINDOWS\system32\apphelp.dll
+0x00007ff822ce0000 - 0x00007ff822d33000 	C:\WINDOWS\AppPatch\AppPatch64\AcGenral.DLL
+0x00007ff837d70000 - 0x00007ff837e17000 	C:\WINDOWS\system32\msvcrt.dll
+0x00007ff8357a0000 - 0x00007ff8357cb000 	C:\WINDOWS\SYSTEM32\SspiCli.dll
+0x00007ff836360000 - 0x00007ff8363b1000 	C:\WINDOWS\system32\SHLWAPI.dll
+0x00007ff837b90000 - 0x00007ff837d01000 	C:\WINDOWS\system32\USER32.dll
+0x00007ff8385f0000 - 0x00007ff838784000 	C:\WINDOWS\system32\ole32.dll
+0x00007ff836660000 - 0x00007ff837b8b000 	C:\WINDOWS\system32\SHELL32.dll
+0x00007ff834fc0000 - 0x00007ff834fde000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x00007ff8365b0000 - 0x00007ff83665a000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x00007ff82e070000 - 0x00007ff82e08b000 	C:\WINDOWS\SYSTEM32\MPR.dll
+0x00007ff838380000 - 0x00007ff8384c1000 	C:\WINDOWS\system32\RPCRT4.dll
+0x00007ff836060000 - 0x00007ff8360b9000 	C:\WINDOWS\SYSTEM32\sechost.dll
+0x00007ff8381a0000 - 0x00007ff838376000 	C:\WINDOWS\SYSTEM32\combase.dll
+0x00007ff8363c0000 - 0x00007ff83650f000 	C:\WINDOWS\system32\GDI32.dll
+0x00007ff835980000 - 0x00007ff835994000 	C:\WINDOWS\SYSTEM32\profapi.dll
+0x00007ff834490000 - 0x00007ff834542000 	C:\WINDOWS\SYSTEM32\SHCORE.dll
+0x00007ff835ea0000 - 0x00007ff835ed4000 	C:\WINDOWS\system32\IMM32.DLL
+0x00007ff835ef0000 - 0x00007ff836042000 	C:\WINDOWS\system32\MSCTF.dll
+0x00007ff833670000 - 0x00007ff8338eb000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.9600.18006_none_623f33d3ecbe86e8\COMCTL32.dll
+0x00000000562c0000 - 0x0000000056392000 	C:\Program Files\Java\jre1.8.0_65\bin\msvcr100.dll
+0x0000000056590000 - 0x0000000056e19000 	C:\Program Files\Java\jre1.8.0_65\bin\server\jvm.dll
+0x00007ff825f30000 - 0x00007ff825f39000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ff833180000 - 0x00007ff83319f000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff833600000 - 0x00007ff83360a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff836050000 - 0x00007ff836057000 	C:\WINDOWS\system32\PSAPI.DLL
+0x00007ff8384e0000 - 0x00007ff838538000 	C:\WINDOWS\system32\WS2_32.dll
+0x00007ff832c30000 - 0x00007ff832c5a000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x00007ff8384d0000 - 0x00007ff8384d9000 	C:\WINDOWS\system32\NSI.dll
+0x00007ff835c70000 - 0x00007ff835cba000 	C:\WINDOWS\SYSTEM32\cfgmgr32.dll
+0x00007ff8347c0000 - 0x00007ff8347e6000 	C:\WINDOWS\SYSTEM32\DEVOBJ.dll
+0x00000000570c0000 - 0x00000000570cf000 	C:\Program Files\Java\jre1.8.0_65\bin\verify.dll
+0x0000000057090000 - 0x00000000570b9000 	C:\Program Files\Java\jre1.8.0_65\bin\java.dll
+0x0000000057070000 - 0x0000000057086000 	C:\Program Files\Java\jre1.8.0_65\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=Cp1252 
+java_command: agent_trade.Main
+java_class_path (initial): C:\Users\Antonio\Documents\GitHub\agentTrade\agentTrade\bin;C:\Users\Antonio\Documents\GitHub\agentTrade\agentTrade\jgoodies-common-1.8.0.jar;C:\Users\Antonio\Documents\GitHub\agentTrade\agentTrade\jgoodies-forms-1.8.0.jar;C:\Users\Antonio\Documents\GitHub\agentTrade\agentTrade\miglayout15-swing.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:/Program Files/Java/jre1.8.0_65/bin/server;C:/Program Files/Java/jre1.8.0_65/bin;C:/Program Files/Java/jre1.8.0_65/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Users\Antonio\Desktop\eclipse;
+USERNAME=Antonio
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 15 Stepping 13, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8.1 , 64 bit Build 9600 (6.3.9600.17056)
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 15 stepping 13, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, tsc
+
+Memory: 4k page, physical 4192696k(402056k free), swap 4192696k(5376k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.65-b01) for windows-amd64 JRE (1.8.0_65-b17), built on Oct  6 2015 16:39:20 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Thu Nov 12 22:55:07 2015
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

@@ -29,6 +29,7 @@ import agent_trade.ui.content.AlberoPreventivi;
 import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.ItemPreventivoView;
 import agent_trade.ui.content.ProdottiView;
+import agent_trade.ui.content.RiepilogoPreventivoView;
 
 import javax.swing.border.TitledBorder;
 
@@ -63,6 +64,9 @@ public class PrimaryView extends JFrame {
 	private JPanel pannelloProdotti;
 
 	private JPanel alberoPreventivi;
+	
+	private JPanel riepilogoPreventivo;
+ 
 	
 	private JTabbedPane tabbedPrincipale;
 	
@@ -157,6 +161,10 @@ public class PrimaryView extends JFrame {
 		intestazione.setVisible(false);
 
 		
+		riepilogoPreventivo =new RiepilogoPreventivoView();
+		riepilogoPreventivo.setBounds(0, 1, 745, 584);
+		pannello_centrale_preventivo.add(riepilogoPreventivo);
+
 		
 		
 		

@@ -17,20 +17,23 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.border.LineBorder;
 import javax.swing.JTree;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultTreeModel;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.model.M_Cliente;
-import agent_trade.persistentTemp.Dao_System;
-import agent_trade.ui.content.CercaClienteView;
-import agent_trade.ui.content.NuovoPreventivoView;
 
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JCheckBox;
+
+
+
+import agent_trade.ui.content.AlberoPreventivi;
+import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
+import agent_trade.ui.content.ItemPreventivoView;
+import agent_trade.ui.content.ProdottiView;
+import agent_trade.ui.content.RiepilogoPreventivoView;
+
+import javax.swing.border.TitledBorder;
+
+import test_interface.DynamicTreeDemo;
 
 public class PrimaryView extends JFrame {
 	
@@ -42,6 +45,7 @@ public class PrimaryView extends JFrame {
 	
 	private JPanel pannello_centrale_preventivo;
 	private JPanel intestazione;
+	private JPanel item;
 	private JPanel preventivo;
 	private JPanel panello_menu_preventivo;
 	private JPanel panello_sottomenu_preventivo;
@@ -56,6 +60,13 @@ public class PrimaryView extends JFrame {
 	private JPanel panello_sottomenu_catalogo;
 	private JPanel panello_laterale_catalogo;
 	private JPanel panello_centrale_catalogo;
+	
+	private JPanel pannelloProdotti;
+
+	private JPanel alberoPreventivi;
+	
+	private JPanel riepilogoPreventivo;
+ 
 	
 	private JTabbedPane tabbedPrincipale;
 	
@@ -111,27 +122,51 @@ public class PrimaryView extends JFrame {
 		panello_menu_preventivo.add(nuovo_preventivo);
 		
 		panello_sottomenu_preventivo = new JPanel();
-		panello_sottomenu_preventivo.setBounds(0, 123, 1003, 551);
+		panello_sottomenu_preventivo.setBounds(0, 123, 1003, 586);
 		preventivo.add(panello_sottomenu_preventivo);
 		panello_sottomenu_preventivo.setLayout(null);
 		
 		panello_laterale_preventivo = new JPanel();
-		panello_laterale_preventivo.setBounds(0, 0, 250, 551);
+		panello_laterale_preventivo.setBounds(0, 0, 261, 585);
 		panello_sottomenu_preventivo.add(panello_laterale_preventivo);
 		panello_laterale_preventivo.setLayout(null);
 		
+		
+		alberoPreventivi = new AlberoPreventivi();
+		alberoPreventivi.setBounds(0, 0, 250, 585);
+		panello_laterale_preventivo.add(alberoPreventivi);
+
+		
+		
 		pannello_centrale_preventivo = new JPanel();
 		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
-		pannello_centrale_preventivo.setBounds(260, 0, 755, 551);
+		pannello_centrale_preventivo.setBounds(260, 0, 755, 585);
 		panello_sottomenu_preventivo.add(pannello_centrale_preventivo);
 		pannello_centrale_preventivo.setLayout(null);
 
 		
-		intestazione= new NuovoPreventivoView();
-		intestazione.setBounds(0, 1, 755, 97);
+		intestazione= IntestazioneNuovoPreventivoView.getInstance();
+		intestazione.setBounds(0, 1, 755, 136);
 
 		pannello_centrale_preventivo.add(intestazione);
 		intestazione.setVisible(false);
+		
+		item= ItemPreventivoView.getInstance();
+		item.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		item.setBounds(0, 138, 745, 449);
+		
+		pannello_centrale_preventivo.add(item);
+		
+		item.setVisible(false);
+		intestazione.setVisible(false);
+
+		
+		riepilogoPreventivo =new RiepilogoPreventivoView();
+		riepilogoPreventivo.setBounds(0, 1, 755, 136);
+		pannello_centrale_preventivo.add(riepilogoPreventivo);
+
+		
+		
 		
 		Cliente = new JPanel();
 		tabbedPrincipale.addTab("Cliente", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/cliente.png")), Cliente, "Gestisci i clienti");
@@ -197,6 +232,16 @@ public class PrimaryView extends JFrame {
 		panello_centrale_catalogo.setBounds(248, 0, 755, 551);
 		panello_sottomenu_catalogo.add(panello_centrale_catalogo);
 		panello_centrale_catalogo.setLayout(null);
+		
+		
+		pannelloProdotti = ProdottiView.getInstance();
+		pannelloProdotti.setBounds(0, 0, 745, 449);
+		panello_centrale_catalogo.add(pannelloProdotti);
+		
+		
+
+		
+		
 		this.init();
 		this.initComponents();
 		
@@ -266,25 +311,30 @@ public class PrimaryView extends JFrame {
 		intestazione.setVisible(b);
 	}
 	
+	public void setVisibleItemPreventivi(boolean b){
+		item.setVisible(b);
+	}
+
+	
 	public JPanel getInstanceIntestazione(){
 		return intestazione;
 	}
 	
 	public void setIntestAgente(String a){
-		((NuovoPreventivoView) intestazione).setAgente(a);
+		((IntestazioneNuovoPreventivoView) intestazione).setAgente(a);
 	}
 	
 	public void setIntestCliente(String cognome, String nome, String indirizzo, String email){
-		((NuovoPreventivoView) intestazione).setCliente(cognome, nome, indirizzo, email);
+		((IntestazioneNuovoPreventivoView) intestazione).setCliente(cognome, nome, indirizzo, email);
 
 	}
 	
 	public void setIntestData (String data){//cambiare in oggetto data
-		((NuovoPreventivoView) intestazione).setData(data);
+		((IntestazioneNuovoPreventivoView) intestazione).setData(data);
 	}
 	
 	public void setIntestNumPrev(String n){
-		((NuovoPreventivoView) intestazione).setNumPrev(n);
+		((IntestazioneNuovoPreventivoView) intestazione).setNumPrev(n);
 
 	}
 	
@@ -320,7 +370,15 @@ public class PrimaryView extends JFrame {
 		
 	}
 
-	public void selectTabClient() {
+	public void selectTabCatalogo() {
 		tabbedPrincipale.setSelectedIndex(2);
+		//tabbedPrincipale.setEnabledAt(1, false);
 	}
+
+	public void setEnableTabCliente(boolean b ) {
+		tabbedPrincipale.setEnabledAt(1, b);
+	}
+	
+	
+	
 }
