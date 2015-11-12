@@ -25,6 +25,7 @@ import agent_trade.controller.Ctrl_elaboraPreventivo;
 
 
 
+import agent_trade.ui.content.AlberoPreventivi;
 import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.ItemPreventivoView;
 import agent_trade.ui.content.ProdottiView;
@@ -127,7 +128,7 @@ public class PrimaryView extends JFrame {
 		panello_laterale_preventivo.setLayout(null);
 		
 		
-		alberoPreventivi = new DynamicTreeDemo();
+		alberoPreventivi = new AlberoPreventivi();
 		alberoPreventivi.setBounds(0, 0, 250, 585);
 		panello_laterale_preventivo.add(alberoPreventivi);
 

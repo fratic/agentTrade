@@ -36,7 +36,7 @@ public class AlberoPreventivi extends JPanel {
 		panel.add(treePrev);
 */
 		
-		radice = new DefaultMutableTreeNode("Dicembre 2015");
+		radice = new DefaultMutableTreeNode("2015");
 		figlio = new DefaultMutableTreeNode("figlio");
 		radice.add(figlio);
 		

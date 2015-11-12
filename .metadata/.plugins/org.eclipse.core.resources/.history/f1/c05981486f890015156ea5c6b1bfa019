@@ -1,10 +1,6 @@
 package agent_trade.controller;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import agent_trade.model.M_Agente;
-import agent_trade.model.M_Preventivo;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.LoginView;
 import agent_trade.ui.PrimaryView;
@@ -65,18 +61,9 @@ public class Ctrl_System {
 		
 		ProdottiView.getInstance().initTable(Dao_System.getInstance().caricaProdotti());
 
-		ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi();
+		AlberoPreventivi.inserisciNodo("nodo1");
+		AlberoPreventivi.inserisciNodo("nodo25");
 		
-		Iterator iteraPreventivi = preventivi.iterator();
-
-		M_Preventivo p;
 		
-		while (iteraPreventivi.hasNext()) {				
-			p = (M_Preventivo) iteraPreventivi.next();
-				AlberoPreventivi.inserisciNodo("Prev. n°: "+p.getIdPreventivo()+"-"+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
 			}
-		}
-		
-		
-		
 }

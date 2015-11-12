@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="DefaultTableModel" key="selection"/>
+		<item value="insertNodeInto" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="insertNodeInto"/>
 			<item value="DefaultTableModel"/>
 			<item value="main"/>
 			<item value="item"/>
@@ -15,7 +16,6 @@
 			<item value="popolata"/>
 			<item value="getinstance"/>
 			<item value="popola"/>
-			<item value="intesta"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

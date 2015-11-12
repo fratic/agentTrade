@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="agent_trade.model.M_Cliente"/>
 <fullyQualifiedTypeName name="agent_trade.ui.content.NuovoPreventivoView"/>
 <fullyQualifiedTypeName name="agent_trade.ui.content.IntestazioneNuovoPreventivoView"/>
-<fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
 <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
 <fullyQualifiedTypeName name="javax.swing.table.TableModel"/>
 <fullyQualifiedTypeName name="javax.swing.JDialog"/>
@@ -19,11 +18,13 @@
 <fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="agent_trade.ui.content.ProdottiView"/>
 <fullyQualifiedTypeName name="agent_trade.controller.Ctrl_elaboraPreventivo"/>
-<fullyQualifiedTypeName name="agent_trade.persistentTemp.Dao_System"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
 <fullyQualifiedTypeName name="javax.swing.text.html.HTMLDocument.Iterator"/>
 <fullyQualifiedTypeName name="agent_trade.model.M_Preventivo_Item"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="agent_trade.model.M_Preventivo"/>
 <fullyQualifiedTypeName name="test_interface.DynamicTreeDemo"/>
+<fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
+<fullyQualifiedTypeName name="agent_trade.ui.content.AlberoPreventivi"/>
+<fullyQualifiedTypeName name="agent_trade.persistentTemp.Dao_System"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

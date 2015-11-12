@@ -20,7 +20,7 @@ public class AlberoPreventivi extends JPanel {
 	
 	public DefaultMutableTreeNode radice;
 	public DefaultMutableTreeNode figlio;
-	public static DefaultTreeModel model;
+	public DefaultTreeModel model;
 	public JTree albero;
 	
 	public AlberoPreventivi() {
@@ -36,7 +36,7 @@ public class AlberoPreventivi extends JPanel {
 		panel.add(treePrev);
 */
 		
-		radice = new DefaultMutableTreeNode("Dicembre 2015");
+		radice = new DefaultMutableTreeNode("radice");
 		figlio = new DefaultMutableTreeNode("figlio");
 		radice.add(figlio);
 		
@@ -54,7 +54,7 @@ public class AlberoPreventivi extends JPanel {
 
 	}
 	
-	  public static void inserisciNodo(String nodo) {
+	  public void inserisciNodo(String nodo) {
 		    
 		  DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
 

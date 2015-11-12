@@ -20,7 +20,7 @@ public class AlberoPreventivi extends JPanel {
 	
 	public DefaultMutableTreeNode radice;
 	public DefaultMutableTreeNode figlio;
-	public static DefaultTreeModel model;
+	public DefaultTreeModel model;
 	public JTree albero;
 	
 	public AlberoPreventivi() {
@@ -36,7 +36,7 @@ public class AlberoPreventivi extends JPanel {
 		panel.add(treePrev);
 */
 		
-		radice = new DefaultMutableTreeNode("Dicembre 2015");
+		radice = new DefaultMutableTreeNode("radice");
 		figlio = new DefaultMutableTreeNode("figlio");
 		radice.add(figlio);
 		
@@ -48,21 +48,17 @@ public class AlberoPreventivi extends JPanel {
 		JScrollPane scroller = new JScrollPane(albero);
 		scroller.setBounds(10, 11, 241, 563);
 		
-		inserisciNodo("Fratic");
+		inserisciNodo(new DefaultMutableTreeNode("FRATIC"),radice);
 
 		add(scroller);
 
 	}
 	
-	  public static void inserisciNodo(String nodo) {
+	  public void inserisciNodo(DefaultMutableTreeNode nodo, DefaultMutableTreeNode radice) {
 		    
-		  DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
-
-	
-		   model.insertNodeInto(figlio, (MutableTreeNode)model.getRoot(), ((MutableTreeNode) model.getRoot()).getChildCount());
-		   // model.insertNodeInto(nodo, (MutableTreeNode) model.getRoot(), 1);
-		   // model.setRoot(nodo);
-		   // model.insertNodeInto(new DefaultMutableTreeNode("asdasdasd"),nodo, radice.getChildCount());
+		    model.insertNodeInto(nodo, radice, 1);
+		    
+		    model.insertNodeInto(new DefaultMutableTreeNode("sotto fratic"), nodo, 3);
 
 		  
 		  }
