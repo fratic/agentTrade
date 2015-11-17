@@ -43,6 +43,7 @@ public class Ctrl_gestisciCliente {
 		
 		if (c.equals("") || c==null){
 			
+			
 		}
 	}
 	
