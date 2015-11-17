@@ -39,7 +39,7 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
 		M_Preventivo.getInstance().setRif_Cliente(cliente);
-		CercaClienteView.getInstance().setVisible(false);
+		//CercaClienteView.getInstance().setVisible(false);
 		PrimaryView.getInstance().setEnableNewPreventivo(false);
 		PrimaryView.getInstance().setEnableTabCliente(false);
 
