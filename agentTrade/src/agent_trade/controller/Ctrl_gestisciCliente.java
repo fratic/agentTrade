@@ -39,6 +39,10 @@ public class Ctrl_gestisciCliente {
 		}
 	}
 	
+	public void ricercaCliente(String c){
+		
+	}
+	
 	//bisogna decidere il criterio di caricamento. Decidere se è adeguata questa struttura dati
 	public ArrayList caricaClienti() {
 
