@@ -4,12 +4,16 @@
 		<item value="624" key="dialogHeight"/>
 		<item value="1080" key="dialogWidth"/>
 		<list key="textEntries">
+			<item value="1"/>
 		</list>
 		<list key="orderedElements">
+			<item value="org.eclipse.jdt.junit.ResultView"/>
 		</list>
 		<list key="orderedProviders">
+			<item value="org.eclipse.e4.ui.parts"/>
 		</list>
 		<list key="textArray">
+			<item value="junit"/>
 		</list>
 	</section>
 	<section name="NewWizardAction">
