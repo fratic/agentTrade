@@ -151,13 +151,19 @@ public class Ctrl_elaboraPreventivo {
 	}
 	
 	public void annullaPreventivo(){
-		//andrebbe annullato il preventivo in corso, nel senso cancellato dal db
+		//andrebbe annullato il preventivo in corso
 		
 		//si può pensare di avere una funzione in primary view che fa tutte queste cose e da qui si richiama con i parametri
 		PrimaryView.getInstance().setEnableNewPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCliente(true);
 		PrimaryView.getInstance().setVisibleIntestazione(false);
 		PrimaryView.getInstance().setVisibleItemPreventivi(false);
+		
+		PrimaryView.cancIntestazione();
+		PrimaryView.cancItem();
+		
+		M_Preventivo.cancIstanza();
+
 
 	}
 	

@@ -67,7 +67,7 @@ public class PrimaryView extends JFrame {
 
 	private JPanel alberoPreventivi;
 	
-	private JPanel riepilogoPreventivo;
+	private static JPanel riepilogoPreventivo;
  
 	
 	private JTabbedPane tabbedPrincipale;
@@ -325,6 +325,8 @@ public class PrimaryView extends JFrame {
 		//item= ItemPreventivoView.getInstance();
 	}
 	
+	
+	
 	public static void initItem(){
 		item= ItemPreventivoView.getInstance();
 		item.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -333,6 +335,14 @@ public class PrimaryView extends JFrame {
 		pannello_centrale_preventivo.add(item);
 		
 		//item.setVisible(false);
+	}
+	
+	
+	public static void initRiepilogo(){
+		riepilogoPreventivo =new RiepilogoPreventivoView();
+		riepilogoPreventivo.setBounds(0, 1, 745, 584);
+		pannello_centrale_preventivo.add(riepilogoPreventivo);
+
 	}
 	
 	public void initComponents(){

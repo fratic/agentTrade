@@ -36,9 +36,9 @@ public class AlberoPreventivi extends JPanel {
 		panel.add(treePrev);
 */
 		
-		radice = new DefaultMutableTreeNode("Dicembre 2015");
-		figlio = new DefaultMutableTreeNode("figlio");
-		radice.add(figlio);
+		radice = new DefaultMutableTreeNode("Novembre 2015");
+		//figlio = new DefaultMutableTreeNode("figlio");
+		//radice.add(figlio);
 		
 		
 		model = new DefaultTreeModel(radice);
@@ -48,7 +48,7 @@ public class AlberoPreventivi extends JPanel {
 		JScrollPane scroller = new JScrollPane(albero);
 		scroller.setBounds(10, 11, 241, 563);
 		
-		inserisciNodo("Fratic");
+		//inserisciNodo("Fratic");
 
 		add(scroller);
 
