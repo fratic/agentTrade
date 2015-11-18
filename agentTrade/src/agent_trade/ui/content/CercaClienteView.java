@@ -154,7 +154,7 @@ public class CercaClienteView extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
 				Ctrl_elaboraPreventivo.getInstance().inserisciCliente((String) table.getValueAt(table.getSelectedRow(),0));
-				CercaClienteView.getInstance().dispose();
+				//CercaClienteView.getInstance().dispose();
 			}
 		});
 
@@ -206,6 +206,10 @@ public class CercaClienteView extends JDialog {
 		if (instance==null)
 			instance = new CercaClienteView();
 		return instance;	 
+	}
+	
+	public static void cancInst(){
+		instance=null;	 
 	}
 		
 	public TableModel getJTableModel(){

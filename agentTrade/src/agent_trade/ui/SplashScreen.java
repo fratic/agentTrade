@@ -6,7 +6,7 @@ import javax.swing.border.LineBorder;
 
 public class SplashScreen extends JWindow {
 	
-	 private static final long serialVersionUID = 0;
+	// private static final long serialVersionUID = 0;
 	 private static final int WIDTH = 450;
 	 private static final int HEIGHT = 250;
 	 

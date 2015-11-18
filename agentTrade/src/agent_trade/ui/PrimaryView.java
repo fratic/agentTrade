@@ -39,14 +39,15 @@ import javax.swing.JSeparator;
 public class PrimaryView extends JFrame {
 	
 	private static PrimaryView instance;	
+	private static JPanel intestazione;
+	private static JPanel item;
+
 	
 	private JButton nuovo_preventivo;
 	private JButton bottoneCercaCliente;
 	private JButton bottoneNuovoCliente;
 	
-	private JPanel pannello_centrale_preventivo;
-	private JPanel intestazione;
-	private JPanel item;
+	private static JPanel pannello_centrale_preventivo;
 	private JPanel preventivo;
 	private JPanel panello_menu_preventivo;
 	private JPanel panello_sottomenu_preventivo;
@@ -122,7 +123,7 @@ public class PrimaryView extends JFrame {
 		nuovo_preventivo.setBounds(20, 20, 50, 50);
 		panello_menu_preventivo.add(nuovo_preventivo);
 		
-		JButton button = new JButton("");
+		/*JButton button = new JButton("");
 		button.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/save-icon.png")));
 		button.setBounds(94, 20, 50, 50);
 		panello_menu_preventivo.add(button);
@@ -145,7 +146,7 @@ public class PrimaryView extends JFrame {
 		JButton button_4 = new JButton("");
 		button_4.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/carrelloOrdine.png")));
 		button_4.setBounds(394, 20, 50, 50);
-		panello_menu_preventivo.add(button_4);
+		panello_menu_preventivo.add(button_4);*/
 		
 		panello_sottomenu_preventivo = new JPanel();
 		panello_sottomenu_preventivo.setBounds(0, 123, 1003, 586);
@@ -166,25 +167,26 @@ public class PrimaryView extends JFrame {
 		
 		pannello_centrale_preventivo = new JPanel();
 		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
-		pannello_centrale_preventivo.setBounds(260, 0, 755, 585);
+		pannello_centrale_preventivo.setBounds(260, 0, 743, 585);
 		panello_sottomenu_preventivo.add(pannello_centrale_preventivo);
 		pannello_centrale_preventivo.setLayout(null);
 
 		
-		intestazione= IntestazioneNuovoPreventivoView.getInstance();
+		/*intestazione= IntestazioneNuovoPreventivoView.getInstance();
 		intestazione.setBounds(0, 1, 755, 136);
 
 		pannello_centrale_preventivo.add(intestazione);
-		intestazione.setVisible(false);
+		*/
 		
-		item= ItemPreventivoView.getInstance();
+		/*item= ItemPreventivoView.getInstance();
 		item.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		item.setBounds(0, 138, 745, 449);
 		
 		pannello_centrale_preventivo.add(item);
 		
 		item.setVisible(false);
-		intestazione.setVisible(false);
+		*/
+		//intestazione.setVisible(false);
 
 		
 		/*riepilogoPreventivo =new RiepilogoPreventivoView();
@@ -268,7 +270,7 @@ public class PrimaryView extends JFrame {
 
 		
 		
-		this.init();
+		//this.init();
 		this.initComponents();
 		
 		
@@ -313,8 +315,24 @@ public class PrimaryView extends JFrame {
 		return instance;	 
 	}
 	
-	public void init(){
+	public static void initIntestazione(){
 		
+		intestazione= IntestazioneNuovoPreventivoView.getInstance();
+		intestazione.setBounds(0, 1, 755, 136);
+		pannello_centrale_preventivo.add(intestazione);
+		//intestazione.setVisible(false);
+		//intestazione= IntestazioneNuovoPreventivoView.getInstance();
+		//item= ItemPreventivoView.getInstance();
+	}
+	
+	public static void initItem(){
+		item= ItemPreventivoView.getInstance();
+		item.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		item.setBounds(0, 138, 745, 449);
+		
+		pannello_centrale_preventivo.add(item);
+		
+		//item.setVisible(false);
 	}
 	
 	public void initComponents(){
@@ -365,32 +383,6 @@ public class PrimaryView extends JFrame {
 	}
 	
 	public void initAlberoClienti(DefaultTreeModel modello){
-		//ArrayList c= Ctrl_gestisciCliente.getInstance().caricaAlberoClienti();
-		/*albero.setModel(new DefaultTreeModel(
-				new DefaultMutableTreeNode("Elenco Clienti") {
-					{
-						DefaultMutableTreeNode node_1;
-						node_1 = new DefaultMutableTreeNode("cliente 1");
-							node_1.add(new DefaultMutableTreeNode("blfdfue"));
-							node_1.add(new DefaultMutableTreeNode("viodflet"));
-							node_1.add(new DefaultMutableTreeNode("rdfded"));
-							node_1.add(new DefaultMutableTreeNode("yfdfdfellow"));
-						add(node_1);
-						node_1 = new DefaultMutableTreeNode("cliente 2");
-							node_1.add(new DefaultMutableTreeNode("baskedfdftball"));
-							node_1.add(new DefaultMutableTreeNode("socdfdfcer"));
-							node_1.add(new DefaultMutableTreeNode("foodftball"));
-							node_1.add(new DefaultMutableTreeNode("hodfckey"));
-						add(node_1);
-						node_1 = new DefaultMutableTreeNode("cliente 3");
-							node_1.add(new DefaultMutableTreeNode("hotvbxb dogs"));
-							node_1.add(new DefaultMutableTreeNode("pibrbzza"));
-							node_1.add(new DefaultMutableTreeNode("rfgbavioli"));
-							node_1.add(new DefaultMutableTreeNode("banfbanas"));
-						add(node_1);
-					}
-				}
-			));*/
 		
 		albero.setModel(modello);
 		
@@ -404,4 +396,18 @@ public class PrimaryView extends JFrame {
 	public void setEnableTabCliente(boolean b ) {
 		tabbedPrincipale.setEnabledAt(1, b);
 	}
+	
+	public static void cancIntestazione(){
+		IntestazioneNuovoPreventivoView.cancIntestazione();
+		intestazione=null;
+	//	init();
+	}
+	
+	public static void cancItem(){
+		ItemPreventivoView.cancItem();
+		item=null;
+		//init();
+
+	}
+	
 }

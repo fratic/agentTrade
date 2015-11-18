@@ -136,6 +136,10 @@ public class ItemPreventivoView extends JPanel {
 		return instance;	 
 	}
 	
+	public static void cancItem(){
+		instance=null;
+	}
+	
 	public static DefaultTableModel getModel(){
 		
 		return (DefaultTableModel) JTableModel;	 

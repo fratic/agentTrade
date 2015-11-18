@@ -261,12 +261,12 @@ public class Dao_System {
 		{
 			FileInputStream fis = new FileInputStream("preventivi");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			
+
 			ArrayList list = (ArrayList) ois.readObject();
 			
 			ois.close();
 			fis.close();
-			
+
 			list.add(p);
 			
 			

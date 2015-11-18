@@ -6,6 +6,11 @@ import java.util.Iterator;
 
 
 public class M_Preventivo implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static int newId;
 	private String idPreventivo;
 	private String data; //bisognerebbe creare un oggetto Data
 	private float totale;
@@ -22,6 +27,10 @@ public class M_Preventivo implements Serializable{
 		M_Preventivo.elencoItem = elencoItem;
 	}
 
+	public static void cancIstanza(){
+		instance=null;
+	}
+	
 	public M_Cliente getRif_Cliente() {
 		return rif_Cliente;
 	}
@@ -32,13 +41,22 @@ public class M_Preventivo implements Serializable{
 	}
 	
 	public M_Preventivo(String id, String data, float tot, M_Agente a){		
-		this.idPreventivo=id;
+		
+		//this.idPreventivo=id;
+		newId++;
+		System.out.println("nuovo id: "+newId);
+		this.idPreventivo=Integer.toString(newId);
+		
 		this.data=data;
 		this.totale=tot;
 		this.rif_Agente=a;
 	}	
 	
 	public M_Preventivo() {
+		newId++;
+		System.out.println("nuovo id: "+newId);
+		this.idPreventivo=Integer.toString(newId);
+
 	}
 	
 	public String getIdPreventivo() {

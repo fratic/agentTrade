@@ -2,7 +2,6 @@ package agent_trade.controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-
 import java.util.Iterator;
 
 import agent_trade.model.M_Agente;
@@ -12,6 +11,7 @@ import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.PrimaryView;
+import agent_trade.ui.content.AlberoPreventivi;
 import agent_trade.ui.content.CercaClienteView;
 import agent_trade.ui.content.ItemPreventivoView;
 
@@ -39,12 +39,23 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
 		M_Preventivo.getInstance().setRif_Cliente(cliente);
-		//CercaClienteView.getInstance().setVisible(false);
+		
+		
+		//******//CercaClienteView.getInstance().setVisible(false);
+
+		CercaClienteView.getInstance().dispose();
+		CercaClienteView.cancInst();				
+
+		
+		PrimaryView.initIntestazione();
+		PrimaryView.initItem();
+
+
 		PrimaryView.getInstance().setEnableNewPreventivo(false);
 		PrimaryView.getInstance().setEnableTabCliente(false);
 
-		PrimaryView.getInstance().setVisibleIntestazione(true);
-		PrimaryView.getInstance().setVisibleItemPreventivi(true);
+		//PrimaryView.getInstance().setVisibleIntestazione(true);
+		//PrimaryView.getInstance().setVisibleItemPreventivi(true);
 		
 		//decidere se far fare quanto segue al controller o se dare da responsabilità a qualcun altro 
 		//(es, uno strato di indirezione) altrimenti si può pensare di avere una funzione che setta tutto ciò, ma forse
@@ -63,7 +74,7 @@ public class Ctrl_elaboraPreventivo {
 		//si può pensare di avere una funzione setIntestazione con tutti i relatvi parametri
 		PrimaryView.getInstance().setIntestAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
 		PrimaryView.getInstance().setIntestData(M_Preventivo.getInstance().getData());
-		PrimaryView.getInstance().setIntestNumPrev(/*M_Preventivo.getInstance().getNumPreventivo()*/"3");
+		PrimaryView.getInstance().setIntestNumPrev(M_Preventivo.getInstance().getIdPreventivo());
 		//fare un metodo di classe per il numero di preventivi 
 		
 		PrimaryView.getInstance().setIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
@@ -90,11 +101,26 @@ public class Ctrl_elaboraPreventivo {
 	public void salvaPreventivo() {
 		
 		
-		M_Preventivo.getInstance();
-		Dao_System.getInstance().salvaPreventivo(M_Preventivo.getInstance());
+		M_Preventivo p= M_Preventivo.getInstance();
+		Dao_System.getInstance().salvaPreventivo(p);
+		
+		AlberoPreventivi.inserisciNodo("Prev. n°: "+p.getIdPreventivo()+"-"+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
+
+		
+		PrimaryView.getInstance().setEnableNewPreventivo(true);
+		PrimaryView.getInstance().setEnableTabCliente(true);
+
+		PrimaryView.getInstance().setVisibleIntestazione(false);
+		PrimaryView.getInstance().setVisibleItemPreventivi(false);
+
+		PrimaryView.cancIntestazione();
+		PrimaryView.cancItem();
+		
+		M_Preventivo.cancIstanza();
 		
 		
 		//da cancellare, fatto solo per prova
+		/*
 		ArrayList a = Dao_System.loadPreventivi();
 		
 		Iterator iteraPreventivi = a.iterator();
@@ -115,7 +141,10 @@ public class Ctrl_elaboraPreventivo {
 					" nome prodotto "+pr_it.idProdotto.getNome()+" prezzo "+pr_it.getIdProdotto().getPrezzo());
 		
 		}
-		}
+		}*/
+
+		
+
 
 		
 		

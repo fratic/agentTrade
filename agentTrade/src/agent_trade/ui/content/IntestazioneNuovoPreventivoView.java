@@ -160,4 +160,10 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 			instance = new IntestazioneNuovoPreventivoView();
 		return instance;	 
 	}
+	
+	public static void cancIntestazione(){
+		instance=null;
+	}
+	
+	
 }
