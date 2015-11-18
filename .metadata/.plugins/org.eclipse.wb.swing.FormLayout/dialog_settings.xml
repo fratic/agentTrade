@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.wb.internal.swing.FormLayout.model.ui.RowEditDialog">
+		<item value="526" key="x"/>
+		<item value="388" key="width"/>
+		<item value="211" key="y"/>
+		<item value="438" key="height"/>
+	</section>
+</section>
