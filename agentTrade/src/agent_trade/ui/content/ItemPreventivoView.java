@@ -2,16 +2,11 @@ package agent_trade.ui.content;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
-import java.awt.Component;
-
 import javax.swing.JTable;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,11 +16,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.model.M_Cliente;
-import agent_trade.ui.PrimaryView;
-
-import javax.swing.ListSelectionModel;
 
 public class ItemPreventivoView extends JPanel {
 	private JTextField textFieldImponibile;

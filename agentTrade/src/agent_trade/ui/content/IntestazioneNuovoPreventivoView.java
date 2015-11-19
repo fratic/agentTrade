@@ -1,27 +1,17 @@
 package agent_trade.ui.content;
 
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JTextPane;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.ui.PrimaryView;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-
-import javax.swing.JTextField;
-
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;

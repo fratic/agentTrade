@@ -65,7 +65,7 @@ public class Ctrl_System {
 		
 		ProdottiView.getInstance().initTable(Dao_System.getInstance().caricaProdotti());
 
-		ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi();
+		ArrayList<M_Preventivo> preventivi= Dao_System.loadPreventivi();
 		
 		Iterator iteraPreventivi = preventivi.iterator();
 
@@ -73,9 +73,10 @@ public class Ctrl_System {
 		
 		while (iteraPreventivi.hasNext()) {				
 			p = (M_Preventivo) iteraPreventivi.next();
-				AlberoPreventivi.inserisciNodo("Prev. n°: "+p.getIdPreventivo()+"-"+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
-			}
-		}
+				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
+			}	
+	}
+	
 		
 		
 		

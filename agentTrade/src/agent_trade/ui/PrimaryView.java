@@ -29,12 +29,10 @@ import agent_trade.ui.content.AlberoPreventivi;
 import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.ItemPreventivoView;
 import agent_trade.ui.content.ProdottiView;
-import agent_trade.ui.content.RiepilogoPreventivoView;
+import agent_trade.ui.content.RiepilogoIntestazionePreventivoView;
 
 import javax.swing.border.TitledBorder;
 
-import test_interface.DynamicTreeDemo;
-import javax.swing.JSeparator;
 
 public class PrimaryView extends JFrame {
 	
@@ -42,6 +40,10 @@ public class PrimaryView extends JFrame {
 	private static JPanel intestazione;
 	private static JPanel item;
 
+	private static JPanel riep_intestazione;
+	private static JPanel riep_item;
+
+	
 	
 	private JButton nuovo_preventivo;
 	private JButton bottoneCercaCliente;
@@ -273,6 +275,7 @@ public class PrimaryView extends JFrame {
 		//this.init();
 		this.initComponents();
 		
+		initRiepilogo();
 		
 		
 		
@@ -307,6 +310,10 @@ public class PrimaryView extends JFrame {
 				Ctrl_elaboraPreventivo.getInstance().newPreventivo(Ctrl_System.getAgenteLog());				
 			}
 		});
+		
+		
+		
+		
 	}
 	
 	public static PrimaryView getInstance(){
@@ -325,7 +332,7 @@ public class PrimaryView extends JFrame {
 		//item= ItemPreventivoView.getInstance();
 	}
 	
-	
+
 	
 	public static void initItem(){
 		item= ItemPreventivoView.getInstance();
@@ -339,12 +346,25 @@ public class PrimaryView extends JFrame {
 	
 	
 	public static void initRiepilogo(){
-		riepilogoPreventivo =new RiepilogoPreventivoView();
+		/*riepilogoPreventivo =new RiepilogoPreventivoView();
 		riepilogoPreventivo.setBounds(0, 1, 745, 584);
 		pannello_centrale_preventivo.add(riepilogoPreventivo);
+		*/
+		
+			riep_intestazione =RiepilogoIntestazionePreventivoView.getInstance();
+			riep_intestazione.setBounds(0, 0, 745, 140);
+			/*riepilogoPreventivo=new JPanel();
+			riepilogoPreventivo.add(riep_intestazione);
+			riepilogoPreventivo.setBounds(0, 1, 745, 584);
+			pannello_centrale_preventivo.add(riepilogoPreventivo);
+*/
+			pannello_centrale_preventivo.add(riep_intestazione);
+
 
 	}
 	
+
+
 	public void initComponents(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -374,23 +394,43 @@ public class PrimaryView extends JFrame {
 		return intestazione;
 	}
 	
-	public void setIntestAgente(String a){
+	public void setNewIntestAgente(String a){
 		((IntestazioneNuovoPreventivoView) intestazione).setAgente(a);
 	}
 	
-	public void setIntestCliente(String cognome, String nome, String indirizzo, String email){
+	public void setNewIntestCliente(String cognome, String nome, String indirizzo, String email){
 		((IntestazioneNuovoPreventivoView) intestazione).setCliente(cognome, nome, indirizzo, email);
 
 	}
 	
-	public void setIntestData (String data){//cambiare in oggetto data
+	public void setNewIntestData (String data){//cambiare in oggetto data
 		((IntestazioneNuovoPreventivoView) intestazione).setData(data);
 	}
 	
-	public void setIntestNumPrev(String n){
+	public void setNewIntestNumPrev(String n){
 		((IntestazioneNuovoPreventivoView) intestazione).setNumPrev(n);
 
 	}
+	
+	public void setRiepIntestAgente(String a){
+		((RiepilogoIntestazionePreventivoView) riep_intestazione).setAgente(a);
+	}
+	
+	public void setRiepIntestCliente(String cognome, String nome, String indirizzo, String email){
+		((RiepilogoIntestazionePreventivoView) riep_intestazione).setCliente(cognome, nome, indirizzo, email);
+
+	}
+	
+	public void setRiepIntestData (String data){//cambiare in oggetto data
+		((RiepilogoIntestazionePreventivoView) riep_intestazione).setData(data);
+	}
+	
+	public void setRiepIntestNumPrev(String n){
+		((RiepilogoIntestazionePreventivoView) riep_intestazione).setNumPrev(n);
+
+	}
+	
+	
 	
 	public void initAlberoClienti(DefaultTreeModel modello){
 		

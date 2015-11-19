@@ -11,7 +11,7 @@ public class RiepilogoPreventivoView extends JPanel {
 	public RiepilogoPreventivoView() {
 		setLayout(null);
 		
-		riepilogoIntestazione =new RiepilogoIntestazioneNuovoPreventivoView();
+		riepilogoIntestazione =new RiepilogoIntestazionePreventivoView();
 		riepilogoIntestazione.setBounds(0, 0, 745, 140);
 		add(riepilogoIntestazione);
 

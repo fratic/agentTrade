@@ -3,10 +3,14 @@ package agent_trade.ui.content;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
+
+import agent_trade.controller.Ctrl_elaboraPreventivo;
 
 public class AlberoPreventivi extends JPanel {
 
@@ -36,7 +40,7 @@ public class AlberoPreventivi extends JPanel {
 		panel.add(treePrev);
 */
 		
-		radice = new DefaultMutableTreeNode("Novembre 2015");
+		radice = new DefaultMutableTreeNode("* Novembre 2015");
 		//figlio = new DefaultMutableTreeNode("figlio");
 		//radice.add(figlio);
 		
@@ -51,8 +55,22 @@ public class AlberoPreventivi extends JPanel {
 		//inserisciNodo("Fratic");
 
 		add(scroller);
+		
+		
+		
+		albero.addTreeSelectionListener((new TreeSelectionListener() {
 
+			public void valueChanged(TreeSelectionEvent e) {
+				TreePath selection = e.getPath();
+				Ctrl_elaboraPreventivo.getInstance().riepilogoPreventivo(selection.getLastPathComponent());
+					/*System.out.println("evento "+selection.getPathComponent(0));
+					System.out.println(selection.getLastPathComponent());
+				*/
+				
+
+			}}));
 	}
+	
 	
 	  public static void inserisciNodo(String nodo) {
 		    
@@ -66,4 +84,8 @@ public class AlberoPreventivi extends JPanel {
 
 		  
 		  }
+	  
+	  public void ricaricaAlbero(){
+		  model.reload();
+	  }
 }

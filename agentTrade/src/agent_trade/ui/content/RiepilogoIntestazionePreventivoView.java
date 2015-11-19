@@ -26,7 +26,7 @@ import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
 
-public class RiepilogoIntestazioneNuovoPreventivoView extends JPanel {
+public class RiepilogoIntestazionePreventivoView extends JPanel {
 
 	/**
 	 * Create the panel.
@@ -47,9 +47,9 @@ public class RiepilogoIntestazioneNuovoPreventivoView extends JPanel {
 	private JButton bottoneAnnulla;
 	private JButton btnNewButton;
 	
-	private static RiepilogoIntestazioneNuovoPreventivoView instance;
+	private static RiepilogoIntestazionePreventivoView instance;
 
-	public RiepilogoIntestazioneNuovoPreventivoView() {
+	public RiepilogoIntestazionePreventivoView() {
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Intestazione", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
 		setBackground(UIManager.getColor("CheckBox.background"));
 		setLayout(null);
@@ -81,7 +81,7 @@ public class RiepilogoIntestazioneNuovoPreventivoView extends JPanel {
 		
 		bottoneAnnulla = new JButton("Conferma Ordine");
 		bottoneAnnulla.setToolTipText("Annulla il preventivo in corso");
-		bottoneAnnulla.setIcon(new ImageIcon(RiepilogoIntestazioneNuovoPreventivoView.class.getResource("/agent_trade/ui/img/carrelloOrdine.png")));
+		bottoneAnnulla.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/carrelloOrdine.png")));
 		bottoneAnnulla.setBounds(298, 103, 161, 30);
 		add(bottoneAnnulla);
 		
@@ -102,7 +102,7 @@ public class RiepilogoIntestazioneNuovoPreventivoView extends JPanel {
 		add(altreInfoCliente);
 		
 		btnNewButton = new JButton("Modifica Preventivo");
-		btnNewButton.setIcon(new ImageIcon(RiepilogoIntestazioneNuovoPreventivoView.class.getResource("/agent_trade/ui/img/setting.png")));
+		btnNewButton.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/setting.png")));
 		btnNewButton.setBounds(100, 103, 166, 30);
 		add(btnNewButton);
 		
@@ -155,9 +155,9 @@ public class RiepilogoIntestazioneNuovoPreventivoView extends JPanel {
 		this.altreInfoCliente.setText(a);
 	}
 	
-	public static RiepilogoIntestazioneNuovoPreventivoView getInstance(){
+	public static RiepilogoIntestazionePreventivoView getInstance(){
 		if (instance==null)
-			instance = new RiepilogoIntestazioneNuovoPreventivoView();
+			instance = new RiepilogoIntestazionePreventivoView();
 		return instance;	 
 	}
 }

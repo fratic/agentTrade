@@ -1,13 +1,11 @@
 package agent_trade.controller;
 
-import java.util.ArrayList;
+import java.awt.image.ReplicateScaleFilter;
 import java.util.Calendar;
-import java.util.Iterator;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
-import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.PrimaryView;
@@ -35,7 +33,9 @@ public class Ctrl_elaboraPreventivo {
 	}
 
 	//CO2
-	public void inserisciCliente(String c) {//in futuro, sarebbe più utile passare un oggetto cliente c e non una string con il cognome
+	public void inserisciCliente(String c) {
+		//in futuro, sarebbe più utile passare un oggetto cliente c 
+		//e non una string con il cognome oppure l'id del cliente
 		
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
 		M_Preventivo.getInstance().setRif_Cliente(cliente);
@@ -72,12 +72,12 @@ public class Ctrl_elaboraPreventivo {
 		*/
 		
 		//si può pensare di avere una funzione setIntestazione con tutti i relatvi parametri
-		PrimaryView.getInstance().setIntestAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
-		PrimaryView.getInstance().setIntestData(M_Preventivo.getInstance().getData());
-		PrimaryView.getInstance().setIntestNumPrev(M_Preventivo.getInstance().getIdPreventivo());
+		PrimaryView.getInstance().setNewIntestAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
+		PrimaryView.getInstance().setNewIntestData(M_Preventivo.getInstance().getData());
+		PrimaryView.getInstance().setNewIntestNumPrev(M_Preventivo.getInstance().getIdPreventivo());
 		//fare un metodo di classe per il numero di preventivi 
 		
-		PrimaryView.getInstance().setIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
+		PrimaryView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
 		
 	}
 
@@ -102,9 +102,9 @@ public class Ctrl_elaboraPreventivo {
 		
 		
 		M_Preventivo p= M_Preventivo.getInstance();
-		Dao_System.getInstance().salvaPreventivo(p);
+		Dao_System.salvaPreventivo(p);
 		
-		AlberoPreventivi.inserisciNodo("Prev. n°: "+p.getIdPreventivo()+"-"+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
+		AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
 
 		
 		PrimaryView.getInstance().setEnableNewPreventivo(true);
@@ -116,37 +116,7 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryView.cancIntestazione();
 		PrimaryView.cancItem();
 		
-		M_Preventivo.cancIstanza();
-		
-		
-		//da cancellare, fatto solo per prova
-		/*
-		ArrayList a = Dao_System.loadPreventivi();
-		
-		Iterator iteraPreventivi = a.iterator();
-		while (iteraPreventivi.hasNext()) {				
-
-		M_Preventivo prev= (M_Preventivo) iteraPreventivi.next();
-		System.out.println("LOAD: id:"+prev.getIdPreventivo()+" data: "+prev.getData()+" totale: "+prev.calcolaTotale()+
-				"cognome agente: "+prev.getRif_Agente().getCognome()+" cliente: "+prev.getRif_Cliente().getCognome()+
-				" "+prev.getRif_Cliente().getNome());
-		
-		ArrayList<M_Preventivo_Item> a_pr_it= prev.getElencoItem();
-		Iterator iteraPrevItem = null;
-		iteraPrevItem = (Iterator) a_pr_it.iterator();
-		M_Preventivo_Item pr_it;
-		while (iteraPrevItem.hasNext()) {				
-			pr_it = (M_Preventivo_Item) iteraPrevItem.next();
-			System.out.println("Prev item: idprod"+pr_it.getIdProdotto().getIdProdotto()+" quantita "+pr_it.getQuantita()+
-					" nome prodotto "+pr_it.idProdotto.getNome()+" prezzo "+pr_it.getIdProdotto().getPrezzo());
-		
-		}
-		}*/
-
-		
-
-
-		
+		M_Preventivo.cancIstanza();	
 		
 	}
 	
@@ -164,7 +134,32 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Preventivo.cancIstanza();
 
+	}
+	
+	public void riepilogoPreventivo(Object obj){
+		
+		String id=obj.toString();
+		if (!id.substring(0,1).equals("*"))
+		{
+			id= (id.substring(0,2));
+			id=id.replaceAll("-","");
+			id=id.replaceAll(" ","");
 
+			M_Preventivo m= Dao_System.loadPreventivo(id);
+
+
+			PrimaryView.initRiepilogo();
+			//PrimaryView.initItem();
+			
+			PrimaryView.getInstance().setRiepIntestAgente(m.getRif_Agente().getCognome()+" "+m.getRif_Agente().getNome());
+			PrimaryView.getInstance().setRiepIntestData(m.getData());
+			PrimaryView.getInstance().setRiepIntestNumPrev(m.getIdPreventivo());
+			//fare un metodo di classe per il numero di preventivi 
+			
+			PrimaryView.getInstance().setRiepIntestCliente(m.getRif_Cliente().getCognome(),m.getRif_Cliente().getNome(), m.getRif_Cliente().getIndirizzo(), m.getRif_Cliente().getEmail());
+
+
+		}
 	}
 	
 }
