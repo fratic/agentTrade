@@ -42,7 +42,7 @@ public class Ctrl_gestisciCliente {
 	public void ricercaCliente(String c){
 		
 		if (c.equals("") || c==null){
-			DettaglioClienteView.getInstance().setErrore("Inserire cognome cliente");
+			//DettaglioClienteView.getInstance().setErrore("Inserire cognome cliente");
 			
 		}
 		else
@@ -51,11 +51,11 @@ public class Ctrl_gestisciCliente {
 			
 			if (cliente!=null)
 			{
-				DettaglioClienteView.getIstance().setDettaglio(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getIndirizzo(),cliente.getEmail());
+				//DettaglioClienteView.getIstance().setDettaglio(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getIndirizzo(),cliente.getEmail());
 			}
 			else
 			{
-				DettaglioClienteView.getInstance().setErrore("cliente non trovato");
+				//DettaglioClienteView.getInstance().setErrore("cliente non trovato");
 			}
 		}
 		
