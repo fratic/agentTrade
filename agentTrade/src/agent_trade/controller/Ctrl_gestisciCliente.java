@@ -42,23 +42,9 @@ public class Ctrl_gestisciCliente {
 	public void ricercaCliente(String c){
 		
 		if (c.equals("") || c==null){
-			DettaglioClienteView.getInstance().setErrore("Inserire cognome cliente");
+			
 			
 		}
-		else
-		{
-			M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
-			
-			if (cliente!=null)
-			{
-				DettaglioClienteView.getIstance().setDettaglio(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getIndirizzo(),cliente.getEmail());
-			}
-			else
-			{
-				DettaglioClienteView.getInstance().setErrore("cliente non trovato");
-			}
-		}
-		
 	}
 	
 	//bisogna decidere il criterio di caricamento. Decidere se è adeguata questa struttura dati
