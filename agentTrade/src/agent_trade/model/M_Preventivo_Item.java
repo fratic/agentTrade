@@ -1,6 +1,8 @@
 package agent_trade.model;
 
-public class M_Preventivo_Item {
+import java.io.Serializable;
+
+public class M_Preventivo_Item implements Serializable {
 	private int idPreventivo_Item;
 	private int quantita;
 	public M_Preventivo rifPreventivo;

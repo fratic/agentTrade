@@ -17,14 +17,14 @@ public class M_Preventivo implements Serializable{
 	private M_Agente rif_Agente;
 	private M_Cliente rif_Cliente;
 	private static M_Preventivo instance;
-	private static ArrayList<M_Preventivo_Item> elencoItem= new ArrayList<M_Preventivo_Item>();
+	private ArrayList<M_Preventivo_Item> elencoItem= new ArrayList<M_Preventivo_Item>();
 	
-	public static ArrayList<M_Preventivo_Item> getElencoItem() {
+	public ArrayList<M_Preventivo_Item> getElencoItem() {
 		return elencoItem;
 	}
 
-	public static void setElencoItem(ArrayList<M_Preventivo_Item> elencoItem) {
-		M_Preventivo.elencoItem = elencoItem;
+	public  void setElencoItem(ArrayList<M_Preventivo_Item> elencoItem) {
+		this.elencoItem = elencoItem;
 	}
 
 	public static void cancIstanza(){
@@ -100,12 +100,12 @@ public class M_Preventivo implements Serializable{
 		this.elencoItem.add(it);
 	}
 	
-	public static float calcolaTotale(){
+	public float calcolaTotale(){
 		float totale=0;
 
 		Iterator iteraItem = null;
 		
-		iteraItem = elencoItem.iterator();
+		iteraItem = this.getElencoItem().iterator();
 		M_Preventivo_Item item;
 	
 		while (iteraItem.hasNext()) {

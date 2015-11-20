@@ -25,11 +25,13 @@ import agent_trade.controller.Ctrl_elaboraPreventivo;
 
 
 
+import agent_trade.model.M_Prodotto;
 import agent_trade.ui.content.AlberoPreventivi;
 import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.ItemPreventivoView;
 import agent_trade.ui.content.ProdottiView;
 import agent_trade.ui.content.RiepilogoIntestazionePreventivoView;
+import agent_trade.ui.content.RiepilogoItemPreventivoView;
 
 import javax.swing.border.TitledBorder;
 
@@ -40,11 +42,9 @@ public class PrimaryView extends JFrame {
 	private static JPanel intestazione;
 	private static JPanel item;
 
-	private static JPanel riep_intestazione;
+	private static  JPanel riep_intestazione;
 	private static JPanel riep_item;
 
-	
-	
 	private JButton nuovo_preventivo;
 	private JButton bottoneCercaCliente;
 	private JButton bottoneNuovoCliente;
@@ -173,7 +173,7 @@ public class PrimaryView extends JFrame {
 		panello_sottomenu_preventivo.add(pannello_centrale_preventivo);
 		pannello_centrale_preventivo.setLayout(null);
 
-		
+
 		/*intestazione= IntestazioneNuovoPreventivoView.getInstance();
 		intestazione.setBounds(0, 1, 755, 136);
 
@@ -275,8 +275,8 @@ public class PrimaryView extends JFrame {
 		//this.init();
 		this.initComponents();
 		
-		initRiepilogo();
-		
+	//	initRiepilogo();
+
 		
 		
 		bottoneCercaCliente.addActionListener(new ActionListener() {
@@ -310,10 +310,7 @@ public class PrimaryView extends JFrame {
 				Ctrl_elaboraPreventivo.getInstance().newPreventivo(Ctrl_System.getAgenteLog());				
 			}
 		});
-		
-		
-		
-		
+				
 	}
 	
 	public static PrimaryView getInstance(){
@@ -327,9 +324,8 @@ public class PrimaryView extends JFrame {
 		intestazione= IntestazioneNuovoPreventivoView.getInstance();
 		intestazione.setBounds(0, 1, 755, 136);
 		pannello_centrale_preventivo.add(intestazione);
-		//intestazione.setVisible(false);
-		//intestazione= IntestazioneNuovoPreventivoView.getInstance();
-		//item= ItemPreventivoView.getInstance();
+		pannello_centrale_preventivo.repaint();
+
 	}
 	
 
@@ -340,27 +336,32 @@ public class PrimaryView extends JFrame {
 		item.setBounds(0, 138, 745, 449);
 		
 		pannello_centrale_preventivo.add(item);
+		pannello_centrale_preventivo.repaint();
 		
 		//item.setVisible(false);
 	}
 	
 	
 	public static void initRiepilogo(){
-		/*riepilogoPreventivo =new RiepilogoPreventivoView();
-		riepilogoPreventivo.setBounds(0, 1, 745, 584);
-		pannello_centrale_preventivo.add(riepilogoPreventivo);
-		*/
 		
+			RiepilogoIntestazionePreventivoView.cancellaIstanzaRiepilogoIntestazione();
+			pannello_centrale_preventivo.repaint();
+
 			riep_intestazione =RiepilogoIntestazionePreventivoView.getInstance();
-			riep_intestazione.setBounds(0, 0, 745, 140);
-			/*riepilogoPreventivo=new JPanel();
-			riepilogoPreventivo.add(riep_intestazione);
-			riepilogoPreventivo.setBounds(0, 1, 745, 584);
-			pannello_centrale_preventivo.add(riepilogoPreventivo);
-*/
+			riep_intestazione.setBounds(0, 1, 745, 140);
 			pannello_centrale_preventivo.add(riep_intestazione);
+			pannello_centrale_preventivo.repaint();
+
+			RiepilogoItemPreventivoView.cancellaIstanzaRiepilogoItem();
+			pannello_centrale_preventivo.repaint();
+
+			riep_item = RiepilogoItemPreventivoView.getInstance();
+			riep_item.setBounds(0, 141, 745, 585);
+			pannello_centrale_preventivo.add(riep_item);
+			pannello_centrale_preventivo.repaint();
 
 
+			
 	}
 	
 
@@ -459,5 +460,13 @@ public class PrimaryView extends JFrame {
 		//init();
 
 	}
+
+	public void updateTableRiepilogo(String rem, String id, String nome, String categoria, String quantita, String prezzo, String parziale){
+		((RiepilogoItemPreventivoView) riep_item).updateTable(rem, id, nome, categoria, quantita, prezzo, parziale);
+	
+	}
+
+	
+	
 	
 }

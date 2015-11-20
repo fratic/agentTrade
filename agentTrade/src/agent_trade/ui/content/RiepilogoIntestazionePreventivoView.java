@@ -160,4 +160,8 @@ public class RiepilogoIntestazionePreventivoView extends JPanel {
 			instance = new RiepilogoIntestazionePreventivoView();
 		return instance;	 
 	}
+	
+	public static void cancellaIstanzaRiepilogoIntestazione(){
+		instance=null;
+	}
 }

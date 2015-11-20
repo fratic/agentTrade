@@ -153,4 +153,9 @@ public class RiepilogoItemPreventivoView extends JPanel {
 		textFieldTotale.setText(a);
 	}
 
+	public static void cancellaIstanzaRiepilogoItem(){
+		instance=null;
+	}
+
+	
 }

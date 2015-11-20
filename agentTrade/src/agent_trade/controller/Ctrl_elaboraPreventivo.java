@@ -1,11 +1,13 @@
 package agent_trade.controller;
 
-import java.awt.image.ReplicateScaleFilter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
+import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.PrimaryView;
@@ -87,7 +89,7 @@ public class Ctrl_elaboraPreventivo {
 		M_Preventivo.getInstance().addItem(1,1,p);
 		ItemPreventivoView.getInstance().updateTable("rim",Integer.toString(p.getIdProdotto()), p.getNome(), p.getCategoria(), "1", Float.toString(p.getPrezzo()), "1");
 		
-		float a=M_Preventivo.calcolaTotale();
+		float a=M_Preventivo.getInstance().calcolaTotale();
 		System.out.println("Totale fattura: "+a);
 		ItemPreventivoView.getInstance().setImponibile(Float.toString(a));
 		float c=(float) (a*0.22);
@@ -147,7 +149,6 @@ public class Ctrl_elaboraPreventivo {
 
 			M_Preventivo m= Dao_System.loadPreventivo(id);
 
-
 			PrimaryView.initRiepilogo();
 			//PrimaryView.initItem();
 			
@@ -157,7 +158,17 @@ public class Ctrl_elaboraPreventivo {
 			//fare un metodo di classe per il numero di preventivi 
 			
 			PrimaryView.getInstance().setRiepIntestCliente(m.getRif_Cliente().getCognome(),m.getRif_Cliente().getNome(), m.getRif_Cliente().getIndirizzo(), m.getRif_Cliente().getEmail());
+			ArrayList<M_Preventivo_Item> elementi = m.getElencoItem();
 
+			Iterator<M_Preventivo_Item> i = elementi.iterator();
+			M_Preventivo_Item pr_it =null;
+			while (i.hasNext()) {
+			System.out.println("sono nel hile");
+				pr_it = (M_Preventivo_Item) i.next();
+				PrimaryView.getInstance().updateTableRiepilogo("rem",Integer.toString((pr_it.getIdProdotto().getIdProdotto())), pr_it.getIdProdotto().getNome(), pr_it.getIdProdotto().getCategoria(), Integer.toString(pr_it.getQuantita()), Float.toString(pr_it.getIdProdotto().getPrezzo()), Float.toString(pr_it.getQuantita()* pr_it.getIdProdotto().getPrezzo()));
+		
+			}
+			
 
 		}
 	}

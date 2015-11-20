@@ -269,6 +269,13 @@ public class Dao_System {
 
 			list.add(p);
 			
+			/****alternativa quando scrivo io primo preventivo
+
+			ArrayList list = new ArrayList();
+
+			list.add(p);
+			
+			***/
 			
 
 			FileOutputStream fos = new FileOutputStream("preventivi");
