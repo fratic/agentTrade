@@ -10,8 +10,11 @@ public class M_Cliente implements Serializable{
 	private String nome;
 	private String cognome;
 	private String codice_fiscale;
+	private String partita_iva;
 	private String indirizzo;
 	private String email;
+	private String telefono;
+	private String fax;
 	
 	
 	private static M_Cliente instance;
@@ -26,14 +29,17 @@ public class M_Cliente implements Serializable{
 	}
 	
 	
-	public M_Cliente(int id, String cognome, String nome, String cf, String ind, String em){
+	public M_Cliente(int id, String cognome, String nome, String cf, String pi, String ind, String em, String tel, String fax){
 		//super();
 		this.idCliente=id;
 		this.cognome=cognome;
 		this.nome=nome;	
 		this.codice_fiscale=cf;
+		this.partita_iva=pi;
 		this.email=em;
 		this.indirizzo=ind;
+		this.telefono=tel;
+		this.fax=fax;
 		
 	}
 
@@ -68,6 +74,14 @@ public class M_Cliente implements Serializable{
 	public void setCodice_fiscale(String codice_fiscale) {
 		this.codice_fiscale = codice_fiscale;
 	}
+	
+	public String getPartita_iva() {
+		return partita_iva;
+	}
+
+	public void setPartita_Iva(String partita_iva) {
+		this.partita_iva = partita_iva;
+	}
 
 	public String getIndirizzo() {
 		return indirizzo;
@@ -83,6 +97,22 @@ public class M_Cliente implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getTelefono() {
+		return telefono;
+	}
+	
+	public void setTelefono(String telefono) {
+		this.telefono=telefono;
+	}
+	
+	public String getFax() {
+		return fax;
+	}
+	
+	public void setFax(String fax) {
+		this.fax=fax;
 	}
 
 	

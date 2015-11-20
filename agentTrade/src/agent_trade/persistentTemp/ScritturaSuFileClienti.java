@@ -11,14 +11,14 @@ import agent_trade.model.M_Cliente;
 		
 	public static void main(String[] args)
 	{
-		M_Cliente cl =new M_Cliente(1, "graziani", "ciccio", "frtnhjyu78", "via roma 156", "asd@asd.it");
-		M_Cliente cl1 =new M_Cliente(2, "del piero", "alex", "xg4y6tgh", "via milano 14", "asd@asd.it");
-		M_Cliente cl2 =new M_Cliente(3, "inzaghi", "pippo", "gn56ty", "via torino 6", "asd@asd.it");
-		M_Cliente cl3 =new M_Cliente(3, "fratic", "antoni", "rtur6567th", "via parigi 16", "asd@asd.it");
-		M_Cliente cl4 =new M_Cliente(3, "sansone", "giovanni", "4567hrfthr", "via verona 26", "asd@asd.it");
-		M_Cliente cl5 =new M_Cliente(3, "bonucci", "leonardo", "rthth6546", "via carpi 136", "asd@asd.it");
-		M_Cliente cl6 =new M_Cliente(3, "chiellini", "giorgio", "456hhgfhd", "via nonso 12", "asd@asd.it");
-		M_Cliente cl7 =new M_Cliente(3, "barzagli", "andrea", "drty5yu56", "via bari9", "asd@asd.it");
+		M_Cliente cl =new M_Cliente(1, "graziani", "ciccio", "frtnhjyu78","dhsadhdhd", "via roma 156", "asd@asd.it", "123456", "7891011");
+		M_Cliente cl1 =new M_Cliente(2, "del piero", "alex", "xg4y6tgh", "hghgkhjgkh", "via milano 14", "asd@asd.it", "654321", "1110987");
+		M_Cliente cl2 =new M_Cliente(3, "inzaghi", "pippo", "gn56ty", "mbmbnbm", "via torino 6", "asd@asd.it", "545455646", "21321321");
+		M_Cliente cl3 =new M_Cliente(3, "fratic", "antoni", "rtur6567th", "jughgj", "via parigi 16", "asd@asd.it", "544213", "1876452");
+		M_Cliente cl4 =new M_Cliente(3, "sansone", "giovanni", "4567hrfthr", "oioioio", "via verona 26", "asd@asd.it", "1211313", "554545");
+		M_Cliente cl5 =new M_Cliente(3, "bonucci", "leonardo", "rthth6546", "asasasas", "via carpi 136", "asd@asd.it", "211321", "");
+		M_Cliente cl6 =new M_Cliente(3, "chiellini", "giorgio", "456hhgfhd", "lplplplpl", "via nonso 12", "asd@asd.it", "000000", "22222");
+		M_Cliente cl7 =new M_Cliente(3, "barzagli", "andrea", "drty5yu56", "klakssjaks", "via bari9", "asd@asd.it", "888888", "99999");
 
 
 		//StringBuffer mioSB = new StringBuffer(ag.getNome());
