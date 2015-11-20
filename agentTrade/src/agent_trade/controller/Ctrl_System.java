@@ -13,11 +13,20 @@ import agent_trade.ui.content.ProdottiView;
 
 public class Ctrl_System {
 
-	private static Ctrl_System instance;
+	/*Attributi di classe*/
 	
+	private static Ctrl_System instance;
 	/*	la responsabilità di tenere l'istanza dell'agente loggato è stata assegnata ad crtl_system, in quanto è il creatore*/
 	private static M_Agente instanceAgenteLog;
 
+	/*Attributi privati*/
+
+	
+	/*costruttori*/
+	
+	
+	/*metodi di classe*/
+	
 	public static Ctrl_System getInstance(){
 
 		return ((instance == null) ? instance = new Ctrl_System() : instance);	
@@ -27,8 +36,30 @@ public class Ctrl_System {
 
 		return ((instance == null) ? null : instanceAgenteLog);	
 	}
-
 	
+	/*metodi privati*/
+	
+	private void initAlberoPreventivi(){
+	
+		ArrayList<M_Preventivo> preventivi= Dao_System.loadPreventivi();
+		Iterator iteraPreventivi = preventivi.iterator();
+		M_Preventivo p;
+		int i=0;
+		while (iteraPreventivi.hasNext()) {				
+			p = (M_Preventivo) iteraPreventivi.next();
+				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
+				i++;
+				System.out.println (i);
+		}
+	}
+	
+	private void initProdotti(){
+
+		ProdottiView.getInstance().initTable(Dao_System.getInstance().caricaProdotti());
+	}
+	
+	/*metodi pubblici*/
+
 	public void login(String user, String psw) 
 	{
 		M_Agente a=Dao_System.getInstance().loadAgente(user);
@@ -38,48 +69,34 @@ public class Ctrl_System {
 			if (a.getCognome().equals(user) && a.getPassword().equals(psw))
 			{
 				//l'istanza di agente è già creata
-			
-			PrimaryView.getInstance().setVisible(true);
-			LoginView.getInstance().setVisible(false);
-			instanceAgenteLog=a;
-			
-			inizializzaSistema();
-			
-			}
-			else{
-			LoginView.getInstance().setMex("Login errato");
-			//l'istanza di agente creata in precedenza, andrebbe distrutta in quanto non valida
+				
+				PrimaryView.getInstance().setVisible(true);
+				LoginView.getInstance().setVisible(false);
+				instanceAgenteLog=a;
+				
+				inizializzaSistema();
+				
+				}
+				else{
+				LoginView.getInstance().setMex("Login errato");
+				//l'istanza di agente creata in precedenza, andrebbe distrutta in quanto non valida
 			}
 		}
 		else
 		{
 			LoginView.getInstance().setMex("Utente sconosciuto");
 			//anche qui andrebbe distrutta 
-			}		
+		}		
 	}
 	
-	public void inizializzaSistema(){
+	public void inizializzaSistema()
+	{
 		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
-		//PrimaryView.getInstance().initAlberoClienti();
-	//	Ctrl_gestisciCliente.getInstance().caricaAlberoClienti();
-		
-		ProdottiView.getInstance().initTable(Dao_System.getInstance().caricaProdotti());
 
-		ArrayList<M_Preventivo> preventivi= Dao_System.loadPreventivi();
+		initProdotti();
 		
-		Iterator iteraPreventivi = preventivi.iterator();
+		initAlberoPreventivi();	
 
-		M_Preventivo p;
-		
-		while (iteraPreventivi.hasNext()) {				
-			p = (M_Preventivo) iteraPreventivi.next();
-				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
-			//System.out.println(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
-	
-		}	
 	}
 	
-		
-		
-		
 }

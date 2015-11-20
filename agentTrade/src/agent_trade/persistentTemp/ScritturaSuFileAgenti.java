@@ -24,7 +24,7 @@ import agent_trade.model.M_Agente;
 	try 
 	{
 	// Prima creo il “destinatario”: uno stream di scrittura su file 
-	FileOutputStream fos = new FileOutputStream("agenti");
+	FileOutputStream fos = new FileOutputStream("file_db/agenti");
 	// Ora posso scrivere l'oggetto sotto forma di stream di byte e passarlo al file 
 	ObjectOutputStream oos = new ObjectOutputStream(fos);
 	// Trasformazione dei dati in stream di byte

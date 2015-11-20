@@ -8,19 +8,48 @@ import agent_trade.persistentTemp.Dao_System;
 
 
 public class M_Preventivo implements Serializable{
-
-	/**
-	 * 
-	 */
+	
+	/*attributi di classe*/
+	
+	private static M_Preventivo instance;
 	private static int newId;
+
+	/*attributi privati*/
 	private String idPreventivo;
 	private String data; //bisognerebbe creare un oggetto Data
 	private float totale;
 	private M_Agente rif_Agente;
 	private M_Cliente rif_Cliente;
-	private static M_Preventivo instance;
 	private ArrayList<M_Preventivo_Item> elencoItem= new ArrayList<M_Preventivo_Item>();
+
+
+	/*costruttori*/
 	
+	//bisogna aggiustare il caricamento dell'id in tutti i costruttori 
+	public M_Preventivo(String id, String data, float tot, M_Agente a){		
+		
+		Dao_System.getInstance();
+		this.idPreventivo=Integer.toString(newId);
+		this.data=data;
+		this.totale=tot;
+		this.rif_Agente=a;
+	}	
+	
+	public M_Preventivo() {
+		newId=Dao_System.loadIdPrev();
+		newId++;
+		System.out.println("nuovo id: "+newId);
+		this.idPreventivo=Integer.toString(newId);
+	}
+	/*metodi di classe*/
+	
+	public static M_Preventivo getInstance(){
+		return ((instance == null) ? instance = new M_Preventivo() : instance);	
+	}
+	
+	/*metodi privati*/
+	/*metodi pubblici*/
+			
 	public ArrayList<M_Preventivo_Item> getElencoItem() {
 		return elencoItem;
 	}
@@ -35,34 +64,6 @@ public class M_Preventivo implements Serializable{
 	
 	public M_Cliente getRif_Cliente() {
 		return rif_Cliente;
-	}
-
-	public static M_Preventivo getInstance(){
-
-		return ((instance == null) ? instance = new M_Preventivo() : instance);	
-	}
-	
-	public M_Preventivo(String id, String data, float tot, M_Agente a){		
-		
-		Dao_System.getInstance();
-		//this.idPreventivo=id;
-		/*newId=Dao_System.loadIdPrev();
-		newId++;
-		System.out.println("nuovo id: "+newId);
-		*/
-		this.idPreventivo=Integer.toString(newId);
-		
-		this.data=data;
-		this.totale=tot;
-		this.rif_Agente=a;
-	}	
-	
-	public M_Preventivo() {
-		newId=Dao_System.loadIdPrev();
-		newId++;
-		System.out.println("nuovo id: "+newId);
-		this.idPreventivo=Integer.toString(newId);
-
 	}
 	
 	public String getIdPreventivo() {
@@ -108,7 +109,6 @@ public class M_Preventivo implements Serializable{
 	
 	public float calcolaTotale(){
 		float totale=0;
-
 		Iterator iteraItem = null;
 		
 		iteraItem = this.getElencoItem().iterator();
@@ -117,8 +117,8 @@ public class M_Preventivo implements Serializable{
 		while (iteraItem.hasNext()) {
 			
 			item = (M_Preventivo_Item) iteraItem.next();
-			totale= totale+(item.getQuantita()*item.idProdotto.getPrezzo());
-			System.out.println("Quantità: "+item.getQuantita()+" prezzo: "+item.idProdotto.getPrezzo());
+			totale= totale+(item.getQuantita()*item.getIdProdotto().getPrezzo());
+			System.out.println("Quantità: "+item.getQuantita()+" prezzo: "+item.getIdProdotto().getPrezzo());
 						
 		}
 		return totale;

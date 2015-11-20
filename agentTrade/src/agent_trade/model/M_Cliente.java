@@ -5,6 +5,13 @@ import java.io.Serializable;
 
 public class M_Cliente implements Serializable{
 
+	
+	/*attributi di classe*/
+	
+	private static M_Cliente instance;
+
+	/*attributi privati*/
+	
 	private static final long serialVersionUID = 1L;
 	private int idCliente;
 	private String nome;
@@ -15,19 +22,13 @@ public class M_Cliente implements Serializable{
 	private String email;
 	private String telefono;
 	private String fax;
-	
-	
-	private static M_Cliente instance;
 
-	public static M_Cliente getInstance(){
-
-		return ((instance == null) ? instance = new M_Cliente() : instance);	
-	}
+	
+	/*costruttori*/
 	
 	public M_Cliente(){		
 		//super();
 	}
-	
 	
 	public M_Cliente(int id, String cognome, String nome, String cf, String pi, String ind, String em, String tel, String fax){
 		//super();
@@ -40,9 +41,19 @@ public class M_Cliente implements Serializable{
 		this.indirizzo=ind;
 		this.telefono=tel;
 		this.fax=fax;
-		
 	}
+	
+	/*metodi di classe*/
+	
+	public static M_Cliente getInstance(){
 
+		return ((instance == null) ? instance = new M_Cliente() : instance);	
+	}
+	
+	/*metodi privati*/
+	
+	/*metodi pubblici*/
+	
 	public int getIdCliente() {
 		return idCliente;
 	}
@@ -114,7 +125,5 @@ public class M_Cliente implements Serializable{
 	public void setFax(String fax) {
 		this.fax=fax;
 	}
-
-	
 	
 }

@@ -35,7 +35,7 @@ import agent_trade.model.M_Latticini;
 	try 
 	{
 	// Prima creo il “destinatario”: uno stream di scrittura su file 
-	FileOutputStream fos = new FileOutputStream("prodotti");
+	FileOutputStream fos = new FileOutputStream("file_db/prodotti");
 	// Ora posso scrivere l'oggetto sotto forma di stream di byte e passarlo al file 
 	ObjectOutputStream oos = new ObjectOutputStream(fos);
 	// Trasformazione dei dati in stream di byte

@@ -17,7 +17,7 @@ Iterator iteraAgenti = null;
 try
 {
 // Recupero il file dei dati e creo un ObjectInputStream per leggerlo
-FileInputStream fis = new FileInputStream("agenti");
+FileInputStream fis = new FileInputStream("file_db/agenti");
 ObjectInputStream ois = new ObjectInputStream(fis);
 //mioSB = (StringBuffer) ois.readObject(); // Notate il cast !!!
 

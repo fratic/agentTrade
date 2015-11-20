@@ -25,7 +25,6 @@ public class Dao_System {
 	__________AGENTE_________________
 	*/
 	public M_Agente loadAgente(String user) {
-		/*INIZIO CARICAMENTO DA FILE, non lasciare cosi ma creare una funzione temporanea*/
 		
 		StringBuffer mioSB = null; 
 		ArrayList elencoAgenti = null;
@@ -53,7 +52,6 @@ public class Dao_System {
 		}
 		return null;
 		 		  
-		/*fine caricamento da file */
 	}
 	
 	
@@ -62,7 +60,6 @@ public class Dao_System {
 	___________CLIENTE_________________
 	*/
 	public M_Cliente cercaCliente(String cognome) {
-		/*INIZIO CARICAMENTO DA FILE, non lasciare cosi ma creare una funzione temporanea*/
 		StringBuffer mioSB = null; 
 		ArrayList elencoClienti = null;
 		Iterator iteraClienti = null;
@@ -88,13 +85,9 @@ public class Dao_System {
 		System.out.println("Eccezione:"  + e.toString());
 		}
 		return null;
-		 
-		  
-		/*fine caricamento da file */
 	}
 	
 	public ArrayList caricaClienti() {
-		/*INIZIO CARICAMENTO DA FILE, non lasciare cosi ma creare una funzione temporanea*/
 		
 		StringBuffer mioSB = null; 
 		ArrayList elencoClienti = null;
@@ -121,8 +114,6 @@ public class Dao_System {
 		System.out.println("Eccezione:"  + e.toString());
 		}
 		return elencoClienti;		 
-		  
-		/*fine caricamento da file */
 	}
 	
 	public void nuovoCliente(M_Cliente c) {
@@ -146,17 +137,6 @@ public class Dao_System {
 		
 		oos.close();
 		fos.close();
-		
-		/*	
-		Iterator iteraClienti = list.iterator();
-		M_Cliente cl = new M_Cliente();
-		while (iteraClienti.hasNext()) {
-			cl = (M_Cliente) iteraClienti.next();
-			System.out.println("Cliente "+cl.getCognome()+ " " +cl.getNome());
-		}
-		
-		System.out.println("OK");
-		 */
 		
 		}
 		catch(Exception e)
@@ -230,17 +210,6 @@ public class Dao_System {
 			ois.close();
 			fis.close();
 
-			//Iterator iteraProdotti = null;
-			//iteraProdotti = elencoProdotti.iterator();
-			/*M_Panettone p = new M_Panettone();
-			int i=0;
-			while (iteraProdotti.hasNext()) {				
-				p = (M_Panettone) iteraProdotti.next();
-				System.out.println("in dao: "+p.getNome());
-				if (idProdotto==p.getIdProdotto()){
-					return p;
-				}
-			}*/
 			return elencoProdotti;
 		}
 		catch(Exception e)
@@ -281,14 +250,7 @@ public class Dao_System {
 			FileOutputStream fos = new FileOutputStream("file_db/preventivi");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 		
-			
-			//ArrayList list = new ArrayList<>();
-
-			
 			oos.writeObject(list);
-
-			//oos.writeObject(p);
-
 
 			oos.close();
 			System.out.println("salvataggio preventivo OK");		
@@ -359,14 +321,7 @@ public class Dao_System {
 	public static void salvaIdPrev(int id) {
 		
 		try 
-		{
-				
-			
-			//ArrayList list = new ArrayList();
-
-		//	list.add(id);
-			
-			
+		{		
 
 			FileOutputStream fos = new FileOutputStream("file_db/id_prev");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);

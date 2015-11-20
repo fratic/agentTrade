@@ -18,7 +18,7 @@ Iterator iteraProdotti = null;
 
 try
 {
-FileInputStream fis = new FileInputStream("prodotti");
+FileInputStream fis = new FileInputStream("file_db/prodotti");
 ObjectInputStream ois = new ObjectInputStream(fis);
 
 elencoProdotti = (ArrayList) ois.readObject();

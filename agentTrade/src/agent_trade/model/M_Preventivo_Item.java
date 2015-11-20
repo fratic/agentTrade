@@ -3,20 +3,33 @@ package agent_trade.model;
 import java.io.Serializable;
 
 public class M_Preventivo_Item implements Serializable {
+	
+	/*attributi di classe*/
+	/*attributi privati*/
+	
 	private int idPreventivo_Item;
 	private int quantita;
+	//rendere questi due attributi privati. lasciati cosi solo perchè dao crea errore
+	//cambiare prima o poi
 	public M_Preventivo rifPreventivo;
 	public M_Prodotto idProdotto;
-
+	
+	
+	/*costruttori*/
+	
 	public M_Preventivo_Item(int idPrevItem, int quantita, M_Preventivo rifPreventivo, M_Prodotto idProdotto){
 		
 		this.idPreventivo_Item=idPrevItem;
 		this.quantita=quantita;
 		this.rifPreventivo=rifPreventivo;
-		this.idProdotto=idProdotto;
-		 		
+		this.idProdotto=idProdotto;		
 	}
 
+	
+	/*metodi di classe*/
+	/*metodi privati*/
+	/*metodi pubblici*/
+	
 	public int getIdPreventivo_Item() {
 		return idPreventivo_Item;
 	}

@@ -10,3 +10,35 @@ Tutte le classi in cui serve una sola istanza devono avere quanto segue (Singlet
 	In tali classi, costruttori PRIVATI
 _______________________________________________________________________________
 
+
+STRUTTURA CLASSI:
+
+attributi
+	di classe
+	privati
+	
+	//evitiamo attributi privati//
+
+metodi
+	costruttori
+	di classe
+	privati
+	publici
+	
+	//evitiamo main (tranne nella classe main avviamente)//
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+/*attributi di classe*/
+/*attributi privati*/
+
+/*costruttori*/
+/*metodi di classe*/
+/*metodi privati*/
+/*metodi pubblici*/
+___________________________________________________________________________
+
+evitare di richiamare classi model in view 
+
+___________________________________________________________________________
+	
