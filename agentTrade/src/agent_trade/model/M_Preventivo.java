@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import agent_trade.persistentTemp.Dao_System;
+
 
 public class M_Preventivo implements Serializable{
 
@@ -42,9 +44,12 @@ public class M_Preventivo implements Serializable{
 	
 	public M_Preventivo(String id, String data, float tot, M_Agente a){		
 		
+		Dao_System.getInstance();
 		//this.idPreventivo=id;
+		/*newId=Dao_System.loadIdPrev();
 		newId++;
 		System.out.println("nuovo id: "+newId);
+		*/
 		this.idPreventivo=Integer.toString(newId);
 		
 		this.data=data;
@@ -53,6 +58,7 @@ public class M_Preventivo implements Serializable{
 	}	
 	
 	public M_Preventivo() {
+		newId=Dao_System.loadIdPrev();
 		newId++;
 		System.out.println("nuovo id: "+newId);
 		this.idPreventivo=Integer.toString(newId);
@@ -96,7 +102,7 @@ public class M_Preventivo implements Serializable{
 	}
 	
 	public void addItem(int idPrevItem, int quantita, M_Prodotto idProdotto ){
-		M_Preventivo_Item it= new M_Preventivo_Item(idPrevItem, quantita, this.getInstance(), idProdotto);
+		M_Preventivo_Item it= new M_Preventivo_Item(idPrevItem, quantita, M_Preventivo.getInstance(), idProdotto);
 		this.elencoItem.add(it);
 	}
 	

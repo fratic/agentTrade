@@ -25,7 +25,7 @@ public class AlberoPreventivi extends JPanel {
 	public DefaultMutableTreeNode radice;
 	public DefaultMutableTreeNode figlio;
 	public static DefaultTreeModel model;
-	public JTree albero;
+	public static JTree albero;
 	
 	public AlberoPreventivi() {
 		/*setLayout(null);
@@ -56,7 +56,8 @@ public class AlberoPreventivi extends JPanel {
 
 		add(scroller);
 		
-		
+				
+	
 		
 		albero.addTreeSelectionListener((new TreeSelectionListener() {
 
@@ -69,7 +70,9 @@ public class AlberoPreventivi extends JPanel {
 				
 
 			}}));
+	
 	}
+
 	
 	
 	  public static void inserisciNodo(String nodo) {
@@ -87,5 +90,14 @@ public class AlberoPreventivi extends JPanel {
 	  
 	  public void ricaricaAlbero(){
 		  model.reload();
+	  }
+	  
+	  
+	  public static void disabilitaAlbero(){
+		  albero.disable();
+	  }
+
+	  public static void abilitaAlbero(){
+		  albero.enable();
 	  }
 }

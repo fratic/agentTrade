@@ -45,7 +45,7 @@ public class RiepilogoIntestazionePreventivoView extends JPanel {
 	
 	
 	private JButton bottoneAnnulla;
-	private JButton btnNewButton;
+	private JButton bottoneModifica;
 	
 	private static RiepilogoIntestazionePreventivoView instance;
 
@@ -101,29 +101,24 @@ public class RiepilogoIntestazionePreventivoView extends JPanel {
 		altreInfoCliente.setBounds(88, 69, 206, 14);
 		add(altreInfoCliente);
 		
-		btnNewButton = new JButton("Modifica Preventivo");
-		btnNewButton.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/setting.png")));
-		btnNewButton.setBounds(100, 103, 166, 30);
-		add(btnNewButton);
+		bottoneModifica = new JButton("Modifica Preventivo");
+		bottoneModifica.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/setting.png")));
+		bottoneModifica.setBounds(100, 103, 166, 30);
+		add(bottoneModifica);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 99, 735, 7);
 		add(separator);
 		
-		btnNewButton.addActionListener(new ActionListener() {
+		bottoneModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			PrimaryView.getInstance().selectTabCatalogo();
-			//ItemPreventivoView.getInstance().popolaTabProdottiItem(Ctrl_gestisciCliente.getInstance().caricaClienti());
-			//ItemPreventivoView.getInstance().popola();
-			//System.out.println("premuto add item");
-			
 			
 			}
 		});
 		
 		bottoneAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			Ctrl_elaboraPreventivo.getInstance().annullaPreventivo();
+
 			}
 		});
 		

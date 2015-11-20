@@ -14,6 +14,7 @@ import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.AlberoPreventivi;
 import agent_trade.ui.content.CercaClienteView;
 import agent_trade.ui.content.ItemPreventivoView;
+import agent_trade.ui.content.RiepilogoItemPreventivoView;
 
 
 public class Ctrl_elaboraPreventivo {
@@ -29,6 +30,8 @@ public class Ctrl_elaboraPreventivo {
 	//CO1
 	public void newPreventivo(M_Agente a) {
 	
+		PrimaryView.getInstance().resetPannelloCentralePreventivo();
+		
 		M_Preventivo.getInstance().setRif_Agente(a);
 		M_Preventivo.getInstance().setData((String)(cal.get(Calendar.DATE)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR)));	//la data andrà recuperata dal sistema e comprenderà anche l'orario
 		Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();
@@ -55,6 +58,9 @@ public class Ctrl_elaboraPreventivo {
 
 		PrimaryView.getInstance().setEnableNewPreventivo(false);
 		PrimaryView.getInstance().setEnableTabCliente(false);
+		
+		AlberoPreventivi.disabilitaAlbero();
+		
 
 		//PrimaryView.getInstance().setVisibleIntestazione(true);
 		//PrimaryView.getInstance().setVisibleItemPreventivi(true);
@@ -84,6 +90,8 @@ public class Ctrl_elaboraPreventivo {
 	}
 
 	public void addItem(int IdProdotto) {
+		
+		
 		M_Prodotto p=Dao_System.getInstance().loadProdotto(IdProdotto);
 		//M_Preventivo_Item = new M_Preventivo_Item(1, 1, rifPreventivo, idProdotto)
 		M_Preventivo.getInstance().addItem(1,1,p);
@@ -96,8 +104,7 @@ public class Ctrl_elaboraPreventivo {
 		ItemPreventivoView.getInstance().setIva(Float.toString(c));
 		ItemPreventivoView.getInstance().setTotale(Float.toString(a+c));
 
-		
-		
+
 	}
 
 	public void salvaPreventivo() {
@@ -120,6 +127,10 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Preventivo.cancIstanza();	
 		
+		Dao_System.salvaIdPrev(Integer.parseInt(p.getIdPreventivo()));
+		AlberoPreventivi.abilitaAlbero();
+
+
 	}
 	
 	public void annullaPreventivo(){
@@ -134,7 +145,13 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryView.cancIntestazione();
 		PrimaryView.cancItem();
 		
+		M_Preventivo p =M_Preventivo.getInstance();
+		int id=Integer.parseInt(p.getIdPreventivo());
+		id--;
+		Dao_System.salvaIdPrev(id);		
 		M_Preventivo.cancIstanza();
+		AlberoPreventivi.abilitaAlbero();
+
 
 	}
 	
@@ -163,13 +180,18 @@ public class Ctrl_elaboraPreventivo {
 			Iterator<M_Preventivo_Item> i = elementi.iterator();
 			M_Preventivo_Item pr_it =null;
 			while (i.hasNext()) {
-			System.out.println("sono nel hile");
 				pr_it = (M_Preventivo_Item) i.next();
 				PrimaryView.getInstance().updateTableRiepilogo("rem",Integer.toString((pr_it.getIdProdotto().getIdProdotto())), pr_it.getIdProdotto().getNome(), pr_it.getIdProdotto().getCategoria(), Integer.toString(pr_it.getQuantita()), Float.toString(pr_it.getIdProdotto().getPrezzo()), Float.toString(pr_it.getQuantita()* pr_it.getIdProdotto().getPrezzo()));
 		
 			}
 			
+			float importo=m.calcolaTotale();
+			RiepilogoItemPreventivoView.getInstance().setImponibile(Float.toString(importo));
+			float c=(float) (importo*0.22);
+			RiepilogoItemPreventivoView.getInstance().setIva(Float.toString(c));
+			RiepilogoItemPreventivoView.getInstance().setTotale(Float.toString(importo+c));
 
+		
 		}
 	}
 	

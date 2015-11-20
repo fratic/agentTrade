@@ -42,7 +42,7 @@ public class PrimaryView extends JFrame {
 	private static JPanel intestazione;
 	private static JPanel item;
 
-	private static  JPanel riep_intestazione;
+	private static JPanel riep_intestazione;
 	private static JPanel riep_item;
 
 	private JButton nuovo_preventivo;
@@ -320,7 +320,7 @@ public class PrimaryView extends JFrame {
 	}
 	
 	public static void initIntestazione(){
-		
+
 		intestazione= IntestazioneNuovoPreventivoView.getInstance();
 		intestazione.setBounds(0, 1, 755, 136);
 		pannello_centrale_preventivo.add(intestazione);
@@ -331,6 +331,7 @@ public class PrimaryView extends JFrame {
 
 	
 	public static void initItem(){
+
 		item= ItemPreventivoView.getInstance();
 		item.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		item.setBounds(0, 138, 745, 449);
@@ -344,26 +345,21 @@ public class PrimaryView extends JFrame {
 	
 	public static void initRiepilogo(){
 		
-			RiepilogoIntestazionePreventivoView.cancellaIstanzaRiepilogoIntestazione();
-			pannello_centrale_preventivo.repaint();
-
+			PrimaryView.getInstance().resetPannelloCentralePreventivo();
+		
 			riep_intestazione =RiepilogoIntestazionePreventivoView.getInstance();
 			riep_intestazione.setBounds(0, 1, 745, 140);
 			pannello_centrale_preventivo.add(riep_intestazione);
 			pannello_centrale_preventivo.repaint();
 
-			RiepilogoItemPreventivoView.cancellaIstanzaRiepilogoItem();
-			pannello_centrale_preventivo.repaint();
-
+			RiepilogoItemPreventivoView.getInstance().resetTable();
+			
 			riep_item = RiepilogoItemPreventivoView.getInstance();
 			riep_item.setBounds(0, 141, 745, 585);
 			pannello_centrale_preventivo.add(riep_item);
 			pannello_centrale_preventivo.repaint();
 
-
-			
 	}
-	
 
 
 	public void initComponents(){
@@ -460,11 +456,35 @@ public class PrimaryView extends JFrame {
 		//init();
 
 	}
+	
+	
+	public void resetPannelloCentralePreventivo(){
+		
+		pannello_centrale_preventivo.removeAll();
+		//pannello_centrale_preventivo = new JPanel();
+		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
+		pannello_centrale_preventivo.setBounds(260, 0, 743, 585);
+		//panello_sottomenu_preventivo.add(pannello_centrale_preventivo);
+		pannello_centrale_preventivo.setLayout(null);
+	//	pannello_centrale_preventivo.repaint();
+		//panello_sottomenu_preventivo.repaint();
+
+
+	}
 
 	public void updateTableRiepilogo(String rem, String id, String nome, String categoria, String quantita, String prezzo, String parziale){
 		((RiepilogoItemPreventivoView) riep_item).updateTable(rem, id, nome, categoria, quantita, prezzo, parziale);
 	
 	}
+	
+	
+	  public void disabilitaAlbero(){
+		  alberoPreventivi.disable();
+	  }
+
+	  public void abilitaAlbero(){
+		  alberoPreventivi.enable();
+	  }
 
 	
 	

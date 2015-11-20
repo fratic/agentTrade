@@ -129,6 +129,17 @@ public class RiepilogoItemPreventivoView extends JPanel {
 		((DefaultTableModel) JTableModel).addRow(new Object[]{rem, id, nome, categoria, quantita, prezzo, parziale});
 	}
 	
+	public void resetTable(){
+		int k=((DefaultTableModel) JTableModel).getRowCount();
+		System.out.println ("reset table. k: "+k);
+
+		for (int i=k-1; i>=0;i--){
+			((DefaultTableModel) JTableModel).removeRow(i);
+		}
+		
+		k=((DefaultTableModel) JTableModel).getRowCount();
+		System.out.println ("dopo reset. k: "+k);
+	}
 	
 	public static RiepilogoItemPreventivoView getInstance(){
 		if (instance==null)

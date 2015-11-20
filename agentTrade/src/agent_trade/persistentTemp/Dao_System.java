@@ -32,7 +32,7 @@ public class Dao_System {
 		Iterator iteraAgenti = null;
 		try
 		{
-			FileInputStream fis = new FileInputStream("agenti");
+			FileInputStream fis = new FileInputStream("file_db/agenti");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			elencoAgenti = (ArrayList) ois.readObject();
 			ois.close();
@@ -68,7 +68,7 @@ public class Dao_System {
 		Iterator iteraClienti = null;
 		try
 		{
-			FileInputStream fis = new FileInputStream("clienti");
+			FileInputStream fis = new FileInputStream("file_db/clienti");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			elencoClienti = (ArrayList) ois.readObject();
 			ois.close();
@@ -101,7 +101,7 @@ public class Dao_System {
 		Iterator iteraClienti = null;
 		try
 		{
-			FileInputStream fis = new FileInputStream("clienti");
+			FileInputStream fis = new FileInputStream("file_db/clienti");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			elencoClienti = (ArrayList) ois.readObject();
 			ois.close();
@@ -129,7 +129,7 @@ public class Dao_System {
 		try
 		{
 		
-		FileInputStream fis = new FileInputStream("clienti");
+		FileInputStream fis = new FileInputStream("file_db/clienti");
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		
 		ArrayList list = (ArrayList) ois.readObject();
@@ -139,7 +139,7 @@ public class Dao_System {
 		
 		list.add(c);
 
-		FileOutputStream fos = new FileOutputStream("clienti");
+		FileOutputStream fos = new FileOutputStream("file_db/clienti");
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 		oos.writeObject(list);
@@ -186,7 +186,7 @@ public class Dao_System {
 
 		try
 		{
-			FileInputStream fis = new FileInputStream("prodotti");
+			FileInputStream fis = new FileInputStream("file_db/prodotti");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 	
 			elencoProdotti = (ArrayList) ois.readObject();
@@ -222,7 +222,7 @@ public class Dao_System {
 
 		try
 		{
-			FileInputStream fis = new FileInputStream("prodotti");
+			FileInputStream fis = new FileInputStream("file_db/prodotti");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 	
 			elencoProdotti = (ArrayList) ois.readObject();
@@ -259,7 +259,7 @@ public class Dao_System {
 		
 		try 
 		{
-			FileInputStream fis = new FileInputStream("preventivi");
+			FileInputStream fis = new FileInputStream("file_db/preventivi");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			ArrayList list = (ArrayList) ois.readObject();
@@ -278,7 +278,7 @@ public class Dao_System {
 			***/
 			
 
-			FileOutputStream fos = new FileOutputStream("preventivi");
+			FileOutputStream fos = new FileOutputStream("file_db/preventivi");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 		
 			
@@ -304,7 +304,7 @@ public class Dao_System {
 	public static ArrayList<M_Preventivo> loadPreventivi(){
 		try
 		{
-			FileInputStream fis = new FileInputStream("preventivi");
+			FileInputStream fis = new FileInputStream("file_db/preventivi");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 	
 			ArrayList< M_Preventivo> a =(ArrayList<M_Preventivo>) ois.readObject();
@@ -325,7 +325,7 @@ public class Dao_System {
 	public static M_Preventivo loadPreventivo(String id){
 		try
 		{
-			FileInputStream fis = new FileInputStream("preventivi");
+			FileInputStream fis = new FileInputStream("file_db/preventivi");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 	
 			ArrayList< M_Preventivo> a =(ArrayList<M_Preventivo>) ois.readObject();
@@ -354,5 +354,56 @@ public class Dao_System {
 		return null;
 		
 	}
+	
+	/*---------------------------id nuovo prventivo------------------------------*/
+	public static void salvaIdPrev(int id) {
+		
+		try 
+		{
+				
+			
+			//ArrayList list = new ArrayList();
 
+		//	list.add(id);
+			
+			
+
+			FileOutputStream fos = new FileOutputStream("file_db/id_prev");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+					
+			oos.writeObject(id);
+
+			oos.close();
+			System.out.println("salvataggio id preventivo OK");		
+		}
+		
+		catch(Exception e)
+		{
+			System.out.println("Eccezione: " + e.toString());
+		}
+	}
+	
+	
+	public static int loadIdPrev(){
+		try
+		{
+			FileInputStream fis = new FileInputStream("file_db/id_prev");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+	
+			int id =(int) ois.readObject();
+	
+			ois.close();
+			fis.close();
+			
+			System.out.println("ID caricato: "+id);
+			
+			return id;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Eccezione:"  + e.toString());
+		}
+		return 0;
+		
+	}
 }

@@ -15,7 +15,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
-*preventivi
+file_db
 
 # External tool builders
 .externalToolBuilders/
