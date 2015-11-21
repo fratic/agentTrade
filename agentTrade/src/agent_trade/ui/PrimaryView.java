@@ -20,6 +20,7 @@ import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 
 import agent_trade.ui.content.AlberoPreventivi;
+import agent_trade.ui.content.InserisciNuovoClienteView;
 import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.ItemPreventivoView;
 import agent_trade.ui.content.ProdottiView;
@@ -64,6 +65,7 @@ public class PrimaryView extends JFrame
 	private JPanel panello_sottomenu_cliente;
 	private JPanel panello_laterale_cliente;
 	private JPanel pannello_centrale_cliente;
+	private JPanel pannelloFormCliente;
 	
 	private JPanel Catalogo;
 	private JPanel panello_menu_catalogo;
@@ -269,6 +271,9 @@ public class PrimaryView extends JFrame
 		pannello_centrale_cliente.setBackground(Color.LIGHT_GRAY);
 		pannello_centrale_cliente.setBounds(248, 0, 755, 551);
 		panello_sottomenu_cliente.add(pannello_centrale_cliente);
+		
+		pannelloFormCliente = new InserisciNuovoClienteView();
+		pannello_centrale_cliente.add(pannelloFormCliente);
 		
 		bottoneCercaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
