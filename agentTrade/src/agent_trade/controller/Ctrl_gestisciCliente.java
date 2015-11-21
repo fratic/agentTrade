@@ -1,9 +1,11 @@
 package agent_trade.controller;
 
 import java.util.ArrayList;
+
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.content.CercaClienteView;
+import agent_trade.ui.content.InserisciNuovoClienteView;
 
 public class Ctrl_gestisciCliente {
 
@@ -59,12 +61,33 @@ public class Ctrl_gestisciCliente {
 			
 			if (cliente!=null)
 			{
-				//DettaglioClienteView.getIstance().setDettaglio(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getIndirizzo(),cliente.getEmail());
+				//DettaglioClienteView.getIstance().setDettaglio(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
 			}
 			else
 			{
 				//DettaglioClienteView.getInstance().setErrore("cliente non trovato");
 			}
+		}
+	}
+	
+	//da rivedere COME CREO GLI ID? COME CONTROLLO I CAMPI?
+	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
+		
+		if(nome==null || cognome==null ||codFiscale==null || partitaIva==null || indirizzo==null || email==null || telefono==null || fax==null){
+//			InserisciNuovoClienteView.getInstance().setErrore("inserisci tutti i campi");
+		}
+		else{
+			M_Cliente cliente=new M_Cliente();
+			cliente.setNome(nome);
+			cliente.setCognome(cognome);
+			cliente.setCodice_fiscale(codFiscale);
+			cliente.setPartita_Iva(partitaIva);
+			cliente.setIndirizzo(indirizzo);
+			cliente.setEmail(email);
+			cliente.setTelefono(telefono);
+			cliente.setFax(fax);
+			
+			Dao_System.getInstance().nuovoCliente(cliente);
 		}
 	}
 	
