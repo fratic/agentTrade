@@ -178,6 +178,11 @@ public class Ctrl_elaboraPreventivo {
 			RiepilogoItemPreventivoView.getInstance().setTotale(Float.toString(importo+c));
 
 		}
+		else{
+			
+			PrimaryView.getInstance().resetPannelloCentralePreventivo();
+			//volendo si può mettere uno sfondo quando non c'è nulla visualizzato
+		}
 	}
 	
 }

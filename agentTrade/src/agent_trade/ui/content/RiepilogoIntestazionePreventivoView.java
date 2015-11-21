@@ -1,36 +1,26 @@
 package agent_trade.ui.content;
 
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.JTextPane;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-
-import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.ui.PrimaryView;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-import javax.swing.JTextField;
-
-import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
 
-public class RiepilogoIntestazionePreventivoView extends JPanel {
-
-	/**
-	 * Create the panel.
-	 */
+public class RiepilogoIntestazionePreventivoView extends JPanel 
+{
+	/*attributi di classe*/
+	
+	private static RiepilogoIntestazionePreventivoView instance;
+	
+	/*attributi privati*/
 	
 	private JLabel labelCliente;
 	private JLabel labelAgente;
@@ -42,13 +32,13 @@ public class RiepilogoIntestazionePreventivoView extends JPanel {
 	private JLabel labelDel;
 	private JLabel labelCl;
 	private JLabel lblNewLabel;
-	
-	
+		
 	private JButton bottoneAnnulla;
 	private JButton bottoneModifica;
-	
-	private static RiepilogoIntestazionePreventivoView instance;
 
+	
+	/*costruttori*/
+	
 	public RiepilogoIntestazionePreventivoView() {
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Intestazione", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
 		setBackground(UIManager.getColor("CheckBox.background"));
@@ -121,8 +111,24 @@ public class RiepilogoIntestazionePreventivoView extends JPanel {
 
 			}
 		});
-		
 	}
+	
+	/*metodi di classe*/
+
+	public static RiepilogoIntestazionePreventivoView getInstance(){
+		if (instance==null)
+			instance = new RiepilogoIntestazionePreventivoView();
+		return instance;	 
+	}
+	
+	public static void cancellaIstanzaRiepilogoIntestazione(){
+		instance=null;
+	}
+
+	
+	/*metodi privati*/
+	
+	/*metodi pubblici*/
 	
 	public void setCliente(String cognome, String nome, String indirizzo, String email){
 		this.labelCliente.setText(cognome+" "+nome);
@@ -150,13 +156,4 @@ public class RiepilogoIntestazionePreventivoView extends JPanel {
 		this.altreInfoCliente.setText(a);
 	}
 	
-	public static RiepilogoIntestazionePreventivoView getInstance(){
-		if (instance==null)
-			instance = new RiepilogoIntestazionePreventivoView();
-		return instance;	 
-	}
-	
-	public static void cancellaIstanzaRiepilogoIntestazione(){
-		instance=null;
-	}
 }

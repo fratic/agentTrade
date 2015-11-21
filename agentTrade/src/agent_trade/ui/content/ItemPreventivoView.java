@@ -17,7 +17,15 @@ import javax.swing.table.TableModel;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 
-public class ItemPreventivoView extends JPanel {
+public class ItemPreventivoView extends JPanel 
+{
+	/*attributi di classe*/
+	
+	private static ItemPreventivoView instance;
+	private static TableModel JTableModel;
+
+	/*attributi privati*/
+	
 	private JTextField textFieldImponibile;
 	private JTextField textFieldIVA;
 	private JTextField textFieldTotale;
@@ -26,16 +34,14 @@ public class ItemPreventivoView extends JPanel {
 	private JPanel panelloRiepilogo;
 	
 	private JTable table;
-	private static TableModel JTableModel;
 	
 	private JScrollPane scrollPane;
-	private static ItemPreventivoView instance;
-	
+
 	private JButton buttoneSalva;
 
-	/**
-	 * Create the panel.
-	 */
+	
+	/*costruttori*/
+	
 	public ItemPreventivoView() {
 		setLayout(null);
 		
@@ -112,13 +118,9 @@ public class ItemPreventivoView extends JPanel {
 		});
 		
 	}
-
 	
-	public void updateTable(String rem, String id, String nome, String categoria, String quantita, String prezzo, String parziale)
-	{
-		((DefaultTableModel) JTableModel).addRow(new Object[]{rem, id, nome, categoria, quantita, prezzo, parziale});
-	}
 	
+	/*metodi di classe*/
 	
 	public static ItemPreventivoView getInstance(){
 		if (instance==null)
@@ -135,6 +137,16 @@ public class ItemPreventivoView extends JPanel {
 		return (DefaultTableModel) JTableModel;	 
 	}
 	
+	
+	/*metodi privati*/
+	/*metodi pubblici*/
+	
+	
+	public void updateTable(String rem, String id, String nome, String categoria, String quantita, String prezzo, String parziale)
+	{
+		((DefaultTableModel) JTableModel).addRow(new Object[]{rem, id, nome, categoria, quantita, prezzo, parziale});
+	}
+		
 	public void setImponibile(String a){
 		textFieldImponibile.setText(a);
 	}

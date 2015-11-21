@@ -5,10 +5,15 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class SplashScreen extends JWindow {
+
+	/*attributi di classe*/
 	
-	// private static final long serialVersionUID = 0;
 	 private static final int WIDTH = 450;
 	 private static final int HEIGHT = 250;
+	
+	/*attributi privati*/
+
+	/*costruttori*/
 	 
 	 public SplashScreen() {
 
@@ -30,5 +35,12 @@ public class SplashScreen extends JWindow {
 	        
 	        setOpacity(0.9f);
 	 }
+	 
+	/*metodi di classe*/
+	/*metodi privati*/
+	/*metodi pubblici*/
+	
+	 
+
 	
 }

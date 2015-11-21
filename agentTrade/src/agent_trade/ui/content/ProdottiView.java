@@ -4,9 +4,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.StringTokenizer;
-
-import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -17,15 +14,17 @@ import javax.swing.table.TableModel;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.model.M_Prodotto;
-import agent_trade.persistentTemp.Dao_System;
 
 import javax.swing.JButton;
 
-import test_interface.JButtonTableExample;
-import javax.swing.JList;
-import javax.swing.JSpinner;
 
 public class ProdottiView extends JPanel {
+	
+	/*attributi di classe*/
+	
+	private static ProdottiView instance;
+
+	/*attributi privati*/
 	
 	private JPanel pannelloTabella;
 	private JPanel pannelloProdotti;
@@ -34,11 +33,12 @@ public class ProdottiView extends JPanel {
 	private static TableModel JTableModel;
 	
 	private JScrollPane scrollPane;
-	private static ProdottiView instance;
 	
 	private JButton addItem;
 	
 
+	/*costruttori*/
+	
 	public ProdottiView() {
 		setLayout(null);
 		
@@ -77,11 +77,21 @@ public class ProdottiView extends JPanel {
 					Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel));
 
 				}
-		  });	
-		  
+		  });		  
 	}
-
-
+	
+	
+	/*metodi di classe*/
+	
+	public static ProdottiView getInstance(){
+		if (instance==null)
+			instance = new ProdottiView();
+		return instance;	 
+	}	
+	
+	/*metodi privati*/
+	/*metodi pubblici*/
+	
 	
 	public void updateTable(String id, String nome, String categoria, String azienda, String prezzo){
 	
@@ -103,11 +113,5 @@ public class ProdottiView extends JPanel {
 		}
 	
 	}
-
 	
-	public static ProdottiView getInstance(){
-		if (instance==null)
-			instance = new ProdottiView();
-		return instance;	 
-	}	
 }

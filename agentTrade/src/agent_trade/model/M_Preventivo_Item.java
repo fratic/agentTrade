@@ -27,7 +27,9 @@ public class M_Preventivo_Item implements Serializable {
 
 	
 	/*metodi di classe*/
+	
 	/*metodi privati*/
+	
 	/*metodi pubblici*/
 	
 	public int getIdPreventivo_Item() {

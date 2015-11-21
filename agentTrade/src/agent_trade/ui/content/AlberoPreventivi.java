@@ -14,37 +14,23 @@ import agent_trade.controller.Ctrl_elaboraPreventivo;
 
 public class AlberoPreventivi extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
+	/*attributi di classe*/
 	
-	/*private JTree treePrev;
-	private DefaultTreeModel treeModel;
-*/
-	
-	public DefaultMutableTreeNode radice;
-	public DefaultMutableTreeNode figlio;
 	public static DefaultTreeModel model;
 	public static JTree albero;
 	
+
+	/*attributi privati*/
+	
+	private DefaultMutableTreeNode radice;
+	private DefaultMutableTreeNode figlio;
+
+
+	/*costruttori*/
+	
 	public AlberoPreventivi() {
-		/*setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 261, 585);
-		add(panel);
-		panel.setLayout(null);
-		
-		treePrev = new JTree();
-		treePrev.setBounds(10, 11, 241, 563);
-		panel.add(treePrev);
-*/
 		
 		radice = new DefaultMutableTreeNode("* Novembre 2015");
-		//figlio = new DefaultMutableTreeNode("figlio");
-		//radice.add(figlio);
-		
-		
 		model = new DefaultTreeModel(radice);
 		setLayout(null);
 
@@ -55,43 +41,36 @@ public class AlberoPreventivi extends JPanel {
 		//inserisciNodo("Fratic");
 
 		add(scroller);
-		
 				
-	
-		
 		albero.addTreeSelectionListener((new TreeSelectionListener() {
 
 			public void valueChanged(TreeSelectionEvent e) {
 				TreePath selection = e.getPath();
 				Ctrl_elaboraPreventivo.getInstance().riepilogoPreventivo(selection.getLastPathComponent());
-					/*System.out.println("evento "+selection.getPathComponent(0));
-					System.out.println(selection.getLastPathComponent());
-				*/
 				
-
 			}}));
 	
 	}
-
 	
+	
+	/*metodi di classe*/
 	
 	  public static void inserisciNodo(String nodo) {
 		    
 		  DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
 
-	
 		   model.insertNodeInto(figlio, (MutableTreeNode)model.getRoot(), ((MutableTreeNode) model.getRoot()).getChildCount());
 		   // model.insertNodeInto(nodo, (MutableTreeNode) model.getRoot(), 1);
-		   // model.setRoot(nodo);
+	
+		   //funziona pr inserimento radice e figli
+		/*   model.setRoot(new DefaultMutableTreeNode("*io sono radice"));
+		   model.insertNodeInto(new DefaultMutableTreeNode("awawa"), (MutableTreeNode)model.getRoot(), ((MutableTreeNode) model.getRoot()).getChildCount());
+			   model.insertNodeInto(figlio, (MutableTreeNode)model.getRoot(), ((MutableTreeNode) model.getRoot()).getChildCount());
+		 */
+		   
 		   // model.insertNodeInto(new DefaultMutableTreeNode("asdasdasd"),nodo, radice.getChildCount());
-
 		  
 		  }
-	  
-	  public void ricaricaAlbero(){
-		  model.reload();
-	  }
-	  
 	  
 	  public static void disabilitaAlbero(){
 		  albero.disable();
@@ -100,4 +79,13 @@ public class AlberoPreventivi extends JPanel {
 	  public static void abilitaAlbero(){
 		  albero.enable();
 	  }
+	
+	/*metodi privati*/
+	/*metodi pubblici*/
+		  
+	  public void ricaricaAlbero(){
+		  model.reload();
+	  }
+	  	  
+	
 }

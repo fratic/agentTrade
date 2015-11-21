@@ -2,16 +2,11 @@ package agent_trade.ui.content;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
-import java.awt.Component;
-
 import javax.swing.JTable;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,13 +16,18 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.model.M_Cliente;
-import agent_trade.ui.PrimaryView;
 
-import javax.swing.ListSelectionModel;
+public class RiepilogoItemPreventivoView extends JPanel 
+{
 
-public class RiepilogoItemPreventivoView extends JPanel {
+	/*attributi di classe*/
+	
+	private static RiepilogoItemPreventivoView instance;
+	private static TableModel JTableModel;
+
+	
+	/*attributi privati*/
+
 	private JTextField textFieldImponibile;
 	private JTextField textFieldIVA;
 	private JTextField textFieldTotale;
@@ -36,16 +36,14 @@ public class RiepilogoItemPreventivoView extends JPanel {
 	private JPanel panelloRiepilogo;
 	
 	private JTable table;
-	private static TableModel JTableModel;
-	
-	private JScrollPane scrollPane;
-	private static RiepilogoItemPreventivoView instance;
-	
+
 	private JButton buttoneSalva;
 
-	/**
-	 * Create the panel.
-	 */
+	private JScrollPane scrollPane;
+
+	
+	/*costruttori*/
+	
 	public RiepilogoItemPreventivoView() {
 		setLayout(null);
 		
@@ -122,8 +120,28 @@ public class RiepilogoItemPreventivoView extends JPanel {
 		});
 		
 	}
+	
+	/*metodi di classe*/
+	
+	public static RiepilogoItemPreventivoView getInstance(){
+		if (instance==null)
+			instance = new RiepilogoItemPreventivoView();
+		return instance;	 
+	}
+	
+	public static DefaultTableModel getModel(){
+		
+		return (DefaultTableModel) JTableModel;	 
+	}
+	
+	public static void cancellaIstanzaRiepilogoItem(){
+		instance=null;
+	}
 
 	
+	/*metodi privati*/
+	/*metodi pubblici*/
+		
 	public void updateTable(String rem, String id, String nome, String categoria, String quantita, String prezzo, String parziale)
 	{
 		((DefaultTableModel) JTableModel).addRow(new Object[]{rem, id, nome, categoria, quantita, prezzo, parziale});
@@ -141,16 +159,6 @@ public class RiepilogoItemPreventivoView extends JPanel {
 		System.out.println ("dopo reset. k: "+k);
 	}
 	
-	public static RiepilogoItemPreventivoView getInstance(){
-		if (instance==null)
-			instance = new RiepilogoItemPreventivoView();
-		return instance;	 
-	}
-	
-	public static DefaultTableModel getModel(){
-		
-		return (DefaultTableModel) JTableModel;	 
-	}
 	
 	public void setImponibile(String a){
 		textFieldImponibile.setText(a);
@@ -163,10 +171,5 @@ public class RiepilogoItemPreventivoView extends JPanel {
 	public void setTotale(String a){
 		textFieldTotale.setText(a);
 	}
-
-	public static void cancellaIstanzaRiepilogoItem(){
-		instance=null;
-	}
-
 	
 }

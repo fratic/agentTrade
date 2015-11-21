@@ -9,7 +9,6 @@ import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -31,10 +30,15 @@ import javax.swing.SwingConstants;
 
 public class CercaClienteView extends JDialog {
 	
+	/*attributi di classe*/
+	
 	private static final long serialVersionUID = 1L;
 	
 	private static CercaClienteView instance;	
+
 	
+	/*attributi privati*/
+
 	private JPanel panelloCerca;
 	private JPanel panelloRisultati;
 	private JPanel panelloBottoni;
@@ -55,31 +59,18 @@ public class CercaClienteView extends JDialog {
 	private JButton BottoneCerca;
 	
 	
+	/*costruttori*/
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		try {
-			CercaClienteView dialog = new CercaClienteView();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	*/
-	
-	
-	/**
-	 * Create the dialog.
-	 */
-	public CercaClienteView() {
+	public CercaClienteView() 
+	{
+		setType(Type.UTILITY);
+		setResizable(false);
+		setModal(true);
+		setAlwaysOnTop(true);
 		
 		
 		setTitle("Cerca Cliente");
-		setBounds(100, 100, 576, 324);
+		setBounds(350, 200, 576, 324);
 		getContentPane().setLayout(null);
 		
 		panelloCerca = new JPanel();
@@ -135,9 +126,7 @@ public class CercaClienteView extends JDialog {
 		panelloBottoni.add(BottoneInserisci);
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		//BottoneInserisci.setEnabled(false);
-		//setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-				
+
 		
 		BottoneCerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -150,6 +139,7 @@ public class CercaClienteView extends JDialog {
 			}
 		});
 	
+		
 		BottoneInserisci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
@@ -158,6 +148,7 @@ public class CercaClienteView extends JDialog {
 			}
 		});
 
+		
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
 			    BottoneInserisci.setEnabled(true);
@@ -165,6 +156,9 @@ public class CercaClienteView extends JDialog {
 		});		 
 	}
 	
+	/*metodi di classe*/
+	/*metodi privati*/
+	/*metodi pubblici*/
 	
 	public void popolaTab(ArrayList a){
 		

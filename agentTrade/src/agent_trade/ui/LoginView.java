@@ -24,7 +24,16 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class LoginView extends JFrame {
 
+	/*attributi di classe*/
+	
+	private static LoginView instance;
+	
+	private static final int WIDTH = 370;
+	private static final int HEIGHT = 240;
 	private static final long serialVersionUID = 1L;
+	
+	/*attributi privati*/
+
 	private JPanel contentPane;
 	private JLayeredPane layeredPane;
 	
@@ -38,32 +47,9 @@ public class LoginView extends JFrame {
 
 	private JButton buttoneAccedi;
 	
-	private static LoginView instance;
+	/*costruttori*/
 	
-	private static final int WIDTH = 370;
-	private static final int HEIGHT = 240;
-
-
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					//Login frame = new Login();
-					//frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
-	 * Create the frame.
-	 */
-	public LoginView() {
+	private LoginView() {
 		
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (screen.width-WIDTH)/2;
@@ -114,16 +100,21 @@ public class LoginView extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Ctrl_System.getInstance().login((String)username.getText(), (String)password.getText());
 			}
-
-		});
-		
+		});	
 	}
+
+
+	/*metodi di classe*/
+	
 	public static LoginView getInstance(){
 		if(instance == null)
 			instance = new LoginView();
 		
 		return instance;
 	}
+
+	/*metodi privati*/
+	/*metodi pubblici*/
 	
 	public JTextField getUsername() {
 		return username;

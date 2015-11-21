@@ -18,10 +18,12 @@ import javax.swing.JSeparator;
 
 public class IntestazioneNuovoPreventivoView extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
+	/*attributi di classe*/
 	
+	private static IntestazioneNuovoPreventivoView instance;
+
+	/*attributi privati*/	
+
 	private JLabel labelCliente;
 	private JLabel labelAgente;
 	private JLabel labelNumPrev;
@@ -32,19 +34,19 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 	private JLabel labelDel;
 	private JLabel labelCl;
 	private JLabel lblNewLabel;
-	
-	
+		
 	private JButton bottoneAnnulla;
 	private JButton btnNewButton;
 	
-	private static IntestazioneNuovoPreventivoView instance;
 
+	/*costruttori*/
+	
 	public IntestazioneNuovoPreventivoView() {
+
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Intestazione", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
 		setBackground(UIManager.getColor("CheckBox.background"));
 		setLayout(null);
 
-		
 		labelPrev = DefaultComponentFactory.getInstance().createLabel("Preventivo n\u00B0");
 		labelPrev.setBounds(488, 19, 97, 14);
 		add(labelPrev);
@@ -119,6 +121,23 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		
 	}
 	
+	/*metodi di classe*/
+	
+	public static IntestazioneNuovoPreventivoView getInstance(){
+		if (instance==null)
+			instance = new IntestazioneNuovoPreventivoView();
+		return instance;	 
+	}
+	
+	public static void cancIntestazione(){
+		instance=null;
+	}
+	
+	/*metodi privati*/
+	/*metodi pubblici*/
+
+	
+	
 	public void setCliente(String cognome, String nome, String indirizzo, String email){
 		this.labelCliente.setText(cognome+" "+nome);
 		setIndirizzoCliente(indirizzo);
@@ -144,16 +163,5 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 	public void setAltreInfoCliente(String a) {
 		this.altreInfoCliente.setText(a);
 	}
-	
-	public static IntestazioneNuovoPreventivoView getInstance(){
-		if (instance==null)
-			instance = new IntestazioneNuovoPreventivoView();
-		return instance;	 
-	}
-	
-	public static void cancIntestazione(){
-		instance=null;
-	}
-	
 	
 }
