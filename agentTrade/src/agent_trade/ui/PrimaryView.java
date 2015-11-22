@@ -66,6 +66,7 @@ public class PrimaryView extends JFrame
 	private JPanel panello_laterale_cliente;
 	private JPanel pannello_centrale_cliente;
 	private JPanel pannelloFormCliente;
+	private JPanel pannelloCercaCliente;
 	
 	private JPanel Catalogo;
 	private JPanel panello_menu_catalogo;
@@ -274,6 +275,9 @@ public class PrimaryView extends JFrame
 		
 		pannelloFormCliente = new InserisciNuovoClienteView();
 		pannello_centrale_cliente.add(pannelloFormCliente);
+		
+		pannelloCercaCliente = new InserisciNuovoClienteView();
+		pannello_centrale_cliente.add(pannelloCercaCliente);
 		
 		bottoneCercaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
