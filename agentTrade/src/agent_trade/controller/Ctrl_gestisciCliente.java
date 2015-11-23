@@ -1,7 +1,6 @@
 package agent_trade.controller;
 
 import java.util.ArrayList;
-
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.content.CercaClienteView;
@@ -29,6 +28,7 @@ public class Ctrl_gestisciCliente {
 	/*metodi privati*/
 
 	/*metodi pubblici*/
+	
 	
 	public void cercaCliente(String c)//qui andrebbe cambiato il modo di ricerca
 	{
@@ -74,7 +74,7 @@ public class Ctrl_gestisciCliente {
 	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
 		
 		if(nome==null || cognome==null ||codFiscale==null || partitaIva==null || indirizzo==null || email==null || telefono==null || fax==null){
-//			InserisciNuovoClienteView.getInstance().setErrore("inserisci tutti i campi");
+			InserisciNuovoClienteView.getInstance().setErrore("inserisci tutti i campi");
 		}
 		else{
 			M_Cliente cliente=new M_Cliente();
@@ -104,6 +104,12 @@ public class Ctrl_gestisciCliente {
 		CercaClienteView.getInstance().setVisible(true);
 		//qui bisogna portare la view cerca cliente in primo piano e disattivare tutto il resto
 	} 
+	
+	public void apriViewNuovoCliente()
+	{
+		InserisciNuovoClienteView.getInstance().setVisible(true);
+
+	}
 	
 	public void caricaAlberoClienti()
 	{
