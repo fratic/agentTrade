@@ -3,8 +3,10 @@ package agent_trade.controller;
 import java.util.ArrayList;
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
+import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.CercaClienteView;
-import agent_trade.ui.content.InserisciNuovoClienteView;
+import agent_trade.ui.content.DettaglioCercaCliente;
+import agent_trade.ui.content.DettaglioClienteView;
 
 public class Ctrl_gestisciCliente {
 
@@ -53,7 +55,7 @@ public class Ctrl_gestisciCliente {
 	{	
 		if (c.equals("") || c==null)
 		{
-			//DettaglioClienteView.getInstance().setErrore("Inserire cognome cliente");			
+			DettaglioCercaCliente.getInstance().setErrore("Inserire cognome cliente");			
 		}
 		else
 		{
@@ -61,11 +63,11 @@ public class Ctrl_gestisciCliente {
 			
 			if (cliente!=null)
 			{
-				//DettaglioClienteView.getIstance().setDettaglio(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
+				//DettaglioCercaCliente.getIstance().setDettaglio(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
 			}
 			else
 			{
-				//DettaglioClienteView.getInstance().setErrore("cliente non trovato");
+				DettaglioCercaCliente.getInstance().setErrore("cliente non trovato");
 			}
 		}
 	}
@@ -74,7 +76,7 @@ public class Ctrl_gestisciCliente {
 	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
 		
 		if(nome==null || cognome==null ||codFiscale==null || partitaIva==null || indirizzo==null || email==null || telefono==null || fax==null){
-			InserisciNuovoClienteView.getInstance().setErrore("inserisci tutti i campi");
+			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
 		}
 		else{
 			M_Cliente cliente=new M_Cliente();
@@ -105,11 +107,22 @@ public class Ctrl_gestisciCliente {
 		//qui bisogna portare la view cerca cliente in primo piano e disattivare tutto il resto
 	} 
 	
-	public void apriViewNuovoCliente()
+	public void newCliente()
 	{
-		InserisciNuovoClienteView.getInstance().setVisible(true);
-
+		//PrimaryView.initCerca();
+		PrimaryView.initDettaglioCliente();
+		
+		//PrimaryView.getInstance().setEnableNewCliente(false);
 	}
+	
+	public void btnCerca()
+	{
+		PrimaryView.initCerca();
+		//PrimaryView.initDettaglioCliente();
+		//PrimaryView.getInstance().setEnableCercaBtn(false);
+	}
+	
+	
 	
 	public void caricaAlberoClienti()
 	{

@@ -1,6 +1,7 @@
 package agent_trade.ui;
 
 import javax.swing.JFrame;
+
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -18,9 +19,10 @@ import javax.swing.tree.DefaultTreeModel;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-
+import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.ui.content.AlberoPreventivi;
-import agent_trade.ui.content.InserisciNuovoClienteView;
+import agent_trade.ui.content.DettaglioCercaCliente;
+import agent_trade.ui.content.DettaglioClienteView;
 import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.ItemPreventivoView;
 import agent_trade.ui.content.ProdottiView;
@@ -44,6 +46,11 @@ public class PrimaryView extends JFrame
 	
 	private static JPanel pannello_centrale_preventivo;
 	
+	private static JPanel cerca;
+	private static JPanel dettaglioCliente;
+	
+	private static JPanel pannello_centrale_cliente;
+	
 	private static final int WIDTH = 1024;
 	private static final int HEIGHT = 784;
 
@@ -64,9 +71,7 @@ public class PrimaryView extends JFrame
 	private JPanel panello_menu_cliente;
 	private JPanel panello_sottomenu_cliente;
 	private JPanel panello_laterale_cliente;
-	private JPanel pannello_centrale_cliente;
-	private JPanel pannelloFormCliente;
-	private JPanel pannelloCercaCliente;
+	
 	
 	private JPanel Catalogo;
 	private JPanel panello_menu_catalogo;
@@ -123,6 +128,20 @@ public class PrimaryView extends JFrame
 		pannello_centrale_preventivo.add(item);
 		pannello_centrale_preventivo.repaint();
 		
+	}
+	
+	public static void initDettaglioCliente() {
+		
+		dettaglioCliente= DettaglioClienteView.getInstance();
+		dettaglioCliente.setBounds(0,1,755,755);
+		pannello_centrale_cliente.add(dettaglioCliente);
+		//pannello_centrale_cliente.repaint();
+	}
+	
+	public static void initCerca() {
+		cerca = DettaglioCercaCliente.getInstance();
+		cerca.setBounds(0,1,755,100);
+		pannello_centrale_cliente.add(cerca);
 	}
 	
 	
@@ -272,23 +291,22 @@ public class PrimaryView extends JFrame
 		pannello_centrale_cliente.setBackground(Color.LIGHT_GRAY);
 		pannello_centrale_cliente.setBounds(248, 0, 755, 551);
 		panello_sottomenu_cliente.add(pannello_centrale_cliente);
-		
-		pannelloFormCliente = new InserisciNuovoClienteView();
-		pannello_centrale_cliente.add(pannelloFormCliente);
-		
-		pannelloCercaCliente = new InserisciNuovoClienteView();
-		pannello_centrale_cliente.add(pannelloCercaCliente);
+		pannello_centrale_cliente.setLayout(null);
 		
 		bottoneCercaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Ctrl_gestisciCliente.getInstance().btnCerca();
 			
-			}
-			
+			}	
 		});
 
 		
 		bottoneNuovoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				Ctrl_gestisciCliente.getInstance().newCliente();
+				//pannello_centrale_cliente.setVisible(true);
+				//PrimaryView.initDettaglioCliente();
 				
 			}
 		});
@@ -353,6 +371,14 @@ public class PrimaryView extends JFrame
 	
 	/*metodi pubblici*/
 	
+//	public void setEnableNewCliente(boolean b) {
+//		bottoneNuovoCliente.setEnabled(b);
+//	}
+//	
+//	public void setEnableCercaBtn(boolean b) {
+//		bottoneCercaCliente.setEnabled(b);
+//	}
+	
 	public void setEnableNewPreventivo(boolean b){
 		nuovo_preventivo.setEnabled(b);
 	}
@@ -413,6 +439,8 @@ public class PrimaryView extends JFrame
 	public void setEnableTabCliente(boolean b ) {
 		tabbedPrincipale.setEnabledAt(1, b);
 	}
+	
+	
 	
 	public void resetPannelloCentralePreventivo(){
 		
