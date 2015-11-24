@@ -141,16 +141,53 @@ public class Dao_System {
 		}
 		catch(Exception e)
 		{
-		System.out.println("Eccezione: " + e.toString());
+			System.out.println("Eccezione: " + e.toString());
 		}
 
 	}
 	
 	public void modificaCliente(M_Cliente c){
+				
+		String codFis = c.getCodice_fiscale();
 		
 	}
 	 
-	public void cancellaCliente(){
+	public void cancellaCliente(M_Cliente c){
+		
+		String codFis = c.getCodice_fiscale();
+		StringBuffer mioSB = null; 
+		ArrayList elencoClienti = null;
+		Iterator iteraClienti = null;
+		try
+		{
+			FileInputStream fis = new FileInputStream("file_db/clienti");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			elencoClienti = (ArrayList) ois.readObject();
+			ois.close();
+			fis.close();
+			
+			iteraClienti = elencoClienti.iterator();
+			M_Cliente cliente = new M_Cliente();
+			while (iteraClienti.hasNext()) {
+				cliente = (M_Cliente) iteraClienti.next();
+				if (cliente.getCodice_fiscale().equals(codFis)){
+					elencoClienti.remove(c);
+					System.out.println("cliente Cancellato");			
+				}				
+			}
+			FileOutputStream fos = new FileOutputStream("file_db/clienti");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			oos.writeObject(elencoClienti);
+			
+			oos.close();
+			fos.close();
+		}
+		catch(Exception e)
+		{
+		System.out.println("Eccezione:"  + e.toString());
+		}
+		
 		
 	}
 
