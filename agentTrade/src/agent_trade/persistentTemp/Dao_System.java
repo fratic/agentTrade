@@ -155,7 +155,7 @@ public class Dao_System {
 	public void cancellaCliente(M_Cliente c){
 		
 		String codFis = c.getCodice_fiscale();
-		StringBuffer mioSB = null; 
+		System.out.println("in funzione cancella clinete: codfisc "+codFis+"$$");
 		ArrayList elencoClienti = null;
 		Iterator iteraClienti = null;
 		try
@@ -171,10 +171,14 @@ public class Dao_System {
 			while (iteraClienti.hasNext()) {
 				cliente = (M_Cliente) iteraClienti.next();
 				if (cliente.getCodice_fiscale().equals(codFis)){
-					elencoClienti.remove(c);
-					System.out.println("cliente Cancellato");			
-				}				
+					elencoClienti.remove(cliente);
+					break;					
+		
+				}	
+
 			}
+			
+
 			FileOutputStream fos = new FileOutputStream("file_db/clienti");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 

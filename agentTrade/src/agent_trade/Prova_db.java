@@ -6,12 +6,17 @@ import agent_trade.persistentTemp.Dao_System;
 public class Prova_db {
 		
 	public static void main(String[] args) {
-		M_Cliente c= Dao_System.getInstance().cercaCliente("pippuzzo");
+		M_Cliente c= Dao_System.getInstance().cercaCliente("beato");
 		System.out.print(c.getCognome()+"  "+c.getCodice_fiscale()+" ");
 		
 		Dao_System.getInstance().cancellaCliente(c);
 			
-		//System.out.print(Dao_System.getInstance().caricaClienti());
+		c= Dao_System.getInstance().cercaCliente("inzaghi");
+		if (c!=null)
+			System.out.print(c.getCognome()+"  "+c.getCodice_fiscale()+" ");
+		else 
+			System.out.println("cancellato");
+		
 			
 	}
 
