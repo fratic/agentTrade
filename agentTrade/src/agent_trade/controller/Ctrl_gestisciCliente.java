@@ -109,16 +109,13 @@ public class Ctrl_gestisciCliente {
 	
 	public void newCliente()
 	{
-		//PrimaryView.initCerca();
 		PrimaryView.initDettaglioCliente();
-		
 		//PrimaryView.getInstance().setEnableNewCliente(false);
 	}
 	
 	public void btnCerca()
 	{
 		PrimaryView.initCerca();
-		//PrimaryView.initDettaglioCliente();
 		//PrimaryView.getInstance().setEnableCercaBtn(false);
 	}
 	
