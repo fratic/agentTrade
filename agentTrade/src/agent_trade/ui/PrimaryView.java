@@ -26,6 +26,7 @@ import agent_trade.ui.content.DettaglioClienteView;
 import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.ItemPreventivoView;
 import agent_trade.ui.content.ProdottiView;
+import agent_trade.ui.content.RiepilogoClienteView;
 import agent_trade.ui.content.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.RiepilogoItemPreventivoView;
 
@@ -48,6 +49,7 @@ public class PrimaryView extends JFrame
 	
 	private static JPanel cerca;
 	private static JPanel dettaglioCliente;
+	private static JPanel riep_cliente;
 	
 	private static JPanel pannello_centrale_cliente;
 	
@@ -143,6 +145,12 @@ public class PrimaryView extends JFrame
 		cerca.setBounds(0,1,755,100);
 		pannello_centrale_cliente.add(cerca);
 		pannello_centrale_cliente.repaint();
+		
+		riep_cliente= RiepilogoClienteView.getInstance();
+		riep_cliente.setBounds(0,1,755,755);
+		pannello_centrale_cliente.add(riep_cliente);
+		pannello_centrale_cliente.repaint();
+	
 	}
 	
 	

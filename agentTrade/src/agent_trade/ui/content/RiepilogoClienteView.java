@@ -15,15 +15,13 @@ import javax.swing.border.TitledBorder;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_gestisciCliente;
-import java.awt.Color;
-import java.awt.SystemColor;
-import javax.swing.DropMode;
+import agent_trade.ui.PrimaryView;
 
-public class DettaglioClienteView extends JPanel {
+public class RiepilogoClienteView extends JPanel {
 
 	/*attributi di classe*/
 	
-	private static DettaglioClienteView instance;
+	private static RiepilogoClienteView instance;
 	
 	/*attributi privati*/
 	
@@ -46,14 +44,15 @@ public class DettaglioClienteView extends JPanel {
 	private JTextField TFtelefono;
 	private JTextField TFfax;
 	
-	private JButton bottoneSalvaCliente;
-	private JButton bottoneAnnullaInserimento;
+	private JButton bottoneModificaCliente;
+	private JButton bottoneCancellaCliente;
+	private JButton bottoneBackToRicerca;
 	
 	/*costruttori*/
 	
-	public DettaglioClienteView() {
+	public RiepilogoClienteView() {
 		
-		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Nuovo Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
+		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Scheda Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
 		setBackground(UIManager.getColor("CheckBox.background"));
 		setLayout(null);
 		
@@ -62,6 +61,8 @@ public class DettaglioClienteView extends JPanel {
 		add(labelNome);
 		 
 		TFnome = new JTextField();
+		TFnome.setEditable(false);
+		TFnome.setEnabled(false);
 		TFnome.setBounds(178, 44, 261, 20);
 		add(TFnome);
 		 TFnome.setColumns(10);
@@ -71,6 +72,8 @@ public class DettaglioClienteView extends JPanel {
 		add(labelCognome);
 		 
 		TFcognome = new JTextField();
+		TFcognome.setEnabled(false);
+		TFcognome.setEditable(false);
 		TFcognome.setBounds(178, 87, 261, 20);
 		add(TFcognome);
 		TFcognome.setColumns(10);
@@ -80,6 +83,8 @@ public class DettaglioClienteView extends JPanel {
 		add(labelCodiceFiscale);
 		 
 		TFcodicefiscale = new JTextField();
+		TFcodicefiscale.setEnabled(false);
+		TFcodicefiscale.setEditable(false);
 		TFcodicefiscale.setBounds(178, 166, 261, 20);
 		add(TFcodicefiscale);
 		TFcodicefiscale.setColumns(10);
@@ -89,6 +94,8 @@ public class DettaglioClienteView extends JPanel {
 		add(labelPartitaIva);
 		 
 		TFpartitaiva = new JTextField();
+		TFpartitaiva.setEnabled(false);
+		TFpartitaiva.setEditable(false);
 		TFpartitaiva.setBounds(178, 207, 261, 20);
 		add(TFpartitaiva);
 		TFpartitaiva.setColumns(10);
@@ -98,6 +105,8 @@ public class DettaglioClienteView extends JPanel {
 		add(labelIndirizzo);
 		 
 		TFindirizzo = new JTextField();
+		TFindirizzo.setEnabled(false);
+		TFindirizzo.setEditable(false);
 		TFindirizzo.setBounds(178, 128, 261, 20);
 		add(TFindirizzo);
 		TFindirizzo.setColumns(10);
@@ -107,6 +116,8 @@ public class DettaglioClienteView extends JPanel {
 		add(labelEmail);
 		 
 		TFemail = new JTextField();
+		TFemail.setEnabled(false);
+		TFemail.setEditable(false);
 		TFemail.setBounds(178, 248, 261, 20);
 		add(TFemail);
 		TFemail.setColumns(10);
@@ -116,6 +127,8 @@ public class DettaglioClienteView extends JPanel {
 		add(labelTelefono);
 		 
 		TFtelefono = new JTextField();
+		TFtelefono.setEnabled(false);
+		TFtelefono.setEditable(false);
 		TFtelefono.setBounds(178, 294, 261, 20);
 		add(TFtelefono);
 		TFtelefono.setColumns(10);
@@ -125,54 +138,73 @@ public class DettaglioClienteView extends JPanel {
 		add(labelFax);
 		 
 		TFfax = new JTextField();
+		TFfax.setText("prova");
+		TFfax.setEnabled(false);
+		TFfax.setEditable(false);
 		TFfax.setBounds(177, 339, 262, 20);
 		add(TFfax);
 		TFfax.setColumns(10);
-		
-		labelErrore = DefaultComponentFactory.getInstance().createLabel("");
-		labelErrore.setBounds(27, 228, 219, 20);
-		add(labelErrore);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(0, 384, 554, 8);
 		add(separator);
 		
-		bottoneSalvaCliente = new JButton("Salva");
-		bottoneSalvaCliente.setBounds(27, 403, 113, 30);
-		add(bottoneSalvaCliente);
-		bottoneSalvaCliente.setToolTipText("Salva il cliente");
-		bottoneSalvaCliente.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save-icon.png")));
+		bottoneModificaCliente = new JButton("Modifica");
+		bottoneModificaCliente.setBounds(178, 403, 113, 30);
+		add(bottoneModificaCliente);
+		bottoneModificaCliente.setToolTipText("Modifica i dati del cliente");
+		bottoneModificaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/setting.png")));
 		
-		bottoneAnnullaInserimento = new JButton("Annulla");
-		bottoneAnnullaInserimento.setBounds(178, 403, 113, 30);
-		add(bottoneAnnullaInserimento);
-		bottoneAnnullaInserimento.setToolTipText("Pulisci form");
-		bottoneAnnullaInserimento.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
+		bottoneCancellaCliente = new JButton("Cancella");
+		bottoneCancellaCliente.setBounds(27, 403, 120, 30);
+		add(bottoneCancellaCliente);
+		bottoneCancellaCliente.setToolTipText("Cancella cliente");
+		bottoneCancellaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
 		
-		bottoneSalvaCliente.addActionListener(new ActionListener() {
+		bottoneBackToRicerca = new JButton("Effettua una nuova ricerca");
+		bottoneBackToRicerca.setBounds(324, 403, 207, 30);
+		add(bottoneBackToRicerca);
+		bottoneBackToRicerca.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/arrow_icon.png")));
+		
+		bottoneModificaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFfax.getText());
-			}	
+				//Ctrl_gestisciCliente.getInstance().ModificaCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFfax.getText());
+			}
+		});
+		
+		bottoneCancellaCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Ctrl_gestisciCliente.getInstance().CancellaCliente();
+			}
+		});
+		
+		bottoneBackToRicerca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//PrimaryView.getInstance();
+			}
 		});
 		
 	}
 		
-	/*metodi di classe*/
+		/*metodi di classe*/
 		
-	public static DettaglioClienteView getInstance(){
-		if (instance==null)
-			instance = new DettaglioClienteView();
-		return instance;	 
-		}
+		public static RiepilogoClienteView getInstance(){
+			if (instance==null)
+				instance = new RiepilogoClienteView();
+			return instance;	 
+			}
+		
+		/*metodi privati*/
+		
+		/*metodi pubblici*/
+		
+		
+		
 	
-	public void setErrore(String err) {
-		labelErrore.setText(err);
-    }
 		
 		
-	/*metodi privati*/
-	/*metodi pubblici*/
 
-	
-	
-}
+	}
+		
+
+
