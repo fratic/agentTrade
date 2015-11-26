@@ -145,12 +145,12 @@ public class RiepilogoClienteView extends JPanel {
 		add(TFfax);
 		TFfax.setColumns(10);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 384, 554, 8);
-		add(separator);
+//		JSeparator separator = new JSeparator();
+//		separator.setBounds(0, 384, 554, 8);
+//		add(separator);
 		
 		bottoneModificaCliente = new JButton("Modifica");
-		bottoneModificaCliente.setBounds(178, 403, 113, 30);
+		bottoneModificaCliente.setBounds(178, 403, 136, 30);
 		add(bottoneModificaCliente);
 		bottoneModificaCliente.setToolTipText("Modifica i dati del cliente");
 		bottoneModificaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/setting.png")));
@@ -162,7 +162,7 @@ public class RiepilogoClienteView extends JPanel {
 		bottoneCancellaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
 		
 		bottoneBackToRicerca = new JButton("Effettua una nuova ricerca");
-		bottoneBackToRicerca.setBounds(324, 403, 207, 30);
+		bottoneBackToRicerca.setBounds(345, 403, 207, 30);
 		add(bottoneBackToRicerca);
 		bottoneBackToRicerca.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/arrow_icon.png")));
 		

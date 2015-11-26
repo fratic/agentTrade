@@ -39,7 +39,7 @@ public class DettaglioCercaCliente extends JPanel {
 		setLayout(null);
 		
 		labelCercaCliente = new JLabel("Inserisci il nome del cliente: ");
-		labelCercaCliente.setBounds(22, 32, 145, 40);
+		labelCercaCliente.setBounds(43, 30, 163, 40);
 		add(labelCercaCliente);
 		
 		labelError = DefaultComponentFactory.getInstance().createLabel("");
@@ -47,14 +47,14 @@ public class DettaglioCercaCliente extends JPanel {
 		add(labelError);
 		
 		TFcerca = new JTextField();
-		TFcerca.setBounds(165, 42, 219, 20);
+		TFcerca.setBounds(232, 40, 267, 20);
 		add(TFcerca);
 		
 		bottoneCerca = new JButton();
-		bottoneCerca.setBounds(412, 21, 83, 51);
+		bottoneCerca.setBounds(542, 25, 55, 50);
 		add(bottoneCerca);
 		bottoneCerca.setToolTipText("Cerca");
-		bottoneCerca.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/search-icon.png")));
+		bottoneCerca.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/search-user.png")));
 		
 		bottoneCerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

@@ -135,19 +135,19 @@ public class PrimaryView extends JFrame
 	public static void initDettaglioCliente() {
 		
 		dettaglioCliente= DettaglioClienteView.getInstance();
-		dettaglioCliente.setBounds(0,1,755,755);
+		dettaglioCliente.setBounds(1, 1, 755, 551);
 		pannello_centrale_cliente.add(dettaglioCliente);
 		pannello_centrale_cliente.repaint();
 	}
 	
 	public static void initCerca() {
 		cerca = DettaglioCercaCliente.getInstance();
-		cerca.setBounds(0,1,755,100);
+		cerca.setBounds(0, 1, 755, 101);
 		pannello_centrale_cliente.add(cerca);
 		pannello_centrale_cliente.repaint();
 		
 		riep_cliente= RiepilogoClienteView.getInstance();
-		riep_cliente.setBounds(0,1,755,755);
+		riep_cliente.setBounds(0, 100, 755, 450);
 		pannello_centrale_cliente.add(riep_cliente);
 		pannello_centrale_cliente.repaint();
 	

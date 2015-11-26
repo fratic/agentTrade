@@ -53,8 +53,9 @@ public class DettaglioClienteView extends JPanel {
 	
 	public DettaglioClienteView() {
 		
-		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Nuovo Cliente", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
+		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Nuova scheda cliente", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
 		setBackground(UIManager.getColor("CheckBox.background"));
+		
 		setLayout(null);
 		
 		labelNome = DefaultComponentFactory.getInstance().createLabel("Nome: ");
@@ -76,75 +77,71 @@ public class DettaglioClienteView extends JPanel {
 		TFcognome.setColumns(10);
 		 
 		labelCodiceFiscale = DefaultComponentFactory.getInstance().createLabel("Codice Fiscale: ");
-		labelCodiceFiscale.setBounds(43, 169, 97, 14);
+		labelCodiceFiscale.setBounds(43, 133, 111, 14);
 		add(labelCodiceFiscale);
 		 
 		TFcodicefiscale = new JTextField();
-		TFcodicefiscale.setBounds(178, 166, 261, 20);
+		TFcodicefiscale.setBounds(178, 130, 261, 20);
 		add(TFcodicefiscale);
 		TFcodicefiscale.setColumns(10);
 		 
-		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel("PartitaIva: ");
-		labelPartitaIva.setBounds(44, 210, 69, 14);
+		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel("Partita Iva: ");
+		labelPartitaIva.setBounds(43, 176, 69, 14);
 		add(labelPartitaIva);
 		 
 		TFpartitaiva = new JTextField();
-		TFpartitaiva.setBounds(178, 207, 261, 20);
+		TFpartitaiva.setBounds(178, 173, 261, 20);
 		add(TFpartitaiva);
 		TFpartitaiva.setColumns(10);
 		 
 		labelIndirizzo = DefaultComponentFactory.getInstance().createLabel("Indirizzo: ");
-		labelIndirizzo.setBounds(44, 131, 69, 14);
+		labelIndirizzo.setBounds(44, 219, 69, 14);
 		add(labelIndirizzo);
 		 
 		TFindirizzo = new JTextField();
-		TFindirizzo.setBounds(178, 128, 261, 20);
+		TFindirizzo.setBounds(178, 216, 261, 20);
 		add(TFindirizzo);
 		TFindirizzo.setColumns(10);
 		 
 		labelEmail = DefaultComponentFactory.getInstance().createLabel("Email: ");
-		labelEmail.setBounds(44, 251, 69, 14);
+		labelEmail.setBounds(43, 262, 69, 14);
 		add(labelEmail);
 		 
 		TFemail = new JTextField();
-		TFemail.setBounds(178, 248, 261, 20);
+		TFemail.setBounds(178, 259, 261, 20);
 		add(TFemail);
 		TFemail.setColumns(10);
 		 
 		labelTelefono = DefaultComponentFactory.getInstance().createLabel("Telefono: ");
-		labelTelefono.setBounds(44, 297, 69, 14);
+		labelTelefono.setBounds(43, 305, 69, 14);
 		add(labelTelefono);
 		 
 		TFtelefono = new JTextField();
-		TFtelefono.setBounds(178, 294, 261, 20);
+		TFtelefono.setBounds(178, 302, 261, 20);
 		add(TFtelefono);
 		TFtelefono.setColumns(10);
 		 
 		labelFax = DefaultComponentFactory.getInstance().createLabel("Fax: ");
-		labelFax.setBounds(44, 342, 69, 14);
+		labelFax.setBounds(43, 348, 69, 14);
 		add(labelFax);
 		 
 		TFfax = new JTextField();
-		TFfax.setBounds(177, 339, 262, 20);
+		TFfax.setBounds(178, 345, 261, 20);
 		add(TFfax);
 		TFfax.setColumns(10);
 		
 		labelErrore = DefaultComponentFactory.getInstance().createLabel("");
-		labelErrore.setBounds(27, 228, 219, 20);
+		labelErrore.setBounds(43, 376, 219, 20);
 		add(labelErrore);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 384, 554, 8);
-		add(separator);
-		
 		bottoneSalvaCliente = new JButton("Salva");
-		bottoneSalvaCliente.setBounds(27, 403, 113, 30);
+		bottoneSalvaCliente.setBounds(41, 418, 113, 30);
 		add(bottoneSalvaCliente);
 		bottoneSalvaCliente.setToolTipText("Salva il cliente");
 		bottoneSalvaCliente.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save-icon.png")));
 		
 		bottoneAnnullaInserimento = new JButton("Annulla");
-		bottoneAnnullaInserimento.setBounds(178, 403, 113, 30);
+		bottoneAnnullaInserimento.setBounds(206, 418, 113, 30);
 		add(bottoneAnnullaInserimento);
 		bottoneAnnullaInserimento.setToolTipText("Pulisci form");
 		bottoneAnnullaInserimento.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
