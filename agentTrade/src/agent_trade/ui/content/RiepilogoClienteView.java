@@ -62,7 +62,6 @@ public class RiepilogoClienteView extends JPanel {
 		 
 		TFnome = new JTextField();
 		TFnome.setEditable(false);
-		TFnome.setEnabled(false);
 		TFnome.setBounds(178, 44, 261, 20);
 		add(TFnome);
 		 TFnome.setColumns(10);
@@ -72,7 +71,6 @@ public class RiepilogoClienteView extends JPanel {
 		add(labelCognome);
 		 
 		TFcognome = new JTextField();
-		TFcognome.setEnabled(false);
 		TFcognome.setEditable(false);
 		TFcognome.setBounds(178, 87, 261, 20);
 		add(TFcognome);
@@ -83,7 +81,6 @@ public class RiepilogoClienteView extends JPanel {
 		add(labelCodiceFiscale);
 		 
 		TFcodicefiscale = new JTextField();
-		TFcodicefiscale.setEnabled(false);
 		TFcodicefiscale.setEditable(false);
 		TFcodicefiscale.setBounds(178, 166, 261, 20);
 		add(TFcodicefiscale);
@@ -94,7 +91,6 @@ public class RiepilogoClienteView extends JPanel {
 		add(labelPartitaIva);
 		 
 		TFpartitaiva = new JTextField();
-		TFpartitaiva.setEnabled(false);
 		TFpartitaiva.setEditable(false);
 		TFpartitaiva.setBounds(178, 207, 261, 20);
 		add(TFpartitaiva);
@@ -105,7 +101,6 @@ public class RiepilogoClienteView extends JPanel {
 		add(labelIndirizzo);
 		 
 		TFindirizzo = new JTextField();
-		TFindirizzo.setEnabled(false);
 		TFindirizzo.setEditable(false);
 		TFindirizzo.setBounds(178, 128, 261, 20);
 		add(TFindirizzo);
@@ -116,7 +111,6 @@ public class RiepilogoClienteView extends JPanel {
 		add(labelEmail);
 		 
 		TFemail = new JTextField();
-		TFemail.setEnabled(false);
 		TFemail.setEditable(false);
 		TFemail.setBounds(178, 248, 261, 20);
 		add(TFemail);
@@ -127,7 +121,6 @@ public class RiepilogoClienteView extends JPanel {
 		add(labelTelefono);
 		 
 		TFtelefono = new JTextField();
-		TFtelefono.setEnabled(false);
 		TFtelefono.setEditable(false);
 		TFtelefono.setBounds(178, 294, 261, 20);
 		add(TFtelefono);
@@ -138,9 +131,8 @@ public class RiepilogoClienteView extends JPanel {
 		add(labelFax);
 		 
 		TFfax = new JTextField();
-		TFfax.setText("prova");
-		TFfax.setEnabled(false);
 		TFfax.setEditable(false);
+		TFfax.setText("prova");
 		TFfax.setBounds(177, 339, 262, 20);
 		add(TFfax);
 		TFfax.setColumns(10);
@@ -197,6 +189,17 @@ public class RiepilogoClienteView extends JPanel {
 		/*metodi privati*/
 		
 		/*metodi pubblici*/
+		
+		public void setRiepilogoCliente(String nome, String cognome, String codice_fiscale, String partita_iva, String indirizzo, String email, String telefono, String fax ) {
+			this.TFnome.setText(nome);
+			this.TFcognome.setText(cognome);
+			this.TFcodicefiscale.setText(codice_fiscale);
+			this.TFpartitaiva.setText(partita_iva);
+			this.TFindirizzo.setText(indirizzo);
+			this.TFemail.setText(email);
+			this.TFtelefono.setText(telefono);
+			this.TFfax.setText(fax);	
+		}
 		
 		
 		

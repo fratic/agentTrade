@@ -64,7 +64,7 @@ public class Ctrl_gestisciCliente {
 			if (cliente!=null)
 			{
 				
-				//PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
+				PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
 			}
 			else
 			{

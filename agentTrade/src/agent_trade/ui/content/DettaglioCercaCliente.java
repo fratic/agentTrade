@@ -43,7 +43,7 @@ public class DettaglioCercaCliente extends JPanel {
 		add(labelCercaCliente);
 		
 		labelError = DefaultComponentFactory.getInstance().createLabel("");
-		labelError.setBounds(10, 67, 219, 20);
+		labelError.setBounds(43, 67, 219, 20);
 		add(labelError);
 		
 		TFcerca = new JTextField();
@@ -58,7 +58,8 @@ public class DettaglioCercaCliente extends JPanel {
 		
 		bottoneCerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Ctrl_gestisciCliente.getInstance().function();
+				Ctrl_gestisciCliente.getInstance().ricercaCliente(TFcerca.getText());
+				
 				
 			}
 			
@@ -78,7 +79,7 @@ public class DettaglioCercaCliente extends JPanel {
 		labelError.setText(err);
     }
 	
-	//public void setDettaglio()      da finire!
+
 	
 	/*metodi privati*/
 	/*metodi pubblici*/
