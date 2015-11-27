@@ -1,4 +1,4 @@
-package test_interface;
+package test;
 
 /*
  * Copyright (c) 2000 David Flanagan.  All rights reserved.

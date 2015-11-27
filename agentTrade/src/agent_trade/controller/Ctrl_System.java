@@ -53,6 +53,16 @@ public class Ctrl_System {
 		}
 	}
 	
+	private void inizializzaSistema()
+	{
+		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
+
+		initProdotti();
+		
+		initAlberoPreventivi();	
+
+	}
+	
 	private void initProdotti(){
 
 		ProdottiView.getInstance().initTable(Dao_System.getInstance().caricaProdotti());
@@ -89,14 +99,6 @@ public class Ctrl_System {
 		}		
 	}
 	
-	public void inizializzaSistema()
-	{
-		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
-
-		initProdotti();
-		
-		initAlberoPreventivi();	
-
-	}
+	
 	
 }

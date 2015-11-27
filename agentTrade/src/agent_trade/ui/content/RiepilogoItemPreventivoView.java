@@ -1,5 +1,6 @@
 package agent_trade.ui.content;
 
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -15,9 +16,10 @@ import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 
-public class RiepilogoItemPreventivoView extends JPanel 
+public class RiepilogoItemPreventivoView extends JPanel
 {
 
 	/*attributi di classe*/
@@ -45,6 +47,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 	/*costruttori*/
 	
 	public RiepilogoItemPreventivoView() {
+
 		setLayout(null);
 		
 		JPanel panel = new JPanel();

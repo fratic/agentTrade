@@ -86,11 +86,9 @@ public class Ctrl_elaboraPreventivo {
 	
 	public void addItem(int IdProdotto) {
 		
-		
 		M_Prodotto p=Dao_System.getInstance().loadProdotto(IdProdotto);
 		M_Preventivo.getInstance().addItem(1,1,p);
-		ItemPreventivoView.getInstance().updateTable("rim",Integer.toString(p.getIdProdotto()), p.getNome(), p.getCategoria(), "1", Float.toString(p.getPrezzo()), "1");
-		
+		ItemPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(), "1", Float.toString(p.getPrezzo()), "1");
 		float a=M_Preventivo.getInstance().calcolaTotale();
 		System.out.println("Totale fattura: "+a);
 		ItemPreventivoView.getInstance().setImponibile(Float.toString(a));
@@ -183,6 +181,10 @@ public class Ctrl_elaboraPreventivo {
 			PrimaryView.getInstance().resetPannelloCentralePreventivo();
 			//volendo si può mettere uno sfondo quando non c'è nulla visualizzato
 		}
+	}
+	
+	public void refresh(){
+		
 	}
 	
 }

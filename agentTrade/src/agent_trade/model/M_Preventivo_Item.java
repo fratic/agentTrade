@@ -1,8 +1,11 @@
 package agent_trade.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class M_Preventivo_Item implements Serializable {
+public class M_Preventivo_Item extends Observable implements Serializable {
 	
 	/*attributi di classe*/
 	/*attributi privati*/
@@ -14,15 +17,21 @@ public class M_Preventivo_Item implements Serializable {
 	public M_Preventivo rifPreventivo;
 	public M_Prodotto idProdotto;
 	
+	private ArrayList<Observer> observers;
+
 	
 	/*costruttori*/
 	
 	public M_Preventivo_Item(int idPrevItem, int quantita, M_Preventivo rifPreventivo, M_Prodotto idProdotto){
 		
+		super();
+		observers =new ArrayList<Observer>();
 		this.idPreventivo_Item=idPrevItem;
 		this.quantita=quantita;
 		this.rifPreventivo=rifPreventivo;
 		this.idProdotto=idProdotto;		
+		this.AddObserver(rifPreventivo);
+	
 	}
 
 	
@@ -31,6 +40,22 @@ public class M_Preventivo_Item implements Serializable {
 	/*metodi privati*/
 	
 	/*metodi pubblici*/
+	
+	public void NotifyObservers() {
+
+		for(int i=0;i<observers.size();i++){
+			observers.get(i).update(this, null);
+			System.out.println("sono in notify");
+		}
+	}
+	
+	public void AddObserver(Observer o) {
+		observers.add(o);
+	}
+
+	public void RemoveObserver(Observer o) {
+		observers.remove(o);
+	}	
 	
 	public int getIdPreventivo_Item() {
 		return idPreventivo_Item;
@@ -46,6 +71,7 @@ public class M_Preventivo_Item implements Serializable {
 
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
+		NotifyObservers();
 	}
 
 	public M_Preventivo getRifPreventivo() {

@@ -194,7 +194,7 @@ public class PrimaryView extends JFrame
 				
 		panello_menu_preventivo = new JPanel();
 		panello_menu_preventivo.setBackground(Color.WHITE);
-		panello_menu_preventivo.setBounds(0, 0, 1003, 124);
+		panello_menu_preventivo.setBounds(0, 0, 1008, 124);
 		preventivo.add(panello_menu_preventivo);
 		panello_menu_preventivo.setLayout(null);
 		
@@ -230,12 +230,12 @@ public class PrimaryView extends JFrame
 		panello_menu_preventivo.add(button_4);*/
 		
 		panello_sottomenu_preventivo = new JPanel();
-		panello_sottomenu_preventivo.setBounds(0, 123, 1003, 586);
+		panello_sottomenu_preventivo.setBounds(0, 123, 1008, 586);
 		preventivo.add(panello_sottomenu_preventivo);
 		panello_sottomenu_preventivo.setLayout(null);
 		
 		panello_laterale_preventivo = new JPanel();
-		panello_laterale_preventivo.setBounds(0, 0, 261, 585);
+		panello_laterale_preventivo.setBounds(0, 0, 259, 585);
 		panello_sottomenu_preventivo.add(panello_laterale_preventivo);
 		panello_laterale_preventivo.setLayout(null);
 		
@@ -247,7 +247,7 @@ public class PrimaryView extends JFrame
 		
 		pannello_centrale_preventivo = new JPanel();
 		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
-		pannello_centrale_preventivo.setBounds(260, 0, 743, 585);
+		pannello_centrale_preventivo.setBounds(260, 0, 748, 585);
 		panello_sottomenu_preventivo.add(pannello_centrale_preventivo);
 		pannello_centrale_preventivo.setLayout(null);
 				
@@ -346,7 +346,7 @@ public class PrimaryView extends JFrame
 		
 		panello_centrale_catalogo = new JPanel();
 		panello_centrale_catalogo.setBackground(Color.LIGHT_GRAY);
-		panello_centrale_catalogo.setBounds(248, 0, 755, 551);
+		panello_centrale_catalogo.setBounds(251, 0, 755, 551);
 		panello_sottomenu_catalogo.add(panello_centrale_catalogo);
 		panello_centrale_catalogo.setLayout(null);
 		
@@ -361,7 +361,7 @@ public class PrimaryView extends JFrame
 		getContentPane().setLayout(null);
 		
 		tabbedPrincipale = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPrincipale.setBounds(0, 0, 1097, 865);
+		tabbedPrincipale.setBounds(0, 0, 1016, 744);
 
 		getContentPane().add(tabbedPrincipale);
 		

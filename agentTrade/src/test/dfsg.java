@@ -1,4 +1,4 @@
-package test_interface;
+package test;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JSpinner;
 
 public class dfsg extends JDialog {
 
@@ -34,6 +35,10 @@ public class dfsg extends JDialog {
 		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		{
+			JSpinner spinner = new JSpinner();
+			contentPanel.add(spinner);
+		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));

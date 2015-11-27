@@ -1,4 +1,4 @@
-package test_interface;
+package test;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;

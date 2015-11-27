@@ -1,4 +1,4 @@
-package test_interface;
+package test;
 
 /*
 Java Swing, 2nd Edition

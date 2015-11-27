@@ -3,11 +3,14 @@ package agent_trade.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
 import agent_trade.persistentTemp.Dao_System;
+import agent_trade.ui.content.RiepilogoItemPreventivoView;
 
 
-public class M_Preventivo implements Serializable{
+public class M_Preventivo implements Serializable, Observer{
 	
 	/*attributi di classe*/
 	
@@ -102,10 +105,21 @@ public class M_Preventivo implements Serializable{
 		this.rif_Cliente = rif_Cliente;
 	}
 	
-	public void addItem(int idPrevItem, int quantita, M_Prodotto idProdotto ){
+	public M_Preventivo_Item addItem(int idPrevItem, int quantita, M_Prodotto idProdotto ){
 		M_Preventivo_Item it= new M_Preventivo_Item(idPrevItem, quantita, M_Preventivo.getInstance(), idProdotto);
 		this.elencoItem.add(it);
+		it.setQuantita(2);
+		return it;
 	}
+	
+	public void update(Observable observer, Object obj) {
+		float c = calcolaTotale();		
+		System.out.println("In update, nuova quantità= "+c);
+
+		//aggiornare le quantita
+		
+	}
+	
 	
 	public float calcolaTotale(){
 		float totale=0;
