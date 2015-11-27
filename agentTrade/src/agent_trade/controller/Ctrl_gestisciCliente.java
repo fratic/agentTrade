@@ -63,8 +63,8 @@ public class Ctrl_gestisciCliente {
 			
 			if (cliente!=null)
 			{
-				//Modificare il nome della view da chiamare nella riga seguente
-				//DettaglioCercaCliente.getIstance().setDettaglio(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
+				
+				//PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
 			}
 			else
 			{
@@ -76,7 +76,7 @@ public class Ctrl_gestisciCliente {
 	//da rivedere COME CREO GLI ID? COME CONTROLLO I CAMPI?
 	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
 		
-		if(nome==null || cognome==null ||codFiscale==null || partitaIva==null || indirizzo==null || email==null || telefono==null || fax==null){
+		if(nome==null || cognome==null || codFiscale==null || partitaIva==null || indirizzo==null || email==null || telefono==null || fax==null){
 			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
 		}
 		else{
@@ -92,6 +92,36 @@ public class Ctrl_gestisciCliente {
 			
 			Dao_System.getInstance().nuovoCliente(cliente);
 		}
+	}
+	
+	//da cambiare quando avremo deciso definitivamente il db
+	public void modificaCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
+		
+		if(nome==null || cognome==null || codFiscale==null || partitaIva==null || indirizzo==null || email==null || telefono==null || fax==null){
+			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
+		}
+		else{
+			M_Cliente cliente=new M_Cliente();
+			cliente.setNome(nome);
+			cliente.setCognome(cognome);
+			cliente.setCodice_fiscale(codFiscale);
+			cliente.setPartita_Iva(partitaIva);
+			cliente.setIndirizzo(indirizzo);
+			cliente.setEmail(email);
+			cliente.setTelefono(telefono);
+			cliente.setFax(fax);
+			
+			Dao_System.getInstance().modificaCliente(cliente);
+		}
+	}
+	
+	//PROBLEMA ADESSO ESSENDO LA RICERCA FATTA SOLO PER COGNOME POTREBBERO ESSERCI PEOBLEMI NEL CASO DI DUE COGNOMI UGUALI
+	//da cambiare quando avremo deciso definitivamente il db
+	public void cancellaCliente(String c){
+		
+		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
+		Dao_System.getInstance().cancellaCliente(cliente);		
+		
 	}
 	
 	//bisogna decidere il criterio di caricamento. Decidere se è adeguata questa struttura dati

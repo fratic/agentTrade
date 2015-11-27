@@ -148,7 +148,8 @@ public class Dao_System {
 	 
 	public void modificaCliente(M_Cliente c){
 		
-		String codFis = c.getCodice_fiscale();
+		cancellaCliente(c);
+		nuovoCliente(c);
 		
 	}	 
 	
