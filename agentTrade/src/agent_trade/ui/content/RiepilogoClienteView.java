@@ -166,7 +166,8 @@ public class RiepilogoClienteView extends JPanel {
 		
 		bottoneCancellaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Ctrl_gestisciCliente.getInstance().CancellaCliente();
+				
+				Ctrl_gestisciCliente.getInstance().cancellaCliente((String)TFcognome.getText());
 			}
 		});
 		
