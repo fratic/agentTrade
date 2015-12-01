@@ -381,9 +381,9 @@ public class PrimaryView extends JFrame
 	/*metodi pubblici*/
 	
 	
-	public void setSchedaCliente(String nome, String cognome, String codice_fiscale, String partita_iva, String indirizzo, String email, String telefono, String fax) {
+	public void setSchedaCliente(String cognome, String nome, String codice_fiscale, String partita_iva, String indirizzo, String email, String telefono, String fax) {
 		
-		((RiepilogoClienteView) riep_cliente).setRiepilogoCliente(nome, cognome, codice_fiscale, partita_iva, indirizzo, email, telefono, fax);
+		((RiepilogoClienteView) riep_cliente).setRiepilogoCliente(cognome, nome, codice_fiscale, partita_iva, indirizzo, email, telefono, fax);
 
 	}
 //	public void setEnableNewCliente(boolean b) {
@@ -393,6 +393,17 @@ public class PrimaryView extends JFrame
 //	public void setEnableCercaBtn(boolean b) {
 //		bottoneCercaCliente.setEnabled(b);
 //	}
+	
+	//sblocca i campi per la modifica
+	public void setModifiche(boolean b) {
+		((RiepilogoClienteView) riep_cliente).setTFeditable(b);
+		
+	}
+	
+	//blocca il bottone modifica quando questo viene clickato
+	public void disattivaModifica(boolean b){
+		((RiepilogoClienteView) riep_cliente).setEnaBtnModifiche(b);
+	}
 	
 	
 	public void setEnableNewPreventivo(boolean b){

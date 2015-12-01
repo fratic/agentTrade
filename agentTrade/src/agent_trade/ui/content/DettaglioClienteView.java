@@ -152,6 +152,12 @@ public class DettaglioClienteView extends JPanel {
 			}	
 		});
 		
+		bottoneAnnullaInserimento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//Ctrl_gestisciCliente.getInstance().annullaNewCliente();
+			}
+		});
+		
 	}
 		
 	/*metodi di classe*/

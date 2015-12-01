@@ -15,6 +15,7 @@ import javax.swing.border.TitledBorder;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.model.M_Cliente;
 import agent_trade.ui.PrimaryView;
 
 public class RiepilogoClienteView extends JPanel {
@@ -47,6 +48,7 @@ public class RiepilogoClienteView extends JPanel {
 	private JButton bottoneModificaCliente;
 	private JButton bottoneCancellaCliente;
 	private JButton bottoneBackToRicerca;
+	private JButton bottoneSalvaModifiche;
 	
 	/*costruttori*/
 	
@@ -132,7 +134,6 @@ public class RiepilogoClienteView extends JPanel {
 		 
 		TFfax = new JTextField();
 		TFfax.setEditable(false);
-		TFfax.setText("prova");
 		TFfax.setBounds(177, 339, 262, 20);
 		add(TFfax);
 		TFfax.setColumns(10);
@@ -153,27 +154,31 @@ public class RiepilogoClienteView extends JPanel {
 		bottoneCancellaCliente.setToolTipText("Cancella cliente");
 		bottoneCancellaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
 		
-		bottoneBackToRicerca = new JButton("Effettua una nuova ricerca");
-		bottoneBackToRicerca.setBounds(345, 403, 207, 30);
-		add(bottoneBackToRicerca);
-		bottoneBackToRicerca.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/arrow_icon.png")));
+		bottoneSalvaModifiche = new JButton("Salva i dati modificati");
+		bottoneSalvaModifiche.setBounds(345, 403, 207, 30);
+		add(bottoneSalvaModifiche);
+		bottoneSalvaModifiche.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save-icon.png")));
 		
 		bottoneModificaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Ctrl_gestisciCliente.getInstance().ModificaCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFfax.getText());
+				
+				//per ora va bene cosi ma va richiamato prima il controller poi setModifiche ecc
+				PrimaryView.getInstance().setModifiche(true);
+				PrimaryView.getInstance().disattivaModifica(false);
 			}
 		});
 		
 		bottoneCancellaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				Ctrl_gestisciCliente.getInstance().cancellaCliente((String)TFcognome.getText());
+	
+				Ctrl_gestisciCliente.getInstance().cancellaCliente(TFcognome.getText());
 			}
 		});
 		
-		bottoneBackToRicerca.addActionListener(new ActionListener() {
+		bottoneSalvaModifiche.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//PrimaryView.getInstance();
+				
+				Ctrl_gestisciCliente.getInstance().modificaCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFfax.getText());
 			}
 		});
 		
@@ -191,9 +196,12 @@ public class RiepilogoClienteView extends JPanel {
 		
 		/*metodi pubblici*/
 		
-		public void setRiepilogoCliente(String nome, String cognome, String codice_fiscale, String partita_iva, String indirizzo, String email, String telefono, String fax ) {
-			this.TFnome.setText(nome);
+		
+		//questo metodo inserisce i dati recuperati nelle relative TF per consultare i dati cliente
+		public void setRiepilogoCliente(String cognome, String nome, String codice_fiscale, String partita_iva, String indirizzo, String email, String telefono, String fax ) {
+			
 			this.TFcognome.setText(cognome);
+			this.TFnome.setText(nome);
 			this.TFcodicefiscale.setText(codice_fiscale);
 			this.TFpartitaiva.setText(partita_iva);
 			this.TFindirizzo.setText(indirizzo);
@@ -202,6 +210,22 @@ public class RiepilogoClienteView extends JPanel {
 			this.TFfax.setText(fax);	
 		}
 		
+		//questo metodo rende le TF modificabili per effettuare update dei dati
+		public void setTFeditable(boolean b) {
+			TFcognome.setEditable(b);
+			TFnome.setEditable(b);
+			TFcodicefiscale.setEditable(b);
+			TFpartitaiva.setEditable(b);
+			TFindirizzo.setEditable(b);
+			TFemail.setEditable(b);
+			TFtelefono.setEditable(b);
+			TFfax.setEditable(b);
+			//bottoneModificaCliente.setEnabled(b);
+		}
+		
+		public void setEnaBtnModifiche(boolean b){
+		bottoneModificaCliente.setEnabled(b);
+		}
 		
 		
 	
