@@ -144,13 +144,21 @@ public class Ctrl_gestisciCliente {
 		//PrimaryView.getInstance().setEnableNewCliente(false);
 	}
 	
+	public void annullaNewCliente()
+	{
+		//PrimaryView.resetNuovoCliente();
+	}
+	
 	public void btnCerca()
 	{
 		PrimaryView.initCerca();
 		//PrimaryView.getInstance().setEnableCercaBtn(false);
 	}
 	
-	
+	public void annullaModificheCliente()
+	{
+		//PrimaryView.resetCliente();
+	}	
 	
 	public void caricaAlberoClienti()
 	{
