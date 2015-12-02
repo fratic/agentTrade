@@ -87,6 +87,38 @@ public class Dao_System {
 		return null;
 	}
 	
+	public ArrayList cercaClienti(String c){
+		ArrayList elencoClienti = null;
+		ArrayList Clienti = null;
+		Iterator iteraClienti = null;
+		
+		try{
+			FileInputStream fis = new FileInputStream("file_db/clienti");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			Clienti = (ArrayList) ois.readObject();
+			ois.close();
+			fis.close();
+			
+			iteraClienti = Clienti.iterator();
+			M_Cliente cliente = new M_Cliente();
+			elencoClienti = new ArrayList();
+			while(iteraClienti.hasNext()){
+				cliente = (M_Cliente) iteraClienti.next();
+				if(cliente.getCognome().equals(c)){
+					//System.out.println("cognome:"  + cliente.getCognome());
+					elencoClienti.add(cliente);
+				}
+				
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println("Eccezione:"  + e.toString());
+		}
+		
+		return elencoClienti;
+	}
+	
 	public ArrayList caricaClienti() {
 		
 		StringBuffer mioSB = null; 
@@ -109,7 +141,7 @@ public class Dao_System {
 		}
 		catch(Exception e)
 		{
-		System.out.println("Eccezione:"  + e.toString());
+			System.out.println("Eccezione:"  + e.toString());
 		}
 		return elencoClienti;		 
 	}
