@@ -141,7 +141,7 @@ public class Ricerca_cliente extends JDialog {
 		BottoneVisualizza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
-				Ctrl_gestisciCliente.getInstance().ricercaCliente((String) table.getValueAt(table.getSelectedRow(),0));
+				Ctrl_gestisciCliente.getInstance().recuperaCliente((String) table.getValueAt(table.getSelectedRow(),0));
 				//CercaClienteView.getInstance().dispose();
 			}
 		});
@@ -178,12 +178,19 @@ public class Ricerca_cliente extends JDialog {
 	}
 	
 	public void updateTable(String cognome, String nome,String cf, String pi){
+//		int k=((DefaultTableModel) JTableModel).getRowCount();
+//		for (int i=k-1; i>=0;i--){
+//			((DefaultTableModel) JTableModel).removeRow(i);
+//		}
+			labelError.setText("");
+            ((DefaultTableModel) JTableModel).addRow(new Object[]{ cognome, nome, cf, pi});
+	}
+	
+	public void svuotaTabella() {
 		int k=((DefaultTableModel) JTableModel).getRowCount();
 		for (int i=k-1; i>=0;i--){
 			((DefaultTableModel) JTableModel).removeRow(i);
 		}
-			labelError.setText("");
-            ((DefaultTableModel) JTableModel).addRow(new Object[]{ cognome, nome, cf, pi});
 	}
 	
 	public void setErrore(String err) {
