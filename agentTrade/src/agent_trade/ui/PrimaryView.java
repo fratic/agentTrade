@@ -140,18 +140,19 @@ public class PrimaryView extends JFrame
 		pannello_centrale_cliente.repaint();
 	}
 	
-	public static void initCerca() {
-		cerca = DettaglioCercaCliente.getInstance();
-		cerca.setBounds(0, 1, 755, 101);
-		pannello_centrale_cliente.add(cerca);
-		pannello_centrale_cliente.repaint();
-		
-		riep_cliente= RiepilogoClienteView.getInstance();
-		riep_cliente.setBounds(0, 100, 755, 450);
-		pannello_centrale_cliente.add(riep_cliente);
-		pannello_centrale_cliente.repaint();
+//	public static void initCerca() {
+//		cerca = DettaglioCercaCliente.getInstance();
+//		cerca.setBounds(0, 1, 755, 101);
+//		pannello_centrale_cliente.add(cerca);
+//		pannello_centrale_cliente.repaint();
+//		
+//		riep_cliente= RiepilogoClienteView.getInstance();
+//		riep_cliente.setBounds(0, 100, 755, 450);
+//		pannello_centrale_cliente.add(riep_cliente);
+//		pannello_centrale_cliente.repaint();
+//	
+//	}
 	
-	}
 	
 	public static void initRiepilogoClienteView() {
 		

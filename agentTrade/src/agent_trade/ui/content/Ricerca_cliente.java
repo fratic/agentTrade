@@ -103,7 +103,7 @@ public class Ricerca_cliente extends JDialog {
 		
 		JTableModel = new DefaultTableModel(
                 new String[][] { },
-                new String[] { "Cognome", "Nome", "Indirizzo", "Codice Fiscale", "Partita iva", "e-mail", "Telefono", "Fax" });
+                new String[] { "Cognome", "Nome","Codice Fiscale", "Partita iva"});
 			
 		table =new JTable();
         
@@ -134,7 +134,7 @@ public class Ricerca_cliente extends JDialog {
 						((DefaultTableModel) JTableModel).removeRow(i);
 					}
 					//fare le modifiche a ricerca cliente!!!!
-					Ctrl_gestisciCliente.getInstance().getInstance().ricercaCliente(TFCerca.getText());
+					Ctrl_gestisciCliente.getInstance().ricercaCliente(TFCerca.getText());
 			}
 		});
 		
@@ -173,21 +173,25 @@ public class Ricerca_cliente extends JDialog {
 		while (iteraClienti.hasNext()) {
 			M_Cliente c = new M_Cliente();
 			c = (M_Cliente) iteraClienti.next();
-			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva(), c.getIndirizzo(),c.getEmail(), c.getTelefono(), c.getFax()});
+			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva()});
 		}
 	}
 	
-	public void updateTable(String cognome, String nome,String cf, String pi, String indirizzo,String email, String tel, String fax){
+	public void updateTable(String cognome, String nome,String cf, String pi){
 		int k=((DefaultTableModel) JTableModel).getRowCount();
 		for (int i=k-1; i>=0;i--){
 			((DefaultTableModel) JTableModel).removeRow(i);
 		}
 			labelError.setText("");
-            ((DefaultTableModel) JTableModel).addRow(new Object[]{ cognome, nome, cf, pi, indirizzo, email, tel, fax});
+            ((DefaultTableModel) JTableModel).addRow(new Object[]{ cognome, nome, cf, pi});
 	}
 	
 	public void setErrore(String err) {
 		labelError.setText(err);
+	}
+	
+	public static void cancInstanza(){
+		instance=null;	 
 	}
 	
 	public String getRicerca(){
