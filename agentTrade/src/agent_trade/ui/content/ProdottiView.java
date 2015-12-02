@@ -5,27 +5,17 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.JCheckBox;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
-
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.model.M_Prodotto;
-import agent_trade.util.ButtonEditor;
-import agent_trade.util.ButtonRendererRm;
 import agent_trade.util.ButtonRendererAdd;
-import agent_trade.util.MyComboBoxEditor;
-import agent_trade.util.MyComboBoxRenderer;
-
-import javax.swing.JButton;
-import java.awt.FlowLayout;
+import agent_trade.util.ButtonsEditorRm;
 
 
 public class ProdottiView extends JPanel {
@@ -157,7 +147,7 @@ public class ProdottiView extends JPanel {
             
     		TableColumn col = table.getColumnModel().getColumn(5);
     	    col.setCellRenderer(new ButtonRendererAdd());
-    	    col.setCellEditor(new ButtonEditor(new JCheckBox()));
+    	    col.setCellEditor(new ButtonsEditorRm(table));
     	    col.setPreferredWidth(25);
 
 		

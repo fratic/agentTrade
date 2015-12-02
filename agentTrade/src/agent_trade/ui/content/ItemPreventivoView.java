@@ -1,33 +1,23 @@
 package agent_trade.ui.content;
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.DefaultCellEditor;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import javax.swing.ImageIcon;
-import javax.swing.UIManager;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
-import test.JButtonTableExample;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.util.ButtonEditor;
-import agent_trade.util.ButtonRendererRm;
+import agent_trade.util.ButtonsEditorRm;
+import agent_trade.util.ButtonsRendererRm;
 import agent_trade.util.MyComboBoxEditor;
 import agent_trade.util.MyComboBoxRenderer;
 
@@ -86,19 +76,38 @@ public class ItemPreventivoView extends JPanel
 		        new ButtonEditor(new JCheckBox()));  
 		    table.getColumn("Quantità").setCellRenderer((TableCellRenderer) new Spinner());
 */
-		
-		
-		table = new JTable();
-	    JTableModel = (DefaultTableModel) table.getModel();
+		String empty = "";
+	      String[] columnNames = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" };
 
-	    JTableModel.addColumn("Rimuovi", new Object[] {});
-	    JTableModel.addColumn("ID prodotto", new Object[] {});
-	    JTableModel.addColumn("Nome", new Object[] {});
-	    JTableModel.addColumn("Categoria", new Object[] {});
-	    JTableModel.addColumn("Quantità", new Object[] {});
-	    JTableModel.addColumn("Prezzo", new Object[] {});
-	    JTableModel.addColumn("Parziale", new Object[] {});
+	      Object[][] data = {
+//	          {empty , "1", "nome", "categoria", "quantita", "prezzo", "parziale"}, 
+//	          {empty, "2", "nome", "categoria", "quantita", "prezzo", "parziale"}, 
+//	          {empty, "3", "nome", "categoria", "quantita", "prezzo", "parziale"}, 
+//	          {empty, "4", "nome", "categoria", "quantita", "prezzo", "parziale"}
+	      };
+		
+	   // JTableModel = (DefaultTableModel) table.getModel();
+
+		JTableModel = new DefaultTableModel(data, columnNames) {
+	          @Override public Class<?> getColumnClass(int column) {
+	              return getValueAt(0, column).getClass();
+	          }
+	      };
+			table = new JTable(JTableModel);
+		    //  table.setRowHeight(35);
+		      TableColumn column = table.getColumnModel().getColumn(0);
+		      column.setCellRenderer(new ButtonsRendererRm());
+		      column.setCellEditor(new ButtonsEditorRm(table));
+
 	    
+//	    JTableModel.addColumn("Rimuovi", new Object[] {});
+//	    JTableModel.addColumn("ID prodotto", new Object[] {});
+//	    JTableModel.addColumn("Nome", new Object[] {});
+//	    JTableModel.addColumn("Categoria", new Object[] {});
+//	    JTableModel.addColumn("Quantità", new Object[] {});
+//	    JTableModel.addColumn("Prezzo", new Object[] {});
+//	    JTableModel.addColumn("Parziale", new Object[] {});
+
 	    
 	    
 	    
@@ -117,7 +126,7 @@ public class ItemPreventivoView extends JPanel
 */
 
 
-	    table.setRowHeight(20);
+	    table.setRowHeight(30);
 	   
 	    
 		    //table.setModel(JTableModel);
@@ -200,24 +209,37 @@ public class ItemPreventivoView extends JPanel
 	
 	public void updateTable(String rem, int id, String nome, String categoria, String quantita, String prezzo, String parziale)
 	{
-		((DefaultTableModel) JTableModel).addRow(new Object[]{rem, Integer.toString(id), nome, categoria, quantita, prezzo, parziale});
+		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quantita, prezzo, parziale});
 		
 		
 		String[] values = new String[] { "1", "2", "3" };
 
-		    TableColumn col = table.getColumnModel().getColumn(4);
-		    col.setCellEditor((TableCellEditor) new MyComboBoxEditor(values));
-		    col.setCellRenderer(new MyComboBoxRenderer(values, id));
-
-		    col = table.getColumnModel().getColumn(0);
-		    
-		    ButtonRendererRm brm =new ButtonRendererRm();
-		    col.setCellRenderer(brm);
-		    
-		    ButtonEditor be = new ButtonEditor(new JCheckBox(), id);
-		    col.setCellEditor(be);
-		    col.setPreferredWidth(30);
+//		    TableColumn col = table.getColumnModel().getColumn(4);
+//		    col.setCellEditor((TableCellEditor) new MyComboBoxEditor(values));
+//		    col.setCellRenderer(new MyComboBoxRenderer(values, id));
+//
+//		    
+//		    col = table.getColumnModel().getColumn(0);
+//		    ButtonRendererRm brm =new ButtonRendererRm(id);
+//			System.out.println("UPDATE TABLE brm "+brm.toString());
+//
+//		    col.setCellRenderer(brm);
+//		    
+//		    
+//		    ButtonEditor be = new ButtonEditor(new JCheckBox(), id);
+//			System.out.println("UPDATE TABLE be "+be.toString());
+//
+//		    col.setCellEditor(be);
 		
+	      TableColumn column = table.getColumnModel().getColumn(0);
+	      column.setCellRenderer(new ButtonsRendererRm());
+	      column.setCellEditor(new ButtonsEditorRm(table));
+	      column.setMaxWidth(55);
+	      column.setMinWidth(55);
+	      
+	      column = table.getColumnModel().getColumn(4);
+	      column.setCellEditor((TableCellEditor) new MyComboBoxEditor(values));
+	      column.setCellRenderer(new MyComboBoxRenderer(values, id));
 	}
 	
 	public void setImponibile(String a){
@@ -231,5 +253,4 @@ public class ItemPreventivoView extends JPanel
 	public void setTotale(String a){
 		textFieldTotale.setText(a);
 	}	
-	
 }

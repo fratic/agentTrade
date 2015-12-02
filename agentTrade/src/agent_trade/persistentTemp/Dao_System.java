@@ -103,9 +103,7 @@ public class Dao_System {
 			iteraClienti = elencoClienti.iterator();
 			M_Cliente c = new M_Cliente();
 			while (iteraClienti.hasNext()) {
-				c = (M_Cliente) iteraClienti.next();
-				System.out.println(c.getCognome()+" "+c.getNome());
-				
+				c = (M_Cliente) iteraClienti.next();				
 			}
 			return elencoClienti;
 		}
@@ -156,7 +154,6 @@ public class Dao_System {
 	public void cancellaCliente(M_Cliente c){
 		
 		String codFis = c.getCodice_fiscale();
-		System.out.println("in funzione cancella clinete: codfisc "+codFis+"$$");
 		ArrayList elencoClienti = null;
 		Iterator iteraClienti = null;
 		try
@@ -221,7 +218,6 @@ public class Dao_System {
 			int i=0;
 			while (iteraProdotti.hasNext()) {				
 				p = (M_Prodotto) iteraProdotti.next();
-				System.out.println("in dao: "+p.getNome());
 				if (idProdotto==p.getIdProdotto()){
 					return p;
 				}
@@ -391,9 +387,7 @@ public class Dao_System {
 	
 			ois.close();
 			fis.close();
-			
-			System.out.println("ID caricato: "+id);
-			
+						
 			return id;
 		}
 		catch(Exception e)
