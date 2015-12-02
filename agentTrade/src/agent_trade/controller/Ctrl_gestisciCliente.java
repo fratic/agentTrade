@@ -81,10 +81,11 @@ public class Ctrl_gestisciCliente {
 		}
 	}
 	
-	public void recuperaCliente(String codFis)
+	public void recuperaCliente(String cognome)
 	{	
 		
-			M_Cliente cliente=Dao_System.getInstance().ricercaCliente(codFis);
+			M_Cliente cliente=Dao_System.getInstance().cercaCliente(cognome);
+			PrimaryView.initRiepilogoClienteView();
 			PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
 	}
 	
@@ -169,9 +170,7 @@ public class Ctrl_gestisciCliente {
 		Ricerca_cliente.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		Ricerca_cliente.getInstance().setVisible(true);
 	}
-	
-	
-	
+		
 	public void annullaModificheCliente()
 	{
 		PrimaryView.getInstance().resetCliente();
