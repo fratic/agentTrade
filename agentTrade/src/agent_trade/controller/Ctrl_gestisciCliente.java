@@ -54,6 +54,7 @@ public class Ctrl_gestisciCliente {
 		}
 	}
 	
+	//per la tabella cerca cliente in gestione cliente
 	public void ricercaCliente(String c)
 	{
 		if (c.equals("") || c==null){
@@ -66,10 +67,9 @@ public class Ctrl_gestisciCliente {
 				Ricerca_cliente.getInstance().setErrore("Cliente non trovato");
 			}
 			else{
-				
-				
 				Iterator iteraClienti = clienti.iterator();
 				M_Cliente cliente = new M_Cliente();
+				Ricerca_cliente.getInstance().svuotaTabella();
 				while(iteraClienti.hasNext()){
 //					System.out.println("ciao");
 					cliente = (M_Cliente) iteraClienti.next();
@@ -81,27 +81,12 @@ public class Ctrl_gestisciCliente {
 		}
 	}
 	
-//	public void ricercaCliente(String c)//qui andrebbe cambiato il modo di ricerca
-//	{	
-//		if (c.equals("") || c==null)
-//		{
-//			DettaglioCercaCliente.getInstance().setErrore("Inserire cognome cliente");			
-//		}
-//		else
-//		{
-//			M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
-//			
-//			if (cliente!=null)
-//			{
-//				
-//				PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
-//			}
-//			else
-//			{
-//				DettaglioCercaCliente.getInstance().setErrore("cliente non trovato");
-//			}
-//		}
-//	}
+	public void recuperaCliente(String codFis)
+	{	
+		
+			M_Cliente cliente=Dao_System.getInstance().ricercaCliente(codFis);
+			PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
+	}
 	
 	//da rivedere COME CREO GLI ID? COME CONTROLLO I CAMPI?
 	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
@@ -181,9 +166,11 @@ public class Ctrl_gestisciCliente {
 	
 	public void btnCerca()
 	{
-		PrimaryView.initCerca();
-		//PrimaryView.getInstance().setEnableCercaBtn(false);
+		Ricerca_cliente.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
+		Ricerca_cliente.getInstance().setVisible(true);
 	}
+	
+	
 	
 	public void annullaModificheCliente()
 	{

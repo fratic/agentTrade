@@ -87,6 +87,34 @@ public class Dao_System {
 		return null;
 	}
 	
+	public M_Cliente ricercaCliente(String codFis) {
+		StringBuffer mioSB = null; 
+		ArrayList elencoClienti = null;
+		Iterator iteraClienti = null;
+		try
+		{
+			FileInputStream fis = new FileInputStream("file_db/clienti");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			elencoClienti = (ArrayList) ois.readObject();
+			ois.close();
+			fis.close();
+			
+			iteraClienti = elencoClienti.iterator();
+			M_Cliente c = new M_Cliente();
+			while (iteraClienti.hasNext()) {
+				c = (M_Cliente) iteraClienti.next();
+				if (c.getCodice_fiscale().equals(codFis)){
+					return c;
+				}
+			}
+		}
+		catch(Exception e)
+		{
+		System.out.println("Eccezione:"  + e.toString());
+		}
+		return null;
+	}
+	
 	public ArrayList cercaClienti(String c){
 		ArrayList elencoClienti = null;
 		ArrayList Clienti = null;
