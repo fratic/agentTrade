@@ -9,6 +9,7 @@ import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.CercaClienteView;
 import agent_trade.ui.content.DettaglioClienteView;
 import agent_trade.ui.content.Ricerca_cliente;
+import agent_trade.ui.content.RiepilogoClienteView;
 
 public class Ctrl_gestisciCliente {
 
@@ -95,21 +96,24 @@ public class Ctrl_gestisciCliente {
 		
 		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
 			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
-			System.out.println("non lo salvo");
+			//System.out.println("non lo salvo");
 		}
 		else{
-//			M_Cliente cliente=new M_Cliente();
-//			cliente.setNome(nome);
-//			cliente.setCognome(cognome);
-//			cliente.setCodice_fiscale(codFiscale);
-//			cliente.setPartita_Iva(partitaIva);
-//			cliente.setIndirizzo(indirizzo);
-//			cliente.setEmail(email);
-//			cliente.setTelefono(telefono);
-//			cliente.setFax(fax);
-//			
-//			Dao_System.getInstance().nuovoCliente(cliente);
-			System.out.println("lo salvo");
+			M_Cliente cliente=new M_Cliente();
+			cliente.setNome(nome);
+			cliente.setCognome(cognome);
+			cliente.setCodice_fiscale(codFiscale);
+			cliente.setPartita_Iva(partitaIva);
+			cliente.setIndirizzo(indirizzo);
+			cliente.setEmail(email);
+			cliente.setTelefono(telefono);
+			cliente.setFax(fax);
+			
+			Dao_System.getInstance().nuovoCliente(cliente);
+			//System.out.println("lo salvo");
+			PrimaryView.getInstance().resetNuovoCliente();
+			PrimaryView.getInstance().resetPannelloCentraleCliente();
+			recuperaCliente(cognome);
 		}
 	}
 	
@@ -117,7 +121,7 @@ public class Ctrl_gestisciCliente {
 	public void modificaCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
 		
 		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
-			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
+			RiepilogoClienteView.getInstance().setErrore("inserisci tutti i campi");
 		}
 		else{
 			M_Cliente cliente=new M_Cliente();
@@ -131,6 +135,10 @@ public class Ctrl_gestisciCliente {
 			cliente.setFax(fax);
 			
 			Dao_System.getInstance().modificaCliente(cliente);
+			
+			PrimaryView.getInstance().resetCliente();
+			//recuperaCliente(cognome);
+			PrimaryView.getInstance().disattivaModifica(true);
 		}
 	}
 	
@@ -175,10 +183,18 @@ public class Ctrl_gestisciCliente {
 		Ricerca_cliente.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		Ricerca_cliente.getInstance().setVisible(true);
 	}
+	
+	public void abilitaModifica()
+	{
+		PrimaryView.getInstance().setModifiche(true);
+		PrimaryView.getInstance().disattivaModifica(false);
+	}
 		
-	public void annullaModificheCliente()
+	public void annullaModificheCliente(String cognome)
 	{
 		PrimaryView.getInstance().resetCliente();
+		recuperaCliente(cognome);
+		PrimaryView.getInstance().disattivaModifica(true);
 	}	
 	
 	public void caricaAlberoClienti()

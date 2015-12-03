@@ -130,7 +130,7 @@ public class RiepilogoClienteView extends JPanel {
 		TFtelefono.setColumns(10);
 		 
 		labelFax = DefaultComponentFactory.getInstance().createLabel("Fax: ");
-		labelFax.setBounds(44, 342, 69, 14);
+		labelFax.setBounds(43, 342, 69, 14);
 		add(labelFax);
 		 
 		TFfax = new JTextField();
@@ -138,6 +138,10 @@ public class RiepilogoClienteView extends JPanel {
 		TFfax.setBounds(177, 339, 262, 20);
 		add(TFfax);
 		TFfax.setColumns(10);
+		
+		labelErrore = DefaultComponentFactory.getInstance().createLabel("");
+		labelErrore.setBounds(279, 378, 69, 14);
+		add(labelErrore);
 		
 //		JSeparator separator = new JSeparator();
 //		separator.setBounds(0, 384, 554, 8);
@@ -167,10 +171,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		bottoneModificaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				//per ora va bene cosi ma va richiamato prima il controller poi setModifiche ecc
-				PrimaryView.getInstance().setModifiche(true);
-				PrimaryView.getInstance().disattivaModifica(false);
+				Ctrl_gestisciCliente.getInstance().abilitaModifica();
 			}
 		});
 		
@@ -192,7 +193,7 @@ public class RiepilogoClienteView extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 	
 				
-				//Ctrl_gestisciCliente.getInstance().annullaModificheCliente(TFcognome.getText());
+				Ctrl_gestisciCliente.getInstance().annullaModificheCliente(TFcognome.getText());
 			}
 		});
 		
@@ -238,19 +239,23 @@ public class RiepilogoClienteView extends JPanel {
 		}
 		
 		public void resetCampiModifica(){
-			TFcognome.setText(null);
-			TFnome.setText(null);
-			TFcodicefiscale.setText(null);
-			TFpartitaiva.setText(null);
-			TFindirizzo.setText(null);
-			TFemail.setText(null);
-			TFtelefono.setText(null);
-			TFfax.setText(null);
+//			TFcognome.setText(null);
+//			TFnome.setText(null);
+//			TFcodicefiscale.setText(null);
+//			TFpartitaiva.setText(null);
+//			TFindirizzo.setText(null);
+//			TFemail.setText(null);
+//			TFtelefono.setText(null);
+//			TFfax.setText(null);
 			setTFeditable(false);
 		}
 		
 		public void setEnaBtnModifiche(boolean b){
 		bottoneModificaCliente.setEnabled(b);
+		}
+		
+		public void setErrore(String err){
+			labelErrore.setText(err);
 		}
 	}
 		
