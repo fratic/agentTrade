@@ -47,7 +47,6 @@ public class PrimaryView extends JFrame
 	
 	private static JPanel pannello_centrale_preventivo;
 	
-	private static JPanel cerca;
 	private static JPanel dettaglioCliente;
 	private static JPanel riep_cliente;
 	
@@ -83,6 +82,8 @@ public class PrimaryView extends JFrame
 	private JPanel pannelloProdotti;
 	
 	private JPanel alberoPreventivi;
+	
+	private JPanel alberoClienti;
 	
 	private JTabbedPane tabbedPrincipale;
 	
@@ -304,6 +305,7 @@ public class PrimaryView extends JFrame
 		
 		bottoneCercaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				Ctrl_gestisciCliente.getInstance().btnCerca();
 			
 			}	
@@ -314,8 +316,6 @@ public class PrimaryView extends JFrame
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Ctrl_gestisciCliente.getInstance().newCliente();
-				//pannello_centrale_cliente.setVisible(true);
-				//PrimaryView.initDettaglioCliente();
 				
 			}
 		});
@@ -411,6 +411,7 @@ public class PrimaryView extends JFrame
 	
 	public void resetCliente() {
 		((RiepilogoClienteView) riep_cliente).resetCampiModifica();
+		
 	}
 	
 	
@@ -486,6 +487,15 @@ public class PrimaryView extends JFrame
 		pannello_centrale_preventivo.setBounds(260, 0, 743, 585);
 		pannello_centrale_preventivo.setLayout(null);
 		pannello_centrale_preventivo.repaint();
+	}
+	
+	public void resetPannelloCentraleCliente(){
+		pannello_centrale_cliente.removeAll();
+		pannello_centrale_cliente.setBackground(Color.LIGHT_GRAY);
+		pannello_centrale_cliente.setBounds(260, 0, 743, 585);
+		pannello_centrale_cliente.setLayout(null);
+		pannello_centrale_cliente.repaint();
+		
 	}
 
 	public void updateTableRiepilogo(String rem, String id, String nome, String categoria, String quantita, String prezzo, String parziale){

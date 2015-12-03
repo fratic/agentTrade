@@ -192,6 +192,7 @@ public class RiepilogoClienteView extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 	
 				Ctrl_gestisciCliente.getInstance().annullaModificheCliente();
+				PrimaryView.getInstance().disattivaModifica(true);
 			}
 		});
 		
