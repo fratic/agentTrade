@@ -138,7 +138,7 @@ public class DettaglioClienteView extends JPanel {
 		bottoneSalvaCliente.setBounds(41, 418, 113, 30);
 		add(bottoneSalvaCliente);
 		bottoneSalvaCliente.setToolTipText("Salva il cliente");
-		bottoneSalvaCliente.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save-icon.png")));
+		bottoneSalvaCliente.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save-user.png")));
 		
 		bottoneAnnullaInserimento = new JButton("Annulla");
 		bottoneAnnullaInserimento.setBounds(206, 418, 113, 30);
@@ -171,6 +171,10 @@ public class DettaglioClienteView extends JPanel {
 	public void setErrore(String err) {
 		labelErrore.setText(err);
     }
+	
+	public void setVisibleErroreNuovoCliente(boolean b){
+		labelErrore.setVisible(b);
+	}
 		
 	public void resetNewCliente(){
 		TFcognome.setText(null);

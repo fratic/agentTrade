@@ -140,7 +140,7 @@ public class RiepilogoClienteView extends JPanel {
 		TFfax.setColumns(10);
 		
 		labelErrore = DefaultComponentFactory.getInstance().createLabel("");
-		labelErrore.setBounds(279, 378, 69, 14);
+		labelErrore.setBounds(43, 367, 210, 25);
 		add(labelErrore);
 		
 //		JSeparator separator = new JSeparator();
@@ -148,24 +148,24 @@ public class RiepilogoClienteView extends JPanel {
 //		add(separator);
 		
 		bottoneModificaCliente = new JButton("Modifica");
-		bottoneModificaCliente.setBounds(157, 403, 127, 30);
+		bottoneModificaCliente.setBounds(157, 394, 127, 33);
 		add(bottoneModificaCliente);
 		bottoneModificaCliente.setToolTipText("Modifica i dati del cliente");
 		bottoneModificaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/setting.png")));
 		
 		bottoneCancellaCliente = new JButton("Cancella");
-		bottoneCancellaCliente.setBounds(27, 403, 120, 30);
+		bottoneCancellaCliente.setBounds(27, 394, 120, 33);
 		add(bottoneCancellaCliente);
 		bottoneCancellaCliente.setToolTipText("Cancella cliente");
-		bottoneCancellaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
+		bottoneCancellaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/remove-user.png")));
 		
 		bottoneSalvaModifiche = new JButton("Salva");
-		bottoneSalvaModifiche.setBounds(294, 403, 120, 30);
+		bottoneSalvaModifiche.setBounds(294, 394, 120, 33);
 		add(bottoneSalvaModifiche);
-		bottoneSalvaModifiche.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save-icon.png")));
+		bottoneSalvaModifiche.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save-user.png")));
 		
 		bottoneAnnullaModifica = new JButton("Annulla");
-		bottoneAnnullaModifica.setBounds(424, 403, 120, 30);
+		bottoneAnnullaModifica.setBounds(424, 394, 120, 33);
 		add(bottoneAnnullaModifica);
 		bottoneAnnullaModifica.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
 		
@@ -254,8 +254,24 @@ public class RiepilogoClienteView extends JPanel {
 		bottoneModificaCliente.setEnabled(b);
 		}
 		
+		public void setEnaBtnSalvaModifiche(boolean b){
+			bottoneSalvaModifiche.setEnabled(b);
+		}
+		
+		public void setEnaBtnAnnullaModifiche(boolean b){
+			bottoneAnnullaModifica.setEnabled(b);
+		}
+		
+		public void setEnaBtnCancella(boolean b) {
+			bottoneCancellaCliente.setEnabled(b);
+		}
+		
 		public void setErrore(String err){
 			labelErrore.setText(err);
+		}
+		
+		public void setVisibleErroreRiepCliente(boolean b){
+			labelErrore.setVisible(b);
 		}
 	}
 		

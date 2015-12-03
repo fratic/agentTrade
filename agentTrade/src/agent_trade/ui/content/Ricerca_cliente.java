@@ -142,7 +142,6 @@ public class Ricerca_cliente extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
 				Ctrl_gestisciCliente.getInstance().recuperaCliente((String) table.getValueAt(table.getSelectedRow(),0));
-				//CercaClienteView.getInstance().dispose();
 			}
 		});
 

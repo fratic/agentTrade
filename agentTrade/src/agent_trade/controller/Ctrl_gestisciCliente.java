@@ -10,6 +10,7 @@ import agent_trade.ui.content.CercaClienteView;
 import agent_trade.ui.content.DettaglioClienteView;
 import agent_trade.ui.content.Ricerca_cliente;
 import agent_trade.ui.content.RiepilogoClienteView;
+import agent_trade.ui.content.confermaCancCliente;
 
 public class Ctrl_gestisciCliente {
 
@@ -32,6 +33,7 @@ public class Ctrl_gestisciCliente {
 
 	/*metodi privati*/
 
+	
 	/*metodi pubblici*/
 	
 	
@@ -89,12 +91,15 @@ public class Ctrl_gestisciCliente {
 			Ricerca_cliente.cancInstanza();
 			PrimaryView.initRiepilogoClienteView();
 			PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
+			PrimaryView.getInstance().disattivaSalvaModifiche(false);
+			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
 	}
 	
 	//da rivedere COME CREO GLI ID? COME CONTROLLO I CAMPI?
 	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
 		
 		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
+			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
 			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
 			//System.out.println("non lo salvo");
 		}
@@ -139,6 +144,9 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().resetCliente();
 			//recuperaCliente(cognome);
 			PrimaryView.getInstance().disattivaModifica(true);
+			PrimaryView.getInstance().disattivaSalvaModifiche(false);
+			PrimaryView.getInstance().disattivaCancella(true);
+			
 		}
 	}
 	
@@ -147,7 +155,8 @@ public class Ctrl_gestisciCliente {
 	public void cancellaCliente(String c){
 		
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
-		Dao_System.getInstance().cancellaCliente(cliente);		
+		Dao_System.getInstance().cancellaCliente(cliente);
+		confermaCancCliente.getInstance().setVisible(true);
 		
 	}
 	
@@ -175,6 +184,7 @@ public class Ctrl_gestisciCliente {
 	public void annullaNewCliente()
 	{
 		PrimaryView.getInstance().resetNuovoCliente();
+		PrimaryView.getInstance().setVisibleErroreNuovoCliente(false);
 	}
 	
 	public void btnCerca()
@@ -188,6 +198,9 @@ public class Ctrl_gestisciCliente {
 	{
 		PrimaryView.getInstance().setModifiche(true);
 		PrimaryView.getInstance().disattivaModifica(false);
+		PrimaryView.getInstance().disattivaCancella(false);
+		PrimaryView.getInstance().disattivaSalvaModifiche(true);
+		PrimaryView.getInstance().disattivaAnnullaModifiche(true);
 	}
 		
 	public void annullaModificheCliente(String cognome)
@@ -195,7 +208,18 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().resetCliente();
 		recuperaCliente(cognome);
 		PrimaryView.getInstance().disattivaModifica(true);
-	}	
+		PrimaryView.getInstance().disattivaCancella(true);
+		PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
+	}
+	
+	public void postConfermaCancCliente(){
+		PrimaryView.getInstance().resetPannelloCentraleCliente();
+		confermaCancCliente.getInstance().setVisible(false);
+		}
+	
+	public void notConfermaCancCliente(){
+		confermaCancCliente.getInstance().setVisible(false);
+	}
 	
 	public void caricaAlberoClienti()
 	{

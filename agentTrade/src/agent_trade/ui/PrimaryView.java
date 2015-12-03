@@ -394,29 +394,40 @@ public class PrimaryView extends JFrame
 //		bottoneCercaCliente.setEnabled(b);
 //	}
 	
-	//sblocca i campi per la modifica
+	//sblocca i campi per la modifica cliente
 	public void setModifiche(boolean b) {
 		((RiepilogoClienteView) riep_cliente).setTFeditable(b);
 		
 	}
 	
-	//blocca il bottone modifica quando questo viene clickato
+	//blocca e sblocca bottoni relativi al tab cliente
 	public void disattivaModifica(boolean b){
 		((RiepilogoClienteView) riep_cliente).setEnaBtnModifiche(b);
+	}
+	
+	public void disattivaSalvaModifiche(boolean b){
+		((RiepilogoClienteView) riep_cliente).setEnaBtnSalvaModifiche(b);
+	}
+	
+	public void disattivaAnnullaModifiche(boolean b){
+		((RiepilogoClienteView) riep_cliente).setEnaBtnAnnullaModifiche(b);
+	}
+	
+	public void disattivaCancella(boolean b){
+		((RiepilogoClienteView) riep_cliente).setEnaBtnCancella(b);
 	}
 	
 	public void resetNuovoCliente() {
 		((DettaglioClienteView) dettaglioCliente).resetNewCliente();
 	}
 	
+	
 	public void resetCliente() {
 		((RiepilogoClienteView) riep_cliente).resetCampiModifica();
 		
 	}
 	
-	
-	
-	
+	//per il tab preventivo
 	public void setEnableNewPreventivo(boolean b){
 		nuovo_preventivo.setEnabled(b);
 	}
@@ -465,17 +476,26 @@ public class PrimaryView extends JFrame
 		((RiepilogoIntestazionePreventivoView) riep_intestazione).setNumPrev(n);
 	}
 
-	public void initAlberoClienti(DefaultTreeModel modello){
-		
-		albero.setModel(modello);
-	}
-
 	public void selectTabCatalogo() {
 		tabbedPrincipale.setSelectedIndex(2);
 	}
 
 	public void setEnableTabCliente(boolean b ) {
 		tabbedPrincipale.setEnabledAt(1, b);
+	}
+	
+	public void setVisibleErroreNuovoCliente(boolean b){
+		((DettaglioClienteView) dettaglioCliente).setVisibleErroreNuovoCliente(b);
+	}
+	
+	public void setVisibleErroreRiepCliente(boolean b){
+		((RiepilogoClienteView) riep_cliente).setVisibleErroreRiepCliente(b);
+	}
+	
+	
+	public void initAlberoClienti(DefaultTreeModel modello){
+		
+		albero.setModel(modello);
 	}
 	
 	
