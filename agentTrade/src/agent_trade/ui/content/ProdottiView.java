@@ -15,6 +15,7 @@ import javax.swing.table.TableColumn;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.model.M_Prodotto;
 import agent_trade.util.ButtonRendererAdd;
+import agent_trade.util.ButtonsEditorAdd;
 import agent_trade.util.ButtonsEditorRm;
 
 
@@ -92,11 +93,7 @@ public class ProdottiView extends JPanel {
 	    col.setCellEditor(new ButtonEditor(new JCheckBox()));
 */
 		  
-		  
-		  
-		  
-		  
-		  
+
 		  scrollPane = new JScrollPane(table);
 		  scrollPane.setBounds(0, 0, 754, 550);
 		  pannelloTabella.add(scrollPane);
@@ -105,10 +102,10 @@ public class ProdottiView extends JPanel {
 		
 		  table.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent me) {
-					String sel= (String)table.getValueAt(table.getSelectedRow(),0);
+					//String sel= (String)table.getValueAt(table.getSelectedRow(),0);
 					//System.out.println("in mpouseliste "+sel);
 				//	Ctrl_elaboraPreventivo.getInstance().addItem((Integer)table.getValueAt(table.getSelectedRow(),0));
-					Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel));
+					//Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel));
 				    
 				}
 		  });		  
@@ -147,8 +144,8 @@ public class ProdottiView extends JPanel {
             
     		TableColumn col = table.getColumnModel().getColumn(5);
     	    col.setCellRenderer(new ButtonRendererAdd());
-    	    col.setCellEditor(new ButtonsEditorRm(table));
-    	    col.setPreferredWidth(25);
+    	    col.setCellEditor(new ButtonsEditorAdd(table));
+    	    col.setPreferredWidth(35);
 
 		
             

@@ -17,7 +17,7 @@ class ButtonsPanelAdd extends JPanel {
         for (JButton b: buttons) {
             b.setFocusable(false);
             b.setRolloverEnabled(false);
-            b.setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/carrello.gif")));
+            b.setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/carr.png")));
             add(b);
         }
     }

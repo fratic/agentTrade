@@ -29,6 +29,7 @@ public class ButtonsEditorAdd extends ButtonsPanelAdd implements TableCellEditor
                 ButtonModel m = ((JButton) e.getComponent()).getModel();
                 if (m.isPressed() && table.isRowSelected(table.getEditingRow()) && e.isControlDown()) {
                     setBackground(table.getBackground());
+                    System.out.println("sono in press");
                 }
             }
         }
@@ -36,6 +37,8 @@ public class ButtonsEditorAdd extends ButtonsPanelAdd implements TableCellEditor
             EventQueue.invokeLater(new Runnable() {
                 @Override public void run() {
                     fireEditingStopped();
+                    System.out.println("sono in press");
+
                 }
             });
         }
@@ -43,7 +46,7 @@ public class ButtonsEditorAdd extends ButtonsPanelAdd implements TableCellEditor
     public ButtonsEditorAdd(JTable table) {
         super();
         this.table = table;
-        buttons.get(0).setAction(new EditAction(table));
+        buttons.get(0).setAction(new EditActionAdd(table));
 
         EditingStopHandler handler = new EditingStopHandler();
         for (JButton b: buttons) {

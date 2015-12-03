@@ -22,12 +22,12 @@ public class M_Preventivo_Item extends Observable implements Serializable {
 	
 	/*costruttori*/
 	
-	public M_Preventivo_Item(int idPrevItem, int quantita, M_Preventivo rifPreventivo, M_Prodotto idProdotto){
+	public M_Preventivo_Item(M_Preventivo rifPreventivo, M_Prodotto idProdotto){
 		
 		super();
 		observers =new ArrayList<Observer>();
-		this.idPreventivo_Item=idPrevItem;
-		this.quantita=quantita;
+		this.idPreventivo_Item=1;//DA DETERMINARE UNIVOCAMENTE OPPURE ASSOCIARLO IN QUALCHE MODO A ID_PRODOTTO
+		this.quantita=1;
 		this.rifPreventivo=rifPreventivo;
 		this.idProdotto=idProdotto;		
 		this.AddObserver(rifPreventivo);

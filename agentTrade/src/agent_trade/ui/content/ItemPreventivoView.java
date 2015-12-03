@@ -207,12 +207,12 @@ public class ItemPreventivoView extends JPanel
 	/*metodi pubblici*/
 	
 	
-	public void updateTable(String rem, int id, String nome, String categoria, String quantita, String prezzo, String parziale)
+	public void updateTable(String rem, int id, String nome, String categoria, String prezzo, String parziale)
 	{
-		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quantita, prezzo, parziale});
+		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, "1", prezzo, parziale});
 		
 		
-		String[] values = new String[] { "1", "2", "3" };
+		String[] values = new String[] { "1", "2", "3","4", "5", "6" };
 
 //		    TableColumn col = table.getColumnModel().getColumn(4);
 //		    col.setCellEditor((TableCellEditor) new MyComboBoxEditor(values));
@@ -239,7 +239,8 @@ public class ItemPreventivoView extends JPanel
 	      
 	      column = table.getColumnModel().getColumn(4);
 	      column.setCellEditor((TableCellEditor) new MyComboBoxEditor(values));
-	      column.setCellRenderer(new MyComboBoxRenderer(values, id));
+	      column.setCellRenderer(new MyComboBoxRenderer(values));
+	      
 	}
 	
 	public void setImponibile(String a){

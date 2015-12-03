@@ -11,23 +11,47 @@ import javax.swing.JDialog;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
+import agent_trade.controller.Ctrl_elaboraPreventivo;
+
 public class MyComboBoxRenderer extends JComboBox implements TableCellRenderer {
 	
-	private int id;
 	
-	  public MyComboBoxRenderer(String[] items, int id) {
-	    super(items);
-	    this.id=id;
-	    System.out.println("sono nel costruttore di mycombocoxrend. ID= "+id);
-		/*this.addActionListener(new ActionListener() {
-		
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			    System.out.println("sono nel listener di combo. ");
-				
-			}
-		});*/   	   
-	    System.out.println("valore QUANTITA "+this.getSelectedIndex()); 
+	  public MyComboBoxRenderer(String[] items) {
+	    
+		super(items);
+	    //this.setSelectedIndex(0);
+	    
+	    this.setAction(new EditActionCb(this));
+	    
+//	    this.addActionListener(new ActionListener() {
+//		
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//			    System.out.println("sono nel listener di combo. ");
+//			    
+//			    //Ctrl_elaboraPreventivo.getInstance().setQt(id,qt);
+//			    System.out.println("valore QUANTITA "+getSelectedItem());
+//
+//
+//			}
+//		});	   
+	    
+	    
+	 //   System.out.println("valore QUANTITA "+getSelectedIndex()); 
+//	    this.addActionListener(new ActionListener() {
+	    
+//	    this.addItemListener(new ItemListener() {
+//	      @Override
+//			public void itemStateChanged(ItemEvent e) {
+//			    System.out.println("sono nel listener di combo. ");
+//			    
+//			    //Ctrl_elaboraPreventivo.getInstance().setQt(id,qt);
+//			    System.out.println("valore QUANTITA "+getSelectedItem()); 
+//				
+//			}
+//		});	   
+//	    
+	    
 	    
 	  }
 

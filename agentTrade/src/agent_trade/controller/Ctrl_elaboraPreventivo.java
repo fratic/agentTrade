@@ -87,10 +87,13 @@ public class Ctrl_elaboraPreventivo {
 	public void addItem(int IdProdotto) {
 		
 		M_Prodotto p=Dao_System.getInstance().loadProdotto(IdProdotto);
-		M_Preventivo.getInstance().addItem(1,1,p);
-		ItemPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(), "1", Float.toString(p.getPrezzo()), "1");
+		M_Preventivo.getInstance().addItem(p);
+		ItemPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(), Float.toString(p.getPrezzo()), Float.toString(p.getPrezzo()));
+		
+	
+//		bisognerebbe notificare all'observer, per ora ok cosi ma dopo aggiustare
 		float a=M_Preventivo.getInstance().calcolaTotale();
-		System.out.println("Totale fattura: "+a);
+		//System.out.println("Totale fattura: "+a);
 		ItemPreventivoView.getInstance().setImponibile(Float.toString(a));
 		float c=(float) (a*0.22);
 		ItemPreventivoView.getInstance().setIva(Float.toString(c));

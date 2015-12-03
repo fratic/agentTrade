@@ -105,10 +105,9 @@ public class M_Preventivo implements Serializable, Observer{
 		this.rif_Cliente = rif_Cliente;
 	}
 	
-	public M_Preventivo_Item addItem(int idPrevItem, int quantita, M_Prodotto idProdotto ){
-		M_Preventivo_Item it= new M_Preventivo_Item(idPrevItem, quantita, M_Preventivo.getInstance(), idProdotto);
+	public M_Preventivo_Item addItem(M_Prodotto Prodotto ){
+		M_Preventivo_Item it= new M_Preventivo_Item(M_Preventivo.getInstance(), Prodotto);
 		this.elencoItem.add(it);
-		it.setQuantita(2);
 		return it;
 	}
 	

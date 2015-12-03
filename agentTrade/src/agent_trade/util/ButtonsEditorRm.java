@@ -43,7 +43,7 @@ public class ButtonsEditorRm extends ButtonsPanelRm implements TableCellEditor {
     public ButtonsEditorRm(JTable table) {
         super();
         this.table = table;
-        buttons.get(0).setAction(new EditAction(table));
+        buttons.get(0).setAction(new EditActionRm(table));
 
         EditingStopHandler handler = new EditingStopHandler();
         for (JButton b: buttons) {

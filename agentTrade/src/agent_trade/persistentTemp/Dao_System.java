@@ -282,7 +282,7 @@ public class Dao_System {
 
 			list.add(p);
 			
-			***/
+			****/
 			
 
 			FileOutputStream fos = new FileOutputStream("file_db/preventivi");
@@ -384,7 +384,6 @@ public class Dao_System {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 	
 			int id =(int) ois.readObject();
-	
 			ois.close();
 			fis.close();
 						

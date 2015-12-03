@@ -6,10 +6,10 @@ import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-class EditAction extends AbstractAction {
+class EditActionRm extends AbstractAction {
     private final JTable table;
-    public EditAction(JTable table) {
-        super();
+    public EditActionRm(JTable table) {
+        super("   ");
         this.table = table;
     }
     @Override public void actionPerformed(ActionEvent e) {
