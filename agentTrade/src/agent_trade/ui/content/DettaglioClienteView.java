@@ -154,7 +154,7 @@ public class DettaglioClienteView extends JPanel {
 		
 		bottoneAnnullaInserimento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//Ctrl_gestisciCliente.getInstance().annullaNewCliente();
+				Ctrl_gestisciCliente.getInstance().annullaNewCliente();
 			}
 		});
 		
@@ -172,6 +172,16 @@ public class DettaglioClienteView extends JPanel {
 		labelErrore.setText(err);
     }
 		
+	public void resetNewCliente(){
+		TFcognome.setText(null);
+		TFnome.setText(null);
+		TFcodicefiscale.setText(null);
+		TFpartitaiva.setText(null);
+		TFindirizzo.setText(null);
+		TFemail.setText(null);
+		TFtelefono.setText(null);
+		TFfax.setText(null);
+	}
 		
 	/*metodi privati*/
 	/*metodi pubblici*/

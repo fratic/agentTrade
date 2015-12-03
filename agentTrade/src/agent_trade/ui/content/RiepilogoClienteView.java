@@ -49,6 +49,7 @@ public class RiepilogoClienteView extends JPanel {
 	private JButton bottoneCancellaCliente;
 	private JButton bottoneBackToRicerca;
 	private JButton bottoneSalvaModifiche;
+	private JButton bottoneAnnullaModifica;
 	
 	/*costruttori*/
 	
@@ -143,7 +144,7 @@ public class RiepilogoClienteView extends JPanel {
 //		add(separator);
 		
 		bottoneModificaCliente = new JButton("Modifica");
-		bottoneModificaCliente.setBounds(178, 403, 136, 30);
+		bottoneModificaCliente.setBounds(157, 403, 127, 30);
 		add(bottoneModificaCliente);
 		bottoneModificaCliente.setToolTipText("Modifica i dati del cliente");
 		bottoneModificaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/setting.png")));
@@ -154,10 +155,15 @@ public class RiepilogoClienteView extends JPanel {
 		bottoneCancellaCliente.setToolTipText("Cancella cliente");
 		bottoneCancellaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
 		
-		bottoneSalvaModifiche = new JButton("Salva i dati modificati");
-		bottoneSalvaModifiche.setBounds(345, 403, 207, 30);
+		bottoneSalvaModifiche = new JButton("Salva");
+		bottoneSalvaModifiche.setBounds(294, 403, 120, 30);
 		add(bottoneSalvaModifiche);
 		bottoneSalvaModifiche.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save-icon.png")));
+		
+		bottoneAnnullaModifica = new JButton("Annulla");
+		bottoneAnnullaModifica.setBounds(424, 403, 120, 30);
+		add(bottoneAnnullaModifica);
+		bottoneAnnullaModifica.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
 		
 		bottoneModificaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -179,6 +185,14 @@ public class RiepilogoClienteView extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Ctrl_gestisciCliente.getInstance().modificaCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFfax.getText());
+			}
+		});
+		
+		bottoneAnnullaModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+	
+				Ctrl_gestisciCliente.getInstance().annullaModificheCliente();
+				PrimaryView.getInstance().disattivaModifica(true);
 			}
 		});
 		
@@ -223,15 +237,21 @@ public class RiepilogoClienteView extends JPanel {
 			//bottoneModificaCliente.setEnabled(b);
 		}
 		
+		public void resetCampiModifica(){
+			TFcognome.setText(null);
+			TFnome.setText(null);
+			TFcodicefiscale.setText(null);
+			TFpartitaiva.setText(null);
+			TFindirizzo.setText(null);
+			TFemail.setText(null);
+			TFtelefono.setText(null);
+			TFfax.setText(null);
+			setTFeditable(false);
+		}
+		
 		public void setEnaBtnModifiche(boolean b){
 		bottoneModificaCliente.setEnabled(b);
 		}
-		
-		
-	
-		
-		
-
 	}
 		
 

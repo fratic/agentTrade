@@ -47,7 +47,6 @@ public class PrimaryView extends JFrame
 	
 	private static JPanel pannello_centrale_preventivo;
 	
-	private static JPanel cerca;
 	private static JPanel dettaglioCliente;
 	private static JPanel riep_cliente;
 	
@@ -83,6 +82,8 @@ public class PrimaryView extends JFrame
 	private JPanel pannelloProdotti;
 	
 	private JPanel alberoPreventivi;
+	
+	private JPanel alberoClienti;
 	
 	private JTabbedPane tabbedPrincipale;
 	
@@ -140,17 +141,14 @@ public class PrimaryView extends JFrame
 		pannello_centrale_cliente.repaint();
 	}
 	
-	public static void initCerca() {
-		cerca = DettaglioCercaCliente.getInstance();
-		cerca.setBounds(0, 1, 755, 101);
-		pannello_centrale_cliente.add(cerca);
-		pannello_centrale_cliente.repaint();
+	
+	public static void initRiepilogoClienteView() {
 		
 		riep_cliente= RiepilogoClienteView.getInstance();
-		riep_cliente.setBounds(0, 100, 755, 450);
+		riep_cliente.setBounds(0, 1, 755, 551);
 		pannello_centrale_cliente.add(riep_cliente);
 		pannello_centrale_cliente.repaint();
-	
+		
 	}
 	
 	
@@ -273,13 +271,16 @@ public class PrimaryView extends JFrame
 		panello_menu_cliente.setBackground(Color.WHITE);
 		Cliente.add(panello_menu_cliente);
 		
-		bottoneNuovoCliente = new JButton("Nuovo Cliente");
-		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/add_cliente.png")));
-		bottoneNuovoCliente.setBounds(27, 23, 140, 23);
+		bottoneNuovoCliente = new JButton();
+		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/new_user.png")));
+		bottoneNuovoCliente.setToolTipText("Inserisci un nuovo cliente");
+		bottoneNuovoCliente.setBounds(28, 23, 73, 65);
 		panello_menu_cliente.add(bottoneNuovoCliente);
 		
-		bottoneCercaCliente = new JButton("Cerca Cliente");
-		bottoneCercaCliente.setBounds(177, 23, 120, 23);
+		bottoneCercaCliente = new JButton("");
+		bottoneCercaCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/search.png")));
+		bottoneCercaCliente.setToolTipText("Cerca il cliente");
+		bottoneCercaCliente.setBounds(153, 23, 73, 65);
 		panello_menu_cliente.add(bottoneCercaCliente);
 		
 		panello_sottomenu_cliente = new JPanel();
@@ -304,6 +305,7 @@ public class PrimaryView extends JFrame
 		
 		bottoneCercaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				Ctrl_gestisciCliente.getInstance().btnCerca();
 			
 			}	
@@ -314,8 +316,6 @@ public class PrimaryView extends JFrame
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Ctrl_gestisciCliente.getInstance().newCliente();
-				//pannello_centrale_cliente.setVisible(true);
-				//PrimaryView.initDettaglioCliente();
 				
 			}
 		});
@@ -405,6 +405,17 @@ public class PrimaryView extends JFrame
 		((RiepilogoClienteView) riep_cliente).setEnaBtnModifiche(b);
 	}
 	
+	public void resetNuovoCliente() {
+		((DettaglioClienteView) dettaglioCliente).resetNewCliente();
+	}
+	
+	public void resetCliente() {
+		((RiepilogoClienteView) riep_cliente).resetCampiModifica();
+		
+	}
+	
+	
+	
 	
 	public void setEnableNewPreventivo(boolean b){
 		nuovo_preventivo.setEnabled(b);
@@ -476,6 +487,15 @@ public class PrimaryView extends JFrame
 		pannello_centrale_preventivo.setBounds(260, 0, 743, 585);
 		pannello_centrale_preventivo.setLayout(null);
 		pannello_centrale_preventivo.repaint();
+	}
+	
+	public void resetPannelloCentraleCliente(){
+		pannello_centrale_cliente.removeAll();
+		pannello_centrale_cliente.setBackground(Color.LIGHT_GRAY);
+		pannello_centrale_cliente.setBounds(260, 0, 743, 585);
+		pannello_centrale_cliente.setLayout(null);
+		pannello_centrale_cliente.repaint();
+		
 	}
 
 	public void updateTableRiepilogo(String rem, String id, String nome, String categoria, String quantita, String prezzo, String parziale){
