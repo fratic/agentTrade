@@ -118,7 +118,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		buttoneSalva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Ctrl_elaboraPreventivo.getInstance().salvaPreventivo();	
+				//Ctrl_elaboraPreventivo.getInstance().salvaPreventivo();	
 			}
 		});
 		

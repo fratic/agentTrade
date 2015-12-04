@@ -3,6 +3,7 @@ package agent_trade.controller;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.Observable;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
@@ -186,18 +187,47 @@ public class Ctrl_elaboraPreventivo {
 		}
 	}
 	
-	public void refresh(){
+	public void refresh(Observable obs, M_Preventivo p){
+		M_Preventivo_Item pr_it=(M_Preventivo_Item)obs;
+		
+		//fare una funzione per questo, ovunque viene usato
+		float importo=p.calcolaTotale();
+		ItemPreventivoView.getInstance().setImponibile(Float.toString(importo));
+		float c=(float) (importo*0.22);
+		ItemPreventivoView.getInstance().setIva(Float.toString(c));
+		ItemPreventivoView.getInstance().setTotale(Float.toString(importo+c));
+		////////////
+		M_Prodotto prod=pr_it.getIdProdotto();
+		ItemPreventivoView.getInstance().updateRow(pr_it.getQuantita()*prod.getPrezzo());
+
+		
 		
 	}
 
 
-	public void addQuant(int id, int qt) {
+	public void addQuant(int id, int qt, int row) {
 
 		M_Preventivo p =M_Preventivo.getInstance();
 		p.addQuant(id,qt);
+		
+		
+		
 		//SAREBBE OPPORTUNO PASSARE L'ID DELL'ITEM, E NON QUELLO DAL PRODOTTO, MA PER IL MOMENTO, 
 		//NON AVENDO IL DB, SI PROSEGUE COSI 
 
 	}
+
+
+	public void rimuoviItem(int id, int row) {
+		
+		M_Preventivo p =M_Preventivo.getInstance();
+		p.removeItem(id);
+
+		ItemPreventivoView.getInstance().deleteRow(row);
+	}
+
+
+	
+	
 	
 }

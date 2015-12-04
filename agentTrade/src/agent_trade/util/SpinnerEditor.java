@@ -24,8 +24,6 @@ public class SpinnerEditor extends AbstractCellEditor implements TableCellEditor
     ChangeListener listener = new ChangeListener() {
     	@Override
 		public void stateChanged(ChangeEvent e) {
-    	    System.out.println("£££££in changestate "+spinner.getValue());
-    	  //  System.out.println("riga: "+table.getSelectedRow());
 
     	    int qt=(int) spinner.getValue();
     	    int row = (int)table.convertRowIndexToModel(table.getEditingRow());
@@ -33,7 +31,7 @@ public class SpinnerEditor extends AbstractCellEditor implements TableCellEditor
     	    if (row>=0){
             Object id =table.getModel().getValueAt(row, 1);
             System.out.println("ID : " + id+" quantita: "+qt);
-            Ctrl_elaboraPreventivo.getInstance().addQuant(Integer.parseInt((String) id), qt);
+            Ctrl_elaboraPreventivo.getInstance().addQuant(Integer.parseInt((String) id), qt, row);
             
             }
     	    

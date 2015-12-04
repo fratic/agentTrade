@@ -16,7 +16,7 @@ public class SpinnerRenderer implements TableCellRenderer {
                                                    boolean isSelected,
                                                    boolean hasFocus,
                                                    int row, int column) {
-    	System.out.println("QUI "+value.toString());
+
         spinner.setValue(((Integer)value).intValue());
         return spinner;
     }

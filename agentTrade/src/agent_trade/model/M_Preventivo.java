@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
+import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.content.RiepilogoItemPreventivoView;
 
@@ -112,11 +113,9 @@ public class M_Preventivo implements Serializable, Observer{
 	}
 	
 	public void update(Observable observer, Object obj) {
-		float c = calcolaTotale();		
-		System.out.println("In update, nuova quantità= "+c);
-
+		//float c = calcolaTotale();		
 		//aggiornare le quantita
-		
+		Ctrl_elaboraPreventivo.getInstance().refresh(observer, this);
 	}
 	
 	
@@ -155,4 +154,24 @@ public class M_Preventivo implements Serializable, Observer{
 		}
 	}
 
+	public void removeItem(int id) {
+		Iterator iteraItem = null;
+		iteraItem = this.getElencoItem().iterator();
+		M_Preventivo_Item item;
+	
+		while (iteraItem.hasNext()) {
+			
+			item = (M_Preventivo_Item) iteraItem.next();
+			if (item.getIdProdotto().getIdProdotto()==id){
+				
+				item.cancellaItem();
+				this.elencoItem.remove(item);
+				break;
+
+			}
+
+	}
+
+
+	}
 }

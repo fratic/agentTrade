@@ -45,7 +45,7 @@ public class M_Preventivo_Item extends Observable implements Serializable {
 
 		for(int i=0;i<observers.size();i++){
 			observers.get(i).update(this, null);
-			System.out.println("sono in notify");
+			System.out.println("è cambiato qualcosa in prev item");
 		}
 	}
 	
@@ -72,6 +72,11 @@ public class M_Preventivo_Item extends Observable implements Serializable {
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
 		NotifyObservers();
+	}
+	
+	public void cancellaItem(){
+		NotifyObservers();
+		//this.RemoveObserver(o);
 	}
 
 	public M_Preventivo getRifPreventivo() {
