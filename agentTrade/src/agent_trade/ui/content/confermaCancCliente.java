@@ -108,8 +108,8 @@ public class confermaCancCliente extends JDialog {
 		return instance;	 
 	}
 	
-//	public static void cancInst(){
-//		instance=null;	 
-//	}
+	public static void cancInst(){
+		instance=null;	 
+	}
 	
 }

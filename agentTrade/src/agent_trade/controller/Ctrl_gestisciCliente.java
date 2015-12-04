@@ -146,6 +146,7 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().disattivaModifica(true);
 			PrimaryView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryView.getInstance().disattivaCancella(true);
+			PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
 			
 		}
 	}
@@ -215,10 +216,12 @@ public class Ctrl_gestisciCliente {
 	public void postConfermaCancCliente(){
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
 		confermaCancCliente.getInstance().setVisible(false);
+		confermaCancCliente.cancInst();
 		}
 	
 	public void notConfermaCancCliente(){
 		confermaCancCliente.getInstance().setVisible(false);
+		confermaCancCliente.cancInst();
 	}
 	
 	public void caricaAlberoClienti()
