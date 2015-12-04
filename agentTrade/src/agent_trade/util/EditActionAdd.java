@@ -8,7 +8,7 @@ import javax.swing.JTable;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 
-class EditActionAdd extends AbstractAction {
+public class EditActionAdd extends AbstractAction {
     private final JTable table;
     public EditActionAdd(JTable table) {
         super("    ");

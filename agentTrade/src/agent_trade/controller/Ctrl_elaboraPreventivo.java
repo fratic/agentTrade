@@ -189,5 +189,15 @@ public class Ctrl_elaboraPreventivo {
 	public void refresh(){
 		
 	}
+
+
+	public void addQuant(int id, int qt) {
+
+		M_Preventivo p =M_Preventivo.getInstance();
+		p.addQuant(id,qt);
+		//SAREBBE OPPORTUNO PASSARE L'ID DELL'ITEM, E NON QUELLO DAL PRODOTTO, MA PER IL MOMENTO, 
+		//NON AVENDO IL DB, SI PROSEGUE COSI 
+
+	}
 	
 }

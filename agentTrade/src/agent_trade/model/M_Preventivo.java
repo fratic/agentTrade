@@ -137,6 +137,22 @@ public class M_Preventivo implements Serializable, Observer{
 		return totale;
 
 	}
+
+	public void addQuant(int id, int qt) {
+		
+		Iterator iteraItem = null;
+		iteraItem = this.getElencoItem().iterator();
+		M_Preventivo_Item item;
 	
-	
+		while (iteraItem.hasNext()) {
+			
+			item = (M_Preventivo_Item) iteraItem.next();
+			if (item.getIdProdotto().getIdProdotto()==id){
+				item.setQuantita(qt);
+			}
+			
+		
+		}
+	}
+
 }

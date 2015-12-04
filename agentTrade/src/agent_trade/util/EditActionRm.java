@@ -6,16 +6,18 @@ import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-class EditActionRm extends AbstractAction {
+public class EditActionRm extends AbstractAction {
     private final JTable table;
     public EditActionRm(JTable table) {
         super("   ");
         this.table = table;
+
     }
     @Override public void actionPerformed(ActionEvent e) {
+    	
         //Object o = table.getModel().getValueAt(table.getSelectedRow(), 0);
         int row = table.convertRowIndexToModel(table.getEditingRow());
         Object o = table.getModel().getValueAt(row, 1);
-        JOptionPane.showMessageDialog(table, "ID : " + o+" quantita"+table.getValueAt(row, 4));
+        JOptionPane.showMessageDialog(table, "ID : " + o+" quantita: "+table.getValueAt(row, 4));
     }
 }
