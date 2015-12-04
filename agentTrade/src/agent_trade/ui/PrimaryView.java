@@ -20,6 +20,7 @@ import javax.swing.tree.DefaultTreeModel;
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.ui.content.AlberoClienti;
 import agent_trade.ui.content.AlberoPreventivi;
 import agent_trade.ui.content.DettaglioCercaCliente;
 import agent_trade.ui.content.DettaglioClienteView;
@@ -87,7 +88,7 @@ public class PrimaryView extends JFrame
 	
 	private JTabbedPane tabbedPrincipale;
 	
-	private JTree albero;
+	
 	
 	
 	/*costruttori*/
@@ -293,13 +294,13 @@ public class PrimaryView extends JFrame
 		panello_sottomenu_cliente.add(panello_laterale_cliente);
 		panello_laterale_cliente.setLayout(null);
 		
-		albero = new JTree();
-		albero.setBounds(10, 11, 230, 443);
-		panello_laterale_cliente.add(albero);
+		alberoClienti = new AlberoClienti();
+		alberoClienti.setBounds(0, 0, 261, 585);
+		panello_laterale_cliente.add(alberoClienti);
 		
 		pannello_centrale_cliente = new JPanel();
 		pannello_centrale_cliente.setBackground(Color.LIGHT_GRAY);
-		pannello_centrale_cliente.setBounds(248, 0, 755, 551);
+		pannello_centrale_cliente.setBounds(260, 0, 748, 585);
 		panello_sottomenu_cliente.add(pannello_centrale_cliente);
 		pannello_centrale_cliente.setLayout(null);
 		
@@ -493,10 +494,10 @@ public class PrimaryView extends JFrame
 	}
 	
 	
-	public void initAlberoClienti(DefaultTreeModel modello){
-		
-		albero.setModel(modello);
-	}
+//	public void initAlberoClienti(DefaultTreeModel modello){
+//		
+//		albero.setModel(modello);
+//	}
 	
 	
 	
