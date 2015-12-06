@@ -52,6 +52,8 @@ public class AlberoClienti extends JPanel {
 				}}));
 			
 			}		
+	
+	
 			
 			/*metodi di classe*/
 			
@@ -63,18 +65,26 @@ public class AlberoClienti extends JPanel {
 			  }
 			  
 			  public static void rimuoviNodo(String nodo) {
-//				  boolean trovato = false;
-//				  int i=0;
-//				  while (!trovato){
-//					  MutableTreeNode figlio = (MutableTreeNode) model.getChild((MutableTreeNode)model.getRoot(), i);
-//					  if(figlio.toString().equals(nodo)){
-//						  System.out.print(figlio);
-//						  figlio.removeFromParent();
-//						  System.out.print(i);
-//						  
-//					  }
-//				  }
+				  
+				DefaultMutableTreeNode node = (DefaultMutableTreeNode)albero.getLastSelectedPathComponent();
+				model.removeNodeFromParent((DefaultMutableTreeNode)node);	
+				
+/*			FUNZIONE DI MIRKO - PUO TORNARE UTILE PER RISOLVERE ALTRO PROBLEMA			
+ 			boolean trovato = false;
+				  int i=0;
+				  while (!trovato){
+					  MutableTreeNode figlio = (MutableTreeNode) model.getChild((MutableTreeNode)model.getRoot(), i);
+					  if(figlio.toString().equals(nodo)){
+						  System.out.print(figlio);
+						  figlio.removeFromParent();
+						  System.out.print(i);
+						  
+					  }
+				  }*/
 			  }
+
+	
+			  
 			  
 			  public static void disabilitaAlbero(){
 				  albero.setEnabled(false);

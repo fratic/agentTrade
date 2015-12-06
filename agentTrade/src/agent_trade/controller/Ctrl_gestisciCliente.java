@@ -163,6 +163,7 @@ public class Ctrl_gestisciCliente {
 		confermaCancCliente.getInstance().setVisible(true);
 		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
 		
+		
 	}
 	
 	//bisogna decidere il criterio di caricamento. Decidere se è adeguata questa struttura dati
