@@ -6,6 +6,7 @@ import java.util.Iterator;
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.PrimaryView;
+import agent_trade.ui.content.AlberoClienti;
 import agent_trade.ui.content.CercaClienteView;
 import agent_trade.ui.content.DettaglioClienteView;
 import agent_trade.ui.content.Ricerca_cliente;
@@ -119,6 +120,8 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().resetNuovoCliente();
 			PrimaryView.getInstance().resetPannelloCentraleCliente();
 			recuperaCliente(cognome);
+			AlberoClienti.inserisciNodo(cliente.getCognome()+ " - " +cliente.getNome());
+
 		}
 	}
 	
@@ -158,6 +161,7 @@ public class Ctrl_gestisciCliente {
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
 		Dao_System.getInstance().cancellaCliente(cliente);
 		confermaCancCliente.getInstance().setVisible(true);
+		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
 		
 	}
 	
@@ -222,6 +226,19 @@ public class Ctrl_gestisciCliente {
 	public void notConfermaCancCliente(){
 		confermaCancCliente.getInstance().setVisible(false);
 		confermaCancCliente.cancInst();
+	}
+	
+	//da modificare e fare per id (quando avremo un db)
+	public void mostraCliente(Object obj){
+		String c=obj.toString();
+		int i=0;
+		i = c.indexOf(" -");
+		if(i!=-1){
+			c = c.substring(0, i);
+			PrimaryView.getInstance().resetPannelloCentraleCliente();
+			recuperaCliente(c);
+			//System.out.print(c);
+		}
 	}
 	
 	public void caricaAlberoClienti()

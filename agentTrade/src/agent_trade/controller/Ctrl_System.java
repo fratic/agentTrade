@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import agent_trade.model.M_Agente;
+import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.LoginView;
 import agent_trade.ui.PrimaryView;
+import agent_trade.ui.content.AlberoClienti;
 import agent_trade.ui.content.AlberoPreventivi;
 import agent_trade.ui.content.ProdottiView;
 
@@ -53,6 +55,21 @@ public class Ctrl_System {
 		}
 	}
 	
+	private void initAlberoClienti(){
+		
+		ArrayList<M_Cliente> clienti = Dao_System.getInstance().caricaClienti();
+		Iterator iteraClienti = clienti.iterator();
+		M_Cliente c;
+		int i=0;
+		while (iteraClienti.hasNext()){
+			c = (M_Cliente) iteraClienti.next();
+			//System.out.println(c.getCognome()+ "-" +c.getNome());
+			AlberoClienti.inserisciNodo(c.getCognome()+ " - " +c.getNome());
+			i++;
+			
+		}
+	}
+	
 	private void inizializzaSistema()
 	{
 		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
@@ -60,6 +77,8 @@ public class Ctrl_System {
 		initProdotti();
 		
 		initAlberoPreventivi();	
+		
+		initAlberoClienti();
 
 	}
 	

@@ -47,7 +47,7 @@ public class AlberoClienti extends JPanel {
 
 				public void valueChanged(TreeSelectionEvent e) {
 					TreePath selection = e.getPath();
-					//Ctrl_gestisciCliente.getInstance().mostraCliente(selection.getLastPathComponent());
+					Ctrl_gestisciCliente.getInstance().mostraCliente(selection.getLastPathComponent());
 					
 				}}));
 			
@@ -62,19 +62,33 @@ public class AlberoClienti extends JPanel {
 				   model.insertNodeInto(figlio, (MutableTreeNode)model.getRoot(), ((MutableTreeNode) model.getRoot()).getChildCount());
 			  }
 			  
+			  public static void rimuoviNodo(String nodo) {
+//				  boolean trovato = false;
+//				  int i=0;
+//				  while (!trovato){
+//					  MutableTreeNode figlio = (MutableTreeNode) model.getChild((MutableTreeNode)model.getRoot(), i);
+//					  if(figlio.toString().equals(nodo)){
+//						  System.out.print(figlio);
+//						  figlio.removeFromParent();
+//						  System.out.print(i);
+//						  
+//					  }
+//				  }
+			  }
+			  
 			  public static void disabilitaAlbero(){
-				  albero.disable();
+				  albero.setEnabled(false);
 			  }
 
 			  public static void abilitaAlbero(){
-				  albero.enable();
+				  albero.setEnabled(true);
 			  }
 			  /*metodi privati*/
 				/*metodi pubblici*/
 					  
-				  public void ricaricaAlbero(){
-					  model.reload();
-				  }
+			  public void ricaricaAlbero(){
+				  model.reload();
+			  }
 				  	  
 				
 			}
