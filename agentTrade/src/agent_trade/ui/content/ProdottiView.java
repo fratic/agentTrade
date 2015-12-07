@@ -12,11 +12,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.model.M_Prodotto;
 import agent_trade.util.ButtonRendererAdd;
 import agent_trade.util.ButtonsEditorAdd;
-import agent_trade.util.ButtonsEditorRm;
 
 
 public class ProdottiView extends JPanel {
@@ -54,16 +52,6 @@ public class ProdottiView extends JPanel {
 		
 		addItem = new JButton("New button");
 
-
-		/*JTableModel = new DefaultTableModel(
-                new String[][] {  },
-                new String[] { "ID prodotto", "Nome", "Categoria", "Azienda", "Prezzo", "Aggiungi a preventivo" });
-					
-		  table =new JTable();
-		  		  
-		  table.setModel(JTableModel);
-		*/
-		
 		table = new JTable();
 	    JTableModel = (DefaultTableModel) table.getModel();
 
@@ -80,19 +68,6 @@ public class ProdottiView extends JPanel {
 	    table.setRowHeight(30);
 
 	    
-	    
-	/*    String[] values = new String[] { "1", "2", "3" };
-
-	    TableColumn col = table.getColumnModel().getColumn(4);
-	    col.setCellEditor((TableCellEditor) new MyComboBoxEditor(values));
-	    col.setCellRenderer(new MyComboBoxRenderer(values));
-	  
-
-	    col = table.getColumnModel().getColumn(0);
-	    col.setCellRenderer(new ButtonRenderer());
-	    col.setCellEditor(new ButtonEditor(new JCheckBox()));
-*/
-		  
 
 		  scrollPane = new JScrollPane(table);
 		  scrollPane.setBounds(0, 0, 754, 550);
@@ -100,15 +75,15 @@ public class ProdottiView extends JPanel {
 		  
 		  
 		
-		  table.addMouseListener(new MouseAdapter() {
-				public void mouseClicked(MouseEvent me) {
-					//String sel= (String)table.getValueAt(table.getSelectedRow(),0);
-					//System.out.println("in mpouseliste "+sel);
-				//	Ctrl_elaboraPreventivo.getInstance().addItem((Integer)table.getValueAt(table.getSelectedRow(),0));
-					//Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel));
-				    
-				}
-		  });		  
+//		  table.addMouseListener(new MouseAdapter() {
+//				public void mouseClicked(MouseEvent me) {
+//					//String sel= (String)table.getValueAt(table.getSelectedRow(),0);
+//					//System.out.println("in mpouseliste "+sel);
+//				//	Ctrl_elaboraPreventivo.getInstance().addItem((Integer)table.getValueAt(table.getSelectedRow(),0));
+//					//Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel));
+//				    
+//				}
+//		  });		  
 	}
 	
 	

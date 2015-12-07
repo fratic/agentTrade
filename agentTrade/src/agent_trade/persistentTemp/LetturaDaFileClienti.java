@@ -40,7 +40,7 @@ M_Cliente c = new M_Cliente();
 while (iteraClienti.hasNext()) {
 	//System.out.println("dio");
 	c = (M_Cliente) iteraClienti.next();
-	System.out.println("Cliente "+c.getCognome()+ " " +c.getNome());
+//	System.out.println("Cliente "+c.getCognome()+ " " +c.getNome());
 }
 }
 catch(Exception e)

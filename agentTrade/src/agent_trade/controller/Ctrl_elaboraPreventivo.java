@@ -1,5 +1,6 @@
 package agent_trade.controller;
 
+import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -66,6 +67,8 @@ public class Ctrl_elaboraPreventivo {
 
 		PrimaryView.getInstance().setEnableNewPreventivo(false);
 		PrimaryView.getInstance().setEnableTabCliente(false);
+		PrimaryView.getInstance().setEnableSalva(false);
+
 		
 		AlberoPreventivi.disabilitaAlbero();
 				
@@ -89,6 +92,15 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Prodotto p=Dao_System.getInstance().loadProdotto(IdProdotto);
 		M_Preventivo.getInstance().addItem(p);
+		
+		if (M_Preventivo.getInstance().getElencoItem().isEmpty()){
+			System.out.println("è vuoto");
+			PrimaryView.getInstance().setEnableSalva(false);
+		}
+		else{
+			PrimaryView.getInstance().setEnableSalva(true);
+		}
+		
 		ItemPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(), Float.toString(p.getPrezzo()), Float.toString(p.getPrezzo()));
 		
 	
@@ -196,7 +208,9 @@ public class Ctrl_elaboraPreventivo {
 		float c=(float) (importo*0.22);
 		ItemPreventivoView.getInstance().setIva(Float.toString(c));
 		ItemPreventivoView.getInstance().setTotale(Float.toString(importo+c));
-		////////////
+		
+//		System.out.println("sono in refresh");
+		//////////////
 		M_Prodotto prod=pr_it.getIdProdotto();
 		ItemPreventivoView.getInstance().updateRow(pr_it.getQuantita()*prod.getPrezzo());
 
@@ -217,17 +231,23 @@ public class Ctrl_elaboraPreventivo {
 
 	}
 
-
-	public void rimuoviItem(int id, int row) {
+	
+	public void rimuoviItem(final int id, final int row) {
 		
-		M_Preventivo p =M_Preventivo.getInstance();
-		p.removeItem(id);
-
-		ItemPreventivoView.getInstance().deleteRow(row);
+		EventQueue.invokeLater(new Runnable() {
+			@Override public void run() {
+				M_Preventivo p =M_Preventivo.getInstance();
+				p.removeItem(id);
+				ItemPreventivoView.getInstance().deleteRow(row);
+				
+				if (M_Preventivo.getInstance().getElencoItem().isEmpty()){
+					PrimaryView.getInstance().setEnableSalva(false);
+				}
+				else{
+					PrimaryView.getInstance().setEnableSalva(true);
+				}
+			}
+		});
 	}
-
-
-	
-	
 	
 }

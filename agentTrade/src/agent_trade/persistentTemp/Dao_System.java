@@ -336,7 +336,7 @@ public class Dao_System {
 
 			list.add(p);
 			
-			/****alternativa quando scrivo io primo preventivo*
+			/****alternativa quando scrivo il primo preventivo*
 
 			ArrayList list = new ArrayList();
 
@@ -351,7 +351,7 @@ public class Dao_System {
 			oos.writeObject(list);
 
 			oos.close();
-			System.out.println("salvataggio preventivo OK");		
+//			System.out.println("salvataggio preventivo OK");		
 		}
 		
 		catch(Exception e)
@@ -427,7 +427,6 @@ public class Dao_System {
 			oos.writeObject(id);
 
 			oos.close();
-			System.out.println("salvataggio id preventivo OK");		
 		}
 		
 		catch(Exception e)
