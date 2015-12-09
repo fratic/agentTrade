@@ -64,7 +64,7 @@ public class AlberoClienti extends JPanel {
 				   model.insertNodeInto(figlio, (MutableTreeNode)model.getRoot(), ((MutableTreeNode) model.getRoot()).getChildCount());
 			  }
 			  
-			  public static void rimuoviNodo(String nodo) {
+			  public static void rimuoviNodo() {
 				  
 				DefaultMutableTreeNode node = (DefaultMutableTreeNode)albero.getLastSelectedPathComponent();
 				model.removeNodeFromParent((DefaultMutableTreeNode)node);	

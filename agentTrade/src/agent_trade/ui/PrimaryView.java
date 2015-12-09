@@ -477,6 +477,14 @@ public class PrimaryView extends JFrame
 		tabbedPrincipale.setEnabledAt(1, b);
 	}
 	
+	public void setEnableTabPreventivo(boolean b ) {
+		tabbedPrincipale.setEnabledAt(2, b);
+	}
+	
+	public void setEnableTabCatalogo(boolean b ) {
+		tabbedPrincipale.setEnabledAt(0, b);
+	}
+	
 	public void setVisibleErroreNuovoCliente(boolean b){
 		((DettaglioClienteView) dettaglioCliente).setVisibleErroreNuovoCliente(b);
 	}
