@@ -13,14 +13,15 @@ class ButtonsPanelAdd extends JPanel {
     public final List<JButton> buttons = Arrays.asList(new JButton());
     public ButtonsPanelAdd() {
         super();
+        
         setOpaque(true);
         for (JButton b: buttons) {
             b.setFocusable(false);
             b.setRolloverEnabled(false);
             b.setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/carr.png")));
+          //  b.setAction(new EditActionAdd());
+
             add(b);
         }
     }
-
 }
-

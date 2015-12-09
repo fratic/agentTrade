@@ -4,7 +4,12 @@ import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Observable;
+import java.util.Set;
+import java.util.TreeMap;
+
+import javax.swing.JButton;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
@@ -16,18 +21,23 @@ import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.AlberoPreventivi;
 import agent_trade.ui.content.CercaClienteView;
 import agent_trade.ui.content.ItemPreventivoView;
+import agent_trade.ui.content.ProdottiView;
 import agent_trade.ui.content.RiepilogoItemPreventivoView;
 
 public class Ctrl_elaboraPreventivo {
 
 	/*attributi di classe*/
 	private static Ctrl_elaboraPreventivo instance;
-
+	private static Map<Integer, JButton> elencoBottDisat=new TreeMap<>();
+	
+	
 	/*attributi privati*/
 	private Calendar cal = Calendar.getInstance();
 
 	
 	/*costruttori*/
+	
+
 	
 	/*metodi di classe*/
 	
@@ -85,25 +95,29 @@ public class Ctrl_elaboraPreventivo {
 		//fare un metodo di classe per il numero di preventivi 
 		
 		PrimaryView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
+
+		ProdottiView.getInstance().enableBottoni();
+	
 	}
 
 	
-	public void addItem(int IdProdotto) {
+	public void addItem(int IdProdotto, JButton jb) {
+		
 		
 		M_Prodotto p=Dao_System.getInstance().loadProdotto(IdProdotto);
 		M_Preventivo.getInstance().addItem(p);
 		
-		if (M_Preventivo.getInstance().getElencoItem().isEmpty()){
-			System.out.println("è vuoto");
-			PrimaryView.getInstance().setEnableSalva(false);
-		}
-		else{
+		if (!M_Preventivo.getInstance().getElencoItem().isEmpty()){
 			PrimaryView.getInstance().setEnableSalva(true);
 		}
 		
 		ItemPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(), Float.toString(p.getPrezzo()), Float.toString(p.getPrezzo()));
 		
-	
+		elencoBottDisat.put(p.getIdProdotto(), jb);
+		jb.setEnabled(false);
+		
+		
+		
 //		bisognerebbe notificare all'observer, per ora ok cosi ma dopo aggiustare
 		float a=M_Preventivo.getInstance().calcolaTotale();
 		//System.out.println("Totale fattura: "+a);
@@ -135,6 +149,20 @@ public class Ctrl_elaboraPreventivo {
 		Dao_System.salvaIdPrev(Integer.parseInt(p.getIdPreventivo()));
 		AlberoPreventivi.abilitaAlbero();
 
+		/*Set<Integer> keys = elencoBottDisat.keySet();
+		Iterator<Integer> i;
+		Integer key;
+		for(i=keys.iterator(); i.hasNext();)
+		{
+			key = (Integer) i.next();
+			JButton jb=elencoBottDisat.get(key);
+			jb.setEnabled(false);
+//			elencoBottDisat.remove(key);
+		}
+		*/
+		elencoBottDisat.clear();
+		ProdottiView.getInstance().disableBottoni();
+		
 	}
 	
 	public void annullaPreventivo()
@@ -154,6 +182,23 @@ public class Ctrl_elaboraPreventivo {
 		Dao_System.salvaIdPrev(id);		
 		M_Preventivo.cancIstanza();
 		AlberoPreventivi.abilitaAlbero();
+		
+		//fare una funzione per questo
+		/*Set<Integer> keys = elencoBottDisat.keySet();
+		Iterator<Integer> i;
+		Integer key;
+		for(i=keys.iterator(); i.hasNext();)
+		{
+			key = (Integer) i.next();
+			JButton jb=elencoBottDisat.get(key);
+			jb.setEnabled(true);
+			//elencoBottDisat.remove(key);
+		}*/
+		
+		elencoBottDisat.clear();
+		ProdottiView.getInstance().disableBottoni();
+
+		
 	}
 	
 	public void riepilogoPreventivo(Object obj)
@@ -240,6 +285,10 @@ public class Ctrl_elaboraPreventivo {
 				p.removeItem(id);
 				ItemPreventivoView.getInstance().deleteRow(row);
 				
+				JButton jb=elencoBottDisat.get(id);
+				jb.setEnabled(true);
+				elencoBottDisat.remove(id);
+
 				if (M_Preventivo.getInstance().getElencoItem().isEmpty()){
 					PrimaryView.getInstance().setEnableSalva(false);
 				}

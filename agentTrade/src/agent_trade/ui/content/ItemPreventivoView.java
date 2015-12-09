@@ -176,7 +176,6 @@ public class ItemPreventivoView extends JPanel
 		((DefaultTableModel) JTableModel).removeRow(row);
 		}	
 	
-	
 	public void setImponibile(String a){
 		textFieldImponibile.setText(a);
 	}

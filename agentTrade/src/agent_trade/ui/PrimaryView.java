@@ -3,10 +3,13 @@ package agent_trade.ui;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.LineBorder;
@@ -86,7 +89,9 @@ public class PrimaryView extends JFrame
 	/*costruttori*/
 	
 	private PrimaryView() {
-			
+		
+		super("Agent Trade");
+		
 		this.initComponents();
 		
 		initTabPreventivo();
@@ -322,35 +327,44 @@ public class PrimaryView extends JFrame
 		Catalogo.setLayout(null);
 		
 		panello_menu_catalogo = new JPanel();
-		panello_menu_catalogo.setBounds(0, 0, 1003, 124);
+		panello_menu_catalogo.setBounds(0, 0, 1010, 124);
 		panello_menu_catalogo.setLayout(null);
 		panello_menu_catalogo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panello_menu_catalogo.setBackground(Color.WHITE);
 		Catalogo.add(panello_menu_catalogo);
 		
 		panello_sottomenu_catalogo = new JPanel();
-		panello_sottomenu_catalogo.setBounds(0, 123, 1003, 551);
+		panello_sottomenu_catalogo.setBounds(0, 123, 1010, 583);
 		panello_sottomenu_catalogo.setLayout(null);
 		Catalogo.add(panello_sottomenu_catalogo);
 		
 		panello_laterale_catalogo = new JPanel();
-		panello_laterale_catalogo.setBounds(0, 0, 250, 551);
+		panello_laterale_catalogo.setBounds(0, 0, 250, 583);
 		panello_sottomenu_catalogo.add(panello_laterale_catalogo);
 		
 		panello_centrale_catalogo = new JPanel();
-		panello_centrale_catalogo.setBackground(Color.LIGHT_GRAY);
-		panello_centrale_catalogo.setBounds(251, 0, 755, 551);
+		panello_centrale_catalogo.setBackground(Color.ORANGE);
+		panello_centrale_catalogo.setBounds(251, 0, 760, 583);
 		panello_sottomenu_catalogo.add(panello_centrale_catalogo);
 		panello_centrale_catalogo.setLayout(null);
 		
 		
 		pannelloProdotti = ProdottiView.getInstance();
-		pannelloProdotti.setBounds(0, 0, 745, 449);
+		pannelloProdotti.setBounds(0, 0, 760, 449);
 		panello_centrale_catalogo.add(pannelloProdotti);
 	}
 	
 	private void initComponents()
 	{
+		
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                askClosure();
+            }
+        });
+		
 		getContentPane().setLayout(null);
 		
 		tabbedPrincipale = new JTabbedPane(JTabbedPane.TOP);
@@ -358,7 +372,7 @@ public class PrimaryView extends JFrame
 
 		getContentPane().add(tabbedPrincipale);
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//setBounds(150, 210, 1024, 748);
 		//Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
@@ -369,6 +383,17 @@ public class PrimaryView extends JFrame
 		
 		this.setResizable(false);
 	}
+	
+	
+	private void askClosure() {
+	        int choice = JOptionPane.showConfirmDialog(this,
+	                "Chiudere l'applicazione?",
+	                "Agent trade",
+	                JOptionPane.YES_NO_OPTION);
+	        if (choice == JOptionPane.YES_OPTION) {
+	            System.exit(0);
+	        }
+	    }
 	
 	
 	/*metodi pubblici*/

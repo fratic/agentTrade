@@ -1,4 +1,4 @@
-package agent_trade.util;
+/*package agent_trade.util;
 
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -19,7 +19,7 @@ import javax.swing.table.TableCellEditor;
 import agent_trade.ui.content.ItemPreventivoView;
 
 
-public class ButtonsEditorAdd extends ButtonsPanelAdd implements TableCellEditor {
+public class CopyOfButtonsEditorAddOLD extends ButtonsPanelAdd implements TableCellEditor {
     protected transient ChangeEvent changeEvent;
     private final JTable table;
     private class EditingStopHandler extends MouseAdapter implements ActionListener {
@@ -47,10 +47,10 @@ public class ButtonsEditorAdd extends ButtonsPanelAdd implements TableCellEditor
     
     
     
-    public ButtonsEditorAdd(JTable table) {
+    public CopyOfButtonsEditorAddOLD(JTable table) {
         super();
         this.table = table;
-     //   buttons.get(0).setAction(new EditActionAdd(table, buttons.get(0)));
+        buttons.get(0).setAction(new EditActionAdd(table, buttons.get(0)));
 
         EditingStopHandler handler = new EditingStopHandler();
         for (JButton b: buttons) {
@@ -128,4 +128,4 @@ public class ButtonsEditorAdd extends ButtonsPanelAdd implements TableCellEditor
             }
         }
     }
-}
+}*/
