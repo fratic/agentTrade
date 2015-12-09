@@ -1,28 +1,22 @@
 package agent_trade.ui;
 
-import javax.swing.JFrame;
-
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-
 import java.awt.Color;
-
-import javax.swing.JButton;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.border.LineBorder;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultTreeModel;
+import javax.swing.border.TitledBorder;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.ui.content.AlberoClienti;
 import agent_trade.ui.content.AlberoPreventivi;
-import agent_trade.ui.content.DettaglioCercaCliente;
 import agent_trade.ui.content.DettaglioClienteView;
 import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.ItemPreventivoView;
@@ -30,8 +24,6 @@ import agent_trade.ui.content.ProdottiView;
 import agent_trade.ui.content.RiepilogoClienteView;
 import agent_trade.ui.content.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.RiepilogoItemPreventivoView;
-
-import javax.swing.border.TitledBorder;
 
 public class PrimaryView extends JFrame 
 {
@@ -530,5 +522,14 @@ public class PrimaryView extends JFrame
 	public void abilitaAlbero(){
 		alberoPreventivi.enable();
 	}
+
+
+	public void setEnableSalva(boolean b) {
+		
+		((ItemPreventivoView) item).enableSave(b);
+	}
+
+
+	
 	
 }

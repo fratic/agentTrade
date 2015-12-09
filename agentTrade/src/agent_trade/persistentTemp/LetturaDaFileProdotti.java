@@ -42,8 +42,8 @@ int i=0;
 while (iteraProdotti.hasNext()) {
 	
 	p = (M_Prodotto) iteraProdotti.next();
-	System.out.println(p.getCategoria());	
-	System.out.println(i);	
+//	System.out.println(p.getCategoria());	
+//	System.out.println(i);	
 i++;
 }
 }

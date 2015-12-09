@@ -40,9 +40,10 @@ public class M_Preventivo implements Serializable, Observer{
 	}	
 	
 	public M_Preventivo() {
+		
 		newId=Dao_System.loadIdPrev();
 		newId++;
-		System.out.println("nuovo id: "+newId);
+//		System.out.println("nuovo id: "+newId);
 		this.idPreventivo=Integer.toString(newId);
 	}
 	/*metodi di classe*/
@@ -107,14 +108,14 @@ public class M_Preventivo implements Serializable, Observer{
 	}
 	
 	public M_Preventivo_Item addItem(M_Prodotto Prodotto ){
+		
 		M_Preventivo_Item it= new M_Preventivo_Item(M_Preventivo.getInstance(), Prodotto);
 		this.elencoItem.add(it);
 		return it;
 	}
 	
 	public void update(Observable observer, Object obj) {
-		//float c = calcolaTotale();		
-		//aggiornare le quantita
+
 		Ctrl_elaboraPreventivo.getInstance().refresh(observer, this);
 	}
 	
@@ -126,15 +127,13 @@ public class M_Preventivo implements Serializable, Observer{
 		iteraItem = this.getElencoItem().iterator();
 		M_Preventivo_Item item;
 	
-		while (iteraItem.hasNext()) {
-			
+		while (iteraItem.hasNext()) 
+		{
 			item = (M_Preventivo_Item) iteraItem.next();
 			totale= totale+(item.getQuantita()*item.getIdProdotto().getPrezzo());
-			System.out.println("Quantità: "+item.getQuantita()+" prezzo: "+item.getIdProdotto().getPrezzo());
-						
+//			System.out.println("Quantità: "+item.getQuantita()+" prezzo: "+item.getIdProdotto().getPrezzo());
 		}
 		return totale;
-
 	}
 
 	public void addQuant(int id, int qt) {
@@ -143,35 +142,30 @@ public class M_Preventivo implements Serializable, Observer{
 		iteraItem = this.getElencoItem().iterator();
 		M_Preventivo_Item item;
 	
-		while (iteraItem.hasNext()) {
-			
+		while (iteraItem.hasNext()) 
+		{			
 			item = (M_Preventivo_Item) iteraItem.next();
-			if (item.getIdProdotto().getIdProdotto()==id){
+			if (item.getIdProdotto().getIdProdotto()==id)
+			{
 				item.setQuantita(qt);
 			}
-			
-		
 		}
 	}
 
 	public void removeItem(int id) {
+
 		Iterator iteraItem = null;
 		iteraItem = this.getElencoItem().iterator();
 		M_Preventivo_Item item;
 	
 		while (iteraItem.hasNext()) {
-			
 			item = (M_Preventivo_Item) iteraItem.next();
-			if (item.getIdProdotto().getIdProdotto()==id){
-				
-				item.cancellaItem();
+			if (item.getIdProdotto().getIdProdotto()==id)
+			{
 				this.elencoItem.remove(item);
+				item.cancellaItem(this);
 				break;
-
 			}
-
-	}
-
-
+		}
 	}
 }

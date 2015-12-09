@@ -30,7 +30,7 @@ public class SpinnerEditor extends AbstractCellEditor implements TableCellEditor
            
     	    if (row>=0){
             Object id =table.getModel().getValueAt(row, 1);
-            System.out.println("ID : " + id+" quantita: "+qt);
+//            System.out.println("ID : " + id+" quantita: "+qt);
             Ctrl_elaboraPreventivo.getInstance().addQuant(Integer.parseInt((String) id), qt, row);
             
             }

@@ -1,9 +1,9 @@
 package agent_trade.ui.content;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,6 +26,7 @@ public class ItemPreventivoView extends JPanel
 {
 	/*attributi di classe*/
 	
+	private static final Class ButtonsEditorRm = null;
 	private static ItemPreventivoView instance;
 	private static DefaultTableModel JTableModel;
 
@@ -60,37 +61,8 @@ public class ItemPreventivoView extends JPanel
 		panelloTabella.setBounds(0, 0, 745, 371);
 		panel.add(panelloTabella);
 		panelloTabella.setLayout(null);
-		
-
-		
-		
-String[] colNames = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" };
-
-        
-        final Object[][] data = {};
-        
-
-        JTableModel = new DefaultTableModel(data, colNames);
-         
-        table = new JTable(JTableModel);
-
-        TableColumnModel colModel = table.getColumnModel();
-        colModel.getColumn(4).setCellRenderer(new SpinnerRenderer());
-
-        colModel.getColumn(0).setCellRenderer(new ButtonsRendererRm());
-        
-        colModel.getColumn(4).setCellEditor(new SpinnerEditor(table));
-        colModel.getColumn(0).setCellEditor(new ButtonsEditorRm(table));
-
-        
-        colModel.getColumn(0).setPreferredWidth(30);
-        colModel.getColumn(4).setPreferredWidth(35);
-
-        table.setCellSelectionEnabled(true);
-
-	    table.setRowHeight(30);
 	   	
-		scrollPane = new JScrollPane(table);
+		scrollPane = new JScrollPane(creaTabellaProdotti());
 		scrollPane.setBounds(10, 11, 725, 349);
 		panelloTabella.add(scrollPane);
 	  
@@ -146,6 +118,9 @@ String[] colNames = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", 
 	
 	/*metodi di classe*/
 	
+	
+
+
 	public static ItemPreventivoView getInstance(){
 		if (instance==null)
 			instance = new ItemPreventivoView();
@@ -158,6 +133,32 @@ String[] colNames = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", 
 	
 	
 	/*metodi privati*/
+	
+	private JTable creaTabellaProdotti() {
+		
+		String[] colNames = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" };
+        
+        final Object[][] data = {};
+        
+        JTableModel = new DefaultTableModel(data, colNames);
+         
+        table = new JTable(JTableModel);
+
+        TableColumnModel colModel = table.getColumnModel();
+        colModel.getColumn(4).setCellRenderer(new SpinnerRenderer());
+        colModel.getColumn(0).setCellRenderer(new ButtonsRendererRm());
+        
+        colModel.getColumn(4).setCellEditor(new SpinnerEditor(table));
+        colModel.getColumn(0).setCellEditor(new ButtonsEditorRm(table));
+
+        colModel.getColumn(0).setPreferredWidth(30);
+        colModel.getColumn(4).setPreferredWidth(35);
+        
+	    table.setRowHeight(30);	
+	    
+	    return table;
+	}
+	
 	/*metodi pubblici*/
 	
 	
@@ -188,6 +189,9 @@ String[] colNames = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", 
 		textFieldTotale.setText(a);
 	}
 
+	public void enableSave(boolean b){
+		buttoneSalva.setEnabled(b);
+	}
 
 
 }

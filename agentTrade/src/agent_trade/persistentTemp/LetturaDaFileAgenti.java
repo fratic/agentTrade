@@ -41,7 +41,7 @@ M_Agente a = new M_Agente();
 while (iteraAgenti.hasNext()) {
 	//System.out.println("dio");
 	a = (M_Agente) iteraAgenti.next();
-	System.out.println("Agente "+a.getCognome()+ " " +a.getNome()+" id: "+a.getIdAgente()+" password "+a.getPassword());
+//	System.out.println("Agente "+a.getCognome()+ " " +a.getNome()+" id: "+a.getIdAgente()+" password "+a.getPassword());
 }
 }
 catch(Exception e)

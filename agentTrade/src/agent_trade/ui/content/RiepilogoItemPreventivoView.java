@@ -152,14 +152,14 @@ public class RiepilogoItemPreventivoView extends JPanel
 	
 	public void resetTable(){
 		int k=((DefaultTableModel) JTableModel).getRowCount();
-		System.out.println ("reset table. k: "+k);
+//		System.out.println ("reset table. k: "+k);
 
 		for (int i=k-1; i>=0;i--){
 			((DefaultTableModel) JTableModel).removeRow(i);
 		}
 		
 		k=((DefaultTableModel) JTableModel).getRowCount();
-		System.out.println ("dopo reset. k: "+k);
+//		System.out.println ("dopo reset. k: "+k);
 	}
 	
 	

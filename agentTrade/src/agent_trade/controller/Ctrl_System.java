@@ -51,7 +51,7 @@ public class Ctrl_System {
 			p = (M_Preventivo) iteraPreventivi.next();
 				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
 				i++;
-				System.out.println (i);
+//				System.out.println (i);
 		}
 	}
 	

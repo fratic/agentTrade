@@ -45,7 +45,7 @@ import agent_trade.model.M_Agente;
 */
 	//oos.write(mioSB);
 	oos.close();
-	System.out.println("OK");
+//	System.out.println("OK");
 	}
 	catch(Exception e)
 	{
