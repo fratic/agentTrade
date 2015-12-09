@@ -121,6 +121,7 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().resetPannelloCentraleCliente();
 			recuperaCliente(cognome);
 			AlberoClienti.inserisciNodo(cliente.getCognome()+ " - " +cliente.getNome());
+			AlberoClienti.abilitaAlbero();
 
 		}
 	}
@@ -162,6 +163,7 @@ public class Ctrl_gestisciCliente {
 		Dao_System.getInstance().cancellaCliente(cliente);
 		confermaCancCliente.getInstance().setVisible(true);
 		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
+		PrimaryView.getInstance().resetPannelloCentraleCliente();
 		
 		
 	}
@@ -184,6 +186,7 @@ public class Ctrl_gestisciCliente {
 	{	
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
 		PrimaryView.initDettaglioCliente();
+		AlberoClienti.disabilitaAlbero();
 		//PrimaryView.getInstance().setEnableNewCliente(false);
 	}
 	
@@ -191,6 +194,7 @@ public class Ctrl_gestisciCliente {
 	{
 		PrimaryView.getInstance().resetNuovoCliente();
 		PrimaryView.getInstance().setVisibleErroreNuovoCliente(false);
+		AlberoClienti.abilitaAlbero();
 	}
 	
 	public void btnCerca()
