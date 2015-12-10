@@ -94,6 +94,8 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
 			PrimaryView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
+			PrimaryView.getInstance().setEnableTabPreventivo(false);
+			PrimaryView.getInstance().setEnableTabCatalogo(false);
 	}
 	
 	//da rivedere COME CREO GLI ID? COME CONTROLLO I CAMPI?
@@ -121,6 +123,9 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().resetPannelloCentraleCliente();
 			recuperaCliente(cognome);
 			AlberoClienti.inserisciNodo(cliente.getCognome()+ " - " +cliente.getNome());
+			AlberoClienti.abilitaAlbero();
+			PrimaryView.getInstance().setEnableTabPreventivo(true);
+			PrimaryView.getInstance().setEnableTabCatalogo(true);
 
 		}
 	}
@@ -150,6 +155,8 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryView.getInstance().disattivaCancella(true);
 			PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
+			PrimaryView.getInstance().setEnableTabPreventivo(true);
+			PrimaryView.getInstance().setEnableTabCatalogo(true);
 			
 		}
 	}
@@ -161,7 +168,10 @@ public class Ctrl_gestisciCliente {
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
 		Dao_System.getInstance().cancellaCliente(cliente);
 		confermaCancCliente.getInstance().setVisible(true);
-		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
+		//AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
+		AlberoClienti.rimuoviNodo();
+		PrimaryView.getInstance().resetPannelloCentraleCliente();
+		
 		
 		
 	}
@@ -184,13 +194,19 @@ public class Ctrl_gestisciCliente {
 	{	
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
 		PrimaryView.initDettaglioCliente();
+		AlberoClienti.disabilitaAlbero();
+		PrimaryView.getInstance().setEnableTabPreventivo(false);
+		PrimaryView.getInstance().setEnableTabCatalogo(false);
 		//PrimaryView.getInstance().setEnableNewCliente(false);
 	}
 	
 	public void annullaNewCliente()
 	{
+		PrimaryView.getInstance().setEnableTabPreventivo(true);
+		PrimaryView.getInstance().setEnableTabCatalogo(true);
 		PrimaryView.getInstance().resetNuovoCliente();
 		PrimaryView.getInstance().setVisibleErroreNuovoCliente(false);
+		AlberoClienti.abilitaAlbero();
 	}
 	
 	public void btnCerca()
@@ -198,6 +214,8 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
 		Ricerca_cliente.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		Ricerca_cliente.getInstance().setVisible(true);
+//		PrimaryView.getInstance().setEnableTabPreventivo(false);
+//		PrimaryView.getInstance().setEnableTabCatalogo(false);
 	}
 	
 	public void abilitaModifica()
@@ -222,6 +240,8 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
 		confermaCancCliente.getInstance().setVisible(false);
 		confermaCancCliente.cancInst();
+		PrimaryView.getInstance().setEnableTabPreventivo(true);
+		PrimaryView.getInstance().setEnableTabCatalogo(true);
 		}
 	
 	public void notConfermaCancCliente(){
