@@ -16,12 +16,14 @@ public class M_Preventivo implements Serializable, Observer{
 	/*attributi di classe*/
 	
 	private static M_Preventivo instance;
-	private static int newId;
+
+	private static int newId=Dao_System.getInstance().loadIdPrev();
+
 
 	/*attributi privati*/
 	private String idPreventivo;
 	private String data; //bisognerebbe creare un oggetto Data
-	private float totale;
+	private float totale; //forse non serve
 	private M_Agente rif_Agente;
 	private M_Cliente rif_Cliente;
 	private ArrayList<M_Preventivo_Item> elencoItem= new ArrayList<M_Preventivo_Item>();
@@ -30,18 +32,20 @@ public class M_Preventivo implements Serializable, Observer{
 	/*costruttori*/
 	
 	//bisogna aggiustare il caricamento dell'id in tutti i costruttori 
-	public M_Preventivo(String id, String data, float tot, M_Agente a){		
+	public M_Preventivo(M_Preventivo prev){		
 		
-		Dao_System.getInstance();
-		this.idPreventivo=Integer.toString(newId);
-		this.data=data;
-		this.totale=tot;
-		this.rif_Agente=a;
-	}	
+		//Dao_System.getInstance();
+		this.idPreventivo=prev.idPreventivo;
+		this.data=prev.getData();
+		this.totale=prev.totale;
+		this.rif_Agente=prev.getRif_Agente();
+		this.rif_Cliente=prev.getRif_Cliente();
+		this.elencoItem=prev.getElencoItem();
+	}
 	
 	public M_Preventivo() {
 		
-		newId=Dao_System.loadIdPrev();
+		//newId=Dao_System.getInstance().loadIdPrev();
 		newId++;
 //		System.out.println("nuovo id: "+newId);
 		this.idPreventivo=Integer.toString(newId);
@@ -50,6 +54,14 @@ public class M_Preventivo implements Serializable, Observer{
 	
 	public static M_Preventivo getInstance(){
 		return ((instance == null) ? instance = new M_Preventivo() : instance);	
+	}
+	
+	public static M_Preventivo getInstance(M_Preventivo prev){
+		return ((instance == null) ? instance= new M_Preventivo(prev) : instance);	
+	}
+	
+	public static int getNumprev(){
+		return (newId);	
 	}
 	
 	/*metodi privati*/

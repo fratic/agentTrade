@@ -65,12 +65,13 @@ public class RiepilogoItemPreventivoView extends JPanel
 
 		JTableModel = new DefaultTableModel(
                 new String[][] { },
-                new String[] { "Rimuovi","ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" });
+                new String[] {"ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" });
 			
 		table =new JTable();
 	  
 		table.setModel(JTableModel);
-	
+		
+			
 		scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 11, 725, 349);
 		panelloTabella.add(scrollPane);
@@ -84,7 +85,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		buttoneSalva = new JButton("");
 		buttoneSalva.setIcon(new ImageIcon(RiepilogoItemPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
 		buttoneSalva.setBounds(8, 8, 45, 45);
-		panelloRiepilogo.add(buttoneSalva);
+		//panelloRiepilogo.add(buttoneSalva);
 		
 		JLabel labelImponibile = new JLabel("Imponibile");
 		labelImponibile.setBounds(512, 8, 72, 14);
@@ -145,9 +146,9 @@ public class RiepilogoItemPreventivoView extends JPanel
 	/*metodi privati*/
 	/*metodi pubblici*/
 		
-	public void updateTable(String rem, String id, String nome, String categoria, String quantita, String prezzo, String parziale)
+	public void updateTable( String id, String nome, String categoria, String quantita, String prezzo, String parziale)
 	{
-		((DefaultTableModel) JTableModel).addRow(new Object[]{rem, id, nome, categoria, quantita, prezzo, parziale});
+		((DefaultTableModel) JTableModel).addRow(new Object[]{ id, nome, categoria, quantita, prezzo, parziale});
 	}
 	
 	public void resetTable(){

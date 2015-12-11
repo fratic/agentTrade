@@ -3,10 +3,10 @@ package agent_trade.ui.content;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
@@ -21,20 +21,13 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-
-
-
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.model.M_Prodotto;
 //import agent_trade.util.ButtonRendererAdd;
 //import agent_trade.util.ButtonsEditorAdd;
-import agent_trade.util.ButtonsEditorRm;
-import agent_trade.util.ButtonsRendererRm;
 //import agent_trade.util.DisableButton;
 //import agent_trade.util.MyEditor;
 //import agent_trade.util.MyRenderer;
-import agent_trade.util.SpinnerEditor;
-import agent_trade.util.SpinnerRenderer;
 
 
 public class ProdottiView extends JPanel {
@@ -42,6 +35,8 @@ public class ProdottiView extends JPanel {
 	/*attributi di classe*/
 	
 	private static ProdottiView instance;
+
+	private static Map<Integer, JButton> elencoBott=new TreeMap<>();
 
 	/*attributi privati*/
 	
@@ -52,9 +47,8 @@ public class ProdottiView extends JPanel {
 	private static DefaultTableModel JTableModel;
 	
 	private JScrollPane scrollPane;
-	
-	private JButton addItem;
-	
+		
+
 
 	/*costruttori*/
 	
@@ -71,17 +65,7 @@ public class ProdottiView extends JPanel {
 		pannelloProdotti.add(pannelloTabella);
 	    pannelloTabella.setLayout(null);
 
-		addItem = new JButton("New button");
 
-//		table = new JTable();
-//	    JTableModel = (DefaultTableModel) table.getModel();
-//
-//	    JTableModel.addColumn("ID prodotto", new Object[] {});
-//	    JTableModel.addColumn("Nome", new Object[] {});
-//	    JTableModel.addColumn("Categoria", new Object[] {});
-//	    JTableModel.addColumn("Azienda", new Object[] {});
-//	    JTableModel.addColumn("Prezzo", new Object[] {});
-//	    JTableModel.addColumn("Aggiungi", new Object[] {});
 
 		String[] colNames = {"ID prodotto", "Nome", "Categoria", "Azienda", "Prezzo", "Aggiungi" };
         
@@ -93,16 +77,8 @@ public class ProdottiView extends JPanel {
 
 	    
         TableColumnModel colModel = table.getColumnModel();
-//        
-//        colModel.getColumn(5).setCellRenderer(new ButtonRendererAdd());
-//        colModel.getColumn(5).setCellEditor(new ButtonsEditorAdd(table));
-//        
         
         colModel.getColumn(5).setPreferredWidth(35);
-
-//        table.setDefaultRenderer(Object.class, new MyRenderer());
-//        table.setDefaultEditor(Object.class, new MyEditor());
-
         table.setDefaultRenderer(Object.class, new MyRenderer());
         table.setDefaultEditor(Object.class, new MyEditor());
 
@@ -114,18 +90,8 @@ public class ProdottiView extends JPanel {
 		  scrollPane = new JScrollPane(table);
 		  scrollPane.setBounds(0, 0, 754, 550);
 		  pannelloTabella.add(scrollPane);
-		  
-		  
-		
-//		  table.addMouseListener(new MouseAdapter() {
-//				public void mouseClicked(MouseEvent me) {
-//					//String sel= (String)table.getValueAt(table.getSelectedRow(),0);
-//					//System.out.println("in mpouseliste "+sel);
-//				//	Ctrl_elaboraPreventivo.getInstance().addItem((Integer)table.getValueAt(table.getSelectedRow(),0));
-//					//Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel));
-//				    
-//				}
-//		  });		  
+
+
 	}
 	
 	
@@ -136,6 +102,10 @@ public class ProdottiView extends JPanel {
 			instance = new ProdottiView();
 		return instance;	 
 	}	
+	
+	public static Map<Integer, JButton> elencoBottoniProdotti(){
+		return elencoBott;
+	}
 	
 	/*metodi privati*/
 	/*metodi pubblici*/
@@ -167,6 +137,8 @@ public class ProdottiView extends JPanel {
             ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
             		p.getNome(), p.getCategoria(), "",Float.toString(p.getPrezzo()), jb});
             
+    		elencoBott.put(p.getIdProdotto(), jb);
+
             
             TableColumn col = table.getColumnModel().getColumn(5);
             
@@ -179,8 +151,8 @@ public class ProdottiView extends JPanel {
 //    	    col.setCellRenderer(new ButtonRendererAdd());
 //    	    col.setCellEditor(new ButtonsEditorAdd(table));
     	    col.setMaxWidth(60);
+    	    col.setMinWidth(60);
 
-		
             
 		}
 		

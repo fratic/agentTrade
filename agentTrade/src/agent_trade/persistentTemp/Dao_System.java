@@ -133,7 +133,6 @@ public class Dao_System {
 			while(iteraClienti.hasNext()){
 				cliente = (M_Cliente) iteraClienti.next();
 				if(cliente.getCognome().equals(c)){
-					//System.out.println("cognome:"  + cliente.getCognome());
 					elencoClienti.add(cliente);
 				}
 				
@@ -322,7 +321,9 @@ public class Dao_System {
 	 * _____________________PREVENTIVI_____________________
 	 */
 	
-	public static void salvaPreventivo(M_Preventivo p) {
+	public void salvaPreventivo(M_Preventivo p) {
+		
+		cancPreventivo(p.getIdPreventivo());//messo solo per controllare che già non esiste, quando avremo il db non servirà
 		
 		try 
 		{
@@ -361,7 +362,7 @@ public class Dao_System {
 	}
 	
 	
-	public static ArrayList<M_Preventivo> loadPreventivi(){
+	public  ArrayList<M_Preventivo> loadPreventivi(){
 		try
 		{
 			FileInputStream fis = new FileInputStream("file_db/preventivi");
@@ -382,7 +383,7 @@ public class Dao_System {
 		
 	}
 
-	public static M_Preventivo loadPreventivo(String id){
+	public M_Preventivo loadPreventivo(String id){
 		try
 		{
 			FileInputStream fis = new FileInputStream("file_db/preventivi");
@@ -415,9 +416,53 @@ public class Dao_System {
 		
 	}
 	
-	/*---------------------------id nuovo prventivo------------------------------*/
-	public static void salvaIdPrev(int id) {
+	public  M_Preventivo cancPreventivo(String id){
+		try
+		{
+
+			FileInputStream fis = new FileInputStream("file_db/preventivi");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+	
+			ArrayList< M_Preventivo> preventivi =(ArrayList<M_Preventivo>) ois.readObject();
+	
+			ois.close();
+			fis.close();
+			
+			Iterator iteraPreventivi = preventivi.iterator();
+
+			M_Preventivo p;
+			
+			while (iteraPreventivi.hasNext()) {				
+				p = (M_Preventivo) iteraPreventivi.next();
+				if (p.getIdPreventivo().equals(id)){
+					preventivi.remove(p);
+					break;
+				}
+			}
+			
+
+			FileOutputStream fos = new FileOutputStream("file_db/preventivi");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+			oos.writeObject(preventivi);
+			
+			oos.close();
+			fos.close();
+			
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Eccezione:"  + e.toString());
+		}
+		return null;
 		
+	}
+	
+	
+	/*---------------------------id nuovo prventivo------------------------------*/
+	public  void salvaIdPrev(int id) {
+				
 		try 
 		{		
 
@@ -436,7 +481,7 @@ public class Dao_System {
 	}
 	
 	
-	public static int loadIdPrev(){
+	public int loadIdPrev(){
 		try
 		{
 			FileInputStream fis = new FileInputStream("file_db/id_prev");
@@ -453,6 +498,5 @@ public class Dao_System {
 			System.out.println("Eccezione:"  + e.toString());
 		}
 		return 0;
-		
 	}
 }

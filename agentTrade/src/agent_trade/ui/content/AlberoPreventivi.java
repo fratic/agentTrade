@@ -3,13 +3,16 @@ package agent_trade.ui.content;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import javax.swing.RepaintManager;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
+import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 
 public class AlberoPreventivi extends JPanel {
@@ -18,7 +21,8 @@ public class AlberoPreventivi extends JPanel {
 	
 	public static DefaultTreeModel model;
 	public static JTree albero;
-	
+	private static AlberoPreventivi instance;
+
 
 	/*attributi privati*/
 	
@@ -55,6 +59,12 @@ public class AlberoPreventivi extends JPanel {
 	
 	/*metodi di classe*/
 	
+		public static AlberoPreventivi getInstance(){
+		
+			return ((instance == null) ? instance = new AlberoPreventivi() : instance);	
+		}
+	
+	
 	  public static void inserisciNodo(String nodo) {
 		    
 		  DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
@@ -69,7 +79,6 @@ public class AlberoPreventivi extends JPanel {
 		 */
 		   
 		   // model.insertNodeInto(new DefaultMutableTreeNode("asdasdasd"),nodo, radice.getChildCount());
-		  
 		  }
 	  
 	  public static void disabilitaAlbero(){
@@ -80,12 +89,23 @@ public class AlberoPreventivi extends JPanel {
 		  albero.enable();
 	  }
 	
+	  public  void ricaricaAlbero(){
+		  model.reload();
+		  this.repaint();
+//		  instance=null;
+//		  getInstance();
+		  Ctrl_System.getInstance().initAlberoPreventivi();
+
+	  }
+	  
+	  public void resetIstanzaAlbero(){
+		  
+	  }
+	  
 	/*metodi privati*/
 	/*metodi pubblici*/
 		  
-	  public void ricaricaAlbero(){
-		  model.reload();
-	  }
+	 
 	  	  
 	
 }

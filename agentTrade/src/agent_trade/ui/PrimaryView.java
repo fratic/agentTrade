@@ -51,7 +51,7 @@ public class PrimaryView extends JFrame
 	private static final int WIDTH = 1024;
 	private static final int HEIGHT = 784;
 
-	
+
 	/*attributi privati*/
 	
 	private JButton nuovo_preventivo;
@@ -236,7 +236,7 @@ public class PrimaryView extends JFrame
 		panello_laterale_preventivo.setLayout(null);
 		
 		
-		alberoPreventivi = new AlberoPreventivi();
+		alberoPreventivi = AlberoPreventivi.getInstance();
 		alberoPreventivi.setBounds(0, 0, 261, 585);
 		panello_laterale_preventivo.add(alberoPreventivi);
 
@@ -544,8 +544,8 @@ public class PrimaryView extends JFrame
 		
 	}
 
-	public void updateTableRiepilogo(String rem, String id, String nome, String categoria, String quantita, String prezzo, String parziale){
-		((RiepilogoItemPreventivoView) riep_item).updateTable(rem, id, nome, categoria, quantita, prezzo, parziale);	
+	public void updateTableRiepilogo(String id, String nome, String categoria, String quantita, String prezzo, String parziale){
+		((RiepilogoItemPreventivoView) riep_item).updateTable(id, nome, categoria, quantita, prezzo, parziale);	
 	}
 		
 	public void disabilitaAlbero(){

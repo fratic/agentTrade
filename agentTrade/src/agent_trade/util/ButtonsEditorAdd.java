@@ -76,7 +76,7 @@ public class ButtonsEditorAdd extends ButtonsPanelAdd implements TableCellEditor
     //protected EventListenerList listenerList = new EventListenerList();
     //protected transient ChangeEvent changeEvent;
     @Override public boolean isCellEditable(EventObject e) {
-        return true;
+        return false;
     }
     @Override public boolean shouldSelectCell(EventObject anEvent) {
         return true;

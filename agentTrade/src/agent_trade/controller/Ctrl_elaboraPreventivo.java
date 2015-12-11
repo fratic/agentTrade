@@ -22,6 +22,7 @@ import agent_trade.ui.content.AlberoPreventivi;
 import agent_trade.ui.content.CercaClienteView;
 import agent_trade.ui.content.ItemPreventivoView;
 import agent_trade.ui.content.ProdottiView;
+import agent_trade.ui.content.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.RiepilogoItemPreventivoView;
 
 public class Ctrl_elaboraPreventivo {
@@ -36,8 +37,6 @@ public class Ctrl_elaboraPreventivo {
 
 	
 	/*costruttori*/
-	
-
 	
 	/*metodi di classe*/
 	
@@ -100,7 +99,8 @@ public class Ctrl_elaboraPreventivo {
 	
 	}
 
-	
+
+	//CO3
 	public void addItem(int IdProdotto, JButton jb) {
 		
 		
@@ -111,7 +111,7 @@ public class Ctrl_elaboraPreventivo {
 			PrimaryView.getInstance().setEnableSalva(true);
 		}
 		
-		ItemPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(), Float.toString(p.getPrezzo()), Float.toString(p.getPrezzo()));
+		ItemPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(),1, Float.toString(p.getPrezzo()), Float.toString(p.getPrezzo()));
 		
 		elencoBottDisat.put(p.getIdProdotto(), jb);
 		jb.setEnabled(false);
@@ -128,12 +128,15 @@ public class Ctrl_elaboraPreventivo {
 	}
 
 	
+	//CO4
 	public void salvaPreventivo() {
 		
 		M_Preventivo p= M_Preventivo.getInstance();
-		Dao_System.salvaPreventivo(p);
+		Dao_System.getInstance().salvaPreventivo(p);
 		
-		AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
+		//AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
+		
+		
 		
 		PrimaryView.getInstance().setEnableNewPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCliente(true);
@@ -146,8 +149,11 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Preventivo.cancIstanza();	
 		
-		Dao_System.salvaIdPrev(Integer.parseInt(p.getIdPreventivo()));
+		Dao_System.getInstance().salvaIdPrev(Integer.parseInt(p.getIdPreventivo()));
+		Dao_System.getInstance().salvaIdPrev(M_Preventivo.getNumprev());
+
 		AlberoPreventivi.abilitaAlbero();
+		AlberoPreventivi.getInstance().ricaricaAlbero();
 
 		/*Set<Integer> keys = elencoBottDisat.keySet();
 		Iterator<Integer> i;
@@ -165,6 +171,7 @@ public class Ctrl_elaboraPreventivo {
 		
 	}
 	
+	
 	public void annullaPreventivo()
 	{		
 		//si può pensare di avere una funzione in primary view che fa tutte queste cose e da qui si richiama con i parametri
@@ -179,7 +186,7 @@ public class Ctrl_elaboraPreventivo {
 		M_Preventivo p =M_Preventivo.getInstance();
 		int id=Integer.parseInt(p.getIdPreventivo());
 		id--;
-		Dao_System.salvaIdPrev(id);		
+		Dao_System.getInstance().salvaIdPrev(id);		
 		M_Preventivo.cancIstanza();
 		AlberoPreventivi.abilitaAlbero();
 		
@@ -210,7 +217,7 @@ public class Ctrl_elaboraPreventivo {
 			id=id.replaceAll("-","");
 			id=id.replaceAll(" ","");
 
-			M_Preventivo m= Dao_System.loadPreventivo(id);
+			M_Preventivo m= Dao_System.getInstance().loadPreventivo(id);
 
 			PrimaryView.initRiepilogo();
 
@@ -226,9 +233,12 @@ public class Ctrl_elaboraPreventivo {
 			M_Preventivo_Item pr_it =null;
 			while (i.hasNext()) {
 				pr_it = (M_Preventivo_Item) i.next();
-				PrimaryView.getInstance().updateTableRiepilogo("rem",Integer.toString((pr_it.getIdProdotto().getIdProdotto())), pr_it.getIdProdotto().getNome(), pr_it.getIdProdotto().getCategoria(), Integer.toString(pr_it.getQuantita()), Float.toString(pr_it.getIdProdotto().getPrezzo()), Float.toString(pr_it.getQuantita()* pr_it.getIdProdotto().getPrezzo()));
+				PrimaryView.getInstance().updateTableRiepilogo(Integer.toString((pr_it.getIdProdotto().getIdProdotto())), pr_it.getIdProdotto().getNome(), pr_it.getIdProdotto().getCategoria(), Integer.toString(pr_it.getQuantita()), Float.toString(pr_it.getIdProdotto().getPrezzo()), Float.toString(pr_it.getQuantita()* pr_it.getIdProdotto().getPrezzo()));
 		
 			}
+			
+			RiepilogoIntestazionePreventivoView.getInstance().setId_Preventivo(Integer.parseInt(m.getIdPreventivo()));
+
 			
 			float importo=m.calcolaTotale();
 			RiepilogoItemPreventivoView.getInstance().setImponibile(Float.toString(importo));
@@ -269,8 +279,6 @@ public class Ctrl_elaboraPreventivo {
 		M_Preventivo p =M_Preventivo.getInstance();
 		p.addQuant(id,qt);
 		
-		
-		
 		//SAREBBE OPPORTUNO PASSARE L'ID DELL'ITEM, E NON QUELLO DAL PRODOTTO, MA PER IL MOMENTO, 
 		//NON AVENDO IL DB, SI PROSEGUE COSI 
 
@@ -285,18 +293,98 @@ public class Ctrl_elaboraPreventivo {
 				p.removeItem(id);
 				ItemPreventivoView.getInstance().deleteRow(row);
 				
+				System.out.println("in rimuovi item "+id);
+				
 				JButton jb=elencoBottDisat.get(id);
+				if (jb!=null){
 				jb.setEnabled(true);
 				elencoBottDisat.remove(id);
-
+				}
 				if (M_Preventivo.getInstance().getElencoItem().isEmpty()){
 					PrimaryView.getInstance().setEnableSalva(false);
 				}
 				else{
 					PrimaryView.getInstance().setEnableSalva(true);
 				}
+				
+				
+				
 			}
 		});
+	}
+
+
+	public void modificaPreventivo(int id_Preventivo){
+
+		
+//		Bisogna controllare se il preventivo è ancora valido, ed in caso affermativo, 
+//		bisogna mantentere i prezzi del preventivo originario
+//		in caso negativo, comunicarlo oppure non attivare il bottone di modifica preventivamente
+		
+		
+		M_Preventivo prev=Dao_System.getInstance().loadPreventivo(Integer.toString(id_Preventivo));
+		M_Cliente cliente=Dao_System.getInstance().cercaCliente(prev.getRif_Cliente().getCognome());//questo andrà cambiato
+	
+		M_Preventivo prevMod= M_Preventivo.getInstance(prev);
+//		prevMod.setData(prev.getData());
+//		prevMod.set
+		
+		PrimaryView.getInstance().resetPannelloCentralePreventivo();
+		PrimaryView.initIntestazione();
+		PrimaryView.initItem();
+
+		PrimaryView.getInstance().setEnableNewPreventivo(false);
+		PrimaryView.getInstance().setEnableTabCliente(false);
+		PrimaryView.getInstance().setEnableSalva(true);
+
+		AlberoPreventivi.disabilitaAlbero();
+				
+		
+		PrimaryView.getInstance().setNewIntestAgente(prevMod.getRif_Agente().getCognome()+" "+prevMod.getRif_Agente().getNome());
+		PrimaryView.getInstance().setNewIntestData(prevMod.getData());
+		PrimaryView.getInstance().setNewIntestNumPrev(prevMod.getIdPreventivo());
+		
+		PrimaryView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
+
+		//più che abilitare i bottoni bisognerebbe creare una funzione per parsare tutti i prodotti 
+		//e disattivare i relativi bottoni. ovviamente bisogna inserire i bottoni disattivati nella map
+		ProdottiView.getInstance().enableBottoni();
+				
+		ArrayList<M_Preventivo_Item> elencoItem = prev.getElencoItem();
+
+		Iterator<M_Preventivo_Item> i = elencoItem.iterator();
+		M_Preventivo_Item pr_it =null;
+		M_Prodotto p=null;
+		Map<Integer, JButton> elencoBott=null;
+		JButton jb=null;
+		while (i.hasNext()) {
+			pr_it = (M_Preventivo_Item) i.next();
+			p=pr_it.getIdProdotto();
+			ItemPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(), pr_it.getQuantita(), Float.toString(p.getPrezzo()), Float.toString(p.getPrezzo()*pr_it.getQuantita()));
+
+			elencoBott=ProdottiView.elencoBottoniProdotti();
+			jb=elencoBott.get(p.getIdProdotto());
+			elencoBottDisat.put(p.getIdProdotto(), jb);
+			jb.setEnabled(false);
+		}
+
+		float importo=prevMod.calcolaTotale();
+		ItemPreventivoView.getInstance().setImponibile(Float.toString(importo));
+		float c=(float) (importo*0.22);
+		ItemPreventivoView.getInstance().setIva(Float.toString(c));
+		ItemPreventivoView.getInstance().setTotale(Float.toString(importo+c));
+
+		
+	}
+
+
+	public void cancellaPreventivo(int id_Preventivo) {
+		
+		Dao_System.getInstance().cancPreventivo(Integer.toString(id_Preventivo));
+		PrimaryView.getInstance().resetPannelloCentralePreventivo();
+
+		//ora bisogna aggiornare l'albero
+		
 	}
 	
 }

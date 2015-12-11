@@ -4,6 +4,8 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import agent_trade.controller.Ctrl_elaboraPreventivo;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import java.awt.event.ActionEvent;
@@ -19,8 +21,10 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 	/*attributi di classe*/
 	
 	private static RiepilogoIntestazionePreventivoView instance;
-	
 	/*attributi privati*/
+
+	private int id_Preventivo;
+
 	
 	private JLabel labelCliente;
 	private JLabel labelAgente;
@@ -33,8 +37,9 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 	private JLabel labelCl;
 	private JLabel lblNewLabel;
 		
-	private JButton bottoneAnnulla;
+	private JButton bottoneConfermaVendita;
 	private JButton bottoneModifica;
+	private JButton cancPrevButton;
 
 	
 	/*costruttori*/
@@ -69,11 +74,11 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		labelCliente.setBounds(88, 19, 206, 14);
 		add(labelCliente);
 		
-		bottoneAnnulla = new JButton("Conferma Ordine");
-		bottoneAnnulla.setToolTipText("Annulla il preventivo in corso");
-		bottoneAnnulla.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/carrelloOrdine.png")));
-		bottoneAnnulla.setBounds(298, 103, 161, 30);
-		add(bottoneAnnulla);
+		bottoneConfermaVendita = new JButton("Conferma Ordine");
+		bottoneConfermaVendita.setToolTipText("Annulla il preventivo in corso");
+		bottoneConfermaVendita.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/carrelloOrdine.png")));
+		bottoneConfermaVendita.setBounds(298, 103, 161, 30);
+		add(bottoneConfermaVendita);
 		
 		lblNewLabel = new JLabel("effettuato dall'agente: ");
 		lblNewLabel.setBounds(488, 44, 128, 14);
@@ -100,17 +105,31 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		separator.setBounds(10, 99, 735, 7);
 		add(separator);
 		
+		cancPrevButton = new JButton("Cancella preventivo");
+		cancPrevButton.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/delete.png")));
+		cancPrevButton.setBounds(488, 103, 195, 30);
+		add(cancPrevButton);
+		
 		bottoneModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Ctrl_elaboraPreventivo.getInstance().modificaPreventivo(id_Preventivo);
 			
 			}
 		});
 		
-		bottoneAnnulla.addActionListener(new ActionListener() {
+		bottoneConfermaVendita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 			}
 		});
+		
+		cancPrevButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Ctrl_elaboraPreventivo.getInstance().cancellaPreventivo(id_Preventivo);
+
+			}
+		});
+		
 	}
 	
 	/*metodi di classe*/
@@ -126,9 +145,19 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 	}
 
 	
+	
+	
 	/*metodi privati*/
 	
 	/*metodi pubblici*/
+	
+	public  int getId_Preventivo() {
+		return this.id_Preventivo;
+	}
+
+	public  void setId_Preventivo(int id_Preventivo) {
+		this.id_Preventivo = id_Preventivo;
+	}
 	
 	public void setCliente(String cognome, String nome, String indirizzo, String email){
 		this.labelCliente.setText(cognome+" "+nome);
@@ -155,5 +184,4 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 	public void setAltreInfoCliente(String a) {
 		this.altreInfoCliente.setText(a);
 	}
-	
 }

@@ -74,34 +74,34 @@ public class ItemPreventivoView extends JPanel
 		
 		buttoneSalva = new JButton("");
 		buttoneSalva.setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
-		buttoneSalva.setBounds(8, 8, 45, 45);
+		buttoneSalva.setBounds(665, 24, 45, 45);
 		panelloRiepilogo.add(buttoneSalva);
 		
 		JLabel labelImponibile = new JLabel("Imponibile");
-		labelImponibile.setBounds(512, 8, 72, 14);
+		labelImponibile.setBounds(458, 11, 72, 14);
 		panelloRiepilogo.add(labelImponibile);
 		
 		JLabel labelIVA = new JLabel("I.V.A.");
-		labelIVA.setBounds(512, 33, 46, 14);
+		labelIVA.setBounds(458, 36, 46, 14);
 		panelloRiepilogo.add(labelIVA);
 		
 		JLabel labelTotale = new JLabel("Totale");
-		labelTotale.setBounds(512, 58, 46, 14);
+		labelTotale.setBounds(458, 61, 46, 14);
 		panelloRiepilogo.add(labelTotale);
 		
 		textFieldImponibile = new JTextField();
 		textFieldImponibile.setColumns(10);
-		textFieldImponibile.setBounds(594, 5, 94, 20);
+		textFieldImponibile.setBounds(540, 8, 94, 20);
 		panelloRiepilogo.add(textFieldImponibile);
 		
 		textFieldIVA = new JTextField();
 		textFieldIVA.setColumns(10);
-		textFieldIVA.setBounds(594, 30, 94, 20);
+		textFieldIVA.setBounds(540, 33, 94, 20);
 		panelloRiepilogo.add(textFieldIVA);
 		
 		textFieldTotale = new JTextField();
 		textFieldTotale.setColumns(10);
-		textFieldTotale.setBounds(594, 55, 94, 20);
+		textFieldTotale.setBounds(540, 58, 94, 20);
 		panelloRiepilogo.add(textFieldTotale);
 		
 		
@@ -167,9 +167,9 @@ public class ItemPreventivoView extends JPanel
 		((DefaultTableModel) JTableModel).setValueAt(parz, table.getSelectedRow(), 6);
 	}
 	
-	public void updateTable(String rem, int id, String nome, String categoria, String prezzo, String parziale)
+	public void updateTable(String rem, int id, String nome, String categoria, int quant, String prezzo, String parziale)
 	{
-		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, 1, prezzo, parziale});
+		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quant, prezzo, parziale});
 	}
 	
 	public void deleteRow(int row) {

@@ -41,9 +41,9 @@ public class Ctrl_System {
 	
 	/*metodi privati*/
 	
-	private void initAlberoPreventivi(){
+	public void initAlberoPreventivi(){
 	
-		ArrayList<M_Preventivo> preventivi= Dao_System.loadPreventivi();
+		ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi();
 		Iterator iteraPreventivi = preventivi.iterator();
 		M_Preventivo p;
 		int i=0;
@@ -53,6 +53,20 @@ public class Ctrl_System {
 				i++;
 //				System.out.println (i);
 		}
+	}
+	
+	public void resetAlberoPreventivi(){
+		
+//		ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi();
+//		Iterator iteraPreventivi = preventivi.iterator();
+//		M_Preventivo p;
+//		int i=0;
+//		while (iteraPreventivi.hasNext()) {				
+//			p = (M_Preventivo) iteraPreventivi.next();
+//				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
+//				i++;
+////				System.out.println (i);
+//		}
 	}
 	
 	private void initAlberoClienti(){
