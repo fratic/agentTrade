@@ -37,8 +37,9 @@ public class AlberoClienti extends JPanel {
 
 			albero = new JTree(model);
 			JScrollPane scroller = new JScrollPane(albero);
-			scroller.setBounds(10, 11, 241, 563);
-			
+			//scroller.setBounds(10, 11, 241, 563);
+			scroller.setBounds(10, 12, 250, 595);
+
 			//inserisciNodo("A");
 
 			add(scroller);

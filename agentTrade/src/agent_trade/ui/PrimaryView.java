@@ -1,6 +1,7 @@
 package agent_trade.ui;
 
 import java.awt.Color;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -12,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.border.LineBorder;
+import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 import agent_trade.controller.Ctrl_System;
@@ -114,7 +115,9 @@ public class PrimaryView extends JFrame
 	public static void initIntestazione(){
 
 		intestazione= IntestazioneNuovoPreventivoView.getInstance();
-		intestazione.setBounds(0, 1, 755, 136);
+//		intestazione.setBounds(0, 1, 755, 136);
+		intestazione.setBounds(10, 10, 733, 140);
+
 		pannello_centrale_preventivo.add(intestazione);
 		pannello_centrale_preventivo.repaint();
 
@@ -124,7 +127,7 @@ public class PrimaryView extends JFrame
 
 		item= ItemPreventivoView.getInstance();
 		item.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		item.setBounds(0, 138, 745, 449);
+		item.setBounds(10, 150, 733, 457);
 		
 		pannello_centrale_preventivo.add(item);
 		pannello_centrale_preventivo.repaint();
@@ -134,7 +137,7 @@ public class PrimaryView extends JFrame
 	public static void initDettaglioCliente() {
 		
 		dettaglioCliente= DettaglioClienteView.getInstance();
-		dettaglioCliente.setBounds(1, 1, 755, 551);
+		dettaglioCliente.setBounds(7, 7, 740, 604);
 		pannello_centrale_cliente.add(dettaglioCliente);
 		pannello_centrale_cliente.repaint();
 	}
@@ -143,7 +146,8 @@ public class PrimaryView extends JFrame
 	public static void initRiepilogoClienteView() {
 		
 		riep_cliente= RiepilogoClienteView.getInstance();
-		riep_cliente.setBounds(0, 1, 755, 551);
+		riep_cliente.setBounds(7, 7, 740, 604);
+		
 		pannello_centrale_cliente.add(riep_cliente);
 		pannello_centrale_cliente.repaint();
 		
@@ -155,14 +159,16 @@ public class PrimaryView extends JFrame
 			PrimaryView.getInstance().resetPannelloCentralePreventivo();
 		
 			riep_intestazione =RiepilogoIntestazionePreventivoView.getInstance();
-			riep_intestazione.setBounds(0, 1, 745, 140);
+			riep_intestazione.setBounds(10, 10, 733, 140);
 			pannello_centrale_preventivo.add(riep_intestazione);
 			pannello_centrale_preventivo.repaint();
 
 			RiepilogoItemPreventivoView.getInstance().resetTable();
 			
 			riep_item = RiepilogoItemPreventivoView.getInstance();
-			riep_item.setBounds(0, 141, 745, 585);
+			//riep_item.setBounds(0, 141, 745, 585);
+			riep_item.setBounds(10, 150, 733, 457);
+
 			pannello_centrale_preventivo.add(riep_item);
 			pannello_centrale_preventivo.repaint();
 			
@@ -185,19 +191,21 @@ public class PrimaryView extends JFrame
 		
 		
 		preventivo = new JPanel();
+		preventivo.setBackground(Color.WHITE);
 		tabbedPrincipale.addTab("Preventivo", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/preventivo.png")), preventivo, "Gestisci i preventivi");
+		tabbedPrincipale.setBackgroundAt(0, Color.WHITE);
 		preventivo.setLayout(null);
 				
 		panello_menu_preventivo = new JPanel();
 		panello_menu_preventivo.setBackground(Color.WHITE);
-		panello_menu_preventivo.setBounds(0, 0, 1008, 124);
+		panello_menu_preventivo.setBounds(0, 0, 1013, 100);
 		preventivo.add(panello_menu_preventivo);
 		panello_menu_preventivo.setLayout(null);
 		
 		nuovo_preventivo = new JButton("");
+		nuovo_preventivo.setBounds(30, 25, 50, 50);
 		nuovo_preventivo.setToolTipText("Crea un nuovo preventivo");
 		nuovo_preventivo.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/nuovo_icon.png")));
-		nuovo_preventivo.setBounds(20, 20, 50, 50);
 		panello_menu_preventivo.add(nuovo_preventivo);
 		
 		/*JButton button = new JButton("");
@@ -226,24 +234,25 @@ public class PrimaryView extends JFrame
 		panello_menu_preventivo.add(button_4);*/
 		
 		panello_sottomenu_preventivo = new JPanel();
-		panello_sottomenu_preventivo.setBounds(0, 123, 1008, 586);
+		panello_sottomenu_preventivo.setBounds(0, 100, 1013, 617);
 		preventivo.add(panello_sottomenu_preventivo);
 		panello_sottomenu_preventivo.setLayout(null);
 		
 		panello_laterale_preventivo = new JPanel();
-		panello_laterale_preventivo.setBounds(0, 0, 259, 585);
+		panello_laterale_preventivo.setBackground(UIManager.getColor("ToggleButton.background"));
+		panello_laterale_preventivo.setBounds(0, 0, 260, 617);
 		panello_sottomenu_preventivo.add(panello_laterale_preventivo);
 		panello_laterale_preventivo.setLayout(null);
 		
 		
 		alberoPreventivi = AlberoPreventivi.getInstance();
-		alberoPreventivi.setBounds(0, 0, 261, 585);
+		alberoPreventivi.setBounds(0, 0, 260, 617);
 		panello_laterale_preventivo.add(alberoPreventivi);
 
 		
 		pannello_centrale_preventivo = new JPanel();
-		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
-		pannello_centrale_preventivo.setBounds(260, 0, 748, 585);
+		pannello_centrale_preventivo.setBackground(SystemColor.control);
+		pannello_centrale_preventivo.setBounds(260, 0, 753, 617);
 		panello_sottomenu_preventivo.add(pannello_centrale_preventivo);
 		pannello_centrale_preventivo.setLayout(null);
 				
@@ -263,41 +272,40 @@ public class PrimaryView extends JFrame
 		Cliente.setLayout(null);
 		
 		panello_menu_cliente = new JPanel();
-		panello_menu_cliente.setBounds(0, 0, 1003, 124);
+		panello_menu_cliente.setBounds(0, 0, 1013, 100);
 		panello_menu_cliente.setLayout(null);
-		panello_menu_cliente.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panello_menu_cliente.setBackground(Color.WHITE);
 		Cliente.add(panello_menu_cliente);
 		
 		bottoneNuovoCliente = new JButton();
 		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/new_user.png")));
 		bottoneNuovoCliente.setToolTipText("Inserisci un nuovo cliente");
-		bottoneNuovoCliente.setBounds(28, 23, 73, 65);
+		bottoneNuovoCliente.setBounds(30, 25, 50, 50);
 		panello_menu_cliente.add(bottoneNuovoCliente);
 		
 		bottoneCercaCliente = new JButton("");
 		bottoneCercaCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/search.png")));
 		bottoneCercaCliente.setToolTipText("Cerca il cliente");
-		bottoneCercaCliente.setBounds(153, 23, 73, 65);
+		bottoneCercaCliente.setBounds(110, 25, 50, 50);
 		panello_menu_cliente.add(bottoneCercaCliente);
 		
 		panello_sottomenu_cliente = new JPanel();
-		panello_sottomenu_cliente.setBounds(0, 123, 1003, 551);
+		panello_sottomenu_cliente.setBounds(0, 100, 1013, 617);
 		panello_sottomenu_cliente.setLayout(null);
 		Cliente.add(panello_sottomenu_cliente);
 		
 		panello_laterale_cliente = new JPanel();
-		panello_laterale_cliente.setBounds(0, 0, 250, 551);
+		panello_laterale_cliente.setBounds(0, 0, 260, 617);
 		panello_sottomenu_cliente.add(panello_laterale_cliente);
 		panello_laterale_cliente.setLayout(null);
 		
 		alberoClienti = new AlberoClienti();
-		alberoClienti.setBounds(0, 0, 261, 585);
+		alberoClienti.setBounds(0, 0, 261, 617);
 		panello_laterale_cliente.add(alberoClienti);
 		
 		pannello_centrale_cliente = new JPanel();
-		pannello_centrale_cliente.setBackground(Color.LIGHT_GRAY);
-		pannello_centrale_cliente.setBounds(260, 0, 748, 585);
+		pannello_centrale_cliente.setBackground(SystemColor.control);
+		pannello_centrale_cliente.setBounds(260, 0, 753, 617);
 		panello_sottomenu_cliente.add(pannello_centrale_cliente);
 		pannello_centrale_cliente.setLayout(null);
 		
@@ -327,30 +335,29 @@ public class PrimaryView extends JFrame
 		Catalogo.setLayout(null);
 		
 		panello_menu_catalogo = new JPanel();
-		panello_menu_catalogo.setBounds(0, 0, 1010, 124);
+		panello_menu_catalogo.setBounds(0, 0, 1013, 100);
 		panello_menu_catalogo.setLayout(null);
-		panello_menu_catalogo.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panello_menu_catalogo.setBackground(Color.WHITE);
 		Catalogo.add(panello_menu_catalogo);
 		
 		panello_sottomenu_catalogo = new JPanel();
-		panello_sottomenu_catalogo.setBounds(0, 123, 1010, 583);
+		panello_sottomenu_catalogo.setBounds(0, 100, 1013, 617);
 		panello_sottomenu_catalogo.setLayout(null);
 		Catalogo.add(panello_sottomenu_catalogo);
 		
 		panello_laterale_catalogo = new JPanel();
-		panello_laterale_catalogo.setBounds(0, 0, 250, 583);
+		panello_laterale_catalogo.setBounds(0, 0, 260, 617);
 		panello_sottomenu_catalogo.add(panello_laterale_catalogo);
 		
 		panello_centrale_catalogo = new JPanel();
-		panello_centrale_catalogo.setBackground(Color.ORANGE);
-		panello_centrale_catalogo.setBounds(251, 0, 760, 583);
+		panello_centrale_catalogo.setBackground(Color.LIGHT_GRAY);
+		panello_centrale_catalogo.setBounds(260, 0, 753, 617);
 		panello_sottomenu_catalogo.add(panello_centrale_catalogo);
 		panello_centrale_catalogo.setLayout(null);
 		
 		
 		pannelloProdotti = ProdottiView.getInstance();
-		pannelloProdotti.setBounds(0, 0, 760, 449);
+		pannelloProdotti.setBounds(0, 0, 753, 617);
 		panello_centrale_catalogo.add(pannelloProdotti);
 	}
 	
@@ -365,10 +372,11 @@ public class PrimaryView extends JFrame
             }
         });
 		
+
+        
 		getContentPane().setLayout(null);
-		
 		tabbedPrincipale = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPrincipale.setBounds(0, 0, 1016, 744);
+		tabbedPrincipale.setBounds(0, 0, 1018, 755);
 
 		getContentPane().add(tabbedPrincipale);
 		
@@ -529,16 +537,16 @@ public class PrimaryView extends JFrame
 	public void resetPannelloCentralePreventivo(){
 		
 		pannello_centrale_preventivo.removeAll();
-		pannello_centrale_preventivo.setBackground(Color.LIGHT_GRAY);
-		pannello_centrale_preventivo.setBounds(260, 0, 743, 585);
+		//pannello_centrale_preventivo.setBackground(Color.BLUE);
+		pannello_centrale_preventivo.setBounds(260, 0, 753, 617);
 		pannello_centrale_preventivo.setLayout(null);
 		pannello_centrale_preventivo.repaint();
 	}
 	
 	public void resetPannelloCentraleCliente(){
 		pannello_centrale_cliente.removeAll();
-		pannello_centrale_cliente.setBackground(Color.LIGHT_GRAY);
-		pannello_centrale_cliente.setBounds(260, 0, 743, 585);
+		pannello_centrale_cliente.setBackground(SystemColor.control);
+		pannello_centrale_cliente.setBounds(260, 0, 753, 617);
 		pannello_centrale_cliente.setLayout(null);
 		pannello_centrale_cliente.repaint();
 		

@@ -74,10 +74,10 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		labelCliente.setBounds(88, 19, 206, 14);
 		add(labelCliente);
 		
-		bottoneConfermaVendita = new JButton("Conferma Ordine");
-		bottoneConfermaVendita.setToolTipText("Annulla il preventivo in corso");
+		bottoneConfermaVendita = new JButton("");
+		bottoneConfermaVendita.setToolTipText("Conferma ordine");
 		bottoneConfermaVendita.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/carrelloOrdine.png")));
-		bottoneConfermaVendita.setBounds(298, 103, 161, 30);
+		bottoneConfermaVendita.setBounds(150, 103, 40, 30);
 		add(bottoneConfermaVendita);
 		
 		lblNewLabel = new JLabel("effettuato dall'agente: ");
@@ -96,18 +96,20 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		altreInfoCliente.setBounds(88, 69, 206, 14);
 		add(altreInfoCliente);
 		
-		bottoneModifica = new JButton("Modifica Preventivo");
+		bottoneModifica = new JButton("");
+		bottoneModifica.setToolTipText("Modifica Preventivo");
 		bottoneModifica.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/setting.png")));
-		bottoneModifica.setBounds(100, 103, 166, 30);
+		bottoneModifica.setBounds(50, 103, 40, 30);
 		add(bottoneModifica);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 99, 735, 7);
 		add(separator);
 		
-		cancPrevButton = new JButton("Cancella preventivo");
+		cancPrevButton = new JButton("");
+		cancPrevButton.setToolTipText("Cancella preventivo");
 		cancPrevButton.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/delete.png")));
-		cancPrevButton.setBounds(488, 103, 195, 30);
+		cancPrevButton.setBounds(650, 103, 40, 30);
 		add(cancPrevButton);
 		
 		bottoneModifica.addActionListener(new ActionListener() {

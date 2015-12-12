@@ -46,13 +46,11 @@ public class Ctrl_System {
 		ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi();
 		Iterator iteraPreventivi = preventivi.iterator();
 		M_Preventivo p;
-		int i=0;
 		while (iteraPreventivi.hasNext()) {				
 			p = (M_Preventivo) iteraPreventivi.next();
 				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
-				i++;
-//				System.out.println (i);
 		}
+		//AlberoPreventivi.posInit();
 	}
 	
 	public void resetAlberoPreventivi(){

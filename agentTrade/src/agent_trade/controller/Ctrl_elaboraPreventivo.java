@@ -6,10 +6,10 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Observable;
-import java.util.Set;
 import java.util.TreeMap;
 
 import javax.swing.JButton;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
@@ -133,10 +133,14 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Preventivo p= M_Preventivo.getInstance();
 		Dao_System.getInstance().salvaPreventivo(p);
-		
-		//AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());
-		
-		
+		String nodo=p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome();
+	
+		if (!AlberoPreventivi.controllaEsistenza(nodo)){
+			AlberoPreventivi.inserisciNodo(nodo);
+		//	AlberoPreventivi.selezionaNodo(nodo);
+		}
+		AlberoPreventivi.selezionaNodo(nodo);
+
 		
 		PrimaryView.getInstance().setEnableNewPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCliente(true);
@@ -149,11 +153,11 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Preventivo.cancIstanza();	
 		
-		Dao_System.getInstance().salvaIdPrev(Integer.parseInt(p.getIdPreventivo()));
+		//Dao_System.getInstance().salvaIdPrev(Integer.parseInt(p.getIdPreventivo()));
 		Dao_System.getInstance().salvaIdPrev(M_Preventivo.getNumprev());
 
 		AlberoPreventivi.abilitaAlbero();
-		AlberoPreventivi.getInstance().ricaricaAlbero();
+		//AlberoPreventivi.getInstance().ricaricaAlbero();
 
 		/*Set<Integer> keys = elencoBottDisat.keySet();
 		Iterator<Integer> i;
@@ -184,11 +188,15 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryView.cancItem();
 		
 		M_Preventivo p =M_Preventivo.getInstance();
-		int id=Integer.parseInt(p.getIdPreventivo());
+		
+		int id=M_Preventivo.getNumprev();
 		id--;
+		M_Preventivo.setNumprev(id);
 		Dao_System.getInstance().salvaIdPrev(id);		
 		M_Preventivo.cancIstanza();
 		AlberoPreventivi.abilitaAlbero();
+		
+		
 		
 		//fare una funzione per questo
 		/*Set<Integer> keys = elencoBottDisat.keySet();
@@ -210,8 +218,11 @@ public class Ctrl_elaboraPreventivo {
 	
 	public void riepilogoPreventivo(Object obj)
 	{
+//		System.out.println("root "+(((DefaultMutableTreeNode)obj).isRoot()));
 		String id=obj.toString();
-		if (!id.substring(0,1).equals("*"))
+//		System.out.println("riepilogo prev, obj: "+id);
+//		if (!id.substring(0,1).equals("*"))
+		if(((DefaultMutableTreeNode)obj).isLeaf())
 		{
 			id= (id.substring(0,2));
 			id=id.replaceAll("-","");
@@ -250,7 +261,7 @@ public class Ctrl_elaboraPreventivo {
 		else{
 			
 			PrimaryView.getInstance().resetPannelloCentralePreventivo();
-			//volendo si può mettere uno sfondo quando non c'è nulla visualizzato
+			//volendo si può mettere un pannello con uno sfondo quando non c'è nulla visualizzato
 		}
 	}
 	
@@ -306,9 +317,7 @@ public class Ctrl_elaboraPreventivo {
 				else{
 					PrimaryView.getInstance().setEnableSalva(true);
 				}
-				
-				
-				
+	
 			}
 		});
 	}
@@ -321,6 +330,9 @@ public class Ctrl_elaboraPreventivo {
 //		bisogna mantentere i prezzi del preventivo originario
 //		in caso negativo, comunicarlo oppure non attivare il bottone di modifica preventivamente
 		
+		
+		M_Preventivo.setNumprev(M_Preventivo.getNumprev()+1);
+
 		
 		M_Preventivo prev=Dao_System.getInstance().loadPreventivo(Integer.toString(id_Preventivo));
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(prev.getRif_Cliente().getCognome());//questo andrà cambiato
@@ -374,17 +386,21 @@ public class Ctrl_elaboraPreventivo {
 		ItemPreventivoView.getInstance().setIva(Float.toString(c));
 		ItemPreventivoView.getInstance().setTotale(Float.toString(importo+c));
 
-		
 	}
 
 
 	public void cancellaPreventivo(int id_Preventivo) {
 		
+		AlberoPreventivi.cancellaNodo();
+
 		Dao_System.getInstance().cancPreventivo(Integer.toString(id_Preventivo));
 		PrimaryView.getInstance().resetPannelloCentralePreventivo();
 
-		//ora bisogna aggiornare l'albero
 		
+		//AlberoPreventivi.selezionaRadice();
+
+		//AlberoPreventivi.posInit();
+		//AlberoPreventivi.clear();
 	}
 	
 }

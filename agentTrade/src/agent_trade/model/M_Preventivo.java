@@ -64,6 +64,10 @@ public class M_Preventivo implements Serializable, Observer{
 		return (newId);	
 	}
 	
+	public static void setNumprev(int id){
+		newId=id;	
+	}
+	
 	/*metodi privati*/
 	/*metodi pubblici*/
 			

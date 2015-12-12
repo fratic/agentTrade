@@ -20,6 +20,8 @@ import agent_trade.util.ButtonsEditorRm;
 import agent_trade.util.ButtonsRendererRm;
 import agent_trade.util.SpinnerEditor;
 import agent_trade.util.SpinnerRenderer;
+import java.awt.SystemColor;
+import javax.swing.border.EmptyBorder;
 
 
 public class ItemPreventivoView extends JPanel
@@ -52,29 +54,32 @@ public class ItemPreventivoView extends JPanel
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.MAGENTA);
+		panel.setBackground(SystemColor.menu);
 		panel.setLayout(null);
-		panel.setBounds(0, 0, 745, 449);
+		panel.setBounds(0, 0, 733, 457);
 		add(panel);
 		
 		panelloTabella = new JPanel();
-		panelloTabella.setBounds(0, 0, 745, 371);
+		panelloTabella.setBackground(Color.WHITE);
+		panelloTabella.setBorder(new EmptyBorder(3, 3, 3, 3));
+		panelloTabella.setBounds(0, 4, 733, 360);
 		panel.add(panelloTabella);
 		panelloTabella.setLayout(null);
 	   	
 		scrollPane = new JScrollPane(creaTabellaProdotti());
-		scrollPane.setBounds(10, 11, 725, 349);
+		scrollPane.setBounds(0, 0, 733, 360);
 		panelloTabella.add(scrollPane);
 	  
 		panelloRiepilogo = new JPanel();
 		panelloRiepilogo.setLayout(null);
-		panelloRiepilogo.setBackground(Color.LIGHT_GRAY);
-		panelloRiepilogo.setBounds(0, 369, 745, 80);
+		panelloRiepilogo.setBackground(SystemColor.scrollbar);
+		panelloRiepilogo.setBounds(0, 372, 733, 85);
 		panel.add(panelloRiepilogo);
 		
 		buttoneSalva = new JButton("");
+		buttoneSalva.setToolTipText("Salva preventivo");
 		buttoneSalva.setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
-		buttoneSalva.setBounds(665, 24, 45, 45);
+		buttoneSalva.setBounds(665, 20, 50, 50);
 		panelloRiepilogo.add(buttoneSalva);
 		
 		JLabel labelImponibile = new JLabel("Imponibile");
@@ -143,6 +148,7 @@ public class ItemPreventivoView extends JPanel
         JTableModel = new DefaultTableModel(data, colNames);
          
         table = new JTable(JTableModel);
+        table.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         TableColumnModel colModel = table.getColumnModel();
         colModel.getColumn(4).setCellRenderer(new SpinnerRenderer());

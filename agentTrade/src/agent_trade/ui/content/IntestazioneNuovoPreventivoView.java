@@ -15,6 +15,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
 import javax.swing.JSeparator;
+import java.awt.Color;
 
 public class IntestazioneNuovoPreventivoView extends JPanel {
 
@@ -43,7 +44,7 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 	
 	public IntestazioneNuovoPreventivoView() {
 
-		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Intestazione", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
+		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Intestazione", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		setBackground(UIManager.getColor("CheckBox.background"));
 		setLayout(null);
 
@@ -71,10 +72,10 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		labelCliente.setBounds(88, 19, 206, 14);
 		add(labelCliente);
 		
-		bottoneAnnulla = new JButton("Annulla Preventivo");
+		bottoneAnnulla = new JButton("");
 		bottoneAnnulla.setToolTipText("Annulla il preventivo in corso");
 		bottoneAnnulla.setIcon(new ImageIcon(IntestazioneNuovoPreventivoView.class.getResource("/agent_trade/ui/img/close_icon.png")));
-		bottoneAnnulla.setBounds(563, 69, 161, 23);
+		bottoneAnnulla.setBounds(693, 65, 30, 30);
 		add(bottoneAnnulla);
 		
 		lblNewLabel = new JLabel("effettuato dall'agente: ");
@@ -93,13 +94,14 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		altreInfoCliente.setBounds(88, 69, 206, 14);
 		add(altreInfoCliente);
 		
-		btnNewButton = new JButton("Aggiungi prodotti");
+		btnNewButton = new JButton();
+		btnNewButton.setToolTipText("Aggiungi prodotti a questo preventivo");
 		btnNewButton.setIcon(new ImageIcon(IntestazioneNuovoPreventivoView.class.getResource("/agent_trade/ui/img/add-item.png")));
-		btnNewButton.setBounds(282, 102, 166, 30);
+		btnNewButton.setBounds(346, 103, 40, 30);
 		add(btnNewButton);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(10, 99, 735, 7);
+		separator.setBounds(10, 99, 723, 7);
 		add(separator);
 		
 		btnNewButton.addActionListener(new ActionListener() {

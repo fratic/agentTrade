@@ -18,6 +18,8 @@ import javax.swing.table.TableModel;
 
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 public class RiepilogoItemPreventivoView extends JPanel
 {
@@ -51,13 +53,13 @@ public class RiepilogoItemPreventivoView extends JPanel
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.MAGENTA);
+		panel.setBackground(SystemColor.menu);
 		panel.setLayout(null);
-		panel.setBounds(0, 0, 745, 449);
+		panel.setBounds(0, 0, 733, 457);
 		add(panel);
 		
 		panelloTabella = new JPanel();
-		panelloTabella.setBounds(0, 0, 745, 371);
+		panelloTabella.setBounds(0, 4, 733, 360);
 		panel.add(panelloTabella);
 		panelloTabella.setLayout(null);
 		
@@ -71,15 +73,16 @@ public class RiepilogoItemPreventivoView extends JPanel
 	  
 		table.setModel(JTableModel);
 		
+		table.setRowHeight(25);
 			
 		scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(10, 11, 725, 349);
+		scrollPane.setBounds(0, 0, 733, 360);
 		panelloTabella.add(scrollPane);
 	  
 		panelloRiepilogo = new JPanel();
 		panelloRiepilogo.setLayout(null);
-		panelloRiepilogo.setBackground(Color.LIGHT_GRAY);
-		panelloRiepilogo.setBounds(0, 369, 745, 80);
+		panelloRiepilogo.setBackground(SystemColor.scrollbar);
+		panelloRiepilogo.setBounds(0, 372, 733, 85);
 		panel.add(panelloRiepilogo);
 		
 		buttoneSalva = new JButton("");

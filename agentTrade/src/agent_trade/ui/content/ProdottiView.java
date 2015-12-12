@@ -23,6 +23,7 @@ import javax.swing.table.TableColumnModel;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.model.M_Prodotto;
+import javax.swing.border.EmptyBorder;
 //import agent_trade.util.ButtonRendererAdd;
 //import agent_trade.util.ButtonsEditorAdd;
 //import agent_trade.util.DisableButton;
@@ -56,12 +57,12 @@ public class ProdottiView extends JPanel {
 		setLayout(null);
 		
 		pannelloProdotti = new JPanel();
-		pannelloProdotti.setBounds(0, 0, 754, 550);
+		pannelloProdotti.setBounds(0, 0, 753, 617);
 		add(pannelloProdotti);
 		pannelloProdotti.setLayout(null);
 		
 		pannelloTabella = new JPanel();
-		pannelloTabella.setBounds(0, 0, 754, 550);
+		pannelloTabella.setBounds(0, 0, 753, 617);
 		pannelloProdotti.add(pannelloTabella);
 	    pannelloTabella.setLayout(null);
 
@@ -74,6 +75,7 @@ public class ProdottiView extends JPanel {
         JTableModel = new DefaultTableModel(data, colNames);
          
         table = new JTable(JTableModel);
+        table.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 	    
         TableColumnModel colModel = table.getColumnModel();
@@ -88,7 +90,7 @@ public class ProdottiView extends JPanel {
 	    
 
 		  scrollPane = new JScrollPane(table);
-		  scrollPane.setBounds(0, 0, 754, 550);
+		  scrollPane.setBounds(0, 0, 753, 617);
 		  pannelloTabella.add(scrollPane);
 
 

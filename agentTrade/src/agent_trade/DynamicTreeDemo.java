@@ -58,10 +58,10 @@ public class DynamicTreeDemo extends JPanel implements ActionListener {
   }
 
   public void populateTree(DynamicTree treePanel) {
-    String p1Name = new String("Parent 1");
-    String p2Name = new String("Parent 2");
-    String c1Name = new String("Child 1");
-    String c2Name = new String("Child 2");
+    String p1Name = new String("Genitore 1");
+    String p2Name = new String("Genitore 2");
+    String c1Name = new String("Figlio 1");
+    String c2Name = new String("Figlio 2");
 
     DefaultMutableTreeNode p1, p2;
 
@@ -130,7 +130,7 @@ class DynamicTree extends JPanel {
   public DynamicTree() {
     super(new GridLayout(1, 0));
 
-    rootNode = new DefaultMutableTreeNode("Root Node");
+    rootNode = new DefaultMutableTreeNode("Radice");
     treeModel = new DefaultTreeModel(rootNode);
 
     tree = new JTree(treeModel);
