@@ -94,8 +94,8 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
 			PrimaryView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
-			PrimaryView.getInstance().setEnableTabPreventivo(false);
-			PrimaryView.getInstance().setEnableTabCatalogo(false);
+			PrimaryView.getInstance().setEnableTabPreventivo(true);
+			PrimaryView.getInstance().setEnableTabCatalogo(true);
 	}
 	
 	//da rivedere COME CREO GLI ID? COME CONTROLLO I CAMPI?
@@ -134,6 +134,7 @@ public class Ctrl_gestisciCliente {
 	public void modificaCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
 		
 		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
+			PrimaryView.getInstance().setVisibleErroreRiepCliente(true);
 			RiepilogoClienteView.getInstance().setErrore("inserisci tutti i campi");
 		}
 		else{
@@ -154,9 +155,9 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().disattivaModifica(true);
 			PrimaryView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryView.getInstance().disattivaCancella(true);
-			PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
 			PrimaryView.getInstance().setEnableTabCatalogo(true);
+			AlberoClienti.abilitaAlbero();
 			
 		}
 	}
@@ -165,15 +166,13 @@ public class Ctrl_gestisciCliente {
 	//da cambiare quando avremo deciso definitivamente il db
 	public void cancellaCliente(String c){
 		
+		confermaCancCliente.getInstance().setVisible(true);
+		
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
 		Dao_System.getInstance().cancellaCliente(cliente);
-		confermaCancCliente.getInstance().setVisible(true);
-		//AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
-		AlberoClienti.rimuoviNodo();
-		PrimaryView.getInstance().resetPannelloCentraleCliente();
-		
-		
-		
+
+		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
+	
 	}
 	
 	//bisogna decidere il criterio di caricamento. Decidere se è adeguata questa struttura dati
@@ -202,11 +201,9 @@ public class Ctrl_gestisciCliente {
 	
 	public void annullaNewCliente()
 	{
-		PrimaryView.getInstance().setEnableTabPreventivo(true);
-		PrimaryView.getInstance().setEnableTabCatalogo(true);
 		PrimaryView.getInstance().resetNuovoCliente();
 		PrimaryView.getInstance().setVisibleErroreNuovoCliente(false);
-		AlberoClienti.abilitaAlbero();
+
 	}
 	
 	public void btnCerca()
@@ -214,8 +211,6 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
 		Ricerca_cliente.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		Ricerca_cliente.getInstance().setVisible(true);
-//		PrimaryView.getInstance().setEnableTabPreventivo(false);
-//		PrimaryView.getInstance().setEnableTabCatalogo(false);
 	}
 	
 	public void abilitaModifica()
@@ -225,6 +220,9 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().disattivaCancella(false);
 		PrimaryView.getInstance().disattivaSalvaModifiche(true);
 		PrimaryView.getInstance().disattivaAnnullaModifiche(true);
+		PrimaryView.getInstance().setEnableTabCatalogo(false);
+		PrimaryView.getInstance().setEnableTabPreventivo(false);
+		AlberoClienti.disabilitaAlbero();
 	}
 		
 	public void annullaModificheCliente(String cognome)
@@ -234,15 +232,22 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().disattivaModifica(true);
 		PrimaryView.getInstance().disattivaCancella(true);
 		PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
+		PrimaryView.getInstance().setEnableTabCatalogo(true);
+		PrimaryView.getInstance().setEnableTabPreventivo(true);
+		AlberoClienti.abilitaAlbero();
 	}
 	
 	public void postConfermaCancCliente(){
+
+		//M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
+		//Dao_System.getInstance().cancellaCliente(cliente);
+		confermaCancCliente.getInstance().setVisible(false);		
+		confermaCancCliente.cancInst();		
+		//AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
-		confermaCancCliente.getInstance().setVisible(false);
-		confermaCancCliente.cancInst();
 		PrimaryView.getInstance().setEnableTabPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCatalogo(true);
-		}
+	}
 	
 	public void notConfermaCancCliente(){
 		confermaCancCliente.getInstance().setVisible(false);
@@ -258,13 +263,10 @@ public class Ctrl_gestisciCliente {
 			c = c.substring(0, i);
 			PrimaryView.getInstance().resetPannelloCentraleCliente();
 			recuperaCliente(c);
+			PrimaryView.getInstance().setEnableTabCatalogo(true);
+			PrimaryView.getInstance().setEnableTabPreventivo(true);
 			//System.out.print(c);
 		}
 	}
-	
-	public void caricaAlberoClienti()
-	{
-		
-	}	
 	
 }

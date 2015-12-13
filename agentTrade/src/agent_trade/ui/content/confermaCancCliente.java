@@ -19,6 +19,8 @@ import javax.swing.ListSelectionModel;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
+import agent_trade.DynamicTreeDemo;
+import agent_trade.ui.content.RiepilogoClienteView;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;

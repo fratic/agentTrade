@@ -527,13 +527,6 @@ public class PrimaryView extends JFrame
 	}
 	
 	
-//	public void initAlberoClienti(DefaultTreeModel modello){
-//		
-//		albero.setModel(modello);
-//	}
-	
-	
-	
 	public void resetPannelloCentralePreventivo(){
 		
 		pannello_centrale_preventivo.removeAll();
