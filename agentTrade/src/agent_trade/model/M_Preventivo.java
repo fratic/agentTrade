@@ -8,7 +8,6 @@ import java.util.Observer;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.persistentTemp.Dao_System;
-import agent_trade.ui.content.RiepilogoItemPreventivoView;
 
 
 public class M_Preventivo implements Serializable, Observer{
@@ -32,7 +31,7 @@ public class M_Preventivo implements Serializable, Observer{
 	/*costruttori*/
 	
 	//bisogna aggiustare il caricamento dell'id in tutti i costruttori 
-	public M_Preventivo(M_Preventivo prev){		
+	private M_Preventivo(M_Preventivo prev){		
 		
 		//Dao_System.getInstance();
 		this.idPreventivo=prev.idPreventivo;
@@ -57,7 +56,9 @@ public class M_Preventivo implements Serializable, Observer{
 	}
 	
 	public static M_Preventivo getInstance(M_Preventivo prev){
-		return ((instance == null) ? instance= new M_Preventivo(prev) : instance);	
+		//return ((instance == null) ? instance= new M_Preventivo(prev) : instance);	
+		return (instance= new M_Preventivo(prev));	
+
 	}
 	
 	public static int getNumprev(){
@@ -170,7 +171,7 @@ public class M_Preventivo implements Serializable, Observer{
 
 	public void removeItem(int id) {
 
-		Iterator iteraItem = null;
+		Iterator<?> iteraItem = null;
 		iteraItem = this.getElencoItem().iterator();
 		M_Preventivo_Item item;
 	

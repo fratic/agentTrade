@@ -224,3 +224,4 @@ agentTrade/file_db/clienti
 agentTrade/file_db/clienti
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 *.xmi
+.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi

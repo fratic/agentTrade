@@ -1,11 +1,13 @@
 package agent_trade.ui.content;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
@@ -43,6 +45,15 @@ public class AlberoClienti extends JPanel {
 			//inserisciNodo("A");
 
 			add(scroller);
+			
+			ImageIcon imageIcon = new ImageIcon(AlberoPreventivi.class.getResource("/agent_trade/ui/img/ico-cliente1.png"));
+	        DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();       
+	        renderer.setLeafIcon(imageIcon);
+
+	        albero.setCellRenderer(renderer);
+
+			
+			
 					
 			albero.addTreeSelectionListener((new TreeSelectionListener() {
 
