@@ -544,7 +544,7 @@ public class PrimaryView extends JFrame
 		pannello_centrale_cliente.repaint();
 		
 	}
-
+	
 	public void updateTableRiepilogo(String id, String nome, String categoria, String quantita, String prezzo, String parziale){
 		((RiepilogoItemPreventivoView) riep_item).updateTable(id, nome, categoria, quantita, prezzo, parziale);	
 	}

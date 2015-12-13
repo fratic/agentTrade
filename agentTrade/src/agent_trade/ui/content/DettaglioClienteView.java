@@ -48,6 +48,7 @@ public class DettaglioClienteView extends JPanel {
 	
 	private JButton bottoneSalvaCliente;
 	private JButton bottoneAnnullaInserimento;
+	private JButton bottoneEsci;
 	
 	/*costruttori*/
 	
@@ -146,6 +147,12 @@ public class DettaglioClienteView extends JPanel {
 		bottoneAnnullaInserimento.setToolTipText("Pulisci form");
 		bottoneAnnullaInserimento.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
 		
+		bottoneEsci = new JButton("Esci");
+		bottoneEsci.setBounds(371, 418, 113, 30);
+		add(bottoneEsci);
+		bottoneEsci.setToolTipText("Torna indietro");
+		bottoneEsci.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/arrow_icon.png")));
+		
 		bottoneSalvaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFfax.getText());
@@ -157,6 +164,14 @@ public class DettaglioClienteView extends JPanel {
 				Ctrl_gestisciCliente.getInstance().annullaNewCliente();
 			}
 		});
+		
+		bottoneEsci.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Ctrl_gestisciCliente.getInstance().esciNewCliente();
+			}
+		});
+			
+
 		
 	}
 		
@@ -186,10 +201,4 @@ public class DettaglioClienteView extends JPanel {
 		TFtelefono.setText(null);
 		TFfax.setText(null);
 	}
-		
-	/*metodi privati*/
-	/*metodi pubblici*/
-
-	
-	
 }

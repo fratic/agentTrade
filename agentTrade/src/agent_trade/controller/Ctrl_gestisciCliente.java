@@ -155,6 +155,7 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().disattivaModifica(true);
 			PrimaryView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryView.getInstance().disattivaCancella(true);
+			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
 			PrimaryView.getInstance().setEnableTabCatalogo(true);
 			AlberoClienti.abilitaAlbero();
@@ -168,6 +169,7 @@ public class Ctrl_gestisciCliente {
 		
 		confermaCancCliente.getInstance().setCliente(c);
 		confermaCancCliente.getInstance().setVisible(true);
+		PrimaryView.getInstance().resetPannelloCentraleCliente();	
 		
 //		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
 //		Dao_System.getInstance().cancellaCliente(cliente);
@@ -207,6 +209,13 @@ public class Ctrl_gestisciCliente {
 
 	}
 	
+	public void esciNewCliente() {
+		PrimaryView.getInstance().resetPannelloCentraleCliente();
+		PrimaryView.getInstance().setEnableTabCatalogo(true);
+		PrimaryView.getInstance().setEnableTabPreventivo(true);
+		AlberoClienti.abilitaAlbero();
+	}
+	
 	public void btnCerca()
 	{	
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
@@ -239,13 +248,12 @@ public class Ctrl_gestisciCliente {
 	}
 	
 	public void postConfermaCancCliente(String c){
-
+		
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
 		Dao_System.getInstance().cancellaCliente(cliente);
 		confermaCancCliente.getInstance().setVisible(false);		
 		confermaCancCliente.cancInst();		
 		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
-		PrimaryView.getInstance().resetPannelloCentraleCliente();
 		PrimaryView.getInstance().setEnableTabPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCatalogo(true);
 	}
