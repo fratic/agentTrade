@@ -166,12 +166,13 @@ public class Ctrl_gestisciCliente {
 	//da cambiare quando avremo deciso definitivamente il db
 	public void cancellaCliente(String c){
 		
+		confermaCancCliente.getInstance().setCliente(c);
 		confermaCancCliente.getInstance().setVisible(true);
 		
-		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
-		Dao_System.getInstance().cancellaCliente(cliente);
-
-		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
+//		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
+//		Dao_System.getInstance().cancellaCliente(cliente);
+//
+//		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
 	
 	}
 	
@@ -237,13 +238,13 @@ public class Ctrl_gestisciCliente {
 		AlberoClienti.abilitaAlbero();
 	}
 	
-	public void postConfermaCancCliente(){
+	public void postConfermaCancCliente(String c){
 
-		//M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
-		//Dao_System.getInstance().cancellaCliente(cliente);
+		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
+		Dao_System.getInstance().cancellaCliente(cliente);
 		confermaCancCliente.getInstance().setVisible(false);		
 		confermaCancCliente.cancInst();		
-		//AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
+		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
 		PrimaryView.getInstance().setEnableTabPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCatalogo(true);

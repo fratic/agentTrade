@@ -49,7 +49,7 @@ public class confermaCancCliente extends JDialog {
 	private JButton okButton;
 	private JButton cancelButton;
 	
-	
+	private String cliente = null; //per tenere traccia del cliente
 	/*costruttori*/
 
 	public confermaCancCliente() 
@@ -88,7 +88,7 @@ public class confermaCancCliente extends JDialog {
 		 
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().postConfermaCancCliente();
+				Ctrl_gestisciCliente.getInstance().postConfermaCancCliente(cliente);
 			}
 		});
 	
@@ -112,6 +112,14 @@ public class confermaCancCliente extends JDialog {
 	
 	public static void cancInst(){
 		instance=null;	 
+	}
+	
+	public String getCliente(){
+		return cliente;
+	}
+	
+	public void setCliente(String c){
+		 cliente=c;
 	}
 	
 }
