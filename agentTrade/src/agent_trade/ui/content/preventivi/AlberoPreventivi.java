@@ -1,4 +1,4 @@
-package agent_trade.ui.content;
+package agent_trade.ui.content.preventivi;
 
 import java.util.Enumeration;
 
@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -16,9 +17,6 @@ import javax.swing.tree.TreePath;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
 
 public class AlberoPreventivi extends JPanel {
 
@@ -32,8 +30,6 @@ public class AlberoPreventivi extends JPanel {
 	/*attributi privati*/
 	
 	private DefaultMutableTreeNode radice;
-//	private DefaultMutableTreeNode figlio;
-
 
 	/*costruttori*/
 	
@@ -51,8 +47,6 @@ public class AlberoPreventivi extends JPanel {
 //	}		
 		JScrollPane scroller = new JScrollPane(albero);
 		scroller.setBounds(10, 12, 250, 595);
-		
-		//inserisciNodo("Fratic");
 
 		add(scroller);
 				
@@ -61,18 +55,14 @@ public class AlberoPreventivi extends JPanel {
         renderer.setLeafIcon(imageIcon);
 
         albero.setCellRenderer(renderer);
-
-		
-		
+        
 		albero.addTreeSelectionListener((new TreeSelectionListener() {
 
 			public void valueChanged(TreeSelectionEvent e) {
 				TreePath selection = e.getPath();
-				System.out.println("sono in action listner di jtree");
 				Ctrl_elaboraPreventivo.getInstance().riepilogoPreventivo(selection.getLastPathComponent());
 				
 			}}));
-	
 	}
 	
 	
@@ -83,7 +73,10 @@ public class AlberoPreventivi extends JPanel {
 			return ((instance == null) ? instance = new AlberoPreventivi() : instance);	
 		}
 	
-	
+
+	/*metodi privati*/
+	/*metodi pubblici*/
+		
 	  public static void inserisciNodo(String nodo) {
 		    
 		  DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
@@ -92,26 +85,7 @@ public class AlberoPreventivi extends JPanel {
 	     
 		  albero.expandRow(0);
 
-//		  albero.setSelectionPath(new TreePath(figlio)); 
-		   
-		   
-//		   DefaultTreeModel model = (DefaultTreeModel)albero.getModel();
-//		   DefaultMutableTreeNode root = (DefaultMutableTreeNode)model.getRoot();
-//		   root.add(new DefaultMutableTreeNode(nodo));
-//		   model.reload();
-//		   albero.updateUI();
-		   
-		   
-		   // model.insertNodeInto(nodo, (MutableTreeNode) model.getRoot(), 1);
-	
-		   //funziona pr inserimento radice e figli
-		/*   model.setRoot(new DefaultMutableTreeNode("*io sono radice"));
-		   model.insertNodeInto(new DefaultMutableTreeNode("awawa"), (MutableTreeNode)model.getRoot(), ((MutableTreeNode) model.getRoot()).getChildCount());
-			   model.insertNodeInto(figlio, (MutableTreeNode)model.getRoot(), ((MutableTreeNode) model.getRoot()).getChildCount());
-		 */
-		   
-		   // model.insertNodeInto(new DefaultMutableTreeNode("asdasdasd"),nodo, radice.getChildCount());
-		  }
+	  }
 	  
 	  
 	  public static void cancellaNodo() {
@@ -126,8 +100,7 @@ public class AlberoPreventivi extends JPanel {
 			        return;
 			      }
 			    }
-			    //selezionaRadice();
-	}
+	  }
 	  
 	  
 	  public static void selezionaNodo(String nodo){
@@ -143,9 +116,9 @@ public class AlberoPreventivi extends JPanel {
 		  albero.setSelectionPath(new TreePath(model.getRoot())); 
 
 	  }
+	  
 	  public static boolean controllaEsistenza(String nodo){
 		  
-		  DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
 		   Enumeration sottonodi = ((DefaultMutableTreeNode) model.getRoot()).children();
 		   
 			 
@@ -169,22 +142,14 @@ public class AlberoPreventivi extends JPanel {
 	  }
 	
 
-	public static void posInit() {
-		   albero.setSelectionPath(new TreePath(model.getRoot())); 
-		
-	}
+	  public static void posInit() {
+		  albero.setSelectionPath(new TreePath(model.getRoot())); 	
+	  }
 	  
 	  public static void clear() {
+		
 		  ((DefaultMutableTreeNode) model.getRoot()).removeAllChildren();
-		    model.reload();
-		    Ctrl_System.getInstance().initAlberoPreventivi();
-		  }
-	
-	
-	/*metodi privati*/
-	/*metodi pubblici*/
-		  
-	 
-	  	  
-	
+		  model.reload();
+		  Ctrl_System.getInstance().initAlberoPreventivi();
+	}	
 }

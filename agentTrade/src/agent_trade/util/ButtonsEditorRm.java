@@ -16,7 +16,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.table.TableCellEditor;
 
 
-
 public class ButtonsEditorRm extends ButtonsPanelRm implements TableCellEditor {
     protected transient ChangeEvent changeEvent;
     private final JTable table;
@@ -103,8 +102,7 @@ public class ButtonsEditorRm extends ButtonsPanelRm implements TableCellEditor {
             }
         }    
     }
-    
-    
+
     protected void fireEditingCanceled() {
 
         Object[] listeners = listenerList.getListenerList();

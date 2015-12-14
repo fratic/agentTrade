@@ -5,34 +5,29 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JTable;
 
-import agent_trade.ui.content.ItemPreventivoView;
+import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.ui.content.prodotti.ProdottiView;
 
 public class DisableButton extends JButton {
 	 
-
     private static final long serialVersionUID = 592607338233558371L;
-     private int id;
      
-    public DisableButton(int id) {
-        super();
-        this.id=id;
+    public DisableButton() {
+        super(new ImageIcon(ProdottiView.class.getResource("/agent_trade/ui/img/carr.png")));
 
-        //setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/carr.png")));
-        
-        //setText("miao");
+        addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+        	
+            	JTable table=ProdottiView.getInstance().getTable();
+            	String sel= (String)table.getValueAt(table.getSelectedRow(),0);
+            	JButton jb= (JButton)table.getValueAt(table.getSelectedRow(),5);
 
-//        addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                setAction(new EditActionAdd());
-//
-//                setText("In Preventivo");
-//                setEnabled(false);
-//
-//                
-//            }
-//        });
+        		Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel), jb);
+            }
+        });
     }
      
     @Override

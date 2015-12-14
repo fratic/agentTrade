@@ -22,7 +22,7 @@ public class M_Preventivo implements Serializable, Observer{
 	/*attributi privati*/
 	private String idPreventivo;
 	private String data; //bisognerebbe creare un oggetto Data
-	private float totale; //forse non serve
+	//private float totale; //forse non serve
 	private M_Agente rif_Agente;
 	private M_Cliente rif_Cliente;
 	private ArrayList<M_Preventivo_Item> elencoItem= new ArrayList<M_Preventivo_Item>();
@@ -30,13 +30,11 @@ public class M_Preventivo implements Serializable, Observer{
 
 	/*costruttori*/
 	
-	//bisogna aggiustare il caricamento dell'id in tutti i costruttori 
 	private M_Preventivo(M_Preventivo prev){		
 		
-		//Dao_System.getInstance();
 		this.idPreventivo=prev.idPreventivo;
 		this.data=prev.getData();
-		this.totale=prev.totale;
+		//this.totale=prev.totale;
 		this.rif_Agente=prev.getRif_Agente();
 		this.rif_Cliente=prev.getRif_Cliente();
 		this.elencoItem=prev.getElencoItem();
@@ -44,11 +42,11 @@ public class M_Preventivo implements Serializable, Observer{
 	
 	public M_Preventivo() {
 		
-		//newId=Dao_System.getInstance().loadIdPrev();
 		newId++;
-//		System.out.println("nuovo id: "+newId);
 		this.idPreventivo=Integer.toString(newId);
 	}
+	
+	
 	/*metodi di classe*/
 	
 	public static M_Preventivo getInstance(){
@@ -68,6 +66,7 @@ public class M_Preventivo implements Serializable, Observer{
 	public static void setNumprev(int id){
 		newId=id;	
 	}
+	
 	
 	/*metodi privati*/
 	/*metodi pubblici*/
@@ -104,13 +103,13 @@ public class M_Preventivo implements Serializable, Observer{
 		this.data = data;
 	}
 
-	public float getTotale() {
-		return totale;
-	}
+//	public float getTotale() {
+//		return totale;
+//	}
 
-	public void setTotale(long totale) {
-		this.totale = totale;
-	}
+//	public void setTotale(long totale) {
+//		this.totale = totale;
+//	}
 
 	public M_Agente getRif_Agente() {
 		return rif_Agente;

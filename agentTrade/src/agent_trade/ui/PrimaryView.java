@@ -19,15 +19,15 @@ import javax.swing.border.TitledBorder;
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.ui.content.AlberoClienti;
-import agent_trade.ui.content.AlberoPreventivi;
-import agent_trade.ui.content.DettaglioClienteView;
-import agent_trade.ui.content.IntestazioneNuovoPreventivoView;
-import agent_trade.ui.content.ItemPreventivoView;
-import agent_trade.ui.content.ProdottiView;
-import agent_trade.ui.content.RiepilogoClienteView;
-import agent_trade.ui.content.RiepilogoIntestazionePreventivoView;
-import agent_trade.ui.content.RiepilogoItemPreventivoView;
+import agent_trade.ui.content.clienti.AlberoClienti;
+import agent_trade.ui.content.clienti.DettaglioClienteView;
+import agent_trade.ui.content.clienti.RiepilogoClienteView;
+import agent_trade.ui.content.preventivi.AlberoPreventivi;
+import agent_trade.ui.content.preventivi.IntestazioneNuovoPreventivoView;
+import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
+import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
+import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
+import agent_trade.ui.content.prodotti.ProdottiView;
 
 public class PrimaryView extends JFrame 
 {
@@ -125,7 +125,7 @@ public class PrimaryView extends JFrame
 		
 	public static void initItem(){
 
-		item= ItemPreventivoView.getInstance();
+		item= ItemNuovoPreventivoView.getInstance();
 		item.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		item.setBounds(10, 150, 733, 457);
 		
@@ -180,7 +180,7 @@ public class PrimaryView extends JFrame
 	}
 	
 	public static void cancItem(){
-		ItemPreventivoView.cancItem();
+		ItemNuovoPreventivoView.cancItem();
 		item=null;
 	}
 	
@@ -560,7 +560,7 @@ public class PrimaryView extends JFrame
 
 	public void setEnableSalva(boolean b) {
 		
-		((ItemPreventivoView) item).enableSave(b);
+		((ItemNuovoPreventivoView) item).enableSave(b);
 	}
 
 

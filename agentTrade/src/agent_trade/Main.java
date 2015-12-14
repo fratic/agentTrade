@@ -23,22 +23,19 @@ public class Main {
 					LoginView.getInstance().setVisible(true);
 				    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-					splash.setVisible(false);
+					//splash.setVisible(false);
+					splash.dispose();
 
 			    } 
 				catch (InterruptedException e) {
 					e.printStackTrace();
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (InstantiationException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (UnsupportedLookAndFeelException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

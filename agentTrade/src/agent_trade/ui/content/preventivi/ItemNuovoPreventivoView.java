@@ -1,7 +1,7 @@
-package agent_trade.ui.content;
+package agent_trade.ui.content.preventivi;
 
 import java.awt.Color;
-import java.awt.Component;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
@@ -20,16 +21,14 @@ import agent_trade.util.ButtonsEditorRm;
 import agent_trade.util.ButtonsRendererRm;
 import agent_trade.util.SpinnerEditor;
 import agent_trade.util.SpinnerRenderer;
-import java.awt.SystemColor;
-import javax.swing.border.EmptyBorder;
 
 
-public class ItemPreventivoView extends JPanel
+public class ItemNuovoPreventivoView extends JPanel
 {
 	/*attributi di classe*/
 	
 	private static final Class ButtonsEditorRm = null;
-	private static ItemPreventivoView instance;
+	private static ItemNuovoPreventivoView instance;
 	private static DefaultTableModel JTableModel;
 
 	/*attributi privati*/
@@ -50,7 +49,7 @@ public class ItemPreventivoView extends JPanel
 	
 	/*costruttori*/
 	
-	public ItemPreventivoView() {
+	public ItemNuovoPreventivoView() {
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -78,7 +77,7 @@ public class ItemPreventivoView extends JPanel
 		
 		buttoneSalva = new JButton("");
 		buttoneSalva.setToolTipText("Salva preventivo");
-		buttoneSalva.setIcon(new ImageIcon(ItemPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
+		buttoneSalva.setIcon(new ImageIcon(ItemNuovoPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
 		buttoneSalva.setBounds(665, 20, 50, 50);
 		panelloRiepilogo.add(buttoneSalva);
 		
@@ -110,32 +109,26 @@ public class ItemPreventivoView extends JPanel
 		panelloRiepilogo.add(textFieldTotale);
 		
 		
-		
 		buttoneSalva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Ctrl_elaboraPreventivo.getInstance().salvaPreventivo();	
 			}
 		});
-		
 	}
 	
 	
 	/*metodi di classe*/
 	
-	
-
-
-	public static ItemPreventivoView getInstance(){
+	public static ItemNuovoPreventivoView getInstance(){
 		if (instance==null)
-			instance = new ItemPreventivoView();
+			instance = new ItemNuovoPreventivoView();
 		return instance;	 
 	}
 	
 	public static void cancItem(){
 		instance=null;
 	}
-	
 	
 	/*metodi privati*/
 	

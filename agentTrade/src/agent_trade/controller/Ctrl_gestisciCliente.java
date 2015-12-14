@@ -6,12 +6,12 @@ import java.util.Iterator;
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.PrimaryView;
-import agent_trade.ui.content.AlberoClienti;
-import agent_trade.ui.content.CercaClienteView;
-import agent_trade.ui.content.DettaglioClienteView;
-import agent_trade.ui.content.Ricerca_cliente;
-import agent_trade.ui.content.RiepilogoClienteView;
-import agent_trade.ui.content.confermaCancCliente;
+import agent_trade.ui.content.clienti.AlberoClienti;
+import agent_trade.ui.content.clienti.CercaClienteView;
+import agent_trade.ui.content.clienti.DettaglioClienteView;
+import agent_trade.ui.content.clienti.Ricerca_cliente;
+import agent_trade.ui.content.clienti.RiepilogoClienteView;
+import agent_trade.ui.content.clienti.confermaCancCliente;
 
 public class Ctrl_gestisciCliente {
 

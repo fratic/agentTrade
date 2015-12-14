@@ -1,4 +1,4 @@
-package agent_trade.ui.content;
+package agent_trade.ui.content.clienti;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -14,6 +14,7 @@ import javax.swing.tree.TreePath;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.ui.content.preventivi.AlberoPreventivi;
 
 public class AlberoClienti extends JPanel {
 

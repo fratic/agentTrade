@@ -12,7 +12,7 @@ public class M_Agente implements Serializable{
 	private String idAgente;
 	private String nome;
 	private String cognome;
-	private String password;//per il momento la lascio in chiaro cosi, poi decidpo
+	private String password;//per il momento la lascio in chiaro cosi, poi aggiusto
 	
 	/*costruttori*/
 	

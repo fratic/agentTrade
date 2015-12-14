@@ -1,25 +1,19 @@
-package agent_trade.ui.content;
+package agent_trade.ui.content.preventivi;
 
 
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-
-import java.awt.Color;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-
-
-import agent_trade.controller.Ctrl_elaboraPreventivo;
-import javax.swing.UIManager;
-import java.awt.SystemColor;
 
 public class RiepilogoItemPreventivoView extends JPanel
 {
@@ -41,7 +35,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 	
 	private JTable table;
 
-	private JButton buttoneSalva;
+	//private JButton buttoneSalva;
 
 	private JScrollPane scrollPane;
 
@@ -64,7 +58,6 @@ public class RiepilogoItemPreventivoView extends JPanel
 		panelloTabella.setLayout(null);
 		
 		
-
 		JTableModel = new DefaultTableModel(
                 new String[][] { },
                 new String[] {"ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" });
@@ -84,12 +77,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		panelloRiepilogo.setBackground(SystemColor.scrollbar);
 		panelloRiepilogo.setBounds(0, 372, 733, 85);
 		panel.add(panelloRiepilogo);
-		
-		buttoneSalva = new JButton("");
-		buttoneSalva.setIcon(new ImageIcon(RiepilogoItemPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
-		buttoneSalva.setBounds(8, 8, 45, 45);
-		//panelloRiepilogo.add(buttoneSalva);
-		
+				
 		JLabel labelImponibile = new JLabel("Imponibile");
 		labelImponibile.setBounds(512, 8, 72, 14);
 		panelloRiepilogo.add(labelImponibile);
@@ -116,15 +104,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		textFieldTotale.setColumns(10);
 		textFieldTotale.setBounds(594, 55, 94, 20);
 		panelloRiepilogo.add(textFieldTotale);
-		
-		
-		
-		buttoneSalva.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				//Ctrl_elaboraPreventivo.getInstance().salvaPreventivo();	
-			}
-		});
+
 		
 	}
 	
@@ -156,14 +136,10 @@ public class RiepilogoItemPreventivoView extends JPanel
 	
 	public void resetTable(){
 		int k=((DefaultTableModel) JTableModel).getRowCount();
-//		System.out.println ("reset table. k: "+k);
 
 		for (int i=k-1; i>=0;i--){
 			((DefaultTableModel) JTableModel).removeRow(i);
 		}
-		
-		k=((DefaultTableModel) JTableModel).getRowCount();
-//		System.out.println ("dopo reset. k: "+k);
 	}
 	
 	

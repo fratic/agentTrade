@@ -1,4 +1,4 @@
-package agent_trade.ui.content;
+package agent_trade.ui.content.clienti;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +20,7 @@ import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
 import agent_trade.DynamicTreeDemo;
-import agent_trade.ui.content.RiepilogoClienteView;
+import agent_trade.ui.content.clienti.RiepilogoClienteView;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;

@@ -9,9 +9,9 @@ import agent_trade.model.M_Preventivo;
 import agent_trade.persistentTemp.Dao_System;
 import agent_trade.ui.LoginView;
 import agent_trade.ui.PrimaryView;
-import agent_trade.ui.content.AlberoClienti;
-import agent_trade.ui.content.AlberoPreventivi;
-import agent_trade.ui.content.ProdottiView;
+import agent_trade.ui.content.clienti.AlberoClienti;
+import agent_trade.ui.content.preventivi.AlberoPreventivi;
+import agent_trade.ui.content.prodotti.ProdottiView;
 
 public class Ctrl_System {
 
@@ -41,32 +41,6 @@ public class Ctrl_System {
 	
 	/*metodi privati*/
 	
-	public void initAlberoPreventivi(){
-	
-		ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi();
-		Iterator iteraPreventivi = preventivi.iterator();
-		M_Preventivo p;
-		while (iteraPreventivi.hasNext()) {				
-			p = (M_Preventivo) iteraPreventivi.next();
-				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
-		}
-		//AlberoPreventivi.posInit();
-	}
-	
-	public void resetAlberoPreventivi(){
-		
-//		ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi();
-//		Iterator iteraPreventivi = preventivi.iterator();
-//		M_Preventivo p;
-//		int i=0;
-//		while (iteraPreventivi.hasNext()) {				
-//			p = (M_Preventivo) iteraPreventivi.next();
-//				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
-//				i++;
-////				System.out.println (i);
-//		}
-	}
-	
 	private void initAlberoClienti(){
 		
 		ArrayList<M_Cliente> clienti = Dao_System.getInstance().caricaClienti();
@@ -75,7 +49,6 @@ public class Ctrl_System {
 		int i=0;
 		while (iteraClienti.hasNext()){
 			c = (M_Cliente) iteraClienti.next();
-			//System.out.println(c.getCognome()+ "-" +c.getNome());
 			AlberoClienti.inserisciNodo(c.getCognome()+ " - " +c.getNome());
 			i++;
 			
@@ -100,6 +73,17 @@ public class Ctrl_System {
 	}
 	
 	/*metodi pubblici*/
+	
+	public void initAlberoPreventivi(){
+		
+		ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi();
+		Iterator iteraPreventivi = preventivi.iterator();
+		M_Preventivo p;
+		while (iteraPreventivi.hasNext()) {				
+			p = (M_Preventivo) iteraPreventivi.next();
+				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
+		}
+	}
 
 	public void login(String user, String psw) 
 	{

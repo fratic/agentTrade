@@ -12,10 +12,8 @@ public class M_Preventivo_Item extends Observable implements Serializable {
 	
 	private int idPreventivo_Item;
 	private int quantita;
-	//rendere questi due attributi privati. lasciati cosi solo perchè dao crea errore
-	//cambiare prima o poi
-	public M_Preventivo rifPreventivo;
-	public M_Prodotto idProdotto;
+	private M_Preventivo rifPreventivo;
+	private M_Prodotto idProdotto;
 	
 	private ArrayList<Observer> observers;
 
@@ -45,20 +43,15 @@ public class M_Preventivo_Item extends Observable implements Serializable {
 
 		for(int i=0;i<observers.size();i++){
 			observers.get(i).update(this, null);
-//			System.out.println("è cambiato qualcosa in prev item");
 		}
 	}
 	
 	public void AddObserver(Observer o) {
 		observers.add(o);
-//		System.out.println("addobserver: "+o.toString());
-
 	}
 
 	public void RemoveObserver(Observer o) {
 		observers.remove(o);
-//		System.out.println("remove observer: "+o.toString());
-
 	}	
 	
 	public int getIdPreventivo_Item() {

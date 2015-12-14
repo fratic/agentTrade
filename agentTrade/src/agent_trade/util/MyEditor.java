@@ -6,14 +6,14 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
-import javax.swing.table.TableCellEditor;
 
-public class MyEditor extends DefaultCellEditor implements TableCellEditor {
+public class MyEditor extends DefaultCellEditor {
 
-
+    /**
+     * 
+     */
     private static final long serialVersionUID = 4788029237585436042L;
     private Object value;
-    private int id;
 
     public MyEditor() {
         super(new JCheckBox());

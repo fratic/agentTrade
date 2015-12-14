@@ -1,20 +1,19 @@
-package agent_trade.ui.content;
-
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-
-import agent_trade.controller.Ctrl_elaboraPreventivo;
-
-import com.jgoodies.forms.factories.DefaultComponentFactory;
+package agent_trade.ui.content.preventivi;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.border.TitledBorder;
-import javax.swing.UIManager;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.UIManager;
+import javax.swing.border.TitledBorder;
+
+import agent_trade.controller.Ctrl_elaboraPreventivo;
+
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class RiepilogoIntestazionePreventivoView extends JPanel 
 {
@@ -25,7 +24,6 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 
 	private int id_Preventivo;
 
-	
 	private JLabel labelCliente;
 	private JLabel labelAgente;
 	private JLabel labelNumPrev;
@@ -146,7 +144,6 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		instance=null;
 	}
 
-	
 	
 	
 	/*metodi privati*/

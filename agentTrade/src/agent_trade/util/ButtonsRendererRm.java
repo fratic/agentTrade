@@ -8,7 +8,6 @@ import javax.swing.table.TableCellRenderer;
 public class ButtonsRendererRm extends ButtonsPanelRm implements TableCellRenderer {
     public ButtonsRendererRm() {
         super();
-       //setName("Table.cellRenderer");
     }
     
     @Override public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {

@@ -1,4 +1,4 @@
-package agent_trade.ui.content;
+package agent_trade.ui.content.preventivi;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -106,12 +106,7 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			PrimaryView.getInstance().selectTabCatalogo();
-			//ItemPreventivoView.getInstance().popolaTabProdottiItem(Ctrl_gestisciCliente.getInstance().caricaClienti());
-			//ItemPreventivoView.getInstance().popola();
-			//System.out.println("premuto add item");
-			
-			
+			PrimaryView.getInstance().selectTabCatalogo();		
 			}
 		});
 		
