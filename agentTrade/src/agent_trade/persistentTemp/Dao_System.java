@@ -59,7 +59,7 @@ public class Dao_System {
 	/*
 	___________CLIENTE_________________
 	*/
-	public M_Cliente cercaCliente(String cognome) {
+	public M_Cliente cercaCliente(String cognome, String idAgente) {
 		StringBuffer mioSB = null; 
 		ArrayList elencoClienti = null;
 		Iterator iteraClienti = null;
@@ -75,7 +75,7 @@ public class Dao_System {
 			M_Cliente c = new M_Cliente();
 			while (iteraClienti.hasNext()) {
 				c = (M_Cliente) iteraClienti.next();
-				if (c.getCognome().equals(cognome)){
+				if (c.getCognome().equals(cognome)&& c.getIdAgente().equals(idAgente)){
 					return c;
 				}
 			}
@@ -115,7 +115,7 @@ public class Dao_System {
 //		return null;
 //	}
 	
-	public ArrayList cercaClienti(String c){
+	public ArrayList cercaClienti(String c, String idAgente){
 		ArrayList elencoClienti = null;
 		ArrayList Clienti = null;
 		Iterator iteraClienti = null;
@@ -132,7 +132,7 @@ public class Dao_System {
 			elencoClienti = new ArrayList();
 			while(iteraClienti.hasNext()){
 				cliente = (M_Cliente) iteraClienti.next();
-				if(cliente.getCognome().equals(c)){
+				if(cliente.getCognome().equals(c)&& cliente.getIdAgente().equals(idAgente)){
 					elencoClienti.add(cliente);
 				}
 				
@@ -146,31 +146,61 @@ public class Dao_System {
 		return elencoClienti;
 	}
 	
-	public ArrayList caricaClienti() {
+	public ArrayList caricaClienti(String idAgente) {
 		
-		StringBuffer mioSB = null; 
 		ArrayList elencoClienti = null;
+		ArrayList Clienti = null;
 		Iterator iteraClienti = null;
-		try
-		{
+		
+		try{
 			FileInputStream fis = new FileInputStream("file_db/clienti");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			elencoClienti = (ArrayList) ois.readObject();
+			Clienti = (ArrayList) ois.readObject();
 			ois.close();
 			fis.close();
 			
-			iteraClienti = elencoClienti.iterator();
-			M_Cliente c = new M_Cliente();
-			while (iteraClienti.hasNext()) {
-				c = (M_Cliente) iteraClienti.next();				
+			iteraClienti = Clienti.iterator();
+			M_Cliente cliente = new M_Cliente();
+			elencoClienti = new ArrayList();
+			while(iteraClienti.hasNext()){
+				cliente = (M_Cliente) iteraClienti.next();
+				if(cliente.getIdAgente().equals(idAgente)){
+					elencoClienti.add(cliente);
+				}
+				
 			}
-			return elencoClienti;
 		}
 		catch(Exception e)
 		{
 			System.out.println("Eccezione:"  + e.toString());
 		}
-		return elencoClienti;		 
+		
+		return elencoClienti;
+		
+//		StringBuffer mioSB = null; 
+//		ArrayList elencoClienti = null;
+//		Iterator iteraClienti = null;
+//		try
+//		{
+//			FileInputStream fis = new FileInputStream("file_db/clienti");
+//			ObjectInputStream ois = new ObjectInputStream(fis);
+//			elencoClienti = (ArrayList) ois.readObject();
+//			ois.close();
+//			fis.close();
+//			
+//			iteraClienti = elencoClienti.iterator();
+//			M_Cliente c = new M_Cliente();
+//			System.out.print(c);
+//			while (iteraClienti.hasNext()) {
+//				c = (M_Cliente) iteraClienti.next();				
+//			}
+//			return elencoClienti;
+//		}
+//		catch(Exception e)
+//		{
+//			System.out.println("Eccezione:"  + e.toString());
+//		}
+//		return elencoClienti;		 
 	}
 	
 	public void nuovoCliente(M_Cliente c) {
@@ -362,7 +392,10 @@ public class Dao_System {
 	}
 	
 	
-	public  ArrayList<M_Preventivo> loadPreventivi(){
+	public  ArrayList<M_Preventivo> loadPreventivi(String idAgente){
+		
+		ArrayList<M_Preventivo> elencoPreventivi = null;
+		
 		try
 		{
 			FileInputStream fis = new FileInputStream("file_db/preventivi");
@@ -373,7 +406,19 @@ public class Dao_System {
 			ois.close();
 			fis.close();
 			
-			return a;
+			Iterator<M_Preventivo> iteraPrev = a.iterator();
+			M_Preventivo preventivo = new M_Preventivo();
+			elencoPreventivi = new ArrayList();
+			
+			while(iteraPrev.hasNext()){
+				preventivo = (M_Preventivo) iteraPrev.next();
+				M_Agente agenteRif = preventivo.getRif_Agente();
+				if(agenteRif.getIdAgente().equals(idAgente)){
+					elencoPreventivi.add(preventivo);
+				}
+			}
+			
+			return elencoPreventivi;
 		}
 		catch(Exception e)
 		{

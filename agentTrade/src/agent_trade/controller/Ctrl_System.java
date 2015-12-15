@@ -43,7 +43,7 @@ public class Ctrl_System {
 	
 	private void initAlberoClienti(){
 		
-		ArrayList<M_Cliente> clienti = Dao_System.getInstance().caricaClienti();
+		ArrayList<M_Cliente> clienti = Dao_System.getInstance().caricaClienti(getIdAgente());
 		Iterator iteraClienti = clienti.iterator();
 		M_Cliente c;
 		int i=0;
@@ -64,7 +64,7 @@ public class Ctrl_System {
 		initAlberoPreventivi();	
 		
 		initAlberoClienti();
-
+		
 	}
 	
 	private void initProdotti(){
@@ -76,7 +76,7 @@ public class Ctrl_System {
 	
 	public void initAlberoPreventivi(){
 		
-		ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi();
+		ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi(getIdAgente());
 		Iterator iteraPreventivi = preventivi.iterator();
 		M_Preventivo p;
 		while (iteraPreventivi.hasNext()) {				
@@ -114,6 +114,9 @@ public class Ctrl_System {
 		}		
 	}
 	
-	
+	public String getIdAgente(){
+		
+		return instanceAgenteLog.getIdAgente();
+	}
 	
 }

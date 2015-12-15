@@ -45,7 +45,7 @@ public class Ctrl_gestisciCliente {
 		}
 		else
 		{
-			M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
+			M_Cliente cliente=Dao_System.getInstance().cercaCliente(c,Ctrl_System.getInstance().getIdAgente());
 			
 			if (cliente!=null )
 			{
@@ -65,7 +65,7 @@ public class Ctrl_gestisciCliente {
 			Ricerca_cliente.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		}
 		else{
-			ArrayList clienti=Dao_System.getInstance().cercaClienti(c);
+			ArrayList clienti=Dao_System.getInstance().cercaClienti(c,Ctrl_System.getInstance().getIdAgente());
 			if(clienti.isEmpty()){
 				Ricerca_cliente.getInstance().setErrore("Cliente non trovato");
 			}
@@ -87,7 +87,7 @@ public class Ctrl_gestisciCliente {
 	public void recuperaCliente(String cognome)
 	{	
 		
-			M_Cliente cliente=Dao_System.getInstance().cercaCliente(cognome);
+			M_Cliente cliente=Dao_System.getInstance().cercaCliente(cognome,Ctrl_System.getInstance().getIdAgente());
 			Ricerca_cliente.getInstance().dispose();
 			Ricerca_cliente.cancInstanza();
 			PrimaryView.initRiepilogoClienteView();
@@ -181,7 +181,7 @@ public class Ctrl_gestisciCliente {
 	//bisogna decidere il criterio di caricamento. Decidere se è adeguata questa struttura dati
 	public ArrayList caricaClienti() 
 	{
-		ArrayList clienti=Dao_System.getInstance().caricaClienti();
+		ArrayList clienti=Dao_System.getInstance().caricaClienti(Ctrl_System.getInstance().getIdAgente());
 		return clienti;
 	}
 
@@ -249,7 +249,7 @@ public class Ctrl_gestisciCliente {
 	
 	public void postConfermaCancCliente(String c){
 		
-		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
+		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c,Ctrl_System.getInstance().getIdAgente());
 		Dao_System.getInstance().cancellaCliente(cliente);
 		confermaCancCliente.getInstance().setVisible(false);		
 		confermaCancCliente.cancInst();		

@@ -65,7 +65,7 @@ public class Ctrl_elaboraPreventivo {
 		//in futuro, sarebbe più utile passare un oggetto cliente c 
 		//e non una string con il cognome oppure l'id del cliente
 		
-		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
+		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c,Ctrl_System.getInstance().getIdAgente());
 		M_Preventivo.getInstance().setRif_Cliente(cliente);
 		
 		CercaClienteView.getInstance().dispose();
@@ -281,7 +281,7 @@ public class Ctrl_elaboraPreventivo {
 		M_Preventivo.setNumprev(M_Preventivo.getNumprev()+1);
 		
 		M_Preventivo prev=Dao_System.getInstance().loadPreventivo(Integer.toString(id_Preventivo));
-		M_Cliente cliente=Dao_System.getInstance().cercaCliente(prev.getRif_Cliente().getCognome());//questo andrà cambiato
+		M_Cliente cliente=Dao_System.getInstance().cercaCliente(prev.getRif_Cliente().getCognome(),Ctrl_System.getInstance().getIdAgente());//questo andrà cambiato
 	
 		M_Preventivo prevMod= M_Preventivo.getInstance(prev);
 		

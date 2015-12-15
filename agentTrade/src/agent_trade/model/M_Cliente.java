@@ -2,6 +2,8 @@ package agent_trade.model;
 
 import java.io.Serializable;
 
+import agent_trade.controller.Ctrl_System;
+
 
 public class M_Cliente implements Serializable{
 
@@ -22,11 +24,12 @@ public class M_Cliente implements Serializable{
 	private String email;
 	private String telefono;
 	private String fax;
-
+	private String idAgente;
 	
 	/*costruttori*/
 	
-	public M_Cliente(){		
+	public M_Cliente(){	
+		this.idAgente = Ctrl_System.getInstance().getIdAgente();
 		//super();
 	}
 	
@@ -41,6 +44,7 @@ public class M_Cliente implements Serializable{
 		this.indirizzo=ind;
 		this.telefono=tel;
 		this.fax=fax;
+		this.idAgente = Ctrl_System.getInstance().getIdAgente();
 	}
 	
 	/*metodi di classe*/
@@ -125,5 +129,11 @@ public class M_Cliente implements Serializable{
 	public void setFax(String fax) {
 		this.fax=fax;
 	}
+	
+	public String getIdAgente() {
+		return idAgente;
+	}
+	
+	
 	
 }
