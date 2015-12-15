@@ -155,4 +155,10 @@ public class RiepilogoItemPreventivoView extends JPanel
 		textFieldTotale.setText(a);
 	}
 	
+	public void setTot(float imp, float iva, float tot) {
+		setImponibile(Float.toString(imp));
+		setIva(Float.toString(iva));
+		setTotale(Float.toString(tot));		
+	}
+	
 }

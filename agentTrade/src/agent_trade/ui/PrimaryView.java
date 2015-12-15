@@ -19,6 +19,7 @@ import javax.swing.border.TitledBorder;
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.ui.content.sfondo;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
@@ -255,6 +256,8 @@ public class PrimaryView extends JFrame
 		pannello_centrale_preventivo.setBounds(260, 0, 753, 617);
 		panello_sottomenu_preventivo.add(pannello_centrale_preventivo);
 		pannello_centrale_preventivo.setLayout(null);
+
+		setSfondoPrev();
 				
 		
 		nuovo_preventivo.addActionListener(new ActionListener() {
@@ -265,6 +268,8 @@ public class PrimaryView extends JFrame
 		
 	}
 	
+	
+
 	private void initTabCliente(){
 		
 		Cliente = new JPanel();
@@ -402,6 +407,14 @@ public class PrimaryView extends JFrame
 	            System.exit(0);
 	        }
 	    }
+	
+	public void setSfondoPrev() 
+	{
+		JPanel asd=new sfondo();
+		asd.setBounds(200, 200, 753, 617);
+		pannello_centrale_preventivo.add(asd);
+		
+	}
 	
 	
 	/*metodi pubblici*/
@@ -561,9 +574,5 @@ public class PrimaryView extends JFrame
 	public void setEnableSalva(boolean b) {
 		
 		((ItemNuovoPreventivoView) item).enableSave(b);
-	}
-
-
-	
-	
+	}	
 }

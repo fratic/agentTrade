@@ -192,6 +192,13 @@ public class ItemNuovoPreventivoView extends JPanel
 	}
 
 
+	public void setTot(float imp, float iva, float tot) {
+		setImponibile(Float.toString(imp));
+		setIva(Float.toString(iva));
+		setTotale(Float.toString(tot));		
+	}
+
+
 }
 
 
