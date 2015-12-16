@@ -13,7 +13,7 @@ public class sfondo extends JPanel {
   private Image img;
 
   public sfondo() {
-    img = Toolkit.getDefaultToolkit().createImage(sfondo.class.getResource("/agent_trade/ui/img/sfondoAgentTrade.png"));
+    img = Toolkit.getDefaultToolkit().createImage(sfondo.class.getResource("/agent_trade/ui/img/sfondoAgentTrade2.png"));
     loadImage(img);
   }
 
