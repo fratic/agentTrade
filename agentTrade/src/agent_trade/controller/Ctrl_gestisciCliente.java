@@ -158,6 +158,7 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
 			PrimaryView.getInstance().setEnableTabCatalogo(true);
+			AlberoClienti.updateNodo(cliente.getCognome()+ " - " +cliente.getNome());
 			AlberoClienti.abilitaAlbero();
 			
 		}
@@ -169,12 +170,8 @@ public class Ctrl_gestisciCliente {
 		
 		confermaCancCliente.getInstance().setCliente(c);
 		confermaCancCliente.getInstance().setVisible(true);
-		PrimaryView.getInstance().resetPannelloCentraleCliente();	
-		
-//		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c);
-//		Dao_System.getInstance().cancellaCliente(cliente);
-//
-//		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
+		PrimaryView.getInstance().resetPannelloCentraleCliente();
+		PrimaryView.getInstance().setSfondoCliente();
 	
 	}
 	
@@ -189,7 +186,6 @@ public class Ctrl_gestisciCliente {
 	{
 		CercaClienteView.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		CercaClienteView.getInstance().setVisible(true);
-		//qui bisogna portare la view cerca cliente in primo piano e disattivare tutto il resto
 	} 
 	
 	public void newCliente()
@@ -211,6 +207,7 @@ public class Ctrl_gestisciCliente {
 	
 	public void esciNewCliente() {
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
+		PrimaryView.getInstance().setSfondoCliente();
 		PrimaryView.getInstance().setEnableTabCatalogo(true);
 		PrimaryView.getInstance().setEnableTabPreventivo(true);
 		AlberoClienti.abilitaAlbero();
@@ -256,6 +253,7 @@ public class Ctrl_gestisciCliente {
 		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
 		PrimaryView.getInstance().setEnableTabPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCatalogo(true);
+		//PrimaryView.getInstance().setSfondoCliente();
 	}
 	
 	public void notConfermaCancCliente(){

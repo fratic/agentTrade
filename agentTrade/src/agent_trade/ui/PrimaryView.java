@@ -20,6 +20,8 @@ import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.ui.content.sfondo;
+import agent_trade.ui.content.sfondo_cliente;
+import agent_trade.ui.content.sfondo_preventivo;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
@@ -410,9 +412,18 @@ public class PrimaryView extends JFrame
 	
 	public void setSfondoPrev() 
 	{
-		JPanel asd=new sfondo();
+		sfondo asd=new sfondo_preventivo();
+		//JPanel asd=new sfondo();
 		asd.setBounds(200, 200, 753, 617);
 		pannello_centrale_preventivo.add(asd);
+		
+	}
+	
+	public void setSfondoCliente() 
+	{
+		sfondo asd=new sfondo_cliente();
+		asd.setBounds(200, 200, 753, 617);
+		pannello_centrale_cliente.add(asd);
 		
 	}
 	

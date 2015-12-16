@@ -41,7 +41,7 @@ public class Ctrl_System {
 	
 	/*metodi privati*/
 	
-	private void initAlberoClienti(){
+	public void initAlberoClienti(){
 		
 		ArrayList<M_Cliente> clienti = Dao_System.getInstance().caricaClienti(getIdAgente());
 		Iterator iteraClienti = clienti.iterator();
