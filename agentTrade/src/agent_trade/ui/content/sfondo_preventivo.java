@@ -1,43 +1,11 @@
 package agent_trade.ui.content;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.MediaTracker;
 import java.awt.Toolkit;
 
-import javax.swing.JFrame;
-
-public class sfondo_preventivo extends sfondo {
+public class Sfondo_Preventivo extends Sfondo {
 		  
-		private Image img;
-
-		  public sfondo_preventivo() {
-		    img = Toolkit.getDefaultToolkit().createImage(sfondo_preventivo.class.getResource("/agent_trade/ui/img/sfondoAgentTrade2.png"));
+		  public Sfondo_Preventivo() {
+		    img = Toolkit.getDefaultToolkit().createImage(Sfondo_Preventivo.class.getResource("/agent_trade/ui/img/sfondoAgentTrade2.png"));
 		    loadImage(img);
 		  }
-
-		  private void loadImage(Image img) {
-		    try {
-		      MediaTracker track = new MediaTracker(this);
-		      track.addImage(img, 0);
-		      track.waitForID(0);
-		    } catch (InterruptedException e) {
-		      e.printStackTrace();
-		    }
-		  }
-
-		  protected void paintComponent(Graphics g) {
-		    setOpaque(false);
-		    g.drawImage(img, 0, 0, null);
-		    super.paintComponent(g);
-		  }
-
-		  public static void main(String... argv) {
-		    JFrame frame = new JFrame("Demo Background Image");
-		    sfondo_preventivo back = new sfondo_preventivo();
-		    frame.getContentPane().add(back);
-		    frame.setSize(400, 287);
-		    frame.setVisible(false);
-		  }
-
 	}
