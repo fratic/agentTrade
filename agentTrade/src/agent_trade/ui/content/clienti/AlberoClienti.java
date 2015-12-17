@@ -16,7 +16,6 @@ import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
 
 import agent_trade.controller.Ctrl_System;
-import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 
@@ -31,7 +30,6 @@ public class AlberoClienti extends JPanel {
 	/*attributi privati*/
 		
 	private static DefaultMutableTreeNode radice;
-	//private DefaultMutableTreeNode figlio;
 	private static AlberoClienti instance;
 
 
@@ -80,6 +78,7 @@ public class AlberoClienti extends JPanel {
 	
 	/*metodi privati*/
 	/*metodi pubblici*/
+	
 	
 	//quando viene creato un nuovo cliente aggiunge un nodo all'albero	
 	

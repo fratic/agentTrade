@@ -150,7 +150,6 @@ public class PrimaryView extends JFrame
 		
 		riep_cliente= RiepilogoClienteView.getInstance();
 		riep_cliente.setBounds(7, 7, 740, 604);
-		
 		pannello_centrale_cliente.add(riep_cliente);
 		pannello_centrale_cliente.repaint();
 		
@@ -437,14 +436,7 @@ public class PrimaryView extends JFrame
 		((RiepilogoClienteView) riep_cliente).setRiepilogoCliente(cognome, nome, codice_fiscale, partita_iva, indirizzo, email, telefono, fax);
 
 	}
-//	public void setEnableNewCliente(boolean b) {
-//		bottoneNuovoCliente.setEnabled(b);
-//	}
-//	
-//	public void setEnableCercaBtn(boolean b) {
-//		bottoneCercaCliente.setEnabled(b);
-//	}
-	
+
 	//sblocca i campi per la modifica cliente
 	public void setModifiche(boolean b) {
 		((RiepilogoClienteView) riep_cliente).setTFeditable(b);
@@ -472,13 +464,11 @@ public class PrimaryView extends JFrame
 		((DettaglioClienteView) dettaglioCliente).resetNewCliente();
 	}
 	
-	
 	public void resetCliente() {
 		((RiepilogoClienteView) riep_cliente).resetCampiModifica();
 		
 	}
 	
-	//per il tab preventivo
 	public void setEnableNewPreventivo(boolean b){
 		nuovo_preventivo.setEnabled(b);
 	}
@@ -581,7 +571,6 @@ public class PrimaryView extends JFrame
 	public void abilitaAlbero(){
 		alberoPreventivi.enable();
 	}
-
 
 	public void setEnableSalva(boolean b) {
 		

@@ -209,24 +209,15 @@ public class Ricerca_cliente extends JDialog {
 			instance = new Ricerca_cliente();
 		return instance;	 
 	}
-	
-//	public static void cancInst(){
-//		instance=null;	 
-//	}
 		
 	public TableModel getJTableModel(){
 		return JTableModel;	 
 	}
-	
-	
+		
 	public JTable getTableInstance(){
 		return table;	 
 	}
-	
-//	public void setElements(M_Cliente[] listData){
-//		this.clienti.setListData(listData);
-//	}
-	
+		
 	private void init(){
 		this.clienti = new JList<M_Cliente>();
 	}

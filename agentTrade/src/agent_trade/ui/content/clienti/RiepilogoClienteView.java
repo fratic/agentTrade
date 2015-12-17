@@ -235,7 +235,6 @@ public class RiepilogoClienteView extends JPanel {
 			TFemail.setEditable(b);
 			TFtelefono.setEditable(b);
 			TFfax.setEditable(b);
-			//bottoneModificaCliente.setEnabled(b);
 		}
 		
 		public void resetCampiModifica(){
