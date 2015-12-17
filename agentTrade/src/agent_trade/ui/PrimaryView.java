@@ -316,6 +316,8 @@ public class PrimaryView extends JFrame
 		panello_sottomenu_cliente.add(pannello_centrale_cliente);
 		pannello_centrale_cliente.setLayout(null);
 		
+		setSfondoCliente();
+		
 		bottoneCercaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
