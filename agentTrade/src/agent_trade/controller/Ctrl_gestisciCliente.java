@@ -216,8 +216,10 @@ public class Ctrl_gestisciCliente {
 	public void btnCerca()
 	{	
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
+		PrimaryView.getInstance().setSfondoCliente();
 		Ricerca_cliente.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		Ricerca_cliente.getInstance().setVisible(true);
+		
 	}
 	
 	public void abilitaModifica()
@@ -249,11 +251,10 @@ public class Ctrl_gestisciCliente {
 		M_Cliente cliente=Dao_System.getInstance().cercaCliente(c,Ctrl_System.getInstance().getIdAgente());
 		Dao_System.getInstance().cancellaCliente(cliente);
 		confermaCancCliente.getInstance().setVisible(false);		
-		confermaCancCliente.cancInst();		
+		confermaCancCliente.cancInst();
 		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
 		PrimaryView.getInstance().setEnableTabPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCatalogo(true);
-		//PrimaryView.getInstance().setSfondoCliente();
 	}
 	
 	public void notConfermaCancCliente(){
