@@ -59,6 +59,12 @@ public class M_Preventivo implements Serializable, Observer{
 
 	}
 	
+
+	
+	
+	/*metodi privati*/
+	/*metodi pubblici*/
+	
 	public static int getNumprev(){
 		return (newId);	
 	}
@@ -66,10 +72,6 @@ public class M_Preventivo implements Serializable, Observer{
 	public static void setNumprev(int id){
 		newId=id;	
 	}
-	
-	
-	/*metodi privati*/
-	/*metodi pubblici*/
 			
 	public ArrayList<M_Preventivo_Item> getElencoItem() {
 		return elencoItem;

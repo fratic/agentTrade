@@ -23,6 +23,7 @@ public class M_Catalogo {
 	public M_Azienda getRifAzienda() {
 		return rifAzienda;
 	}
+	
 	public void setRifAzienda(M_Azienda rifAzienda) {
 		this.rifAzienda = rifAzienda;
 	}

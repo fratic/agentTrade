@@ -54,6 +54,7 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryView.getInstance().resetPannelloCentralePreventivo();
 
 		M_Preventivo.getInstance().setRif_Agente(a);
+		
 		M_Preventivo.getInstance().setData((String)(cal.get(Calendar.DATE)+"/"+(cal.get(Calendar.MONTH)+1)+"/"+cal.get(Calendar.YEAR)));	//la data andrà recuperata dal sistema e comprenderà anche l'orario
 		Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();
 	}

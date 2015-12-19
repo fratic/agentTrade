@@ -15,14 +15,14 @@ public abstract class  M_Prodotto implements Serializable {
 	protected String nome;
 	protected String categoria;
 	protected String Azienda; //per il momento string
-	protected M_DescrizioneProdotto idDescrizioneProdotto;
+	protected String idDescrizioneProdotto;
 	
 	/*costruttori*/
 	
 	public M_Prodotto() {
 	}
 	
-	public M_Prodotto(int id, float prezzo, String nome, String categoria,M_DescrizioneProdotto idDes) {
+	public M_Prodotto(int id, float prezzo, String nome, String categoria,String idDes) {
 		this.idProdotto=id;
 		this.prezzo=prezzo;
 		this.nome=nome;
@@ -60,10 +60,10 @@ public abstract class  M_Prodotto implements Serializable {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	public M_DescrizioneProdotto getIdDescrizioneProdotto() {
+	public String getIdDescrizioneProdotto() {
 		return idDescrizioneProdotto;
 	}
-	public void setIdDescrizioneProdotto(M_DescrizioneProdotto idDescrizioneProdotto) {
+	public void setIdDescrizioneProdotto(String idDescrizioneProdotto) {
 		this.idDescrizioneProdotto = idDescrizioneProdotto;
 	}
 	public int getIdProdotto() {

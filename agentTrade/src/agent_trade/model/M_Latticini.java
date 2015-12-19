@@ -8,8 +8,6 @@ public class M_Latticini extends M_Prodotto implements Serializable
 	/*attributi privati*/
 	
 	private int stagionatura;
-	//qui andrebbero definiti gli attributi non comuni con prodotto. Bisogna quindi cercare dei prodotti che 
-	//tra di loro hanno caratteristiche diverse, in modo da evidenziare la flessibilità e da giustificare il polimorfismo
 
 
 	/*costruttori*/

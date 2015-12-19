@@ -1,10 +1,13 @@
 package agent_trade.persistentTemp;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import agent_trade.model.M_Carni;
 import agent_trade.model.M_Dolci;
 import agent_trade.model.M_Latticini;
+import agent_trade.model.M_Vini;
 
 	class ScritturaSuFileProdotti
 	{
@@ -13,20 +16,24 @@ import agent_trade.model.M_Latticini;
 		
 	public static void main(String[] args)
 	{
-		M_Dolci p =new M_Dolci(1, 1, "caramella", "Dolci", true);
-		M_Dolci p1 =new M_Dolci(2, 2, "biscotti", "dolci", true);
-		M_Dolci p2 =new M_Dolci(3, 2, "vitello", "carne", true);
-		M_Dolci p3 =new M_Dolci(4, 2, "rigatoni", "pasta", true);
-		M_Dolci p4 =new M_Dolci(5, 2, "mela", "frutta", true);
-		M_Dolci p5 =new M_Dolci(6, 2, "dash", "detersivo", true);
-		M_Dolci p6 =new M_Dolci(7, 2, "olio", "alimenti", true);
-		M_Dolci p7 =new M_Dolci(8, 2, "passata", "conserve", true);
-		M_Dolci p8 =new M_Dolci(9, 2, "maionese", "salse", true);
-		M_Dolci p9 =new M_Dolci(10, 2, "lavazza", "caffe", true);
-		M_Dolci p10 =new M_Dolci(11, 2, "montepulciano", "vino", true);
-		M_Latticini p11 =new M_Latticini(12, 2, "grana", "latticini", 16);
-		M_Latticini p12 =new M_Latticini(12, 2, "emmental", "latticini", 6);
-		M_Latticini p13 =new M_Latticini(12, 2, "mozzarella", "latticini", 0);
+		M_Dolci p =new M_Dolci(1, (float) 1.10 , "Caramelle", "Dolci", false, false);
+		M_Dolci p1 =new M_Dolci(2, (float) 1.7, "Biscotti", "Dolci", false, false);
+		M_Dolci p2 =new M_Dolci(3, (float) 3.5, "Pandoro", "Dolci", true, false);
+		M_Dolci p3 =new M_Dolci(4, 5, "Panettone", "Dolci", true, false);
+
+		M_Carni p4 =new M_Carni(5, 18, "Vitello", "Carne", "Italia", "girello",1);
+		M_Carni p5 =new M_Carni(6, 9, "Maiale", "Carne", "Italia", "arista",2);
+		M_Carni p6 =new M_Carni(7, 8, "Pollo", "Carne", "Italia", "petto",1);
+		M_Carni p7 =new M_Carni(8, 4, "Pollo", "Carne", "Italia", "coscie",3);
+
+		M_Vini p8 =new M_Vini(9, 12, "Montepulciano", "Vino", "rosso","Abruzzo", "cantina");
+		M_Vini p9 =new M_Vini(10, 12, "Trebbiano", "Vino", "Bianco","Abruzzo", "cantina");
+		M_Vini p10 =new M_Vini(11, 13, "Primitivo", "Vino", "Bianco","Puglia", "cantina");
+		M_Vini p11 =new M_Vini(12, 15, "Falanghina", "Vino", "Bianco","Sicilia", "cantina");
+
+		M_Latticini p12 =new M_Latticini(13, 9, "Grana", "Latticini", 16);
+		M_Latticini p13 =new M_Latticini(14, (float) 6.7, "Emmental", "Latticini", 6);
+		M_Latticini p14 =new M_Latticini(15, (float) 1.7, "Mozzarella", "Latticini", 0);
 
 
 		//StringBuffer mioSB = new StringBuffer(ag.getNome());
@@ -56,6 +63,7 @@ import agent_trade.model.M_Latticini;
 	list.add(p11);
 	list.add(p12);
 	list.add(p13);
+	list.add(p14);
 
 
 
@@ -69,7 +77,7 @@ import agent_trade.model.M_Latticini;
 */
 	//oos.write(mioSB);
 	oos.close();
-//	System.out.println("OK");
+	System.out.println("OK");
 	
 	}
 	catch(Exception e)

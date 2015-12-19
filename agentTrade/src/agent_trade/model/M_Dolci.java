@@ -9,8 +9,7 @@ public class M_Dolci extends M_Prodotto implements Serializable
 	/*attributi privati*/
 
 	private boolean artigianale;
-	//qui andrebbero definiti gli attributi non comuni con prodotto. Bisogna quindi cercare dei prodotti che 
-	//tra di loro hanno caratteristiche diverse, in modo da evidenziare la flessibilità e da giustificare il polimorfismo
+	private boolean free_gluten;
 
 
 	/*costruttori*/
@@ -19,9 +18,10 @@ public class M_Dolci extends M_Prodotto implements Serializable
 		super();
 	}
 	
-	public M_Dolci(int id, float prezzo, String nome, String categoria, boolean art ) {
+	public M_Dolci(int id, float prezzo, String nome, String categoria, boolean art, boolean fg) {
 		super(id, prezzo, nome, categoria);
 		this.artigianale=art;
+		this.free_gluten=fg;
 	}
 	
 	/*metodi di classe*/
