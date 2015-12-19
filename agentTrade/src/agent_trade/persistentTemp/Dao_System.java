@@ -75,7 +75,7 @@ public class Dao_System {
 			M_Cliente c = new M_Cliente();
 			while (iteraClienti.hasNext()) {
 				c = (M_Cliente) iteraClienti.next();
-				if (c.getCognome().equals(cognome)&& c.getIdAgente().equals(idAgente)){
+				if (c.getCognome().equals(cognome)&& c.getAgenteAssociato().getIdAgente().equals(idAgente)){
 					return c;
 				}
 			}
@@ -132,7 +132,7 @@ public class Dao_System {
 			elencoClienti = new ArrayList();
 			while(iteraClienti.hasNext()){
 				cliente = (M_Cliente) iteraClienti.next();
-				if(cliente.getCognome().equals(c)&& cliente.getIdAgente().equals(idAgente)){
+				if(cliente.getCognome().equals(c)&& cliente.getAgenteAssociato().getIdAgente().equals(idAgente)){
 					elencoClienti.add(cliente);
 				}
 				
@@ -164,7 +164,7 @@ public class Dao_System {
 			elencoClienti = new ArrayList();
 			while(iteraClienti.hasNext()){
 				cliente = (M_Cliente) iteraClienti.next();
-				if(cliente.getIdAgente().equals(idAgente)){
+				if(cliente.getAgenteAssociato().getIdAgente().equals(idAgente)){
 					elencoClienti.add(cliente);
 				}
 				
@@ -216,6 +216,14 @@ public class Dao_System {
 		fis.close();
 		
 		list.add(c);
+		
+		/****alternativa quando scrivo il primo cliente*
+
+		ArrayList list = new ArrayList();
+
+		list.add(c);
+		
+		*****/
 
 		FileOutputStream fos = new FileOutputStream("file_db/clienti");
 		ObjectOutputStream oos = new ObjectOutputStream(fos);

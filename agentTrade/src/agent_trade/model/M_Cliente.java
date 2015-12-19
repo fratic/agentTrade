@@ -24,12 +24,12 @@ public class M_Cliente implements Serializable{
 	private String email;
 	private String telefono;
 	private String fax;
-	private String idAgente;
+	private M_Agente agenteAssociato;
 	
 	/*costruttori*/
 	
 	public M_Cliente(){	
-		this.idAgente = Ctrl_System.getInstance().getIdAgente();
+		this.agenteAssociato = Ctrl_System.getInstance().getAgenteLog();
 		//super();
 	}
 	
@@ -44,7 +44,7 @@ public class M_Cliente implements Serializable{
 		this.indirizzo=ind;
 		this.telefono=tel;
 		this.fax=fax;
-		this.idAgente = Ctrl_System.getInstance().getIdAgente();
+		this.agenteAssociato = Ctrl_System.getInstance().getAgenteLog();
 	}
 	
 	/*metodi di classe*/
@@ -130,8 +130,8 @@ public class M_Cliente implements Serializable{
 		this.fax=fax;
 	}
 	
-	public String getIdAgente() {
-		return idAgente;
+	public M_Agente getAgenteAssociato() {
+		return agenteAssociato;
 	}
 	
 	

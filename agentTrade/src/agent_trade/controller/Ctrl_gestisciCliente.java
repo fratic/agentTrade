@@ -78,10 +78,9 @@ public class Ctrl_gestisciCliente {
 				M_Cliente cliente = new M_Cliente();
 				Ricerca_cliente.getInstance().svuotaTabella();
 				while(iteraClienti.hasNext()){
-//					System.out.println("ciao");
+
 					cliente = (M_Cliente) iteraClienti.next();
 					Ricerca_cliente.getInstance().updateTable(cliente.getCognome(), cliente.getNome(), cliente.getCodice_fiscale(), cliente.getPartita_iva());
-					//System.out.println(cliente.getCognome());
 					
 				}
 			}
@@ -110,7 +109,7 @@ public class Ctrl_gestisciCliente {
 		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
 			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
 			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
-			//System.out.println("non lo salvo");
+			
 		}
 		else{
 			M_Cliente cliente=new M_Cliente();
@@ -124,7 +123,7 @@ public class Ctrl_gestisciCliente {
 			cliente.setFax(fax);
 			
 			Dao_System.getInstance().nuovoCliente(cliente);
-			//System.out.println("lo salvo");
+			
 			PrimaryView.getInstance().resetNuovoCliente();
 			PrimaryView.getInstance().resetPannelloCentraleCliente();
 			recuperaCliente(cognome);
@@ -279,7 +278,6 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().setEnableTabCatalogo(true);
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
 
-			//System.out.print(c);
 		}
 	}
 	
