@@ -134,6 +134,7 @@ public class Ctrl_elaboraPreventivo {
 			M_Preventivo m= Dao_System.getInstance().loadPreventivo(id);
 
 			//inizializza view di riepilogo preventivo
+			if (m!=null){
 			initRiepilogoPreventivo(m);
 			
 			
@@ -141,7 +142,7 @@ public class Ctrl_elaboraPreventivo {
 			float iva=(float)(imp*IVA);
 			float tot=imp+iva;
 			RiepilogoItemPreventivoView.getInstance().setTot(imp, iva, tot);
-			
+			}
 		}
 		else{
 			

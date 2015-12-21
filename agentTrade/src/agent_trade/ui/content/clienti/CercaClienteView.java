@@ -70,7 +70,7 @@ public class CercaClienteView extends JDialog {
 		
 		
 		setTitle("Cerca Cliente");
-		setBounds(350, 200, 576, 324);
+		setBounds(450, 250, 576, 324);
 		getContentPane().setLayout(null);
 		
 		panelloCerca = new JPanel();

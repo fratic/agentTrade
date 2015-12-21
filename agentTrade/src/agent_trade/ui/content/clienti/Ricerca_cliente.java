@@ -1,8 +1,5 @@
 package agent_trade.ui.content.clienti;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -20,15 +17,13 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import com.jgoodies.forms.factories.DefaultComponentFactory;
-
-import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
+
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class Ricerca_cliente extends JDialog {
 	
@@ -70,7 +65,7 @@ public class Ricerca_cliente extends JDialog {
 		
 		
 		setTitle("Cerca Cliente");
-		setBounds(350, 200, 576, 324);
+		setBounds(450, 250, 576, 324);
 		getContentPane().setLayout(null);
 		
 		panelloCerca = new JPanel();
