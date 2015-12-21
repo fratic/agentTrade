@@ -1,4 +1,4 @@
-package agent_trade.ui.content;
+package agent_trade.util;
 
 import java.awt.Graphics;
 import java.awt.Image;

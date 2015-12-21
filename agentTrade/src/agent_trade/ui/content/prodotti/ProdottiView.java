@@ -72,7 +72,7 @@ public class ProdottiView extends JPanel {
         table.setDefaultEditor(Object.class, new MyEditor());
         
 	    table.setRowHeight(30);
-
+	    
 	    scrollPane = new JScrollPane(table);
 	    scrollPane.setBounds(0, 0, 753, 617);
 	    pannelloTabella.add(scrollPane);

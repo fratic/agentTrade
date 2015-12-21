@@ -22,5 +22,6 @@ public class MyRenderer implements TableCellRenderer {
         }
         String str = cell.toString();
         return new JLabel(str);
+        
     }
 }

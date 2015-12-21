@@ -19,9 +19,6 @@ import javax.swing.border.TitledBorder;
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
-
-import agent_trade.ui.content.Sfondo_Cliente;
-import agent_trade.ui.content.Sfondo_Preventivo;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
@@ -31,6 +28,8 @@ import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
+import agent_trade.util.Sfondo_Cliente;
+import agent_trade.util.Sfondo_Preventivo;
 
 public class PrimaryView extends JFrame 
 {
