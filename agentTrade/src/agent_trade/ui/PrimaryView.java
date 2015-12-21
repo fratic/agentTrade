@@ -469,6 +469,14 @@ public class PrimaryView extends JFrame
 		
 	}
 	
+	public void setEnableNewCliente(boolean b){
+		bottoneNuovoCliente.setEnabled(b);
+	}
+	
+	public void setEnableCercaCliente(boolean b){
+		bottoneCercaCliente.setEnabled(b);
+	}
+	
 	public void setEnableNewPreventivo(boolean b){
 		nuovo_preventivo.setEnabled(b);
 	}

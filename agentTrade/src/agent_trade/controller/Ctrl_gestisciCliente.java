@@ -101,6 +101,7 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
 			PrimaryView.getInstance().setEnableTabCatalogo(true);
 			PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
+			AlberoClienti.abilitaAlbero();
 	}
 	
 	//da rivedere COME CREO GLI ID? COME CONTROLLO I CAMPI?
@@ -162,6 +163,8 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
 			PrimaryView.getInstance().setEnableTabCatalogo(true);
+			PrimaryView.getInstance().setEnableNewCliente(true);
+			PrimaryView.getInstance().setEnableCercaCliente(true);
 			AlberoClienti.updateNodo(cliente.getCognome()+ " - " +cliente.getNome());
 			AlberoClienti.abilitaAlbero();
 			
@@ -173,9 +176,6 @@ public class Ctrl_gestisciCliente {
 		
 		confermaCancCliente.getInstance().setCliente(c);
 		confermaCancCliente.getInstance().setVisible(true);
-		PrimaryView.getInstance().resetPannelloCentraleCliente();
-		PrimaryView.getInstance().setSfondoCliente();
-	
 	}
 	
 	//bisogna decidere il criterio di caricamento. Decidere se è adeguata questa struttura dati
@@ -234,6 +234,8 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().setEnableTabCatalogo(false);
 		PrimaryView.getInstance().setEnableTabPreventivo(false);
 		PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
+		PrimaryView.getInstance().setEnableNewCliente(false);
+		PrimaryView.getInstance().setEnableCercaCliente(false);
 		AlberoClienti.disabilitaAlbero();
 	}
 		
@@ -246,6 +248,8 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
 		PrimaryView.getInstance().setEnableTabCatalogo(true);
 		PrimaryView.getInstance().setEnableTabPreventivo(true);
+		PrimaryView.getInstance().setEnableNewCliente(true);
+		PrimaryView.getInstance().setEnableCercaCliente(true);
 		AlberoClienti.abilitaAlbero();
 	}
 	
@@ -255,6 +259,8 @@ public class Ctrl_gestisciCliente {
 		Dao_System.getInstance().cancellaCliente(cliente);
 		confermaCancCliente.getInstance().setVisible(false);		
 		confermaCancCliente.cancInst();
+		PrimaryView.getInstance().resetPannelloCentraleCliente();
+		PrimaryView.getInstance().setSfondoCliente();
 		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
 		PrimaryView.getInstance().setEnableTabPreventivo(true);
 		PrimaryView.getInstance().setEnableTabCatalogo(true);

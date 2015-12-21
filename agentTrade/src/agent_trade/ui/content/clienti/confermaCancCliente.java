@@ -82,7 +82,7 @@ public class confermaCancCliente extends JDialog {
 		okButton.setBounds(91, 11, 62, 23);
 		panelloBottoni.add(okButton);
 		
-		cancelButton = new JButton("Cancel");
+		cancelButton = new JButton("Annulla");
 		cancelButton.setBounds(175, 11, 82, 23);
 		panelloBottoni.add(cancelButton);
 		 
