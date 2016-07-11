@@ -9,7 +9,7 @@ public class M_Carni extends M_Prodotto implements Serializable
 	
 	private String provenienza;
 	private String taglio;
-	private int qualita;
+	private String tipo;//di animale
 	
 
 	/*costruttori*/
@@ -18,11 +18,11 @@ public class M_Carni extends M_Prodotto implements Serializable
 		super();
 	}
 	
-	public M_Carni(int id, float prezzo, String nome, String categoria, String provenienza, String taglio, int qualita ) {
+	public M_Carni(int id, float prezzo, String nome, String categoria, String provenienza, String taglio, String tipo ) {
 		super(id, prezzo, nome, categoria);
 		this.provenienza=provenienza;
 		this.taglio=taglio;
-		this.qualita=qualita;
+		this.tipo=tipo;
 	}	
 	
 	/*metodi di classe*/

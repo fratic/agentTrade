@@ -1,5 +1,7 @@
 package agent_trade.model;
 
+import java.util.ArrayList;
+
 public class M_Catalogo {
 	
 	/*attributi di classe*/
@@ -7,6 +9,7 @@ public class M_Catalogo {
 	/*attributi privati*/
 	private int idCatalogo;
 	private M_Azienda rifAzienda;
+	private ArrayList<M_Prodotto> prodotti;
 	
 	/*costruttori*/
 

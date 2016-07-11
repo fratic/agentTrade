@@ -59,7 +59,9 @@ public class M_Preventivo implements Serializable, Observer{
 
 	}
 	
-
+	public static void cancIstanza(){
+		instance=null;
+	}
 	
 	
 	/*metodi privati*/
@@ -81,9 +83,6 @@ public class M_Preventivo implements Serializable, Observer{
 		this.elencoItem = elencoItem;
 	}
 
-	public static void cancIstanza(){
-		instance=null;
-	}
 	
 	public M_Cliente getRif_Cliente() {
 		return rif_Cliente;

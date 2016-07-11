@@ -20,6 +20,8 @@ public class M_Cliente implements Serializable{
 	private String cognome;
 	private String codice_fiscale;
 	private String partita_iva;
+	private String citta;
+	private String cap;
 	private String indirizzo;
 	private String email;
 	private String telefono;
@@ -33,7 +35,7 @@ public class M_Cliente implements Serializable{
 		//super();
 	}
 	
-	public M_Cliente(int id, String cognome, String nome, String cf, String pi, String ind, String em, String tel, String fax){
+	public M_Cliente(int id, String cognome, String nome, String cf, String pi,String citta, String cap, String ind, String em, String tel, String fax){
 		//super();
 		this.idCliente=id;
 		this.cognome=cognome;
@@ -41,6 +43,8 @@ public class M_Cliente implements Serializable{
 		this.codice_fiscale=cf;
 		this.partita_iva=pi;
 		this.email=em;
+		this.citta=citta;
+		this.cap=cap;
 		this.indirizzo=ind;
 		this.telefono=tel;
 		this.fax=fax;
@@ -134,6 +138,21 @@ public class M_Cliente implements Serializable{
 		return agenteAssociato;
 	}
 	
-	
+	public String getCitta() {
+		return citta;
+	}
+
+	public void setCitta(String citta) {
+		this.citta = citta;
+	}
+
+	public String getCap() {
+		return cap;
+	}
+
+	public void setCap(String cap) {
+		this.cap = cap;
+	}
+
 	
 }

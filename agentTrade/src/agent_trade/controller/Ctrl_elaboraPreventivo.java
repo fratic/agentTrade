@@ -73,7 +73,8 @@ public class Ctrl_elaboraPreventivo {
 
 
 	//CO3
-	public void addItem(int IdProdotto, JButton jb) {
+	//inserire la quantità
+	public void addItem(int IdProdotto, JButton jb) { 
 				
 		M_Prodotto p=Dao_System.getInstance().loadProdotto(IdProdotto);
 		M_Preventivo.getInstance().addItem(p);
@@ -167,7 +168,7 @@ public class Ctrl_elaboraPreventivo {
 	}
 
 
-	public void addQuant(int id, int qt, int row) {
+	public void addQuant(int id, int qt) {
 
 		M_Preventivo p =M_Preventivo.getInstance();
 		p.addQuant(id,qt);

@@ -21,10 +21,10 @@ import agent_trade.model.M_Vini;
 		M_Dolci p2 =new M_Dolci(3, (float) 3.5, "Pandoro", "Dolci", true, false);
 		M_Dolci p3 =new M_Dolci(4, 5, "Panettone", "Dolci", true, false);
 
-		M_Carni p4 =new M_Carni(5, 18, "Vitello", "Carne", "Italia", "girello",1);
-		M_Carni p5 =new M_Carni(6, 9, "Maiale", "Carne", "Italia", "arista",2);
-		M_Carni p6 =new M_Carni(7, 8, "Pollo", "Carne", "Italia", "petto",1);
-		M_Carni p7 =new M_Carni(8, 4, "Pollo", "Carne", "Italia", "coscie",3);
+		M_Carni p4 =new M_Carni(5, 18, "Vitello", "Carne", "Italia", "girello","1");
+		M_Carni p5 =new M_Carni(6, 9, "Maiale", "Carne", "Italia", "arista","2");
+		M_Carni p6 =new M_Carni(7, 8, "Pollo", "Carne", "Italia", "petto","1");
+		M_Carni p7 =new M_Carni(8, 4, "Pollo", "Carne", "Italia", "coscie","3");
 
 		M_Vini p8 =new M_Vini(9, 12, "Montepulciano", "Vino", "rosso","Abruzzo", "cantina");
 		M_Vini p9 =new M_Vini(10, 12, "Trebbiano", "Vino", "Bianco","Abruzzo", "cantina");

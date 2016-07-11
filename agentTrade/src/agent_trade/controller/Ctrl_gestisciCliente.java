@@ -2,6 +2,8 @@ package agent_trade.controller;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import agent_trade.model.M_Cliente;
 import agent_trade.persistentTemp.Dao_System;
@@ -34,6 +36,32 @@ public class Ctrl_gestisciCliente {
 
 	/*metodi privati*/
 
+	private boolean check(String regex, String input){
+		
+		  Pattern pattern = Pattern.compile(regex);
+		  Matcher matcher = pattern.matcher(input);
+
+		  if (matcher.matches())
+		    return true;
+		  else
+		    return false;
+		}
+	
+	private boolean ControlloCampi(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
+		
+		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
+			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
+			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
+			return false;
+		}
+		if(!check("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}", email)){
+			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
+			DettaglioClienteView.getInstance().setErrore("emali non corretta");
+			return false;
+		}
+		return true;
+		
+	}
 	
 	/*metodi pubblici*/
 	
@@ -107,12 +135,18 @@ public class Ctrl_gestisciCliente {
 	//da rivedere COME CREO GLI ID? COME CONTROLLO I CAMPI?
 	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
 		
-		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
-			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
-			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
-			
-		}
-		else{
+//		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
+//			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
+//			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
+//			
+//		}
+//		if(!check("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}", email)){
+//			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
+//			DettaglioClienteView.getInstance().setErrore("emali non corretta");
+//		}
+//		else{
+		if(ControlloCampi(nome, cognome, codFiscale, partitaIva, indirizzo, email, telefono, fax))
+		{
 			M_Cliente cliente=new M_Cliente();
 			cliente.setNome(nome);
 			cliente.setCognome(cognome);
@@ -132,8 +166,8 @@ public class Ctrl_gestisciCliente {
 			AlberoClienti.abilitaAlbero();
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
 			PrimaryView.getInstance().setEnableTabCatalogo(true);
-
 		}
+//		}
 	}
 	
 	//da cambiare quando avremo deciso definitivamente il db

@@ -7,6 +7,18 @@ public class M_Azienda {
 	/*attributi privati*/
 	private int idAzienda;
 	private String nome;
+	private String regioneSociale;
+	private String citta;
+	private String cap;
+	private String indirizzo;
+	private String telefono;
+	private String fax;
+	private String email;
+	private String partita_iva;
+	private String codice_fiscale;
+
+
+
 
 
 	/*costruttori*/

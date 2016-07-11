@@ -8,7 +8,7 @@ public class M_Latticini extends M_Prodotto implements Serializable
 	/*attributi privati*/
 	
 	private int stagionatura;
-
+	private String tipo;
 
 	/*costruttori*/
 	

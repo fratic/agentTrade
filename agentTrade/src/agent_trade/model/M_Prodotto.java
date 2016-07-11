@@ -16,6 +16,7 @@ public abstract class  M_Prodotto implements Serializable {
 	protected String categoria;
 	protected String Azienda; //per il momento string
 	protected String idDescrizioneProdotto;
+	protected int idCatalogo;
 	
 	/*costruttori*/
 	
