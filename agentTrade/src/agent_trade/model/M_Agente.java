@@ -57,7 +57,11 @@ public class M_Agente implements Serializable{
 		return cognome;
 	}
 
-	
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}

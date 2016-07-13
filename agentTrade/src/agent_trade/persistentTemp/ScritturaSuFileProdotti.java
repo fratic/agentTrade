@@ -16,24 +16,24 @@ import agent_trade.model.M_Vini;
 		
 	public static void main(String[] args)
 	{
-		M_Dolci p =new M_Dolci(1, (float) 1.10 , "Caramelle", "Dolci", false, false);
-		M_Dolci p1 =new M_Dolci(2, (float) 1.7, "Biscotti", "Dolci", false, false);
-		M_Dolci p2 =new M_Dolci(3, (float) 3.5, "Pandoro", "Dolci", true, false);
-		M_Dolci p3 =new M_Dolci(4, 5, "Panettone", "Dolci", true, false);
+		M_Dolci p =new M_Dolci(1, (float) 1.10 , "Caramelle", "Dolci", "conad", "abc", 2, false, false);
+		M_Dolci p1 =new M_Dolci(2, (float) 1.7, "Biscotti", "Dolci", "conad", "abc", 2, false, false);
+		M_Dolci p2 =new M_Dolci(3, (float) 3.5, "Pandoro", "Dolci", "conad", "abc", 2, true, false);
+		M_Dolci p3 =new M_Dolci(4, 5, "Panettone", "Dolci", "conad", "abc", 2, true, false);
 
-		M_Carni p4 =new M_Carni(5, 18, "Vitello", "Carne", "Italia", "girello","1");
-		M_Carni p5 =new M_Carni(6, 9, "Maiale", "Carne", "Italia", "arista","2");
-		M_Carni p6 =new M_Carni(7, 8, "Pollo", "Carne", "Italia", "petto","1");
-		M_Carni p7 =new M_Carni(8, 4, "Pollo", "Carne", "Italia", "coscie","3");
+		M_Carni p4 =new M_Carni(5, 18, "Vitello", "Carne", "conad", "abc", 2, "Italia", "girello","1");
+		M_Carni p5 =new M_Carni(6, 9, "Maiale", "Carne", "conad", "abc", 2, "Italia", "arista","2");
+		M_Carni p6 =new M_Carni(7, 8, "Pollo", "Carne", "conad", "abc", 2, "Italia", "petto","1");
+		M_Carni p7 =new M_Carni(8, 4, "Pollo", "Carne", "conad", "abc", 2, "Italia", "coscie","3");
 
-		M_Vini p8 =new M_Vini(9, 12, "Montepulciano", "Vino", "rosso","Abruzzo", "cantina");
-		M_Vini p9 =new M_Vini(10, 12, "Trebbiano", "Vino", "Bianco","Abruzzo", "cantina");
-		M_Vini p10 =new M_Vini(11, 13, "Primitivo", "Vino", "Bianco","Puglia", "cantina");
-		M_Vini p11 =new M_Vini(12, 15, "Falanghina", "Vino", "Bianco","Sicilia", "cantina");
+		M_Vini p8 =new M_Vini(9, 12, "Montepulciano", "Vino", "conad", "abc", 2, "rosso","Abruzzo", "cantina");
+		M_Vini p9 =new M_Vini(10, 12, "Trebbiano", "Vino", "conad", "abc", 2, "Bianco","Abruzzo", "cantina");
+		M_Vini p10 =new M_Vini(11, 13, "Primitivo", "Vino", "conad", "abc", 2, "Bianco","Puglia", "cantina");
+		M_Vini p11 =new M_Vini(12, 15, "Falanghina", "Vino", "conad", "abc", 2, "Bianco","Sicilia", "cantina");
 
-		M_Latticini p12 =new M_Latticini(13, 9, "Grana", "Latticini", 16);
-		M_Latticini p13 =new M_Latticini(14, (float) 6.7, "Emmental", "Latticini", 6);
-		M_Latticini p14 =new M_Latticini(15, (float) 1.7, "Mozzarella", "Latticini", 0);
+		M_Latticini p12 =new M_Latticini(13, 9, "Grana", "Latticini", "conad", "abc", 2, 16, "");
+		M_Latticini p13 =new M_Latticini(14, (float) 6.7, "Emmental", "Latticini", "conad", "abc", 2, 6, "");
+		M_Latticini p14 =new M_Latticini(15, (float) 1.7, "Mozzarella", "Latticini", "conad", "abc", 2, 0, "");
 
 
 		//StringBuffer mioSB = new StringBuffer(ag.getNome());

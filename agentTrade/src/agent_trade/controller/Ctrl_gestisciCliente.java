@@ -47,20 +47,32 @@ public class Ctrl_gestisciCliente {
 		    return false;
 		}
 	
-	private boolean ControlloCampi(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
+	private boolean ControlloCampi(String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax){
 		
 		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
 			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
 			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
 			return false;
 		}
-		if(!check("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}", email)){
-			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
-			DettaglioClienteView.getInstance().setErrore("emali non corretta");
-			return false;
-		}
-		return true;
+//		if(!check("[a-zA-Z]", nome)){
+//			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
+//			DettaglioClienteView.getInstance().setErrore("nome errato");
+//			return false;
+//		}
+//		if(!check("[a-zA-Z]{6}\\d\\d[a-zA-Z]\\d\\d[a-zA-Z]\\d\\d\\d[a-zA-Z]", codFiscale)){
+//			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
+//			DettaglioClienteView.getInstance().setErrore("codice fiscale errato");
+//			return false;
+//		}
+//		if(!check("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}", email)){
+//			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
+//			DettaglioClienteView.getInstance().setErrore("emali non corretta");
+//			return false;
+//		}
 		
+		
+		
+		return true;
 	}
 	
 	/*metodi pubblici*/
@@ -133,7 +145,7 @@ public class Ctrl_gestisciCliente {
 	}
 	
 	//da rivedere COME CREO GLI ID? COME CONTROLLO I CAMPI?
-	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
+	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax){
 		
 //		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
 //			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
@@ -145,16 +157,19 @@ public class Ctrl_gestisciCliente {
 //			DettaglioClienteView.getInstance().setErrore("emali non corretta");
 //		}
 //		else{
-		if(ControlloCampi(nome, cognome, codFiscale, partitaIva, indirizzo, email, telefono, fax))
+		if(ControlloCampi(nome, cognome, codFiscale, partitaIva, citta, cap, indirizzo, email, telefono, cellulare, fax))
 		{
 			M_Cliente cliente=new M_Cliente();
 			cliente.setNome(nome);
 			cliente.setCognome(cognome);
 			cliente.setCodice_fiscale(codFiscale);
-			cliente.setPartita_Iva(partitaIva);
+			cliente.setPartita_iva(partitaIva);
+			cliente.setCitta(citta);
+			cliente.setCap(cap);
 			cliente.setIndirizzo(indirizzo);
 			cliente.setEmail(email);
 			cliente.setTelefono(telefono);
+			cliente.setCellulare(cellulare);
 			cliente.setFax(fax);
 			
 			Dao_System.getInstance().nuovoCliente(cliente);
@@ -171,7 +186,7 @@ public class Ctrl_gestisciCliente {
 	}
 	
 	//da cambiare quando avremo deciso definitivamente il db
-	public void modificaCliente(String nome, String cognome, String codFiscale, String partitaIva, String indirizzo, String email, String telefono, String fax){
+	public void modificaCliente(String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax){
 		
 		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
 			PrimaryView.getInstance().setVisibleErroreRiepCliente(true);
@@ -182,10 +197,13 @@ public class Ctrl_gestisciCliente {
 			cliente.setNome(nome);
 			cliente.setCognome(cognome);
 			cliente.setCodice_fiscale(codFiscale);
-			cliente.setPartita_Iva(partitaIva);
+			cliente.setPartita_iva(partitaIva);
+			cliente.setCitta(citta);
+			cliente.setCap(cap);
 			cliente.setIndirizzo(indirizzo);
 			cliente.setEmail(email);
 			cliente.setTelefono(telefono);
+			cliente.setCellulare(cellulare);
 			cliente.setFax(fax);
 			
 			Dao_System.getInstance().modificaCliente(cliente);

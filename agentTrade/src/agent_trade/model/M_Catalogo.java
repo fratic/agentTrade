@@ -13,6 +13,19 @@ public class M_Catalogo {
 	
 	/*costruttori*/
 
+	public M_Catalogo(){
+		
+	}
+	
+	public M_Catalogo(int idCatalogo, M_Azienda rifAzienda,
+			ArrayList<M_Prodotto> prodotti) {
+		super();
+		this.idCatalogo = idCatalogo;
+		this.rifAzienda = rifAzienda;
+		this.prodotti = prodotti;
+	}
+
+	
 	/*metodi di classe*/
 	
 	/*metodi privati*/
@@ -22,12 +35,19 @@ public class M_Catalogo {
 	public int getIdCatalogo() {
 		return idCatalogo;
 	}
-
 	public M_Azienda getRifAzienda() {
 		return rifAzienda;
 	}
 	
+	public ArrayList<M_Prodotto> getProdotti() {
+		return prodotti;
+	}
+	
 	public void setRifAzienda(M_Azienda rifAzienda) {
 		this.rifAzienda = rifAzienda;
+	}
+
+	public void setProdotti(ArrayList<M_Prodotto> prodotti) {
+		this.prodotti = prodotti;
 	}
 }
