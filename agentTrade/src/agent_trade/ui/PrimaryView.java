@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
@@ -85,10 +86,7 @@ public class PrimaryView extends JFrame
 	private JPanel alberoClienti;
 	
 	private JTabbedPane tabbedPrincipale;
-	
-	
-	
-	
+		
 	/*costruttori*/
 	
 	private PrimaryView() {
@@ -285,13 +283,13 @@ public class PrimaryView extends JFrame
 		bottoneNuovoCliente = new JButton();
 		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/new_user.png")));
 		bottoneNuovoCliente.setToolTipText("Inserisci un nuovo cliente");
-		bottoneNuovoCliente.setBounds(30, 25, 50, 50);
+		bottoneNuovoCliente.setBounds(25, 25, 50, 50);
 		panello_menu_cliente.add(bottoneNuovoCliente);
 		
 		bottoneCercaCliente = new JButton("");
 		bottoneCercaCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/search.png")));
 		bottoneCercaCliente.setToolTipText("Cerca il cliente");
-		bottoneCercaCliente.setBounds(110, 25, 50, 50);
+		bottoneCercaCliente.setBounds(103, 25, 50, 50);
 		panello_menu_cliente.add(bottoneCercaCliente);
 		
 		panello_sottomenu_cliente = new JPanel();
@@ -321,9 +319,8 @@ public class PrimaryView extends JFrame
 				
 				Ctrl_gestisciCliente.getInstance().btnCerca();
 			
-			}	
+			}
 		});
-
 		
 		bottoneNuovoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -332,7 +329,7 @@ public class PrimaryView extends JFrame
 				
 			}
 		});
-		
+			
 	}
 	
 	private void initTabCatalogo(){
