@@ -71,14 +71,6 @@ public class RiepilogoClienteView extends JPanel {
 		setBackground(UIManager.getColor("CheckBox.background"));
 		setLayout(null);
 		
-		/*labelIdCliente = DefaultComponentFactory.getInstance().createLabel("Codice Cliente");
-		labelIdCliente.setBounds(125, 35, 105, 14);
-		add(labelIdCliente);
-		
-		TFidCliente = new JTextField();
-		TFidCliente.setColumns(10);
-		TFidCliente.setBounds(312, 29, 261, 20);
-		add(TFidCliente);*/
 		
 		labelCognome = DefaultComponentFactory.getInstance().createLabel("Cognome o Ragione sociale");
 		labelCognome.setBounds(149, 55, 155, 14);
@@ -86,6 +78,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		TFcognome = new JTextField();
 		TFcognome.setBounds(336, 49, 261, 20);
+		TFcognome.setEditable(false);
 		add(TFcognome);
 		TFcognome.setColumns(10);
 		
@@ -95,6 +88,7 @@ public class RiepilogoClienteView extends JPanel {
 		 
 		TFnome = new JTextField();
 		TFnome.setBounds(336, 88, 261, 20);
+		TFnome.setEditable(false);
 		add(TFnome);
 		TFnome.setColumns(10);
 		 
@@ -104,6 +98,7 @@ public class RiepilogoClienteView extends JPanel {
 		 
 		TFcodicefiscale = new JTextField();
 		TFcodicefiscale.setBounds(336, 127, 261, 20);
+		TFcodicefiscale.setEditable(false);
 		add(TFcodicefiscale);
 		TFcodicefiscale.setColumns(10);
 		 
@@ -113,6 +108,7 @@ public class RiepilogoClienteView extends JPanel {
 		 
 		TFpartitaiva = new JTextField();
 		TFpartitaiva.setBounds(336, 166, 261, 20);
+		TFpartitaiva.setEditable(false);
 		add(TFpartitaiva);
 		TFpartitaiva.setColumns(10);
 		 
@@ -122,6 +118,7 @@ public class RiepilogoClienteView extends JPanel {
 		 
 		TFindirizzo = new JTextField();
 		TFindirizzo.setBounds(336, 205, 261, 20);
+		TFindirizzo.setEditable(false);
 		TFindirizzo.setColumns(10);
 		add(TFindirizzo);
 		
@@ -132,6 +129,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		TFcitta = new JTextField();
 		TFcitta.setColumns(10);
+		TFcitta.setEditable(false);
 		TFcitta.setBounds(336, 244, 261, 20);
 		add(TFcitta);
 		
@@ -141,6 +139,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		TFcap = new JTextField();
 		TFcap.setColumns(10);
+		TFcap.setEditable(false);
 		TFcap.setBounds(336, 283, 261, 20);
 		add(TFcap);
 		
@@ -150,6 +149,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		TFtelefono = new JTextField();
 		TFtelefono.setBounds(336, 322, 261, 20);
+		TFtelefono.setEditable(false);
 		add(TFtelefono);
 		TFtelefono.setColumns(10);
 		
@@ -159,6 +159,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		TFcell = new JTextField();
 		TFcell.setColumns(10);
+		TFcell.setEditable(false);
 		TFcell.setBounds(336, 361, 261, 20);
 		add(TFcell);
 		
@@ -168,6 +169,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		TFfax = new JTextField();
 		TFfax.setBounds(336, 400, 261, 20);
+		TFfax.setEditable(false);
 		add(TFfax);
 		TFfax.setColumns(10);
 		 
@@ -177,6 +179,7 @@ public class RiepilogoClienteView extends JPanel {
 		 
 		TFemail = new JTextField();
 		TFemail.setBounds(336, 439, 261, 20);
+		TFemail.setEditable(false);
 		add(TFemail);
 		TFemail.setColumns(10);
 		
