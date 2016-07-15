@@ -427,9 +427,9 @@ public class PrimaryView extends JFrame
 	/*metodi pubblici*/
 	
 	
-	public void setSchedaCliente(String cognome, String nome, String codice_fiscale, String partita_iva, String indirizzo, String email, String telefono, String fax) {
+	public void setSchedaCliente(String cognome, String nome, String codice_fiscale, String partita_iva,String indirizzo, String citta,  String cap, String email, String telefono,String cellulare,  String fax) {
 		
-		((RiepilogoClienteView) riep_cliente).setRiepilogoCliente(cognome, nome, codice_fiscale, partita_iva, indirizzo, email, telefono, fax);
+		((RiepilogoClienteView) riep_cliente).setRiepilogoCliente(cognome, nome, codice_fiscale, partita_iva, citta, cap, indirizzo, email, telefono, cellulare, fax);
 
 	}
 

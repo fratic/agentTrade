@@ -132,15 +132,18 @@ public class Ctrl_gestisciCliente {
 		
 			PrimaryView.getInstance().resetPannelloCentraleCliente();
 			M_Cliente cliente=Dao_System.getInstance().cercaCliente(cognome,Ctrl_System.getInstance().getIdAgente());
+			
 			Ricerca_cliente.getInstance().dispose();
 			Ricerca_cliente.cancInstanza();
+			
 			PrimaryView.initRiepilogoClienteView();
-			PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getEmail(),cliente.getTelefono(),cliente.getFax());
+			PrimaryView.getInstance().setSchedaCliente(cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCap(),cliente.getEmail(),cliente.getTelefono(),cliente.getCellulare(),cliente.getFax());
 			PrimaryView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
 			PrimaryView.getInstance().setEnableTabCatalogo(true);
 			PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
+			
 			AlberoClienti.abilitaAlbero();
 	}
 	

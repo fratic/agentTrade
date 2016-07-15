@@ -17,6 +17,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
 import agent_trade.ui.PrimaryView;
+
 import java.awt.Color;
 
 public class RiepilogoClienteView extends JPanel {
@@ -279,7 +280,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		//questo metodo inserisce i dati recuperati nelle relative TF per consultare i dati cliente
 		//manca id da recuperare dal db
-		public void setRiepilogoCliente(String cognome, String nome, String codice_fiscale, String partita_iva, String indirizzo, String email, String telefono, String fax ) {
+		public void setRiepilogoCliente(String cognome, String nome, String codice_fiscale, String partita_iva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax ) {
 			
 			//this.TFidCliente.setText(id);
 			this.TFcognome.setText(cognome);
@@ -287,10 +288,10 @@ public class RiepilogoClienteView extends JPanel {
 			this.TFcodicefiscale.setText(codice_fiscale);
 			this.TFpartitaiva.setText(partita_iva);
 			this.TFindirizzo.setText(indirizzo);
-			//this.TFcitta.setText(citta);
-			//this.TFcap.setText(cap);
+			this.TFcitta.setText(citta);
+			this.TFcap.setText(cap);
 			this.TFtelefono.setText(telefono);
-			//this.TFcell.setText(cellulare);
+			this.TFcell.setText(cellulare);
 			this.TFfax.setText(fax);
 			this.TFemail.setText(email);
 			//this.TFrifAgente.setText(rifAgente);
