@@ -1,56 +1,49 @@
 package agent_trade.model;
 
-import java.io.Serializable;
-
 import agent_trade.controller.Ctrl_System;
 
 
-public class M_Cliente implements Serializable{
-
-	
+public class M_Cliente //implements Serializable
+{	
 	/*attributi di classe*/
 	
 	private static M_Cliente instance;
 
 	/*attributi privati*/
 	
-	private static final long serialVersionUID = 1L;
 	private int idCliente;
 	private String nome;
 	private String cognome;
 	private String codice_fiscale;
 	private String partita_iva;
-	private String citta;
-	private String cap;
 	private String indirizzo;
 	private String email;
 	private String telefono;
 	private String cellulare;
 	private String fax;
+	private String citta;
+	private String CAP;
 	private M_Agente agenteAssociato;
+	
 	
 	/*costruttori*/
 	
 	public M_Cliente(){	
-		this.agenteAssociato = Ctrl_System.getInstance().getAgenteLog();
-		//super();
+		this.agenteAssociato = Ctrl_System.getAgenteLog();
 	}
 	
-	public M_Cliente(int id, String cognome, String nome, String cf, String pi,String citta, String cap, String ind, String em, String tel,String cel, String fax){
-		//super();
+	public M_Cliente(int id, String cognome, String nome, String cf, String pi, String ind, String em, String tel, String cel, String fax){
 		this.idCliente=id;
 		this.cognome=cognome;
 		this.nome=nome;	
 		this.codice_fiscale=cf;
 		this.partita_iva=pi;
 		this.email=em;
-		this.citta=citta;
-		this.cap=cap;
 		this.indirizzo=ind;
 		this.telefono=tel;
 		this.cellulare=cel;
 		this.fax=fax;
-		this.agenteAssociato = Ctrl_System.getInstance().getAgenteLog();
+		this.agenteAssociato = Ctrl_System.getAgenteLog();
 	}
 	
 	/*metodi di classe*/
@@ -68,6 +61,9 @@ public class M_Cliente implements Serializable{
 		return idCliente;
 	}
 
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
+	}
 
 	public String getNome() {
 		return nome;
@@ -97,7 +93,7 @@ public class M_Cliente implements Serializable{
 		return partita_iva;
 	}
 
-	public void setPartita_iva(String partita_iva) {
+	public void setPartita_Iva(String partita_iva) {
 		this.partita_iva = partita_iva;
 	}
 
@@ -128,11 +124,11 @@ public class M_Cliente implements Serializable{
 	public String getCellulare() {
 		return cellulare;
 	}
-	
+
 	public void setCellulare(String cellulare) {
-		this.cellulare=cellulare;
+		this.cellulare = cellulare;
 	}
-	
+
 	public String getFax() {
 		return fax;
 	}
@@ -140,7 +136,7 @@ public class M_Cliente implements Serializable{
 	public void setFax(String fax) {
 		this.fax=fax;
 	}
-	
+
 	public M_Agente getAgenteAssociato() {
 		return agenteAssociato;
 	}
@@ -157,13 +153,15 @@ public class M_Cliente implements Serializable{
 		this.citta = citta;
 	}
 
-	public String getCap() {
-		return cap;
+	public String getCAP() {
+		return CAP;
 	}
 
-	public void setCap(String cap) {
-		this.cap = cap;
+	public void setCAP(String cAP) {
+		CAP = cAP;
 	}
 
-	
+	public void setPartita_iva(String partita_iva) {
+		this.partita_iva = partita_iva;
+	}	
 }

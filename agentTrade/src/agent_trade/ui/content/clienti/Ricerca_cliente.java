@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -19,6 +17,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+
+import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
@@ -129,14 +129,25 @@ public class Ricerca_cliente extends JDialog {
 						((DefaultTableModel) JTableModel).removeRow(i);
 					}
 					//fare le modifiche a ricerca cliente!!!!
-					Ctrl_gestisciCliente.getInstance().ricercaCliente(TFCerca.getText());
+					try {
+						Ctrl_gestisciCliente.getInstance().ricercaCliente(TFCerca.getText());
+					} catch (PersistentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			}
 		});
 		
 		BottoneVisualizza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
-				Ctrl_gestisciCliente.getInstance().recuperaCliente((String) table.getValueAt(table.getSelectedRow(),0));
+				try {
+					//SE QUI VA PASSATO L'ID (e va fatto), BISOGNA INSERIRLO ANCHE IN TABELLA
+					Ctrl_gestisciCliente.getInstance().recuperaCliente((String) table.getValueAt(table.getSelectedRow(),0));
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -152,24 +163,40 @@ public class Ricerca_cliente extends JDialog {
 	/*metodi privati*/
 	/*metodi pubblici*/
 	
-	public void popolaTab(ArrayList a){
+//	public void popolaTab(ArrayList a){
+//		
+//		int k=((DefaultTableModel) JTableModel).getRowCount();
+//		for (int i=k-1; i>=0;i--){
+//			((DefaultTableModel) JTableModel).removeRow(i);
+//		}
+//		labelError.setText("");
+//				
+//		Iterator iteraClienti = null;
+//		
+//		iteraClienti = a.iterator();
+//		
+//		while (iteraClienti.hasNext()) {
+//			M_Cliente c = new M_Cliente();
+//			c = (M_Cliente) iteraClienti.next();
+//			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva()});
+//		}
+//		
+//		
+//	}
+	
+	public void popolaTab(M_Cliente[] a){
 		
 		int k=((DefaultTableModel) JTableModel).getRowCount();
 		for (int i=k-1; i>=0;i--){
 			((DefaultTableModel) JTableModel).removeRow(i);
 		}
 		labelError.setText("");
-				
-		Iterator iteraClienti = null;
 		
-		iteraClienti = a.iterator();
-		
-		while (iteraClienti.hasNext()) {
-			M_Cliente c = new M_Cliente();
-			c = (M_Cliente) iteraClienti.next();
+		for (M_Cliente c : a) {
 			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva()});
-		}
+		}	
 	}
+	
 	
 	public void updateTable(String cognome, String nome,String cf, String pi){
 //		int k=((DefaultTableModel) JTableModel).getRowCount();

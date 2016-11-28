@@ -1,12 +1,234 @@
+//package agent_trade.ui.content.clienti;
+//
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
+//
+//import javax.swing.ImageIcon;
+//import javax.swing.JButton;
+//import javax.swing.JLabel;
+//import javax.swing.JPanel;
+//import javax.swing.JTextField;
+//import javax.swing.UIManager;
+//import javax.swing.border.TitledBorder;
+//
+//import com.jgoodies.forms.factories.DefaultComponentFactory;
+//
+//import agent_trade.controller.Ctrl_gestisciCliente;
+//
+//import java.awt.Color;
+//import java.awt.SystemColor;
+//
+//import javax.swing.DropMode;
+//
+//import org.orm.PersistentException;
+//
+//public class DettaglioClienteView extends JPanel {
+//
+//	/*attributi di classe*/
+//	
+//	private static DettaglioClienteView instance;
+//	
+//	/*attributi privati*/
+//	
+//	private JLabel labelNome;
+//	private JLabel labelCognome;
+//	private JLabel labelIndirizzo;
+//	private JLabel labelCodiceFiscale;
+//	private JLabel labelPartitaIva;
+//	private JLabel labelEmail;
+//	private JLabel labelTelefono;
+//	private JLabel labelFax;
+//	private JLabel labelErrore;
+//	
+//	private JTextField TFnome;
+//	private JTextField TFcognome;
+//	private JTextField TFindirizzo;
+//	private JTextField TFcodicefiscale;
+//	private JTextField TFpartitaiva;
+//	private JTextField TFemail;
+//	private JTextField TFtelefono;
+//	private JTextField TFfax;
+//	
+//	private JButton bottoneSalvaCliente;
+//	private JButton bottoneAnnullaInserimento;
+//	private JButton bottoneEsci;
+//	
+//	/*costruttori*/
+//	
+//	public DettaglioClienteView() {
+//		
+//		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Nuova scheda cliente", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
+//		setBackground(UIManager.getColor("CheckBox.background"));
+//		
+//		setLayout(null);
+//		
+//		labelNome = DefaultComponentFactory.getInstance().createLabel("Nome: ");
+//		labelNome.setBounds(43, 47, 69, 14);
+//		add(labelNome);
+//		 
+//		TFnome = new JTextField();
+//		TFnome.setBounds(178, 44, 261, 20);
+//		add(TFnome);
+//		 TFnome.setColumns(10);
+//		 
+//		labelCognome = DefaultComponentFactory.getInstance().createLabel("Cognome: ");
+//		labelCognome.setBounds(43, 90, 69, 14);
+//		add(labelCognome);
+//		 
+//		TFcognome = new JTextField();
+//		TFcognome.setBounds(178, 87, 261, 20);
+//		add(TFcognome);
+//		TFcognome.setColumns(10);
+//		 
+//		labelCodiceFiscale = DefaultComponentFactory.getInstance().createLabel("Codice Fiscale: ");
+//		labelCodiceFiscale.setBounds(43, 133, 111, 14);
+//		add(labelCodiceFiscale);
+//		 
+//		TFcodicefiscale = new JTextField();
+//		TFcodicefiscale.setBounds(178, 130, 261, 20);
+//		add(TFcodicefiscale);
+//		TFcodicefiscale.setColumns(10);
+//		 
+//		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel("Partita Iva: ");
+//		labelPartitaIva.setBounds(43, 176, 69, 14);
+//		add(labelPartitaIva);
+//		 
+//		TFpartitaiva = new JTextField();
+//		TFpartitaiva.setBounds(178, 173, 261, 20);
+//		add(TFpartitaiva);
+//		TFpartitaiva.setColumns(10);
+//		 
+//		labelIndirizzo = DefaultComponentFactory.getInstance().createLabel("Indirizzo: ");
+//		labelIndirizzo.setBounds(44, 219, 69, 14);
+//		add(labelIndirizzo);
+//		 
+//		TFindirizzo = new JTextField();
+//		TFindirizzo.setBounds(178, 216, 261, 20);
+//		add(TFindirizzo);
+//		TFindirizzo.setColumns(10);
+//		 
+//		labelEmail = DefaultComponentFactory.getInstance().createLabel("Email: ");
+//		labelEmail.setBounds(43, 262, 69, 14);
+//		add(labelEmail);
+//		 
+//		TFemail = new JTextField();
+//		TFemail.setBounds(178, 259, 261, 20);
+//		add(TFemail);
+//		TFemail.setColumns(10);
+//		 
+//		labelTelefono = DefaultComponentFactory.getInstance().createLabel("Telefono: ");
+//		labelTelefono.setBounds(43, 305, 69, 14);
+//		add(labelTelefono);
+//		 
+//		TFtelefono = new JTextField();
+//		TFtelefono.setBounds(178, 302, 261, 20);
+//		add(TFtelefono);
+//		TFtelefono.setColumns(10);
+//		 
+//		labelFax = DefaultComponentFactory.getInstance().createLabel("Fax: ");
+//		labelFax.setBounds(43, 348, 69, 14);
+//		add(labelFax);
+//		 
+//		TFfax = new JTextField();
+//		TFfax.setBounds(178, 345, 261, 20);
+//		add(TFfax);
+//		TFfax.setColumns(10);
+//		
+//		labelErrore = DefaultComponentFactory.getInstance().createLabel("");
+//		labelErrore.setBounds(43, 376, 219, 20);
+//		add(labelErrore);
+//		
+//		bottoneSalvaCliente = new JButton("Salva");
+//		bottoneSalvaCliente.setBounds(41, 418, 113, 30);
+//		add(bottoneSalvaCliente);
+//		bottoneSalvaCliente.setToolTipText("Salva il cliente");
+//		bottoneSalvaCliente.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save-user.png")));
+//		
+//		bottoneAnnullaInserimento = new JButton("Annulla");
+//		bottoneAnnullaInserimento.setBounds(206, 418, 113, 30);
+//		add(bottoneAnnullaInserimento);
+//		bottoneAnnullaInserimento.setToolTipText("Pulisci form");
+//		bottoneAnnullaInserimento.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/close_icon.png")));
+//		
+//		bottoneEsci = new JButton("Esci");
+//		bottoneEsci.setBounds(371, 418, 113, 30);
+//		add(bottoneEsci);
+//		bottoneEsci.setToolTipText("Torna indietro");
+//		bottoneEsci.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/arrow_icon.png")));
+//		
+//		bottoneSalvaCliente.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				try {
+//					Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFfax.getText());
+//				} catch (PersistentException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}	
+//		});
+//		
+//		bottoneAnnullaInserimento.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				Ctrl_gestisciCliente.getInstance().annullaNewCliente();
+//			}
+//		});
+//		
+//		bottoneEsci.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				Ctrl_gestisciCliente.getInstance().esciNewCliente();
+//			}
+//		});
+//			
+//
+//		
+//	}
+//		
+//	/*metodi di classe*/
+//		
+//	public static DettaglioClienteView getInstance(){
+//		if (instance==null)
+//			instance = new DettaglioClienteView();
+//		return instance;	 
+//		}
+//	
+//	public void setErrore(String err) {
+//		labelErrore.setText(err);
+//    }
+//	
+//	public void setVisibleErroreNuovoCliente(boolean b){
+//		labelErrore.setVisible(b);
+//	}
+//		
+//	public void resetNewCliente(){
+//		TFcognome.setText(null);
+//		TFnome.setText(null);
+//		TFcodicefiscale.setText(null);
+//		TFpartitaiva.setText(null);
+//		TFindirizzo.setText(null);
+//		TFemail.setText(null);
+//		TFtelefono.setText(null);
+//		TFfax.setText(null);
+//	}
+//}
+
 package agent_trade.ui.content.clienti;
 
 import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
@@ -18,9 +240,17 @@ import agent_trade.ui.PrimaryView;
 
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+
 import javax.swing.DropMode;
 import javax.swing.SwingConstants;
 import javax.swing.JInternalFrame;
+
+import org.orm.PersistentException;
+
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.Rectangle;
 
 public class DettaglioClienteView extends JPanel {
 
@@ -60,8 +290,19 @@ public class DettaglioClienteView extends JPanel {
 	private JTextField TFrifAgente;
 	
 	private JButton bottoneSalvaCliente;
-	private JButton bottoneAnnullaInserimento;
+	//private JButton bottoneAnnullaInserimento;
 	private JButton bottoneEsci;
+	
+	private JPanel pannelloCentro;
+
+	private JScrollPane scrollPane;
+
+	private JPanel pannelloCampi;
+
+	private JPanel pannelloOvest;
+
+	private JPanel pannelloBottoni;
+	
 	
 	/*costruttori*/
 	
@@ -70,169 +311,261 @@ public class DettaglioClienteView extends JPanel {
 		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Nuova scheda cliente", TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
 		setBackground(UIManager.getColor("CheckBox.background"));
 		
-		setLayout(null);
+		setLayout(new BorderLayout());
 		
-		/*labelIdCliente = DefaultComponentFactory.getInstance().createLabel("Codice Cliente");
-		labelIdCliente.setBounds(125, 35, 105, 14);
-		add(labelIdCliente);
+		pannelloCentro = new JPanel();
+		pannelloCentro.setPreferredSize(new Dimension(435, 610));
+		pannelloCentro.setLayout(new GridLayout(1,1));
+		this.add(pannelloCentro, BorderLayout.CENTER);
 		
-		TFidCliente = new JTextField();
-		TFidCliente.setColumns(10);
-		TFidCliente.setBounds(312, 29, 261, 20);
-		add(TFidCliente);*/
+		JPanel pannelloContenitore = new JPanel();
+		pannelloContenitore.setPreferredSize(new Dimension(425, 460));
+		
+		scrollPane = new JScrollPane(pannelloContenitore);
+		scrollPane.setBorder(null);
+		
+		pannelloCentro.add(scrollPane);
+		
+		pannelloCampi = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) pannelloCampi.getLayout();
+		flowLayout.setVgap(15);
+		pannelloCampi.setPreferredSize(new Dimension(425, 610));
+		pannelloContenitore.add(pannelloCampi);
+	
+		
+		
+		
+		//aggiunta immagine accanto alla form
+		JLabel label_IMG = new JLabel("");
+//		label_IMG.setBounds(24, 24, 163, 179);
+//		add(label_IMG);
+		label_IMG.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/Img_cliente_dettaglio.png")));
+		
+		
+		//sono state sollevate tutte le label e le field e i bottoni SALVA e ESCI sono stati spostati in basso
 		
 		labelCognome = DefaultComponentFactory.getInstance().createLabel("Cognome o Ragione sociale");
-		labelCognome.setBounds(149, 59, 155, 14);
-		add(labelCognome);
+		labelCognome.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelCognome.setPreferredSize(new Dimension(150, 14));
+		pannelloCampi.add(labelCognome);
 		
 		TFcognome = new JTextField();
-		TFcognome.setBounds(336, 53, 261, 20);
-		add(TFcognome);
-		TFcognome.setColumns(10);
+//		MODIFICA PROSSIME 4
+		//TFcognome.setBounds(336, 49, 261, 20);
+		TFcognome.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFcognome);
+		
 		
 		labelNome = DefaultComponentFactory.getInstance().createLabel("Nome");
-		labelNome.setBounds(149, 98, 69, 14);
-		add(labelNome);
+		labelNome.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelNome.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelNome);
 		 
 		TFnome = new JTextField();
-		TFnome.setBounds(336, 92, 261, 20);
-		add(TFnome);
-		TFnome.setColumns(10);
+//		MODIFICA PROSSIME 4
+		//TFnome.setBounds(336, 88, 261, 20);
+		TFnome.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFnome);
+		//TFnome.setColumns(10);
 		 
 		labelCodiceFiscale = DefaultComponentFactory.getInstance().createLabel("Codice Fiscale");
-		labelCodiceFiscale.setBounds(149, 137, 111, 14);
-		add(labelCodiceFiscale);
-		 
-		TFcodicefiscale = new JTextField();
-		TFcodicefiscale.setBounds(336, 131, 261, 20);
-		add(TFcodicefiscale);
-		TFcodicefiscale.setColumns(10);
+		labelCodiceFiscale.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		//labelCodiceFiscale.setBounds(149, 133, 111, 14);
+				labelCodiceFiscale.setPreferredSize(new Dimension(150,14));
+				pannelloCampi.add(labelCodiceFiscale);
+				 
+				TFcodicefiscale = new JTextField();
+//				MODIFICA PROSSIME 4
+				//TFcodicefiscale.setBounds(336, 127, 261, 20);
+				TFcodicefiscale.setPreferredSize(new Dimension(261,20));
+				pannelloCampi.add(TFcodicefiscale);
+			
 		 
 		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel("Partita Iva");
-		labelPartitaIva.setBounds(149, 176, 69, 14);
-		add(labelPartitaIva);
-		 
+		labelPartitaIva.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelPartitaIva.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelPartitaIva);
+
 		TFpartitaiva = new JTextField();
-		TFpartitaiva.setBounds(336, 170, 261, 20);
-		add(TFpartitaiva);
-		TFpartitaiva.setColumns(10);
+//		MODIFICA PROSSIME 4
+		//TFpartitaiva.setBounds(336, 166, 261, 20);
+		TFpartitaiva.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFpartitaiva);
+		//TFpartitaiva.setColumns(10);
+		 
 		 
 		labelIndirizzo = DefaultComponentFactory.getInstance().createLabel("Indirizzo");
-		labelIndirizzo.setBounds(149, 215, 69, 14);
-		add(labelIndirizzo);
+		labelIndirizzo.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelIndirizzo.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelIndirizzo);
 		 
 		TFindirizzo = new JTextField();
-		TFindirizzo.setBounds(336, 209, 261, 20);
-		TFindirizzo.setColumns(10);
-		add(TFindirizzo);
+//		MODIFICA PROSSIME 4
+		//TFindirizzo.setBounds(336, 205, 261, 20);
+		TFindirizzo.setPreferredSize(new Dimension(261,20));
+		//TFindirizzo.setColumns(10);
+		pannelloCampi.add(TFindirizzo);	
 		
 		
 		labelCitta = DefaultComponentFactory.getInstance().createLabel("Citt\u00E0");
-		labelCitta.setBounds(149, 254, 46, 14);
-		add(labelCitta);
+		labelCitta.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelCitta.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelCitta);
 		
 		TFcitta = new JTextField();
-		TFcitta.setColumns(10);
-		TFcitta.setBounds(336, 248, 261, 20);
-		add(TFcitta);
+//		MODIFICA PROSSIME 4
+		//TFcitta.setColumns(10);
+		//TFcitta.setBounds(336, 244, 261, 20);
+		TFcitta.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFcitta);
 		
 		labelCAP = DefaultComponentFactory.getInstance().createLabel("CAP");
-		labelCAP.setBounds(149, 293, 46, 14);
-		add(labelCAP);
+		labelCAP.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelCAP.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelCAP);
 		
 		TFcap = new JTextField();
-		TFcap.setColumns(10);
-		TFcap.setBounds(336, 287, 261, 20);
-		add(TFcap);
+//		MODIFICA PROSSIME 4
+		//TFcap.setColumns(10);
+		//TFcap.setBounds(336, 283, 261, 20);
+		TFcap.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFcap);
+		
 		
 		labelTelefono = DefaultComponentFactory.getInstance().createLabel("Telefono: ");
-		labelTelefono.setBounds(149, 332, 69, 14);
-		add(labelTelefono);
+		labelTelefono.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelTelefono.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelTelefono);
 		
 		TFtelefono = new JTextField();
-		TFtelefono.setBounds(336, 326, 261, 20);
-		add(TFtelefono);
-		TFtelefono.setColumns(10);
+//		MODIFICA PROSSIME 4
+		//TFtelefono.setBounds(336, 322, 261, 20);
+		TFtelefono.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFtelefono);
+		//TFtelefono.setColumns(10);
+		
 		
 		labelCell = DefaultComponentFactory.getInstance().createLabel("Cellulare");
-		labelCell.setBounds(149, 371, 46, 14);
-		add(labelCell);
-		
+		labelCell.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelCell.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelCell);
+
 		TFcell = new JTextField();
-		TFcell.setColumns(10);
-		TFcell.setBounds(336, 365, 261, 20);
-		add(TFcell);
+//		MODIFICA PROSSIME 4
+		//TFcell.setColumns(10);
+		//TFcell.setBounds(336, 361, 261, 20);
+		TFcell.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFcell);
 		
 		labelFax = DefaultComponentFactory.getInstance().createLabel("Fax: ");
-		labelFax.setBounds(149, 410, 69, 14);
-		add(labelFax);
+		labelFax.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelFax.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelFax);
 		
 		TFfax = new JTextField();
-		TFfax.setBounds(336, 404, 261, 20);
-		add(TFfax);
-		TFfax.setColumns(10);
+//		MODIFICA PROSSIME 4
+		//TFfax.setBounds(336, 400, 261, 20);
+		TFfax.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFfax);
+		//TFfax.setColumns(10);
 		 
 		labelEmail = DefaultComponentFactory.getInstance().createLabel("Email: ");
-		labelEmail.setBounds(149, 449, 69, 14);
-		add(labelEmail);
+		labelEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelEmail.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelEmail);
 		 
 		TFemail = new JTextField();
-		TFemail.setBounds(336, 443, 261, 20);
-		add(TFemail);
-		TFemail.setColumns(10);
+//		MODIFICA PROSSIME 4
+		//TFemail.setBounds(336, 439, 261, 20);
+		TFemail.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFemail);
+		//TFemail.setColumns(10);
 		
 		labelRifAgente = DefaultComponentFactory.getInstance().createLabel("Agente di riferimento");
-		labelRifAgente.setBounds(149, 488, 111, 14);
-		add(labelRifAgente);
+		labelRifAgente.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		labelRifAgente.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelRifAgente);
 		
 		TFrifAgente = new JTextField();
 		TFrifAgente.setEnabled(false);
 		TFrifAgente.setEditable(false);
-		TFrifAgente.setBounds(336, 482, 261, 20);
-		TFrifAgente.setColumns(10);
-		add(TFrifAgente);
+//		MODIFICA PROSSIME 4
+		//TFrifAgente.setBounds(336, 478, 261, 20);
+		TFrifAgente.setPreferredSize(new Dimension(261,20));
+		//TFrifAgente.setColumns(10);
+		pannelloCampi.add(TFrifAgente);
 		
 		labelErrore = DefaultComponentFactory.getInstance().createLabel("");
 		labelErrore.setForeground(Color.RED);
-		labelErrore.setBounds(77, 507, 448, 20);
-		add(labelErrore);
+		labelErrore.setPreferredSize(new Dimension(416,14));
+		pannelloCampi.add(labelErrore);
+		
+		pannelloOvest = new JPanel();
+		pannelloOvest.setPreferredSize(new Dimension(70, 601));
+		FlowLayout fl_pannelloOvest = new FlowLayout(FlowLayout.CENTER);
+		//fl_pannelloOvest.setVgap(10);
+		pannelloOvest.setLayout(fl_pannelloOvest);
+		this.add(pannelloOvest,BorderLayout.EAST);
+		
+		pannelloBottoni = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) pannelloBottoni.getLayout();
+		flowLayout_1.setVgap(15);
+		pannelloBottoni.setPreferredSize(new Dimension(70, 500));//DA MODIFICARE I DUE BOTTONI SOTTO IN TEORIA NN DEVONO COMPARIRE
+		pannelloOvest.add(pannelloBottoni);
+		
+		
+		
 		
 		bottoneSalvaCliente = new JButton("");
 		bottoneSalvaCliente.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save_32.png")));
 		bottoneSalvaCliente.setToolTipText("Salva il cliente");
-		bottoneSalvaCliente.setBounds(655, 77, 50, 50);
-		add(bottoneSalvaCliente);
+		bottoneSalvaCliente.setPreferredSize(new Dimension(50,50));
+		pannelloBottoni.add(bottoneSalvaCliente);
 		
-		bottoneAnnullaInserimento = new JButton("");
-		bottoneAnnullaInserimento.setBounds(655, 174, 50, 50);
-		bottoneAnnullaInserimento.setToolTipText("Pulisci form");
-		bottoneAnnullaInserimento.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/clean-form.png")));
-		add(bottoneAnnullaInserimento);
-		
+				
 		bottoneEsci = new JButton("");
-		bottoneEsci.setBounds(655, 272, 50, 50);
+		bottoneEsci.setBounds(610, 499, 50, 50);
 		bottoneEsci.setToolTipText("Torna indietro");
 		bottoneEsci.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/sign-out.png")));
-		add(bottoneEsci);
+		pannelloBottoni.add(bottoneEsci);
+				
+		
+//		bottoneAnnullaInserimento = new JButton("");
+//		bottoneAnnullaInserimento.setBounds(655, 413, 50, 50);
+//		bottoneAnnullaInserimento.setToolTipText("Pulisci form");
+//		bottoneAnnullaInserimento.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/clean-form.png")));
+//		add(bottoneAnnullaInserimento);
 		
 		
 		bottoneSalvaCliente.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
-			Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFcell.getText(), (String)TFfax.getText());
-			}	
+//			Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFcell.getText(), (String)TFfax.getText());
+			try {
+//				Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFfax.getText());
+				Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFcell.getText(), (String)TFfax.getText());
+
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}	
 		});
 	
-		bottoneAnnullaInserimento.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().annullaNewCliente();
-			}
-		});
 		
 		bottoneEsci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Ctrl_gestisciCliente.getInstance().esciNewCliente();
 			}
 		});
+		
+		
+		
+//		bottoneAnnullaInserimento.addActionListener(new ActionListener() {
+//		public void actionPerformed(ActionEvent arg0) {
+//			Ctrl_gestisciCliente.getInstance().annullaNewCliente();
+//		}
+//	});
 				
 	}
 		

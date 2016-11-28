@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="agent_trade.model.M_Prodotto" table="Prodotto" lazy="false" discriminator-value="Prodotto">
+		<id name="IdProdotto" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<discriminator column="Discriminator" type="string"/>
+		<property name="nome" column="Nome" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="prezzo" column="Prezzo" type="float" not-null="true" lazy="false"/>
+		<property name="categoria" column="Categoria" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="idDescrizioneProdotto" column="IdDescrizioneProdotto" type="string" length="255" not-null="false" lazy="false"/>
+		<subclass name="agent_trade.model.M_Latticini" discriminator-value="Latticini" lazy="false">
+			<property name="stagionatura" column="Stagionatura" type="integer" length="11" not-null="false" lazy="false"/>
+			<property name="tipo" column="Tipo" type="string" length="255" not-null="false" lazy="false"/>
+		</subclass>
+		<subclass name="agent_trade.model.M_Carni" discriminator-value="Carni" lazy="false">
+			<property name="provenienza" column="Provenienza" type="string" length="255" not-null="false" lazy="false"/>
+			<property name="taglio" column="Taglio" type="string" length="255" not-null="false" lazy="false"/>
+			<property name="tipo" column="Tipo2" type="string" length="255" not-null="false" lazy="false"/>
+		</subclass>
+		<subclass name="agent_trade.model.M_Vini" discriminator-value="Vini" lazy="false">
+			<property name="colore" column="Colore" type="string" length="255" not-null="false" lazy="false"/>
+			<property name="indicazione_geografica" column="Indicazione_geografica" type="string" length="255" not-null="false" lazy="false"/>
+			<property name="cantina" column="Cantina" type="string" length="255" not-null="false" lazy="false"/>
+		</subclass>
+		<subclass name="agent_trade.model.M_Dolci" discriminator-value="Dolci" lazy="false">
+			<property name="artigianale" column="Artigianale" type="boolean" length="1" not-null="false" lazy="false"/>
+			<property name="free_gluten" column="Free_gluten" type="boolean" length="1" not-null="false" lazy="false"/>
+		</subclass>
+	</class>
+</hibernate-mapping>

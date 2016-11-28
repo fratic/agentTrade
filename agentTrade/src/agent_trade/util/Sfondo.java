@@ -25,7 +25,7 @@ public class Sfondo extends JPanel {
 
   protected void paintComponent(Graphics g) {
     setOpaque(false);
-    g.drawImage(img, 0, 0, null);
+    g.drawImage(img, getWidth()/2-150, getHeight()/2-150, null);
     super.paintComponent(g);
   }
 }

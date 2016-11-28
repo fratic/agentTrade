@@ -17,9 +17,15 @@ public class M_Preventivo_Item extends Observable implements Serializable {
 	
 	private ArrayList<Observer> observers;
 
+	//????????
+//	private int ArrayList_observer;
+	private int ArrayList_observer;
+
 	
 	/*costruttori*/
 	
+
+
 	public M_Preventivo_Item(M_Preventivo rifPreventivo, M_Prodotto idProdotto){
 		
 		super();
@@ -91,5 +97,54 @@ public class M_Preventivo_Item extends Observable implements Serializable {
 	public void setIdProdotto(M_Prodotto idProdotto) {
 		this.idProdotto = idProdotto;
 	}
+	
+	////////////////////
+	
+	
+	
+	
+	public int getORMID() {
+		return getIdPreventivo_Item();
+	}
+	
+
+//	public void setArrayList_observer(int value) {
+//		this.ArrayList_observer = value;
+//	}
+//	
+//	public int getArrayList_observer() {
+//		return ArrayList_observer;
+//	}
+	
+
+	public ArrayList<Observer> getObservers() {
+		return observers;
+	}
+
+
+	public void setObservers(ArrayList<Observer> observers) {
+		this.observers = observers;
+	}
+
+
+	public String toString() {
+		return String.valueOf(getIdPreventivo_Item());
+	}
+
+
+	public int getArrayList_observer() {
+		return ArrayList_observer;
+	}
+
+
+	public void setArrayList_observer(int arrayList_observer) {
+		ArrayList_observer = arrayList_observer;
+	}
+
+	
+	
+	
+	
+	
 
 }

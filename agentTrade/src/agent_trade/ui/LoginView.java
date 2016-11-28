@@ -14,9 +14,12 @@ import javax.swing.JLayeredPane;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+
+import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_System;
 
@@ -38,7 +41,7 @@ public class LoginView extends JFrame {
 	private JLayeredPane layeredPane;
 	
 	private JTextField username;
-	private JTextField password; //DA SISTEMARE. FATTO SOLO PER PROVA
+	private JPasswordField password; //DA SISTEMARE. FATTO SOLO PER PROVA
 	
 	private JLabel mex;
 	private JLabel labelUser;
@@ -51,6 +54,13 @@ public class LoginView extends JFrame {
 	
 	private LoginView() {
 		
+		setResizable(false);
+		
+		ImageIcon img = new ImageIcon(SplashScreen.class.getResource("/agent_trade/ui/img/icon.png"));
+
+		this.setIconImage(img.getImage());
+
+
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (screen.width-WIDTH)/2;
         int y = (screen.height-HEIGHT)/2;
@@ -80,7 +90,7 @@ public class LoginView extends JFrame {
 		labelPass.setBounds(35, 99, 74, 14);
 		layeredPane.add(labelPass);
 		
-		password = new JTextField();
+		password = new JPasswordField();
 		password.setBounds(161, 96, 130, 20);
 		layeredPane.add(password);
 		
@@ -98,7 +108,13 @@ public class LoginView extends JFrame {
 		
 		buttoneAccedi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_System.getInstance().login((String)username.getText(), (String)password.getText());
+				try {
+					Ctrl_System.getInstance().login((String)username.getText(), (String)password.getText());
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					System.out.println("IN CATCH");
+					e.printStackTrace();
+				}
 			}
 		});	
 	}

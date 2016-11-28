@@ -30,6 +30,8 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import javax.swing.SwingConstants;
 
+import org.orm.PersistentException;
+
 public class confermaCancCliente extends JDialog {
 	
 	/*attributi di classe*/
@@ -88,7 +90,12 @@ public class confermaCancCliente extends JDialog {
 		 
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().postConfermaCancCliente(cliente);
+				try {
+					Ctrl_gestisciCliente.getInstance().postConfermaCancCliente(cliente);
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	

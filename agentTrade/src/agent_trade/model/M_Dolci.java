@@ -18,30 +18,34 @@ public class M_Dolci extends M_Prodotto implements Serializable
 		super();
 	}
 	
-	public M_Dolci(int id, float prezzo, String nome, String categoria, String azienda, String idDes, int idCat, boolean art, boolean fg) {
-		super(id, prezzo, nome, categoria, azienda, idDes, idCat);
+	public M_Dolci(int id, float prezzo, String nome, String categoria, boolean art, boolean fg) {
+		super(id, prezzo, nome, categoria);
 		this.artigianale=art;
 		this.free_gluten=fg;
 	}
-
 	
 	/*metodi di classe*/
 	/*metodi privati*/
 	/*metodi pubblici*/
-
-	public boolean isArtigianale() {
+	
+	public void setArtigianale(boolean value) {
+		this.artigianale = value;
+	}
+	
+	public boolean getArtigianale() {
 		return artigianale;
 	}
-
-	public boolean isFree_gluten() {
+	
+	public void setFree_gluten(boolean value) {
+		this.free_gluten = value;
+	}
+	
+	public boolean getFree_gluten() {
 		return free_gluten;
 	}
-
-	public void setArtigianale(boolean artigianale) {
-		this.artigianale = artigianale;
+	
+	public String toString() {
+		return super.toString();
 	}
 
-	public void setFree_gluten(boolean free_gluten) {
-		this.free_gluten = free_gluten;
-	}
 }

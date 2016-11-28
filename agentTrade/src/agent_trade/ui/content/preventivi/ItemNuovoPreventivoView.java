@@ -1,6 +1,9 @@
 package agent_trade.ui.content.preventivi;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +18,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+
+import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.util.ButtonsEditorRm;
@@ -47,72 +52,115 @@ public class ItemNuovoPreventivoView extends JPanel
 	private JButton buttoneSalva;
 
 	
+	private JPanel sottoPannRiepilogo1;
+	private JPanel sottoPannRiepilogo2;
+	private JPanel sottoPannRiepilogoCampi;
+
+	
 	/*costruttori*/
 	
 	public ItemNuovoPreventivoView() {
-		setLayout(null);
+		setLayout(new GridLayout(1, 1));
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.menu);
-		panel.setLayout(null);
-		panel.setBounds(0, 0, 733, 457);
+		panel.setLayout(new BorderLayout());
+//		panel.setBounds(0, 0, 733, 457);
 		add(panel);
 		
 		panelloTabella = new JPanel();
 		panelloTabella.setBackground(Color.WHITE);
 		panelloTabella.setBorder(new EmptyBorder(3, 3, 3, 3));
-		panelloTabella.setBounds(0, 4, 733, 360);
-		panel.add(panelloTabella);
-		panelloTabella.setLayout(null);
+		//panelloTabella.setBounds(0, 4, 733, 360);
+		panelloTabella.setPreferredSize(new Dimension(733,360));
+		panel.add(panelloTabella,BorderLayout.CENTER);
+		panelloTabella.setLayout(new GridLayout(1,1));
 	   	
 		scrollPane = new JScrollPane(creaTabellaProdotti());
-		scrollPane.setBounds(0, 0, 733, 360);
+//		scrollPane.setBounds(0, 0, 733, 360);
 		panelloTabella.add(scrollPane);
 	  
 		panelloRiepilogo = new JPanel();
-		panelloRiepilogo.setLayout(null);
+		panelloRiepilogo.setLayout(new BorderLayout());
 		panelloRiepilogo.setBackground(SystemColor.scrollbar);
-		panelloRiepilogo.setBounds(0, 372, 733, 85);
-		panel.add(panelloRiepilogo);
+		
+//		MODIFICA PROSSIME TRE RIGHE
+		//panelloRiepilogo.setBounds(0, 372, 733, 85);
+		panelloRiepilogo.setPreferredSize(new Dimension(733,85));
+		panel.add(panelloRiepilogo,BorderLayout.SOUTH);
+		
+		sottoPannRiepilogo2 = new JPanel();
+		sottoPannRiepilogo2.setBackground(SystemColor.scrollbar);
+		sottoPannRiepilogo2.setPreferredSize(new Dimension(95, 85));
+		sottoPannRiepilogo2.setBorder(new EmptyBorder(10, 10, 0, 0));
+		panelloRiepilogo.add(sottoPannRiepilogo2,BorderLayout.EAST);
+		
+		
 		
 		buttoneSalva = new JButton("");
 		buttoneSalva.setToolTipText("Salva preventivo");
 		buttoneSalva.setIcon(new ImageIcon(ItemNuovoPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
-		buttoneSalva.setBounds(665, 20, 50, 50);
-		panelloRiepilogo.add(buttoneSalva);
+	
+//		MODIFICA PROSSIME 3 RIGHE
+		buttoneSalva.setPreferredSize(new Dimension(50,50));
+		//buttoneSalva.setBounds(665, 20, 50, 50);
+		sottoPannRiepilogo2.add(buttoneSalva);
+
+		sottoPannRiepilogo1 = new JPanel();
+		sottoPannRiepilogo1.setBackground(SystemColor.scrollbar);
+		sottoPannRiepilogo1.setLayout(new BorderLayout());
+		panelloRiepilogo.add(sottoPannRiepilogo1,BorderLayout.CENTER);
+		
+		sottoPannRiepilogoCampi = new JPanel();
+		sottoPannRiepilogoCampi.setBackground(SystemColor.scrollbar);
+		sottoPannRiepilogoCampi.setPreferredSize(new Dimension(170, 40));
+		sottoPannRiepilogo1.add(sottoPannRiepilogoCampi,BorderLayout.EAST);
+	
+		
 		
 		JLabel labelImponibile = new JLabel("Imponibile");
-		labelImponibile.setBounds(458, 11, 72, 14);
-		panelloRiepilogo.add(labelImponibile);
-		
-		JLabel labelIVA = new JLabel("I.V.A.");
-		labelIVA.setBounds(458, 36, 46, 14);
-		panelloRiepilogo.add(labelIVA);
-		
-		JLabel labelTotale = new JLabel("Totale");
-		labelTotale.setBounds(458, 61, 46, 14);
-		panelloRiepilogo.add(labelTotale);
+		//labelImponibile.setBounds(458, 11, 72, 14);
+		labelImponibile.setPreferredSize(new Dimension(72,14));
+		sottoPannRiepilogoCampi.add(labelImponibile);
 		
 		textFieldImponibile = new JTextField();
 		textFieldImponibile.setColumns(10);
-		textFieldImponibile.setBounds(540, 8, 94, 20);
-		panelloRiepilogo.add(textFieldImponibile);
+		textFieldImponibile.setPreferredSize(new Dimension(94,20));
+		//textFieldImponibile.setBounds(540, 8, 94, 20);
+		sottoPannRiepilogoCampi.add(textFieldImponibile);
+		
+		JLabel labelIVA = new JLabel("I.V.A.");
+		labelIVA.setPreferredSize(new Dimension(72,14));
+		//labelIVA.setBounds(458, 36, 72, 14);
+		sottoPannRiepilogoCampi.add(labelIVA);
 		
 		textFieldIVA = new JTextField();
 		textFieldIVA.setColumns(10);
-		textFieldIVA.setBounds(540, 33, 94, 20);
-		panelloRiepilogo.add(textFieldIVA);
+		textFieldIVA.setPreferredSize(new Dimension(94,20));
+		//textFieldIVA.setBounds(540, 33, 94, 20);
+		sottoPannRiepilogoCampi.add(textFieldIVA);
+		
+		JLabel labelTotale = new JLabel("Totale");
+		labelTotale.setPreferredSize(new Dimension(72,14));
+		//labelTotale.setBounds(458, 61, 72, 14);
+		sottoPannRiepilogoCampi.add(labelTotale);
 		
 		textFieldTotale = new JTextField();
 		textFieldTotale.setColumns(10);
-		textFieldTotale.setBounds(540, 58, 94, 20);
-		panelloRiepilogo.add(textFieldTotale);
+		textFieldTotale.setPreferredSize(new Dimension(94,20));
+		//textFieldTotale.setBounds(540, 58, 94, 20);
+		sottoPannRiepilogoCampi.add(textFieldTotale);
 		
 		
 		buttoneSalva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Ctrl_elaboraPreventivo.getInstance().salvaPreventivo();	
+				try {
+					Ctrl_elaboraPreventivo.getInstance().salvaPreventivo();
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
 			}
 		});
 	}

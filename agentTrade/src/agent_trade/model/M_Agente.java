@@ -9,10 +9,14 @@ public class M_Agente implements Serializable{
 	private static M_Agente instance;
 
 	/*attributi privati*/
-	private String idAgente;
+//	private Integer IdAgente;
 	private String nome;
 	private String cognome;
 	private String password;//per il momento la lascio in chiaro cosi, poi aggiusto
+
+	private int IdAgente;
+	
+
 	
 	/*costruttori*/
 	
@@ -21,7 +25,7 @@ public class M_Agente implements Serializable{
 		
 	public M_Agente(String id, String cognome, String nome, String psw){
 		//super();
-		this.idAgente=id;
+		this.IdAgente=Integer.parseInt(id);
 		this.cognome=cognome;
 		this.nome=nome;	
 		this.password=psw;
@@ -38,8 +42,8 @@ public class M_Agente implements Serializable{
 	
 	/*metodi pubblici*/
 	
-	public String getIdAgente() {
-		return idAgente;
+	public int getIdAgente() {
+		return IdAgente;
 	}
 
 
@@ -57,11 +61,7 @@ public class M_Agente implements Serializable{
 		return cognome;
 	}
 
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
+	
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
@@ -69,5 +69,15 @@ public class M_Agente implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setIdAgente(int idAgente) {
+		IdAgente = idAgente;
 	} 
+	
+	
 }

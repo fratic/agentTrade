@@ -15,6 +15,8 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
 
+import org.orm.PersistentException;
+
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 
@@ -60,7 +62,12 @@ public class AlberoPreventivi extends JPanel {
 
 			public void valueChanged(TreeSelectionEvent e) {
 				TreePath selection = e.getPath();
-				Ctrl_elaboraPreventivo.getInstance().riepilogoPreventivo(selection.getLastPathComponent());
+				try {
+					Ctrl_elaboraPreventivo.getInstance().riepilogoPreventivo(selection.getLastPathComponent());
+				} catch (PersistentException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}}));
 	}
@@ -146,7 +153,7 @@ public class AlberoPreventivi extends JPanel {
 		  albero.setSelectionPath(new TreePath(model.getRoot())); 	
 	  }
 	  
-	  public static void clear() {
+	  public static void clear() throws PersistentException {
 		
 		  ((DefaultMutableTreeNode) model.getRoot()).removeAllChildren();
 		  model.reload();

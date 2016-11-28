@@ -1,6 +1,9 @@
 package agent_trade.ui.content.prodotti;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.ArrayList;
+
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -15,6 +18,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import agent_trade.model.M_Prodotto;
+import agent_trade.persistentTemp.Prodotto;
 import agent_trade.util.DisableButton;
 import agent_trade.util.MyEditor;
 import agent_trade.util.MyRenderer;
@@ -42,17 +46,22 @@ public class ProdottiView extends JPanel {
 	/*costruttori*/
 	
 	private ProdottiView() {
-		setLayout(null);
+
+		setLayout(new GridLayout(1,1));
 		
 		pannelloProdotti = new JPanel();
-		pannelloProdotti.setBounds(0, 0, 753, 617);
+//		MODIFICA LINEA SEGUENTE
+		//pannelloProdotti.setBounds(0, 0, 753, 617);
 		add(pannelloProdotti);
-		pannelloProdotti.setLayout(null);
+//		MODIFICA PROSSIMA RIGA
+		pannelloProdotti.setLayout(new GridLayout(1,1));
 		
 		pannelloTabella = new JPanel();
-		pannelloTabella.setBounds(0, 0, 753, 617);
+//		MODIFICA PROSSIMA LINEA
+		//pannelloTabella.setBounds(0, 0, 753, 617);
 		pannelloProdotti.add(pannelloTabella);
-	    pannelloTabella.setLayout(null);
+//		MODIFICA PROSSIMA LINEA
+	    pannelloTabella.setLayout(new GridLayout(1,1));
 
 
 		String[] colNames = {"ID prodotto", "Nome", "Categoria", "Azienda", "Prezzo", "Aggiungi" };
@@ -74,10 +83,10 @@ public class ProdottiView extends JPanel {
 	    table.setRowHeight(30);
 	    
 	    scrollPane = new JScrollPane(table);
-	    scrollPane.setBounds(0, 0, 753, 617);
+//	    MODIFICA PROSSIMA RIGA
+	    //scrollPane.setBounds(0, 0, 753, 617);
 	    pannelloTabella.add(scrollPane);
-	  
-	}
+	  	}
 	
 	
 	/*metodi di classe*/
@@ -107,26 +116,36 @@ public class ProdottiView extends JPanel {
 	}
 
 	
-	public void initTable(ArrayList a){
-
-		Iterator iteraProdotti = null;
-
-		iteraProdotti = a.iterator();
-		M_Prodotto p;
+	public void initTable(M_Prodotto[] prodotti){
+		
+//		Prodotto p;
 		JButton jb;
-		while (iteraProdotti.hasNext()) {				
-			p = (M_Prodotto) iteraProdotti.next();
-			jb= new DisableButton();
-			jb.setEnabled(false);
-            ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
-            		p.getNome(), p.getCategoria(), "",Float.toString(p.getPrezzo()), jb});
-            
-    		elencoBott.put(p.getIdProdotto(), jb);
+//		while (iteraProdotti.hasNext()) {				
+//			p = (M_Prodotto) iteraProdotti.next();
+//			jb= new DisableButton();
+//			jb.setEnabled(false);
+//            ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
+//            		p.getNome(), p.getCategoria(), "",Float.toString(p.getPrezzo()), jb});
+//            
+//    		elencoBott.put(p.getIdProdotto(), jb);
+//
+//            TableColumn col = table.getColumnModel().getColumn(5);
+//       	    col.setMaxWidth(60);
+//    	    col.setMinWidth(60);            
+//		}
+	
+		for (M_Prodotto p : prodotti) {
+		jb= new DisableButton();
+		jb.setEnabled(false);
+        ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
+        		p.getNome(), p.getCategoria(), "",Float.toString(p.getPrezzo()), jb});
+        
+		elencoBott.put(p.getIdProdotto(), jb);
 
-            TableColumn col = table.getColumnModel().getColumn(5);
-       	    col.setMaxWidth(60);
-    	    col.setMinWidth(60);            
-		}
+        TableColumn col = table.getColumnModel().getColumn(5);
+   	    col.setMaxWidth(60);
+	    col.setMinWidth(60);            
+	}
 	}
 	
 	

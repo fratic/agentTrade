@@ -1,32 +1,59 @@
 package agent_trade.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.hibernate.criterion.Projections;
+import org.orm.PersistentException;
+
+import persistent.PreventivoCriteria;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.persistentTemp.Dao_System;
+//import agent_trade.persistentTemp.Dao_System;
+import agent_trade.persistentTemp.Preventivo;
 
 
-public class M_Preventivo implements Serializable, Observer{
+public class M_Preventivo implements /*Serializable, */Observer{
 	
 	/*attributi di classe*/
 	
 	private static M_Preventivo instance;
 
-	private static int newId=Dao_System.getInstance().loadIdPrev();
+	private static int newId;//Dao_System.getInstance().loadIdPrev();
 
 
 	/*attributi privati*/
 	private String idPreventivo;
-	private String data; //bisognerebbe creare un oggetto Data
-	//private float totale; //forse non serve
 	private M_Agente rif_Agente;
 	private M_Cliente rif_Cliente;
+	private Date data;
+
+	//BIG PROBLEM NEL DB
 	private ArrayList<M_Preventivo_Item> elencoItem= new ArrayList<M_Preventivo_Item>();
 
+	public boolean equals(Object aObj) {
+		if (aObj == this)
+			return true;
+		if (!(aObj instanceof Preventivo))
+			return false;
+		Preventivo preventivo = (Preventivo)aObj;
+		if ((getIdPreventivo() != null && !getIdPreventivo().equals(preventivo.getIdPreventivo())) || (getIdPreventivo() == null && preventivo.getIdPreventivo() != null))
+			return false;
+		return true;
+	}
+	
+	public int hashCode() {
+		int hashcode = 0;
+		hashcode = hashcode + (getIdPreventivo() == null ? 0 : getIdPreventivo().hashCode());
+		return hashcode;
+	}
+		
+	
+	private List elencoITem = new ArrayList();
+	
 
 	/*costruttori*/
 	
@@ -40,16 +67,25 @@ public class M_Preventivo implements Serializable, Observer{
 		this.elencoItem=prev.getElencoItem();
 	}
 	
-	public M_Preventivo() {
+	public M_Preventivo()  {
 		
-		newId++;
-		this.idPreventivo=Integer.toString(newId);
+		//newId++;
+//		this.idPreventivo=Integer.toString(newId);
 	}
 	
+	public void setIdPrev() throws PersistentException
+	{
+		PreventivoCriteria criteria= new PreventivoCriteria();
+		criteria.setProjection(Projections.max("id"));
+		newId=Integer.parseInt((String) criteria.uniqueResult());
+		newId++;
+		this.idPreventivo=Integer.toString(newId);
+		System.out.println("ID PREV: "+newId);
+	}
 	
 	/*metodi di classe*/
 	
-	public static M_Preventivo getInstance(){
+	public static M_Preventivo getInstance() throws PersistentException{
 		return ((instance == null) ? instance = new M_Preventivo() : instance);	
 	}
 	
@@ -57,10 +93,6 @@ public class M_Preventivo implements Serializable, Observer{
 		//return ((instance == null) ? instance= new M_Preventivo(prev) : instance);	
 		return (instance= new M_Preventivo(prev));	
 
-	}
-	
-	public static void cancIstanza(){
-		instance=null;
 	}
 	
 	
@@ -71,9 +103,9 @@ public class M_Preventivo implements Serializable, Observer{
 		return (newId);	
 	}
 	
-	public static void setNumprev(int id){
-		newId=id;	
-	}
+//	public static void setNumprev(int id){
+//		newId=id;	
+//	}
 			
 	public ArrayList<M_Preventivo_Item> getElencoItem() {
 		return elencoItem;
@@ -83,6 +115,9 @@ public class M_Preventivo implements Serializable, Observer{
 		this.elencoItem = elencoItem;
 	}
 
+	public static void cancIstanza(){
+		instance=null;
+	}
 	
 	public M_Cliente getRif_Cliente() {
 		return rif_Cliente;
@@ -96,21 +131,22 @@ public class M_Preventivo implements Serializable, Observer{
 		this.idPreventivo = idPreventivo;
 	}
 
-	public String getData() {
+	public void setData(java.util.Date value) {
+		this.data = value;
+	}
+	
+	public java.util.Date getData() {
 		return data;
 	}
 
-	public void setData(String data) {
-		this.data = data;
+	
+	public void setElencoITem(List value) {
+		this.elencoITem = value;
 	}
-
-//	public float getTotale() {
-//		return totale;
-//	}
-
-//	public void setTotale(long totale) {
-//		this.totale = totale;
-//	}
+	
+	public List getElencoITem() {
+		return elencoITem;
+	}
 
 	public M_Agente getRif_Agente() {
 		return rif_Agente;
@@ -124,16 +160,22 @@ public class M_Preventivo implements Serializable, Observer{
 		this.rif_Cliente = rif_Cliente;
 	}
 	
-	public M_Preventivo_Item addItem(M_Prodotto Prodotto ){
+	public M_Preventivo_Item addItem(M_Prodotto Prodotto ) throws PersistentException{
 		
 		M_Preventivo_Item it= new M_Preventivo_Item(M_Preventivo.getInstance(), Prodotto);
 		this.elencoItem.add(it);
+		this.elencoITem.add(it);
 		return it;
 	}
 	
 	public void update(Observable observer, Object obj) {
 
-		Ctrl_elaboraPreventivo.getInstance().refresh(observer, this);
+		try {
+			Ctrl_elaboraPreventivo.getInstance().refresh(observer, this);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

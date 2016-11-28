@@ -1,0 +1,14 @@
+CREATE TABLE Preventivo (ID varchar(255) NOT NULL, ClienteID int4 NOT NULL, AgenteID int4 NOT NULL, Data date, PRIMARY KEY (ID));
+CREATE TABLE Preventivo_Item (ID  SERIAL NOT NULL, ProdottoID int4 NOT NULL, PreventivoID varchar(255), Quantità int4 NOT NULL, "ArrayList observer" int4, Observers int4, PreventivoIndex int4, PRIMARY KEY (ID));
+CREATE TABLE Agente (ID  SERIAL NOT NULL, Nome varchar(255), Cognome varchar(255), Password varchar(255), PRIMARY KEY (ID));
+CREATE TABLE Cliente (ID  SERIAL NOT NULL, AgenteID int4 NOT NULL, Nome varchar(255), Cognome varchar(255), Codice_fiscale varchar(255), Indirizzo varchar(255), Email varchar(255), Partita_iva varchar(255), Telefono varchar(255), Fax varchar(255), Citta varchar(255), CAP varchar(255), PRIMARY KEY (ID));
+CREATE TABLE Prodotto (ID  SERIAL NOT NULL, CatalogoID int4, Nome varchar(255), Prezzo float4 NOT NULL, Categoria varchar(255), IdDescrizioneProdotto varchar(255), Stagionatura int4, Tipo varchar(255), Provenienza varchar(255), Taglio varchar(255), Tipo2 varchar(255), Colore varchar(255), Indicazione_geografica varchar(255), Cantina varchar(255), Artigianale bool, Free_gluten bool, Discriminator varchar(255) NOT NULL, CatalogoIndex int4, PRIMARY KEY (ID));
+CREATE TABLE Catalogo (ID  SERIAL NOT NULL, AziendaID int4 NOT NULL, PRIMARY KEY (ID));
+CREATE TABLE Azienda (ID  SERIAL NOT NULL, RagioneSociale varchar(255), Città varchar(255), CAP varchar(255), Indirizzo varchar(255), Telefono varchar(255), Fax varchar(255), Email varchar(255), Partita_iva varchar(255), Codice_fiscale varchar(255), PRIMARY KEY (ID));
+ALTER TABLE Cliente ADD CONSTRAINT FKCliente220747 FOREIGN KEY (AgenteID) REFERENCES Agente (ID);
+ALTER TABLE Preventivo ADD CONSTRAINT effettua FOREIGN KEY (AgenteID) REFERENCES Agente (ID);
+ALTER TABLE Preventivo ADD CONSTRAINT riferito FOREIGN KEY (ClienteID) REFERENCES Cliente (ID);
+ALTER TABLE Preventivo_Item ADD CONSTRAINT FKPreventivo945562 FOREIGN KEY (PreventivoID) REFERENCES Preventivo (ID);
+ALTER TABLE Preventivo_Item ADD CONSTRAINT FKPreventivo782121 FOREIGN KEY (ProdottoID) REFERENCES Prodotto (ID);
+ALTER TABLE Prodotto ADD CONSTRAINT FKProdotto878775 FOREIGN KEY (CatalogoID) REFERENCES Catalogo (ID);
+ALTER TABLE Catalogo ADD CONSTRAINT FKCatalogo462392 FOREIGN KEY (AziendaID) REFERENCES Azienda (ID);

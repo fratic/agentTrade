@@ -1,11 +1,23 @@
 package agent_trade;
 
+import java.text.ParseException;
+
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import agent_trade.ui.LoginView;
 import agent_trade.ui.SplashScreen;
+
+/****NON TOCCARE***/
+import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaBlueSteelLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaPlainLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
+import de.javasoft.plaf.synthetica.SyntheticaWhiteVisionLookAndFeel;
+
 
 public class Main {
 	
@@ -20,22 +32,32 @@ public class Main {
 								
 				try {
 					Thread.sleep(1500);
-					LoginView.getInstance().setVisible(true);
-				    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+										
+					/***non toccare***/
+					/*******Per ora lasciare*********/
+					
+//					UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
+//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-					//splash.setVisible(false);
+//				    UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
+//	    		    UIManager.setLookAndFeel(new SyntheticaBlueSteelLookAndFeel());
+				    UIManager.setLookAndFeel(new SyntheticaWhiteVisionLookAndFeel());
+//					UIManager.setLookAndFeel(new SyntheticaPlainLookAndFeel());
+//					splash.setVisible(false);
+					/****************/
+
+				    LoginView.getInstance().setVisible(true);
 					splash.dispose();
-
+					
+					
 			    } 
 				catch (InterruptedException e) {
 					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				} catch (InstantiationException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
 				} catch (UnsupportedLookAndFeelException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

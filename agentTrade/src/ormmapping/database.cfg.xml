@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Database>
+
+  <Setting type="256">
+    <Driver>PostgreSQL</Driver>
+    <DriverFiles></DriverFiles>
+    <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
+    <DriverClass>org.postgresql.Driver</DriverClass>
+    <URL>jdbc:postgresql://localhost:5432/agentTrade</URL>
+    <UserName>postgres</UserName>
+    <Password>root</Password>
+    <HostName>localhost</HostName>
+    <PortNO>5432</PortNO>
+    <DBName>agentTrade</DBName>
+    <ServiceName></ServiceName>
+    <ServerName></ServerName>
+    <SelectedForm>true</SelectedForm>
+  </Setting>
+
+
+</Database>
