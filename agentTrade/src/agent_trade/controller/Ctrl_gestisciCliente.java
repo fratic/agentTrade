@@ -3,6 +3,8 @@ package agent_trade.controller;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
@@ -260,6 +262,7 @@ public class Ctrl_gestisciCliente {
 				AlberoClienti.abilitaAlbero();
 				PrimaryView.getInstance().setEnableTabPreventivo(true);
 				PrimaryView.getInstance().setEnableTabCatalogo(true);
+				PrimaryView.getInstance().setEnableCercaCliente(true);
 
 			}
 			
@@ -383,6 +386,7 @@ public class Ctrl_gestisciCliente {
 		AlberoClienti.disabilitaAlbero();
 		PrimaryView.getInstance().setEnableTabPreventivo(false);
 		PrimaryView.getInstance().setEnableTabCatalogo(false);
+		PrimaryView.getInstance().setEnableCercaCliente(false);
 	}
 	
 	public void annullaNewCliente()
@@ -398,6 +402,7 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().setSfondoCliente();
 		PrimaryView.getInstance().setEnableTabCatalogo(true);
 		PrimaryView.getInstance().setEnableTabPreventivo(true);
+		PrimaryView.getInstance().setEnableCercaCliente(true);
 		PrimaryView.getInstance().setVisibleErroreNuovoCliente(false);
 		AlberoClienti.abilitaAlbero();
 		
@@ -488,17 +493,24 @@ public class Ctrl_gestisciCliente {
 	}
 	
 	//da modificare e fare per id (quando avremo un db)
-	public void mostraCliente(Object obj) throws PersistentException{
-		String c=obj.toString();
-		int i=0;
-		i = c.indexOf(" -");
-		if(i!=-1){
-			c = c.substring(0, i);
-			PrimaryView.getInstance().resetPannelloCentraleCliente();
-			recuperaCliente(c);
-			PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
-			PrimaryView.getInstance().setEnableTabCatalogo(true);
-			PrimaryView.getInstance().setEnableTabPreventivo(true);
+	public void mostraCliente(Object obj) throws PersistentException {
+		
+		if(((DefaultMutableTreeNode)obj).isLeaf())
+		{
+			String c=obj.toString();
+			int i=0;
+			i = c.indexOf(" -");
+			if(i!=-1){
+				c = c.substring(0, i);
+				PrimaryView.getInstance().resetPannelloCentraleCliente();
+				recuperaCliente(c);
+				PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
+				PrimaryView.getInstance().setEnableTabCatalogo(true);
+				PrimaryView.getInstance().setEnableTabPreventivo(true);}
 		}
+			else {
+				PrimaryView.getInstance().resetPannelloCentraleCliente();
+				PrimaryView.getInstance().setSfondoCliente();
+			}
 	}	
 }

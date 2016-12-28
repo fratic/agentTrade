@@ -9,6 +9,7 @@ import javax.swing.JTree;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import javax.swing.plaf.basic.BasicTreeUI.TreeSelectionHandler;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
@@ -19,6 +20,7 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 
 public class AlberoClienti extends JPanel {
@@ -70,7 +72,9 @@ public class AlberoClienti extends JPanel {
 					}
 					
 				}}));
-			
+	        
+	 
+						
 	}		
 	
 	
@@ -125,11 +129,22 @@ public class AlberoClienti extends JPanel {
 	//NUOVA FUNZIONE - RISOLVE I PRECEDENTI PROBLEMI
 	public static void deselezionaNodo(String nodo){
 		
-		  DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
+		  //DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
 		  albero.clearSelection();
 
 	 }
-
+	
+//	public static void selezionaRadice(){
+//		
+//		  albero.setSelectionPath(new TreePath(model.getRoot())); 
+//		  PrimaryView.getInstance().resetPannelloCentraleCliente();
+//		  PrimaryView.getInstance().setSfondoCliente();  
+//
+//	  }
+	
+	//quando seleziono la root si resetta il pannello centrale
+	
+	
   
 	public static void disabilitaAlbero() {
 			albero.setEnabled(false);
