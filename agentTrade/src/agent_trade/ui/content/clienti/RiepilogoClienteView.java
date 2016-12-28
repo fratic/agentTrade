@@ -704,7 +704,7 @@ public class RiepilogoClienteView extends JPanel {
 		bottoneCancellaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 	
-				Ctrl_gestisciCliente.getInstance().cancellaCliente((String)TFcognome.getText());
+				Ctrl_gestisciCliente.getInstance().cancellaCliente((String)TFidCliente.getText());
 			}
 		});
 		
@@ -725,7 +725,7 @@ public class RiepilogoClienteView extends JPanel {
 	
 				
 				try {
-					Ctrl_gestisciCliente.getInstance().annullaModificheCliente(TFcognome.getText());
+					Ctrl_gestisciCliente.getInstance().annullaModificheCliente(TFidCliente.getText());
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

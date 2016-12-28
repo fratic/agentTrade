@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
@@ -43,6 +44,7 @@ public class Ctrl_gestisciCliente {
 	/*metodi privati*/
 	
 	//a che serve?? 
+//	M: Serve per le espressioni regolari nel primo parametro si passa l'espressione e nel secondo la stringa che si vuole controllare 
 	private boolean check(String regex, String input){
 		
 		  Pattern pattern = Pattern.compile(regex);
@@ -54,33 +56,58 @@ public class Ctrl_gestisciCliente {
 		    return false;
 		}
 	
-	private boolean ControlloCampi(String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax){
+	private String ControlloCampi(String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax){
 		
 		//PERCHE UNA FUNZIONE CHE FA UN SEMPLICE CONTROLLO FA DELLE MODIFICHE ALLA VIEW???
-		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
-			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
-			DettaglioClienteView.getInstance().setErrore("inserisci tutti i campi");
-			return false;
+//		M: si è sbagliato adesso l'ho modificato: controlla prima se tutti i campi non sono vuoti
+//		poi se sono corretti
+		
+		String errore= null;
+		String campoErrato = "";
+		
+		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || citta.equals("") || cap.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || cellulare.equals("") || fax.equals("")){
+			return errore= "inserisci tutti i campi";
 		}
-//		if(!check("[a-zA-Z]", nome)){
-//			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
-//			DettaglioClienteView.getInstance().setErrore("nome errato");
-//			return false;
-//		}
-//		if(!check("[a-zA-Z]{6}\\d\\d[a-zA-Z]\\d\\d[a-zA-Z]\\d\\d\\d[a-zA-Z]", codFiscale)){
-//			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
-//			DettaglioClienteView.getInstance().setErrore("codice fiscale errato");
-//			return false;
-//		}
-//		if(!check("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}", email)){
-//			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
-//			DettaglioClienteView.getInstance().setErrore("emali non corretta");
-//			return false;
-//		}
 		
+		if(!check("[a-zA-Z'\\s]+", cognome)){
+			campoErrato=campoErrato + "cognome ";
+		}
+		if(!check("[a-zA-Z'\\s]+", nome)){
+			campoErrato= campoErrato + "nome ";
+		}
+		if(!check("[a-zA-Z]{6}\\d\\d[a-zA-Z]\\d\\d[a-zA-Z]\\d\\d\\d[a-zA-Z]", codFiscale)){
+			campoErrato=campoErrato + "codice fiscale ";
+		}
+		if(!check("[0-9]{11}", partitaIva)){
+			campoErrato=campoErrato + "partita iva ";
+		}
+		if(!check("[a-zA-Z'\\s]+[0-9]{0,4}", indirizzo)){
+			campoErrato= campoErrato +"indirizzo ";
+		}
+		if(!check("[a-zA-Z'\\s]+", citta)){
+			campoErrato= campoErrato +"città ";
+		}
+		if(!check("[0-9]{5}", cap)){
+			campoErrato= campoErrato +"cap ";
+		}
+		if(!check("[0-9]{10}", telefono)){
+			campoErrato= campoErrato +"telefono ";
+		}
+		if(!check("[0-9]{10}", cellulare)){
+			campoErrato= campoErrato +"cellulare ";
+		}
+		if(!check("[0-9]{10}", fax)){
+			campoErrato= campoErrato +"fax ";
+		}
+		if(!check("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}", email)){
+			campoErrato= campoErrato +"email ";
+		}
 		
-		
-		return true;
+		if (errore == null && campoErrato != "")
+		{
+			errore= "I seguenti campi sono errati: "+ campoErrato;
+		}
+		return errore;
 	}
 	
 	/*metodi pubblici*/
@@ -160,42 +187,42 @@ public class Ctrl_gestisciCliente {
 				Ricerca_cliente.getInstance().svuotaTabella();
 
 				for (M_Cliente cLoad : listClienti) {
-					Ricerca_cliente.getInstance().updateTable(cLoad.getCognome(), cLoad.getNome(), cLoad.getCodice_fiscale(), cLoad.getPartita_iva());
+					Ricerca_cliente.getInstance().updateTable(cLoad.getIdCliente(), cLoad.getCognome(), cLoad.getNome(), cLoad.getCodice_fiscale(), cLoad.getPartita_iva());
 				}
 			}
 		}
 	}
 	
 //	a che servono due funzioni uguali? AGGIUSTARE
-	public void recuperaCliente(String cognome) throws PersistentException
-	{	
-		
-			//A CHE SERVE QUESTA FUNZIONE??
-			PrimaryView.getInstance().resetPannelloCentraleCliente();
-			
-			M_Cliente cliente = null;
-			
-			ClienteCriteria criteria= new ClienteCriteria();
-			
-			criteria.cognome.eq(cognome);
-			criteria.agenteAssociato.equals(Ctrl_System.getInstance().getIdAgente());
-			//IMPOSTARE L'ORDINAMENTO PER COGNOME E POI NOI IN ORDINE ALFABETICO
-			//criteria.addOrder()
-			M_Cliente [] listClienti = criteria.listCliente();
-			cliente=listClienti[0];
-			Ricerca_cliente.getInstance().dispose();
-			Ricerca_cliente.cancInstanza();
-			
-			PrimaryView.initRiepilogoClienteView();
-			PrimaryView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCellulare(),cliente.getFax(),"");
-			PrimaryView.getInstance().disattivaSalvaModifiche(false);
-			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
-			PrimaryView.getInstance().setEnableTabPreventivo(true);
-			PrimaryView.getInstance().setEnableTabCatalogo(true);
-			PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
-			AlberoClienti.deselezionaNodo(cognome);
-			AlberoClienti.abilitaAlbero();
-	}
+//	public void recuperaCliente(String cognome) throws PersistentException
+//	{	
+//		
+//			//A CHE SERVE QUESTA FUNZIONE??
+//			PrimaryView.getInstance().resetPannelloCentraleCliente();
+//			
+//			M_Cliente cliente = null;
+//			
+//			ClienteCriteria criteria= new ClienteCriteria();
+//			
+//			criteria.cognome.eq(cognome);
+//			criteria.agenteAssociato.equals(Ctrl_System.getInstance().getIdAgente());
+//			//IMPOSTARE L'ORDINAMENTO PER COGNOME E POI NOI IN ORDINE ALFABETICO
+//			//criteria.addOrder()
+//			M_Cliente [] listClienti = criteria.listCliente();
+//			cliente=listClienti[0];
+//			Ricerca_cliente.getInstance().dispose();
+//			Ricerca_cliente.cancInstanza();
+//			
+//			PrimaryView.initRiepilogoClienteView();
+//			PrimaryView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCellulare(),cliente.getFax(),"");
+//			PrimaryView.getInstance().disattivaSalvaModifiche(false);
+//			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
+//			PrimaryView.getInstance().setEnableTabPreventivo(true);
+//			PrimaryView.getInstance().setEnableTabCatalogo(true);
+//			PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
+//			AlberoClienti.deselezionaNodo(cognome);
+//			AlberoClienti.abilitaAlbero();
+//	}
 	
 	
 	public void recuperaCliente(int idCliente) throws PersistentException
@@ -204,7 +231,7 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().resetPannelloCentraleCliente();
 			
 			ClienteCriteria criteria= new ClienteCriteria();
-			criteria.idCliente.equals(idCliente);
+			criteria.idCliente.eq(idCliente);
 			criteria.agenteAssociato.equals(Ctrl_System.getInstance());
 
 			M_Cliente cliente = criteria.listCliente()[0];
@@ -213,7 +240,7 @@ public class Ctrl_gestisciCliente {
 			Ricerca_cliente.cancInstanza();
 			
 			PrimaryView.initRiepilogoClienteView();
-			PrimaryView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),/*cliente.getCellulare(),*/"",cliente.getFax(),"");
+			PrimaryView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCellulare(),cliente.getFax(),"");
 			PrimaryView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
@@ -225,7 +252,9 @@ public class Ctrl_gestisciCliente {
 	
 	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax) throws PersistentException
 	{
-		if(ControlloCampi(nome, cognome, codFiscale, partitaIva, citta, cap, indirizzo, email, telefono, cellulare, fax))
+//		la stringa errore serve per il controllo campi se viene restituita null vuol dire che non ci sono errori
+		String errore= ControlloCampi(nome, cognome, codFiscale, partitaIva, citta, cap, indirizzo, email, telefono, cellulare, fax);
+		if(errore==null)
 		{
 			PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 			try 
@@ -243,8 +272,6 @@ public class Ctrl_gestisciCliente {
 				cliente.setFax(fax);
 				cliente.setCitta(citta);
 				cliente.setCAP(cap);
-				
-				//mettere dopo, manca sul db
 				cliente.setCellulare(cellulare);
 				
 				AgentTradePersistentManager.instance().getSession().save(cliente);
@@ -256,9 +283,16 @@ public class Ctrl_gestisciCliente {
 				PrimaryView.getInstance().resetPannelloCentraleCliente();
 				
 				//Che fa?? secondo me ha un alto accoppiamento e una bassa coesione
-				recuperaCliente(cognome);
+//				M: SERVE PER VISUALIZZARE IL CLIENTE APPENA INSERITO MA COME LO RECUPERO SE NON CONOSCO ANCORA L'ID?
 				
-				AlberoClienti.inserisciNodo(cliente.getCognome()+ " - " +cliente.getNome());
+//				M: MODIFICHE PER RECUPERARE ULTIMO ID (prossime 3 righe)
+				ClienteCriteria criteria= new ClienteCriteria();
+				criteria.setProjection(Projections.max("id"));
+				int id=(int) criteria.uniqueResult();
+				
+				recuperaCliente(id);
+				
+				AlberoClienti.inserisciNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 				AlberoClienti.abilitaAlbero();
 				PrimaryView.getInstance().setEnableTabPreventivo(true);
 				PrimaryView.getInstance().setEnableTabCatalogo(true);
@@ -273,19 +307,18 @@ public class Ctrl_gestisciCliente {
 				AgentTradePersistentManager.instance().disposePersistentManager();
 			}
 		}
-		//e se i campi non sono corretti???? che si fa???
+		else{
+			PrimaryView.getInstance().setVisibleErroreNuovoCliente(true);
+			DettaglioClienteView.getInstance().setErrore(errore);
+		}
 	}
 	
 	
 	public void modificaCliente(int id, String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax) throws PersistentException
 	{
+		String errore= ControlloCampi(nome, cognome, codFiscale, partitaIva, citta, cap, indirizzo, email, telefono, cellulare, fax);
 		
-		//e il controllo con le espressioni regolari?
-		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || fax.equals("")){
-			PrimaryView.getInstance().setVisibleErroreRiepCliente(true);
-			RiepilogoClienteView.getInstance().setErrore("inserisci tutti i campi");
-		}
-		else
+		if(errore==null)
 		{	
 			M_Cliente cliente = null;	
 			try{
@@ -314,7 +347,6 @@ public class Ctrl_gestisciCliente {
 			cliente.setAgenteAssociato(Ctrl_System.getAgenteLog());			
 			cliente.setCitta(citta);
 			cliente.setCAP(cap);
-			//mettere dopo
 			cliente.setCellulare(cellulare);
 			
 			PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
@@ -336,16 +368,20 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().setEnableNewCliente(true);
 			PrimaryView.getInstance().setEnableCercaCliente(true);
 			PrimaryView.getInstance().disattivaInviaPosta(true);
-			AlberoClienti.updateNodo(cliente.getCognome()+ " - " +cliente.getNome());
+			AlberoClienti.updateNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 			AlberoClienti.abilitaAlbero();
 						
 		}
+		else{
+			PrimaryView.getInstance().setVisibleErroreRiepCliente(true);
+			RiepilogoClienteView.getInstance().setErrore(errore);
+		}
 	}
 	
-	//da cambiare quando avremo deciso definitivamente il db
-	public void cancellaCliente(String c){
+
+	public void cancellaCliente(String id){
 		
-		confermaCancCliente.getInstance().setCliente(c);
+		confermaCancCliente.getInstance().setCliente(id);
 		confermaCancCliente.getInstance().setVisible(true);
 	}
 	
@@ -439,10 +475,12 @@ public class Ctrl_gestisciCliente {
 		AlberoClienti.disabilitaAlbero();
 	}
 		
-	public void annullaModificheCliente(String cognome) throws PersistentException
+	public void annullaModificheCliente(String id) throws PersistentException
 	{
 		PrimaryView.getInstance().resetCliente();
-		recuperaCliente(cognome);
+//		M: trasforma stringa in intero
+		int idCliente=Integer.parseInt(id);
+		recuperaCliente(idCliente);
 		PrimaryView.getInstance().disattivaModifica(true);
 		PrimaryView.getInstance().disattivaCancella(true);
 		PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
@@ -454,7 +492,9 @@ public class Ctrl_gestisciCliente {
 		AlberoClienti.abilitaAlbero();
 	}
 	
-	public void postConfermaCancCliente(String c) throws PersistentException{
+	public void postConfermaCancCliente(String id) throws PersistentException{
+		
+		int idCliente=Integer.parseInt(id);
 		
 		M_Cliente cliente=null;
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
@@ -465,7 +505,7 @@ public class Ctrl_gestisciCliente {
 			
 			//JOIN per recuperare solo i clienti dell'agente loggato
 			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
-			criteriaCliente.cognome.eq(c);
+			criteriaCliente.idCliente.eq(idCliente);
 			cliente = criteriaCliente.listCliente()[0];
 
 			AgentTradePersistentManager.instance().getSession().delete(cliente);
@@ -479,8 +519,8 @@ public class Ctrl_gestisciCliente {
 		finally {
 			persistent.AgentTradePersistentManager.instance().disposePersistentManager();
 		}
-		
-		AlberoClienti.rimuoviNodo(cliente.getCognome()+ " - " +cliente.getNome());
+//		M: PROBLEMA CON LA SELEZIONE DELL'ALBERO
+		AlberoClienti.rimuoviNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 		confermaCancCliente.getInstance().setVisible(false);		
 		confermaCancCliente.cancInst();
 		PrimaryView.getInstance().resetPannelloCentraleCliente();
@@ -492,7 +532,7 @@ public class Ctrl_gestisciCliente {
 		confermaCancCliente.cancInst();
 	}
 	
-	//da modificare e fare per id (quando avremo un db)
+
 	public void mostraCliente(Object obj) throws PersistentException {
 		
 		if(((DefaultMutableTreeNode)obj).isLeaf())
@@ -502,8 +542,9 @@ public class Ctrl_gestisciCliente {
 			i = c.indexOf(" -");
 			if(i!=-1){
 				c = c.substring(0, i);
+				int id=Integer.parseInt(c);
 				PrimaryView.getInstance().resetPannelloCentraleCliente();
-				recuperaCliente(c);
+				recuperaCliente(id);
 				PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
 				PrimaryView.getInstance().setEnableTabCatalogo(true);
 				PrimaryView.getInstance().setEnableTabPreventivo(true);}

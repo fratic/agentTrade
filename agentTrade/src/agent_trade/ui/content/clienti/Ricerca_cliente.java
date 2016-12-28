@@ -98,7 +98,7 @@ public class Ricerca_cliente extends JDialog {
 		
 		JTableModel = new DefaultTableModel(
                 new String[][] { },
-                new String[] { "Cognome", "Nome","Codice Fiscale", "Partita iva"});
+                new String[] {"ID", "Cognome", "Nome","Codice Fiscale", "Partita iva"});
 			
 		table =new JTable();
         
@@ -143,7 +143,7 @@ public class Ricerca_cliente extends JDialog {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
 				try {
 					//SE QUI VA PASSATO L'ID (e va fatto), BISOGNA INSERIRLO ANCHE IN TABELLA
-					Ctrl_gestisciCliente.getInstance().recuperaCliente((String) table.getValueAt(table.getSelectedRow(),0));
+					Ctrl_gestisciCliente.getInstance().recuperaCliente((int) table.getValueAt(table.getSelectedRow(),0));
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -193,18 +193,18 @@ public class Ricerca_cliente extends JDialog {
 		labelError.setText("");
 		
 		for (M_Cliente c : a) {
-			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva()});
+			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getIdCliente(),c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva()});
 		}	
 	}
 	
 	
-	public void updateTable(String cognome, String nome,String cf, String pi){
+	public void updateTable(int id, String cognome, String nome,String cf, String pi){
 //		int k=((DefaultTableModel) JTableModel).getRowCount();
 //		for (int i=k-1; i>=0;i--){
 //			((DefaultTableModel) JTableModel).removeRow(i);
 //		}
 			labelError.setText("");
-            ((DefaultTableModel) JTableModel).addRow(new Object[]{ cognome, nome, cf, pi});
+            ((DefaultTableModel) JTableModel).addRow(new Object[]{id, cognome, nome, cf, pi});
 	}
 	
 	public void svuotaTabella() {

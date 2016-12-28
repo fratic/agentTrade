@@ -61,7 +61,7 @@ public class Ctrl_System {
 		M_Cliente [] listClienti = criteriaCliente.listCliente();
 
 		for (M_Cliente cLoad : listClienti) {
-			AlberoClienti.inserisciNodo(cLoad.getCognome()+ " - " +cLoad.getNome());
+			AlberoClienti.inserisciNodo(cLoad.getIdCliente()+ " - " + cLoad.getCognome()+ " - " +cLoad.getNome());
 		}
 	}
 		finally {

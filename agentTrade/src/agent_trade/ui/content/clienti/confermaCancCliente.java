@@ -125,8 +125,8 @@ public class confermaCancCliente extends JDialog {
 		return cliente;
 	}
 	
-	public void setCliente(String c){
-		 cliente=c;
+	public void setCliente(String id){
+		 cliente=id;
 	}
 	
 }
