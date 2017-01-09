@@ -7,11 +7,11 @@
     <DriverFiles></DriverFiles>
     <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
     <DriverClass>org.postgresql.Driver</DriverClass>
-    <URL>jdbc:postgresql://localhost:5432/agentTrade</URL>
+    <URL>jdbc:postgresql://localhost:5433/agentTrade</URL>
     <UserName>postgres</UserName>
     <Password>root</Password>
     <HostName>localhost</HostName>
-    <PortNO>5432</PortNO>
+    <PortNO>5433</PortNO>
     <DBName>agentTrade</DBName>
     <ServiceName></ServiceName>
     <ServerName></ServerName>
