@@ -150,9 +150,9 @@ public class Ctrl_gestisciCliente {
 	}
 	
 	//per la tabella cerca cliente in gestione cliente
-	public void ricercaCliente(String c) throws PersistentException
+	public void ricercaCliente(String c, String pi, String cf, String city) throws PersistentException
 	{
-		if (c.equals("") || c==null){
+		if ((c.equals("") || c==null) && (pi.equals("") || pi==null) && (cf.equals("") || cf==null) && (city.equals("") || city==null)){
 			
 			Ricerca_cliente.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		}
@@ -169,6 +169,9 @@ public class Ctrl_gestisciCliente {
 				
 				//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
 				criteriaCliente.cognome.like("%"+c+"%");
+				criteriaCliente.partita_iva.like("%"+pi+"%");
+				criteriaCliente.codice_fiscale.like("%"+cf+"%");
+				criteriaCliente.citta.like("%"+city+"%");
 			
 				listClienti = criteriaCliente.listCliente();
 
@@ -191,6 +194,13 @@ public class Ctrl_gestisciCliente {
 				}
 			}
 		}
+	}
+	
+	//reset campi finestra ricerca cliente e reset tabella
+	public void annullaRicercaCliente() {
+		Ricerca_cliente.getInstance().svuotaTabella();
+		Ricerca_cliente.getInstance().resetRicerca();
+		Ricerca_cliente.getInstance().setVisibleErroreRicercaCliente(false);
 	}
 	
 //	a che servono due funzioni uguali? AGGIUSTARE

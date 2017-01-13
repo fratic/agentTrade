@@ -53,6 +53,9 @@ public class Ricerca_cliente extends JDialog {
 	
 	private JButton BottoneVisualizza;
 	private JButton BottoneCerca;
+	private JTextField TFcercaPI;
+	private JTextField TFcercaCF;
+	private JTextField TFcercaCitta;
 	
 	/*costruttori*/
 
@@ -65,34 +68,61 @@ public class Ricerca_cliente extends JDialog {
 		
 		
 		setTitle("Cerca Cliente");
-		setBounds(450, 250, 576, 324);
+		setBounds(450, 250, 749, 406);
 		getContentPane().setLayout(null);
 		
 		panelloCerca = new JPanel();
-		panelloCerca.setBounds(0, 0, 560, 62);
+		panelloCerca.setBounds(0, 0, 743, 114);
 		getContentPane().add(panelloCerca);
 		panelloCerca.setLayout(null);
 		
-		LabelCerca = new JLabel("Cerca Cliente");
-		LabelCerca.setBounds(34, 11, 74, 40);
+		LabelCerca = new JLabel("Cognome o ragione sociale");
+		LabelCerca.setBounds(10, 11, 137, 40);
 		panelloCerca.add(LabelCerca);
 		
 		TFCerca = new JTextField();
-		TFCerca.setBounds(118, 21, 219, 20);
+		TFCerca.setBounds(157, 21, 180, 20);
 		panelloCerca.add(TFCerca);
 		TFCerca.setColumns(10);
 		
+		JLabel labelCercaPI = new JLabel("Partita Iva");
+		labelCercaPI.setBounds(365, 11, 64, 40);
+		panelloCerca.add(labelCercaPI);
+		
+		TFcercaPI = new JTextField();
+		TFcercaPI.setColumns(10);
+		TFcercaPI.setBounds(439, 21, 180, 20);
+		panelloCerca.add(TFcercaPI);
+		
+		JLabel labelCercaCF = new JLabel("Codice Fiscale");
+		labelCercaCF.setBounds(10, 50, 137, 40);
+		panelloCerca.add(labelCercaCF);
+		
+		TFcercaCF = new JTextField();
+		TFcercaCF.setColumns(10);
+		TFcercaCF.setBounds(157, 60, 180, 20);
+		panelloCerca.add(TFcercaCF);
+		
+		JLabel labelCercaCitta = new JLabel("Citt\u00E0");
+		labelCercaCitta.setBounds(365, 50, 64, 40);
+		panelloCerca.add(labelCercaCitta);
+		
+		TFcercaCitta = new JTextField();
+		TFcercaCitta.setColumns(10);
+		TFcercaCitta.setBounds(439, 60, 180, 20);
+		panelloCerca.add(TFcercaCitta);
+		
 		BottoneCerca = new JButton("Cerca");
-		BottoneCerca.setBounds(385, 20, 89, 23);
+		BottoneCerca.setBounds(644, 80, 89, 23);
 		panelloCerca.add(BottoneCerca);
 		
 		labelError = DefaultComponentFactory.getInstance().createLabel("");
 		labelError.setHorizontalAlignment(SwingConstants.CENTER);
-		labelError.setBounds(118, 48, 219, 14);
+		labelError.setBounds(10, 89, 219, 14);
 		panelloCerca.add(labelError);
 		
 		panelloRisultati = new JPanel();
-		panelloRisultati.setBounds(0, 62, 560, 176);
+		panelloRisultati.setBounds(0, 114, 743, 176);
 		getContentPane().add(panelloRisultati);
 		panelloRisultati.setLayout(null);
 		
@@ -105,21 +135,33 @@ public class Ricerca_cliente extends JDialog {
         table.setModel(JTableModel);
 
 	    scrollPane = new JScrollPane(table);
-	    scrollPane.setBounds(10, 11, 540, 154);
+	    scrollPane.setBounds(10, 11, 723, 154);
 	    panelloRisultati.add(scrollPane);
 		 
 	  	panelloBottoni = new JPanel();
-		panelloBottoni.setBounds(0, 238, 560, 47);
+		panelloBottoni.setBounds(0, 291, 743, 47);
 		getContentPane().add(panelloBottoni);
 		panelloBottoni.setLayout(null);
 		
 		BottoneVisualizza = new JButton("Visualizza");
 		BottoneVisualizza.setEnabled(false);
-		BottoneVisualizza.setBounds(451, 11, 99, 23);
+		BottoneVisualizza.setBounds(634, 11, 99, 23);
 		panelloBottoni.add(BottoneVisualizza);
+		
+		//resetta i campi della ricerca e svuota la tabella
+		JButton BottoneAnnullaCerca = new JButton("Annulla");
+		BottoneAnnullaCerca.setBounds(506, 11, 99, 23);
+		panelloBottoni.add(BottoneAnnullaCerca);
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
+		BottoneAnnullaCerca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				Ctrl_gestisciCliente.getInstance().annullaRicercaCliente();
+			}
+		});
+		
 		
 		BottoneCerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -130,7 +172,7 @@ public class Ricerca_cliente extends JDialog {
 					}
 					//fare le modifiche a ricerca cliente!!!!
 					try {
-						Ctrl_gestisciCliente.getInstance().ricercaCliente(TFCerca.getText());
+						Ctrl_gestisciCliente.getInstance().ricercaCliente(TFCerca.getText(), TFcercaPI.getText(), TFcercaCF.getText(), TFcercaCitta.getText());
 					} catch (PersistentException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -207,11 +249,23 @@ public class Ricerca_cliente extends JDialog {
             ((DefaultTableModel) JTableModel).addRow(new Object[]{id, cognome, nome, cf, pi});
 	}
 	
+	//resetta i campi della ricerca cliente
+	public void resetRicerca(){
+		TFCerca.setText(null);
+		TFcercaPI.setText(null);
+		TFcercaCF.setText(null);
+		TFcercaCitta.setText(null);
+	}
+	
 	public void svuotaTabella() {
 		int k=((DefaultTableModel) JTableModel).getRowCount();
 		for (int i=k-1; i>=0;i--){
 			((DefaultTableModel) JTableModel).removeRow(i);
 		}
+	}
+	
+	public void setVisibleErroreRicercaCliente(boolean b){
+		labelError.setVisible(b);
 	}
 	
 	public void setErrore(String err) {
@@ -243,7 +297,6 @@ public class Ricerca_cliente extends JDialog {
 	private void init(){
 		this.clienti = new JList<M_Cliente>();
 	}
-	
 }
 		
 
