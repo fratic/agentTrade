@@ -225,5 +225,3 @@ agentTrade/file_db/clienti
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 *.xmi
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
-agentTrade/src/ormmapping/AgentTrade.cfg.xml
-agentTrade/src/ormmapping/AgentTrade.cfg.xml
