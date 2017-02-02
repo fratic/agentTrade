@@ -1,56 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Model quotesql="1" tablecharset="" mysql_version="504" mssql_version="2005" derby_version="106" ingres_version="9">
-  <Entity name="Preventivo" PKClustered="0">
-    <Column name="ID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="ClienteID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>agent_trade.model.Cliente.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>11</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="AgenteID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>agent_trade.model.M_Agente.ID</ReferencedColumn>
-      <Type>9</Type>
-      <Length>11</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Data">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
   <Entity name="Preventivo_Item" PKClustered="0">
-    <Column name="ID">
+    <Column name="IdPreventivo_Item">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -61,25 +13,13 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ProdottoID">
+    <Column name="M_ProdottoIdProdotto">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>agent_trade.model.Prodotto.ID</ReferencedColumn>
+      <ReferencedColumn>agent_trade.model.Prodotto.IdProdotto</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="PreventivoID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>agent_trade.model.Preventivo.ID</ReferencedColumn>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -96,42 +36,20 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="ArrayList observer">
+    <Column name="Sconto">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>true</Nullable>
+      <Type>4</Type>
+      <Length>0</Length>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
-    </Column>
-    <Column name="Observers">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>10</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="PreventivoIndex">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>11</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
+    </Column>    
   </Entity>
-  <Entity name="M_Agente" PKClustered="0">
-    <Column name="ID">
+  <Entity name="Agente" PKClustered="0">
+    <Column name="IdAgente">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -175,9 +93,86 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
+    <Column name="Username">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="Citta">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="Indirizzo">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="Livello">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="Cell">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="Email">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="Cap">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
   </Entity>
-  <Entity name="M_Cliente" PKClustered="0">
-    <Column name="ID">
+  <Entity name="Cliente" PKClustered="0">
+    <Column name="IdCliente">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -188,13 +183,13 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="AgenteID">
+    <Column name="M_AgenteIdAgente">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>agent_trade.model.M_Agente.ID</ReferencedColumn>
+      <ReferencedColumn>agent_trade.model.Agente.IdAgente</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -310,26 +305,25 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-  </Entity>
-  <Entity name="M_Prodotto" PKClustered="0">
-    <Column name="ID">
-      <PrimaryKey>true</PrimaryKey>
+    <Column name="Cell">
+      <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>11</Length>
-      <Nullable>false</Nullable>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="CatalogoID">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>agent_trade.model.Catalogo.ID</ReferencedColumn>
+  </Entity>
+  <Entity name="Prodotto" PKClustered="0">
+    <Column name="IdProdotto">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
       <Type>9</Type>
       <Length>11</Length>
-      <Nullable>true</Nullable>
+      <Nullable>false</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
@@ -423,7 +417,7 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="Tipo2">
+    <Column name="Column">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>27</Type>
@@ -500,20 +494,9 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="CatalogoIndex">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>11</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
   </Entity>
-  <Entity name="Catalogo" PKClustered="0">
-    <Column name="ID">
+  <Entity name="Preventivo" PKClustered="0">
+    <Column name="IdPreventivo">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
       <Type>9</Type>
@@ -524,10 +507,24 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="AziendaID">
+    <!-- 
+    <Column name="M_Preventivo_ItemIdPreventivo_Item">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>agent_trade.model.Azienda.ID</ReferencedColumn>
+      <ReferencedColumn>agent_trade.model.Preventivo_Item.IdPreventivo_Item</ReferencedColumn>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    -->
+    <Column name="M_ClienteIdCliente">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>agent_trade.model.Cliente.IdCliente</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>false</Nullable>
@@ -536,11 +533,10 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-  </Entity>
-  <Entity name="Azienda" PKClustered="0">
-    <Column name="ID">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
+    <Column name="M_AgenteIdAgente">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>agent_trade.model.Agente.IdAgente</ReferencedColumn>
       <Type>9</Type>
       <Length>11</Length>
       <Nullable>false</Nullable>
@@ -549,174 +545,92 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="RagioneSociale">
+    <Column name="Data">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
+      <Type>17</Type>
+      <Length>0</Length>
       <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="Citta">
+       <!-- 
+    <Column name="M_Preventivo_ItemIndex">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
+      <Type>9</Type>
+      <Length>11</Length>
       <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="CAP">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Indirizzo">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Telefono">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Fax">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Email">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Partita_iva">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="Codice_fiscale">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
+       -->
   </Entity>
-  <ForeignKey name="FKCliente220747">
-    <ReferenceTable>Cliente</ReferenceTable>
-    <ReferencedTable>Agente</ReferencedTable>
-    <Columns>
-      <Column>AgenteID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="effettua">
+  <ForeignKey name="FKPreventivo386074">
     <ReferenceTable>Preventivo</ReferenceTable>
     <ReferencedTable>Agente</ReferencedTable>
     <Columns>
-      <Column>AgenteID</Column>
+      <Column>M_AgenteIdAgente</Column>
     </Columns>
     <RefColumns>
-      <Column>ID</Column>
+      <Column>IdAgente</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="riferito">
+  <ForeignKey name="FKPreventivo14065">
     <ReferenceTable>Preventivo</ReferenceTable>
     <ReferencedTable>Cliente</ReferencedTable>
     <Columns>
-      <Column>ClienteID</Column>
+      <Column>M_ClienteIdCliente</Column>
     </Columns>
     <RefColumns>
-      <Column>ID</Column>
+      <Column>IdCliente</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKPreventivo945562">
+  <ForeignKey name="FKPreventivo166346">
     <ReferenceTable>Preventivo_Item</ReferenceTable>
     <ReferencedTable>Preventivo</ReferencedTable>
     <Columns>
-      <Column>PreventivoID</Column>
+      <Column>M_PreventivoIdPreventivo</Column>
     </Columns>
     <RefColumns>
-      <Column>ID</Column>
+      <Column>IdPreventivo</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="FKPreventivo782121">
+  <ForeignKey name="FKCliente88690">
+    <ReferenceTable>Cliente</ReferenceTable>
+    <ReferencedTable>Agente</ReferencedTable>
+    <Columns>
+      <Column>M_AgenteIdAgente</Column>
+    </Columns>
+    <RefColumns>
+      <Column>IdAgente</Column>
+    </RefColumns>
+  </ForeignKey>
+  
+  <!-- 
+  <ForeignKey name="FKPreventivo344920">
+    <ReferenceTable>Preventivo</ReferenceTable>
+    <ReferencedTable>Preventivo_Item</ReferencedTable>
+    <Columns>
+      <Column>M_Preventivo_ItemIdPreventivo_Item</Column>
+    </Columns>
+    <RefColumns>
+      <Column>IdPreventivo_Item</Column>
+    </RefColumns>
+  </ForeignKey>
+  -->
+  <ForeignKey name="FKPreventivo947002">
     <ReferenceTable>Preventivo_Item</ReferenceTable>
     <ReferencedTable>Prodotto</ReferencedTable>
     <Columns>
-      <Column>ProdottoID</Column>
+      <Column>M_ProdottoIdProdotto</Column>
     </Columns>
     <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKProdotto878775">
-    <ReferenceTable>Prodotto</ReferenceTable>
-    <ReferencedTable>Catalogo</ReferencedTable>
-    <Columns>
-      <Column>CatalogoID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKCatalogo462392">
-    <ReferenceTable>Catalogo</ReferenceTable>
-    <ReferencedTable>Azienda</ReferencedTable>
-    <Columns>
-      <Column>AziendaID</Column>
-    </Columns>
-    <RefColumns>
-      <Column>ID</Column>
+      <Column>IdProdotto</Column>
     </RefColumns>
   </ForeignKey>
 </Model>

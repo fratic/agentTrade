@@ -80,32 +80,26 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		pannelloNord.add(pannelloDestra, BorderLayout.EAST);
 		
 		labelPrev = DefaultComponentFactory.getInstance().createLabel("Preventivo n\u00B0");
-		//labelPrev.setBounds(488, 19, 97, 14);
 		labelPrev.setPreferredSize(new Dimension(96,14));
 		pannelloDestra.add(labelPrev);
 		
 		labelNumPrev = DefaultComponentFactory.getInstance().createLabel("1");
-		//labelNumPrev.setBounds(582, 19, 27, 14);
 		labelNumPrev.setPreferredSize(new Dimension(27,14));
 		pannelloDestra.add(labelNumPrev);
 		
 		labelDel = DefaultComponentFactory.getInstance().createLabel("del");
-		//labelDel.setBounds(618, 19, 40, 14);
 		labelDel.setPreferredSize(new Dimension(45,14));
 		pannelloDestra.add(labelDel);
 		
 		labelData = DefaultComponentFactory.getInstance().createLabel("03/11/2015");
-		//labelData.setBounds(655, 19, 69, 14);
 		labelData.setPreferredSize(new Dimension(79,14));
 		pannelloDestra.add(labelData);
 
 		lblNewLabel = new JLabel("effettuato dall'agente: ");
-		//lblNewLabel.setBounds(488, 44, 128, 14);
 		lblNewLabel.setPreferredSize(new Dimension(128,14));
 		pannelloDestra.add(lblNewLabel);
 		
 		labelAgente = new JLabel();
-		//labelAgente.setBounds(628, 44, 128, 14);
 		labelAgente.setPreferredSize(new Dimension(128,15));
 		pannelloDestra.add(labelAgente);
 		
@@ -115,12 +109,10 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		pannelloNord.add(pannelloSinistra, BorderLayout.WEST);
 		
 		labelCl = DefaultComponentFactory.getInstance().createLabel("Cliente: ");
-		//labelCl.setBounds(21, 19, 69, 14);
 		labelCl.setPreferredSize(new Dimension(50, 14));
 		pannelloSinistra.add(labelCl);
 		
 		labelCliente = DefaultComponentFactory.getInstance().createLabel("");
-		//labelCliente.setBounds(88, 19, 206, 14);
 		labelCliente.setPreferredSize(new Dimension(206, 14));
 		pannelloSinistra.add(labelCliente);
 		
@@ -129,7 +121,6 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		pannelloSinistra.add(labelvuota1);
 		
 		indirizzoCliente = new JLabel("");
-		//indirizzoCliente.setBounds(88, 44, 206, 14);
 		indirizzoCliente.setPreferredSize(new Dimension(206,14));
 		pannelloSinistra.add(indirizzoCliente);
 		
@@ -138,7 +129,6 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		pannelloSinistra.add(labelvuota2);
 		
 		altreInfoCliente = new JLabel("");
-		//altreInfoCliente.setBounds(88, 69, 206, 14);
 		altreInfoCliente.setPreferredSize(new Dimension(206,14));
 		pannelloSinistra.add(altreInfoCliente);
 		
@@ -159,21 +149,18 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		bottoneModifica = new JButton("");
 		bottoneModifica.setToolTipText("Modifica Preventivo");
 		bottoneModifica.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/setting.png")));
-		//bottoneModifica.setBounds(50, 103, 40, 30);
 		bottoneModifica.setPreferredSize(new Dimension(40,30));
 		pannelloSudEst.add(bottoneModifica);
 		
 		bottoneConfermaVendita = new JButton("");
 		bottoneConfermaVendita.setToolTipText("Conferma ordine");
 		bottoneConfermaVendita.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/carrelloOrdine.png")));
-		//bottoneConfermaVendita.setBounds(150, 103, 40, 30);
 		bottoneConfermaVendita.setPreferredSize(new Dimension(40,30));
 		pannelloSudEst.add(bottoneConfermaVendita);
 		
 		cancPrevButton = new JButton("");
 		cancPrevButton.setToolTipText("Cancella preventivo");
 		cancPrevButton.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource("/agent_trade/ui/img/delete.png")));
-		//cancPrevButton.setBounds(650, 103, 40, 30);
 		cancPrevButton.setPreferredSize(new Dimension(40,30));
 		pannelloSudOvest.add(cancPrevButton);
 		
@@ -185,8 +172,8 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Ctrl_elaboraPreventivo.getInstance().modificaPreventivo(id_Preventivo);
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
+				}
+				catch (PersistentException e) {
 					e.printStackTrace();
 				}
 			
@@ -203,8 +190,8 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Ctrl_elaboraPreventivo.getInstance().cancellaPreventivo(id_Preventivo);
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
+				} 
+				catch (PersistentException e) {
 					e.printStackTrace();
 				}
 
@@ -250,8 +237,8 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		this.labelAgente.setText(a);
 	}
 	
-	public void setNumPrev(String n) {
-		this.labelNumPrev.setText(n);
+	public void setNumPrev(int i) {
+		this.labelNumPrev.setText(""+i);
 	}
 
 	public void setData(Date data) {

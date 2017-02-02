@@ -1,26 +1,45 @@
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
+
+/**
+ * Licensee: Universita degli Studi dell'Aquila
+ * License Type: Academic
+ */
 package agent_trade.model;
 
-import java.io.Serializable;
+public abstract class M_Prodotto {
 
-public abstract class  M_Prodotto //implements Serializable 
-{
 	
-	/*attributi di classe*/
+	/*
+	 * attributi di classe
+	 */
 	
-	/*attributi privati*/
 	
-	/*attributi protected*/
+	/*
+	 * attributi privati
+	 */
+
+	
+	/*
+	 * attributi protected
+	 */
 	
 	protected int IdProdotto;
-	protected float prezzo;
 	protected String nome;
+	protected float prezzo;
 	protected String categoria;
-//	protected String Azienda; //per il momento string
-	protected String idDescrizioneProdotto;	
-
-
+	protected String idDescrizioneProdotto;
 	
-	/*costruttori*/
+	
+	/*
+	 * costruttori
+	 */
 	
 	public M_Prodotto() {
 	}
@@ -40,49 +59,68 @@ public abstract class  M_Prodotto //implements Serializable
 		this.categoria=categoria;
 	}
 	
+	/*
+	 * metodi di classe
+	 */
 	
-	/*metodi di classe*/
-	/*metodi privati*/
-	/*metodi pubblici*/
-		
-	public float getPrezzo() {
-		return prezzo;
+	
+	/*
+	 * metodi privati
+	 */
+	
+
+	private void setIdProdotto(int value) {
+		this.IdProdotto = value;
 	}
-	public void setPrezzo(float prezzo) {
-		this.prezzo = prezzo;
+	
+	
+	/*
+	 * metodi pubblici
+	 */
+	
+
+	public int getIdProdotto() {
+		return IdProdotto;
 	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getCategoria() {
-		return categoria;
-	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-	public String getIdDescrizioneProdotto() {
-		return idDescrizioneProdotto;
-	}
-	public void setIdDescrizioneProdotto(String idDescrizioneProdotto) {
-		this.idDescrizioneProdotto = idDescrizioneProdotto;
-	}
+	
 	public int getORMID() {
 		return getIdProdotto();
 	}
-
-	public int getIdProdotto(){
-		return IdProdotto;
-	}
-
-	public void setIdProdotto(int idProdotto) {
-		IdProdotto = idProdotto;
+	
+	public void setNome(String value) {
+		this.nome = value;
 	}
 	
-
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setPrezzo(float value) {
+		this.prezzo = value;
+	}
+	
+	public float getPrezzo() {
+		return prezzo;
+	}
+	
+	public void setCategoria(String value) {
+		this.categoria = value;
+	}
+	
+	public String getCategoria() {
+		return categoria;
+	}
+	
+	public void setIdDescrizioneProdotto(String value) {
+		this.idDescrizioneProdotto = value;
+	}
+	
+	public String getIdDescrizioneProdotto() {
+		return idDescrizioneProdotto;
+	}
+	
+	public String toString() {
+		return String.valueOf(getIdProdotto());
+	}
 	
 }
-
-

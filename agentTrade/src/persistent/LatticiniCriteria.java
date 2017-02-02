@@ -18,7 +18,7 @@ import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.persistentTemp.Latticini;
+import agent_trade.model.M_Latticini;
 
 public class LatticiniCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IdProdotto;
@@ -41,20 +41,20 @@ public class LatticiniCriteria extends AbstractORMCriteria {
 	}
 	
 	public LatticiniCriteria(PersistentSession session) {
-		this(session.createCriteria(Latticini.class));
+		this(session.createCriteria(M_Latticini.class));
 	}
 	
 	public LatticiniCriteria() throws PersistentException {
 		this(persistent.AgentTradePersistentManager.instance().getSession());
 	}
 	
-	public Latticini uniqueLatticini() {
-		return (Latticini) super.uniqueResult();
+	public M_Latticini uniqueM_Latticini() {
+		return (M_Latticini) super.uniqueResult();
 	}
 	
-	public Latticini[] listLatticini() {
+	public M_Latticini[] listM_Latticini() {
 		java.util.List list = super.list();
-		return (Latticini[]) list.toArray(new Latticini[list.size()]);
+		return (M_Latticini[]) list.toArray(new M_Latticini[list.size()]);
 	}
 }
 

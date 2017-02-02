@@ -1,32 +1,51 @@
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
+
+/**
+ * Licensee: Universita degli Studi dell'Aquila
+ * License Type: Academic
+ */
 package agent_trade.model;
 
 import agent_trade.controller.Ctrl_System;
 
+public class M_Cliente {
 
-public class M_Cliente //implements Serializable
-{	
-	/*attributi di classe*/
+	/*
+	 * attributi di classe
+	 */
 	
 	private static M_Cliente instance;
 
-	/*attributi privati*/
+	
+	/*
+	 * attributi privati
+	 */
 	
 	private int idCliente;
+	private M_Agente agenteAssociato;
 	private String nome;
 	private String cognome;
 	private String codice_fiscale;
-	private String partita_iva;
 	private String indirizzo;
 	private String email;
+	private String partita_iva;
 	private String telefono;
-	private String cellulare;
 	private String fax;
 	private String citta;
 	private String CAP;
-	private M_Agente agenteAssociato;
+	private String cell;
 	
-	
-	/*costruttori*/
+
+	/*
+	 * costruttori
+	 */
 	
 	public M_Cliente(){	
 		this.agenteAssociato = Ctrl_System.getAgenteLog();
@@ -41,127 +60,142 @@ public class M_Cliente //implements Serializable
 		this.email=em;
 		this.indirizzo=ind;
 		this.telefono=tel;
-		this.cellulare=cel;
+		this.cell=cel;
 		this.fax=fax;
 		this.agenteAssociato = Ctrl_System.getAgenteLog();
 	}
 	
-	/*metodi di classe*/
+	
+	/*
+	 * metodi di classe
+	 */
 	
 	public static M_Cliente getInstance(){
 
 		return ((instance == null) ? instance = new M_Cliente() : instance);	
 	}
 	
-	/*metodi privati*/
 	
-	/*metodi pubblici*/
+	/*
+	 * metodi privati
+	 */
 	
+	private void setIdCliente(int value) {
+		this.idCliente = value;
+	}
+
+	
+	/*
+	 * metodi pubblici
+	 */
+	
+
 	public int getIdCliente() {
 		return idCliente;
 	}
-
-	public void setIdCliente(int idCliente) {
-		this.idCliente = idCliente;
+	
+	public int getORMID() {
+		return getIdCliente();
 	}
-
+	
+	public void setNome(String value) {
+		this.nome = value;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+	
+	public void setCognome(String value) {
+		this.cognome = value;
 	}
-
+	
 	public String getCognome() {
 		return cognome;
 	}
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	
+	public void setCodice_fiscale(String value) {
+		this.codice_fiscale = value;
 	}
-
+	
 	public String getCodice_fiscale() {
 		return codice_fiscale;
 	}
-
-	public void setCodice_fiscale(String codice_fiscale) {
-		this.codice_fiscale = codice_fiscale;
+	
+	public void setIndirizzo(String value) {
+		this.indirizzo = value;
+	}
+	
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+	
+	public void setEmail(String value) {
+		this.email = value;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setPartita_iva(String value) {
+		this.partita_iva = value;
 	}
 	
 	public String getPartita_iva() {
 		return partita_iva;
 	}
-
-	public void setPartita_Iva(String partita_iva) {
-		this.partita_iva = partita_iva;
-	}
-
-	public String getIndirizzo() {
-		return indirizzo;
-	}
-
-	public void setIndirizzo(String indirizzo) {
-		this.indirizzo = indirizzo;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	
+	public void setTelefono(String value) {
+		this.telefono = value;
 	}
 	
 	public String getTelefono() {
 		return telefono;
 	}
 	
-	public void setTelefono(String telefono) {
-		this.telefono=telefono;
+	public void setFax(String value) {
+		this.fax = value;
 	}
 	
-	public String getCellulare() {
-		return cellulare;
-	}
-
-	public void setCellulare(String cellulare) {
-		this.cellulare = cellulare;
-	}
-
 	public String getFax() {
 		return fax;
 	}
 	
-	public void setFax(String fax) {
-		this.fax=fax;
+	public void setCitta(String value) {
+		this.citta = value;
 	}
-
-	public M_Agente getAgenteAssociato() {
-		return agenteAssociato;
-	}
-
-	public void setAgenteAssociato(M_Agente agenteAssociato) {
-		this.agenteAssociato = agenteAssociato;
-	}
-
+	
 	public String getCitta() {
 		return citta;
 	}
-
-	public void setCitta(String citta) {
-		this.citta = citta;
+	
+	public void setCAP(String value) {
+		this.CAP = value;
 	}
-
+	
 	public String getCAP() {
 		return CAP;
 	}
-
-	public void setCAP(String cAP) {
-		CAP = cAP;
+	
+	public void setCell(String value) {
+		this.cell = value;
 	}
-
-	public void setPartita_iva(String partita_iva) {
-		this.partita_iva = partita_iva;
-	}	
+	
+	public String getCell() {
+		return cell;
+	}
+	
+	public void setAgenteAssociato(M_Agente value) {
+		this.agenteAssociato = value;
+	}
+	
+	public M_Agente getAgenteAssociato() {
+		return agenteAssociato;
+	}
+	
+	public String toString() {
+		return String.valueOf(getIdCliente());
+	}
+	
 }

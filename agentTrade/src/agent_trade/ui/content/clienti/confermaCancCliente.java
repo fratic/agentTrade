@@ -19,8 +19,8 @@ import javax.swing.ListSelectionModel;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
-import agent_trade.DynamicTreeDemo;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
+import example.DynamicTreeDemo;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -52,6 +52,7 @@ public class confermaCancCliente extends JDialog {
 	private JButton cancelButton;
 	
 	private String cliente = null; //per tenere traccia del cliente
+	
 	/*costruttori*/
 
 	public confermaCancCliente() 
@@ -92,8 +93,8 @@ public class confermaCancCliente extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Ctrl_gestisciCliente.getInstance().postConfermaCancCliente(cliente);
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
+				} 
+				catch (PersistentException e) {
 					e.printStackTrace();
 				}
 			}

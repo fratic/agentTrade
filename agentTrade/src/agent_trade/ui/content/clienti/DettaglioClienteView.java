@@ -362,24 +362,17 @@ public class DettaglioClienteView extends JPanel {
 		pannelloCampi.add(labelNome);
 		 
 		TFnome = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFnome.setBounds(336, 88, 261, 20);
 		TFnome.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFnome);
-		//TFnome.setColumns(10);
 		 
 		labelCodiceFiscale = DefaultComponentFactory.getInstance().createLabel("Codice Fiscale");
 		labelCodiceFiscale.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		//labelCodiceFiscale.setBounds(149, 133, 111, 14);
-				labelCodiceFiscale.setPreferredSize(new Dimension(150,14));
-				pannelloCampi.add(labelCodiceFiscale);
-				 
-				TFcodicefiscale = new JTextField();
-//				MODIFICA PROSSIME 4
-				//TFcodicefiscale.setBounds(336, 127, 261, 20);
-				TFcodicefiscale.setPreferredSize(new Dimension(261,20));
-				pannelloCampi.add(TFcodicefiscale);
-			
+		labelCodiceFiscale.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelCodiceFiscale);
+		 
+		TFcodicefiscale = new JTextField();
+		TFcodicefiscale.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFcodicefiscale);
 		 
 		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel("Partita Iva");
 		labelPartitaIva.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -387,11 +380,8 @@ public class DettaglioClienteView extends JPanel {
 		pannelloCampi.add(labelPartitaIva);
 
 		TFpartitaiva = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFpartitaiva.setBounds(336, 166, 261, 20);
 		TFpartitaiva.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFpartitaiva);
-		//TFpartitaiva.setColumns(10);
 		 
 		 
 		labelIndirizzo = DefaultComponentFactory.getInstance().createLabel("Indirizzo");
@@ -400,10 +390,7 @@ public class DettaglioClienteView extends JPanel {
 		pannelloCampi.add(labelIndirizzo);
 		 
 		TFindirizzo = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFindirizzo.setBounds(336, 205, 261, 20);
 		TFindirizzo.setPreferredSize(new Dimension(261,20));
-		//TFindirizzo.setColumns(10);
 		pannelloCampi.add(TFindirizzo);	
 		
 		
@@ -413,9 +400,6 @@ public class DettaglioClienteView extends JPanel {
 		pannelloCampi.add(labelCitta);
 		
 		TFcitta = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFcitta.setColumns(10);
-		//TFcitta.setBounds(336, 244, 261, 20);
 		TFcitta.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFcitta);
 		
@@ -425,9 +409,6 @@ public class DettaglioClienteView extends JPanel {
 		pannelloCampi.add(labelCAP);
 		
 		TFcap = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFcap.setColumns(10);
-		//TFcap.setBounds(336, 283, 261, 20);
 		TFcap.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFcap);
 		
@@ -438,11 +419,8 @@ public class DettaglioClienteView extends JPanel {
 		pannelloCampi.add(labelTelefono);
 		
 		TFtelefono = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFtelefono.setBounds(336, 322, 261, 20);
 		TFtelefono.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFtelefono);
-		//TFtelefono.setColumns(10);
 		
 		
 		labelCell = DefaultComponentFactory.getInstance().createLabel("Cellulare");
@@ -451,9 +429,6 @@ public class DettaglioClienteView extends JPanel {
 		pannelloCampi.add(labelCell);
 
 		TFcell = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFcell.setColumns(10);
-		//TFcell.setBounds(336, 361, 261, 20);
 		TFcell.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFcell);
 		
@@ -463,11 +438,8 @@ public class DettaglioClienteView extends JPanel {
 		pannelloCampi.add(labelFax);
 		
 		TFfax = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFfax.setBounds(336, 400, 261, 20);
 		TFfax.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFfax);
-		//TFfax.setColumns(10);
 		 
 		labelEmail = DefaultComponentFactory.getInstance().createLabel("Email: ");
 		labelEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -475,11 +447,8 @@ public class DettaglioClienteView extends JPanel {
 		pannelloCampi.add(labelEmail);
 		 
 		TFemail = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFemail.setBounds(336, 439, 261, 20);
 		TFemail.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFemail);
-		//TFemail.setColumns(10);
 		
 		labelRifAgente = DefaultComponentFactory.getInstance().createLabel("Agente di riferimento");
 		labelRifAgente.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -489,10 +458,7 @@ public class DettaglioClienteView extends JPanel {
 		TFrifAgente = new JTextField();
 		TFrifAgente.setEnabled(false);
 		TFrifAgente.setEditable(false);
-//		MODIFICA PROSSIME 4
-		//TFrifAgente.setBounds(336, 478, 261, 20);
 		TFrifAgente.setPreferredSize(new Dimension(261,20));
-		//TFrifAgente.setColumns(10);
 		pannelloCampi.add(TFrifAgente);
 		
 		labelErrore = DefaultComponentFactory.getInstance().createLabel("");
@@ -503,7 +469,6 @@ public class DettaglioClienteView extends JPanel {
 		pannelloOvest = new JPanel();
 		pannelloOvest.setPreferredSize(new Dimension(70, 601));
 		FlowLayout fl_pannelloOvest = new FlowLayout(FlowLayout.CENTER);
-		//fl_pannelloOvest.setVgap(10);
 		pannelloOvest.setLayout(fl_pannelloOvest);
 		this.add(pannelloOvest,BorderLayout.EAST);
 		
@@ -512,9 +477,6 @@ public class DettaglioClienteView extends JPanel {
 		flowLayout_1.setVgap(15);
 		pannelloBottoni.setPreferredSize(new Dimension(70, 500));//DA MODIFICARE I DUE BOTTONI SOTTO IN TEORIA NN DEVONO COMPARIRE
 		pannelloOvest.add(pannelloBottoni);
-		
-		
-		
 		
 		bottoneSalvaCliente = new JButton("");
 		bottoneSalvaCliente.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save_32.png")));
@@ -539,13 +501,11 @@ public class DettaglioClienteView extends JPanel {
 		
 		bottoneSalvaCliente.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
-//			Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFcell.getText(), (String)TFfax.getText());
 			try {
-//				Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFfax.getText());
 				Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFcell.getText(), (String)TFfax.getText());
 
-			} catch (PersistentException e) {
-				// TODO Auto-generated catch block
+			} 
+			catch (PersistentException e) {
 				e.printStackTrace();
 			}
 

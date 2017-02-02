@@ -18,7 +18,7 @@ import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.persistentTemp.Dolci;
+import agent_trade.model.M_Dolci;
 
 public class DolciCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IdProdotto;
@@ -41,20 +41,20 @@ public class DolciCriteria extends AbstractORMCriteria {
 	}
 	
 	public DolciCriteria(PersistentSession session) {
-		this(session.createCriteria(Dolci.class));
+		this(session.createCriteria(M_Dolci.class));
 	}
 	
 	public DolciCriteria() throws PersistentException {
 		this(persistent.AgentTradePersistentManager.instance().getSession());
 	}
 	
-	public Dolci uniqueDolci() {
-		return (Dolci) super.uniqueResult();
+	public M_Dolci uniqueM_Dolci() {
+		return (M_Dolci) super.uniqueResult();
 	}
 	
-	public Dolci[] listDolci() {
+	public M_Dolci[] listM_Dolci() {
 		java.util.List list = super.list();
-		return (Dolci[]) list.toArray(new Dolci[list.size()]);
+		return (M_Dolci[]) list.toArray(new M_Dolci[list.size()]);
 	}
 }
 

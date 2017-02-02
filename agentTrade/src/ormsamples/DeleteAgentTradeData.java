@@ -9,35 +9,29 @@ public class DeleteAgentTradeData {
 	public void deleteTestData() throws PersistentException {
 		PersistentTransaction t = persistent.AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try {
-			agent_trade.persistentTemp.Preventivo lagent_trademodelPreventivo= (agent_trade.persistentTemp.Preventivo)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Preventivo").setMaxResults(1).uniqueResult();
-			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelPreventivo);
+			agent_trade.model.M_Preventivo_Item lagent_trademodelM_Preventivo_Item= (agent_trade.model.M_Preventivo_Item)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Preventivo_Item").setMaxResults(1).uniqueResult();
+			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelM_Preventivo_Item);
 			
-			agent_trade.model.Preventivo_Item lagent_trademodelPreventivo_Item= (agent_trade.model.Preventivo_Item)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Preventivo_Item").setMaxResults(1).uniqueResult();
-			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelPreventivo_Item);
+			agent_trade.model.M_Agente lagent_trademodelM_Agente= (agent_trade.model.M_Agente)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Agente").setMaxResults(1).uniqueResult();
+			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelM_Agente);
 			
-			agent_trade.persistentTemp.Agente lagent_trademodelAgente= (agent_trade.persistentTemp.Agente)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Agente").setMaxResults(1).uniqueResult();
-			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelAgente);
+			agent_trade.model.M_Cliente lagent_trademodelM_Cliente= (agent_trade.model.M_Cliente)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Cliente").setMaxResults(1).uniqueResult();
+			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelM_Cliente);
 			
-			agent_trade.persistentTemp.Cliente lagent_trademodelCliente= (agent_trade.persistentTemp.Cliente)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Cliente").setMaxResults(1).uniqueResult();
-			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelCliente);
+			agent_trade.model.M_Latticini lagent_trademodelM_Latticini= (agent_trade.model.M_Latticini)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Latticini").setMaxResults(1).uniqueResult();
+			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelM_Latticini);
 			
-			agent_trade.persistentTemp.Catalogo lagent_trademodelCatalogo= (agent_trade.persistentTemp.Catalogo)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Catalogo").setMaxResults(1).uniqueResult();
-			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelCatalogo);
+			agent_trade.model.M_Carni lagent_trademodelM_Carni= (agent_trade.model.M_Carni)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Carni").setMaxResults(1).uniqueResult();
+			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelM_Carni);
 			
-			agent_trade.persistentTemp.Azienda lagent_trademodelAzienda= (agent_trade.persistentTemp.Azienda)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Azienda").setMaxResults(1).uniqueResult();
-			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelAzienda);
+			agent_trade.model.M_Vini lagent_trademodelM_Vini= (agent_trade.model.M_Vini)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Vini").setMaxResults(1).uniqueResult();
+			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelM_Vini);
 			
-			agent_trade.persistentTemp.Latticini lagent_trademodelLatticini= (agent_trade.persistentTemp.Latticini)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Latticini").setMaxResults(1).uniqueResult();
-			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelLatticini);
+			agent_trade.model.M_Dolci lagent_trademodelM_Dolci= (agent_trade.model.M_Dolci)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Dolci").setMaxResults(1).uniqueResult();
+			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelM_Dolci);
 			
-			agent_trade.persistentTemp.Carni lagent_trademodelCarni= (agent_trade.persistentTemp.Carni)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Carni").setMaxResults(1).uniqueResult();
-			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelCarni);
-			
-			agent_trade.persistentTemp.Vini lagent_trademodelVini= (agent_trade.persistentTemp.Vini)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Vini").setMaxResults(1).uniqueResult();
-			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelVini);
-			
-			agent_trade.persistentTemp.Dolci lagent_trademodelDolci= (agent_trade.persistentTemp.Dolci)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Dolci").setMaxResults(1).uniqueResult();
-			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelDolci);
+			agent_trade.model.M_Preventivo lagent_trademodelM_Preventivo= (agent_trade.model.M_Preventivo)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Preventivo").setMaxResults(1).uniqueResult();
+			persistent.AgentTradePersistentManager.instance().getSession().delete(lagent_trademodelM_Preventivo);
 			
 			t.commit();
 		}

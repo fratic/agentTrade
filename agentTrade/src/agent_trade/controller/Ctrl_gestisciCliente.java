@@ -11,8 +11,6 @@ import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
-import persistent.AgentTradePersistentManager;
-import persistent.ClienteCriteria;
 import agent_trade.model.M_Cliente;
 import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.clienti.AlberoClienti;
@@ -21,6 +19,8 @@ import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.Ricerca_cliente;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
 import agent_trade.ui.content.clienti.confermaCancCliente;
+import persistent.AgentTradePersistentManager;
+import persistent.ClienteCriteria;
 
 public class Ctrl_gestisciCliente {
 
@@ -41,10 +41,16 @@ public class Ctrl_gestisciCliente {
 		return ((instance == null) ? instance = new Ctrl_gestisciCliente() : instance);	
 	}
 
+	
+	//OSS: bisogna rivedere tutto il codice perche alune operazioni vengono 
+	//fatte a prescindere ed invece, andrebbero fatte solo se sul db è tutto ok. 
+	//Esempio, se cancello un cliente ma sul db ci sono stati problemi,
+	//il software mostra tutto come se è andato ok
+
+	
+	
 	/*metodi privati*/
 	
-	//a che serve?? 
-//	M: Serve per le espressioni regolari nel primo parametro si passa l'espressione e nel secondo la stringa che si vuole controllare 
 	private boolean check(String regex, String input){
 		
 		  Pattern pattern = Pattern.compile(regex);
@@ -57,10 +63,6 @@ public class Ctrl_gestisciCliente {
 		}
 	
 	private String ControlloCampi(String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax){
-		
-		//PERCHE UNA FUNZIONE CHE FA UN SEMPLICE CONTROLLO FA DELLE MODIFICHE ALLA VIEW???
-//		M: si è sbagliato adesso l'ho modificato: controlla prima se tutti i campi non sono vuoti
-//		poi se sono corretti
 		
 		String errore= null;
 		String campoErrato = "";
@@ -110,6 +112,7 @@ public class Ctrl_gestisciCliente {
 		return errore;
 	}
 	
+	
 	/*metodi pubblici*/
 	
 	//serve in nuovo preventivo per cercare ed inserire i clienti
@@ -136,7 +139,7 @@ public class Ctrl_gestisciCliente {
 
 			}
 			finally {
-				persistent.AgentTradePersistentManager.instance().disposePersistentManager();
+				AgentTradePersistentManager.instance().disposePersistentManager();
 			}
 						
 			if (listClienti.length!=0)
@@ -177,7 +180,7 @@ public class Ctrl_gestisciCliente {
 
 			}
 			finally {
-				persistent.AgentTradePersistentManager.instance().disposePersistentManager();
+				AgentTradePersistentManager.instance().disposePersistentManager();
 			}
 			
 			if(listClienti.length==0) {
@@ -203,37 +206,6 @@ public class Ctrl_gestisciCliente {
 		Ricerca_cliente.getInstance().setVisibleErroreRicercaCliente(false);
 	}
 	
-//	a che servono due funzioni uguali? AGGIUSTARE
-//	public void recuperaCliente(String cognome) throws PersistentException
-//	{	
-//		
-//			//A CHE SERVE QUESTA FUNZIONE??
-//			PrimaryView.getInstance().resetPannelloCentraleCliente();
-//			
-//			M_Cliente cliente = null;
-//			
-//			ClienteCriteria criteria= new ClienteCriteria();
-//			
-//			criteria.cognome.eq(cognome);
-//			criteria.agenteAssociato.equals(Ctrl_System.getInstance().getIdAgente());
-//			//IMPOSTARE L'ORDINAMENTO PER COGNOME E POI NOI IN ORDINE ALFABETICO
-//			//criteria.addOrder()
-//			M_Cliente [] listClienti = criteria.listCliente();
-//			cliente=listClienti[0];
-//			Ricerca_cliente.getInstance().dispose();
-//			Ricerca_cliente.cancInstanza();
-//			
-//			PrimaryView.initRiepilogoClienteView();
-//			PrimaryView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCellulare(),cliente.getFax(),"");
-//			PrimaryView.getInstance().disattivaSalvaModifiche(false);
-//			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
-//			PrimaryView.getInstance().setEnableTabPreventivo(true);
-//			PrimaryView.getInstance().setEnableTabCatalogo(true);
-//			PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
-//			AlberoClienti.deselezionaNodo(cognome);
-//			AlberoClienti.abilitaAlbero();
-//	}
-	
 	
 	public void recuperaCliente(int idCliente) throws PersistentException
 	{	
@@ -250,7 +222,7 @@ public class Ctrl_gestisciCliente {
 			Ricerca_cliente.cancInstanza();
 			
 			PrimaryView.initRiepilogoClienteView();
-			PrimaryView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCellulare(),cliente.getFax(),"");
+			PrimaryView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCell(),cliente.getFax(),"");
 			PrimaryView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
@@ -271,18 +243,17 @@ public class Ctrl_gestisciCliente {
 			{				
 				M_Cliente cliente=new M_Cliente();
 				
-				//cliente.setAgenteAssociato(Ctrl_System.getAgenteLog());				
 				cliente.setNome(nome);
 				cliente.setCognome(cognome);
 				cliente.setCodice_fiscale(codFiscale);
-				cliente.setPartita_Iva(partitaIva);
+				cliente.setPartita_iva(partitaIva);
 				cliente.setIndirizzo(indirizzo);
 				cliente.setEmail(email);
 				cliente.setTelefono(telefono);
 				cliente.setFax(fax);
 				cliente.setCitta(citta);
 				cliente.setCAP(cap);
-				cliente.setCellulare(cellulare);
+				cliente.setCell(cellulare);
 				
 				AgentTradePersistentManager.instance().getSession().save(cliente);
 				
@@ -343,13 +314,13 @@ public class Ctrl_gestisciCliente {
 
 			}
 			finally {
-				persistent.AgentTradePersistentManager.instance().disposePersistentManager();
+				AgentTradePersistentManager.instance().disposePersistentManager();
 			}
 		
 			cliente.setNome(nome);
 			cliente.setCognome(cognome);
 			cliente.setCodice_fiscale(codFiscale);
-			cliente.setPartita_Iva(partitaIva);
+			cliente.setPartita_iva(partitaIva);
 			cliente.setIndirizzo(indirizzo);
 			cliente.setEmail(email);
 			cliente.setTelefono(telefono);
@@ -357,7 +328,7 @@ public class Ctrl_gestisciCliente {
 			cliente.setAgenteAssociato(Ctrl_System.getAgenteLog());			
 			cliente.setCitta(citta);
 			cliente.setCAP(cap);
-			cliente.setCellulare(cellulare);
+			cliente.setCell(cellulare);
 			
 			PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 			try {
@@ -380,6 +351,8 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().disattivaInviaPosta(true);
 			AlberoClienti.updateNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 			AlberoClienti.abilitaAlbero();
+			
+			
 						
 		}
 		else{
@@ -413,7 +386,7 @@ public class Ctrl_gestisciCliente {
 //			}
 		}
 		finally {
-			persistent.AgentTradePersistentManager.instance().disposePersistentManager();
+			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 		
 		return listClienti;
@@ -473,7 +446,6 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().setModifiche(true);
 		PrimaryView.getInstance().disattivaModifica(false);
 		PrimaryView.getInstance().disattivaCancella(false);
-		//rende il bottone INVIO POSTA INVISIBILE
 		PrimaryView.getInstance().disattivaInviaPosta(false);
 		PrimaryView.getInstance().disattivaSalvaModifiche(true);
 		PrimaryView.getInstance().disattivaAnnullaModifiche(true);
@@ -527,7 +499,7 @@ public class Ctrl_gestisciCliente {
 			t.rollback();
 		}	
 		finally {
-			persistent.AgentTradePersistentManager.instance().disposePersistentManager();
+			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 //		M: PROBLEMA CON LA SELEZIONE DELL'ALBERO
 		AlberoClienti.rimuoviNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());

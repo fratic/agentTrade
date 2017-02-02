@@ -18,7 +18,7 @@ import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.persistentTemp.Vini;
+import agent_trade.model.M_Vini;
 
 public class ViniCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IdProdotto;
@@ -43,20 +43,20 @@ public class ViniCriteria extends AbstractORMCriteria {
 	}
 	
 	public ViniCriteria(PersistentSession session) {
-		this(session.createCriteria(Vini.class));
+		this(session.createCriteria(M_Vini.class));
 	}
 	
 	public ViniCriteria() throws PersistentException {
 		this(persistent.AgentTradePersistentManager.instance().getSession());
 	}
 	
-	public Vini uniqueVini() {
-		return (Vini) super.uniqueResult();
+	public M_Vini uniqueM_Vini() {
+		return (M_Vini) super.uniqueResult();
 	}
 	
-	public Vini[] listVini() {
+	public M_Vini[] listM_Vini() {
 		java.util.List list = super.list();
-		return (Vini[]) list.toArray(new Vini[list.size()]);
+		return (M_Vini[]) list.toArray(new M_Vini[list.size()]);
 	}
 }
 

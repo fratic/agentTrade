@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Database>
-
   <Setting type="256">
     <Driver>PostgreSQL</Driver>
-    <DriverFiles></DriverFiles>
+    <DriverFiles>C:\Users\Antonio\Downloads\postgresql-8.4-703.jdbc4.jar</DriverFiles>
     <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
     <DriverClass>org.postgresql.Driver</DriverClass>
-    <URL>jdbc:postgresql://localhost:5433/agentTrade</URL>
+    <URL>jdbc:postgresql://localhost:5433/agentTrade</URL> 
     <UserName>postgres</UserName>
     <Password>root</Password>
     <HostName>localhost</HostName>
@@ -17,6 +16,4 @@
     <ServerName></ServerName>
     <SelectedForm>true</SelectedForm>
   </Setting>
-
-
 </Database>

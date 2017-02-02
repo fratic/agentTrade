@@ -1,136 +1,126 @@
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
+
+/**
+ * Licensee: Universita degli Studi dell'Aquila
+ * License Type: Academic
+ */
 package agent_trade.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JButton;
+
 import org.hibernate.criterion.Projections;
 import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
 
-import persistent.PreventivoCriteria;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-//import agent_trade.persistentTemp.Dao_System;
-import agent_trade.persistentTemp.Preventivo;
+import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
+import agent_trade.ui.content.prodotti.ProdottiView;
+import persistent.AgentTradePersistentManager;
+import persistent.PreventivoCriteria;
 
+public class M_Preventivo implements Observer {
 
-public class M_Preventivo implements /*Serializable, */Observer{
 	
-	/*attributi di classe*/
+	/*
+	 * attributi di classe
+	 */
 	
-	private static M_Preventivo instance;
+	private static agent_trade.model.M_Preventivo instance;
 
-	private static int newId;//Dao_System.getInstance().loadIdPrev();
+	
+	/*
+	 * attributi privati
+	 */
 
 
-	/*attributi privati*/
-	private String idPreventivo;
-	private M_Agente rif_Agente;
+	private int idPreventivo;
 	private M_Cliente rif_Cliente;
+	private M_Agente rif_Agente;
 	private Date data;
-
-	//BIG PROBLEM NEL DB
-	private ArrayList<M_Preventivo_Item> elencoItem= new ArrayList<M_Preventivo_Item>();
-
-	public boolean equals(Object aObj) {
-		if (aObj == this)
-			return true;
-		if (!(aObj instanceof Preventivo))
-			return false;
-		Preventivo preventivo = (Preventivo)aObj;
-		if ((getIdPreventivo() != null && !getIdPreventivo().equals(preventivo.getIdPreventivo())) || (getIdPreventivo() == null && preventivo.getIdPreventivo() != null))
-			return false;
-		return true;
-	}
-	
-	public int hashCode() {
-		int hashcode = 0;
-		hashcode = hashcode + (getIdPreventivo() == null ? 0 : getIdPreventivo().hashCode());
-		return hashcode;
-	}
-		
-	
-	private List elencoITem = new ArrayList();
+	private List<M_Preventivo_Item> item = new ArrayList<M_Preventivo_Item>();
 	
 
-	/*costruttori*/
 	
-	private M_Preventivo(M_Preventivo prev){		
+	
+	/*
+	 * costruttori
+	 */
+	
+	private M_Preventivo(M_Preventivo prev) throws PersistentException{		
 		
 		this.idPreventivo=prev.idPreventivo;
 		this.data=prev.getData();
-		//this.totale=prev.totale;
 		this.rif_Agente=prev.getRif_Agente();
 		this.rif_Cliente=prev.getRif_Cliente();
-		this.elencoItem=prev.getElencoItem();
-	}
+		this.item=prev.getItem();
 	
-	public M_Preventivo()  {
+		for (int i=0; i<item.size(); i++){
+			((M_Preventivo_Item)item.get(i)).AddObserver(prev);			
+		}
 		
-		//newId++;
-//		this.idPreventivo=Integer.toString(newId);
+		
+		
+		
+		
 	}
 	
-	public void setIdPrev() throws PersistentException
-	{
-		PreventivoCriteria criteria= new PreventivoCriteria();
-		criteria.setProjection(Projections.max("id"));
-		newId=Integer.parseInt((String) criteria.uniqueResult());
-		newId++;
-		this.idPreventivo=Integer.toString(newId);
-		System.out.println("ID PREV: "+newId);
+	public M_Preventivo()   {
+		
 	}
 	
-	/*metodi di classe*/
+	
+	/*
+	 * metodi di classe
+	 */
 	
 	public static M_Preventivo getInstance() throws PersistentException{
 		return ((instance == null) ? instance = new M_Preventivo() : instance);	
 	}
 	
-	public static M_Preventivo getInstance(M_Preventivo prev){
-		//return ((instance == null) ? instance= new M_Preventivo(prev) : instance);	
+	public static M_Preventivo getInstance(M_Preventivo prev) throws PersistentException{
 		return (instance= new M_Preventivo(prev));	
 
 	}
-	
-	
-	/*metodi privati*/
-	/*metodi pubblici*/
-	
-	public static int getNumprev(){
-		return (newId);	
-	}
-	
-//	public static void setNumprev(int id){
-//		newId=id;	
-//	}
-			
-	public ArrayList<M_Preventivo_Item> getElencoItem() {
-		return elencoItem;
-	}
 
-	public  void setElencoItem(ArrayList<M_Preventivo_Item> elencoItem) {
-		this.elencoItem = elencoItem;
-	}
-
-	public static void cancIstanza(){
+	public static void cancIstanza() {
 		instance=null;
 	}
 	
-	public M_Cliente getRif_Cliente() {
-		return rif_Cliente;
-	}
 	
-	public String getIdPreventivo() {
+	/*
+	 * metodi privati
+	 */
+	
+	
+	/*
+	 * metodi pubblici
+	 */
+	
+		
+	public int getIdPreventivo() {
 		return idPreventivo;
 	}
-
-	public void setIdPreventivo(String idPreventivo) {
-		this.idPreventivo = idPreventivo;
+	
+	public int getORMID() {
+		return getIdPreventivo();
 	}
-
+	
 	public void setData(java.util.Date value) {
 		this.data = value;
 	}
@@ -138,67 +128,128 @@ public class M_Preventivo implements /*Serializable, */Observer{
 	public java.util.Date getData() {
 		return data;
 	}
-
 	
-	public void setElencoITem(List value) {
-		this.elencoITem = value;
+	public void setRif_Agente(agent_trade.model.M_Agente value) {
+		this.rif_Agente = value;
 	}
 	
-	public List getElencoITem() {
-		return elencoITem;
-	}
-
-	public M_Agente getRif_Agente() {
+	public agent_trade.model.M_Agente getRif_Agente() {
 		return rif_Agente;
 	}
-
-	public void setRif_Agente(M_Agente rif_Agente) {
-		this.rif_Agente = rif_Agente;
-	}
-
-	public void setRif_Cliente(M_Cliente rif_Cliente) {
-		this.rif_Cliente = rif_Cliente;
+	
+	public void setRif_Cliente(agent_trade.model.M_Cliente value) {
+		this.rif_Cliente = value;
 	}
 	
+	public agent_trade.model.M_Cliente getRif_Cliente() {
+		return rif_Cliente;
+	}
+	
+	
+	public void setItem(java.util.List<agent_trade.model.M_Preventivo_Item> item) {
+		this.item = item;
+	}
+	
+	
+	public List<M_Preventivo_Item> getItem() {
+		return item;
+	}
+	
+	
+	public void setIdPreventivo(int idPreventivo) {
+		this.idPreventivo = idPreventivo;
+	}
+	
+	
+	public String toString() {
+		return String.valueOf(getIdPreventivo());
+	}
+		
+	
+	public void setIdPrev() throws PersistentException
+	{
+
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try{
+			AgentTradePersistentManager.instance().getSession().save(this);	
+			// commit per il salvataggio
+			t.commit();
+
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+		
+	}
+	
+	public void annullaPrev() throws PersistentException
+	{
+
+		//e se è stato aperto in modifica un preventivo e si clicca su annulla? cancella il prev? 
+		//sbagliatissimo
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try{
+			AgentTradePersistentManager.instance().getSession().delete(this);	
+			// commit per il salvataggio
+			t.commit();
+
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+		finally{
+			cancIstanza();
+		}
+		
+	}
+	
+	
+	
+
 	public M_Preventivo_Item addItem(M_Prodotto Prodotto ) throws PersistentException{
 		
 		M_Preventivo_Item it= new M_Preventivo_Item(M_Preventivo.getInstance(), Prodotto);
-		this.elencoItem.add(it);
-		this.elencoITem.add(it);
+		it.setSconto( 0);
+		this.item.add(it);
+
 		return it;
 	}
 	
+	
 	public void update(Observable observer, Object obj) {
-
+		
 		try {
+			
+//			alto accoppiamento
+			
 			Ctrl_elaboraPreventivo.getInstance().refresh(observer, this);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (PersistentException e) {
 			e.printStackTrace();
 		}
+	
 	}
 	
 	
 	public float calcolaTotale(){
 		float totale=0;
-		Iterator iteraItem = null;
+		Iterator<?> iteraItem = null;
 		
-		iteraItem = this.getElencoItem().iterator();
+		iteraItem = this.getItem().iterator();
 		M_Preventivo_Item item;
 	
 		while (iteraItem.hasNext()) 
 		{
 			item = (M_Preventivo_Item) iteraItem.next();
 			totale= totale+(item.getQuantita()*item.getIdProdotto().getPrezzo());
-//			System.out.println("Quantità: "+item.getQuantita()+" prezzo: "+item.getIdProdotto().getPrezzo());
 		}
 		return totale;
 	}
 
-	public void addQuant(int id, int qt) {
+	public void addQuant(int id, int qt) throws PersistentException {
 		
-		Iterator iteraItem = null;
-		iteraItem = this.getElencoItem().iterator();
+		Iterator<?> iteraItem = null;
+		iteraItem = this.getItem().iterator();
 		M_Preventivo_Item item;
 	
 		while (iteraItem.hasNext()) 
@@ -206,25 +257,28 @@ public class M_Preventivo implements /*Serializable, */Observer{
 			item = (M_Preventivo_Item) iteraItem.next();
 			if (item.getIdProdotto().getIdProdotto()==id)
 			{
-				item.setQuantita(qt);
+				item.setQuantita(qt);				
 			}
 		}
 	}
 
+	
 	public void removeItem(int id) {
 
 		Iterator<?> iteraItem = null;
-		iteraItem = this.getElencoItem().iterator();
+		iteraItem = this.getItem().iterator();
 		M_Preventivo_Item item;
 	
 		while (iteraItem.hasNext()) {
 			item = (M_Preventivo_Item) iteraItem.next();
 			if (item.getIdProdotto().getIdProdotto()==id)
 			{
-				this.elencoItem.remove(item);
-				item.cancellaItem(this);
+				this.item.remove(item);
+				item.cancellaItem((Observer) this);
 				break;
 			}
 		}
 	}
+
+	
 }

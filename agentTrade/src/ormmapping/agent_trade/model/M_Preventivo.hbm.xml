@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="agent_trade.model.M_Preventivo" table="Preventivo" lazy="false">
+		<id name="idPreventivo" column="IdPreventivo" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="rif_Cliente" cascade="lock" column="M_ClienteIdCliente" class="agent_trade.model.M_Cliente" not-null="false" lazy="proxy">
+		</many-to-one>
+		<many-to-one name="rif_Agente" cascade="lock" column="M_AgenteIdAgente" class="agent_trade.model.M_Agente" not-null="false" lazy="proxy">
+		</many-to-one>
+		<property name="data" column="Data" type="date" not-null="false" lazy="false"/>
+		<list name="item" lazy="true" cascade="all-delete-orphan" inverse="false">
+			<key column="M_PreventivoIdPreventivo" not-null="true"/>
+			<index column="M_PreventivoIndex" type="integer"/>
+			<one-to-many class="agent_trade.model.M_Preventivo_Item"/>
+		</list>
+	</class>
+</hibernate-mapping>

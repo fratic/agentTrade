@@ -17,6 +17,8 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import javax.xml.crypto.Data;
 
+import org.orm.PersistentException;
+
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.ui.PrimaryView;
 
@@ -70,32 +72,26 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloNord.add(pannelloDestra, BorderLayout.EAST);
 		
 		labelPrev = DefaultComponentFactory.getInstance().createLabel("Preventivo n\u00B0");
-		//labelPrev.setBounds(488, 19, 97, 14);
 		labelPrev.setPreferredSize(new Dimension(96,14));
 		pannelloDestra.add(labelPrev);
 		
 		labelNumPrev = DefaultComponentFactory.getInstance().createLabel("1");
-		//labelNumPrev.setBounds(582, 19, 27, 14);
 		labelNumPrev.setPreferredSize(new Dimension(27,14));
 		pannelloDestra.add(labelNumPrev);
 		
 		labelDel = DefaultComponentFactory.getInstance().createLabel("del");
-		//labelDel.setBounds(618, 19, 40, 14);
 		labelDel.setPreferredSize(new Dimension(45,14));
 		pannelloDestra.add(labelDel);
 		
 		labelData = DefaultComponentFactory.getInstance().createLabel("03/11/2015");
-		//labelData.setBounds(655, 19, 69, 14);
 		labelData.setPreferredSize(new Dimension(79,14));
 		pannelloDestra.add(labelData);
 		
 		lblNewLabel = new JLabel("effettuato dall'agente: ");
-		//lblNewLabel.setBounds(488, 44, 128, 14);
 		lblNewLabel.setPreferredSize(new Dimension(128,14));
 		pannelloDestra.add(lblNewLabel);
 		
 		labelAgente = new JLabel();
-		//labelAgente.setBounds(628, 44, 128, 14);
 		labelAgente.setPreferredSize(new Dimension(128,15));
 		pannelloDestra.add(labelAgente);
 		
@@ -106,7 +102,6 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		bottoneAnnulla = new JButton("");
 		bottoneAnnulla.setToolTipText("Annulla il preventivo in corso");
 		bottoneAnnulla.setIcon(new ImageIcon(IntestazioneNuovoPreventivoView.class.getResource("/agent_trade/ui/img/close_icon.png")));
-		//bottoneAnnulla.setBounds(693, 65, 30, 30);
 		bottoneAnnulla.setPreferredSize(new Dimension(20, 20));
 		pannelloDestra.add(bottoneAnnulla);
 		
@@ -115,12 +110,10 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloNord.add(pannelloSinistra, BorderLayout.WEST);
 		
 		labelCl = DefaultComponentFactory.getInstance().createLabel("Cliente: ");
-		//labelCl.setBounds(21, 19, 69, 14);
 		labelCl.setPreferredSize(new Dimension(50, 14));
 		pannelloSinistra.add(labelCl);
 		
 		labelCliente = DefaultComponentFactory.getInstance().createLabel("");
-		//labelCliente.setBounds(88, 19, 206, 14);
 		labelCliente.setPreferredSize(new Dimension(206,14));
 		pannelloSinistra.add(labelCliente);
 		
@@ -129,7 +122,6 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloSinistra.add(labelvuota2);
 		
 		indirizzoCliente = new JLabel("");
-		//indirizzoCliente.setBounds(88, 44, 206, 14);
 		indirizzoCliente.setPreferredSize(new Dimension(206,14));
 		pannelloSinistra.add(indirizzoCliente);
 		
@@ -138,7 +130,6 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloSinistra.add(labelvuota3);
 		
 		altreInfoCliente = new JLabel("");
-		//altreInfoCliente.setBounds(88, 69, 206, 14);
 		altreInfoCliente.setPreferredSize(new Dimension(206,14));
 		pannelloSinistra.add(altreInfoCliente);
 			
@@ -151,7 +142,6 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		btnNewButton = new JButton();
 		btnNewButton.setToolTipText("Aggiungi prodotti a questo preventivo");
 		btnNewButton.setIcon(new ImageIcon(IntestazioneNuovoPreventivoView.class.getResource("/agent_trade/ui/img/add-item.png")));
-		//btnNewButton.setBounds(346, 103, 40, 30);
 		btnNewButton.setPreferredSize(new Dimension(40,30));
 		pannelloSud.add(btnNewButton);
 		
@@ -167,7 +157,12 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		
 		bottoneAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			Ctrl_elaboraPreventivo.getInstance().annullaPreventivo();
+				try {
+					Ctrl_elaboraPreventivo.getInstance().annullaPreventivo();
+				} 
+				catch (PersistentException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		
@@ -200,8 +195,8 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		this.labelAgente.setText(a);
 	}
 	
-	public void setNumPrev(String n) {
-		this.labelNumPrev.setText(n);
+	public void setNumPrev(int i) {
+		this.labelNumPrev.setText(""+i);
 	}
 
 	public void setData(Date data) {

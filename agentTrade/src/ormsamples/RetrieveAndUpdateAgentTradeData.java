@@ -9,45 +9,37 @@ public class RetrieveAndUpdateAgentTradeData {
 	public void retrieveAndUpdateTestData() throws PersistentException {
 		PersistentTransaction t = persistent.AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try {
-			agent_trade.persistentTemp.Preventivo lagent_trademodelPreventivo= (agent_trade.persistentTemp.Preventivo)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Preventivo").setMaxResults(1).uniqueResult();
+			agent_trade.model.M_Preventivo_Item lagent_trademodelM_Preventivo_Item= (agent_trade.model.M_Preventivo_Item)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Preventivo_Item").setMaxResults(1).uniqueResult();
 			// Update the properties of the persistent object
-			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelPreventivo);
+			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelM_Preventivo_Item);
 			
-			agent_trade.model.Preventivo_Item lagent_trademodelPreventivo_Item= (agent_trade.model.Preventivo_Item)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Preventivo_Item").setMaxResults(1).uniqueResult();
+			agent_trade.model.M_Agente lagent_trademodelM_Agente= (agent_trade.model.M_Agente)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Agente").setMaxResults(1).uniqueResult();
 			// Update the properties of the persistent object
-			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelPreventivo_Item);
+			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelM_Agente);
 			
-			agent_trade.persistentTemp.Agente lagent_trademodelAgente= (agent_trade.persistentTemp.Agente)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Agente").setMaxResults(1).uniqueResult();
+			agent_trade.model.M_Cliente lagent_trademodelM_Cliente= (agent_trade.model.M_Cliente)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Cliente").setMaxResults(1).uniqueResult();
 			// Update the properties of the persistent object
-			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelAgente);
+			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelM_Cliente);
 			
-			agent_trade.persistentTemp.Cliente lagent_trademodelCliente= (agent_trade.persistentTemp.Cliente)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Cliente").setMaxResults(1).uniqueResult();
+			agent_trade.model.M_Latticini lagent_trademodelM_Latticini= (agent_trade.model.M_Latticini)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Latticini").setMaxResults(1).uniqueResult();
 			// Update the properties of the persistent object
-			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelCliente);
+			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelM_Latticini);
 			
-			agent_trade.persistentTemp.Catalogo lagent_trademodelCatalogo= (agent_trade.persistentTemp.Catalogo)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Catalogo").setMaxResults(1).uniqueResult();
+			agent_trade.model.M_Carni lagent_trademodelM_Carni= (agent_trade.model.M_Carni)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Carni").setMaxResults(1).uniqueResult();
 			// Update the properties of the persistent object
-			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelCatalogo);
+			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelM_Carni);
 			
-			agent_trade.persistentTemp.Azienda lagent_trademodelAzienda= (agent_trade.persistentTemp.Azienda)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Azienda").setMaxResults(1).uniqueResult();
+			agent_trade.model.M_Vini lagent_trademodelM_Vini= (agent_trade.model.M_Vini)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Vini").setMaxResults(1).uniqueResult();
 			// Update the properties of the persistent object
-			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelAzienda);
+			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelM_Vini);
 			
-			agent_trade.persistentTemp.Latticini lagent_trademodelLatticini= (agent_trade.persistentTemp.Latticini)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Latticini").setMaxResults(1).uniqueResult();
+			agent_trade.model.M_Dolci lagent_trademodelM_Dolci= (agent_trade.model.M_Dolci)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Dolci").setMaxResults(1).uniqueResult();
 			// Update the properties of the persistent object
-			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelLatticini);
+			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelM_Dolci);
 			
-			agent_trade.persistentTemp.Carni lagent_trademodelCarni= (agent_trade.persistentTemp.Carni)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Carni").setMaxResults(1).uniqueResult();
+			agent_trade.model.M_Preventivo lagent_trademodelM_Preventivo= (agent_trade.model.M_Preventivo)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.M_Preventivo").setMaxResults(1).uniqueResult();
 			// Update the properties of the persistent object
-			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelCarni);
-			
-			agent_trade.persistentTemp.Vini lagent_trademodelVini= (agent_trade.persistentTemp.Vini)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Vini").setMaxResults(1).uniqueResult();
-			// Update the properties of the persistent object
-			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelVini);
-			
-			agent_trade.persistentTemp.Dolci lagent_trademodelDolci= (agent_trade.persistentTemp.Dolci)persistent.AgentTradePersistentManager.instance().getSession().createQuery("From agent_trade.model.Dolci").setMaxResults(1).uniqueResult();
-			// Update the properties of the persistent object
-			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelDolci);
+			persistent.AgentTradePersistentManager.instance().getSession().update(lagent_trademodelM_Preventivo);
 			
 			t.commit();
 		}
@@ -57,68 +49,53 @@ public class RetrieveAndUpdateAgentTradeData {
 	}
 	
 	public void retrieveByCriteria() throws PersistentException {
-//		System.out.println("Retrieving Preventivo by PreventivoCriteria");
-//		agent_trade.model.PreventivoCriteria lagent_trademodelPreventivoCriteria = new agent_trade.model.PreventivoCriteria();
-//		// Please uncomment the follow line and fill in parameter(s)
-//		//lagent_trademodelPreventivoCriteria.idPreventivo.eq();
-//		System.out.println(lagent_trademodelPreventivoCriteria.uniquePreventivo());
-//		
-//		System.out.println("Retrieving Preventivo_Item by Preventivo_ItemCriteria");
-//		agent_trade.model.Preventivo_ItemCriteria lagent_trademodelPreventivo_ItemCriteria = new agent_trade.model.Preventivo_ItemCriteria();
-//		// Please uncomment the follow line and fill in parameter(s)
-//		//lagent_trademodelPreventivo_ItemCriteria.idPreventivo_Item.eq();
-//		System.out.println(lagent_trademodelPreventivo_ItemCriteria.uniquePreventivo_Item());
-		
-		System.out.println("Retrieving Agente by AgenteCriteria");
-		persistent.AgenteCriteria lagent_trademodelAgenteCriteria = new persistent.AgenteCriteria();
+		System.out.println("Retrieving M_Preventivo_Item by M_Preventivo_ItemCriteria");
+		persistent.Preventivo_ItemCriteria lagent_trademodelM_Preventivo_ItemCriteria = new persistent.Preventivo_ItemCriteria();
 		// Please uncomment the follow line and fill in parameter(s)
-		//lagent_trademodelAgenteCriteria.IdAgente.eq();
+		//lagent_trademodelM_Preventivo_ItemCriteria.idPreventivo_Item.eq();
+		System.out.println(lagent_trademodelM_Preventivo_ItemCriteria.uniqueM_Preventivo_Item());
 		
-		lagent_trademodelAgenteCriteria.nome.eq("Antonio");
-
-		System.out.println(lagent_trademodelAgenteCriteria.uniqueAgente());
+		System.out.println("Retrieving M_Agente by M_AgenteCriteria");
+		persistent.AgenteCriteria lagent_trademodelM_AgenteCriteria = new persistent.AgenteCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lagent_trademodelM_AgenteCriteria.IdAgente.eq();
+		System.out.println(lagent_trademodelM_AgenteCriteria.uniqueAgente());
 		
-//		System.out.println("Retrieving Cliente by ClienteCriteria");
-//		agent_trade.model.ClienteCriteria lagent_trademodelClienteCriteria = new agent_trade.model.ClienteCriteria();
-//		// Please uncomment the follow line and fill in parameter(s)
-//		//lagent_trademodelClienteCriteria.idCliente.eq();
-//		System.out.println(lagent_trademodelClienteCriteria.uniqueCliente());
-//		
-//		System.out.println("Retrieving Catalogo by CatalogoCriteria");
-//		agent_trade.model.CatalogoCriteria lagent_trademodelCatalogoCriteria = new agent_trade.model.CatalogoCriteria();
-//		// Please uncomment the follow line and fill in parameter(s)
-//		//lagent_trademodelCatalogoCriteria.idCatalogo.eq();
-//		System.out.println(lagent_trademodelCatalogoCriteria.uniqueCatalogo());
-//		
-//		System.out.println("Retrieving Azienda by AziendaCriteria");
-//		agent_trade.model.AziendaCriteria lagent_trademodelAziendaCriteria = new agent_trade.model.AziendaCriteria();
-//		// Please uncomment the follow line and fill in parameter(s)
-//		//lagent_trademodelAziendaCriteria.idAzienda.eq();
-//		System.out.println(lagent_trademodelAziendaCriteria.uniqueAzienda());
-//		
-//		System.out.println("Retrieving Latticini by LatticiniCriteria");
-//		agent_trade.model.LatticiniCriteria lagent_trademodelLatticiniCriteria = new agent_trade.model.LatticiniCriteria();
-//		// Please uncomment the follow line and fill in parameter(s)
-//		//lagent_trademodelLatticiniCriteria.IdProdotto.eq();
-//		System.out.println(lagent_trademodelLatticiniCriteria.uniqueLatticini());
-//		
-//		System.out.println("Retrieving Carni by CarniCriteria");
-//		agent_trade.model.CarniCriteria lagent_trademodelCarniCriteria = new agent_trade.model.CarniCriteria();
-//		// Please uncomment the follow line and fill in parameter(s)
-//		//lagent_trademodelCarniCriteria.IdProdotto.eq();
-//		System.out.println(lagent_trademodelCarniCriteria.uniqueCarni());
-//		
-//		System.out.println("Retrieving Vini by ViniCriteria");
-//		agent_trade.model.ViniCriteria lagent_trademodelViniCriteria = new agent_trade.model.ViniCriteria();
-//		// Please uncomment the follow line and fill in parameter(s)
-//		//lagent_trademodelViniCriteria.IdProdotto.eq();
-//		System.out.println(lagent_trademodelViniCriteria.uniqueVini());
-//		
-//		System.out.println("Retrieving Dolci by DolciCriteria");
-//		agent_trade.model.DolciCriteria lagent_trademodelDolciCriteria = new agent_trade.model.DolciCriteria();
-//		// Please uncomment the follow line and fill in parameter(s)
-//		//lagent_trademodelDolciCriteria.IdProdotto.eq();
-//		System.out.println(lagent_trademodelDolciCriteria.uniqueDolci());
+		System.out.println("Retrieving M_Cliente by M_ClienteCriteria");
+		persistent.ClienteCriteria lagent_trademodelM_ClienteCriteria = new persistent.ClienteCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lagent_trademodelM_ClienteCriteria.idCliente.eq();
+		System.out.println(lagent_trademodelM_ClienteCriteria.uniqueM_Cliente());
+		
+		System.out.println("Retrieving M_Latticini by M_LatticiniCriteria");
+		persistent.LatticiniCriteria lagent_trademodelM_LatticiniCriteria = new persistent.LatticiniCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lagent_trademodelM_LatticiniCriteria.IdProdotto.eq();
+		System.out.println(lagent_trademodelM_LatticiniCriteria.uniqueM_Latticini());
+		
+		System.out.println("Retrieving M_Carni by M_CarniCriteria");
+		persistent.CarniCriteria lagent_trademodelM_CarniCriteria = new persistent.CarniCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lagent_trademodelM_CarniCriteria.IdProdotto.eq();
+		System.out.println(lagent_trademodelM_CarniCriteria.uniqueM_Carni());
+		
+		System.out.println("Retrieving M_Vini by M_ViniCriteria");
+		persistent.ViniCriteria lagent_trademodelM_ViniCriteria = new persistent.ViniCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lagent_trademodelM_ViniCriteria.IdProdotto.eq();
+		System.out.println(lagent_trademodelM_ViniCriteria.uniqueM_Vini());
+		
+		System.out.println("Retrieving M_Dolci by M_DolciCriteria");
+		persistent.DolciCriteria lagent_trademodelM_DolciCriteria = new persistent.DolciCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lagent_trademodelM_DolciCriteria.IdProdotto.eq();
+		System.out.println(lagent_trademodelM_DolciCriteria.uniqueM_Dolci());
+		
+		System.out.println("Retrieving M_Preventivo by M_PreventivoCriteria");
+		persistent.PreventivoCriteria lagent_trademodelM_PreventivoCriteria = new persistent.PreventivoCriteria();
+		// Please uncomment the follow line and fill in parameter(s)
+		//lagent_trademodelM_PreventivoCriteria.idPreventivo.eq();
+		System.out.println(lagent_trademodelM_PreventivoCriteria.uniquePreventivo());
 		
 	}
 	
@@ -128,7 +105,7 @@ public class RetrieveAndUpdateAgentTradeData {
 			RetrieveAndUpdateAgentTradeData retrieveAndUpdateAgentTradeData = new RetrieveAndUpdateAgentTradeData();
 			try {
 				retrieveAndUpdateAgentTradeData.retrieveAndUpdateTestData();
-				retrieveAndUpdateAgentTradeData.retrieveByCriteria();
+				//retrieveAndUpdateAgentTradeData.retrieveByCriteria();
 			}
 			finally {
 				persistent.AgentTradePersistentManager.instance().disposePersistentManager();

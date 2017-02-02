@@ -25,7 +25,7 @@ public class DisableButton extends JButton {
         	
             	JTable table=ProdottiView.getInstance().getTable();
             	String sel= (String)table.getValueAt(table.getSelectedRow(),0);
-            	JButton jb= (JButton)table.getValueAt(table.getSelectedRow(),5);
+            	JButton jb= (JButton)table.getValueAt(table.getSelectedRow(),4);
 
         		try {
 					Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel), jb);

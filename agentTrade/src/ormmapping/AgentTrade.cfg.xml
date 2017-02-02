@@ -11,18 +11,22 @@ License Type: Academic
    	<!-- properties -->
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="connection.driver_class">org.postgresql.Driver</property>
-		<property name="connection.url">jdbc:postgresql://localhost:5433/agentTrade</property>
+		<property name="connection.url">jdbc:postgresql://localhost:5433/agentTrade</property>  
 		<property name="connection.username">postgres</property>
 		<property name="connection.password">root</property>
+		<property name="hibernate.connection.provider_class">org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider</property>
+		<property name="hibernate.c3p0.acquire_increment">1</property>
+		<property name="hibernate.c3p0.idle_test_period">0</property>
+		<property name="hibernate.c3p0.min_size">1</property>
+		<property name="hibernate.c3p0.max_size">15</property>
+		<property name="hibernate.c3p0.timeout">10</property>
 		<property name="show_sql">false</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
 		<!-- mapping files -->
-		<mapping resource="ormmapping/agent_trade/model/Agente.hbm.xml" />
-		<mapping resource="ormmapping/agent_trade/model/Azienda.hbm.xml" />
-		<mapping resource="ormmapping/agent_trade/model/Catalogo.hbm.xml" />
-		<mapping resource="ormmapping/agent_trade/model/Cliente.hbm.xml" />
-		<mapping resource="ormmapping/agent_trade/model/Preventivo.hbm.xml" />
-		<mapping resource="ormmapping/agent_trade/model/Preventivo_Item.hbm.xml" />
-		<mapping resource="ormmapping/agent_trade/model/Prodotto.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/M_Agente.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/M_Cliente.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/M_Preventivo.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/M_Preventivo_Item.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/M_Prodotto.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

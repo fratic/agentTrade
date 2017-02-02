@@ -27,7 +27,6 @@ public class Main {
 		splash.setVisible(true); 
 		SwingUtilities.invokeLater(new Runnable() {
 			
-			@Override
 			public void run() {
 								
 				try {
@@ -49,15 +48,14 @@ public class Main {
 				    LoginView.getInstance().setVisible(true);
 					splash.dispose();
 					
-					
 			    } 
 				catch (InterruptedException e) {
 					e.printStackTrace();
-				} catch (UnsupportedLookAndFeelException e) {
-					// TODO Auto-generated catch block
+				} 
+				catch (UnsupportedLookAndFeelException e) {
 					e.printStackTrace();
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
+				} 
+				catch (ParseException e) {
 					e.printStackTrace();
 				}
 			}

@@ -33,7 +33,6 @@ public class LoginView extends JFrame {
 	
 	private static final int WIDTH = 370;
 	private static final int HEIGHT = 240;
-	private static final long serialVersionUID = 1L;
 	
 	/*attributi privati*/
 
@@ -41,7 +40,7 @@ public class LoginView extends JFrame {
 	private JLayeredPane layeredPane;
 	
 	private JTextField username;
-	private JPasswordField password; //DA SISTEMARE. FATTO SOLO PER PROVA
+	private JPasswordField password; 
 	
 	private JLabel mex;
 	private JLabel labelUser;
@@ -108,13 +107,7 @@ public class LoginView extends JFrame {
 		
 		buttoneAccedi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					Ctrl_System.getInstance().login((String)username.getText(), (String)password.getText());
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
-					System.out.println("IN CATCH");
-					e.printStackTrace();
-				}
+				Ctrl_System.getInstance().login((String)username.getText(), (String)password.getText());
 			}
 		});	
 	}

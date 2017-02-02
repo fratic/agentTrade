@@ -54,14 +54,10 @@ public class RiepilogoItemPreventivoView extends JPanel
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.menu);
-//		MODIFICA
 		panel.setLayout(new BorderLayout());
-		//panel.setBounds(0, 0, 733, 457);
 		add(panel);
 		
 		panelloTabella = new JPanel();
-//		MODIFICA PROSSIME 4 RIGHE
-		//panelloTabella.setBounds(0, 4, 733, 360);
 		panelloTabella.setPreferredSize(new Dimension(733,360));
 		panel.add(panelloTabella, BorderLayout.CENTER);
 		panelloTabella.setLayout(new GridLayout(1,1));
@@ -79,55 +75,44 @@ public class RiepilogoItemPreventivoView extends JPanel
 		
 		table.setRowHeight(25);
 		scrollPane = new JScrollPane(table);
-//		MODIFICA PROSSIMA RIGA
-		//scrollPane.setBounds(0, 0, 733, 360);
 		panelloTabella.add(scrollPane);
 	  
 		panelloRiepilogo = new JPanel();
-//		MODIFICA
 		panelloRiepilogo.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		panelloRiepilogo.setBackground(SystemColor.scrollbar);
-		//panelloRiepilogo.setBounds(0, 372, 733, 85);
 		panelloRiepilogo.setBorder(new EmptyBorder(0, 0, 0, 30));
 		panelloRiepilogo.setPreferredSize(new Dimension(733,85));
 		panel.add(panelloRiepilogo,BorderLayout.SOUTH);
 
-//		MODIFICA ORDINE INSERIMENTO LABEL E FARE MODIFICHE	
 		sottoPannello = new JPanel();
 		sottoPannello.setBackground(SystemColor.scrollbar);
 		sottoPannello.setPreferredSize(new Dimension(180, 77));
 		panelloRiepilogo.add(sottoPannello);
 		
 		JLabel labelImponibile = new JLabel("Imponibile");
-		//labelImponibile.setBounds(512, 8, 72, 14);
 		labelImponibile.setPreferredSize(new Dimension(72,14));
 		sottoPannello.add(labelImponibile);
 		
 		textFieldImponibile = new JTextField();
 		textFieldImponibile.setColumns(10);
-		//textFieldImponibile.setBounds(594, 5, 94, 20);
 		textFieldImponibile.setPreferredSize(new Dimension(94,20));
 		sottoPannello.add(textFieldImponibile);
 		
 		JLabel labelIVA = new JLabel("I.V.A.");
-		//labelIVA.setBounds(512, 33, 72, 14);
 		labelIVA.setPreferredSize(new Dimension(72,14));
 		sottoPannello.add(labelIVA);
 		
 		textFieldIVA = new JTextField();
 		textFieldIVA.setColumns(10);
-		//textFieldIVA.setBounds(594, 30, 94, 20);
 		textFieldIVA.setPreferredSize(new Dimension(94,20));
 		sottoPannello.add(textFieldIVA);
 		
 		JLabel labelTotale = new JLabel("Totale");
-		//labelTotale.setBounds(512, 58, 72, 14);
 		labelTotale.setPreferredSize(new Dimension(72,14));
 		sottoPannello.add(labelTotale);
 		
 		textFieldTotale = new JTextField();
 		textFieldTotale.setColumns(10);
-		//textFieldTotale.setBounds(594, 55, 94, 20);
 		textFieldTotale.setPreferredSize(new Dimension(94,20));
 		sottoPannello.add(textFieldTotale);
 

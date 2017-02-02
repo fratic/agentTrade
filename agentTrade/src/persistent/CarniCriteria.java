@@ -18,7 +18,7 @@ import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.persistentTemp.Carni;
+import agent_trade.model.M_Carni;
 
 public class CarniCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IdProdotto;
@@ -43,20 +43,20 @@ public class CarniCriteria extends AbstractORMCriteria {
 	}
 	
 	public CarniCriteria(PersistentSession session) {
-		this(session.createCriteria(Carni.class));
+		this(session.createCriteria(M_Carni.class));
 	}
 	
 	public CarniCriteria() throws PersistentException {
 		this(persistent.AgentTradePersistentManager.instance().getSession());
 	}
 	
-	public Carni uniqueCarni() {
-		return (Carni) super.uniqueResult();
+	public M_Carni uniqueM_Carni() {
+		return (M_Carni) super.uniqueResult();
 	}
 	
-	public Carni[] listCarni() {
+	public M_Carni[] listM_Carni() {
 		java.util.List list = super.list();
-		return (Carni[]) list.toArray(new Carni[list.size()]);
+		return (M_Carni[]) list.toArray(new M_Carni[list.size()]);
 	}
 }
 

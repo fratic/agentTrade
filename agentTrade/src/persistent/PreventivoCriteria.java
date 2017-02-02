@@ -21,23 +21,24 @@ import org.orm.criteria.*;
 import agent_trade.model.M_Preventivo;
 
 public class PreventivoCriteria extends AbstractORMCriteria {
-	public final StringExpression idPreventivo;
+	public final IntegerExpression idPreventivo;
 	public final IntegerExpression rif_ClienteId;
 	public final AssociationExpression rif_Cliente;
 	public final IntegerExpression rif_AgenteId;
 	public final AssociationExpression rif_Agente;
 	public final DateExpression data;
-	public final CollectionExpression elencoITem;
+	public final CollectionExpression item;
 	
 	public PreventivoCriteria(Criteria criteria) {
 		super(criteria);
-		idPreventivo = new StringExpression("idPreventivo", this);
+		idPreventivo = new IntegerExpression("idPreventivo", this);
 		rif_ClienteId = new IntegerExpression("rif_Cliente.idCliente", this);
 		rif_Cliente = new AssociationExpression("rif_Cliente", this);
 		rif_AgenteId = new IntegerExpression("rif_Agente.IdAgente", this);
 		rif_Agente = new AssociationExpression("rif_Agente", this);
 		data = new DateExpression("data", this);
-		elencoITem = new CollectionExpression("elencoITem", this);
+		item = new CollectionExpression("item", this);
+		
 	}
 	
 	public PreventivoCriteria(PersistentSession session) {
@@ -56,8 +57,8 @@ public class PreventivoCriteria extends AbstractORMCriteria {
 		return new AgenteCriteria(createCriteria("rif_Agente"));
 	}
 	
-	public Preventivo_ItemCriteria createElencoITemCriteria() {
-		return new Preventivo_ItemCriteria(createCriteria("elencoITem"));
+	public Preventivo_ItemCriteria createItemCriteria() {
+		return new Preventivo_ItemCriteria(createCriteria("item"));
 	}
 	
 	public M_Preventivo uniquePreventivo() {

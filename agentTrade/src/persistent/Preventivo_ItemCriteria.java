@@ -18,15 +18,14 @@ import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.model.Preventivo_Item;
+import agent_trade.model.M_Preventivo_Item;
 
 public class Preventivo_ItemCriteria extends AbstractORMCriteria {
 	public final IntegerExpression idPreventivo_Item;
 	public final IntegerExpression idProdottoId;
 	public final AssociationExpression idProdotto;
 	public final IntegerExpression quantita;
-	public final IntegerExpression ArrayList_observer;
-	public final IntegerExpression observers;
+	public final FloatExpression sconto;
 	
 	public Preventivo_ItemCriteria(Criteria criteria) {
 		super(criteria);
@@ -34,12 +33,12 @@ public class Preventivo_ItemCriteria extends AbstractORMCriteria {
 		idProdottoId = new IntegerExpression("idProdotto.IdProdotto", this);
 		idProdotto = new AssociationExpression("idProdotto", this);
 		quantita = new IntegerExpression("quantita", this);
-		ArrayList_observer = new IntegerExpression("ArrayList_observer", this);
-		observers = new IntegerExpression("observers", this);
+		sconto = new FloatExpression("sconto", this);
+		
 	}
 	
 	public Preventivo_ItemCriteria(PersistentSession session) {
-		this(session.createCriteria(Preventivo_Item.class));
+		this(session.createCriteria(M_Preventivo_Item.class));
 	}
 	
 	public Preventivo_ItemCriteria() throws PersistentException {
@@ -50,13 +49,17 @@ public class Preventivo_ItemCriteria extends AbstractORMCriteria {
 		return new ProdottoCriteria(createCriteria("idProdotto"));
 	}
 	
-	public Preventivo_Item uniquePreventivo_Item() {
-		return (Preventivo_Item) super.uniqueResult();
+	public PreventivoCriteria createObsCriteria() {
+		return new PreventivoCriteria(createCriteria("observer"));
 	}
 	
-	public Preventivo_Item[] listPreventivo_Item() {
+	public M_Preventivo_Item uniqueM_Preventivo_Item() {
+		return (M_Preventivo_Item) super.uniqueResult();
+	}
+	
+	public M_Preventivo_Item[] listM_Preventivo_Item() {
 		java.util.List list = super.list();
-		return (Preventivo_Item[]) list.toArray(new Preventivo_Item[list.size()]);
+		return (M_Preventivo_Item[]) list.toArray(new M_Preventivo_Item[list.size()]);
 	}
 }
 

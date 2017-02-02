@@ -157,7 +157,6 @@ public class Ricerca_cliente extends JDialog {
 
 		BottoneAnnullaCerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				Ctrl_gestisciCliente.getInstance().annullaRicercaCliente();
 			}
 		});
@@ -173,8 +172,8 @@ public class Ricerca_cliente extends JDialog {
 					//fare le modifiche a ricerca cliente!!!!
 					try {
 						Ctrl_gestisciCliente.getInstance().ricercaCliente(TFCerca.getText(), TFcercaPI.getText(), TFcercaCF.getText(), TFcercaCitta.getText());
-					} catch (PersistentException e) {
-						// TODO Auto-generated catch block
+					} 
+					catch (PersistentException e) {
 						e.printStackTrace();
 					}
 			}
@@ -205,26 +204,6 @@ public class Ricerca_cliente extends JDialog {
 	/*metodi privati*/
 	/*metodi pubblici*/
 	
-//	public void popolaTab(ArrayList a){
-//		
-//		int k=((DefaultTableModel) JTableModel).getRowCount();
-//		for (int i=k-1; i>=0;i--){
-//			((DefaultTableModel) JTableModel).removeRow(i);
-//		}
-//		labelError.setText("");
-//				
-//		Iterator iteraClienti = null;
-//		
-//		iteraClienti = a.iterator();
-//		
-//		while (iteraClienti.hasNext()) {
-//			M_Cliente c = new M_Cliente();
-//			c = (M_Cliente) iteraClienti.next();
-//			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva()});
-//		}
-//		
-//		
-//	}
 	
 	public void popolaTab(M_Cliente[] a){
 		

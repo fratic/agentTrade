@@ -25,6 +25,13 @@ public class AgenteCriteria extends AbstractORMCriteria {
 	public final StringExpression nome;
 	public final StringExpression cognome;
 	public final StringExpression password;
+	public final StringExpression username;
+	public final StringExpression citta;
+	public final StringExpression indirizzo;
+	public final IntegerExpression livello;
+	public final StringExpression cell;
+	public final StringExpression email;
+	public final StringExpression cap;
 	
 	public AgenteCriteria(Criteria criteria) {
 		super(criteria);
@@ -32,6 +39,13 @@ public class AgenteCriteria extends AbstractORMCriteria {
 		nome = new StringExpression("nome", this);
 		cognome = new StringExpression("cognome", this);
 		password = new StringExpression("password", this);
+		username = new StringExpression("username", this);
+		citta = new StringExpression("citta", this);
+		indirizzo = new StringExpression("indirizzo", this);
+		livello = new IntegerExpression("livello", this);
+		cell = new StringExpression("cell", this);
+		email = new StringExpression("email", this);
+		cap = new StringExpression("cap", this);
 	}
 	
 	public AgenteCriteria(PersistentSession session) {
@@ -51,3 +65,4 @@ public class AgenteCriteria extends AbstractORMCriteria {
 		return (M_Agente[]) list.toArray(new M_Agente[list.size()]);
 	}
 }
+

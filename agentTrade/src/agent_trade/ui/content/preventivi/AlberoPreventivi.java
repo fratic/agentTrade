@@ -44,9 +44,6 @@ public class AlberoPreventivi extends JPanel {
 		albero = new JTree(model);
 		albero.setBorder(new EmptyBorder(10, 10, 10, 10));
 	
-//		for (int i = 0; i < albero.getRowCount(); i++) {
-//	         albero.expandRow(i);
-//	}		
 		JScrollPane scroller = new JScrollPane(albero);
 		scroller.setBounds(10, 12, 250, 595);
 
@@ -64,8 +61,8 @@ public class AlberoPreventivi extends JPanel {
 				TreePath selection = e.getPath();
 				try {
 					Ctrl_elaboraPreventivo.getInstance().riepilogoPreventivo(selection.getLastPathComponent());
-				} catch (PersistentException e1) {
-					// TODO Auto-generated catch block
+				} 
+				catch (PersistentException e1) {
 					e1.printStackTrace();
 				}
 				

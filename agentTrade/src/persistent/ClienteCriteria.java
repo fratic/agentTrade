@@ -31,10 +31,10 @@ public class ClienteCriteria extends AbstractORMCriteria {
 	public final StringExpression email;
 	public final StringExpression partita_iva;
 	public final StringExpression telefono;
-	public final StringExpression cellulare;
 	public final StringExpression fax;
 	public final StringExpression citta;
 	public final StringExpression CAP;
+	public final StringExpression cell;
 	
 	public ClienteCriteria(Criteria criteria) {
 		super(criteria);
@@ -48,10 +48,10 @@ public class ClienteCriteria extends AbstractORMCriteria {
 		email = new StringExpression("email", this);
 		partita_iva = new StringExpression("partita_iva", this);
 		telefono = new StringExpression("telefono", this);
-		cellulare= new StringExpression("cellulare", this);
 		fax = new StringExpression("fax", this);
 		citta = new StringExpression("citta", this);
 		CAP = new StringExpression("CAP", this);
+		cell = new StringExpression("cell", this);
 	}
 	
 	public ClienteCriteria(PersistentSession session) {
@@ -66,7 +66,7 @@ public class ClienteCriteria extends AbstractORMCriteria {
 		return new AgenteCriteria(createCriteria("agenteAssociato"));
 	}
 	
-	public M_Cliente uniqueCliente() {
+	public M_Cliente uniqueM_Cliente() {
 		return (M_Cliente) super.uniqueResult();
 	}
 	

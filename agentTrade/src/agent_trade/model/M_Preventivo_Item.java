@@ -1,63 +1,109 @@
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
+
+/**
+ * Licensee: Universita degli Studi dell'Aquila
+ * License Type: Academic
+ */
 package agent_trade.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class M_Preventivo_Item extends Observable implements Serializable {
+public class M_Preventivo_Item extends Observable{
 	
-	/*attributi di classe*/
-	/*attributi privati*/
 	
+	/*
+	 * attributi di classe
+	 */
+	
+	
+	/*
+	 * attributi privati
+	 */
+
 	private int idPreventivo_Item;
-	private int quantita;
-	private M_Preventivo rifPreventivo;
 	private M_Prodotto idProdotto;
+	private int quantita;
+	private float sconto;
+	private List<Observer> observer = new ArrayList<Observer>();
 	
-	private ArrayList<Observer> observers;
-
-	//????????
-//	private int ArrayList_observer;
-	private int ArrayList_observer;
-
 	
-	/*costruttori*/
+	/*
+	 * costruttori
+	 */
+
+	public M_Preventivo_Item() {
+	}
 	
-
-
 	public M_Preventivo_Item(M_Preventivo rifPreventivo, M_Prodotto idProdotto){
 		
-		super();
-		observers =new ArrayList<Observer>();
-		this.idPreventivo_Item=1;//DA DETERMINARE UNIVOCAMENTE OPPURE ASSOCIARLO IN QUALCHE MODO A ID_PRODOTTO
-		this.quantita=1;
-		this.rifPreventivo=rifPreventivo;
+		this.sconto=0;
 		this.idProdotto=idProdotto;		
 		this.AddObserver(rifPreventivo);
+		this.quantita=1;
+
+	}
 	
+	
+	/*
+	 * metodi di classe
+	 */
+	
+	
+	/*
+	 * metodi privati
+	 */
+	
+	
+	/*
+	 * metodi pubblici
+	 */
+	
+	
+	public int getORMID() {
+		return getIdPreventivo_Item();
+	}
+		
+	
+	public List<Observer> getObserver() {
+		return observer;
 	}
 
+	public void setObserver(List<Observer> observer) {
+		this.observer = observer;
+	}
+
+	public void setSconto(float value) {
+		this.sconto = value;
+	}
 	
-	/*metodi di classe*/
+	public float getSconto() {
+		return sconto;
+	}
 	
-	/*metodi privati*/
-	
-	/*metodi pubblici*/
-	
+
 	public void NotifyObservers() {
 
-		for(int i=0;i<observers.size();i++){
-			observers.get(i).update(this, null);
+		for(int i=0;i<observer.size();i++){
+			observer.get(i).update(this, null);
 		}
 	}
 	
 	public void AddObserver(Observer o) {
-		observers.add(o);
+		observer.add(o);
 	}
 
 	public void RemoveObserver(Observer o) {
-		observers.remove(o);
+		observer.remove(o);
 	}	
 	
 	public int getIdPreventivo_Item() {
@@ -68,6 +114,7 @@ public class M_Preventivo_Item extends Observable implements Serializable {
 		this.idPreventivo_Item = idPreventivo_Item;
 	}
 
+	
 	public int getQuantita() {
 		return quantita;
 	}
@@ -76,18 +123,10 @@ public class M_Preventivo_Item extends Observable implements Serializable {
 		this.quantita = quantita;
 		NotifyObservers();
 	}
-	
+
 	public void cancellaItem(Observer prev){
 		NotifyObservers();
 		RemoveObserver(prev);
-	}
-
-	public M_Preventivo getRifPreventivo() {
-		return rifPreventivo;
-	}
-
-	public void setRifPreventivo(M_Preventivo rifPreventivo) {
-		this.rifPreventivo = rifPreventivo;
 	}
 
 	public M_Prodotto getIdProdotto() {
@@ -97,54 +136,12 @@ public class M_Preventivo_Item extends Observable implements Serializable {
 	public void setIdProdotto(M_Prodotto idProdotto) {
 		this.idProdotto = idProdotto;
 	}
-	
-	////////////////////
-	
-	
-	
-	
-	public int getORMID() {
-		return getIdPreventivo_Item();
-	}
-	
 
-//	public void setArrayList_observer(int value) {
-//		this.ArrayList_observer = value;
-//	}
-//	
-//	public int getArrayList_observer() {
-//		return ArrayList_observer;
-//	}
 	
-
-	public ArrayList<Observer> getObservers() {
-		return observers;
-	}
-
-
-	public void setObservers(ArrayList<Observer> observers) {
-		this.observers = observers;
-	}
-
 
 	public String toString() {
 		return String.valueOf(getIdPreventivo_Item());
 	}
 
-
-	public int getArrayList_observer() {
-		return ArrayList_observer;
-	}
-
-
-	public void setArrayList_observer(int arrayList_observer) {
-		ArrayList_observer = arrayList_observer;
-	}
-
 	
-	
-	
-	
-	
-
 }

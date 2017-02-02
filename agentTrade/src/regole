@@ -17,7 +17,7 @@ attributi
 	di classe
 	privati
 	
-	//evitiamo attributi privati//
+	//evitiamo attributi pubblici//
 
 metodi
 	costruttori

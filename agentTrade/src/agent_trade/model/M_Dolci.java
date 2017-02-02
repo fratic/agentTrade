@@ -1,32 +1,62 @@
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
+
+/**
+ * Licensee: Universita degli Studi dell'Aquila
+ * License Type: Academic
+ */
 package agent_trade.model;
 
-import java.io.Serializable;
-
-public class M_Dolci extends M_Prodotto implements Serializable
-{
-
-	/*attributi di classe*/
-	/*attributi privati*/
+public class M_Dolci extends M_Prodotto {
+	
+	/*
+	 * attributi di classe
+	 */
+	
+	
+	/*
+	 * attributi privati
+	 */
 
 	private boolean artigianale;
 	private boolean free_gluten;
-
-
-	/*costruttori*/
-
-	public M_Dolci(){
+	
+	
+	/*
+	 * costruttori
+	 */
+	
+	public M_Dolci() {
+	}
+	
+	
+	public M_Dolci(boolean artigianale, boolean free_gluten) {
 		super();
+		this.artigianale = artigianale;
+		this.free_gluten = free_gluten;
 	}
+
+
+	/*
+	 * metodi di classe
+	 */
 	
-	public M_Dolci(int id, float prezzo, String nome, String categoria, boolean art, boolean fg) {
-		super(id, prezzo, nome, categoria);
-		this.artigianale=art;
-		this.free_gluten=fg;
-	}
 	
-	/*metodi di classe*/
-	/*metodi privati*/
-	/*metodi pubblici*/
+	/*
+	 * metodi privati
+	 */
+	
+	
+	/*
+	 * metodi pubblici
+	 */
+		
 	
 	public void setArtigianale(boolean value) {
 		this.artigianale = value;
@@ -47,5 +77,5 @@ public class M_Dolci extends M_Prodotto implements Serializable
 	public String toString() {
 		return super.toString();
 	}
-
+	
 }

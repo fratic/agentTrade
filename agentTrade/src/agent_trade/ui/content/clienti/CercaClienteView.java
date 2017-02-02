@@ -135,8 +135,8 @@ public class CercaClienteView extends JDialog {
 					}
 				try {
 					Ctrl_gestisciCliente.getInstance().cercaCliente(textFieldCerca.getText());
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
+				} 
+				catch (PersistentException e) {
 					e.printStackTrace();
 				}	
 			}
@@ -148,11 +148,10 @@ public class CercaClienteView extends JDialog {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
 				try {
 					Ctrl_elaboraPreventivo.getInstance().inserisciCliente((Integer)table.getValueAt(table.getSelectedRow(),0));
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
+				} 
+				catch (PersistentException e) {
 					e.printStackTrace();
 				}
-				//CercaClienteView.getInstance().dispose();
 			}
 		});
 

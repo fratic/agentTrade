@@ -464,7 +464,6 @@ public class RiepilogoClienteView extends JPanel {
 		TFcodicefiscale.setPreferredSize(new Dimension(261,20));
 		TFcodicefiscale.setEditable(false);
 		pannelloCampi.add(TFcodicefiscale);
-		//TFcodicefiscale.setColumns(10);
 
 		 
 		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel("Partita Iva");
@@ -473,43 +472,30 @@ public class RiepilogoClienteView extends JPanel {
 		pannelloCampi.add(labelPartitaIva);
 		 
 		TFpartitaiva = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFpartitaiva.setBounds(336, 166, 261, 20);
 		TFpartitaiva.setPreferredSize(new Dimension(261,20));
 		TFpartitaiva.setEditable(false);
 		pannelloCampi.add(TFpartitaiva);
-		//TFpartitaiva.setColumns(10);
 		 
 		labelIndirizzo = DefaultComponentFactory.getInstance().createLabel("Indirizzo");
 		labelIndirizzo.setFont(new Font("Tahoma", Font.PLAIN, 13));
 
-		//labelIndirizzo.setBounds(149, 211, 69, 14);
-				labelIndirizzo.setPreferredSize(new Dimension(150,14));
-				pannelloCampi.add(labelIndirizzo);
-				 
-				TFindirizzo = new JTextField();
-//				MODIFICA PROSSIME 4
-				//TFindirizzo.setBounds(336, 205, 261, 20);
-				TFindirizzo.setPreferredSize(new Dimension(261,20));
-				TFindirizzo.setEditable(false);
-				//TFindirizzo.setColumns(10);
-				pannelloCampi.add(TFindirizzo);
-		
+		labelIndirizzo.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelIndirizzo);
+		 
+		TFindirizzo = new JTextField();
+		TFindirizzo.setPreferredSize(new Dimension(261,20));
+		TFindirizzo.setEditable(false);
+		pannelloCampi.add(TFindirizzo);
 		
 		labelCitta = DefaultComponentFactory.getInstance().createLabel("Citt\u00E0");
 		labelCitta.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		//labelCitta.setBounds(149, 250, 46, 14);
-				labelCitta.setPreferredSize(new Dimension(150,14));
-				pannelloCampi.add(labelCitta);
-				
-				TFcitta = new JTextField();
-//				MODIFICA PROSSIME 4
-				//TFcitta.setColumns(10);
-				TFcitta.setEditable(false);
-				//TFcitta.setBounds(336, 244, 261, 20);
-				TFcitta.setPreferredSize(new Dimension(261,20));
-				pannelloCampi.add(TFcitta);
-				
+		labelCitta.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelCitta);
+		
+		TFcitta = new JTextField();
+		TFcitta.setEditable(false);
+		TFcitta.setPreferredSize(new Dimension(261,20));
+		pannelloCampi.add(TFcitta);	
 		
 		labelCAP = DefaultComponentFactory.getInstance().createLabel("CAP");
 		labelCAP.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -517,10 +503,7 @@ public class RiepilogoClienteView extends JPanel {
 		pannelloCampi.add(labelCAP);
 		
 		TFcap = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFcap.setColumns(10);
 		TFcap.setEditable(false);
-		//TFcap.setBounds(336, 283, 261, 20);
 		TFcap.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFcap);
 		
@@ -531,72 +514,54 @@ public class RiepilogoClienteView extends JPanel {
 		pannelloCampi.add(labelTelefono);
 		
 		TFtelefono = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFtelefono.setBounds(336, 322, 261, 20);
 		TFtelefono.setPreferredSize(new Dimension(261,20));
 		TFtelefono.setEditable(false);
 		pannelloCampi.add(TFtelefono);
 	
 		
 		labelCell = DefaultComponentFactory.getInstance().createLabel("Cellulare");
-		//labelCell.setBounds(149, 367, 46, 14);
 		labelCell.setFont(new Font("Tahoma", Font.PLAIN, 13));
 
 		labelCell.setPreferredSize(new Dimension(150,14));
 		pannelloCampi.add(labelCell);
 		
 		TFcell = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFcell.setColumns(10);
 		TFcell.setEditable(false);
-		//TFcell.setBounds(336, 361, 261, 20);
 		TFcell.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFcell);
 	
 		
 		labelFax = DefaultComponentFactory.getInstance().createLabel("Fax: ");
-		//labelFax.setBounds(149, 406, 69, 14);
 		labelFax.setFont(new Font("Tahoma", Font.PLAIN, 13));
 
 		labelFax.setPreferredSize(new Dimension(150,14));
 				pannelloCampi.add(labelFax);
 				
-				TFfax = new JTextField();
-//				MODIFICA PROSSIME 4
-				//TFfax.setBounds(336, 400, 261, 20);
-				TFfax.setPreferredSize(new Dimension(261,20));
-				TFfax.setEditable(false);
-				pannelloCampi.add(TFfax);
-				//TFfax.setColumns(10);
+		TFfax = new JTextField();
+		TFfax.setPreferredSize(new Dimension(261,20));
+		TFfax.setEditable(false);
+		pannelloCampi.add(TFfax);
 		 
 		labelEmail = DefaultComponentFactory.getInstance().createLabel("Email: ");
-		//labelEmail.setBounds(149, 445, 69, 14);
 		labelEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
 
-				labelEmail.setPreferredSize(new Dimension(150,14));
-				pannelloCampi.add(labelEmail);
-				 
-				TFemail = new JTextField();
-//				MODIFICA PROSSIME 4
-				//TFemail.setBounds(336, 439, 261, 20);
-				TFemail.setPreferredSize(new Dimension(261,20));
-				TFemail.setEditable(false);
-				pannelloCampi.add(TFemail);
-				//TFemail.setColumns(10);
+		labelEmail.setPreferredSize(new Dimension(150,14));
+		pannelloCampi.add(labelEmail);
+		 
+		TFemail = new JTextField();
+		TFemail.setPreferredSize(new Dimension(261,20));
+		TFemail.setEditable(false);
+		pannelloCampi.add(TFemail);
 		
 		labelRifAgente = DefaultComponentFactory.getInstance().createLabel("Agente di riferimento");
 		labelRifAgente.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		//labelRifAgente.setBounds(149, 484, 111, 14);
 		labelRifAgente.setPreferredSize(new Dimension(150,14));
 		pannelloCampi.add(labelRifAgente);
 		
 		TFrifAgente = new JTextField();
 		TFrifAgente.setEnabled(false);
 		TFrifAgente.setEditable(false);
-//		MODIFICA PROSSIME 4
-		//TFrifAgente.setBounds(336, 478, 261, 20);
 		TFrifAgente.setPreferredSize(new Dimension(261,20));
-		//TFrifAgente.setColumns(10);
 		pannelloCampi.add(TFrifAgente);
 		
 		labelErrore = DefaultComponentFactory.getInstance().createLabel("");
@@ -605,46 +570,10 @@ public class RiepilogoClienteView extends JPanel {
 		pannelloCampi.add(labelErrore);
 		
 		
-		/******fin qui*******/
-//		
-//		bottoneModificaCliente = new JButton("");
-//		bottoneModificaCliente.setBounds(677, 174, 50, 50);
-//		add(bottoneModificaCliente);
-//		bottoneModificaCliente.setToolTipText("Modifica i dati del cliente");
-//		bottoneModificaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/settings_client.png")));
-//		
-//		bottoneCancellaCliente = new JButton("");
-//		bottoneCancellaCliente.setBounds(677, 281, 50, 50);
-//		add(bottoneCancellaCliente);
-//		bottoneCancellaCliente.setToolTipText("Cancella cliente");
-//		bottoneCancellaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/trash-icon.png")));
-//		
-//		//aggiunto il setToolTipText
-//		bottoneSalvaModifiche = new JButton("");
-//		bottoneSalvaModifiche.setBounds(511, 542, 50, 50);
-//		add(bottoneSalvaModifiche);
-//		bottoneSalvaModifiche.setToolTipText("Salva le modifiche");
-//		bottoneSalvaModifiche.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save_32.png")));
-//		
-//		//aggiunto il setToolTipText
-//		bottoneAnnullaModifica = new JButton("");
-//		bottoneAnnullaModifica.setBounds(601, 542, 50, 50);
-//		add(bottoneAnnullaModifica);
-//		bottoneAnnullaModifica.setToolTipText("Annulla le modifiche");
-//		bottoneAnnullaModifica.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/back-icon.png")));
-//		
-//		//aggiunto il setToolTipText
-//		bottoneInviaComunicazione = new JButton("");
-//		bottoneInviaComunicazione.setBounds(677, 66, 50, 50);
-//		add(bottoneInviaComunicazione);
-//		bottoneInviaComunicazione.setToolTipText("Invia mail al cliente");
-//		bottoneInviaComunicazione.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/send-icon.png")));
-//	
 		
 		pannelloOvest = new JPanel();
 		pannelloOvest.setPreferredSize(new Dimension(70, 601));
 		FlowLayout fl_pannelloOvest = new FlowLayout(FlowLayout.CENTER);
-		//fl_pannelloOvest.setVgap(10);
 		pannelloOvest.setLayout(fl_pannelloOvest);
 		this.add(pannelloOvest,BorderLayout.EAST);
 		
@@ -655,45 +584,33 @@ public class RiepilogoClienteView extends JPanel {
 		pannelloOvest.add(pannelloBottoni);
 
 		bottoneInviaComunicazione = new JButton("");
-//		MODIFICA PROSSIME 3
-		//bottoneInviaComunicazione.setBounds(645, 52, 50, 50);
 		bottoneInviaComunicazione.setPreferredSize(new Dimension(50,50));
 		pannelloBottoni.add(bottoneInviaComunicazione);
 		bottoneInviaComunicazione.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/send-icon.png")));
 		
 		bottoneModificaCliente = new JButton("");
-//		MODIFICA PROSSIME 3
-		//bottoneModificaCliente.setBounds(645, 151, 50, 50);
 		bottoneModificaCliente.setPreferredSize(new Dimension(50,50));
 		pannelloBottoni.add(bottoneModificaCliente);
 		bottoneModificaCliente.setToolTipText("Modifica i dati del cliente");
 		bottoneModificaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/settings_client.png")));
 		
 		bottoneCancellaCliente = new JButton("");
-//		MODIFICA PROSSIME 3
-		//bottoneCancellaCliente.setBounds(645, 250, 50, 50);
 		bottoneCancellaCliente.setPreferredSize(new Dimension(50,50));
 		pannelloBottoni.add(bottoneCancellaCliente);
 		bottoneCancellaCliente.setToolTipText("Cancella cliente");
 		bottoneCancellaCliente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource("/agent_trade/ui/img/trash-icon.png")));
 		
 		bottoneSalvaModifiche = new JButton("");
-//		MODIFICA PROSSIME 3
-		//bottoneSalvaModifiche.setBounds(645, 448, 50, 50);
 		bottoneSalvaModifiche.setPreferredSize(new Dimension(50,50));
 		pannelloBottoni.add(bottoneSalvaModifiche);
 		bottoneSalvaModifiche.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/save_32.png")));
 		
 		bottoneAnnullaModifica = new JButton("");
-//		MODIFICA PROSSIME 3
-		//bottoneAnnullaModifica.setBounds(645, 349, 50, 50);
 		bottoneAnnullaModifica.setPreferredSize(new Dimension(50,50));
 		pannelloBottoni.add(bottoneAnnullaModifica);
 		bottoneAnnullaModifica.setIcon(new ImageIcon(DettaglioClienteView.class.getResource("/agent_trade/ui/img/back-icon.png")));
 		
-		
-		
-		
+
 		
 		bottoneModificaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -713,8 +630,8 @@ public class RiepilogoClienteView extends JPanel {
 				
 				try {
 					Ctrl_gestisciCliente.getInstance().modificaCliente(Integer.parseInt(TFidCliente.getText()),(String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFcell.getText(), (String)TFfax.getText());
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
+				} 
+				catch (PersistentException e) {
 					e.printStackTrace();
 				}
 			}
@@ -726,8 +643,8 @@ public class RiepilogoClienteView extends JPanel {
 				
 				try {
 					Ctrl_gestisciCliente.getInstance().annullaModificheCliente(TFidCliente.getText());
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
+				} 
+				catch (PersistentException e) {
 					e.printStackTrace();
 				}
 			}
@@ -738,7 +655,6 @@ public class RiepilogoClienteView extends JPanel {
 				//da implementare invio documenti
 			}
 		});
-		
 		
 		
 	}

@@ -4,11 +4,6 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
 
-import persistent.AgentTradePersistentManager;
-import persistent.AgenteCriteria;
-import persistent.ClienteCriteria;
-import persistent.PreventivoCriteria;
-import persistent.ProdottoCriteria;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
@@ -18,24 +13,40 @@ import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.prodotti.ProdottiView;
+import persistent.AgentTradePersistentManager;
+import persistent.AgenteCriteria;
+import persistent.ClienteCriteria;
+import persistent.PreventivoCriteria;
+import persistent.ProdottoCriteria;
 
 
 public class Ctrl_System {
 
-	/*Attributi di classe*/
+	/*
+	 * Attributi di classe
+	 */
 	
 	private static Ctrl_System instance;
+	
+	private static boolean debug=false;
+	
 	
 	/*	la responsabilità di tenere l'istanza dell'agente loggato è stata assegnata ad crtl_system, in quanto è il creatore*/
 	private static M_Agente instanceAgenteLog;
 
-	/*Attributi privati*/
+	/*
+	 * Attributi privati
+	 */
 
 	
-	/*costruttori*/
+	/*
+	 * costruttori
+	 */
 	
 	
-	/*metodi di classe*/
+	/*
+	 * metodi di classe
+	 */
 	
 	public static Ctrl_System getInstance(){
 
@@ -47,10 +58,68 @@ public class Ctrl_System {
 		return ((instance == null) ? null : instanceAgenteLog);	
 	}
 	
-	/*metodi privati*/
+	/*
+	 * metodi privati
+	 */
+
+	private void inizializzaSistema() throws PersistentException
+	{
+		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
+
+		initAlberoClienti();
+
+		initProdotti();
+		
+		initAlberoPreventivi();	
+		
+	}
+	
+	
+	
+	/*
+	 * metodi pubblici
+	 */
+	
+
+	public void login(String username, String psw)  
+	{					
+		try {
+			AgenteCriteria AgenteCriteria = new AgenteCriteria();
+			AgenteCriteria.username.eq(username);
+			M_Agente[] listAgenti= AgenteCriteria.listAgente();
+			
+			//bisogna far si che lo username sia univoco all'interno del db
+			if (listAgenti.length==1)
+			{
+				M_Agente agLoad=(M_Agente)listAgenti[0];		
+	
+				if (agLoad.getUsername().equals(username) & agLoad.getPassword().equals(psw))
+				{
+					
+					PrimaryView.getInstance().setVisible(true);
+					LoginView.getInstance().setVisible(false);
+					instanceAgenteLog=agLoad;
+					
+					inizializzaSistema();
+					
+					}
+					else{
+					LoginView.getInstance().setMex("Login errato");
+				}
+			}
+			else{
+				LoginView.getInstance().setMex("Utente sconosciuto");
+			}	
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+			//AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
 	
 	public void initAlberoClienti() throws PersistentException{
-	
+		
 		try{
 			
 		ClienteCriteria criteriaCliente= new ClienteCriteria();
@@ -65,25 +134,12 @@ public class Ctrl_System {
 		}
 	}
 		finally {
-			persistent.AgentTradePersistentManager.instance().disposePersistentManager();
+			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 	}
 	
-	private void inizializzaSistema() throws PersistentException
-	{
-		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
 
-		initAlberoClienti();
-
-		
-		initProdotti();
-		
-		initAlberoPreventivi();	
-		
-		
-	}
-	
-	private void initProdotti() throws PersistentException{
+	public void initProdotti() throws PersistentException{
 		
 		M_Prodotto [] prodotti=null;
 		try{
@@ -100,21 +156,15 @@ public class Ctrl_System {
 	}
 	
 	
-	
-	/*metodi pubblici*/
-	
 	public void initAlberoPreventivi() throws PersistentException{
 		
-		//ArrayList<M_Preventivo> preventivi= Dao_System.getInstance().loadPreventivi(getIdAgente());
-	
 		M_Preventivo [] preventivi=null;
 		try{
 			
 			PreventivoCriteria criteriaPreventivi= new PreventivoCriteria();
-			//criteriaPreventivi.rif_Agente.equals(getAgenteLog().);
-			criteriaPreventivi.createCriteria("rif_Agente", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
 
-			criteriaPreventivi.setMaxResults(1000);
+			criteriaPreventivi.createCriteria("rif_Agente", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			criteriaPreventivi.setMaxResults(10000);
 			preventivi = criteriaPreventivi.listPreventivo();
 
 		}
@@ -125,47 +175,6 @@ public class Ctrl_System {
 		for (M_Preventivo p : preventivi) {
 
 				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
-		}
-	}
-
-	public void login(String user, String psw) throws PersistentException 
-	{					
-		try {
-
-	
-		AgenteCriteria AgenteCriteria = new AgenteCriteria();
-		AgenteCriteria.nome.eq(user);
-		
-		M_Agente[] listAgenti= AgenteCriteria.listAgente();
-		
-		System.out.println("user e psw: ");
-
-		//bisogna usare lo username e far si che questo sia univoco all'interno del db
-		if (listAgenti.length==1)
-		{
-			M_Agente agLoad=(M_Agente)listAgenti[0];		
-
-			if (agLoad.getNome().equals(user) & agLoad.getPassword().equals(psw))
-			{
-				
-				PrimaryView.getInstance().setVisible(true);
-				LoginView.getInstance().setVisible(false);
-				instanceAgenteLog=agLoad;
-				
-				inizializzaSistema();
-				
-				}
-				else{
-				LoginView.getInstance().setMex("Login errato");
-			}
-		}
-		else
-		{
-			LoginView.getInstance().setMex("Utente sconosciuto");
-		}	
-		}
-		finally {
-			//AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 	}
 	

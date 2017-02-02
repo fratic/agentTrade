@@ -65,27 +65,22 @@ public class ItemNuovoPreventivoView extends JPanel
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.menu);
 		panel.setLayout(new BorderLayout());
-//		panel.setBounds(0, 0, 733, 457);
 		add(panel);
 		
 		panelloTabella = new JPanel();
 		panelloTabella.setBackground(Color.WHITE);
 		panelloTabella.setBorder(new EmptyBorder(3, 3, 3, 3));
-		//panelloTabella.setBounds(0, 4, 733, 360);
 		panelloTabella.setPreferredSize(new Dimension(733,360));
 		panel.add(panelloTabella,BorderLayout.CENTER);
 		panelloTabella.setLayout(new GridLayout(1,1));
 	   	
 		scrollPane = new JScrollPane(creaTabellaProdotti());
-//		scrollPane.setBounds(0, 0, 733, 360);
 		panelloTabella.add(scrollPane);
 	  
 		panelloRiepilogo = new JPanel();
 		panelloRiepilogo.setLayout(new BorderLayout());
 		panelloRiepilogo.setBackground(SystemColor.scrollbar);
 		
-//		MODIFICA PROSSIME TRE RIGHE
-		//panelloRiepilogo.setBounds(0, 372, 733, 85);
 		panelloRiepilogo.setPreferredSize(new Dimension(733,85));
 		panel.add(panelloRiepilogo,BorderLayout.SOUTH);
 		
@@ -101,9 +96,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		buttoneSalva.setToolTipText("Salva preventivo");
 		buttoneSalva.setIcon(new ImageIcon(ItemNuovoPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
 	
-//		MODIFICA PROSSIME 3 RIGHE
 		buttoneSalva.setPreferredSize(new Dimension(50,50));
-		//buttoneSalva.setBounds(665, 20, 50, 50);
 		sottoPannRiepilogo2.add(buttoneSalva);
 
 		sottoPannRiepilogo1 = new JPanel();
@@ -119,36 +112,30 @@ public class ItemNuovoPreventivoView extends JPanel
 		
 		
 		JLabel labelImponibile = new JLabel("Imponibile");
-		//labelImponibile.setBounds(458, 11, 72, 14);
 		labelImponibile.setPreferredSize(new Dimension(72,14));
 		sottoPannRiepilogoCampi.add(labelImponibile);
 		
 		textFieldImponibile = new JTextField();
 		textFieldImponibile.setColumns(10);
 		textFieldImponibile.setPreferredSize(new Dimension(94,20));
-		//textFieldImponibile.setBounds(540, 8, 94, 20);
 		sottoPannRiepilogoCampi.add(textFieldImponibile);
 		
 		JLabel labelIVA = new JLabel("I.V.A.");
 		labelIVA.setPreferredSize(new Dimension(72,14));
-		//labelIVA.setBounds(458, 36, 72, 14);
 		sottoPannRiepilogoCampi.add(labelIVA);
 		
 		textFieldIVA = new JTextField();
 		textFieldIVA.setColumns(10);
 		textFieldIVA.setPreferredSize(new Dimension(94,20));
-		//textFieldIVA.setBounds(540, 33, 94, 20);
 		sottoPannRiepilogoCampi.add(textFieldIVA);
 		
 		JLabel labelTotale = new JLabel("Totale");
 		labelTotale.setPreferredSize(new Dimension(72,14));
-		//labelTotale.setBounds(458, 61, 72, 14);
 		sottoPannRiepilogoCampi.add(labelTotale);
 		
 		textFieldTotale = new JTextField();
 		textFieldTotale.setColumns(10);
 		textFieldTotale.setPreferredSize(new Dimension(94,20));
-		//textFieldTotale.setBounds(540, 58, 94, 20);
 		sottoPannRiepilogoCampi.add(textFieldTotale);
 		
 		
@@ -157,8 +144,8 @@ public class ItemNuovoPreventivoView extends JPanel
 				
 				try {
 					Ctrl_elaboraPreventivo.getInstance().salvaPreventivo();
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
+				}
+				catch (PersistentException e) {
 					e.printStackTrace();
 				}	
 			}
@@ -238,7 +225,6 @@ public class ItemNuovoPreventivoView extends JPanel
 	public void enableSave(boolean b){
 		buttoneSalva.setEnabled(b);
 	}
-
 
 	public void setTot(float imp, float iva, float tot) {
 		setImponibile(Float.toString(imp));

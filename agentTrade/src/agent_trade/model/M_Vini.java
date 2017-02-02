@@ -1,35 +1,64 @@
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
+
+/**
+ * Licensee: Universita degli Studi dell'Aquila
+ * License Type: Academic
+ */
 package agent_trade.model;
 
-import java.io.Serializable;
-
-public class M_Vini extends M_Prodotto implements Serializable
-{
-	/*attributi di classe*/
-	/*attributi privati*/
+public class M_Vini extends M_Prodotto {
 	
+	/*
+	 * attributi di classe
+	 */
+	
+	
+	/*
+	 * attributi privati
+	 */
+
 	private String colore;
-	private String cantina;
-
-	
 	private String indicazione_geografica;
-
+	private String cantina;
 	
-	/*costruttori*/
 	
-	public M_Vini(){
-		super();
+	/*
+	 * costruttori
+	 */
+	
+	public M_Vini() {
 	}
 	
-	public M_Vini(int id, float prezzo, String nome, String categoria, String colore, String indicazione_geo, String cantina ) {
-		super(id, prezzo, nome, categoria);
-		this.colore=colore;
-		this.indicazione_geografica=indicazione_geo;
-		this.cantina= cantina;	
-	}	
 	
-	/*metodi di classe*/
-	/*metodi privati*/
-	/*metodi pubblici*/	
+	public M_Vini(String colore, String indicazione_geografica, String cantina) {
+		super();
+		this.colore = colore;
+		this.indicazione_geografica = indicazione_geografica;
+		this.cantina = cantina;
+	}
+
+
+	/*
+	 * metodi di classe
+	 */
+	
+	
+	
+	/*
+	 * metodi privati
+	 */
+	
+	
+	/*
+	 * metodi pubblici
+	 */
 
 	
 	public void setColore(String value) {
@@ -59,4 +88,5 @@ public class M_Vini extends M_Prodotto implements Serializable
 	public String toString() {
 		return super.toString();
 	}
+	
 }

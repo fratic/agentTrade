@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="agent_trade.model.M_Agente" table="Agente" lazy="false">
+		<id name="IdAgente" column="IdAgente" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="nome" column="Nome" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="cognome" column="Cognome" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="password" column="Password" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="username" column="Username" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="citta" column="Citta" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="indirizzo" column="Indirizzo" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="livello" column="Livello" type="integer" length="11" not-null="false" lazy="false"/>
+		<property name="cell" column="Cell" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="email" column="Email" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="cap" column="Cap" type="string" length="255" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>

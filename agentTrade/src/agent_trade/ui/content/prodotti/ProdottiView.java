@@ -18,7 +18,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import agent_trade.model.M_Prodotto;
-import agent_trade.persistentTemp.Prodotto;
 import agent_trade.util.DisableButton;
 import agent_trade.util.MyEditor;
 import agent_trade.util.MyRenderer;
@@ -50,21 +49,15 @@ public class ProdottiView extends JPanel {
 		setLayout(new GridLayout(1,1));
 		
 		pannelloProdotti = new JPanel();
-//		MODIFICA LINEA SEGUENTE
-		//pannelloProdotti.setBounds(0, 0, 753, 617);
 		add(pannelloProdotti);
-//		MODIFICA PROSSIMA RIGA
 		pannelloProdotti.setLayout(new GridLayout(1,1));
 		
 		pannelloTabella = new JPanel();
-//		MODIFICA PROSSIMA LINEA
-		//pannelloTabella.setBounds(0, 0, 753, 617);
 		pannelloProdotti.add(pannelloTabella);
-//		MODIFICA PROSSIMA LINEA
 	    pannelloTabella.setLayout(new GridLayout(1,1));
 
 
-		String[] colNames = {"ID prodotto", "Nome", "Categoria", "Azienda", "Prezzo", "Aggiungi" };
+		String[] colNames = {"ID prodotto", "Nome", "Categoria",  "Prezzo", "Aggiungi" };
         
         final Object[][] data = {};
         
@@ -76,15 +69,13 @@ public class ProdottiView extends JPanel {
 	    
         TableColumnModel colModel = table.getColumnModel();
         
-        colModel.getColumn(5).setPreferredWidth(35);
+        colModel.getColumn(4).setPreferredWidth(35);
         table.setDefaultRenderer(Object.class, new MyRenderer());
         table.setDefaultEditor(Object.class, new MyEditor());
         
 	    table.setRowHeight(30);
 	    
 	    scrollPane = new JScrollPane(table);
-//	    MODIFICA PROSSIMA RIGA
-	    //scrollPane.setBounds(0, 0, 753, 617);
 	    pannelloTabella.add(scrollPane);
 	  	}
 	
@@ -109,40 +100,26 @@ public class ProdottiView extends JPanel {
 	}
 	
 	
-	public void updateTable(String id, String nome, String categoria, String azienda, String prezzo){
+	public void updateTable(String id, String nome, String categoria, String prezzo){
 	
-		((DefaultTableModel) JTableModel).addRow(new Object[]{ id, nome, categoria, azienda, prezzo});
+		((DefaultTableModel) JTableModel).addRow(new Object[]{ id, nome, categoria, prezzo});
 		
 	}
 
 	
 	public void initTable(M_Prodotto[] prodotti){
 		
-//		Prodotto p;
 		JButton jb;
-//		while (iteraProdotti.hasNext()) {				
-//			p = (M_Prodotto) iteraProdotti.next();
-//			jb= new DisableButton();
-//			jb.setEnabled(false);
-//            ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
-//            		p.getNome(), p.getCategoria(), "",Float.toString(p.getPrezzo()), jb});
-//            
-//    		elencoBott.put(p.getIdProdotto(), jb);
-//
-//            TableColumn col = table.getColumnModel().getColumn(5);
-//       	    col.setMaxWidth(60);
-//    	    col.setMinWidth(60);            
-//		}
 	
 		for (M_Prodotto p : prodotti) {
 		jb= new DisableButton();
 		jb.setEnabled(false);
         ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
-        		p.getNome(), p.getCategoria(), "",Float.toString(p.getPrezzo()), jb});
+        		p.getNome(), p.getCategoria(),Float.toString(p.getPrezzo()), jb});
         
 		elencoBott.put(p.getIdProdotto(), jb);
 
-        TableColumn col = table.getColumnModel().getColumn(5);
+        TableColumn col = table.getColumnModel().getColumn(4);
    	    col.setMaxWidth(60);
 	    col.setMinWidth(60);            
 	}
@@ -154,9 +131,9 @@ public class ProdottiView extends JPanel {
 		JButton jb;
 			int dim=(((DefaultTableModel) JTableModel).getRowCount());
 			for(int i=0;i<dim;i++) {			
-				jb= (JButton)table.getValueAt(i,5);
+				jb= (JButton)table.getValueAt(i,4);
 				jb.setEnabled(true);
-				table.setValueAt(jb, i, 5);
+				table.setValueAt(jb, i, 4);
 			}
 	}
 	
@@ -166,9 +143,9 @@ public class ProdottiView extends JPanel {
 		JButton jb;
 			int dim=(((DefaultTableModel) JTableModel).getRowCount());
 			for(int i=0;i<dim;i++) {			
-				jb= (JButton)table.getValueAt(i,5);
+				jb= (JButton)table.getValueAt(i,4);
 				jb.setEnabled(false);
-				table.setValueAt(jb, i, 5);
+				table.setValueAt(jb, i, 4);
 			}
 	}
 	
