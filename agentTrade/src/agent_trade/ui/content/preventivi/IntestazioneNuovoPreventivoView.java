@@ -21,6 +21,7 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.ui.PrimaryView;
+import agent_trade.util.Costanti;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
@@ -56,7 +57,7 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 	/*costruttori*/
 	
 	public IntestazioneNuovoPreventivoView() {
-		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Intestazione", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), Costanti.LABEL_INTESTAZIONE, TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		setBackground(UIManager.getColor("CheckBox.background"));
 //		MODIFICA TUTTO
 		setLayout(new BorderLayout());
@@ -71,23 +72,23 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloDestra.setMinimumSize(new Dimension(200,50));
 		pannelloNord.add(pannelloDestra, BorderLayout.EAST);
 		
-		labelPrev = DefaultComponentFactory.getInstance().createLabel("Preventivo n\u00B0");
+		labelPrev = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_NPREV);
 		labelPrev.setPreferredSize(new Dimension(96,14));
 		pannelloDestra.add(labelPrev);
 		
-		labelNumPrev = DefaultComponentFactory.getInstance().createLabel("1");
+		labelNumPrev = DefaultComponentFactory.getInstance().createLabel("");
 		labelNumPrev.setPreferredSize(new Dimension(27,14));
 		pannelloDestra.add(labelNumPrev);
 		
-		labelDel = DefaultComponentFactory.getInstance().createLabel("del");
+		labelDel = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_DEL);
 		labelDel.setPreferredSize(new Dimension(45,14));
 		pannelloDestra.add(labelDel);
 		
-		labelData = DefaultComponentFactory.getInstance().createLabel("03/11/2015");
+		labelData = DefaultComponentFactory.getInstance().createLabel("");
 		labelData.setPreferredSize(new Dimension(79,14));
 		pannelloDestra.add(labelData);
 		
-		lblNewLabel = new JLabel("effettuato dall'agente: ");
+		lblNewLabel = new JLabel(Costanti.LABEL_EFFETTUATO_AG);
 		lblNewLabel.setPreferredSize(new Dimension(128,14));
 		pannelloDestra.add(lblNewLabel);
 		
@@ -100,8 +101,8 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloDestra.add(labelvuota1);
 		
 		bottoneAnnulla = new JButton("");
-		bottoneAnnulla.setToolTipText("Annulla il preventivo in corso");
-		bottoneAnnulla.setIcon(new ImageIcon(IntestazioneNuovoPreventivoView.class.getResource("/agent_trade/ui/img/close_icon.png")));
+		bottoneAnnulla.setToolTipText(Costanti.TIP_ANNULLA_PREV);
+		bottoneAnnulla.setIcon(new ImageIcon(IntestazioneNuovoPreventivoView.class.getResource(Costanti.CLOSE_ICON)));
 		bottoneAnnulla.setPreferredSize(new Dimension(20, 20));
 		pannelloDestra.add(bottoneAnnulla);
 		
@@ -109,7 +110,7 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloSinistra.setPreferredSize(new Dimension(280,50));
 		pannelloNord.add(pannelloSinistra, BorderLayout.WEST);
 		
-		labelCl = DefaultComponentFactory.getInstance().createLabel("Cliente: ");
+		labelCl = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_Cliente);
 		labelCl.setPreferredSize(new Dimension(50, 14));
 		pannelloSinistra.add(labelCl);
 		
@@ -140,8 +141,8 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		
 		
 		btnNewButton = new JButton();
-		btnNewButton.setToolTipText("Aggiungi prodotti a questo preventivo");
-		btnNewButton.setIcon(new ImageIcon(IntestazioneNuovoPreventivoView.class.getResource("/agent_trade/ui/img/add-item.png")));
+		btnNewButton.setToolTipText(Costanti.TIP_ADD_ITEM);
+		btnNewButton.setIcon(new ImageIcon(IntestazioneNuovoPreventivoView.class.getResource(Costanti.ADD_ITEM_ICON)));
 		btnNewButton.setPreferredSize(new Dimension(40,30));
 		pannelloSud.add(btnNewButton);
 		

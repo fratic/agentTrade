@@ -18,6 +18,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import agent_trade.model.M_Prodotto;
+import agent_trade.util.Costanti;
 import agent_trade.util.DisableButton;
 import agent_trade.util.MyEditor;
 import agent_trade.util.MyRenderer;
@@ -57,7 +58,7 @@ public class ProdottiView extends JPanel {
 	    pannelloTabella.setLayout(new GridLayout(1,1));
 
 
-		String[] colNames = {"ID prodotto", "Nome", "Categoria",  "Prezzo", "Aggiungi" };
+		String[] colNames = Costanti.INTESTAZIONE_TABELLA_PRODOTTI;
         
         final Object[][] data = {};
         
@@ -69,7 +70,7 @@ public class ProdottiView extends JPanel {
 	    
         TableColumnModel colModel = table.getColumnModel();
         
-        colModel.getColumn(4).setPreferredWidth(35);
+        colModel.getColumn(Costanti.COLONNA_ADD_ITEM).setPreferredWidth(35);
         table.setDefaultRenderer(Object.class, new MyRenderer());
         table.setDefaultEditor(Object.class, new MyEditor());
         
@@ -119,7 +120,7 @@ public class ProdottiView extends JPanel {
         
 		elencoBott.put(p.getIdProdotto(), jb);
 
-        TableColumn col = table.getColumnModel().getColumn(4);
+        TableColumn col = table.getColumnModel().getColumn(Costanti.COLONNA_ADD_ITEM);
    	    col.setMaxWidth(60);
 	    col.setMinWidth(60);            
 	}
@@ -131,9 +132,9 @@ public class ProdottiView extends JPanel {
 		JButton jb;
 			int dim=(((DefaultTableModel) JTableModel).getRowCount());
 			for(int i=0;i<dim;i++) {			
-				jb= (JButton)table.getValueAt(i,4);
+				jb= (JButton)table.getValueAt(i,Costanti.COLONNA_ADD_ITEM);
 				jb.setEnabled(true);
-				table.setValueAt(jb, i, 4);
+				table.setValueAt(jb, i, Costanti.COLONNA_ADD_ITEM);
 			}
 	}
 	
@@ -143,9 +144,9 @@ public class ProdottiView extends JPanel {
 		JButton jb;
 			int dim=(((DefaultTableModel) JTableModel).getRowCount());
 			for(int i=0;i<dim;i++) {			
-				jb= (JButton)table.getValueAt(i,4);
+				jb= (JButton)table.getValueAt(i,Costanti.COLONNA_ADD_ITEM);
 				jb.setEnabled(false);
-				table.setValueAt(jb, i, 4);
+				table.setValueAt(jb, i, Costanti.COLONNA_ADD_ITEM);
 			}
 	}
 	

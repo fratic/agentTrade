@@ -28,8 +28,6 @@ public class Ctrl_System {
 	
 	private static Ctrl_System instance;
 	
-	private static boolean debug=false;
-	
 	
 	/*	la responsabilità di tenere l'istanza dell'agente loggato è stata assegnata ad crtl_system, in quanto è il creatore*/
 	private static M_Agente instanceAgenteLog;
@@ -173,7 +171,7 @@ public class Ctrl_System {
 		}
 		
 		for (M_Preventivo p : preventivi) {
-
+			
 				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
 		}
 	}

@@ -18,7 +18,7 @@ import agent_trade.controller.Ctrl_elaboraPreventivo;
 
 public class SpinnerEditor extends AbstractCellEditor implements TableCellEditor {
     JTable table;
-    SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 100, 1);
+    SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 1000, 1);
     JSpinner spinner = new JSpinner(model);
     int clickCountToStart = 1;
 

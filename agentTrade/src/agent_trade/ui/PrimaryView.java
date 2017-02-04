@@ -35,6 +35,7 @@ import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
+import agent_trade.util.Costanti;
 import agent_trade.util.Sfondo_Cliente;
 import agent_trade.util.Sfondo_Preventivo;
 
@@ -57,13 +58,7 @@ public class PrimaryView extends JFrame
 	private static JPanel riep_cliente;
 	
 	private static JPanel pannello_centrale_cliente;
-	
-	private static final int WIDTH = 1024;
-	private static final int HEIGHT = 784;
-	private static final int MIN_WIDTH = 784;
-	private static final int MIN_HEIGHT = 512;
-
-	
+		
 	
 	/*attributi privati*/
 	
@@ -100,7 +95,7 @@ public class PrimaryView extends JFrame
 	
 	private PrimaryView() {
 		
-		super("Agent Trade");
+		super(Costanti.TITOLO_PRIMARY_VIEW);
 		
 		this.initComponents();
 		
@@ -194,7 +189,7 @@ public class PrimaryView extends JFrame
 		
 		preventivo = new JPanel();
 		preventivo.setBackground(Color.WHITE);
-		tabbedPrincipale.addTab("Preventivo", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/preventivo.png")), preventivo, "Gestisci i preventivi");
+		tabbedPrincipale.addTab(Costanti.TAB_PREVENTIVO, new ImageIcon(PrimaryView.class.getResource(Costanti.PREVENTIVO_ICON)), preventivo, Costanti.TIP_GESTISCI_PREVENTIVO);
 		tabbedPrincipale.setBackgroundAt(0, Color.WHITE);
 		preventivo.setLayout(new BorderLayout());
 				
@@ -207,8 +202,8 @@ public class PrimaryView extends JFrame
 		
 		nuovo_preventivo = new JButton("");
 		nuovo_preventivo.setBounds(30, 25, 50, 50);
-		nuovo_preventivo.setToolTipText("Crea un nuovo preventivo");
-		nuovo_preventivo.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/nuovo_icon.png")));
+		nuovo_preventivo.setToolTipText(Costanti.TIP_NUOVO_PREVENTIVO);
+		nuovo_preventivo.setIcon(new ImageIcon(PrimaryView.class.getResource(Costanti.NUOVO_PREVENTIVO_ICON)));
 		panello_menu_preventivo.add(nuovo_preventivo);
 		
 		/*JButton button = new JButton("");
@@ -282,7 +277,7 @@ public class PrimaryView extends JFrame
 	private void initTabCliente(){
 		
 		Cliente = new JPanel();
-		tabbedPrincipale.addTab("Cliente", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/cliente.png")), Cliente, "Gestisci i clienti");
+		tabbedPrincipale.addTab(Costanti.TAB_CLIENTE, new ImageIcon(PrimaryView.class.getResource(Costanti.CLIENTE_ICON)), Cliente, Costanti.TIP_GESTISCI_CLIENTE);
 		Cliente.setLayout(new BorderLayout());
 		
 		panello_menu_cliente = new JPanel();
@@ -293,14 +288,14 @@ public class PrimaryView extends JFrame
 		Cliente.add(panello_menu_cliente,BorderLayout.NORTH);
 		
 		bottoneNuovoCliente = new JButton();
-		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/new_user.png")));
-		bottoneNuovoCliente.setToolTipText("Inserisci un nuovo cliente");
+		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryView.class.getResource(Costanti.NUOVO_CLIENTE_ICON)));
+		bottoneNuovoCliente.setToolTipText(Costanti.TIP_NUOVO_PREVENTIVO);
 		bottoneNuovoCliente.setBounds(25, 25, 50, 50);
 		panello_menu_cliente.add(bottoneNuovoCliente);
 		
 		bottoneCercaCliente = new JButton("");
-		bottoneCercaCliente.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/search.png")));
-		bottoneCercaCliente.setToolTipText("Cerca il cliente");
+		bottoneCercaCliente.setIcon(new ImageIcon(PrimaryView.class.getResource(Costanti.CERCA_CLIENTE_ICON)));
+		bottoneCercaCliente.setToolTipText(Costanti.TIP_CERCA_CLIENTE);
 		bottoneCercaCliente.setBounds(103, 25, 50, 50);
 		panello_menu_cliente.add(bottoneCercaCliente);
 		
@@ -352,7 +347,7 @@ public class PrimaryView extends JFrame
 		
 		
 		Catalogo = new JPanel();
-		tabbedPrincipale.addTab("Catalogo", new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/magazzino_icon.png")), Catalogo, null);
+		tabbedPrincipale.addTab(Costanti.TAB_CATALOGO, new ImageIcon(PrimaryView.class.getResource(Costanti.PRODOTTI_ICON)), Catalogo, null);
 		Catalogo.setLayout(new BorderLayout());
 		
 		panello_menu_catalogo = new JPanel();
@@ -382,7 +377,7 @@ public class PrimaryView extends JFrame
 	
 	private void initComponents()
 	{
-		ImageIcon img = new ImageIcon(SplashScreen.class.getResource("/agent_trade/ui/img/icon.png"));
+		ImageIcon img = new ImageIcon(SplashScreen.class.getResource(Costanti.AGENTTRADE_ICON));
 
 		this.setIconImage(img.getImage());
 
@@ -401,17 +396,17 @@ public class PrimaryView extends JFrame
 
 		getContentPane().add(tabbedPrincipale);
 		
-		this.setBounds(150,50,WIDTH,HEIGHT);
+		this.setBounds(150,50,Costanti.WIDTH_PRIMARY,Costanti.HEIGHT_PRIMARY);
 //		MODIFICA DA VEDERE DI QUANTO SI PUò RIDURRE E CHE FARE CON I PANNELLI INTERNI
-		this.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
+		this.setMinimumSize(new Dimension(Costanti.MIN_WIDTH_PRIMARY, Costanti.MIN_HEIGHT_PRIMARY));
 
 	}
 	
 	
 	private void askClosure() {
 	        int choice = JOptionPane.showConfirmDialog(this,
-	                "Chiudere l'applicazione?",
-	                "Agent trade",
+	                Costanti.MESSAGGIO_CLOSE_APP,
+	                Costanti.TITOLO_DIALOG_CLOSE, 
 	                JOptionPane.YES_NO_OPTION);
 	        if (choice == JOptionPane.YES_OPTION) {
 	            System.exit(0);

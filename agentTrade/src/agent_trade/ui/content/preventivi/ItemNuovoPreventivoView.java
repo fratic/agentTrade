@@ -24,6 +24,7 @@ import org.orm.PersistentException;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.util.ButtonsEditorRm;
 import agent_trade.util.ButtonsRendererRm;
+import agent_trade.util.Costanti;
 import agent_trade.util.SpinnerEditor;
 import agent_trade.util.SpinnerRenderer;
 
@@ -93,8 +94,8 @@ public class ItemNuovoPreventivoView extends JPanel
 		
 		
 		buttoneSalva = new JButton("");
-		buttoneSalva.setToolTipText("Salva preventivo");
-		buttoneSalva.setIcon(new ImageIcon(ItemNuovoPreventivoView.class.getResource("/agent_trade/ui/img/save-icon.png")));
+		buttoneSalva.setToolTipText(Costanti.TIP_SALVA_PREV);
+		buttoneSalva.setIcon(new ImageIcon(ItemNuovoPreventivoView.class.getResource(Costanti.SAVE_ICON)));
 	
 		buttoneSalva.setPreferredSize(new Dimension(50,50));
 		sottoPannRiepilogo2.add(buttoneSalva);
@@ -111,7 +112,7 @@ public class ItemNuovoPreventivoView extends JPanel
 	
 		
 		
-		JLabel labelImponibile = new JLabel("Imponibile");
+		JLabel labelImponibile = new JLabel(Costanti.LABEL_IMPONIBILE);
 		labelImponibile.setPreferredSize(new Dimension(72,14));
 		sottoPannRiepilogoCampi.add(labelImponibile);
 		
@@ -120,7 +121,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		textFieldImponibile.setPreferredSize(new Dimension(94,20));
 		sottoPannRiepilogoCampi.add(textFieldImponibile);
 		
-		JLabel labelIVA = new JLabel("I.V.A.");
+		JLabel labelIVA = new JLabel(Costanti.LABEL_IVA);
 		labelIVA.setPreferredSize(new Dimension(72,14));
 		sottoPannRiepilogoCampi.add(labelIVA);
 		
@@ -129,7 +130,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		textFieldIVA.setPreferredSize(new Dimension(94,20));
 		sottoPannRiepilogoCampi.add(textFieldIVA);
 		
-		JLabel labelTotale = new JLabel("Totale");
+		JLabel labelTotale = new JLabel(Costanti.LABEL_TOTALE);
 		labelTotale.setPreferredSize(new Dimension(72,14));
 		sottoPannRiepilogoCampi.add(labelTotale);
 		
@@ -169,7 +170,7 @@ public class ItemNuovoPreventivoView extends JPanel
 	
 	private JTable creaTabellaProdotti() {
 		
-		String[] colNames = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" };
+		String[] colNames = Costanti.INTESTAZIONE_TABELLA_PREVENTIVI;
         
         final Object[][] data = {};
         
@@ -179,14 +180,14 @@ public class ItemNuovoPreventivoView extends JPanel
         table.setBorder(new EmptyBorder(5, 5, 5, 5));
 
         TableColumnModel colModel = table.getColumnModel();
-        colModel.getColumn(4).setCellRenderer(new SpinnerRenderer());
-        colModel.getColumn(0).setCellRenderer(new ButtonsRendererRm());
+        colModel.getColumn(Costanti.COLONNA_QUANTITA_TAB_PROD).setCellRenderer(new SpinnerRenderer());
+        colModel.getColumn(Costanti.COLONNA_REMOVE_TAB_PROD).setCellRenderer(new ButtonsRendererRm());
         
-        colModel.getColumn(4).setCellEditor(new SpinnerEditor(table));
-        colModel.getColumn(0).setCellEditor(new ButtonsEditorRm(table));
+        colModel.getColumn(Costanti.COLONNA_QUANTITA_TAB_PROD).setCellEditor(new SpinnerEditor(table));
+        colModel.getColumn(Costanti.COLONNA_REMOVE_TAB_PROD).setCellEditor(new ButtonsEditorRm(table));
 
-        colModel.getColumn(0).setPreferredWidth(30);
-        colModel.getColumn(4).setPreferredWidth(35);
+        colModel.getColumn(Costanti.COLONNA_REMOVE_TAB_PROD).setPreferredWidth(30);
+        colModel.getColumn(Costanti.COLONNA_QUANTITA_TAB_PROD).setPreferredWidth(35);
         
 	    table.setRowHeight(30);	
 	    
@@ -198,7 +199,7 @@ public class ItemNuovoPreventivoView extends JPanel
 	
 	public void updateRow(float parz){
 		
-		((DefaultTableModel) JTableModel).setValueAt(parz, table.getSelectedRow(), 6);
+		((DefaultTableModel) JTableModel).setValueAt(parz, table.getSelectedRow(), Costanti.COLONNA_PARZIALE_TAB_PROD);
 	}
 	
 	public void updateTable(String rem, int id, String nome, String categoria, int quant, String prezzo, String parziale)

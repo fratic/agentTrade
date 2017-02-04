@@ -6,11 +6,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,11 +16,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import agent_trade.util.Costanti;
+
 public class RiepilogoItemPreventivoView extends JPanel
 {
 
 	/*attributi di classe*/
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static RiepilogoItemPreventivoView instance;
 	private static TableModel JTableModel;
 
@@ -66,8 +68,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		
 		
 		JTableModel = new DefaultTableModel(
-                new String[][] { },
-                new String[] {"ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" });
+                new String[][] { }, Costanti.INTESTAZIONE_TABELLA_RIEPILOGO_ITEM);
 			
 		table =new JTable();
 	  
@@ -89,7 +90,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		sottoPannello.setPreferredSize(new Dimension(180, 77));
 		panelloRiepilogo.add(sottoPannello);
 		
-		JLabel labelImponibile = new JLabel("Imponibile");
+		JLabel labelImponibile = new JLabel(Costanti.LABEL_IMPONIBILE);
 		labelImponibile.setPreferredSize(new Dimension(72,14));
 		sottoPannello.add(labelImponibile);
 		
@@ -98,7 +99,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		textFieldImponibile.setPreferredSize(new Dimension(94,20));
 		sottoPannello.add(textFieldImponibile);
 		
-		JLabel labelIVA = new JLabel("I.V.A.");
+		JLabel labelIVA = new JLabel(Costanti.LABEL_IVA);
 		labelIVA.setPreferredSize(new Dimension(72,14));
 		sottoPannello.add(labelIVA);
 		
@@ -107,7 +108,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		textFieldIVA.setPreferredSize(new Dimension(94,20));
 		sottoPannello.add(textFieldIVA);
 		
-		JLabel labelTotale = new JLabel("Totale");
+		JLabel labelTotale = new JLabel(Costanti.LABEL_TOTALE);
 		labelTotale.setPreferredSize(new Dimension(72,14));
 		sottoPannello.add(labelTotale);
 		

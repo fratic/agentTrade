@@ -18,7 +18,7 @@ class ButtonsPanelRm extends JPanel {
         for (JButton b: buttons) {
             b.setFocusable(false);
             b.setRolloverEnabled(false);
-            b.setIcon(new ImageIcon(ItemNuovoPreventivoView.class.getResource("/agent_trade/ui/img/close_icon.png")));
+            b.setIcon(new ImageIcon(ItemNuovoPreventivoView.class.getResource(Costanti.CLOSE_ICON)));
             //b.setSize(25, 25);
             add(b);
         }

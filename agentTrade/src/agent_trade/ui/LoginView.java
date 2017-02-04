@@ -22,6 +22,7 @@ import javax.swing.JPasswordField;
 import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_System;
+import agent_trade.util.Costanti;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
@@ -30,9 +31,7 @@ public class LoginView extends JFrame {
 	/*attributi di classe*/
 	
 	private static LoginView instance;
-	
-	private static final int WIDTH = 370;
-	private static final int HEIGHT = 240;
+
 	
 	/*attributi privati*/
 
@@ -55,17 +54,16 @@ public class LoginView extends JFrame {
 		
 		setResizable(false);
 		
-		ImageIcon img = new ImageIcon(SplashScreen.class.getResource("/agent_trade/ui/img/icon.png"));
-
+		ImageIcon img = new ImageIcon(SplashScreen.class.getResource(Costanti.AGENTTRADE_ICON));
 		this.setIconImage(img.getImage());
 
 
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        int x = (screen.width-WIDTH)/2;
-        int y = (screen.height-HEIGHT)/2;
-        setBounds(x,y,WIDTH,HEIGHT);
+        int x = (screen.width-Costanti.WIDTH_LOGIN)/2;
+        int y = (screen.height-Costanti.HEIGHT_LOGIN)/2;
+        setBounds(x,y,Costanti.WIDTH_LOGIN,Costanti.HEIGHT_LOGIN);
         
-		setTitle("Agent Trade | Login");
+		setTitle(Costanti.TITOLO_LOGIN);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -76,7 +74,7 @@ public class LoginView extends JFrame {
 		layeredPane.setBackground(Color.WHITE);
 		contentPane.add(layeredPane, BorderLayout.CENTER);
 		
-		labelUser = new JLabel("Username");
+		labelUser = new JLabel(Costanti.LABEL_USERNAME);
 		labelUser.setBounds(35, 47, 74, 37);
 		layeredPane.add(labelUser);
 		
@@ -85,7 +83,7 @@ public class LoginView extends JFrame {
 		username.setBounds(161, 55, 130, 20);
 		layeredPane.add(username);
 		
-		labelPass = new JLabel("Password");
+		labelPass = new JLabel(Costanti.LABEL_PASSWORD);
 		labelPass.setBounds(35, 99, 74, 14);
 		layeredPane.add(labelPass);
 		
@@ -93,11 +91,11 @@ public class LoginView extends JFrame {
 		password.setBounds(161, 96, 130, 20);
 		layeredPane.add(password);
 		
-		buttoneAccedi = new JButton("Accedi");
+		buttoneAccedi = new JButton(Costanti.BOTTONE_ACCEDI);
 		buttoneAccedi.setBounds(201, 136, 89, 23);
 		layeredPane.add(buttoneAccedi);
 		
-		labelInfo = new JLabel("Inserisci le tue credenziali per accedere ad Agent Trade");
+		labelInfo = new JLabel(Costanti.MESSAGGIO_INSERISCI_CREDENZIALI);
 		labelInfo.setBounds(10, 11, 334, 20);
 		layeredPane.add(labelInfo);
 		

@@ -17,15 +17,15 @@ public class DisableButton extends JButton {
     private static final long serialVersionUID = 592607338233558371L;
      
     public DisableButton() {
-        super(new ImageIcon(ProdottiView.class.getResource("/agent_trade/ui/img/carr.png")));
+        super(new ImageIcon(ProdottiView.class.getResource(Costanti.PLUS_ICON)));
 
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
         	
             	JTable table=ProdottiView.getInstance().getTable();
-            	String sel= (String)table.getValueAt(table.getSelectedRow(),0);
-            	JButton jb= (JButton)table.getValueAt(table.getSelectedRow(),4);
+            	String sel= (String)table.getValueAt(table.getSelectedRow(),Costanti.COLONNA_ID_DISABLE_BUTTON);
+            	JButton jb= (JButton)table.getValueAt(table.getSelectedRow(),Costanti.COLONNA_BOTTONE_DISABLE_BUTTON);
 
         		try {
 					Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel), jb);

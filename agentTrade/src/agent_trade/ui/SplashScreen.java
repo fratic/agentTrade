@@ -4,6 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import agent_trade.util.Costanti;
+
 public class SplashScreen extends JWindow {
 
 	/*attributi di classe*/
@@ -28,9 +30,9 @@ public class SplashScreen extends JWindow {
 	        panel.setBorder(new LineBorder(new Color(0, 0, 0)));
 	        content.add(panel, BorderLayout.CENTER);
 	        panel.setLayout(new BorderLayout(0, 0));
-	        JLabel label = new JLabel(new ImageIcon(SplashScreen.class.getResource("/agent_trade/ui/img/splash.png")));
+	        JLabel label = new JLabel(new ImageIcon(SplashScreen.class.getResource(Costanti.SPLASH_AGENTTRADE)));
 	        panel.add(label, BorderLayout.CENTER);
-	        JLabel copyrt = new JLabel("Copyright \u00A9 2015 Agent Trade", JLabel.CENTER);
+	        JLabel copyrt = new JLabel(Costanti.MESSAGGIO_COPYRIGHT, JLabel.CENTER);
 	        panel.add(copyrt, BorderLayout.SOUTH);
 	        
 	        setOpacity(0.9f);

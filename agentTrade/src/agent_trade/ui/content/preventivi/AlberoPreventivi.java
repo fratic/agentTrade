@@ -19,6 +19,7 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.util.Costanti;
 
 public class AlberoPreventivi extends JPanel {
 
@@ -37,7 +38,7 @@ public class AlberoPreventivi extends JPanel {
 	
 	public AlberoPreventivi() {
 		
-		radice = new DefaultMutableTreeNode("Preventivi");
+		radice = new DefaultMutableTreeNode(Costanti.ROOT_PREVENTIVI);
 		model = new DefaultTreeModel(radice);
 		setLayout(null);
 
@@ -49,7 +50,7 @@ public class AlberoPreventivi extends JPanel {
 
 		add(scroller);
 				
-		ImageIcon imageIcon = new ImageIcon(AlberoPreventivi.class.getResource("/agent_trade/ui/img/prev.png"));
+		ImageIcon imageIcon = new ImageIcon(AlberoPreventivi.class.getResource(Costanti.ALBERO_PREVENTIVI_ICON));
         DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();       
         renderer.setLeafIcon(imageIcon);
 
@@ -100,7 +101,7 @@ public class AlberoPreventivi extends JPanel {
 			      MutableTreeNode parent = (MutableTreeNode) (currentNode.getParent());
 			      if (parent != null) {
 			        model.removeNodeFromParent(currentNode);
-			        System.out.println("cancellato nodo: "+currentNode.toString());
+//			        System.out.println("cancellato nodo: "+currentNode.toString());
 			        return;
 			      }
 			    }

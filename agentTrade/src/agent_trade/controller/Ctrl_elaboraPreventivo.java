@@ -29,7 +29,7 @@ import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
-
+import agent_trade.util.Costanti;
 import persistent.AgentTradePersistentManager;
 import persistent.ClienteCriteria;
 import persistent.PreventivoCriteria;
@@ -49,7 +49,7 @@ public class Ctrl_elaboraPreventivo {
 	 * attributi privati
 	 */
 	
-	private final double IVA=0.22; //sarebbe più indicato averlo in un file di configurazione
+//	private final double IVA=0.22; //sarebbe più indicato averlo in un file di configurazione
 	private Calendar cal = Calendar.getInstance();
 
 	/*
@@ -267,7 +267,7 @@ public class Ctrl_elaboraPreventivo {
 		jb.setEnabled(false);
 		
 		float imp=M_Preventivo.getInstance().calcolaTotale();
-		float iva=(float)(imp*IVA);
+		float iva=(float)(imp*Costanti.IVA);
 		float tot=imp+iva;
 		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
 
@@ -332,7 +332,7 @@ public class Ctrl_elaboraPreventivo {
 			initRiepilogoPreventivo(m);
 			
 			float imp=m.calcolaTotale();
-			float iva=(float)(imp*IVA);
+			float iva=(float)(imp*Costanti.IVA);
 			float tot=imp+iva;
 			RiepilogoItemPreventivoView.getInstance().setTot(imp, iva, tot);
 			}
@@ -350,7 +350,7 @@ public class Ctrl_elaboraPreventivo {
 		M_Preventivo_Item pr_it=(M_Preventivo_Item)obs;
 		
 		float imp=M_Preventivo.getInstance().calcolaTotale();
-		float iva=(float)(imp*IVA);
+		float iva=(float)(imp*Costanti.IVA);
 		float tot=imp+iva;
 		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
 		
@@ -424,7 +424,7 @@ public class Ctrl_elaboraPreventivo {
 
 		//è compito del ctrl farlo? vedere meglio
 		float imp=M_Preventivo.getInstance().calcolaTotale();
-		float iva=(float)(imp*IVA);
+		float iva=(float)(imp*Costanti.IVA);
 		float tot=imp+iva;
 		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
 	}
