@@ -101,11 +101,13 @@ public class AlberoPreventivi extends JPanel {
 			      MutableTreeNode parent = (MutableTreeNode) (currentNode.getParent());
 			      if (parent != null) {
 			        model.removeNodeFromParent(currentNode);
-//			        System.out.println("cancellato nodo: "+currentNode.toString());
+			        System.out.println("cancellato nodo: "+currentNode.toString());
 			        return;
 			      }
 			    }
+			    
 	  }
+	  
 	  
 	  
 	  public static void selezionaNodo(String nodo){

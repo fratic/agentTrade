@@ -49,7 +49,6 @@ public class Ctrl_elaboraPreventivo {
 	 * attributi privati
 	 */
 	
-//	private final double IVA=0.22; //sarebbe più indicato averlo in un file di configurazione
 	private Calendar cal = Calendar.getInstance();
 
 	/*
@@ -282,7 +281,7 @@ public class Ctrl_elaboraPreventivo {
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try 
 		{
-			AgentTradePersistentManager.instance().getSession().update(p);	
+			AgentTradePersistentManager.instance().getSession().saveOrUpdate(p);	
 
 			// commit per il salvataggio
 			t.commit();
@@ -433,23 +432,28 @@ public class Ctrl_elaboraPreventivo {
 
 	public void cancellaPreventivo(int id_Preventivo) throws PersistentException {
 		
-
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 
 		try{			
 			PreventivoCriteria criteria = new PreventivoCriteria();
 			
-			//JOIN per recuperare solo i clienti dell'agente loggato
 			criteria.idPreventivo.eq(id_Preventivo);
 			M_Preventivo prev = criteria.listPreventivo()[0];
 
+			/**
+			*non va bene. se lo faccio a transazione completa non funziona 
+			*l'albero, cosi invece potrebbe capitare che non si cancella sul db 
+			* e si cancella apparentemente nel software
+			*una possibile soluzione potrebbe essere quella di fare un refesh completo 
+			*dell'albero ogni qual volta c'è una modifica
+			*/
+			AlberoPreventivi.cancellaNodo();
+			PrimaryView.getInstance().resetPannelloCentralePreventivo();
+			
 			AgentTradePersistentManager.instance().getSession().delete(prev);
 			
 			t.commit();
 			
-			AlberoPreventivi.cancellaNodo();
-			PrimaryView.getInstance().resetPannelloCentralePreventivo();
-
 		}
 
 		catch (Exception e) {

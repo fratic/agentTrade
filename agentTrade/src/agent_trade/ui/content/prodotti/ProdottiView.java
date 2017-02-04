@@ -1,5 +1,6 @@
 package agent_trade.ui.content.prodotti;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class ProdottiView extends JPanel {
 	/*costruttori*/
 	
 	private ProdottiView() {
-
+		
 		setLayout(new GridLayout(1,1));
 		
 		pannelloProdotti = new JPanel();

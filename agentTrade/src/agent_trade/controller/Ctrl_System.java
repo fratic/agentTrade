@@ -103,10 +103,12 @@ public class Ctrl_System {
 					}
 					else{
 					LoginView.getInstance().setMex("Login errato");
+					LoginView.getInstance().enableAccedi();
 				}
 			}
 			else{
 				LoginView.getInstance().setMex("Utente sconosciuto");
+				LoginView.getInstance().enableAccedi();
 			}	
 		} catch (PersistentException e) {
 			e.printStackTrace();

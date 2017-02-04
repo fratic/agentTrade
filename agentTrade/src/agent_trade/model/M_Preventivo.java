@@ -55,6 +55,7 @@ public class M_Preventivo implements Observer {
 	private Date data;
 	private List<M_Preventivo_Item> item = new ArrayList<M_Preventivo_Item>();
 	
+	private boolean modificato=false;
 
 	
 	
@@ -69,14 +70,11 @@ public class M_Preventivo implements Observer {
 		this.rif_Agente=prev.getRif_Agente();
 		this.rif_Cliente=prev.getRif_Cliente();
 		this.item=prev.getItem();
-	
+		this.modificato=true;
+		
 		for (int i=0; i<item.size(); i++){
 			((M_Preventivo_Item)item.get(i)).AddObserver(prev);			
 		}
-		
-		
-		
-		
 		
 	}
 	
@@ -189,15 +187,18 @@ public class M_Preventivo implements Observer {
 		//sbagliatissimo
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try{
-			AgentTradePersistentManager.instance().getSession().delete(this);	
-			// commit per il salvataggio
-			t.commit();
-
+			if (!modificato){
+				AgentTradePersistentManager.instance().getSession().delete(this);	
+				// commit per il salvataggio
+				t.commit();
+			}
 		}
 		catch (Exception e) {
 			t.rollback();
 		}
 		finally{
+			
+			AgentTradePersistentManager.instance().disposePersistentManager();
 			cancIstanza();
 		}
 		
