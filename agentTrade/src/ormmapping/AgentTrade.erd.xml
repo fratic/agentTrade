@@ -36,17 +36,6 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="Sconto">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>4</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>    
   </Entity>
   <Entity name="Agente" PKClustered="0">
     <Column name="IdAgente">
@@ -351,6 +340,17 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
+    <Column name="Sconto">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>4</Type>
+      <Length>0</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column> 
     <Column name="Categoria">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>

@@ -210,7 +210,6 @@ public class M_Preventivo implements Observer {
 	public M_Preventivo_Item addItem(M_Prodotto Prodotto ) throws PersistentException{
 		
 		M_Preventivo_Item it= new M_Preventivo_Item(M_Preventivo.getInstance(), Prodotto);
-		it.setSconto( 0);
 		this.item.add(it);
 
 		return it;
@@ -242,7 +241,7 @@ public class M_Preventivo implements Observer {
 		while (iteraItem.hasNext()) 
 		{
 			item = (M_Preventivo_Item) iteraItem.next();
-			totale= totale+(item.getQuantita()*item.getIdProdotto().getPrezzo());
+			totale= totale+((item.getQuantita()*item.getIdProdotto().getPrezzo())*(1-item.getIdProdotto().getSconto()));
 		}
 		return totale;
 	}

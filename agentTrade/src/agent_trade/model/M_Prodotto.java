@@ -35,7 +35,8 @@ public abstract class M_Prodotto {
 	protected float prezzo;
 	protected String categoria;
 	protected String idDescrizioneProdotto;
-	
+	protected float sconto;
+
 	
 	/*
 	 * costruttori
@@ -57,6 +58,15 @@ public abstract class M_Prodotto {
 		this.prezzo=prezzo;
 		this.nome=nome;
 		this.categoria=categoria;
+	}
+	
+	public M_Prodotto(int id, float prezzo, String nome, String categoria,String idDes, float sconto) {
+		this.IdProdotto=id;
+		this.prezzo=prezzo;
+		this.nome=nome;
+		this.categoria=categoria;
+		this.idDescrizioneProdotto=idDes;
+		this.sconto=sconto;
 	}
 	
 	/*
@@ -119,6 +129,14 @@ public abstract class M_Prodotto {
 		return idDescrizioneProdotto;
 	}
 	
+	public float getSconto() {
+		return sconto;
+	}
+
+	public void setSconto(float sconto) {
+		this.sconto = sconto;
+	}
+
 	public String toString() {
 		return String.valueOf(getIdProdotto());
 	}

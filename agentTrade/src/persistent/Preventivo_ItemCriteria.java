@@ -25,7 +25,6 @@ public class Preventivo_ItemCriteria extends AbstractORMCriteria {
 	public final IntegerExpression idProdottoId;
 	public final AssociationExpression idProdotto;
 	public final IntegerExpression quantita;
-	public final FloatExpression sconto;
 	
 	public Preventivo_ItemCriteria(Criteria criteria) {
 		super(criteria);
@@ -33,7 +32,6 @@ public class Preventivo_ItemCriteria extends AbstractORMCriteria {
 		idProdottoId = new IntegerExpression("idProdotto.IdProdotto", this);
 		idProdotto = new AssociationExpression("idProdotto", this);
 		quantita = new IntegerExpression("quantita", this);
-		sconto = new FloatExpression("sconto", this);
 		
 	}
 	

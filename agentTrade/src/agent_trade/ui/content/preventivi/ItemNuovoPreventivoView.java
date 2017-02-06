@@ -199,12 +199,12 @@ public class ItemNuovoPreventivoView extends JPanel
 	
 	public void updateRow(float parz){
 		
-		((DefaultTableModel) JTableModel).setValueAt(parz, table.getSelectedRow(), Costanti.COLONNA_PARZIALE_TAB_PROD);
+		((DefaultTableModel) JTableModel).setValueAt(parz, table.getSelectedRow(), Costanti.COLONNA_PARZIALE_TAB_PREV);
 	}
 	
-	public void updateTable(String rem, int id, String nome, String categoria, int quant, String prezzo, String parziale)
+	public void updateTable(String rem, int id, String nome, String categoria, int quant, String prezzo, String sconto, String parziale)
 	{
-		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quant, prezzo, parziale});
+		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quant, prezzo, sconto, parziale});
 	}
 	
 	public void deleteRow(int row) {

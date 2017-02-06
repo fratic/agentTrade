@@ -14,6 +14,7 @@ License Type: Academic
 		<property name="nome" column="Nome" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="prezzo" column="Prezzo" type="float" not-null="true" lazy="false"/>
 		<property name="categoria" column="Categoria" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="sconto" column="Sconto" type="float" not-null="false" lazy="false"/>		
 		<property name="idDescrizioneProdotto" column="IdDescrizioneProdotto" type="string" length="255" not-null="false" lazy="false"/>
 		<subclass name="agent_trade.model.M_Latticini" discriminator-value="M_Latticini" lazy="false">
 			<property name="stagionatura" column="Stagionatura" type="integer" length="11" not-null="false" lazy="false"/>

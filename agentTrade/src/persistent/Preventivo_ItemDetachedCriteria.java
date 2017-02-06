@@ -25,7 +25,6 @@ public class Preventivo_ItemDetachedCriteria extends AbstractORMDetachedCriteria
 	public final IntegerExpression idProdottoId;
 	public final AssociationExpression idProdotto;
 	public final IntegerExpression quantita;
-	public final FloatExpression sconto;
 	
 	public Preventivo_ItemDetachedCriteria() {
 		super(agent_trade.model.M_Preventivo_Item.class, persistent.Preventivo_ItemCriteria.class);
@@ -33,7 +32,6 @@ public class Preventivo_ItemDetachedCriteria extends AbstractORMDetachedCriteria
 		idProdottoId = new IntegerExpression("idProdotto.IdProdotto", this.getDetachedCriteria());
 		idProdotto = new AssociationExpression("idProdotto", this.getDetachedCriteria());
 		quantita = new IntegerExpression("quantita", this.getDetachedCriteria());
-		sconto = new FloatExpression("sconto", this.getDetachedCriteria());
 	}
 	
 	public Preventivo_ItemDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -42,7 +40,6 @@ public class Preventivo_ItemDetachedCriteria extends AbstractORMDetachedCriteria
 		idProdottoId = new IntegerExpression("idProdotto.IdProdotto", this.getDetachedCriteria());
 		idProdotto = new AssociationExpression("idProdotto", this.getDetachedCriteria());
 		quantita = new IntegerExpression("quantita", this.getDetachedCriteria());
-		sconto = new FloatExpression("sconto", this.getDetachedCriteria());
 	}
 	
 	public ProdottoDetachedCriteria createIdProdottoCriteria() {

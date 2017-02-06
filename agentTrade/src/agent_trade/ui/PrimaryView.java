@@ -573,8 +573,8 @@ public class PrimaryView extends JFrame
 		
 	}
 	
-	public void updateTableRiepilogo(String id, String nome, String categoria, String quantita, String prezzo, String parziale){
-		((RiepilogoItemPreventivoView) riep_item).updateTable(id, nome, categoria, quantita, prezzo, parziale);	
+	public void updateTableRiepilogo(String id, String nome, String categoria, String quantita, String prezzo, String sconto, String parziale){
+		((RiepilogoItemPreventivoView) riep_item).updateTable(id, nome, categoria, quantita, prezzo, sconto, parziale);	
 	}
 		
 	public void disabilitaAlbero(){

@@ -26,6 +26,8 @@ public class ProdottoCriteria extends AbstractORMCriteria {
 	public final FloatExpression prezzo;
 	public final StringExpression categoria;
 	public final StringExpression idDescrizioneProdotto;
+	public final FloatExpression sconto;
+
 	
 	public ProdottoCriteria(Criteria criteria) {
 		super(criteria);
@@ -34,6 +36,8 @@ public class ProdottoCriteria extends AbstractORMCriteria {
 		prezzo = new FloatExpression("prezzo", this);
 		categoria = new StringExpression("categoria", this);
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this);
+		sconto = new FloatExpression("sconto", this);
+
 	}
 	
 	public ProdottoCriteria(PersistentSession session) {

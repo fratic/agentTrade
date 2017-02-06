@@ -137,25 +137,25 @@ public final class Costanti {
 //	public final static String[] LISTA_RUOLI = { "Commesso", "Responsabile Offerte", "Direttore" };
 
 	
-	public final static String[] INTESTAZIONE_TABELLA_PREVENTIVI = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" };
-	public final static String[] INTESTAZIONE_TABELLA_RIEPILOGO_ITEM= {"ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Parziale" };
-	public final static String[] INTESTAZIONE_TABELLA_PRODOTTI = {"ID prodotto", "Nome", "Categoria",  "Prezzo", "Aggiungi" };
+	public final static String[] INTESTAZIONE_TABELLA_PREVENTIVI = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Sconto", "Parziale" };
+	public final static String[] INTESTAZIONE_TABELLA_RIEPILOGO_ITEM= {"ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo", "Sconto", "Parziale" };
+	public final static String[] INTESTAZIONE_TABELLA_PRODOTTI = {"ID prodotto", "Nome", "Categoria", "Sconto", "Prezzo", "Aggiungi" };
 
 	
 	/**
 	 * Costanti colonne
 	 */
 	public final static int  COLONNA_ID_DISABLE_BUTTON = 0;
-	public final static int  COLONNA_BOTTONE_DISABLE_BUTTON = 4;
+	public final static int  COLONNA_BOTTONE_DISABLE_BUTTON = 5;
 	
-	public final static int  COLONNA_ADD_ITEM= 4;
+	public final static int  COLONNA_ADD_ITEM= 5;
 	
 	public final static int  COLONNA_ID_REMOVE_ITEM= 1;
 	
 	public final static int  COLONNA_QUANTITA_TAB_PROD= 4;
 	public final static int  COLONNA_REMOVE_TAB_PROD= 0;
 
-	public final static int  COLONNA_PARZIALE_TAB_PROD= 6;
+	public final static int  COLONNA_PARZIALE_TAB_PREV= 7;
 
 	
 	

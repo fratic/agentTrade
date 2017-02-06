@@ -1,30 +1,27 @@
 package agent_trade.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JLayeredPane;
-
-import java.awt.Color;
-
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
-import org.orm.PersistentException;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.util.Costanti;
-
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class LoginView extends JFrame {
 
@@ -102,9 +99,12 @@ public class LoginView extends JFrame {
 		mex = DefaultComponentFactory.getInstance().createLabel("");
 		mex.setBounds(35, 140, 156, 14);
 		layeredPane.add(mex);
-		
+				
+
 		buttoneAccedi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
+				disableAccedi();
 				Ctrl_System.getInstance().login((String)username.getText(), (String)password.getText());
 			}
 		});	
@@ -132,4 +132,15 @@ public class LoginView extends JFrame {
 	public void setMex(String m){
 		mex.setText(m);
 	}
+	
+	public void disableAccedi(){
+		buttoneAccedi.setEnabled(false);
+		contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+	}
+	
+	public void enableAccedi(){
+		buttoneAccedi.setEnabled(true);
+		contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+	}
+	
 }

@@ -13,6 +13,5 @@ License Type: Academic
 		<many-to-one name="idProdotto" cascade="lock" column="M_ProdottoIdProdotto" class="agent_trade.model.M_Prodotto" not-null="true" lazy="proxy">
 		</many-to-one>
 		<property name="quantita" column="Quantita" type="integer" length="11" not-null="false" lazy="false"/>
-		<property name="sconto" column="Sconto" type="float" not-null="false" lazy="false"/>		
 	</class>
 </hibernate-mapping>

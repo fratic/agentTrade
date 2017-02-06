@@ -141,9 +141,9 @@ public class RiepilogoItemPreventivoView extends JPanel
 	/*metodi privati*/
 	/*metodi pubblici*/
 		
-	public void updateTable( String id, String nome, String categoria, String quantita, String prezzo, String parziale)
+	public void updateTable( String id, String nome, String categoria, String quantita, String prezzo, String sconto, String parziale)
 	{
-		((DefaultTableModel) JTableModel).addRow(new Object[]{ id, nome, categoria, quantita, prezzo, parziale});
+		((DefaultTableModel) JTableModel).addRow(new Object[]{ id, nome, categoria, quantita, prezzo, sconto,  parziale});
 	}
 	
 	public void resetTable(){

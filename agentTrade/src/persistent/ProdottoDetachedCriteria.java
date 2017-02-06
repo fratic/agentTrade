@@ -26,6 +26,8 @@ public class ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final FloatExpression prezzo;
 	public final StringExpression categoria;
 	public final StringExpression idDescrizioneProdotto;
+	public final FloatExpression sconto;
+
 	
 	public ProdottoDetachedCriteria() {
 		super(agent_trade.model.M_Prodotto.class, persistent.ProdottoCriteria.class);
@@ -34,6 +36,8 @@ public class ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 		prezzo = new FloatExpression("prezzo", this.getDetachedCriteria());
 		categoria = new StringExpression("categoria", this.getDetachedCriteria());
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this.getDetachedCriteria());
+		sconto = new FloatExpression("sconto", this.getDetachedCriteria());
+
 	}
 	
 	public ProdottoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -43,6 +47,8 @@ public class ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 		prezzo = new FloatExpression("prezzo", this.getDetachedCriteria());
 		categoria = new StringExpression("categoria", this.getDetachedCriteria());
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this.getDetachedCriteria());
+		sconto = new FloatExpression("sconto", this.getDetachedCriteria());
+
 	}
 	
 	public M_Prodotto uniqueM_Prodotto(PersistentSession session) {

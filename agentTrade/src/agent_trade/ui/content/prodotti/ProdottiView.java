@@ -117,7 +117,7 @@ public class ProdottiView extends JPanel {
 		jb= new DisableButton();
 		jb.setEnabled(false);
         ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
-        		p.getNome(), p.getCategoria(),Float.toString(p.getPrezzo()), jb});
+        		p.getNome(), p.getCategoria(), (java.lang.Math.ceil(p.getSconto()*100))+"%" ,Float.toString(p.getPrezzo()), jb});
         
 		elencoBott.put(p.getIdProdotto(), jb);
 

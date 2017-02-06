@@ -33,7 +33,6 @@ public class M_Preventivo_Item extends Observable{
 	private int idPreventivo_Item;
 	private M_Prodotto idProdotto;
 	private int quantita;
-	private float sconto;
 	private List<Observer> observer = new ArrayList<Observer>();
 	
 	
@@ -46,7 +45,6 @@ public class M_Preventivo_Item extends Observable{
 	
 	public M_Preventivo_Item(M_Preventivo rifPreventivo, M_Prodotto idProdotto){
 		
-		this.sconto=0;
 		this.idProdotto=idProdotto;		
 		this.AddObserver(rifPreventivo);
 		this.quantita=1;
@@ -81,15 +79,6 @@ public class M_Preventivo_Item extends Observable{
 	public void setObserver(List<Observer> observer) {
 		this.observer = observer;
 	}
-
-	public void setSconto(float value) {
-		this.sconto = value;
-	}
-	
-	public float getSconto() {
-		return sconto;
-	}
-	
 
 	public void NotifyObservers() {
 
