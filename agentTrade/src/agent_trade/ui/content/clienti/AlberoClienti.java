@@ -14,6 +14,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
 import org.orm.PersistentException;
@@ -35,6 +36,9 @@ public class AlberoClienti extends JPanel {
 		
 	private static DefaultMutableTreeNode radice;
 	private static AlberoClienti instance;
+	
+//	Variabile che serve per non abilitare il listener dell'albero quando si cancella un cliente 
+	private static boolean abilitalistener = true;
 
 
 	/*costruttori*/
@@ -64,8 +68,10 @@ public class AlberoClienti extends JPanel {
 
 				public void valueChanged(TreeSelectionEvent e) {
 					TreePath selection = e.getPath();
-					try {
+					try {if(abilitalistener == true){
+						//System.out.println("MI ATTIVO");
 						Ctrl_gestisciCliente.getInstance().mostraCliente(selection.getLastPathComponent());
+					}
 					} catch (PersistentException e1)
 					{
 						e1.printStackTrace();
@@ -110,11 +116,12 @@ public class AlberoClienti extends JPanel {
 		{
 			//ottengo i nodi singolarmente
 			DefaultMutableTreeNode nodo1 = (DefaultMutableTreeNode)sottonodi.nextElement();
-			System.out.print(nodo1);
+			//System.out.print(nodo1);
 			if(nodo1.toString().equals(nodo)) {
+				abilitalistener = false;
 				model.removeNodeFromParent(nodo1);
 			}
-				
+			abilitalistener = true;
 		}
 	}
 	
@@ -124,6 +131,22 @@ public class AlberoClienti extends JPanel {
 	    model.reload();
 	    Ctrl_System.getInstance().initAlberoClienti();
 		
+	}
+	
+	public static void selectNode (String nodo) throws PersistentException{
+		
+		Enumeration<MutableTreeNode> sottonodi = radice.children();
+		while (sottonodi.hasMoreElements())
+		{
+			DefaultMutableTreeNode nodo1 = (DefaultMutableTreeNode)sottonodi.nextElement();
+			
+			if(nodo1.toString().equals(nodo)) {
+				 TreeNode[] nodes = model.getPathToRoot(nodo1);  
+		         //TreePath path = new TreePath(nodes);    
+		         albero.setExpandsSelectedPaths(true);                
+		         albero.setSelectionPath(new TreePath(nodes));
+			}
+		}
 	}
 	
 	public static void deselezionaNodo(String nodo){

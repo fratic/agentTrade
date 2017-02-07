@@ -446,6 +446,16 @@ public class PrimaryView extends JFrame
 		
 	}
 	
+	//rende visibili i tooltip solo quando si modifica il cliente
+	public void setVisibleToolTip(){
+		((RiepilogoClienteView) riep_cliente).abilitaToolTip();
+	}
+		
+	//rende invisibili i tooltip solo quando si modifica il cliente
+	public void setInvisibleToolTip(){
+		((RiepilogoClienteView) riep_cliente).disabilitaToolTip();
+	}	
+	
 	//blocca e sblocca bottoni relativi al tab cliente
 	//modificato il nome della funzione interna
 	public void disattivaModifica(boolean b){

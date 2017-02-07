@@ -71,7 +71,7 @@ public class Ctrl_gestisciCliente {
 			return errore= "inserisci tutti i campi";
 		}
 		
-		if(!check("[a-zA-Z'\\s]+", cognome)){
+		if(!check("[a-zA-Z'._%-& \\s]+", cognome)){
 			campoErrato=campoErrato + "cognome ";
 		}
 		if(!check("[a-zA-Z'\\s]+", nome)){
@@ -83,7 +83,7 @@ public class Ctrl_gestisciCliente {
 		if(!check("[0-9]{11}", partitaIva)){
 			campoErrato=campoErrato + "partita iva ";
 		}
-		if(!check("[a-zA-Z'\\s]+[0-9]{0,4}", indirizzo)){
+		if(!check("[a-zA-Z'. \\s]+[0-9]{0,4}", indirizzo)){
 			campoErrato= campoErrato +"indirizzo ";
 		}
 		if(!check("[a-zA-Z'\\s]+", citta)){
@@ -229,6 +229,7 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().setEnableTabCatalogo(true);
 			PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
 			AlberoClienti.abilitaAlbero();
+			AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 	}
 	
 	
@@ -274,6 +275,7 @@ public class Ctrl_gestisciCliente {
 				recuperaCliente(id);
 				
 				AlberoClienti.inserisciNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
+				AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 				AlberoClienti.abilitaAlbero();
 				PrimaryView.getInstance().setEnableTabPreventivo(true);
 				PrimaryView.getInstance().setEnableTabCatalogo(true);
@@ -349,7 +351,9 @@ public class Ctrl_gestisciCliente {
 			PrimaryView.getInstance().setEnableNewCliente(true);
 			PrimaryView.getInstance().setEnableCercaCliente(true);
 			PrimaryView.getInstance().disattivaInviaPosta(true);
+			PrimaryView.getInstance().setInvisibleToolTip();
 			AlberoClienti.updateNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
+			AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 			AlberoClienti.abilitaAlbero();
 			
 			
@@ -454,6 +458,7 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().setVisibleErroreRiepCliente(false);
 		PrimaryView.getInstance().setEnableNewCliente(false);
 		PrimaryView.getInstance().setEnableCercaCliente(false);
+		PrimaryView.getInstance().setVisibleToolTip();
 		AlberoClienti.disabilitaAlbero();
 	}
 		
@@ -471,6 +476,7 @@ public class Ctrl_gestisciCliente {
 		PrimaryView.getInstance().setEnableTabPreventivo(true);
 		PrimaryView.getInstance().setEnableNewCliente(true);
 		PrimaryView.getInstance().setEnableCercaCliente(true);
+		PrimaryView.getInstance().setInvisibleToolTip();
 		AlberoClienti.abilitaAlbero();
 	}
 	

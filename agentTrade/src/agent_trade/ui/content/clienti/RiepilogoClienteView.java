@@ -401,7 +401,7 @@ public class RiepilogoClienteView extends JPanel {
 		pannelloCampi = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pannelloCampi.getLayout();
 		flowLayout.setVgap(15);
-		pannelloCampi.setPreferredSize(new Dimension(425, 610));
+		pannelloCampi.setPreferredSize(new Dimension(435, 610));
 		pannelloContenitore.add(pannelloCampi);
 		
 		
@@ -421,7 +421,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelIdCliente = DefaultComponentFactory.getInstance().createLabel("Codice cliente");
 		labelIdCliente.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelIdCliente.setPreferredSize(new Dimension(150, 14));
+		labelIdCliente.setPreferredSize(new Dimension(160, 15));
 		pannelloCampi.add(labelIdCliente);
 
 		
@@ -433,7 +433,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelCognome = DefaultComponentFactory.getInstance().createLabel("Cognome o Ragione sociale");
 		labelCognome.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelCognome.setPreferredSize(new Dimension(150, 14));
+		labelCognome.setPreferredSize(new Dimension(160, 15));
 		pannelloCampi.add(labelCognome);
 				
 		TFcognome = new JTextField();
@@ -445,7 +445,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelNome = DefaultComponentFactory.getInstance().createLabel("Nome");
 		labelNome.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelNome.setPreferredSize(new Dimension(150,14));
+		labelNome.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelNome);
 
 		
@@ -457,7 +457,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelCodiceFiscale = DefaultComponentFactory.getInstance().createLabel("Codice Fiscale");
 		labelCodiceFiscale.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelCodiceFiscale.setPreferredSize(new Dimension(150,14));
+		labelCodiceFiscale.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelCodiceFiscale);
 		 
 		TFcodicefiscale = new JTextField();
@@ -468,7 +468,7 @@ public class RiepilogoClienteView extends JPanel {
 		 
 		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel("Partita Iva");
 		labelPartitaIva.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelPartitaIva.setPreferredSize(new Dimension(150,14));
+		labelPartitaIva.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelPartitaIva);
 		 
 		TFpartitaiva = new JTextField();
@@ -478,8 +478,7 @@ public class RiepilogoClienteView extends JPanel {
 		 
 		labelIndirizzo = DefaultComponentFactory.getInstance().createLabel("Indirizzo");
 		labelIndirizzo.setFont(new Font("Tahoma", Font.PLAIN, 13));
-
-		labelIndirizzo.setPreferredSize(new Dimension(150,14));
+		labelIndirizzo.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelIndirizzo);
 		 
 		TFindirizzo = new JTextField();
@@ -489,7 +488,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelCitta = DefaultComponentFactory.getInstance().createLabel("Citt\u00E0");
 		labelCitta.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelCitta.setPreferredSize(new Dimension(150,14));
+		labelCitta.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelCitta);
 		
 		TFcitta = new JTextField();
@@ -499,7 +498,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelCAP = DefaultComponentFactory.getInstance().createLabel("CAP");
 		labelCAP.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelCAP.setPreferredSize(new Dimension(150,14));
+		labelCAP.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelCAP);
 		
 		TFcap = new JTextField();
@@ -510,7 +509,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelTelefono = DefaultComponentFactory.getInstance().createLabel("Telefono: ");
 		labelTelefono.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelTelefono.setPreferredSize(new Dimension(150,14));
+		labelTelefono.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelTelefono);
 		
 		TFtelefono = new JTextField();
@@ -521,8 +520,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelCell = DefaultComponentFactory.getInstance().createLabel("Cellulare");
 		labelCell.setFont(new Font("Tahoma", Font.PLAIN, 13));
-
-		labelCell.setPreferredSize(new Dimension(150,14));
+		labelCell.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelCell);
 		
 		TFcell = new JTextField();
@@ -533,9 +531,8 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelFax = DefaultComponentFactory.getInstance().createLabel("Fax: ");
 		labelFax.setFont(new Font("Tahoma", Font.PLAIN, 13));
-
-		labelFax.setPreferredSize(new Dimension(150,14));
-				pannelloCampi.add(labelFax);
+		labelFax.setPreferredSize(new Dimension(160,15));
+		pannelloCampi.add(labelFax);
 				
 		TFfax = new JTextField();
 		TFfax.setPreferredSize(new Dimension(261,20));
@@ -544,8 +541,7 @@ public class RiepilogoClienteView extends JPanel {
 		 
 		labelEmail = DefaultComponentFactory.getInstance().createLabel("Email: ");
 		labelEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
-
-		labelEmail.setPreferredSize(new Dimension(150,14));
+		labelEmail.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelEmail);
 		 
 		TFemail = new JTextField();
@@ -555,7 +551,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelRifAgente = DefaultComponentFactory.getInstance().createLabel("Agente di riferimento");
 		labelRifAgente.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelRifAgente.setPreferredSize(new Dimension(150,14));
+		labelRifAgente.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelRifAgente);
 		
 		TFrifAgente = new JTextField();
@@ -566,7 +562,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		labelErrore = DefaultComponentFactory.getInstance().createLabel("");
 		labelErrore.setForeground(Color.RED);
-		labelErrore.setPreferredSize(new Dimension(416,14));
+		labelErrore.setPreferredSize(new Dimension(426,15));
 		pannelloCampi.add(labelErrore);
 		
 		
@@ -752,7 +748,40 @@ public class RiepilogoClienteView extends JPanel {
 		public void setVisibleErroreRiepCliente(boolean b){
 			labelErrore.setVisible(b);
 		}
-	}
+		
+//		QUESTA FUNZIONE SERVE PER ABILITARE I TOOLTIP
+		public void abilitaToolTip(){
+			
+				TFcognome.setToolTipText("Sono ammessi i caratteri '-_.&' Es: 'Rossi', 'Ciccio & co.'");
+				TFnome.setToolTipText("Non sono ammessi caratteri numerici");
+				TFcodicefiscale.setToolTipText("Es: 'aaabbb11c23d456e'");
+				TFpartitaiva.setToolTipText("Codice di undici cifre Es: '12345678901'");
+				TFindirizzo.setToolTipText("Es: 'Via Roma 100'");
+				TFcitta.setToolTipText("Non sono ammessi caratteri numerici");
+				TFcap.setToolTipText("Codice di cinque Cifre");
+				TFtelefono.setToolTipText("Numero di dieci cifre");
+				TFcell.setToolTipText("Numero di dieci cifre");
+				TFfax.setToolTipText("Numero di dieci cifre");
+				TFemail.setToolTipText("ES: esempio_12@esempio.com");
+			}
+		
+//		QUESTA FUNZIONE SERVE PER DISABILITARE I TOOLTIP
+		public void disabilitaToolTip(){
+				TFcognome.setToolTipText(null);
+				TFnome.setToolTipText(null);
+				TFcodicefiscale.setToolTipText(null);
+				TFpartitaiva.setToolTipText(null);
+				TFindirizzo.setToolTipText(null);
+				TFcitta.setToolTipText(null);
+				TFcap.setToolTipText(null);
+				TFtelefono.setToolTipText(null);
+				TFcell.setToolTipText(null);
+				TFfax.setToolTipText(null);
+				TFemail.setToolTipText(null);
+			}
+		
+
+}
 		
 
 

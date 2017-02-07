@@ -17,6 +17,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import org.orm.PersistentException;
 
@@ -133,6 +134,8 @@ public class Ricerca_cliente extends JDialog {
 		table =new JTable();
         
         table.setModel(JTableModel);
+        
+        table.setRowSorter (new TableRowSorter (JTableModel)); 
 
 	    scrollPane = new JScrollPane(table);
 	    scrollPane.setBounds(10, 11, 723, 154);

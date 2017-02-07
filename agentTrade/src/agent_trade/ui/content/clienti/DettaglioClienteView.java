@@ -329,7 +329,7 @@ public class DettaglioClienteView extends JPanel {
 		pannelloCampi = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pannelloCampi.getLayout();
 		flowLayout.setVgap(15);
-		pannelloCampi.setPreferredSize(new Dimension(425, 610));
+		pannelloCampi.setPreferredSize(new Dimension(435, 610));
 		pannelloContenitore.add(pannelloCampi);
 	
 		
@@ -346,113 +346,122 @@ public class DettaglioClienteView extends JPanel {
 		
 		labelCognome = DefaultComponentFactory.getInstance().createLabel("Cognome o Ragione sociale");
 		labelCognome.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelCognome.setPreferredSize(new Dimension(150, 14));
+		labelCognome.setPreferredSize(new Dimension(160, 15));
 		pannelloCampi.add(labelCognome);
 		
 		TFcognome = new JTextField();
-//		MODIFICA PROSSIME 4
-		//TFcognome.setBounds(336, 49, 261, 20);
 		TFcognome.setPreferredSize(new Dimension(261,20));
+		TFcognome.setToolTipText("Sono ammessi i caratteri '-_.&' Es: 'Rossi', 'Ciccio & co.'");
 		pannelloCampi.add(TFcognome);
 		
 		
 		labelNome = DefaultComponentFactory.getInstance().createLabel("Nome");
 		labelNome.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelNome.setPreferredSize(new Dimension(150,14));
+		labelNome.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelNome);
 		 
 		TFnome = new JTextField();
 		TFnome.setPreferredSize(new Dimension(261,20));
+		TFnome.setToolTipText("Non sono ammessi caratteri numerici");
 		pannelloCampi.add(TFnome);
 		 
 		labelCodiceFiscale = DefaultComponentFactory.getInstance().createLabel("Codice Fiscale");
 		labelCodiceFiscale.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelCodiceFiscale.setPreferredSize(new Dimension(150,14));
+		labelCodiceFiscale.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelCodiceFiscale);
 		 
 		TFcodicefiscale = new JTextField();
 		TFcodicefiscale.setPreferredSize(new Dimension(261,20));
+		TFcodicefiscale.setToolTipText("Es: 'aaabbb11c23d456e'");
 		pannelloCampi.add(TFcodicefiscale);
 		 
 		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel("Partita Iva");
 		labelPartitaIva.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelPartitaIva.setPreferredSize(new Dimension(150,14));
+		labelPartitaIva.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelPartitaIva);
 
 		TFpartitaiva = new JTextField();
 		TFpartitaiva.setPreferredSize(new Dimension(261,20));
+		TFpartitaiva.setToolTipText("Codice di undici cifre Es: '12345678901'");
 		pannelloCampi.add(TFpartitaiva);
 		 
 		 
 		labelIndirizzo = DefaultComponentFactory.getInstance().createLabel("Indirizzo");
 		labelIndirizzo.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelIndirizzo.setPreferredSize(new Dimension(150,14));
+		labelIndirizzo.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelIndirizzo);
 		 
 		TFindirizzo = new JTextField();
 		TFindirizzo.setPreferredSize(new Dimension(261,20));
+		TFindirizzo.setToolTipText("Es: 'Via Roma 100'");
 		pannelloCampi.add(TFindirizzo);	
 		
 		
 		labelCitta = DefaultComponentFactory.getInstance().createLabel("Citt\u00E0");
-		labelCitta.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelCitta.setPreferredSize(new Dimension(150,14));
+		labelCitta.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelCitta.setPreferredSize(new Dimension(160,14));
 		pannelloCampi.add(labelCitta);
 		
 		TFcitta = new JTextField();
 		TFcitta.setPreferredSize(new Dimension(261,20));
+		TFcitta.setToolTipText("Non sono ammessi caratteri numerici");
 		pannelloCampi.add(TFcitta);
 		
 		labelCAP = DefaultComponentFactory.getInstance().createLabel("CAP");
 		labelCAP.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelCAP.setPreferredSize(new Dimension(150,14));
+		labelCAP.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelCAP);
 		
 		TFcap = new JTextField();
 		TFcap.setPreferredSize(new Dimension(261,20));
+		TFcap.setToolTipText("Codice di cinque Cifre");
 		pannelloCampi.add(TFcap);
 		
 		
 		labelTelefono = DefaultComponentFactory.getInstance().createLabel("Telefono: ");
 		labelTelefono.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelTelefono.setPreferredSize(new Dimension(150,14));
+		labelTelefono.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelTelefono);
 		
 		TFtelefono = new JTextField();
 		TFtelefono.setPreferredSize(new Dimension(261,20));
+		TFtelefono.setToolTipText("Numero di dieci cifre");
 		pannelloCampi.add(TFtelefono);
 		
 		
 		labelCell = DefaultComponentFactory.getInstance().createLabel("Cellulare");
 		labelCell.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelCell.setPreferredSize(new Dimension(150,14));
+		labelCell.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelCell);
 
 		TFcell = new JTextField();
 		TFcell.setPreferredSize(new Dimension(261,20));
+		TFcell.setToolTipText("Numero di dieci cifre");
 		pannelloCampi.add(TFcell);
 		
 		labelFax = DefaultComponentFactory.getInstance().createLabel("Fax: ");
 		labelFax.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelFax.setPreferredSize(new Dimension(150,14));
+		labelFax.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelFax);
 		
 		TFfax = new JTextField();
 		TFfax.setPreferredSize(new Dimension(261,20));
+		TFfax.setToolTipText("Numero di dieci cifre");
 		pannelloCampi.add(TFfax);
 		 
 		labelEmail = DefaultComponentFactory.getInstance().createLabel("Email: ");
 		labelEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelEmail.setPreferredSize(new Dimension(150,14));
+		labelEmail.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelEmail);
 		 
 		TFemail = new JTextField();
 		TFemail.setPreferredSize(new Dimension(261,20));
+		TFemail.setToolTipText("ES: esempio_12@esempio.com");
 		pannelloCampi.add(TFemail);
 		
 		labelRifAgente = DefaultComponentFactory.getInstance().createLabel("Agente di riferimento");
 		labelRifAgente.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		labelRifAgente.setPreferredSize(new Dimension(150,14));
+		labelRifAgente.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelRifAgente);
 		
 		TFrifAgente = new JTextField();
@@ -463,7 +472,7 @@ public class DettaglioClienteView extends JPanel {
 		
 		labelErrore = DefaultComponentFactory.getInstance().createLabel("");
 		labelErrore.setForeground(Color.RED);
-		labelErrore.setPreferredSize(new Dimension(416,14));
+		labelErrore.setPreferredSize(new Dimension(426,15));
 		pannelloCampi.add(labelErrore);
 		
 		pannelloOvest = new JPanel();
