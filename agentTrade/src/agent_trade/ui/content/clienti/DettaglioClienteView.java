@@ -235,6 +235,7 @@ import javax.swing.border.TitledBorder;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
+import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.ui.PrimaryView;
 
@@ -464,8 +465,8 @@ public class DettaglioClienteView extends JPanel {
 		labelRifAgente.setPreferredSize(new Dimension(160,15));
 		pannelloCampi.add(labelRifAgente);
 		
-		TFrifAgente = new JTextField();
-		TFrifAgente.setEnabled(false);
+		TFrifAgente = new JTextField((Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome()));
+//		TFrifAgente.setEnabled(false);
 		TFrifAgente.setEditable(false);
 		TFrifAgente.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFrifAgente);

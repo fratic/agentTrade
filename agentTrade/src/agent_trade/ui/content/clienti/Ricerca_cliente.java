@@ -129,7 +129,7 @@ public class Ricerca_cliente extends JDialog {
 		
 		JTableModel = new DefaultTableModel(
                 new String[][] { },
-                new String[] {"ID", "Cognome", "Nome","Codice Fiscale", "Partita iva"});
+                new String[] {"ID", "Cognome", "Nome","Codice Fiscale", "Partita iva", "Citt\u00E0" });
 			
 		table =new JTable();
         
@@ -217,18 +217,18 @@ public class Ricerca_cliente extends JDialog {
 		labelError.setText("");
 		
 		for (M_Cliente c : a) {
-			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getIdCliente(),c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva()});
+			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getIdCliente(),c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva(), c.getCitta()});
 		}	
 	}
 	
 	
-	public void updateTable(int id, String cognome, String nome,String cf, String pi){
+	public void updateTable(int id, String cognome, String nome,String cf, String pi, String citta){
 //		int k=((DefaultTableModel) JTableModel).getRowCount();
 //		for (int i=k-1; i>=0;i--){
 //			((DefaultTableModel) JTableModel).removeRow(i);
 //		}
 			labelError.setText("");
-            ((DefaultTableModel) JTableModel).addRow(new Object[]{id, cognome, nome, cf, pi});
+            ((DefaultTableModel) JTableModel).addRow(new Object[]{id, cognome, nome, cf, pi, citta});
 	}
 	
 	//resetta i campi della ricerca cliente

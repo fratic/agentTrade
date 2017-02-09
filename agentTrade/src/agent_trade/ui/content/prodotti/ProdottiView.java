@@ -116,8 +116,12 @@ public class ProdottiView extends JPanel {
 		for (M_Prodotto p : prodotti) {
 		jb= new DisableButton();
 		jb.setEnabled(false);
+		String sconto="";
+		if (p.getSconto()!=0){
+			sconto=(java.lang.Math.ceil(p.getSconto()*100))+"%";
+		}
         ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
-        		p.getNome(), p.getCategoria(), (java.lang.Math.ceil(p.getSconto()*100))+"%" ,Float.toString(p.getPrezzo()), jb});
+        		p.getNome(), p.getCategoria(), sconto ,Float.toString(p.getPrezzo()), jb});
         
 		elencoBott.put(p.getIdProdotto(), jb);
 

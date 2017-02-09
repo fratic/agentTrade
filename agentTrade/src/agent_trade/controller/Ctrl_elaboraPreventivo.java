@@ -170,7 +170,17 @@ public class Ctrl_elaboraPreventivo {
 		while (i.hasNext()) {
 			pr_it = (M_Preventivo_Item) i.next();
 			p=pr_it.getIdProdotto();
-			ItemNuovoPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(), pr_it.getQuantita(), Float.toString(p.getPrezzo()), (java.lang.Math.ceil(p.getSconto()*100))+"%", Float.toString(p.getPrezzo()*pr_it.getQuantita()));
+			
+			String sconto="";
+			if (pr_it.getIdProdotto().getSconto()!=0){
+				sconto=(java.lang.Math.ceil(pr_it.getIdProdotto().getSconto()*100))+"%";
+			}
+			
+			float parziale=(p.getPrezzo()*pr_it.getQuantita())*(1-p.getSconto());
+			parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2));
+
+			
+			ItemNuovoPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(), pr_it.getQuantita(), Float.toString(p.getPrezzo()), sconto, Float.toString(parziale*pr_it.getQuantita()));
 
 			elencoBott=ProdottiView.elencoBottoniProdotti();
 			jb=elencoBott.get(p.getIdProdotto());
@@ -196,7 +206,15 @@ public class Ctrl_elaboraPreventivo {
 		
 		while (i.hasNext()) {
 			pr_it = (M_Preventivo_Item) i.next();
-			PrimaryView.getInstance().updateTableRiepilogo(Integer.toString((pr_it.getIdProdotto().getIdProdotto())), pr_it.getIdProdotto().getNome(), pr_it.getIdProdotto().getCategoria(), Integer.toString(pr_it.getQuantita()), Float.toString(pr_it.getIdProdotto().getPrezzo()), (java.lang.Math.ceil(pr_it.getIdProdotto().getSconto()*100))+"%", Float.toString((pr_it.getQuantita()* pr_it.getIdProdotto().getPrezzo())*(1-pr_it.getIdProdotto().getSconto())));
+			String sconto="";
+			if (pr_it.getIdProdotto().getSconto()!=0){
+				sconto=(java.lang.Math.ceil(pr_it.getIdProdotto().getSconto()*100))+"%";
+			}
+			
+			float parziale=(pr_it.getIdProdotto().getPrezzo()*(1-pr_it.getIdProdotto().getSconto())*pr_it.getQuantita());
+			parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2));
+
+			PrimaryView.getInstance().updateTableRiepilogo(Integer.toString((pr_it.getIdProdotto().getIdProdotto())), pr_it.getIdProdotto().getNome(), pr_it.getIdProdotto().getCategoria(), Integer.toString(pr_it.getQuantita()), Float.toString(pr_it.getIdProdotto().getPrezzo()), sconto , Float.toString((parziale)));
 		}
 		
 		RiepilogoIntestazionePreventivoView.getInstance().setId_Preventivo(m.getIdPreventivo());
@@ -249,7 +267,7 @@ public class Ctrl_elaboraPreventivo {
 				
 		
 		ProdottoCriteria criteria= new ProdottoCriteria();
-		
+		String sconto="";
 		criteria.IdProdotto.eq(IdProdotto);
 		M_Prodotto p = criteria.listProdotto()[0];
 	
@@ -260,14 +278,25 @@ public class Ctrl_elaboraPreventivo {
 			PrimaryView.getInstance().setEnableSalva(true);
 		}
 		
-		ItemNuovoPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(),1, Float.toString(p.getPrezzo()), (java.lang.Math.ceil(p.getSconto()*100))+"%", Float.toString(p.getPrezzo()*(1-p.getSconto())));
+		if (p.getSconto()!=0){
+			sconto=(java.lang.Math.ceil(p.getSconto()*100))+"%";
+		}
+		float parziale=p.getPrezzo()*(1-p.getSconto());
+		parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2));
+		ItemNuovoPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(),1, Float.toString(p.getPrezzo()), sconto, Float.toString(parziale));
 		
 		elencoBottDisat.put(p.getIdProdotto(), jb);
 		jb.setEnabled(false);
 		
-		float imp=M_Preventivo.getInstance().calcolaTotale();
+		float imp= M_Preventivo.getInstance().calcolaTotale();
+		imp= (float) (Math.ceil(imp * Math.pow(10, 2)) / Math.pow(10, 2));
+
 		float iva=(float)(imp*Costanti.IVA);
+		iva= (float) (Math.ceil(iva* Math.pow(10, 2)) / Math.pow(10, 2));
+		
 		float tot=imp+iva;
+		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
+
 		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
 
 	}
@@ -331,8 +360,15 @@ public class Ctrl_elaboraPreventivo {
 			initRiepilogoPreventivo(m);
 			
 			float imp=m.calcolaTotale();
+			imp= (float) (Math.ceil(imp * Math.pow(10, 2)) / Math.pow(10, 2));
+
 			float iva=(float)(imp*Costanti.IVA);
+			iva= (float) (Math.ceil(iva* Math.pow(10, 2)) / Math.pow(10, 2));
+
+			
 			float tot=imp+iva;
+			tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
+
 			RiepilogoItemPreventivoView.getInstance().setTot(imp, iva, tot);
 			}
 		}
@@ -349,9 +385,15 @@ public class Ctrl_elaboraPreventivo {
 		M_Preventivo_Item pr_it=(M_Preventivo_Item)obs;
 		
 		float imp=M_Preventivo.getInstance().calcolaTotale();
-//		float scontoTot = 
+		imp= (float) (Math.ceil(imp * Math.pow(10, 2)) / Math.pow(10, 2));
+
 		float iva=(float)(imp*Costanti.IVA);
+		iva= (float) (Math.ceil(iva* Math.pow(10, 2)) / Math.pow(10, 2));
+
+		
 		float tot=imp+iva;
+		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
+
 		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
 		
 		M_Prodotto prod=pr_it.getIdProdotto();
@@ -423,9 +465,21 @@ public class Ctrl_elaboraPreventivo {
 		initModificaPrev(prevMod);
 
 		//è compito del ctrl farlo? vedere meglio
-		float imp=M_Preventivo.getInstance().calcolaTotale();
+//		float imp=M_Preventivo.getInstance().calcolaTotale();
+//		float iva=(float)(imp*Costanti.IVA);
+//		float tot=imp+iva;
+		
+		float imp= M_Preventivo.getInstance().calcolaTotale();
+		imp= (float) (Math.ceil(imp * Math.pow(10, 2)) / Math.pow(10, 2));
+
 		float iva=(float)(imp*Costanti.IVA);
+		iva= (float) (Math.ceil(iva* Math.pow(10, 2)) / Math.pow(10, 2));
+		
 		float tot=imp+iva;
+		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
+
+		
+		
 		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
 	}
 

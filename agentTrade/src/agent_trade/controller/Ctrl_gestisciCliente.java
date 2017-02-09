@@ -193,7 +193,7 @@ public class Ctrl_gestisciCliente {
 				Ricerca_cliente.getInstance().svuotaTabella();
 
 				for (M_Cliente cLoad : listClienti) {
-					Ricerca_cliente.getInstance().updateTable(cLoad.getIdCliente(), cLoad.getCognome(), cLoad.getNome(), cLoad.getCodice_fiscale(), cLoad.getPartita_iva());
+					Ricerca_cliente.getInstance().updateTable(cLoad.getIdCliente(), cLoad.getCognome(), cLoad.getNome(), cLoad.getCodice_fiscale(), cLoad.getPartita_iva(), cLoad.getCitta());
 				}
 			}
 		}
@@ -222,7 +222,7 @@ public class Ctrl_gestisciCliente {
 			Ricerca_cliente.cancInstanza();
 			
 			PrimaryView.initRiepilogoClienteView();
-			PrimaryView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCell(),cliente.getFax(),"");
+			PrimaryView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCell(),cliente.getFax(), cliente.getAgenteAssociato());
 			PrimaryView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryView.getInstance().disattivaAnnullaModifiche(false);
 			PrimaryView.getInstance().setEnableTabPreventivo(true);
@@ -398,6 +398,7 @@ public class Ctrl_gestisciCliente {
 
 	public void apriViewCercaCliente() throws PersistentException
 	{
+		//relativo alla ricerca del cliente in nuovo preventivo
 		CercaClienteView.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		CercaClienteView.getInstance().setVisible(true);
 	} 

@@ -555,7 +555,7 @@ public class RiepilogoClienteView extends JPanel {
 		pannelloCampi.add(labelRifAgente);
 		
 		TFrifAgente = new JTextField();
-		TFrifAgente.setEnabled(false);
+//		TFrifAgente.setEnabled(false);
 		TFrifAgente.setEditable(false);
 		TFrifAgente.setPreferredSize(new Dimension(261,20));
 		pannelloCampi.add(TFrifAgente);

@@ -179,7 +179,7 @@ public class CercaClienteView extends JDialog {
 		labelError.setText("");
 		
 		for (M_Cliente c : a) {
-			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getIdCliente(), c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva()});
+			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getIdCliente(), c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva(),});
 		}
 	}
 	
