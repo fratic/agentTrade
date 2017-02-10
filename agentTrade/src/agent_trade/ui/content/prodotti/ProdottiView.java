@@ -19,6 +19,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import agent_trade.model.M_Prodotto;
+
 import agent_trade.util.Costanti;
 import agent_trade.util.DisableButton;
 import agent_trade.util.MyEditor;

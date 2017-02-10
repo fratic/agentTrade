@@ -13,6 +13,10 @@
  */
 package agent_trade.model;
 
+import org.orm.PersistentException;
+
+import persistent.ProdottoCriteria;
+
 public abstract class M_Prodotto {
 
 	
@@ -72,6 +76,13 @@ public abstract class M_Prodotto {
 	/*
 	 * metodi di classe
 	 */
+
+	public static M_Prodotto caricaProdotto(int idProdotto) throws PersistentException{
+		
+		ProdottoCriteria criteria= new ProdottoCriteria();
+		criteria.IdProdotto.eq(idProdotto);
+		return criteria.uniqueProdotto();
+	}
 	
 	
 	/*

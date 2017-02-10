@@ -11,8 +11,6 @@ import java.util.TreeMap;
 import javax.swing.JButton;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
@@ -21,7 +19,6 @@ import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
-
 import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.clienti.CercaClienteView;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
@@ -29,11 +26,8 @@ import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
-import agent_trade.util.Costanti;
 import persistent.AgentTradePersistentManager;
-import persistent.ClienteCriteria;
 import persistent.PreventivoCriteria;
-import persistent.ProdottoCriteria;
 
 public class Ctrl_elaboraPreventivo {
 
@@ -226,8 +220,8 @@ public class Ctrl_elaboraPreventivo {
 	public void newPreventivo(M_Agente a) throws PersistentException {
 	
 		PrimaryView.getInstance().resetPannelloCentralePreventivo();
-		M_Preventivo.getInstance().setRif_Agente(a);
 		
+		M_Preventivo.getInstance().setRif_Agente(a);
 		M_Preventivo.getInstance().setIdPrev();
 		M_Preventivo.getInstance().setData(cal.getTime());
 		
@@ -237,23 +231,7 @@ public class Ctrl_elaboraPreventivo {
 	//CO2 
 	public void inserisciCliente(int id_cliente) throws PersistentException {
 		
-		M_Cliente cliente=null;
-		try{
-			
-			ClienteCriteria criteriaCliente= new ClienteCriteria();
-			
-			//JOIN per recuperare solo i clienti dell'agente loggato
-			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
-			criteriaCliente.idCliente.eq(id_cliente);
-			
-//			cliente = criteriaCliente.listCliente()[0];
-
-			cliente = criteriaCliente.uniqueM_Cliente();
-
-		}
-		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
-		}
+		M_Cliente cliente= M_Cliente.cercaCliente(id_cliente);
 					
 		M_Preventivo.getInstance().setRif_Cliente(cliente);	
 		
@@ -263,40 +241,39 @@ public class Ctrl_elaboraPreventivo {
 
 
 	//CO3
-	public void addItem(int IdProdotto, JButton jb) throws PersistentException {
+	public void addItem(int idProdotto, JButton jb) throws PersistentException {
 				
 		
-		ProdottoCriteria criteria= new ProdottoCriteria();
-		String sconto="";
-		criteria.IdProdotto.eq(IdProdotto);
-		M_Prodotto p = criteria.listProdotto()[0];
-	
+		M_Prodotto p = M_Prodotto.caricaProdotto(idProdotto);
 		
-		M_Preventivo.getInstance().addItem(p);
+		M_Preventivo_Item prev_item= M_Preventivo.getInstance().addItem(p);
 		
 		if (!M_Preventivo.getInstance().getItem().isEmpty()){
 			PrimaryView.getInstance().setEnableSalva(true);
 		}
-		
+
+		String sconto="";
 		if (p.getSconto()!=0){
 			sconto=(java.lang.Math.ceil(p.getSconto()*100))+"%";
 		}
-		float parziale=p.getPrezzo()*(1-p.getSconto());
-		parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2));
+		
+		
+		float parziale = prev_item.calcolaParziale();
+		
+		System.out.println(" parziale in additem"+parziale);
 		ItemNuovoPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(),1, Float.toString(p.getPrezzo()), sconto, Float.toString(parziale));
 		
 		elencoBottDisat.put(p.getIdProdotto(), jb);
 		jb.setEnabled(false);
 		
-		float imp= M_Preventivo.getInstance().calcolaTotale();
-		imp= (float) (Math.ceil(imp * Math.pow(10, 2)) / Math.pow(10, 2));
+		float imp= M_Preventivo.getInstance().calcolaImponibile();
 
-		float iva=(float)(imp*Costanti.IVA);
-		iva= (float) (Math.ceil(iva* Math.pow(10, 2)) / Math.pow(10, 2));
-		
+		float iva=M_Preventivo.getInstance().calcolaIva(imp);
+				
 		float tot=imp+iva;
 		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
 
+		
 		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
 
 	}
@@ -305,27 +282,14 @@ public class Ctrl_elaboraPreventivo {
 	//CO4
 	public void salvaPreventivo() throws PersistentException {
 		
-		M_Preventivo p= M_Preventivo.getInstance();		
-		
-		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
-		try 
+		if (M_Preventivo.getInstance().salvaPreventivo())
 		{
-			AgentTradePersistentManager.instance().getSession().saveOrUpdate(p);	
-
-			// commit per il salvataggio
-			t.commit();
+			initPostSalvaPrev(M_Preventivo.getInstance());	
 		}
-		catch (Exception e) {
-			t.rollback();
-		}
-		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
-
-			//inizializza view dopo il salvataggio del preventivo
-			initPostSalvaPrev(p);	
-			
-		}
-	
+		else 
+			System.out.println("Salvataggio non a buon fine");
+			//qui andrebbe fatto qualcosa, cioè, una dialog che dice che non è stato salvato ed
+			//eventualmente fare altro tipo recuperare il preventivo 	
 	}
 	
 	
@@ -352,23 +316,20 @@ public class Ctrl_elaboraPreventivo {
 			PreventivoCriteria criteria= new PreventivoCriteria();
 			
 			criteria.idPreventivo.eq(Integer.parseInt(id));
-			M_Preventivo m = criteria.listPreventivo()[0];
+			M_Preventivo m = criteria.uniquePreventivo();
 			
 
 			//inizializza view di riepilogo preventivo
 			if (m!=null){
 			initRiepilogoPreventivo(m);
 			
-			float imp=m.calcolaTotale();
-			imp= (float) (Math.ceil(imp * Math.pow(10, 2)) / Math.pow(10, 2));
+			float imp= m.calcolaImponibile();
 
-			float iva=(float)(imp*Costanti.IVA);
-			iva= (float) (Math.ceil(iva* Math.pow(10, 2)) / Math.pow(10, 2));
-
-			
+			float iva=M_Preventivo.getInstance().calcolaIva(imp);
+					
 			float tot=imp+iva;
 			tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
-
+			
 			RiepilogoItemPreventivoView.getInstance().setTot(imp, iva, tot);
 			}
 		}
@@ -384,28 +345,23 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Preventivo_Item pr_it=(M_Preventivo_Item)obs;
 		
-		float imp=M_Preventivo.getInstance().calcolaTotale();
-		imp= (float) (Math.ceil(imp * Math.pow(10, 2)) / Math.pow(10, 2));
+		float imp= M_Preventivo.getInstance().calcolaImponibile();
 
-		float iva=(float)(imp*Costanti.IVA);
-		iva= (float) (Math.ceil(iva* Math.pow(10, 2)) / Math.pow(10, 2));
-
-		
+		float iva=M_Preventivo.getInstance().calcolaIva(imp);
+				
 		float tot=imp+iva;
 		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
-
+		
 		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
 		
-		M_Prodotto prod=pr_it.getIdProdotto();
-		ItemNuovoPreventivoView.getInstance().updateRow((pr_it.getQuantita()*prod.getPrezzo())*(1-prod.getSconto()));
+		ItemNuovoPreventivoView.getInstance().updateRow((pr_it.calcolaParziale()));
 
 	}
 
 
 	public void addQuant(int id_prod, int qt, int row) throws PersistentException {
 
-		M_Preventivo p =M_Preventivo.getInstance();
-		p.addQuant(id_prod,qt);
+		M_Preventivo.getInstance().addQuant(id_prod,qt);
 	}
 
 	
@@ -465,21 +421,14 @@ public class Ctrl_elaboraPreventivo {
 		initModificaPrev(prevMod);
 
 		//è compito del ctrl farlo? vedere meglio
-//		float imp=M_Preventivo.getInstance().calcolaTotale();
-//		float iva=(float)(imp*Costanti.IVA);
-//		float tot=imp+iva;
 		
-		float imp= M_Preventivo.getInstance().calcolaTotale();
-		imp= (float) (Math.ceil(imp * Math.pow(10, 2)) / Math.pow(10, 2));
+		float imp= M_Preventivo.getInstance().calcolaImponibile();
 
-		float iva=(float)(imp*Costanti.IVA);
-		iva= (float) (Math.ceil(iva* Math.pow(10, 2)) / Math.pow(10, 2));
-		
+		float iva=M_Preventivo.getInstance().calcolaIva(imp);
+				
 		float tot=imp+iva;
 		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
 
-		
-		
 		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
 	}
 

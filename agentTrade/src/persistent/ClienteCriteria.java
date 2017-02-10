@@ -35,6 +35,8 @@ public class ClienteCriteria extends AbstractORMCriteria {
 	public final StringExpression citta;
 	public final StringExpression CAP;
 	public final StringExpression cell;
+	public final StringExpression attivo;
+
 	
 	public ClienteCriteria(Criteria criteria) {
 		super(criteria);
@@ -52,6 +54,8 @@ public class ClienteCriteria extends AbstractORMCriteria {
 		citta = new StringExpression("citta", this);
 		CAP = new StringExpression("CAP", this);
 		cell = new StringExpression("cell", this);
+		attivo = new StringExpression("attivo", this);
+
 	}
 	
 	public ClienteCriteria(PersistentSession session) {

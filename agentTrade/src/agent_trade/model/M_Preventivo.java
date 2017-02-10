@@ -31,6 +31,7 @@ import org.orm.PersistentTransaction;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
+import agent_trade.util.Costanti;
 import persistent.AgentTradePersistentManager;
 import persistent.PreventivoCriteria;
 
@@ -231,7 +232,7 @@ public class M_Preventivo implements Observer {
 	}
 	
 	
-	public float calcolaTotale(){
+	public float calcolaImponibile(){
 		float totale=0;
 		Iterator<?> iteraItem = null;
 		
@@ -243,8 +244,18 @@ public class M_Preventivo implements Observer {
 			item = (M_Preventivo_Item) iteraItem.next();
 			totale= totale+((item.getQuantita()*item.getIdProdotto().getPrezzo())*(1-item.getIdProdotto().getSconto()));
 		}
+		totale= (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
+		
 		return totale;
 	}
+	
+	public float calcolaIva(float imponibile){
+		float iva=(float)(imponibile*Costanti.IVA);
+		iva= (float) (Math.ceil(iva* Math.pow(10, 2)) / Math.pow(10, 2));
+		return iva;
+	}
+	
+	
 
 	public void addQuant(int id, int qt) throws PersistentException {
 		
@@ -278,6 +289,28 @@ public class M_Preventivo implements Observer {
 				break;
 			}
 		}
+	}
+	
+	public boolean salvaPreventivo() throws PersistentException{
+		
+		M_Preventivo p= M_Preventivo.getInstance();		
+		
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{
+			AgentTradePersistentManager.instance().getSession().saveOrUpdate(p);	
+
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		return t.wasCommitted();
+
 	}
 
 	

@@ -13,7 +13,13 @@
  */
 package agent_trade.model;
 
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
+import org.orm.PersistentException;
+
 import agent_trade.controller.Ctrl_System;
+import persistent.AgentTradePersistentManager;
+import persistent.ClienteCriteria;
 
 public class M_Cliente {
 
@@ -41,12 +47,14 @@ public class M_Cliente {
 	private String citta;
 	private String CAP;
 	private String cell;
+	private int attivo;
 	
 
 	/*
 	 * costruttori
 	 */
 	
+
 	public M_Cliente(){	
 		this.agenteAssociato = Ctrl_System.getAgenteLog();
 	}
@@ -74,6 +82,24 @@ public class M_Cliente {
 
 		return ((instance == null) ? instance = new M_Cliente() : instance);	
 	}
+	
+	
+	public static M_Cliente cercaCliente(int id_cliente) throws PersistentException{
+		
+		try{
+			
+			ClienteCriteria criteriaCliente= new ClienteCriteria();
+			
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			criteriaCliente.idCliente.eq(id_cliente);
+			return criteriaCliente.uniqueM_Cliente();
+		}
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
 	
 	
 	/*
@@ -194,8 +220,17 @@ public class M_Cliente {
 		return agenteAssociato;
 	}
 	
+	public int getAttivo() {
+		return attivo;
+	}
+
+	public void setAttivo(int attivo) {
+		this.attivo = attivo;
+	}
 	public String toString() {
 		return String.valueOf(getIdCliente());
 	}
+	
+	
 	
 }

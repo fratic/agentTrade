@@ -35,6 +35,8 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression citta;
 	public final StringExpression CAP;
 	public final StringExpression cell;
+	public final StringExpression attivo;
+	
 	
 	public ClienteDetachedCriteria() {
 		super(agent_trade.model.M_Cliente.class, persistent.ClienteCriteria.class);
@@ -52,6 +54,8 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		citta = new StringExpression("citta", this.getDetachedCriteria());
 		CAP = new StringExpression("CAP", this.getDetachedCriteria());
 		cell = new StringExpression("cell", this.getDetachedCriteria());
+		attivo= new StringExpression("attivo", this.getDetachedCriteria());
+
 	}
 	
 	public ClienteDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -70,6 +74,8 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		citta = new StringExpression("citta", this.getDetachedCriteria());
 		CAP = new StringExpression("CAP", this.getDetachedCriteria());
 		cell = new StringExpression("cell", this.getDetachedCriteria());
+		attivo= new StringExpression("attivo", this.getDetachedCriteria());
+
 	}
 	
 	public AgenteDetachedCriteria createAgenteAssociatoCriteria() {
