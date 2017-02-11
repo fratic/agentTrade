@@ -14,23 +14,19 @@
 package agent_trade.model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JButton;
-
-import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
-import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.util.Costanti;
 import persistent.AgentTradePersistentManager;
 import persistent.PreventivoCriteria;
@@ -101,7 +97,29 @@ public class M_Preventivo implements Observer {
 		instance=null;
 	}
 	
+	public static M_Preventivo caricaPreventivo(int idPreventivo) throws PersistentException{
+		PreventivoCriteria criteria= new PreventivoCriteria();
+		criteria.idPreventivo.eq(idPreventivo);
+		return criteria.uniquePreventivo();
+		
+	}
 	
+	public static M_Preventivo[] caricaPreventiviAgente() throws PersistentException{
+	
+		try{
+
+			PreventivoCriteria criteriaPreventivi= new PreventivoCriteria();
+			criteriaPreventivi.createCriteria("rif_Agente", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			criteriaPreventivi.setMaxResults(10000);
+			return criteriaPreventivi.listPreventivo();
+		}
+		
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
+
 	/*
 	 * metodi privati
 	 */
@@ -312,6 +330,27 @@ public class M_Preventivo implements Observer {
 		return t.wasCommitted();
 
 	}
+
+	public void delete() throws PersistentException {
+
+		PersistentTransaction t;
+		try {
+			t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+			AgentTradePersistentManager.instance().getSession().delete(this);
+			t.commit();
+		} 
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		
+				
+	}
+	
+	
+	
 
 	
 }

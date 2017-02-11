@@ -1,10 +1,7 @@
 package agent_trade.ui;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
@@ -30,6 +27,8 @@ import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Agente;
+import agent_trade.model.M_Preventivo;
+import agent_trade.model.M_Preventivo_Item;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
@@ -531,11 +530,17 @@ public class PrimaryView extends JFrame
 		((IntestazioneNuovoPreventivoView) intestazione).setNumPrev(i);
 	}
 	
-	public void setRiepIntestAgente(String a){
+	public void setRiepIntestAgente(M_Preventivo p){
+		String a=p.getRif_Agente().getCognome()+" "+p.getRif_Agente().getNome();
 		((RiepilogoIntestazionePreventivoView) riep_intestazione).setAgente(a);
 	}
 	
-	public void setRiepIntestCliente(String cognome, String nome, String indirizzo, String email){
+	public void setRiepIntestCliente(M_Preventivo p){
+	
+		String cognome =p.getRif_Cliente().getCognome();
+		String nome =p.getRif_Cliente().getNome();
+		String indirizzo =p.getRif_Cliente().getIndirizzo();
+		String email = p.getRif_Cliente().getEmail();
 		((RiepilogoIntestazionePreventivoView) riep_intestazione).setCliente(cognome, nome, indirizzo, email);
 	}
 	
@@ -584,7 +589,18 @@ public class PrimaryView extends JFrame
 		
 	}
 	
-	public void updateTableRiepilogo(String id, String nome, String categoria, String quantita, String prezzo, String sconto, String parziale){
+	public void updateTableRiepilogo(M_Preventivo_Item pr_it){
+		String id = Integer.toString((pr_it.getIdProdotto().getIdProdotto()));
+		String nome = pr_it.getIdProdotto().getNome();
+		String categoria = pr_it.getIdProdotto().getCategoria();
+		String quantita = Integer.toString(pr_it.getQuantita());
+		String prezzo = Float.toString(pr_it.getIdProdotto().getPrezzo());
+		String sconto = "";
+		String parziale = Float.toString((pr_it.calcolaParziale()));
+		if (pr_it.getIdProdotto().getSconto()!=0){
+			sconto=(java.lang.Math.ceil(pr_it.getIdProdotto().getSconto()*100))+"%";
+		}
+		
 		((RiepilogoItemPreventivoView) riep_item).updateTable(id, nome, categoria, quantita, prezzo, sconto, parziale);	
 	}
 		

@@ -15,6 +15,8 @@ package agent_trade.model;
 
 import org.orm.PersistentException;
 
+import agent_trade.ui.content.prodotti.ProdottiView;
+import persistent.AgentTradePersistentManager;
 import persistent.ProdottoCriteria;
 
 public abstract class M_Prodotto {
@@ -83,7 +85,22 @@ public abstract class M_Prodotto {
 		criteria.IdProdotto.eq(idProdotto);
 		return criteria.uniqueProdotto();
 	}
+
 	
+	public static M_Prodotto[] caricaProdotti() throws PersistentException{
+		
+		try{
+			
+			ProdottoCriteria criteriaProdotto= new ProdottoCriteria();
+			criteriaProdotto.setMaxResults(1000);
+			return criteriaProdotto.listProdotto();
+
+		}
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
+
 	
 	/*
 	 * metodi privati

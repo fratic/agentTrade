@@ -18,6 +18,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.orm.PersistentException;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_System;
@@ -105,7 +107,12 @@ public class LoginView extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				disableAccedi();
-				Ctrl_System.getInstance().login((String)username.getText(), (String)password.getText());
+				try {
+					Ctrl_System.getInstance().login((String)username.getText(), (String)password.getText());
+				}
+				catch (PersistentException e) {
+					e.printStackTrace();
+				}
 			}
 		});	
 	}

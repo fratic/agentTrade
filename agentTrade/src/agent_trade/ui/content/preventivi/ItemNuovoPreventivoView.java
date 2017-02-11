@@ -22,6 +22,9 @@ import javax.swing.table.TableColumnModel;
 import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.model.M_Preventivo;
+import agent_trade.model.M_Preventivo_Item;
+import agent_trade.model.M_Prodotto;
 import agent_trade.util.ButtonsEditorRm;
 import agent_trade.util.ButtonsRendererRm;
 import agent_trade.util.Costanti;
@@ -202,8 +205,20 @@ public class ItemNuovoPreventivoView extends JPanel
 		((DefaultTableModel) JTableModel).setValueAt(parz, table.getSelectedRow(), Costanti.COLONNA_PARZIALE_TAB_PREV);
 	}
 	
-	public void updateTable(String rem, int id, String nome, String categoria, int quant, String prezzo, String sconto, String parziale)
-	{
+	public void updateTable(M_Prodotto p, M_Preventivo_Item prev_item){
+	
+		int id = p.getIdProdotto();
+		String nome = p.getNome();
+		String categoria = p.getCategoria();
+		int quant = 1;
+		String prezzo = Float.toString(p.getPrezzo()); 
+		String sconto = "";
+		String parziale = Float.toString(prev_item.calcolaParziale());
+
+		if (p.getSconto()!=0){
+			sconto=(java.lang.Math.ceil(p.getSconto()*100))+"%";
+		}
+		
 		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quant, prezzo, sconto, parziale});
 	}
 	
@@ -227,7 +242,15 @@ public class ItemNuovoPreventivoView extends JPanel
 		buttoneSalva.setEnabled(b);
 	}
 
-	public void setTot(float imp, float iva, float tot) {
+	public void setTot() throws PersistentException {
+		
+		float imp= M_Preventivo.getInstance().calcolaImponibile();
+
+		float iva=M_Preventivo.getInstance().calcolaIva(imp);
+				
+		float tot=imp+iva;
+		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
+
 		setImponibile(Float.toString(imp));
 		setIva(Float.toString(iva));
 		setTotale(Float.toString(tot));		

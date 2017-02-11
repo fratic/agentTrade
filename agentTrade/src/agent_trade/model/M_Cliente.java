@@ -100,6 +100,23 @@ public class M_Cliente {
 		}
 	}
 	
+	public static M_Cliente[] caricaClientiAgente() throws PersistentException {
+		
+		ClienteCriteria criteriaCliente;
+		try {
+			criteriaCliente = new ClienteCriteria();
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			return criteriaCliente.listCliente();
+		} 
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		return null;
+	}
 	
 	
 	/*
@@ -230,7 +247,5 @@ public class M_Cliente {
 	public String toString() {
 		return String.valueOf(getIdCliente());
 	}
-	
-	
 	
 }

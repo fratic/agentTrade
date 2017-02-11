@@ -28,7 +28,8 @@ public final class Costanti {
 	/**
 	 * Messaggi dei Dialog
 	 */
-//	public final static String MESSAGGIO_UTENTE_NON_TROVATO = "Utente non trovato, ricontrollare le credenziali di accesso.";
+	public final static String MESSAGGIO_UTENTE_NON_TROVATO = "Username non trovato";
+	public final static String MESSAGGIO_NO_LOGIN= "Login fallito";
 	public final static String MESSAGGIO_INSERISCI_CREDENZIALI= "Inserisci le tue credenziali per accedere ad Agent Trade";
 	public final static String MESSAGGIO_CLOSE_APP= "Chiudere l'applicazione?";
 	public final static String MESSAGGIO_COPYRIGHT= "Copyright \u00A9 2017 Agent Trade";

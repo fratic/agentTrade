@@ -16,6 +16,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import org.orm.PersistentException;
+
+import agent_trade.model.M_Preventivo;
 import agent_trade.util.Costanti;
 
 public class RiepilogoItemPreventivoView extends JPanel
@@ -167,7 +170,16 @@ public class RiepilogoItemPreventivoView extends JPanel
 		textFieldTotale.setText(a);
 	}
 	
-	public void setTot(float imp, float iva, float tot) {
+	public void setTot() throws PersistentException {
+		
+		float imp= M_Preventivo.getInstance().calcolaImponibile();
+
+		float iva=M_Preventivo.getInstance().calcolaIva(imp);
+				
+		float tot=imp+iva;
+		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
+
+		
 		setImponibile(Float.toString(imp));
 		setIva(Float.toString(iva));
 		setTotale(Float.toString(tot));		

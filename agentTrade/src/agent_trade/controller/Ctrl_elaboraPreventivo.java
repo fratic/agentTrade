@@ -12,13 +12,13 @@ import javax.swing.JButton;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.orm.PersistentException;
-import org.orm.PersistentTransaction;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
+
 import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.clienti.CercaClienteView;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
@@ -26,8 +26,8 @@ import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
+
 import persistent.AgentTradePersistentManager;
-import persistent.PreventivoCriteria;
 
 public class Ctrl_elaboraPreventivo {
 
@@ -71,7 +71,7 @@ public class Ctrl_elaboraPreventivo {
 
 		PrimaryView.initIntestazione();
 		PrimaryView.initItem();
-
+		
 		PrimaryView.getInstance().setEnableNewPreventivo(false);
 		PrimaryView.getInstance().setEnableTabCliente(false);
 		PrimaryView.getInstance().setEnableSalva(false);
@@ -81,8 +81,8 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryView.getInstance().setNewIntestAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
 		PrimaryView.getInstance().setNewIntestData(M_Preventivo.getInstance().getData());
 		PrimaryView.getInstance().setNewIntestNumPrev(M_Preventivo.getInstance().getIdPreventivo());
-		
 		PrimaryView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
+
 		ProdottiView.getInstance().enableBottoni();
 	}
 	
@@ -165,16 +165,7 @@ public class Ctrl_elaboraPreventivo {
 			pr_it = (M_Preventivo_Item) i.next();
 			p=pr_it.getIdProdotto();
 			
-			String sconto="";
-			if (pr_it.getIdProdotto().getSconto()!=0){
-				sconto=(java.lang.Math.ceil(pr_it.getIdProdotto().getSconto()*100))+"%";
-			}
-			
-			float parziale=(p.getPrezzo()*pr_it.getQuantita())*(1-p.getSconto());
-			parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2));
-
-			
-			ItemNuovoPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(), pr_it.getQuantita(), Float.toString(p.getPrezzo()), sconto, Float.toString(parziale*pr_it.getQuantita()));
+			ItemNuovoPreventivoView.getInstance().updateTable(p, pr_it);
 
 			elencoBott=ProdottiView.elencoBottoniProdotti();
 			jb=elencoBott.get(p.getIdProdotto());
@@ -184,34 +175,28 @@ public class Ctrl_elaboraPreventivo {
 	}
 	
 
-	private void initRiepilogoPreventivo(M_Preventivo m) {
+	private void initRiepilogoPreventivo(M_Preventivo p) {
 	
 		PrimaryView.initRiepilogo();
 	
-		PrimaryView.getInstance().setRiepIntestAgente(m.getRif_Agente().getCognome()+" "+m.getRif_Agente().getNome());
-		PrimaryView.getInstance().setRiepIntestData(m.getData());
-		PrimaryView.getInstance().setRiepIntestNumPrev(m.getIdPreventivo());
+		PrimaryView.getInstance().setRiepIntestAgente(p);
+		PrimaryView.getInstance().setRiepIntestData(p.getData());
+		PrimaryView.getInstance().setRiepIntestNumPrev(p.getIdPreventivo());
 		
-		PrimaryView.getInstance().setRiepIntestCliente(m.getRif_Cliente().getCognome(),m.getRif_Cliente().getNome(), m.getRif_Cliente().getIndirizzo(), m.getRif_Cliente().getEmail());
-		List<M_Preventivo_Item> elementi = (List<M_Preventivo_Item>) m.getItem();
+		PrimaryView.getInstance().setRiepIntestCliente(p);
+		List<M_Preventivo_Item> elementi = (List<M_Preventivo_Item>) p.getItem();
 	
 		Iterator<M_Preventivo_Item> i = elementi.iterator();
 		M_Preventivo_Item pr_it =null;
 		
 		while (i.hasNext()) {
+		
 			pr_it = (M_Preventivo_Item) i.next();
-			String sconto="";
-			if (pr_it.getIdProdotto().getSconto()!=0){
-				sconto=(java.lang.Math.ceil(pr_it.getIdProdotto().getSconto()*100))+"%";
-			}
+			PrimaryView.getInstance().updateTableRiepilogo(pr_it);
 			
-			float parziale=(pr_it.getIdProdotto().getPrezzo()*(1-pr_it.getIdProdotto().getSconto())*pr_it.getQuantita());
-			parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2));
-
-			PrimaryView.getInstance().updateTableRiepilogo(Integer.toString((pr_it.getIdProdotto().getIdProdotto())), pr_it.getIdProdotto().getNome(), pr_it.getIdProdotto().getCategoria(), Integer.toString(pr_it.getQuantita()), Float.toString(pr_it.getIdProdotto().getPrezzo()), sconto , Float.toString((parziale)));
 		}
 		
-		RiepilogoIntestazionePreventivoView.getInstance().setId_Preventivo(m.getIdPreventivo());
+		RiepilogoIntestazionePreventivoView.getInstance().setId_Preventivo(p.getIdPreventivo());
 	}
 	
 	/*metodi pubblici*/
@@ -251,30 +236,13 @@ public class Ctrl_elaboraPreventivo {
 		if (!M_Preventivo.getInstance().getItem().isEmpty()){
 			PrimaryView.getInstance().setEnableSalva(true);
 		}
-
-		String sconto="";
-		if (p.getSconto()!=0){
-			sconto=(java.lang.Math.ceil(p.getSconto()*100))+"%";
-		}
 		
-		
-		float parziale = prev_item.calcolaParziale();
-		
-		System.out.println(" parziale in additem"+parziale);
-		ItemNuovoPreventivoView.getInstance().updateTable(null,p.getIdProdotto(), p.getNome(), p.getCategoria(),1, Float.toString(p.getPrezzo()), sconto, Float.toString(parziale));
+		ItemNuovoPreventivoView.getInstance().updateTable(p, prev_item);
 		
 		elencoBottDisat.put(p.getIdProdotto(), jb);
 		jb.setEnabled(false);
 		
-		float imp= M_Preventivo.getInstance().calcolaImponibile();
-
-		float iva=M_Preventivo.getInstance().calcolaIva(imp);
-				
-		float tot=imp+iva;
-		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
-
-		
-		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
+		ItemNuovoPreventivoView.getInstance().setTot();
 
 	}
 
@@ -286,10 +254,10 @@ public class Ctrl_elaboraPreventivo {
 		{
 			initPostSalvaPrev(M_Preventivo.getInstance());	
 		}
-		else 
-			System.out.println("Salvataggio non a buon fine");
-			//qui andrebbe fatto qualcosa, cioè, una dialog che dice che non è stato salvato ed
-			//eventualmente fare altro tipo recuperare il preventivo 	
+//		else 
+//			System.out.println("Salvataggio non a buon fine");
+//			//qui andrebbe fatto qualcosa, cioè, una dialog che dice che non è stato salvato ed
+//			//eventualmente fare altro tipo recuperare il preventivo 	
 	}
 	
 	
@@ -313,24 +281,14 @@ public class Ctrl_elaboraPreventivo {
 			id=id.replaceAll("-","");
 			id=id.replaceAll(" ","");
 
-			PreventivoCriteria criteria= new PreventivoCriteria();
-			
-			criteria.idPreventivo.eq(Integer.parseInt(id));
-			M_Preventivo m = criteria.uniquePreventivo();
+			M_Preventivo m =  M_Preventivo.caricaPreventivo(Integer.parseInt(id));
 			
 
 			//inizializza view di riepilogo preventivo
 			if (m!=null){
 			initRiepilogoPreventivo(m);
 			
-			float imp= m.calcolaImponibile();
-
-			float iva=M_Preventivo.getInstance().calcolaIva(imp);
-					
-			float tot=imp+iva;
-			tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
-			
-			RiepilogoItemPreventivoView.getInstance().setTot(imp, iva, tot);
+			RiepilogoItemPreventivoView.getInstance().setTot();
 			}
 		}
 		else{
@@ -345,14 +303,7 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Preventivo_Item pr_it=(M_Preventivo_Item)obs;
 		
-		float imp= M_Preventivo.getInstance().calcolaImponibile();
-
-		float iva=M_Preventivo.getInstance().calcolaIva(imp);
-				
-		float tot=imp+iva;
-		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
-		
-		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
+		ItemNuovoPreventivoView.getInstance().setTot();
 		
 		ItemNuovoPreventivoView.getInstance().updateRow((pr_it.calcolaParziale()));
 
@@ -365,7 +316,7 @@ public class Ctrl_elaboraPreventivo {
 	}
 
 	
-	public void rimuoviItem(final int id, final int row) {
+	public void rimuoviItem(final int id_item, final int row) {
 		//controllare se l'id è dell'item o del prodotto
 		EventQueue.invokeLater(new Runnable() {
 			@Override public void run() {
@@ -377,13 +328,13 @@ public class Ctrl_elaboraPreventivo {
 
 					e.printStackTrace();
 				}
-				p.removeItem(id);
+				p.removeItem(id_item);
 				ItemNuovoPreventivoView.getInstance().deleteRow(row);
 								
-				JButton jb=elencoBottDisat.get(id);
+				JButton jb=elencoBottDisat.get(id_item);
 				if (jb!=null){
 				jb.setEnabled(true);
-				elencoBottDisat.remove(id);
+				elencoBottDisat.remove(id_item);
 				}
 				try {
 					if (M_Preventivo.getInstance().getItem().isEmpty()){
@@ -410,39 +361,26 @@ public class Ctrl_elaboraPreventivo {
 //		in caso negativo, comunicarlo oppure non attivare il bottone di modifica preventivamente
 				
 			
-		PreventivoCriteria criteria= new PreventivoCriteria();
-		criteria.idPreventivo.eq(id_Preventivo);
-		M_Preventivo prev = criteria.listPreventivo()[0];
+		M_Preventivo prev = M_Preventivo.caricaPreventivo(id_Preventivo);
 
+		/**
+		 * AgentTradePersistentManager qui?????
+		 */
+		 
 		AgentTradePersistentManager.instance().disposePersistentManager();
 
 		M_Preventivo prevMod= M_Preventivo.getInstance(prev);
 		
 		initModificaPrev(prevMod);
 
-		//è compito del ctrl farlo? vedere meglio
-		
-		float imp= M_Preventivo.getInstance().calcolaImponibile();
-
-		float iva=M_Preventivo.getInstance().calcolaIva(imp);
-				
-		float tot=imp+iva;
-		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
-
-		ItemNuovoPreventivoView.getInstance().setTot(imp, iva, tot);
+		ItemNuovoPreventivoView.getInstance().setTot();
 	}
 
 
 
 	public void cancellaPreventivo(int id_Preventivo) throws PersistentException {
-		
-		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
-
-		try{			
-			PreventivoCriteria criteria = new PreventivoCriteria();
-			
-			criteria.idPreventivo.eq(id_Preventivo);
-			M_Preventivo prev = criteria.listPreventivo()[0];
+	
+			M_Preventivo prev = M_Preventivo.caricaPreventivo(id_Preventivo);
 
 			/**
 			*non va bene. se lo faccio a transazione completa non funziona 
@@ -454,19 +392,8 @@ public class Ctrl_elaboraPreventivo {
 			AlberoPreventivi.cancellaNodo();
 			PrimaryView.getInstance().resetPannelloCentralePreventivo();
 			
-			AgentTradePersistentManager.instance().getSession().delete(prev);
-			
-			t.commit();
-			
-		}
-
-		catch (Exception e) {
-			t.rollback();
-		}	
-		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
-		}
-		
+			prev.delete();
+	
 	}
 	
 	

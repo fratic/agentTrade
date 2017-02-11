@@ -13,6 +13,10 @@
  */
 package agent_trade.model;
 
+import org.orm.PersistentException;
+
+import persistent.AgenteCriteria;
+
 public class M_Agente {
 	
 	/*
@@ -89,6 +93,13 @@ public class M_Agente {
 
 		return ((instance == null) ? instance = new M_Agente() : instance);	
 	}
+	
+	public static M_Agente caricaAgente(String username) throws PersistentException{
+		AgenteCriteria AgenteCriteria = new AgenteCriteria();
+		AgenteCriteria.username.eq(username);
+		return AgenteCriteria.uniqueAgente();
+	}
+	
 	
 	
 	/*

@@ -1,7 +1,6 @@
+
 package agent_trade.controller;
 
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
 
 import agent_trade.model.M_Agente;
@@ -13,11 +12,7 @@ import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.prodotti.ProdottiView;
-import persistent.AgentTradePersistentManager;
-import persistent.AgenteCriteria;
-import persistent.ClienteCriteria;
-import persistent.PreventivoCriteria;
-import persistent.ProdottoCriteria;
+import agent_trade.util.Costanti;
 
 
 public class Ctrl_System {
@@ -79,99 +74,67 @@ public class Ctrl_System {
 	 */
 	
 
-	public void login(String username, String psw)  
+	public void login(String username, String psw) throws PersistentException  
 	{					
-		try {
-			AgenteCriteria AgenteCriteria = new AgenteCriteria();
-			AgenteCriteria.username.eq(username);
-			M_Agente[] listAgenti= AgenteCriteria.listAgente();
+
+			M_Agente agLoad =null;
+			try {
+				agLoad = M_Agente.caricaAgente(username);
+			} 
+			catch (PersistentException e) {
+				e.printStackTrace();
+			}		
+
 			
 			//bisogna far si che lo username sia univoco all'interno del db
-			if (listAgenti.length==1)
-			{
-				M_Agente agLoad=(M_Agente)listAgenti[0];		
+			if (agLoad!=null){
 	
 				if (agLoad.getUsername().equals(username) & agLoad.getPassword().equals(psw))
 				{
-					
 					PrimaryView.getInstance().setVisible(true);
 					LoginView.getInstance().setVisible(false);
 					instanceAgenteLog=agLoad;
 					
 					inizializzaSistema();
 					
-					}
+				}
 					else{
-					LoginView.getInstance().setMex("Login errato");
+					LoginView.getInstance().setMex(Costanti.MESSAGGIO_NO_LOGIN);
 					LoginView.getInstance().enableAccedi();
 				}
 			}
 			else{
-				LoginView.getInstance().setMex("Utente sconosciuto");
+				LoginView.getInstance().setMex(Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
 				LoginView.getInstance().enableAccedi();
 			}	
-		} catch (PersistentException e) {
-			e.printStackTrace();
-		}
-		finally {
-			//AgentTradePersistentManager.instance().disposePersistentManager();
-		}
 	}
 	
+	
 	public void initAlberoClienti() throws PersistentException{
-		
-		try{
-			
-		ClienteCriteria criteriaCliente= new ClienteCriteria();
-		
-		//JOIN per recuperare solo i clienti dell'agente loggato
-		criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
-		
-		M_Cliente [] listClienti = criteriaCliente.listCliente();
+					
+		M_Cliente [] listClienti = M_Cliente.caricaClientiAgente();
 
+		//bisognerebbe inserire un controllo se listclienti è null
+		//e se ognuno dei dati usati è null
 		for (M_Cliente cLoad : listClienti) {
 			AlberoClienti.inserisciNodo(cLoad.getIdCliente()+ " - " + cLoad.getCognome()+ " - " +cLoad.getNome());
 		}
-	}
-		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
-		}
+	
 	}
 	
 
 	public void initProdotti() throws PersistentException{
 		
-		M_Prodotto [] prodotti=null;
-		try{
-			
-			ProdottoCriteria criteriaProdotto= new ProdottoCriteria();
-			criteriaProdotto.setMaxResults(1000);
-			prodotti = criteriaProdotto.listProdotto();
-			ProdottiView.getInstance().initTable(prodotti);
-
-		}
-		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
-		}
+		M_Prodotto [] prodotti = M_Prodotto.caricaProdotti();
+		ProdottiView.getInstance().initTable(prodotti);
 	}
 	
 	
 	public void initAlberoPreventivi() throws PersistentException{
 		
-		M_Preventivo [] preventivi=null;
-		try{
-			
-			PreventivoCriteria criteriaPreventivi= new PreventivoCriteria();
-
-			criteriaPreventivi.createCriteria("rif_Agente", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
-			criteriaPreventivi.setMaxResults(10000);
-			preventivi = criteriaPreventivi.listPreventivo();
-
-		}
-		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
-		}
+		M_Preventivo [] preventivi = M_Preventivo.caricaPreventiviAgente(); 
 		
+		//controllare se non null
 		for (M_Preventivo p : preventivi) {
 			
 				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
