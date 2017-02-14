@@ -70,7 +70,6 @@ public class Ctrl_gestisciCliente {
 		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || citta.equals("") || cap.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || cellulare.equals("") || fax.equals("")){
 			return errore= "inserisci tutti i campi";
 		}
-		
 		if(!check("[a-zA-Z'._%-& \\s]+", cognome)){
 			campoErrato=campoErrato + "cognome ";
 		}
@@ -104,7 +103,6 @@ public class Ctrl_gestisciCliente {
 		if(!check("[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}", email)){
 			campoErrato= campoErrato +"email ";
 		}
-		
 		if (errore == null && campoErrato != "")
 		{
 			errore= "I seguenti campi sono errati: "+ campoErrato;
@@ -277,10 +275,10 @@ public class Ctrl_gestisciCliente {
 				AlberoClienti.inserisciNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 				AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 				AlberoClienti.abilitaAlbero();
+			
 				PrimaryView.getInstance().setEnableTabPreventivo(true);
 				PrimaryView.getInstance().setEnableTabCatalogo(true);
 				PrimaryView.getInstance().setEnableCercaCliente(true);
-
 			}
 			
 			catch (Exception e) {

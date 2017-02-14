@@ -19,13 +19,17 @@ public class testAgente {
 //
 //		System.out.println("agente : "+agente);
 //		
+//		
+//		ClienteCriteria ag_crit = new ClienteCriteria();
+//		ag_crit.idCliente.eq(1);
+//		
+//		M_Cliente cliente = ag_crit.uniqueM_Cliente();
+//
+//		System.out.println("cliente: "+cliente);
+//		
+//		
+	
 		
-		ClienteCriteria ag_crit = new ClienteCriteria();
-		ag_crit.idCliente.eq(1);
-		
-		M_Cliente cliente = ag_crit.uniqueM_Cliente();
-
-		System.out.println("cliente: "+cliente);
 		
 		
 		

@@ -11,7 +11,7 @@ public class M_Azienda {
 	
 	private String citta;
 	
-	private String CAP;
+	private String cap;
 	
 	private String Indirizzo;
 	
@@ -31,7 +31,7 @@ public class M_Azienda {
 	{
 		this.ragioneSociale=ragioneSociale;
 		this.citta=citta;
-		this.CAP=CAP;
+		this.cap=CAP;
 		this.Indirizzo=Indirizzo;
 		this.telefono=telefono;
 		this.fax=fax;
@@ -75,11 +75,11 @@ public class M_Azienda {
 	}
 	
 	public void setCAP(String value) {
-		this.CAP = value;
+		this.cap = value;
 	}
 	
 	public String getCAP() {
-		return CAP;
+		return cap;
 	}
 	
 	public void setIndirizzo(String value) {

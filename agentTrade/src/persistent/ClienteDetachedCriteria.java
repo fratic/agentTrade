@@ -35,7 +35,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression citta;
 	public final StringExpression CAP;
 	public final StringExpression cell;
-	public final StringExpression attivo;
+	public final IntegerExpression attivo;
 	
 	
 	public ClienteDetachedCriteria() {
@@ -54,7 +54,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		citta = new StringExpression("citta", this.getDetachedCriteria());
 		CAP = new StringExpression("CAP", this.getDetachedCriteria());
 		cell = new StringExpression("cell", this.getDetachedCriteria());
-		attivo= new StringExpression("attivo", this.getDetachedCriteria());
+		attivo= new IntegerExpression("attivo", this.getDetachedCriteria());
 
 	}
 	
@@ -74,7 +74,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		citta = new StringExpression("citta", this.getDetachedCriteria());
 		CAP = new StringExpression("CAP", this.getDetachedCriteria());
 		cell = new StringExpression("cell", this.getDetachedCriteria());
-		attivo= new StringExpression("attivo", this.getDetachedCriteria());
+		attivo= new IntegerExpression("attivo", this.getDetachedCriteria());
 
 	}
 	

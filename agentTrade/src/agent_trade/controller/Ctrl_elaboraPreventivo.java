@@ -18,7 +18,6 @@ import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
-
 import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.clienti.CercaClienteView;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
@@ -26,8 +25,6 @@ import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
-
-import persistent.AgentTradePersistentManager;
 
 public class Ctrl_elaboraPreventivo {
 
@@ -345,10 +342,8 @@ public class Ctrl_elaboraPreventivo {
 					}
 				}
 				catch (PersistentException e) {
-
 					e.printStackTrace();
 				}
-	
 			}
 		});
 	}
@@ -367,7 +362,7 @@ public class Ctrl_elaboraPreventivo {
 		 * AgentTradePersistentManager qui?????
 		 */
 		 
-		AgentTradePersistentManager.instance().disposePersistentManager();
+//		AgentTradePersistentManager.instance().disposePersistentManager();
 
 		M_Preventivo prevMod= M_Preventivo.getInstance(prev);
 		
@@ -393,7 +388,6 @@ public class Ctrl_elaboraPreventivo {
 			PrimaryView.getInstance().resetPannelloCentralePreventivo();
 			
 			prev.delete();
-	
 	}
 	
 	
