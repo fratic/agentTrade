@@ -3,7 +3,7 @@ package example;
 import org.orm.PersistentException;
 
 import agent_trade.model.M_Cliente;
-import persistent.ClienteCriteria;
+import agent_trade.persistent.ClienteCriteria;
 
 public class testClientiAttivi {
 

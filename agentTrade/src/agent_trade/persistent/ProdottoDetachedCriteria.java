@@ -11,53 +11,53 @@
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
  */
-package persistent;
+package agent_trade.persistent;
 
 import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.model.M_Dolci;
+import agent_trade.model.M_Prodotto;
 
-public class DolciDetachedCriteria extends AbstractORMDetachedCriteria {
+public class ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression IdProdotto;
 	public final StringExpression nome;
 	public final FloatExpression prezzo;
 	public final StringExpression categoria;
 	public final StringExpression idDescrizioneProdotto;
-	public final BooleanExpression artigianale;
-	public final BooleanExpression free_gluten;
+	public final FloatExpression sconto;
+
 	
-	public DolciDetachedCriteria() {
-		super(agent_trade.model.M_Dolci.class, persistent.DolciCriteria.class);
+	public ProdottoDetachedCriteria() {
+		super(agent_trade.model.M_Prodotto.class, agent_trade.persistent.ProdottoCriteria.class);
 		IdProdotto = new IntegerExpression("IdProdotto", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		prezzo = new FloatExpression("prezzo", this.getDetachedCriteria());
 		categoria = new StringExpression("categoria", this.getDetachedCriteria());
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this.getDetachedCriteria());
-		artigianale = new BooleanExpression("artigianale", this.getDetachedCriteria());
-		free_gluten = new BooleanExpression("free_gluten", this.getDetachedCriteria());
+		sconto = new FloatExpression("sconto", this.getDetachedCriteria());
+
 	}
 	
-	public DolciDetachedCriteria(DetachedCriteria aDetachedCriteria) {
-		super(aDetachedCriteria, persistent.DolciCriteria.class);
+	public ProdottoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
+		super(aDetachedCriteria, agent_trade.persistent.ProdottoCriteria.class);
 		IdProdotto = new IntegerExpression("IdProdotto", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		prezzo = new FloatExpression("prezzo", this.getDetachedCriteria());
 		categoria = new StringExpression("categoria", this.getDetachedCriteria());
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this.getDetachedCriteria());
-		artigianale = new BooleanExpression("artigianale", this.getDetachedCriteria());
-		free_gluten = new BooleanExpression("free_gluten", this.getDetachedCriteria());
+		sconto = new FloatExpression("sconto", this.getDetachedCriteria());
+
 	}
 	
-	public M_Dolci uniqueM_Dolci(PersistentSession session) {
-		return (M_Dolci) super.createExecutableCriteria(session).uniqueResult();
+	public M_Prodotto uniqueM_Prodotto(PersistentSession session) {
+		return (M_Prodotto) super.createExecutableCriteria(session).uniqueResult();
 	}
 	
-	public M_Dolci[] listM_Dolci(PersistentSession session) {
+	public M_Prodotto[] listM_Prodotto(PersistentSession session) {
 		List list = super.createExecutableCriteria(session).list();
-		return (M_Dolci[]) list.toArray(new M_Dolci[list.size()]);
+		return (M_Prodotto[]) list.toArray(new M_Prodotto[list.size()]);
 	}
 }
 

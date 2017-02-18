@@ -8,8 +8,8 @@ import org.orm.*;
 public class CreateAgentTradeDatabaseSchema {
 	public static void main(String[] args) {
 		try {
-			ORMDatabaseInitiator.createSchema(persistent.AgentTradePersistentManager.instance());
-			persistent.AgentTradePersistentManager.instance().disposePersistentManager();
+			ORMDatabaseInitiator.createSchema(agent_trade.persistent.AgentTradePersistentManager.instance());
+			agent_trade.persistent.AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 		catch (Exception e) {
 			e.printStackTrace();

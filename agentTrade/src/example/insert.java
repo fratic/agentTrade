@@ -4,9 +4,7 @@ import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
 import agent_trade.model.M_Agente;
-import agent_trade.model.M_Cliente;
-import persistent.AgentTradePersistentManager;
-import persistent.AgenteCriteria;
+import agent_trade.persistent.AgentTradePersistentManager;
 
 public class insert {
 	public static void main(String[] args) throws PersistentException {

@@ -11,8 +11,8 @@ public class DropAgentTradeDatabaseSchema {
 			System.out.println("Are you sure to drop table(s)? (Y/N)");
 			java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
 			if (reader.readLine().trim().toUpperCase().equals("Y")) {
-				ORMDatabaseInitiator.dropSchema(persistent.AgentTradePersistentManager.instance());
-				persistent.AgentTradePersistentManager.instance().disposePersistentManager();
+				ORMDatabaseInitiator.dropSchema(agent_trade.persistent.AgentTradePersistentManager.instance());
+				agent_trade.persistent.AgentTradePersistentManager.instance().disposePersistentManager();
 			}
 			
 		}

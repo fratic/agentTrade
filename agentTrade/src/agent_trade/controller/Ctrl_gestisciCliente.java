@@ -12,6 +12,8 @@ import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
 import agent_trade.model.M_Cliente;
+import agent_trade.persistent.AgentTradePersistentManager;
+import agent_trade.persistent.ClienteCriteria;
 import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.clienti.CercaClienteView;
@@ -19,8 +21,6 @@ import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.Ricerca_cliente;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
 import agent_trade.ui.content.clienti.confermaCancCliente;
-import persistent.AgentTradePersistentManager;
-import persistent.ClienteCriteria;
 
 public class Ctrl_gestisciCliente {
 

@@ -32,7 +32,7 @@ public class SpinnerEditor extends AbstractCellEditor implements TableCellEditor
     	    if (row>=0){
 	            Object id =table.getModel().getValueAt(row, 1);
 	            try {
-					Ctrl_elaboraPreventivo.getInstance().addQuant(Integer.parseInt((String) id), qt, row);
+					Ctrl_elaboraPreventivo.getInstance().addQuant(Integer.parseInt((String) id), qt);
 	            } 
 	            catch (NumberFormatException | PersistentException e1) {
 					e1.printStackTrace();

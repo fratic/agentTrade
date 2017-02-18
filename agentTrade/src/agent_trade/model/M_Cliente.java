@@ -18,8 +18,8 @@ import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_System;
-import persistent.AgentTradePersistentManager;
-import persistent.ClienteCriteria;
+import agent_trade.persistent.AgentTradePersistentManager;
+import agent_trade.persistent.ClienteCriteria;
 
 public class M_Cliente {
 

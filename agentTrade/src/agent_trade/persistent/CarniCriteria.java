@@ -11,52 +11,52 @@
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
  */
-package persistent;
+package agent_trade.persistent;
 
 import org.hibernate.Criteria;
 import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.model.M_Vini;
+import agent_trade.model.M_Carni;
 
-public class ViniCriteria extends AbstractORMCriteria {
+public class CarniCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IdProdotto;
 	public final StringExpression nome;
 	public final FloatExpression prezzo;
 	public final StringExpression categoria;
 	public final StringExpression idDescrizioneProdotto;
-	public final StringExpression colore;
-	public final StringExpression indicazione_geografica;
-	public final StringExpression cantina;
+	public final StringExpression provenienza;
+	public final StringExpression taglio;
+	public final StringExpression tipo;
 	
-	public ViniCriteria(Criteria criteria) {
+	public CarniCriteria(Criteria criteria) {
 		super(criteria);
 		IdProdotto = new IntegerExpression("IdProdotto", this);
 		nome = new StringExpression("nome", this);
 		prezzo = new FloatExpression("prezzo", this);
 		categoria = new StringExpression("categoria", this);
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this);
-		colore = new StringExpression("colore", this);
-		indicazione_geografica = new StringExpression("indicazione_geografica", this);
-		cantina = new StringExpression("cantina", this);
+		provenienza = new StringExpression("provenienza", this);
+		taglio = new StringExpression("taglio", this);
+		tipo = new StringExpression("tipo", this);
 	}
 	
-	public ViniCriteria(PersistentSession session) {
-		this(session.createCriteria(M_Vini.class));
+	public CarniCriteria(PersistentSession session) {
+		this(session.createCriteria(M_Carni.class));
 	}
 	
-	public ViniCriteria() throws PersistentException {
-		this(persistent.AgentTradePersistentManager.instance().getSession());
+	public CarniCriteria() throws PersistentException {
+		this(agent_trade.persistent.AgentTradePersistentManager.instance().getSession());
 	}
 	
-	public M_Vini uniqueM_Vini() {
-		return (M_Vini) super.uniqueResult();
+	public M_Carni uniqueM_Carni() {
+		return (M_Carni) super.uniqueResult();
 	}
 	
-	public M_Vini[] listM_Vini() {
+	public M_Carni[] listM_Carni() {
 		java.util.List list = super.list();
-		return (M_Vini[]) list.toArray(new M_Vini[list.size()]);
+		return (M_Carni[]) list.toArray(new M_Carni[list.size()]);
 	}
 }
 

@@ -15,7 +15,7 @@ package agent_trade.model;
 
 import org.orm.PersistentException;
 
-import persistent.AgenteCriteria;
+import agent_trade.persistent.AgenteCriteria;
 
 public class M_Agente {
 	

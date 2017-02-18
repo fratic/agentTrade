@@ -265,7 +265,7 @@ public class PrimaryView extends JFrame
 		nuovo_preventivo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					Ctrl_elaboraPreventivo.getInstance().newPreventivo(Ctrl_System.getAgenteLog());
+					Ctrl_elaboraPreventivo.getInstance().newPreventivo();
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();

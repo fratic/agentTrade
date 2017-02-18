@@ -11,50 +11,52 @@
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
  */
-package persistent;
+package agent_trade.persistent;
 
 import org.hibernate.Criteria;
 import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.model.M_Dolci;
+import agent_trade.model.M_Vini;
 
-public class DolciCriteria extends AbstractORMCriteria {
+public class ViniCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IdProdotto;
 	public final StringExpression nome;
 	public final FloatExpression prezzo;
 	public final StringExpression categoria;
 	public final StringExpression idDescrizioneProdotto;
-	public final BooleanExpression artigianale;
-	public final BooleanExpression free_gluten;
+	public final StringExpression colore;
+	public final StringExpression indicazione_geografica;
+	public final StringExpression cantina;
 	
-	public DolciCriteria(Criteria criteria) {
+	public ViniCriteria(Criteria criteria) {
 		super(criteria);
 		IdProdotto = new IntegerExpression("IdProdotto", this);
 		nome = new StringExpression("nome", this);
 		prezzo = new FloatExpression("prezzo", this);
 		categoria = new StringExpression("categoria", this);
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this);
-		artigianale = new BooleanExpression("artigianale", this);
-		free_gluten = new BooleanExpression("free_gluten", this);
+		colore = new StringExpression("colore", this);
+		indicazione_geografica = new StringExpression("indicazione_geografica", this);
+		cantina = new StringExpression("cantina", this);
 	}
 	
-	public DolciCriteria(PersistentSession session) {
-		this(session.createCriteria(M_Dolci.class));
+	public ViniCriteria(PersistentSession session) {
+		this(session.createCriteria(M_Vini.class));
 	}
 	
-	public DolciCriteria() throws PersistentException {
-		this(persistent.AgentTradePersistentManager.instance().getSession());
+	public ViniCriteria() throws PersistentException {
+		this(agent_trade.persistent.AgentTradePersistentManager.instance().getSession());
 	}
 	
-	public M_Dolci uniqueM_Dolci() {
-		return (M_Dolci) super.uniqueResult();
+	public M_Vini uniqueM_Vini() {
+		return (M_Vini) super.uniqueResult();
 	}
 	
-	public M_Dolci[] listM_Dolci() {
+	public M_Vini[] listM_Vini() {
 		java.util.List list = super.list();
-		return (M_Dolci[]) list.toArray(new M_Dolci[list.size()]);
+		return (M_Vini[]) list.toArray(new M_Vini[list.size()]);
 	}
 }
 

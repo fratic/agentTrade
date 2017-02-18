@@ -1,20 +1,16 @@
 package example;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Observer;
 
 import org.orm.PersistentException;
-import org.orm.PersistentTransaction;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
-import persistent.AgentTradePersistentManager;
-import persistent.AgenteCriteria;
-import persistent.ClienteCriteria;
-import persistent.Preventivo_ItemCriteria;
+import agent_trade.persistent.AgenteCriteria;
+import agent_trade.persistent.ClienteCriteria;
+import agent_trade.persistent.Preventivo_ItemCriteria;
 
 public class testCaricamentoPrev {
 

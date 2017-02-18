@@ -1,5 +1,4 @@
 package example;
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,10 +10,10 @@ import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
-import persistent.AgentTradePersistentManager;
-import persistent.AgenteCriteria;
-import persistent.ClienteCriteria;
-import persistent.ProdottoCriteria;
+import agent_trade.persistent.AgentTradePersistentManager;
+import agent_trade.persistent.AgenteCriteria;
+import agent_trade.persistent.ClienteCriteria;
+import agent_trade.persistent.ProdottoCriteria;
 
 public class testPreventivo {
 

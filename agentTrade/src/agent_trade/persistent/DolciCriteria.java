@@ -11,50 +11,50 @@
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
  */
-package persistent;
+package agent_trade.persistent;
 
 import org.hibernate.Criteria;
 import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.model.M_Latticini;
+import agent_trade.model.M_Dolci;
 
-public class LatticiniCriteria extends AbstractORMCriteria {
+public class DolciCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IdProdotto;
 	public final StringExpression nome;
 	public final FloatExpression prezzo;
 	public final StringExpression categoria;
 	public final StringExpression idDescrizioneProdotto;
-	public final IntegerExpression stagionatura;
-	public final StringExpression tipo;
+	public final BooleanExpression artigianale;
+	public final BooleanExpression free_gluten;
 	
-	public LatticiniCriteria(Criteria criteria) {
+	public DolciCriteria(Criteria criteria) {
 		super(criteria);
 		IdProdotto = new IntegerExpression("IdProdotto", this);
 		nome = new StringExpression("nome", this);
 		prezzo = new FloatExpression("prezzo", this);
 		categoria = new StringExpression("categoria", this);
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this);
-		stagionatura = new IntegerExpression("stagionatura", this);
-		tipo = new StringExpression("tipo", this);
+		artigianale = new BooleanExpression("artigianale", this);
+		free_gluten = new BooleanExpression("free_gluten", this);
 	}
 	
-	public LatticiniCriteria(PersistentSession session) {
-		this(session.createCriteria(M_Latticini.class));
+	public DolciCriteria(PersistentSession session) {
+		this(session.createCriteria(M_Dolci.class));
 	}
 	
-	public LatticiniCriteria() throws PersistentException {
-		this(persistent.AgentTradePersistentManager.instance().getSession());
+	public DolciCriteria() throws PersistentException {
+		this(agent_trade.persistent.AgentTradePersistentManager.instance().getSession());
 	}
 	
-	public M_Latticini uniqueM_Latticini() {
-		return (M_Latticini) super.uniqueResult();
+	public M_Dolci uniqueM_Dolci() {
+		return (M_Dolci) super.uniqueResult();
 	}
 	
-	public M_Latticini[] listM_Latticini() {
+	public M_Dolci[] listM_Dolci() {
 		java.util.List list = super.list();
-		return (M_Latticini[]) list.toArray(new M_Latticini[list.size()]);
+		return (M_Dolci[]) list.toArray(new M_Dolci[list.size()]);
 	}
 }
 

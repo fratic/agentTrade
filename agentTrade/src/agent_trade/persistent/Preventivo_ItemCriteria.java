@@ -11,7 +11,7 @@
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
  */
-package persistent;
+package agent_trade.persistent;
 
 import org.hibernate.Criteria;
 import org.orm.PersistentException;
@@ -40,7 +40,7 @@ public class Preventivo_ItemCriteria extends AbstractORMCriteria {
 	}
 	
 	public Preventivo_ItemCriteria() throws PersistentException {
-		this(persistent.AgentTradePersistentManager.instance().getSession());
+		this(agent_trade.persistent.AgentTradePersistentManager.instance().getSession());
 	}
 	
 	public ProdottoCriteria createIdProdottoCriteria() {

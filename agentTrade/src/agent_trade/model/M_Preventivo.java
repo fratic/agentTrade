@@ -27,9 +27,9 @@ import org.orm.PersistentTransaction;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.persistent.AgentTradePersistentManager;
+import agent_trade.persistent.PreventivoCriteria;
 import agent_trade.util.Costanti;
-import persistent.AgentTradePersistentManager;
-import persistent.PreventivoCriteria;
 
 public class M_Preventivo implements Observer {
 

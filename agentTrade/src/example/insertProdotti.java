@@ -7,7 +7,7 @@ import agent_trade.model.M_Dolci;
 import agent_trade.model.M_Latticini;
 import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Vini;
-import persistent.AgentTradePersistentManager;
+import agent_trade.persistent.AgentTradePersistentManager;
 
 public class insertProdotti {
 

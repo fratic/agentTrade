@@ -11,7 +11,7 @@
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
  */
-package persistent;
+package agent_trade.persistent;
 
 import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
@@ -30,7 +30,7 @@ public class PreventivoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final CollectionExpression item;
 	
 	public PreventivoDetachedCriteria() {
-		super(agent_trade.model.M_Preventivo.class, persistent.PreventivoCriteria.class);
+		super(agent_trade.model.M_Preventivo.class, agent_trade.persistent.PreventivoCriteria.class);
 		idPreventivo = new IntegerExpression("idPreventivo", this.getDetachedCriteria());
 		rif_ClienteId = new IntegerExpression("rif_Cliente.idCliente", this.getDetachedCriteria());
 		rif_Cliente = new AssociationExpression("rif_Cliente", this.getDetachedCriteria());
@@ -41,7 +41,7 @@ public class PreventivoDetachedCriteria extends AbstractORMDetachedCriteria {
 	}
 	
 	public PreventivoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
-		super(aDetachedCriteria, persistent.PreventivoCriteria.class);
+		super(aDetachedCriteria, agent_trade.persistent.PreventivoCriteria.class);
 		idPreventivo = new IntegerExpression("idPreventivo", this.getDetachedCriteria());
 		rif_ClienteId = new IntegerExpression("rif_Cliente.idCliente", this.getDetachedCriteria());
 		rif_Cliente = new AssociationExpression("rif_Cliente", this.getDetachedCriteria());

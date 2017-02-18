@@ -15,9 +15,9 @@ package agent_trade.model;
 
 import org.orm.PersistentException;
 
+import agent_trade.persistent.AgentTradePersistentManager;
+import agent_trade.persistent.ProdottoCriteria;
 import agent_trade.ui.content.prodotti.ProdottiView;
-import persistent.AgentTradePersistentManager;
-import persistent.ProdottoCriteria;
 
 public abstract class M_Prodotto {
 

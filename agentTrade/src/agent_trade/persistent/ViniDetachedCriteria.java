@@ -11,7 +11,7 @@
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
  */
-package persistent;
+package agent_trade.persistent;
 
 import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
@@ -31,7 +31,7 @@ public class ViniDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression cantina;
 	
 	public ViniDetachedCriteria() {
-		super(agent_trade.model.M_Vini.class, persistent.ViniCriteria.class);
+		super(agent_trade.model.M_Vini.class, agent_trade.persistent.ViniCriteria.class);
 		IdProdotto = new IntegerExpression("IdProdotto", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		prezzo = new FloatExpression("prezzo", this.getDetachedCriteria());
@@ -43,7 +43,7 @@ public class ViniDetachedCriteria extends AbstractORMDetachedCriteria {
 	}
 	
 	public ViniDetachedCriteria(DetachedCriteria aDetachedCriteria) {
-		super(aDetachedCriteria, persistent.ViniCriteria.class);
+		super(aDetachedCriteria, agent_trade.persistent.ViniCriteria.class);
 		IdProdotto = new IntegerExpression("IdProdotto", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		prezzo = new FloatExpression("prezzo", this.getDetachedCriteria());

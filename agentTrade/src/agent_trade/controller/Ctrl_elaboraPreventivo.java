@@ -33,6 +33,8 @@ public class Ctrl_elaboraPreventivo {
 	 */
 	
 	private static Ctrl_elaboraPreventivo instance;
+	
+	//probabilmente non è compito suo tenere questa struttura dati
 	private static Map<Integer, JButton> elencoBottDisat=new TreeMap<>();
 	
 	
@@ -199,13 +201,17 @@ public class Ctrl_elaboraPreventivo {
 	/*metodi pubblici*/
 		
 	//CO1
-	public void newPreventivo(M_Agente a) throws PersistentException {
+	public void newPreventivo() throws PersistentException {
 	
 		PrimaryView.getInstance().resetPannelloCentralePreventivo();
 		
-		M_Preventivo.getInstance().setRif_Agente(a);
-		M_Preventivo.getInstance().setIdPrev();
-		M_Preventivo.getInstance().setData(cal.getTime());
+		M_Agente a = Ctrl_System.getAgenteLog();
+		
+		M_Preventivo p= M_Preventivo.getInstance();
+		
+		p.setRif_Agente(a);
+		p.setIdPrev();
+		p.setData(cal.getTime());
 		
 		Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();
 	}
@@ -307,7 +313,7 @@ public class Ctrl_elaboraPreventivo {
 	}
 
 
-	public void addQuant(int id_prod, int qt, int row) throws PersistentException {
+	public void addQuant(int id_prod, int qt) throws PersistentException {
 
 		M_Preventivo.getInstance().addQuant(id_prod,qt);
 	}
@@ -330,8 +336,8 @@ public class Ctrl_elaboraPreventivo {
 								
 				JButton jb=elencoBottDisat.get(id_item);
 				if (jb!=null){
-				jb.setEnabled(true);
-				elencoBottDisat.remove(id_item);
+					jb.setEnabled(true);
+					elencoBottDisat.remove(id_item);
 				}
 				try {
 					if (M_Preventivo.getInstance().getItem().isEmpty()){

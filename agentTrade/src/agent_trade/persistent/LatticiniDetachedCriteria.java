@@ -11,56 +11,53 @@
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
  */
-package persistent;
+package agent_trade.persistent;
 
 import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.model.M_Carni;
+import agent_trade.model.M_Latticini;
 
-public class CarniDetachedCriteria extends AbstractORMDetachedCriteria {
+public class LatticiniDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression IdProdotto;
 	public final StringExpression nome;
 	public final FloatExpression prezzo;
 	public final StringExpression categoria;
 	public final StringExpression idDescrizioneProdotto;
-	public final StringExpression provenienza;
-	public final StringExpression taglio;
+	public final IntegerExpression stagionatura;
 	public final StringExpression tipo;
 	
-	public CarniDetachedCriteria() {
-		super(agent_trade.model.M_Carni.class, persistent.CarniCriteria.class);
+	public LatticiniDetachedCriteria() {
+		super(agent_trade.model.M_Latticini.class, agent_trade.persistent.LatticiniCriteria.class);
 		IdProdotto = new IntegerExpression("IdProdotto", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		prezzo = new FloatExpression("prezzo", this.getDetachedCriteria());
 		categoria = new StringExpression("categoria", this.getDetachedCriteria());
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this.getDetachedCriteria());
-		provenienza = new StringExpression("provenienza", this.getDetachedCriteria());
-		taglio = new StringExpression("taglio", this.getDetachedCriteria());
+		stagionatura = new IntegerExpression("stagionatura", this.getDetachedCriteria());
 		tipo = new StringExpression("tipo", this.getDetachedCriteria());
 	}
 	
-	public CarniDetachedCriteria(DetachedCriteria aDetachedCriteria) {
-		super(aDetachedCriteria, persistent.CarniCriteria.class);
+	public LatticiniDetachedCriteria(DetachedCriteria aDetachedCriteria) {
+		super(aDetachedCriteria, agent_trade.persistent.LatticiniCriteria.class);
 		IdProdotto = new IntegerExpression("IdProdotto", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		prezzo = new FloatExpression("prezzo", this.getDetachedCriteria());
 		categoria = new StringExpression("categoria", this.getDetachedCriteria());
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this.getDetachedCriteria());
-		provenienza = new StringExpression("provenienza", this.getDetachedCriteria());
-		taglio = new StringExpression("taglio", this.getDetachedCriteria());
+		stagionatura = new IntegerExpression("stagionatura", this.getDetachedCriteria());
 		tipo = new StringExpression("tipo", this.getDetachedCriteria());
 	}
 	
-	public M_Carni uniqueM_Carni(PersistentSession session) {
-		return (M_Carni) super.createExecutableCriteria(session).uniqueResult();
+	public M_Latticini uniqueM_Latticini(PersistentSession session) {
+		return (M_Latticini) super.createExecutableCriteria(session).uniqueResult();
 	}
 	
-	public M_Carni[] listM_Carni(PersistentSession session) {
+	public M_Latticini[] listM_Latticini(PersistentSession session) {
 		List list = super.createExecutableCriteria(session).list();
-		return (M_Carni[]) list.toArray(new M_Carni[list.size()]);
+		return (M_Latticini[]) list.toArray(new M_Latticini[list.size()]);
 	}
 }
 

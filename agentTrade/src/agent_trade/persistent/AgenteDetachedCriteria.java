@@ -11,12 +11,15 @@
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
  */
-package persistent;
+package agent_trade.persistent;
 
 import java.util.List;
+
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
-import org.orm.criteria.*;
+import org.orm.criteria.AbstractORMDetachedCriteria;
+import org.orm.criteria.IntegerExpression;
+import org.orm.criteria.StringExpression;
 
 import agent_trade.model.M_Agente;
 
@@ -34,7 +37,7 @@ public class AgenteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression cap;
 	
 	public AgenteDetachedCriteria() {
-		super(agent_trade.model.M_Agente.class, persistent.AgenteCriteria.class);
+		super(agent_trade.model.M_Agente.class, AgenteCriteria.class);
 		IdAgente = new IntegerExpression("IdAgente", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		cognome = new StringExpression("cognome", this.getDetachedCriteria());
@@ -49,7 +52,7 @@ public class AgenteDetachedCriteria extends AbstractORMDetachedCriteria {
 	}
 	
 	public AgenteDetachedCriteria(DetachedCriteria aDetachedCriteria) {
-		super(aDetachedCriteria, persistent.AgenteCriteria.class);
+		super(aDetachedCriteria, AgenteCriteria.class);
 		IdAgente = new IntegerExpression("IdAgente", this.getDetachedCriteria());
 		nome = new StringExpression("nome", this.getDetachedCriteria());
 		cognome = new StringExpression("cognome", this.getDetachedCriteria());

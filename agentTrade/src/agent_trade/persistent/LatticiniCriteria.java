@@ -11,52 +11,50 @@
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
  */
-package persistent;
+package agent_trade.persistent;
 
 import org.hibernate.Criteria;
 import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
 
-import agent_trade.model.M_Carni;
+import agent_trade.model.M_Latticini;
 
-public class CarniCriteria extends AbstractORMCriteria {
+public class LatticiniCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IdProdotto;
 	public final StringExpression nome;
 	public final FloatExpression prezzo;
 	public final StringExpression categoria;
 	public final StringExpression idDescrizioneProdotto;
-	public final StringExpression provenienza;
-	public final StringExpression taglio;
+	public final IntegerExpression stagionatura;
 	public final StringExpression tipo;
 	
-	public CarniCriteria(Criteria criteria) {
+	public LatticiniCriteria(Criteria criteria) {
 		super(criteria);
 		IdProdotto = new IntegerExpression("IdProdotto", this);
 		nome = new StringExpression("nome", this);
 		prezzo = new FloatExpression("prezzo", this);
 		categoria = new StringExpression("categoria", this);
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this);
-		provenienza = new StringExpression("provenienza", this);
-		taglio = new StringExpression("taglio", this);
+		stagionatura = new IntegerExpression("stagionatura", this);
 		tipo = new StringExpression("tipo", this);
 	}
 	
-	public CarniCriteria(PersistentSession session) {
-		this(session.createCriteria(M_Carni.class));
+	public LatticiniCriteria(PersistentSession session) {
+		this(session.createCriteria(M_Latticini.class));
 	}
 	
-	public CarniCriteria() throws PersistentException {
-		this(persistent.AgentTradePersistentManager.instance().getSession());
+	public LatticiniCriteria() throws PersistentException {
+		this(agent_trade.persistent.AgentTradePersistentManager.instance().getSession());
 	}
 	
-	public M_Carni uniqueM_Carni() {
-		return (M_Carni) super.uniqueResult();
+	public M_Latticini uniqueM_Latticini() {
+		return (M_Latticini) super.uniqueResult();
 	}
 	
-	public M_Carni[] listM_Carni() {
+	public M_Latticini[] listM_Latticini() {
 		java.util.List list = super.list();
-		return (M_Carni[]) list.toArray(new M_Carni[list.size()]);
+		return (M_Latticini[]) list.toArray(new M_Latticini[list.size()]);
 	}
 }
 
