@@ -20,6 +20,7 @@ import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
+import agent_trade.util.Costanti;
 import example.DynamicTreeDemo;
 
 import javax.swing.JTable;
@@ -63,7 +64,7 @@ public class confermaCancCliente extends JDialog {
 		setAlwaysOnTop(true);
 		
 		
-		setTitle("Attenzione!");
+		setTitle(Costanti.TITOLO_CANCELLA_CLIENTE);
 		setBounds(350, 200, 340, 151);
 		getContentPane().setLayout(null);
 		
@@ -72,7 +73,7 @@ public class confermaCancCliente extends JDialog {
 		getContentPane().add(contentPane);
 		contentPane.setLayout(null);
 		
-		LabelTesto = new JLabel("Sei sicuro di voler cancellare il cliente corrente?");
+		LabelTesto = new JLabel(Costanti.MESSAGGIO_CANCELLA_CLIENTE);
 		LabelTesto.setBounds(43, 11, 241, 40);
 		contentPane.add(LabelTesto);
 		
@@ -81,11 +82,11 @@ public class confermaCancCliente extends JDialog {
 		getContentPane().add(panelloBottoni);
 		panelloBottoni.setLayout(null);
 		
-		okButton = new JButton("Ok");
+		okButton = new JButton(Costanti.BOTTONE_CONFERMA);
 		okButton.setBounds(91, 11, 62, 23);
 		panelloBottoni.add(okButton);
 		
-		cancelButton = new JButton("Annulla");
+		cancelButton = new JButton(Costanti.BOTTONE_ANNULLA);
 		cancelButton.setBounds(175, 11, 82, 23);
 		panelloBottoni.add(cancelButton);
 		 

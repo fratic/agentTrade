@@ -23,6 +23,7 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
+import agent_trade.util.Costanti;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
@@ -68,7 +69,7 @@ public class Ricerca_cliente extends JDialog {
 		setAlwaysOnTop(true);
 		
 		
-		setTitle("Cerca Cliente");
+		setTitle(Costanti.TITOLO_CERCA_CLIENTE);
 		setBounds(450, 250, 749, 406);
 		getContentPane().setLayout(null);
 		
@@ -77,7 +78,7 @@ public class Ricerca_cliente extends JDialog {
 		getContentPane().add(panelloCerca);
 		panelloCerca.setLayout(null);
 		
-		LabelCerca = new JLabel("Cognome o ragione sociale");
+		LabelCerca = new JLabel(Costanti.LABEL_COGNOME);
 		LabelCerca.setBounds(10, 11, 137, 40);
 		panelloCerca.add(LabelCerca);
 		
@@ -86,7 +87,7 @@ public class Ricerca_cliente extends JDialog {
 		panelloCerca.add(TFCerca);
 		TFCerca.setColumns(10);
 		
-		JLabel labelCercaPI = new JLabel("Partita Iva");
+		JLabel labelCercaPI = new JLabel(Costanti.LABEL_PARTITA_IVA);
 		labelCercaPI.setBounds(365, 11, 64, 40);
 		panelloCerca.add(labelCercaPI);
 		
@@ -95,7 +96,7 @@ public class Ricerca_cliente extends JDialog {
 		TFcercaPI.setBounds(439, 21, 180, 20);
 		panelloCerca.add(TFcercaPI);
 		
-		JLabel labelCercaCF = new JLabel("Codice Fiscale");
+		JLabel labelCercaCF = new JLabel(Costanti.LABEL_COD_FISC);
 		labelCercaCF.setBounds(10, 50, 137, 40);
 		panelloCerca.add(labelCercaCF);
 		
@@ -104,7 +105,7 @@ public class Ricerca_cliente extends JDialog {
 		TFcercaCF.setBounds(157, 60, 180, 20);
 		panelloCerca.add(TFcercaCF);
 		
-		JLabel labelCercaCitta = new JLabel("Citt\u00E0");
+		JLabel labelCercaCitta = new JLabel(Costanti.LABEL_CITTA);
 		labelCercaCitta.setBounds(365, 50, 64, 40);
 		panelloCerca.add(labelCercaCitta);
 		
@@ -113,7 +114,7 @@ public class Ricerca_cliente extends JDialog {
 		TFcercaCitta.setBounds(439, 60, 180, 20);
 		panelloCerca.add(TFcercaCitta);
 		
-		BottoneCerca = new JButton("Cerca");
+		BottoneCerca = new JButton(Costanti.BOTTONE_CERCA);
 		BottoneCerca.setBounds(644, 80, 89, 23);
 		panelloCerca.add(BottoneCerca);
 		
@@ -127,11 +128,12 @@ public class Ricerca_cliente extends JDialog {
 		getContentPane().add(panelloRisultati);
 		panelloRisultati.setLayout(null);
 		
+		String[] colNames = Costanti.INTESTAZIONE_TABELLA_RICERCA_CLIENTI;
 		JTableModel = new DefaultTableModel(
                 new String[][] { },
-                new String[] {"ID", "Cognome", "Nome","Codice Fiscale", "Partita iva", "Citt\u00E0" });
+                colNames);
 			
-		table =new JTable();
+		table = new JTable();
         
         table.setModel(JTableModel);
         
@@ -146,13 +148,13 @@ public class Ricerca_cliente extends JDialog {
 		getContentPane().add(panelloBottoni);
 		panelloBottoni.setLayout(null);
 		
-		BottoneVisualizza = new JButton("Visualizza");
+		BottoneVisualizza = new JButton(Costanti.BOTTONE_VISUALIZZA);
 		BottoneVisualizza.setEnabled(false);
 		BottoneVisualizza.setBounds(634, 11, 99, 23);
 		panelloBottoni.add(BottoneVisualizza);
 		
 		//resetta i campi della ricerca e svuota la tabella
-		JButton BottoneAnnullaCerca = new JButton("Annulla");
+		JButton BottoneAnnullaCerca = new JButton(Costanti.BOTTONE_ANNULLA);
 		BottoneAnnullaCerca.setBounds(506, 11, 99, 23);
 		panelloBottoni.add(BottoneAnnullaCerca);
 		
