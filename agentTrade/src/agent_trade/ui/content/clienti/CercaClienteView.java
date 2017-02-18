@@ -24,6 +24,7 @@ import org.orm.PersistentException;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Cliente;
+import agent_trade.util.Costanti;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
@@ -68,7 +69,7 @@ public class CercaClienteView extends JDialog {
 		setAlwaysOnTop(true);
 		
 		
-		setTitle("Cerca Cliente");
+		setTitle(Costanti.TITOLO_CERCA_CLIENTE);
 		setBounds(450, 250, 576, 324);
 		getContentPane().setLayout(null);
 		
@@ -77,7 +78,7 @@ public class CercaClienteView extends JDialog {
 		getContentPane().add(panelloCerca);
 		panelloCerca.setLayout(null);
 		
-		LabelCerca = new JLabel("Cerca Cliente");
+		LabelCerca = new JLabel(Costanti.LABEL_CERCA_CLIENTE);
 		LabelCerca.setBounds(34, 11, 74, 40);
 		panelloCerca.add(LabelCerca);
 		
@@ -86,7 +87,7 @@ public class CercaClienteView extends JDialog {
 		panelloCerca.add(textFieldCerca);
 		textFieldCerca.setColumns(10);
 		
-		BottoneCerca = new JButton("Cerca");
+		BottoneCerca = new JButton(Costanti.BOTTONE_CERCA);
 		BottoneCerca.setBounds(385, 20, 89, 23);
 		panelloCerca.add(BottoneCerca);
 		
@@ -100,11 +101,11 @@ public class CercaClienteView extends JDialog {
 		getContentPane().add(panelloRisultati);
 		panelloRisultati.setLayout(null);
 		
-		
+		String[] colNames = Costanti.INTESTAZIONE_TABELLA_CERCA_CLIENTI;
 		
 		JTableModel = new DefaultTableModel(
                       new String[][] { },
-                      new String[] { "ID", "Cognome", "Nome", "Codice Fiscale", "P.IVA" });
+                      colNames);
 				
         table =new JTable();
         
@@ -121,7 +122,7 @@ public class CercaClienteView extends JDialog {
 		getContentPane().add(panelloBottoni);
 		panelloBottoni.setLayout(null);
 		
-		BottoneInserisci = new JButton("Inserisci");
+		BottoneInserisci = new JButton(Costanti.BOTTONE_INSERISCI);
 		BottoneInserisci.setEnabled(false);
 		BottoneInserisci.setBounds(451, 11, 99, 23);
 		panelloBottoni.add(BottoneInserisci);

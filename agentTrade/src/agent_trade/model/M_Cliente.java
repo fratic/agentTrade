@@ -13,9 +13,11 @@
  */
 package agent_trade.model;
 
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
 
 import agent_trade.controller.Ctrl_System;
 import persistent.AgentTradePersistentManager;
@@ -93,6 +95,7 @@ public class M_Cliente {
 			//JOIN per recuperare solo i clienti dell'agente loggato
 			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
 			criteriaCliente.idCliente.eq(id_cliente);
+			criteriaCliente.attivo.eq(1);
 			return criteriaCliente.uniqueM_Cliente();
 		}
 		finally {
@@ -107,6 +110,7 @@ public class M_Cliente {
 			criteriaCliente = new ClienteCriteria();
 			//JOIN per recuperare solo i clienti dell'agente loggato
 			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			criteriaCliente.attivo.eq(1);
 			return criteriaCliente.listCliente();
 		} 
 		catch (PersistentException e) {
@@ -118,6 +122,96 @@ public class M_Cliente {
 		return null;
 	}
 	
+	public static M_Cliente[] caricaClientiCognome(String c)throws PersistentException{
+		
+		try{
+			ClienteCriteria criteriaCliente= new ClienteCriteria();
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 	
+			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
+			criteriaCliente.cognome.like("%"+c+"%");
+			criteriaCliente.attivo.eq(1);
+			return criteriaCliente.listCliente();
+
+		}
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		return null;
+	}
+	
+	public static M_Cliente[] caricaClientiParametri(String c, String pi, String cf, String city)throws PersistentException{
+		
+		try{
+			ClienteCriteria criteriaCliente= new ClienteCriteria();
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
+			criteriaCliente.cognome.like("%"+c+"%");
+			criteriaCliente.partita_iva.like("%"+pi+"%");
+			criteriaCliente.codice_fiscale.like("%"+cf+"%");
+			criteriaCliente.citta.like("%"+city+"%");
+			criteriaCliente.attivo.eq(1);
+			return criteriaCliente.listCliente();
+
+		}
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		return null;
+	}
+	
+	public static void salvaCliente(M_Cliente c)throws PersistentException{
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradePersistentManager.instance().getSession().save(c);
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
+	public static void aggiornaCliente(M_Cliente c)throws PersistentException{
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try {
+			AgentTradePersistentManager.instance().getSession().update(c);
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
+	public static int getMaxId()throws PersistentException{
+		
+		try 
+		{				
+			ClienteCriteria criteria= new ClienteCriteria();
+			criteria.setProjection(Projections.max("id"));
+			int id=(int) criteria.uniqueResult();
+			return id;
+		}
+		
+		finally {
+			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		
+	}
 	
 	/*
 	 * metodi privati
