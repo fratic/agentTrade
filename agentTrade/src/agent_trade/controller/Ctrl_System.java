@@ -1,6 +1,8 @@
 
 package agent_trade.controller;
 
+import java.util.Calendar;
+
 import org.orm.PersistentException;
 
 import agent_trade.model.M_Agente;
@@ -23,6 +25,8 @@ public class Ctrl_System {
 	
 	private static Ctrl_System instance;
 	
+	public static Calendar calendario = Calendar.getInstance();
+
 	
 	/*	la responsabilità di tenere l'istanza dell'agente loggato è stata assegnata ad crtl_system, in quanto è il creatore*/
 	private static M_Agente instanceAgenteLog;

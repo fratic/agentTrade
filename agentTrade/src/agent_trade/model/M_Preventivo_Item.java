@@ -135,9 +135,7 @@ public class M_Preventivo_Item extends Observable{
 	public float calcolaParziale() {
 		
 		float parziale=(this.getIdProdotto().getPrezzo()*this.getQuantita())*(1-this.getIdProdotto().getSconto());
-		System.out.println("parziel 1 "+parziale);
 		parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2));
-		System.out.println("parziale 2 "+parziale);
 		return parziale;
 	}
 

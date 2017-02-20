@@ -99,7 +99,7 @@ public class M_Cliente {
 			return criteriaCliente.uniqueM_Cliente();
 		}
 		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
+//			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 	}
 	
@@ -117,7 +117,7 @@ public class M_Cliente {
 			e.printStackTrace();
 		}
 		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
+//			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 		return null;
 	}
@@ -138,7 +138,7 @@ public class M_Cliente {
 			e.printStackTrace();
 		}
 		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
+//			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 		return null;
 	}
@@ -162,7 +162,7 @@ public class M_Cliente {
 			e.printStackTrace();
 		}
 		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
+//			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 		return null;
 	}
@@ -179,7 +179,7 @@ public class M_Cliente {
 			t.rollback();
 		}
 		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
+//			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 	}
 	
@@ -193,7 +193,7 @@ public class M_Cliente {
 			t.rollback();
 		}
 		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
+//			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 	}
 	
@@ -208,7 +208,7 @@ public class M_Cliente {
 		}
 		
 		finally {
-			AgentTradePersistentManager.instance().disposePersistentManager();
+//			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 		
 	}

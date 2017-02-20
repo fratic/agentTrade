@@ -243,8 +243,7 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 	}
 
 	public void setData(Date data) {
-		int anno=data.getYear()+1900;
-		String d= data.getDate()+" / "+data.getMonth()+" / "+anno;
+		String d= data.getDate()+" / "+(data.getMonth()+1)+" / "+(data.getYear()+1900);
 		this.labelData.setText(d);
 	}
 	

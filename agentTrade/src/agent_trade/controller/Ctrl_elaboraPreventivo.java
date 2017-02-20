@@ -42,7 +42,6 @@ public class Ctrl_elaboraPreventivo {
 	 * attributi privati
 	 */
 	
-	private Calendar cal = Calendar.getInstance();
 
 	/*
 	 * costruttori
@@ -211,7 +210,7 @@ public class Ctrl_elaboraPreventivo {
 		
 		p.setRif_Agente(a);
 		p.setIdPrev();
-		p.setData(cal.getTime());
+		p.setData(Ctrl_System.calendario.getTime());
 		
 		Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();
 	}

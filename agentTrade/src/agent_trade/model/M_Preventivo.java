@@ -63,7 +63,8 @@ public class M_Preventivo implements Observer {
 	private M_Preventivo(M_Preventivo prev) throws PersistentException{		
 		
 		this.idPreventivo=prev.idPreventivo;
-		this.data=prev.getData();
+//		this.data=prev.getData();
+		this.data=Ctrl_System.calendario.getTime();
 		this.rif_Agente=prev.getRif_Agente();
 		this.rif_Cliente=prev.getRif_Cliente();
 		this.item=prev.getItem();
