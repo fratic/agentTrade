@@ -27,6 +27,9 @@ public final class Costanti {
 	public final static String TITOLO_CANCELLA_CLIENTE = "Attenzione!";
 	public final static String TITOLO_NUOVO_CLIENTE = "Nuova scheda cliente";
 	public final static String TITOLO_SCHEDA_CLIENTE = "Scheda Cliente";
+	public final static String TITOLO_CERCA_AGENTE = "Cerca Agente ";
+
+	
 
 	/**
 	 * Messaggi dei Dialog
@@ -46,7 +49,7 @@ public final class Costanti {
 	 */
 	public static final String SPLASH_AGENTTRADE = "/agent_trade/ui/img/splash.png";
 	public static final String AGENTTRADE_ICON = "/agent_trade/ui/img/icon.png";
-	public static final String IMG_SFONDO_CLIENTE = "/agent_trade/ui/img/sfondoAgentTradeCliente.png";
+	public static final String IMG_SFONDO_AGENTE = "/agent_trade/ui/img/sfondoAgentTradeCliente.png";
 	public static final String IMG_SFONDO_PREVENTIVO= "/agent_trade/ui/img/sfondoAgentTrade2.png";
 	public static final String CLOSE_ICON= "/agent_trade/ui/img/close_icon.png";
 	public static final String PLUS_ICON= "/agent_trade/ui/img/plus.png";
@@ -72,7 +75,8 @@ public final class Costanti {
 	public static final String ANNULLA_MOD_CLIENTE_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String RIEPILOGO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String DETTAGLIO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
-		
+	public static final String ALBERO_AGENTI_ICON= "/agent_trade/ui/img/ico-cliente1.png";
+
 	/**
 	 * URL dei Sistemi Esterni
 	 */
@@ -145,10 +149,10 @@ public final class Costanti {
 	
 	public final static String TAB_PREVENTIVO= "Preventivo";
 	public final static String TAB_CATALOGO= "Catalogo";
-	public final static String TAB_CLIENTE= "Cliente";
+	public final static String TAB_AGENTE= "Agente";
 	
 	public final static String ROOT_PREVENTIVI= "Preventivi";
-	public final static String ROOT_CLIENTI= "Clienti";
+	public final static String ROOT_AGENTI= "AGenti";
 
 	public final static String LABEL_INTESTAZIONE= "Intestazione";
 	public final static String LABEL_NPREV= "Preventivo n\u00B0";
@@ -161,6 +165,9 @@ public final class Costanti {
 	public final static String LABEL_TOTALE= "Totale";
 
 	public final static String LABEL_CERCA_CLIENTE = "Cerca Cliente";
+	public final static String LABEL_CERCA_AGENTE = "Cerca Agente";
+	
+	
 	
 	public final static String LABEL_ID = "Codice cliente";
 	public final static String LABEL_COGNOME = "Cognome o Ragione sociale";
@@ -180,6 +187,12 @@ public final class Costanti {
 	/**
 	 * Tip
 	 */
+	
+	public final static String TIP_NUOVO_AGENTE= "Inserisci un nuovo agente";
+	public final static String TIP_CERCA_AGENTE= "Cerca un agente";
+	public final static String TIP_GESTISCI_AGENTE= "Gestisci gli agenti";
+
+	
 	public final static String TIP_GESTISCI_PREVENTIVO= "Gestisci i preventivi";
 	public final static String TIP_NUOVO_PREVENTIVO= "Crea un nuovo preventivo";
 	public final static String TIP_GESTISCI_CLIENTE= "Gestisci i clienti";
@@ -235,6 +248,10 @@ public final class Costanti {
 	public final static String[] INTESTAZIONE_TABELLA_PRODOTTI = {"ID prodotto", "Nome", "Categoria", "Sconto", "Prezzo", "Aggiungi" };
 	public final static String[] INTESTAZIONE_TABELLA_CERCA_CLIENTI = {"ID", "Cognome", "Nome", "Codice Fiscale", "P.IVA"};
 	public final static String[] INTESTAZIONE_TABELLA_RICERCA_CLIENTI = {"ID", "Cognome", "Nome","Codice Fiscale", "Partita iva", "Citt\u00E0" };
+	
+	public final static String[] INTESTAZIONE_TABELLA_CERCA_AGENTI = {"ID", "Cognome", "Nome", "Codice Fiscale", "P.IVA"};
+
+	
 	
 	/**
 	 * Costanti colonne

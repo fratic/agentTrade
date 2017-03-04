@@ -20,7 +20,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
+import controller.Ctrl_gestisciAgente;
 import model.M_Agente;
+import ui.content.agenti.AlberoAgenti;
 import ui.content.clienti.AlberoClienti;
 import ui.content.clienti.DettaglioClienteView;
 import ui.content.clienti.RiepilogoClienteView;
@@ -29,7 +31,7 @@ import ui.content.preventivi.ItemNuovoPreventivoView;
 import ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import ui.content.preventivi.RiepilogoItemPreventivoView;
 import util.Costanti;
-import util.Sfondo_Cliente;
+import util.Sfondo_Agente;
 import util.Sfondo_Preventivo;
 
 public class PrimaryView extends JFrame 
@@ -67,7 +69,7 @@ public class PrimaryView extends JFrame
 	private JPanel panello_laterale_agente;
 	
 	
-	private JPanel alberoClienti;
+	private JPanel alberoAgenti;
 	
 	private JTabbedPane tabbedPrincipale;
 		
@@ -94,25 +96,7 @@ public class PrimaryView extends JFrame
 		return instance;	 
 	}
 	
-	public static void initIntestazione(){
-
-		intestazione= IntestazioneNuovoPreventivoView.getInstance();
-		intestazione.setPreferredSize(new Dimension(733,140));
-		pannello_centrale_preventivo.add(intestazione, BorderLayout.NORTH);
-		pannello_centrale_preventivo.repaint();
-
-	}
-		
-	public static void initItem(){
-
-
-		item= ItemNuovoPreventivoView.getInstance();
-		item.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		item.setPreferredSize(new Dimension(733,457));
-		pannello_centrale_preventivo.add(item,BorderLayout.CENTER);
-		pannello_centrale_preventivo.repaint();
-				
-	}
+	
 	
 	public static void initDettaglioCliente() {
 		
@@ -131,33 +115,7 @@ public class PrimaryView extends JFrame
 	}
 	
 	
-	public static void initRiepilogo(){
-		
-			PrimaryView.getInstance().resetPannelloCentralePreventivo();
-		
-			riep_intestazione =RiepilogoIntestazionePreventivoView.getInstance();
-			riep_intestazione.setPreferredSize(new Dimension(733,140));
-			pannello_centrale_preventivo.add(riep_intestazione,BorderLayout.NORTH);
-			pannello_centrale_preventivo.repaint();
-
-			RiepilogoItemPreventivoView.getInstance().resetTable();
-			
-			riep_item = RiepilogoItemPreventivoView.getInstance();
-
-			riep_item.setPreferredSize(new Dimension(733,457));
-			pannello_centrale_preventivo.add(riep_item);
-			pannello_centrale_preventivo.repaint();			
-	}
-		
-	public static void cancIntestazione(){
-		IntestazioneNuovoPreventivoView.cancIntestazione();
-		intestazione=null;
-	}
 	
-	public static void cancItem(){
-		ItemNuovoPreventivoView.cancItem();
-		item=null;
-	}
 	
 		
 	/*metodi privati*/
@@ -167,7 +125,7 @@ public class PrimaryView extends JFrame
 	private void initTabAgente(){
 		
 		Agente = new JPanel();
-		tabbedPrincipale.addTab(Costanti.TAB_CLIENTE, new ImageIcon(PrimaryView.class.getResource(Costanti.CLIENTE_ICON)), Agente, Costanti.TIP_GESTISCI_CLIENTE);
+		tabbedPrincipale.addTab(Costanti.TAB_AGENTE, new ImageIcon(PrimaryView.class.getResource(Costanti.CLIENTE_ICON)), Agente, Costanti.TIP_GESTISCI_AGENTE);
 		Agente.setLayout(new BorderLayout());
 		
 		panello_menu_agente = new JPanel();
@@ -179,13 +137,13 @@ public class PrimaryView extends JFrame
 		
 		bottoneNuovoAgente = new JButton();
 		bottoneNuovoAgente.setIcon(new ImageIcon(PrimaryView.class.getResource(Costanti.NUOVO_CLIENTE_ICON)));
-		bottoneNuovoAgente.setToolTipText(Costanti.TIP_NUOVO_PREVENTIVO);
+		bottoneNuovoAgente.setToolTipText(Costanti.TIP_NUOVO_AGENTE);
 		bottoneNuovoAgente.setBounds(25, 25, 50, 50);
 		panello_menu_agente.add(bottoneNuovoAgente);
 		
 		bottoneCercaAgente = new JButton("");
 		bottoneCercaAgente.setIcon(new ImageIcon(PrimaryView.class.getResource(Costanti.CERCA_CLIENTE_ICON)));
-		bottoneCercaAgente.setToolTipText(Costanti.TIP_CERCA_CLIENTE);
+		bottoneCercaAgente.setToolTipText(Costanti.TIP_CERCA_AGENTE);
 		bottoneCercaAgente.setBounds(103, 25, 50, 50);
 		panello_menu_agente.add(bottoneCercaAgente);
 		
@@ -201,9 +159,9 @@ public class PrimaryView extends JFrame
 		panello_laterale_agente.setLayout(null);
 
 		
-		alberoClienti = new AlberoClienti();
-		alberoClienti.setBounds(0, 0, 261, 617);
-		panello_laterale_agente.add(alberoClienti);
+		alberoAgenti = new AlberoAgenti();
+		alberoAgenti.setBounds(0, 0, 261, 617);
+		panello_laterale_agente.add(alberoAgenti);
 		
 		pannello_centrale_cliente = new JPanel();
 		pannello_centrale_cliente.setBackground(SystemColor.control);
@@ -213,12 +171,12 @@ public class PrimaryView extends JFrame
 		pannello_centrale_cliente.setLayout(new GridLayout(1,1));
 		pannello_centrale_cliente.setBorder(new EmptyBorder(7, 7, 0, 7));
 		
-		setSfondoCliente();
+		setSfondoAgente();
 		
 		bottoneCercaAgente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-//				Ctrl_gestisciCliente.getInstance().btnCerca();
+				Ctrl_gestisciAgente.getInstance().btnCerca();
 			
 			}
 		});
@@ -226,7 +184,7 @@ public class PrimaryView extends JFrame
 		bottoneNuovoAgente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-//				Ctrl_gestisciCliente.getInstance().newCliente();
+				Ctrl_gestisciAgente.getInstance().btnNewAgente();
 				
 			}
 		});
@@ -272,17 +230,11 @@ public class PrimaryView extends JFrame
 	        }
 	    }
 	
-	public void setSfondoPrev() 
-	{
-		JPanel sfondoPrev=new Sfondo_Preventivo();
-		pannello_centrale_preventivo.add(sfondoPrev, BorderLayout.CENTER);
 		
-	}
-	
-	public void setSfondoCliente() 
+	public void setSfondoAgente() 
 	{
-		JPanel sfondoCliente=new Sfondo_Cliente();
-		pannello_centrale_cliente.add(sfondoCliente);
+		JPanel sfondoAgente=new Sfondo_Agente();
+		pannello_centrale_cliente.add(sfondoAgente);
 		
 	}
 	

@@ -31,7 +31,6 @@ public class Ctrl_gestisciAgente {
 	}
 
 	
-	
 	/*metodi privati*/
 	
 	
@@ -53,6 +52,18 @@ public class Ctrl_gestisciAgente {
 	
 
 	public void cancellaCliente(String id){
+		
+	}
+
+
+
+	public void btnCerca() {
+		
+	}
+
+
+
+	public void btnNewAgente() {
 		
 	}
 	
