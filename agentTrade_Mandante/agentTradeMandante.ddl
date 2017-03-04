@@ -1,0 +1,2 @@
+CREATE TABLE M_Mandante (IdMandante SERIAL NOT NULL, Nome varchar(255), Cognome varchar(255), Username varchar(255), Password varchar(255), PRIMARY KEY (IdMandante));
+CREATE TABLE M_Agente (IdAgente SERIAL NOT NULL, Nome varchar(255), Cognome varchar(255), Password varchar(255), Username varchar(255), Citta varchar(255), Indirizzo varchar(255), Livello int4 NOT NULL, Cell varchar(255), Email varchar(255), Cap varchar(255), PRIMARY KEY (IdAgente));

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Database>
+  <Setting type="32">
+    <Driver></Driver>
+    <DriverFiles></DriverFiles>
+    <Dialect></Dialect>
+    <DriverClass></DriverClass>
+    <URL></URL>
+    <UserName></UserName>
+    <EncryptedPassword>32F3ACE632ECEBAFB24DCAF99A8C6CDC</EncryptedPassword>
+    <HostName></HostName>
+    <PortNO></PortNO>
+    <DBName></DBName>
+    <ServiceName></ServiceName>
+    <ServerName></ServerName>
+    <SelectedForm>true</SelectedForm>
+  </Setting>
+  <Setting type="256">
+    <Driver>PostgreSQL</Driver>
+    <DriverFiles>C:\Users\Antonio\Downloads\postgresql-8.4-703.jdbc4.jar</DriverFiles>
+    <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
+    <DriverClass>org.postgresql.Driver</DriverClass>
+    <URL>jdbc:postgresql://localhost:5433/agentTrade_Mandante</URL>
+    <UserName>postgres</UserName>
+    <EncryptedPassword>A762D72606F50F433EB4CBAB8AD11BA7</EncryptedPassword>
+    <HostName>localhost</HostName>
+    <PortNO>5433</PortNO>
+    <DBName>agentTrade_Mandante</DBName>
+    <ServiceName></ServiceName>
+    <ServerName></ServerName>
+    <SelectedForm>true</SelectedForm>
+  </Setting>
+</Database>
