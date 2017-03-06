@@ -21,19 +21,19 @@ import javax.swing.table.TableRowSorter;
 
 import org.orm.PersistentException;
 
-import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.model.M_Cliente;
+import controller.Ctrl_gestisciAgente;
+import model.M_Agente;
 import util.Costanti;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-public class Ricerca_cliente extends JDialog {
+public class Ricerca_agente extends JDialog {
 	
 	/*attributi di classe*/
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static Ricerca_cliente instance;
+	private static Ricerca_agente instance;
 	
 	/*attributi privati*/
 
@@ -45,7 +45,7 @@ public class Ricerca_cliente extends JDialog {
 
 	private JTextField TFCerca;
 
-	private JList<M_Cliente> clienti;
+	private JList<M_Agente> agenti;
 	
 	private JTable table;
 	private TableModel JTableModel;
@@ -55,13 +55,13 @@ public class Ricerca_cliente extends JDialog {
 	
 	private JButton BottoneVisualizza;
 	private JButton BottoneCerca;
-	private JTextField TFcercaPI;
-	private JTextField TFcercaCF;
+	private JTextField TFcercaLVL;
+	private JTextField TFcercaEmail;
 	private JTextField TFcercaCitta;
 	
 	/*costruttori*/
 
-	public Ricerca_cliente() 
+	public Ricerca_agente() 
 	{
 		setType(Type.UTILITY);
 		setResizable(false);
@@ -69,7 +69,7 @@ public class Ricerca_cliente extends JDialog {
 		setAlwaysOnTop(true);
 		
 		
-		setTitle(Costanti.TITOLO_CERCA_CLIENTE);
+		setTitle(Costanti.TITOLO_CERCA_AGENTE);
 		setBounds(450, 250, 749, 406);
 		getContentPane().setLayout(null);
 		
@@ -87,23 +87,23 @@ public class Ricerca_cliente extends JDialog {
 		panelloCerca.add(TFCerca);
 		TFCerca.setColumns(10);
 		
-		JLabel labelCercaPI = new JLabel(Costanti.LABEL_PARTITA_IVA);
-		labelCercaPI.setBounds(365, 11, 64, 40);
-		panelloCerca.add(labelCercaPI);
+		JLabel labelCercaLVL = new JLabel(Costanti.LABEL_LVL);
+		labelCercaLVL.setBounds(365, 11, 64, 40);
+		panelloCerca.add(labelCercaLVL);
 		
-		TFcercaPI = new JTextField();
-		TFcercaPI.setColumns(10);
-		TFcercaPI.setBounds(439, 21, 180, 20);
-		panelloCerca.add(TFcercaPI);
+		TFcercaLVL = new JTextField();
+		TFcercaLVL.setColumns(10);
+		TFcercaLVL.setBounds(439, 21, 180, 20);
+		panelloCerca.add(TFcercaLVL);
 		
-		JLabel labelCercaCF = new JLabel(Costanti.LABEL_COD_FISC);
-		labelCercaCF.setBounds(10, 50, 137, 40);
-		panelloCerca.add(labelCercaCF);
+		JLabel labelCercaEmail = new JLabel(Costanti.LABEL_EMAIL);
+		labelCercaEmail.setBounds(10, 50, 137, 40);
+		panelloCerca.add(labelCercaEmail);
 		
-		TFcercaCF = new JTextField();
-		TFcercaCF.setColumns(10);
-		TFcercaCF.setBounds(157, 60, 180, 20);
-		panelloCerca.add(TFcercaCF);
+		TFcercaEmail = new JTextField();
+		TFcercaEmail.setColumns(10);
+		TFcercaEmail.setBounds(157, 60, 180, 20);
+		panelloCerca.add(TFcercaEmail);
 		
 		JLabel labelCercaCitta = new JLabel(Costanti.LABEL_CITTA);
 		labelCercaCitta.setBounds(365, 50, 64, 40);
@@ -128,7 +128,7 @@ public class Ricerca_cliente extends JDialog {
 		getContentPane().add(panelloRisultati);
 		panelloRisultati.setLayout(null);
 		
-		String[] colNames = Costanti.INTESTAZIONE_TABELLA_RICERCA_CLIENTI;
+		String[] colNames = Costanti.INTESTAZIONE_TABELLA_RICERCA_AGENTI;
 		JTableModel = new DefaultTableModel(
                 new String[][] { },
                 colNames);
@@ -162,7 +162,7 @@ public class Ricerca_cliente extends JDialog {
 
 		BottoneAnnullaCerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().annullaRicercaCliente();
+				Ctrl_gestisciAgente.getInstance().annullaRicercaAgente();
 			}
 		});
 		
@@ -176,7 +176,7 @@ public class Ricerca_cliente extends JDialog {
 					}
 					//fare le modifiche a ricerca cliente!!!!
 					try {
-						Ctrl_gestisciCliente.getInstance().ricercaCliente(TFCerca.getText(), TFcercaPI.getText(), TFcercaCF.getText(), TFcercaCitta.getText());
+						Ctrl_gestisciAgente.getInstance().ricercaAgente(TFCerca.getText(), /*TFcercaLVL.getText(),*/ TFcercaEmail.getText(), TFcercaCitta.getText());
 					} 
 					catch (PersistentException e) {
 						e.printStackTrace();
@@ -187,13 +187,13 @@ public class Ricerca_cliente extends JDialog {
 		BottoneVisualizza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
-				try {
-					//SE QUI VA PASSATO L'ID (e va fatto), BISOGNA INSERIRLO ANCHE IN TABELLA
-					Ctrl_gestisciCliente.getInstance().recuperaCliente((int) table.getValueAt(table.getSelectedRow(),0));
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+//				try {
+//					//SE QUI VA PASSATO L'ID (e va fatto), BISOGNA INSERIRLO ANCHE IN TABELLA
+//					Ctrl_gestisciCliente.getInstance().recuperaCliente((int) table.getValueAt(table.getSelectedRow(),0));
+//				} catch (PersistentException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
 			}
 		});
 
@@ -210,7 +210,7 @@ public class Ricerca_cliente extends JDialog {
 	/*metodi pubblici*/
 	
 	
-	public void popolaTab(M_Cliente[] a){
+	public void popolaTab(M_Agente[] a){
 		
 		int k=((DefaultTableModel) JTableModel).getRowCount();
 		for (int i=k-1; i>=0;i--){
@@ -218,26 +218,26 @@ public class Ricerca_cliente extends JDialog {
 		}
 		labelError.setText("");
 		
-		for (M_Cliente c : a) {
-			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getIdCliente(),c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva(), c.getCitta()});
+		for (M_Agente c : a) {
+//			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getIdCliente(),c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva(), c.getCitta()});
 		}	
 	}
 	
 	
-	public void updateTable(int id, String cognome, String nome,String cf, String pi, String citta){
+	public void updateTable(int id, String cognome, String nome, int lvl, String email, String citta){
 //		int k=((DefaultTableModel) JTableModel).getRowCount();
 //		for (int i=k-1; i>=0;i--){
 //			((DefaultTableModel) JTableModel).removeRow(i);
 //		}
 			labelError.setText("");
-            ((DefaultTableModel) JTableModel).addRow(new Object[]{id, cognome, nome, cf, pi, citta});
+            ((DefaultTableModel) JTableModel).addRow(new Object[]{id, cognome, nome, lvl, email, citta});
 	}
 	
 	//resetta i campi della ricerca cliente
 	public void resetRicerca(){
 		TFCerca.setText(null);
-		TFcercaPI.setText(null);
-		TFcercaCF.setText(null);
+		TFcercaLVL.setText(null);
+		TFcercaEmail.setText(null);
 		TFcercaCitta.setText(null);
 	}
 	
@@ -248,7 +248,7 @@ public class Ricerca_cliente extends JDialog {
 		}
 	}
 	
-	public void setVisibleErroreRicercaCliente(boolean b){
+	public void setVisibleErroreRicercaAgente(boolean b){
 		labelError.setVisible(b);
 	}
 	
@@ -264,9 +264,9 @@ public class Ricerca_cliente extends JDialog {
 		return TFCerca.getText();
 	}
 	
-	public static Ricerca_cliente getInstance(){
+	public static Ricerca_agente getInstance(){
 		if (instance==null)
-			instance = new Ricerca_cliente();
+			instance = new Ricerca_agente();
 		return instance;	 
 	}
 		
@@ -279,7 +279,7 @@ public class Ricerca_cliente extends JDialog {
 	}
 		
 	private void init(){
-		this.clienti = new JList<M_Cliente>();
+		this.agenti = new JList<M_Agente>();
 	}
 }
 		

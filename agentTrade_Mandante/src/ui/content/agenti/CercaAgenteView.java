@@ -19,11 +19,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import model.M_Agente;
+
 import org.orm.PersistentException;
 
-import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.model.M_Cliente;
+import controller.Ctrl_gestisciAgente;
 import util.Costanti;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -47,7 +47,7 @@ public class CercaAgenteView extends JDialog {
 
 	private JTextField textFieldCerca;
 
-	private JList<M_Cliente> clienti;
+	private JList<M_Agente> clienti;
 	
 	private JTable table;
 	private TableModel JTableModel;
@@ -137,12 +137,12 @@ public class CercaAgenteView extends JDialog {
 					for (int i=k-1; i>=0;i--){
 						((DefaultTableModel) JTableModel).removeRow(i);
 					}
-				try {
-					Ctrl_gestisciCliente.getInstance().cercaCliente(textFieldCerca.getText());
-				} 
-				catch (PersistentException e) {
-					e.printStackTrace();
-				}	
+//				try {
+//					Ctrl_gestisciA.getInstance().cercaCliente(textFieldCerca.getText());
+//				} 
+//				catch (PersistentException e) {
+//					e.printStackTrace();
+//				}	
 			}
 		});
 	
@@ -150,12 +150,12 @@ public class CercaAgenteView extends JDialog {
 		BottoneInserisci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
-				try {
-					Ctrl_elaboraPreventivo.getInstance().inserisciCliente((Integer)table.getValueAt(table.getSelectedRow(),0));
-				} 
-				catch (PersistentException e) {
-					e.printStackTrace();
-				}
+//				try {
+//					Ctrl_elaboraPreventivo.getInstance().inserisciCliente((Integer)table.getValueAt(table.getSelectedRow(),0));
+//				} 
+//				catch (PersistentException e) {
+//					e.printStackTrace();
+//				}
 			}
 		});
 
@@ -171,7 +171,7 @@ public class CercaAgenteView extends JDialog {
 	/*metodi privati*/
 	/*metodi pubblici*/
 	
-	public void popolaTab(M_Cliente[] a){
+	public void popolaTab(M_Agente[] a){
 		
 		int k=((DefaultTableModel) JTableModel).getRowCount();
 		for (int i=k-1; i>=0;i--){
@@ -179,8 +179,8 @@ public class CercaAgenteView extends JDialog {
 		}
 		labelError.setText("");
 		
-		for (M_Cliente c : a) {
-			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getIdCliente(), c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva(),});
+		for (M_Agente c : a) {
+//			((DefaultTableModel) JTableModel).addRow(new Object[]{c.getIdCliente(), c.getCognome(),c.getNome(),c.getCodice_fiscale(),c.getPartita_iva(),});
 		}
 	}
 	
@@ -220,12 +220,12 @@ public class CercaAgenteView extends JDialog {
 		return table;	 
 	}
 	
-	public void setElements(M_Cliente[] listData){
+	public void setElements(M_Agente[] listData){
 		this.clienti.setListData(listData);
 	}
 	
 	private void init(){
-		this.clienti = new JList<M_Cliente>();
+		this.clienti = new JList<M_Agente>();
 	}
 	
 }

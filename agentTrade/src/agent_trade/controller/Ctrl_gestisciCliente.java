@@ -248,7 +248,7 @@ public class Ctrl_gestisciCliente {
 			cliente.setEmail(email);
 			cliente.setTelefono(telefono);
 			cliente.setFax(fax);
-			cliente.setAgenteAssociato(Ctrl_System.getAgenteLog());			
+			//cliente.setAgenteAssociato(Ctrl_System.getAgenteLog());			
 			cliente.setCitta(citta);
 			cliente.setCAP(cap);
 			cliente.setCell(cellulare);

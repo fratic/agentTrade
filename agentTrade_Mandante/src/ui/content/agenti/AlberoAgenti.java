@@ -9,7 +9,6 @@ import javax.swing.JTree;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
-import javax.swing.plaf.basic.BasicTreeUI.TreeSelectionHandler;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
@@ -19,9 +18,6 @@ import javax.swing.tree.TreePath;
 
 import org.orm.PersistentException;
 
-import agent_trade.controller.Ctrl_System;
-import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.ui.PrimaryView;
 import ui.content.preventivi.AlberoPreventivi;
 import util.Costanti;
 
@@ -69,14 +65,14 @@ public class AlberoAgenti extends JPanel {
 
 				public void valueChanged(TreeSelectionEvent e) {
 					TreePath selection = e.getPath();
-					try {if(abilitalistener == true){
-						//System.out.println("MI ATTIVO");
-						Ctrl_gestisciCliente.getInstance().mostraCliente(selection.getLastPathComponent());
-					}
-					} catch (PersistentException e1)
-					{
-						e1.printStackTrace();
-					}
+//					try {if(abilitalistener == true){
+//						//System.out.println("MI ATTIVO");
+//						Ctrl_gestisciCliente.getInstance().mostraCliente(selection.getLastPathComponent());
+//					}
+//					} catch (PersistentException e1)
+//					{
+//						e1.printStackTrace();
+//					}
 					
 				}}));
 	        
@@ -130,7 +126,7 @@ public class AlberoAgenti extends JPanel {
 		
 		((DefaultMutableTreeNode) model.getRoot()).removeAllChildren();
 	    model.reload();
-	    Ctrl_System.getInstance().initAlberoClienti();
+//	    Ctrl_System.getInstance().initAlberoClienti();
 		
 	}
 	

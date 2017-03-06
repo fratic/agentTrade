@@ -49,10 +49,10 @@ public class PrimaryView extends JFrame
 	
 	private static JPanel pannello_centrale_preventivo;
 	
-	private static JPanel dettaglioCliente;
-	private static JPanel riep_cliente;
-	
-	private static JPanel pannello_centrale_cliente;
+//	private static JPanel dettaglioCliente;
+//	private static JPanel riep_cliente;
+//	
+//	private static JPanel pannello_centrale_cliente;
 		
 	
 	/*attributi privati*/
@@ -67,6 +67,7 @@ public class PrimaryView extends JFrame
 	private JPanel panello_menu_agente;
 	private JPanel panello_sottomenu_agente;
 	private JPanel panello_laterale_agente;
+	private JPanel pannello_centrale_agente;
 	
 	
 	private JPanel alberoAgenti;
@@ -98,21 +99,21 @@ public class PrimaryView extends JFrame
 	
 	
 	
-	public static void initDettaglioCliente() {
-		
-		dettaglioCliente= DettaglioClienteView.getInstance();
-		pannello_centrale_cliente.add(dettaglioCliente);
-		pannello_centrale_cliente.repaint();
-	}
-	
-	
-	public static void initRiepilogoClienteView() {
-		
-		riep_cliente= RiepilogoClienteView.getInstance();
-		pannello_centrale_cliente.add(riep_cliente);
-		pannello_centrale_cliente.repaint();
-		
-	}
+//	public static void initDettaglioCliente() {
+//		
+//		dettaglioCliente= DettaglioClienteView.getInstance();
+//		pannello_centrale_cliente.add(dettaglioCliente);
+//		pannello_centrale_cliente.repaint();
+//	}
+//	
+//	
+//	public static void initRiepilogoClienteView() {
+//		
+//		riep_cliente= RiepilogoClienteView.getInstance();
+//		pannello_centrale_cliente.add(riep_cliente);
+//		pannello_centrale_cliente.repaint();
+//		
+//	}
 	
 	
 	
@@ -163,13 +164,13 @@ public class PrimaryView extends JFrame
 		alberoAgenti.setBounds(0, 0, 261, 617);
 		panello_laterale_agente.add(alberoAgenti);
 		
-		pannello_centrale_cliente = new JPanel();
-		pannello_centrale_cliente.setBackground(SystemColor.control);
+		pannello_centrale_agente = new JPanel();
+		pannello_centrale_agente.setBackground(SystemColor.control);
 
-		pannello_centrale_cliente.setPreferredSize(new Dimension(753, 617));
-		panello_sottomenu_agente.add(pannello_centrale_cliente, BorderLayout.CENTER);
-		pannello_centrale_cliente.setLayout(new GridLayout(1,1));
-		pannello_centrale_cliente.setBorder(new EmptyBorder(7, 7, 0, 7));
+		pannello_centrale_agente.setPreferredSize(new Dimension(753, 617));
+		panello_sottomenu_agente.add(pannello_centrale_agente, BorderLayout.CENTER);
+		pannello_centrale_agente.setLayout(new GridLayout(1,1));
+		pannello_centrale_agente.setBorder(new EmptyBorder(7, 7, 0, 7));
 		
 		setSfondoAgente();
 		
@@ -234,7 +235,7 @@ public class PrimaryView extends JFrame
 	public void setSfondoAgente() 
 	{
 		JPanel sfondoAgente=new Sfondo_Agente();
-		pannello_centrale_cliente.add(sfondoAgente);
+		pannello_centrale_agente.add(sfondoAgente);
 		
 	}
 	
@@ -373,13 +374,13 @@ public class PrimaryView extends JFrame
 		tabbedPrincipale.setEnabledAt(0, b);
 	}
 	
-	public void setVisibleErroreNuovoCliente(boolean b){
-		((DettaglioClienteView) dettaglioCliente).setVisibleErroreNuovoCliente(b);
-	}
-	
-	public void setVisibleErroreRiepCliente(boolean b){
-		((RiepilogoClienteView) riep_cliente).setVisibleErroreRiepCliente(b);
-	}
+//	public void setVisibleErroreNuovoCliente(boolean b){
+//		((DettaglioClienteView) dettaglioCliente).setVisibleErroreNuovoCliente(b);
+//	}
+//	
+//	public void setVisibleErroreRiepCliente(boolean b){
+//		((RiepilogoClienteView) riep_cliente).setVisibleErroreRiepCliente(b);
+//	}
 	
 	
 	public void resetPannelloCentralePreventivo(){
@@ -388,9 +389,9 @@ public class PrimaryView extends JFrame
 		pannello_centrale_preventivo.repaint();
 	}
 	
-	public void resetPannelloCentraleCliente(){
-		pannello_centrale_cliente.removeAll();
-		pannello_centrale_cliente.repaint();
+	public void resetPannelloCentraleAgente(){
+		pannello_centrale_agente.removeAll();
+		pannello_centrale_agente.repaint();
 		
 	}
 	

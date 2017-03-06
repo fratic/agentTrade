@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
+import ui.content.preventivi.ItemNuovoPreventivoView;
 
 class ButtonsPanelRm extends JPanel {
     public final List<JButton> buttons = Arrays.asList(new JButton());

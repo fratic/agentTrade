@@ -9,8 +9,7 @@ import javax.swing.JTable;
 
 import org.orm.PersistentException;
 
-import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.ui.content.prodotti.ProdottiView;
+import ui.content.prodotti.ProdottiView;
 
 public class DisableButton extends JButton {
 	 
@@ -27,12 +26,12 @@ public class DisableButton extends JButton {
             	String sel= (String)table.getValueAt(table.getSelectedRow(),Costanti.COLONNA_ID_DISABLE_BUTTON);
             	JButton jb= (JButton)table.getValueAt(table.getSelectedRow(),Costanti.COLONNA_BOTTONE_DISABLE_BUTTON);
 
-        		try {
-					Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel), jb);
-				} catch (NumberFormatException | PersistentException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+//        		try {
+//					Ctrl_elaboraPreventivo.getInstance().addItem(Integer.parseInt(sel), jb);
+//				} catch (NumberFormatException | PersistentException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
             }
         });
     }

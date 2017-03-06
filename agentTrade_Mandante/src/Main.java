@@ -6,18 +6,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import agent_trade.ui.LoginView;
-import agent_trade.ui.SplashScreen;
-
-/****NON TOCCARE***/
-import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaBlueSteelLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaPlainLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaWhiteVisionLookAndFeel;
 import ui.PrimaryView;
+import ui.SplashScreen;
+import de.javasoft.plaf.synthetica.SyntheticaWhiteVisionLookAndFeel;
+/****NON TOCCARE***/
 
 
 public class Main {

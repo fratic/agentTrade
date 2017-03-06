@@ -8,9 +8,13 @@ package model;
  * Modifying its content may cause the program not work, or your work may lost.
  */
 
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
+//import agent_trade.controller.Ctrl_System;
+import model.M_Agente;
 import persisten.AgentTradeMandantePersistentManager;
 import persisten.M_AgenteCriteria;
 
@@ -83,7 +87,65 @@ public class M_Agente {
 		}
 	}
 	
+	public static M_Agente[] caricaAgenti() throws PersistentException {
+		
+		M_AgenteCriteria criteriaAgente;
+		try {
+			criteriaAgente = new M_AgenteCriteria();
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			//criteriaAgente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			
+			return criteriaAgente.listM_Agente();
+		} 
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		return null;
+	}
 	
+	public static M_Agente[] caricaAgentiParametri(String c, /*int lvl,*/ String email, String city)throws PersistentException{
+		
+		try{
+			M_AgenteCriteria criteriaAgente= new M_AgenteCriteria();
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			//criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
+			criteriaAgente.cognome.like("%"+c+"%");
+			//criteriaAgente.livello.eq(lvl);
+			criteriaAgente.email.like("%"+email+"%");
+			criteriaAgente.citta.like("%"+city+"%");
+			//criteriaCliente.attivo.eq(1);
+			return criteriaAgente.listM_Agente();
+
+		}
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		return null;
+	}
+	
+	public static M_Agente cercaAgente(int id_agente) throws PersistentException{
+		
+		try{
+			
+			M_AgenteCriteria criteriaAgente = new M_AgenteCriteria();
+			
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			//criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			criteriaAgente.idAgente.eq(id_agente);
+			//criteriaAgente.attivo.eq(1);
+			return criteriaAgente.uniqueM_Agente();
+		}
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
 	
 	private void setIdAgente(int value) {
 		this.idAgente = value;

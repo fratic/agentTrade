@@ -43,21 +43,21 @@ public final class Costanti {
 	public final static String MESSAGGIO_CAMPI_ERRATI = "I seguenti campi sono errati: ";
 	public final static String MESSAGGIO_CLIENTE_NON_TROVATO = "Cliente non trovato";
 	public final static String MESSAGGIO_CANCELLA_CLIENTE = "Sei sicuro di voler cancellare il cliente corrente?";
-	
+	public final static String MESSAGGIO_AGENTE_NON_TROVATO = "Agente non trovato";
 	/**
 	 * Icone e immagini
 	 */
-	public static final String SPLASH_AGENTTRADE = "/agent_trade/ui/img/splash.png";
-	public static final String AGENTTRADE_ICON = "/agent_trade/ui/img/icon.png";
-	public static final String IMG_SFONDO_AGENTE = "/agent_trade/ui/img/sfondoAgentTradeCliente.png";
+	public static final String SPLASH_AGENTTRADE = "/ui/img/splash.png";
+	public static final String AGENTTRADE_ICON = "/ui/img/icon.png";
+	public static final String IMG_SFONDO_AGENTE = "/ui/img/sfondoAgentTradeCliente.png";
 	public static final String IMG_SFONDO_PREVENTIVO= "/agent_trade/ui/img/sfondoAgentTrade2.png";
 	public static final String CLOSE_ICON= "/agent_trade/ui/img/close_icon.png";
 	public static final String PLUS_ICON= "/agent_trade/ui/img/plus.png";
 	public static final String PREVENTIVO_ICON= "/agent_trade/ui/img/preventivo.png";
 	public static final String NUOVO_PREVENTIVO_ICON= "/agent_trade/ui/img/nuovo_icon.png";
-	public static final String CLIENTE_ICON= "/agent_trade/ui/img/cliente.png";	
-	public static final String NUOVO_CLIENTE_ICON= "/agent_trade/ui/img/new_user.png";
-	public static final String CERCA_CLIENTE_ICON= "/agent_trade/ui/img/search.png";
+	public static final String CLIENTE_ICON= "/ui/img/cliente.png";	
+	public static final String NUOVO_CLIENTE_ICON= "/ui/img/new_user.png";
+	public static final String CERCA_CLIENTE_ICON= "/ui/img/search.png";
 	public static final String PRODOTTI_ICON= "/agent_trade/ui/img/magazzino_icon.png";
 	public static final String ALBERO_PREVENTIVI_ICON= "/agent_trade/ui/img/prev.png";
 	public static final String ADD_ITEM_ICON= "/agent_trade/ui/img/add-item.png";
@@ -75,7 +75,7 @@ public final class Costanti {
 	public static final String ANNULLA_MOD_CLIENTE_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String RIEPILOGO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String DETTAGLIO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
-	public static final String ALBERO_AGENTI_ICON= "/agent_trade/ui/img/ico-cliente1.png";
+	public static final String ALBERO_AGENTI_ICON= "/ui/img/ico-cliente1.png";
 
 	/**
 	 * URL dei Sistemi Esterni
@@ -152,7 +152,7 @@ public final class Costanti {
 	public final static String TAB_AGENTE= "Agente";
 	
 	public final static String ROOT_PREVENTIVI= "Preventivi";
-	public final static String ROOT_AGENTI= "AGenti";
+	public final static String ROOT_AGENTI= "Agenti";
 
 	public final static String LABEL_INTESTAZIONE= "Intestazione";
 	public final static String LABEL_NPREV= "Preventivo n\u00B0";
@@ -183,6 +183,8 @@ public final class Costanti {
 	public final static String LABEL_EMAIL = "Email";
 	public final static String LABEL_AGENTE_RIF = "Agente di riferimento";
 	public final static String LABEL_ERRORE_CAMPI = "";
+	
+	public final static String LABEL_LVL ="Livello";
 
 	/**
 	 * Tip
@@ -250,7 +252,7 @@ public final class Costanti {
 	public final static String[] INTESTAZIONE_TABELLA_RICERCA_CLIENTI = {"ID", "Cognome", "Nome","Codice Fiscale", "Partita iva", "Citt\u00E0" };
 	
 	public final static String[] INTESTAZIONE_TABELLA_CERCA_AGENTI = {"ID", "Cognome", "Nome", "Codice Fiscale", "P.IVA"};
-
+	public final static String[] INTESTAZIONE_TABELLA_RICERCA_AGENTI = {"ID", "Cognome", "Nome", "Livello", "Email", "Citt\u00E0"};
 	
 	
 	/**
