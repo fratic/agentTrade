@@ -50,36 +50,32 @@ public class DettaglioAgenteView extends JPanel {
 	
 	/*attributi privati*/
 	
-	private JLabel labelIdCliente;
+	//private JLabel labelIdAgente;
 	private JLabel labelCognome;
 	private JLabel labelNome;
-	private JLabel labelCodiceFiscale;
-	private JLabel labelPartitaIva;
+	private JLabel labelLivello;
 	private JLabel labelCitta;
 	private JLabel labelIndirizzo;
 	private JLabel labelCAP;
 	private JLabel labelEmail;
-	private JLabel labelTelefono;
 	private JLabel labelCell;
-	private JLabel labelFax;
-	private JLabel labelRifAgente;
+	private JLabel labelUsername;
+	private JLabel labelPassword;
 	private JLabel labelErrore;
 	
 	//private JTextField TFidCliente;
 	private JTextField TFcognome;
 	private JTextField TFnome;
-	private JTextField TFcodicefiscale;
-	private JTextField TFpartitaiva;
+	private JTextField TFlivello;
 	private JTextField TFcitta;
 	private JTextField TFindirizzo;
 	private JTextField TFcap;
 	private JTextField TFemail;
-	private JTextField TFtelefono;
 	private JTextField TFcell;
-	private JTextField TFfax;
-	private JTextField TFrifAgente;
+	private JTextField TFusername;
+	private JTextField TFpassword;
 	
-	private JButton bottoneSalvaCliente;
+	private JButton bottoneSalvaAgente;
 	//private JButton bottoneAnnullaInserimento;
 	private JButton bottoneEsci;
 	
@@ -89,7 +85,7 @@ public class DettaglioAgenteView extends JPanel {
 
 	private JPanel pannelloCampi;
 
-	private JPanel pannelloOvest;
+//	private JPanel pannelloOvest;
 
 	private JPanel pannelloBottoni;
 
@@ -103,9 +99,7 @@ public class DettaglioAgenteView extends JPanel {
 
 	private JPanel pannNome;
 
-	private JPanel pannCodFis;
-
-	private JPanel pannPartitaIva;
+	private JPanel pannLivello;
 
 	private JPanel pannIndirizzo;
 
@@ -113,15 +107,13 @@ public class DettaglioAgenteView extends JPanel {
 
 	private JPanel pannCap;
 
-	private JPanel pannTelefono;
-
 	private JPanel pannCellulare;
-
-	private JPanel pannFax;
 
 	private JPanel pannEmail;
 
-	private JPanel pannRifAgente ;
+	private JPanel pannUsername;
+	
+	private JPanel pannPassword;
 
 	private JPanel pannErrore;
 
@@ -132,7 +124,7 @@ public class DettaglioAgenteView extends JPanel {
 	
 	public DettaglioAgenteView() {
 		
-		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),  Costanti.TITOLO_NUOVO_CLIENTE, TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
+		setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"),  Costanti.TITOLO_NUOVO_AGENTE, TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("Button.focus")));
 		setBackground(UIManager.getColor("CheckBox.background"));
 		
 		setLayout(new BorderLayout());
@@ -158,7 +150,7 @@ public class DettaglioAgenteView extends JPanel {
 		label_IMG.setHorizontalAlignment(SwingConstants.CENTER);
 //		label_IMG.setBounds(24, 24, 163, 179);
 		label_IMG.setPreferredSize(new Dimension(Costanti.WIDTH_ICON, Costanti.HEIGHT_ICON));
-		label_IMG.setIcon(new ImageIcon(DettaglioAgenteView.class.getResource(Costanti.DETTAGLIO_CLIENTE_ICON)));
+		label_IMG.setIcon(new ImageIcon(DettaglioAgenteView.class.getResource(Costanti.DETTAGLIO_AGENTE_ICON)));
 		pannelloIcona.add(label_IMG);
 				
 		pannelloCampi = new JPanel();
@@ -175,7 +167,6 @@ public class DettaglioAgenteView extends JPanel {
 		contenitoreCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
 		pannelloCampi.add(contenitoreCampi);
 		
-		//sono state sollevate tutte le label e le field e i bottoni SALVA e ESCI sono stati spostati in basso
 		
 		pannCognome = new JPanel();
 		FlowLayout flowLayout3 = (FlowLayout) pannCognome.getLayout();
@@ -201,49 +192,32 @@ public class DettaglioAgenteView extends JPanel {
 		pannNome.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannNome);
 		
-		labelNome = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_NOME_CLIENTE);
+		labelNome = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_NOME);
 		labelNome.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelNome.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannNome.add(labelNome);
 		 
 		TFnome = new JTextField();
 		TFnome.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		TFnome.setToolTipText(Costanti.TIP_NOME_CLIENTE);
+		TFnome.setToolTipText(Costanti.TIP_NOME);
 		pannNome.add(TFnome);
 		
-		pannCodFis = new JPanel();
-		FlowLayout flowLayout5 = (FlowLayout) pannCodFis.getLayout();
+		pannLivello = new JPanel();
+		FlowLayout flowLayout5 = (FlowLayout) pannLivello.getLayout();
 		flowLayout5.setHgap(0);
 		flowLayout5.setVgap(0);
-		pannCodFis.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
-		contenitoreCampi.add(pannCodFis);
+		pannLivello.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
+		contenitoreCampi.add(pannLivello);
 		 
-		labelCodiceFiscale = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_COD_FISC);
-		labelCodiceFiscale.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
-		labelCodiceFiscale.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
-		pannCodFis.add(labelCodiceFiscale);
+		labelLivello = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_LVL);
+		labelLivello.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
+		labelLivello.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
+		pannLivello.add(labelLivello);
 		 
-		TFcodicefiscale = new JTextField();
-		TFcodicefiscale.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		TFcodicefiscale.setToolTipText(Costanti.TIP_COD_FIS);
-		pannCodFis.add(TFcodicefiscale);
-		
-		pannPartitaIva = new JPanel();
-		FlowLayout flowLayout6 = (FlowLayout) pannPartitaIva.getLayout();
-		flowLayout6.setHgap(0);
-		flowLayout6.setVgap(0);
-		pannPartitaIva.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
-		contenitoreCampi.add(pannPartitaIva);
-		 
-		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_PARTITA_IVA);
-		labelPartitaIva.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
-		labelPartitaIva.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
-		pannPartitaIva.add(labelPartitaIva);
-
-		TFpartitaiva = new JTextField();
-		TFpartitaiva.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		TFpartitaiva.setToolTipText(Costanti.TIP_PARTITA_IVA);
-		pannPartitaIva.add(TFpartitaiva);
+		TFlivello = new JTextField();
+		TFlivello.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		TFlivello.setToolTipText(Costanti.TIP_LIVELLO);
+		pannLivello.add(TFlivello);
 		 
 		pannIndirizzo = new JPanel();
 		FlowLayout flowLayout7 = (FlowLayout) pannIndirizzo.getLayout();
@@ -296,23 +270,6 @@ public class DettaglioAgenteView extends JPanel {
 		TFcap.setToolTipText(Costanti.TIP_CAP);
 		pannCap.add(TFcap);
 		
-		pannTelefono = new JPanel();
-		FlowLayout flowLayout10 = (FlowLayout) pannTelefono.getLayout();
-		flowLayout10.setHgap(0);
-		flowLayout10.setVgap(0);
-		pannTelefono.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
-		contenitoreCampi.add(pannTelefono);
-		
-		labelTelefono = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_TELEFONO);
-		labelTelefono.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
-		labelTelefono.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
-		pannTelefono.add(labelTelefono);
-		
-		TFtelefono = new JTextField();
-		TFtelefono.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		TFtelefono.setToolTipText(Costanti.TIP_TELEFONO);
-		pannTelefono.add(TFtelefono);
-		
 		pannCellulare = new JPanel();
 		FlowLayout flowLayout11 = (FlowLayout) pannCellulare.getLayout();
 		flowLayout11.setHgap(0);
@@ -329,23 +286,6 @@ public class DettaglioAgenteView extends JPanel {
 		TFcell.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
 		TFcell.setToolTipText(Costanti.TIP_CELLULARE);
 		pannCellulare.add(TFcell);
-		
-		pannFax = new JPanel();
-		FlowLayout flowLayout12 = (FlowLayout) pannFax.getLayout();
-		flowLayout12.setHgap(0);
-		flowLayout12.setVgap(0);
-		pannFax.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
-		contenitoreCampi.add(pannFax);
-		
-		labelFax = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_FAX);
-		labelFax.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
-		labelFax.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
-		pannFax.add(labelFax);
-		
-		TFfax = new JTextField();
-		TFfax.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		TFfax.setToolTipText(Costanti.TIP_FAX);
-		pannFax.add(TFfax);
 		
 		pannEmail = new JPanel();
 		FlowLayout flowLayout13 = (FlowLayout) pannEmail.getLayout();
@@ -364,22 +304,40 @@ public class DettaglioAgenteView extends JPanel {
 		TFemail.setToolTipText(Costanti.TIP_EMAIL);
 		pannEmail.add(TFemail);
 		
-		pannRifAgente = new JPanel();
-		FlowLayout flowLayout14 = (FlowLayout) pannRifAgente.getLayout();
+		pannUsername = new JPanel();
+		FlowLayout flowLayout6 = (FlowLayout) pannUsername.getLayout();
+		flowLayout6.setHgap(0);
+		flowLayout6.setVgap(0);
+		pannUsername.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
+		contenitoreCampi.add(pannUsername);
+		 
+		labelUsername = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_USERNAME);
+		labelUsername.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
+		labelUsername.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
+		pannUsername.add(labelUsername);
+
+		TFusername = new JTextField();
+		TFusername.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		TFusername.setToolTipText(Costanti.TIP_USERNAME);
+		pannUsername.add(TFusername);
+		
+		pannPassword = new JPanel();
+		FlowLayout flowLayout14 = (FlowLayout) pannPassword.getLayout();
 		flowLayout14.setHgap(0);
 		flowLayout14.setVgap(0);
-		pannRifAgente.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
-		contenitoreCampi.add(pannRifAgente);
+		pannPassword.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
+		contenitoreCampi.add(pannPassword);
+		 
+		labelPassword = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_PASSWORD);
+		labelPassword.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
+		labelPassword.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
+		pannPassword.add(labelPassword);
+
+		TFpassword = new JTextField();
+		TFpassword.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		TFpassword.setToolTipText(Costanti.TIP_PASSWORD);
+		pannPassword.add(TFpassword);
 		
-		labelRifAgente = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_AGENTE_RIF);
-		labelRifAgente.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
-		labelRifAgente.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
-		pannRifAgente.add(labelRifAgente);
-		
-//		TFrifAgente = new JTextField((Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome()));
-		TFrifAgente.setEditable(false);
-		TFrifAgente.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		pannRifAgente.add(TFrifAgente);
 		
 		pannErrore= new JPanel();
 		FlowLayout flowLayout15 = (FlowLayout) pannErrore.getLayout();
@@ -405,11 +363,11 @@ public class DettaglioAgenteView extends JPanel {
 		pannelloBottoni.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_BOTTONI, Costanti.HEIGHT_PANN_BOTTONI));//DA MODIFICARE I DUE BOTTONI SOTTO IN TEORIA NN DEVONO COMPARIRE
 		pannelloEast.add(pannelloBottoni);
 		
-		bottoneSalvaCliente = new JButton("");
-		bottoneSalvaCliente.setIcon(new ImageIcon(DettaglioAgenteView.class.getResource(Costanti.SALVA_CLIENTI_ICON)));
-		bottoneSalvaCliente.setToolTipText(Costanti.TIP_SALVA_CLIENTE);
-		bottoneSalvaCliente.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
-		pannelloBottoni.add(bottoneSalvaCliente);
+		bottoneSalvaAgente = new JButton("");
+		bottoneSalvaAgente.setIcon(new ImageIcon(DettaglioAgenteView.class.getResource(Costanti.SALVA_AGENTI_ICON)));
+		bottoneSalvaAgente.setToolTipText(Costanti.TIP_SALVA_AGENTE);
+		bottoneSalvaAgente.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
+		pannelloBottoni.add(bottoneSalvaAgente);
 		
 				
 		bottoneEsci = new JButton("");
@@ -426,15 +384,15 @@ public class DettaglioAgenteView extends JPanel {
 //		add(bottoneAnnullaInserimento);
 		
 		
-		bottoneSalvaCliente.addActionListener(new ActionListener() {
+		bottoneSalvaAgente.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
-//			try {
-////				Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFcell.getText(), (String)TFfax.getText());
-//
-//			} 
-//			catch (PersistentException e) {
-//				e.printStackTrace();
-//			}
+			try {
+				Ctrl_gestisciAgente.getInstance().inserisciNuovoAgente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFlivello.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFcell.getText(), (String)TFusername.getText(), (String)TFpassword.getText());
+
+			} 
+			catch (PersistentException e) {
+				e.printStackTrace();
+			}
 
 		}	
 		});
@@ -442,7 +400,7 @@ public class DettaglioAgenteView extends JPanel {
 		
 		bottoneEsci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				Ctrl_gestisciCliente.getInstance().esciNewCliente();
+				Ctrl_gestisciAgente.getInstance().esciNewAgente();
 			}
 		});
 		
@@ -464,25 +422,27 @@ public class DettaglioAgenteView extends JPanel {
 		return instance;	 
 		}
 	
+	
+	/*metodi pubblici*/
+	
 	public void setErrore(String err) {
 		labelErrore.setText(err);
     }
 	
-	public void setVisibleErroreNuovoCliente(boolean b){
+	public void setVisibleErroreNuovoAgente(boolean b){
 		labelErrore.setVisible(b);
 	}
 		
-	public void resetNewCliente(){
+	public void resetNewAgente(){
 		TFcognome.setText(null);
 		TFnome.setText(null);
-		TFcodicefiscale.setText(null);
-		TFpartitaiva.setText(null);
+		TFlivello.setText(null);
 		TFcitta.setText(null);
 		TFindirizzo.setText(null);
 		TFcap.setText(null);
 		TFemail.setText(null);
-		TFtelefono.setText(null);
 		TFcell.setText(null);
-		TFfax.setText(null);
+		TFusername.setText(null);
+		TFpassword.setText(null);
 	}
 }

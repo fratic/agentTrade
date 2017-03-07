@@ -168,14 +168,13 @@ public class Ricerca_agente extends JDialog {
 		
 		BottoneVisualizza.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
-//				try {
-//					//SE QUI VA PASSATO L'ID (e va fatto), BISOGNA INSERIRLO ANCHE IN TABELLA
-//					Ctrl_gestisciCliente.getInstance().recuperaCliente((int) table.getValueAt(table.getSelectedRow(),0));
-//				} catch (PersistentException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+				
+				try {
+					Ctrl_gestisciAgente.getInstance().recuperaAgente((int) table.getValueAt(table.getSelectedRow(),0));
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 

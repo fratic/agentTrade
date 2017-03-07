@@ -8,12 +8,12 @@ package model;
  * Modifying its content may cause the program not work, or your work may lost.
  */
 
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
-//import agent_trade.controller.Ctrl_System;
 import model.M_Agente;
 import persisten.AgentTradeMandantePersistentManager;
 import persisten.M_AgenteCriteria;
@@ -142,6 +142,23 @@ public class M_Agente {
 //			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 	}
+	
+	
+	public static int getMaxId()throws PersistentException{
+		
+		try 
+		{				
+			M_AgenteCriteria criteriaAgente = new M_AgenteCriteria();
+			criteriaAgente.setProjection(Projections.max("id"));
+			int id=(int) criteriaAgente.uniqueResult();
+			return id;
+		}
+		
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
 	
 	private void setIdAgente(int value) {
 		this.idAgente = value;

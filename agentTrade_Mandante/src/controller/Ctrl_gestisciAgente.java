@@ -7,16 +7,11 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.orm.PersistentException;
 
-
-
-
-
-
-
 //import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 import util.Costanti;
 import ui.PrimaryView;
+import ui.content.agenti.AlberoAgenti;
 import ui.content.agenti.Ricerca_agente;
 import model.M_Agente;
 
@@ -47,13 +42,36 @@ public class Ctrl_gestisciAgente {
 	
 	/*metodi pubblici*/
 	
-	
+//	uasta in example (test insert agente)
 	public void nuovoAgente(String nome, String cognome, String username, String password, String citta, String cap, String indirizzo, String email, String cell, int livello) throws PersistentException
 	{
 		M_Agente agente = new M_Agente(nome, cognome, password, username, citta, indirizzo, livello, cell, email, cap);
 		M_Agente.salvaAgente(agente); 
 		
 	}
+	
+	public void inserisciNuovoAgente(String nome, String cognome, String livello, String citta, String cap, String indirizzo, String email, String cell, String user, String psw) throws PersistentException
+	{
+//		Manca il controllo dei campi
+		int lvl = Integer.parseInt(livello);
+		M_Agente agente = new M_Agente(nome, cognome, psw, user, citta, indirizzo, lvl, cell, email, cap);
+		M_Agente.salvaAgente(agente); 
+
+		PrimaryView.getInstance().resetNuovoAgente();
+		PrimaryView.getInstance().resetPannelloCentraleAgente();
+				
+		int id = M_Agente.getMaxId();
+		recuperaAgente(id);
+				
+//		AlberoAgenti.inserisciNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+//		AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+//		AlberoAgenti.abilitaAlbero();
+
+		PrimaryView.getInstance().setEnableCercaAgente(true);
+			
+	}
+	
+
 	
 	
 	public void modificaCliente(int id, String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax) throws PersistentException
@@ -111,8 +129,41 @@ public class Ctrl_gestisciAgente {
 
 	public void btnNewAgente() {
 		
+		PrimaryView.getInstance().resetPannelloCentraleAgente();
+		PrimaryView.initDettaglioAgente();
+		//AlberoAgenti.disabilitaAlbero();
+		PrimaryView.getInstance().setEnableCercaAgente(false);
 	}
 	
+	
+	public void esciNewAgente() {
+		
+		PrimaryView.getInstance().resetNuovoAgente();
+		PrimaryView.getInstance().resetPannelloCentraleAgente();
+		PrimaryView.getInstance().setSfondoAgente();
+		PrimaryView.getInstance().setEnableCercaAgente(true);
+		PrimaryView.getInstance().setVisibleErroreNuovoAgente(false);
+//		AlberoAgenti.abilitaAlbero();
+		}
+	
+	
+	public void recuperaAgente(int idAgente)throws PersistentException{
+		
+		PrimaryView.getInstance().resetPannelloCentraleAgente();
+		
+		M_Agente agente = M_Agente.cercaAgente(idAgente);
+		
+		Ricerca_agente.getInstance().dispose();
+		Ricerca_agente.cancInstanza();
+		
+		PrimaryView.initRiepilogoAgenteView();
+		PrimaryView.getInstance().setSchedaAgente(""+agente.getIdAgente(), agente.getCognome(), agente.getNome(), ""+agente.getLivello(), agente.getCitta(), agente.getCap(), agente.getIndirizzo(), agente.getEmail(), agente.getCell(), agente.getUsername(), agente.getPassword());
+		PrimaryView.getInstance().disattivaSalvaModifiche(false);
+		PrimaryView.getInstance().disattivaAnnullaModifiche(false);
+		PrimaryView.getInstance().setVisibleErroreRiepAgente(false);
+//		AlberoClienti.abilitaAlbero();
+//		AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
+	}
 
 	
 }
