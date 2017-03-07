@@ -5,7 +5,7 @@ License Type: Academic
 -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="model.M_Agente" table="M_Agente" lazy="false">
+	<class name="model.M_Agente" table="Agente" lazy="false">
 		<id name="idAgente" column="IdAgente" type="integer" unsaved-value="0">
 			<generator class="native">
 			</generator>

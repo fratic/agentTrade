@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Database>
-  <Setting type="32">
+<!--  <Setting type="32">
+    <Driver></Driver>
+    <DriverFiles></DriverFiles>
+    <Dialect></Dialect>
+    <DriverClass></DriverClass>
+    <URL></URL>
+    <UserName></UserName>
+    <EncryptedPassword>32F3ACE632ECEBAFB24DCAF99A8C6CDC</EncryptedPassword>
+    <HostName></HostName>
+    <PortNO></PortNO>
+    <DBName></DBName>
+    <ServiceName></ServiceName>
+    <ServerName></ServerName>
+    <SelectedForm>true</SelectedForm>
+  </Setting>
+   <Setting type="256">
+    <Driver>PostgreSQL</Driver>
+    <DriverFiles>C:\Users\Antonio\Downloads\postgresql-8.4-703.jdbc4.jar</DriverFiles>
+    <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
+    <DriverClass>org.postgresql.Driver</DriverClass>
+    <URL>jdbc:postgresql://localhost:5433/agentTrade_Mandante</URL>
+    <UserName>postgres</UserName>
+    <EncryptedPassword>A762D72606F50F433EB4CBAB8AD11BA7</EncryptedPassword>
+    <HostName>192.168.1.13</HostName>
+    <PortNO>5433</PortNO>
+    <DBName>agentTrade_Mandante</DBName>
+    <ServiceName></ServiceName>
+    <ServerName></ServerName>
+    <SelectedForm>true</SelectedForm>
+  </Setting>
+  -->
+   <Setting type="32">
     <Driver></Driver>
     <DriverFiles></DriverFiles>
     <Dialect></Dialect>
@@ -21,12 +52,12 @@
     <DriverFiles>C:\Users\Antonio\Downloads\postgresql-8.4-703.jdbc4.jar</DriverFiles>
     <Dialect>org.hibernate.dialect.PostgreSQLDialect</Dialect>
     <DriverClass>org.postgresql.Driver</DriverClass>
-    <URL>jdbc:postgresql://localhost:5433/agentTrade_Mandante</URL>
-    <UserName>postgres</UserName>
-    <EncryptedPassword>A762D72606F50F433EB4CBAB8AD11BA7</EncryptedPassword>
-    <HostName>192.168.1.13</HostName>
-    <PortNO>5433</PortNO>
-    <DBName>agentTrade_Mandante</DBName>
+    <URL>jdbc:postgresql://elmer-01.db.elephantsql.com:5432/plvswsaw</URL>
+    <UserName>plvswsaw</UserName>
+    <EncryptedPassword>97E783B4ACFDC8E491500702DB5C888DD942C8D5060DD1C0F18791E00325B6FC32F3ACE632ECEBAFB24DCAF99A8C6CDC</EncryptedPassword>
+    <HostName>elmer-01.db.elephantsql.com</HostName>
+    <PortNO>5432</PortNO>
+    <DBName>plvswsaw</DBName>
     <ServiceName></ServiceName>
     <ServerName></ServerName>
     <SelectedForm>true</SelectedForm>
