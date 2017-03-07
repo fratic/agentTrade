@@ -13,7 +13,7 @@ import org.orm.PersistentException;
 
 
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
+//import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 
 import util.Costanti;
 import ui.PrimaryView;
@@ -68,46 +68,39 @@ public class Ctrl_gestisciAgente {
 
 
 
-	public void btnCerca() {
+	public void btnCerca() throws PersistentException {
 
 		PrimaryView.getInstance().resetPannelloCentraleAgente();
 		PrimaryView.getInstance().setSfondoAgente();
-		try {
-			Ricerca_agente.getInstance().popolaTab(Ctrl_gestisciAgente.getInstance().caricaAgenti());
-		} catch (PersistentException e) {
-			e.printStackTrace();
-		}
+		
+		Ricerca_agente.getInstance().popolaTab(M_Agente.caricaAgenti());
+		
 		Ricerca_agente.getInstance().setVisible(true);
 	}
 
-	public M_Agente [] caricaAgenti() throws PersistentException 
-	{
-		M_Agente [] listAgenti = M_Agente.caricaAgenti();
-		return listAgenti;
-	}
 	
-	public void ricercaAgente(String c,/* String lvl,*/ String email, String city) throws PersistentException
+	public void ricercaAgente(String c, String lvl, String email, String city) throws PersistentException
 	{
-		if ((c.equals("") || c==null) && /*(lvl.equals("") || lvl==null) && */(email.equals("") || email==null) && (city.equals("") || city==null)){
+		if ((c.equals("") || c==null) && (lvl.equals("") || lvl==null) && (email.equals("") || email==null) && (city.equals("") || city==null)){
 			
-			Ricerca_agente.getInstance().popolaTab(Ctrl_gestisciAgente.getInstance().caricaAgenti());
+			Ricerca_agente.getInstance().popolaTab(M_Agente.caricaAgenti());
 		}
 		else {
+			int livello =-1;
+
+			if (!lvl.equals("") && lvl!=null){
+				livello = Integer.parseInt(lvl);	
+			}
 			
-			/*int livello = Integer.parseInt(lvl);*/
-			
-			M_Agente [] listAgenti = M_Agente.caricaAgentiParametri(c, /*livello,*/ email, city);
+			M_Agente [] listAgenti = M_Agente.caricaAgentiParametri(c, livello, email, city);
 			
 			if(listAgenti.length==0) {
 		
 				Ricerca_agente.getInstance().setErrore(Costanti.MESSAGGIO_AGENTE_NON_TROVATO);
 				Ricerca_agente.getInstance().setVisibleErroreRicercaAgente(true);
 			}
-		
 			else{
-				
 				Ricerca_agente.getInstance().svuotaTabella();
-
 				for (M_Agente cLoad : listAgenti) {
 					Ricerca_agente.getInstance().updateTable(cLoad.getIdAgente(), cLoad.getCognome(), cLoad.getNome(), cLoad.getLivello(), cLoad.getEmail(), cLoad.getCitta());
 				}
@@ -115,12 +108,6 @@ public class Ctrl_gestisciAgente {
 		}
 	}
 	
-	//reset campi finestra ricerca cliente e reset tabella
-	public void annullaRicercaAgente() {
-		Ricerca_agente.getInstance().svuotaTabella();
-		Ricerca_agente.getInstance().resetRicerca();
-		Ricerca_agente.getInstance().setVisibleErroreRicercaAgente(false);
-	}
 
 	public void btnNewAgente() {
 		

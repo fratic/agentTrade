@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,21 +17,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
+
+import org.orm.PersistentException;
 
 import controller.Ctrl_gestisciAgente;
-import model.M_Agente;
 import ui.content.agenti.AlberoAgenti;
-import ui.content.clienti.AlberoClienti;
-import ui.content.clienti.DettaglioClienteView;
-import ui.content.clienti.RiepilogoClienteView;
-import ui.content.preventivi.IntestazioneNuovoPreventivoView;
-import ui.content.preventivi.ItemNuovoPreventivoView;
-import ui.content.preventivi.RiepilogoIntestazionePreventivoView;
-import ui.content.preventivi.RiepilogoItemPreventivoView;
 import util.Costanti;
 import util.Sfondo_Agente;
-import util.Sfondo_Preventivo;
 
 public class PrimaryView extends JFrame 
 {
@@ -41,19 +32,6 @@ public class PrimaryView extends JFrame
 	
 	private static PrimaryView instance;	
 	
-	private static JPanel intestazione;
-	private static JPanel item;
-	
-	private static JPanel riep_intestazione;
-	private static JPanel riep_item;
-	
-	private static JPanel pannello_centrale_preventivo;
-	
-//	private static JPanel dettaglioCliente;
-//	private static JPanel riep_cliente;
-//	
-//	private static JPanel pannello_centrale_cliente;
-		
 	
 	/*attributi privati*/
 	
@@ -69,7 +47,6 @@ public class PrimaryView extends JFrame
 	private JPanel panello_laterale_agente;
 	private JPanel pannello_centrale_agente;
 	
-	
 	private JPanel alberoAgenti;
 	
 	private JTabbedPane tabbedPrincipale;
@@ -82,9 +59,7 @@ public class PrimaryView extends JFrame
 		
 		this.initComponents();
 		
-		
 		initTabAgente();
-		
 		
 	}
 	
@@ -177,7 +152,12 @@ public class PrimaryView extends JFrame
 		bottoneCercaAgente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Ctrl_gestisciAgente.getInstance().btnCerca();
+				try {
+					Ctrl_gestisciAgente.getInstance().btnCerca();
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			
 			}
 		});
@@ -207,7 +187,6 @@ public class PrimaryView extends JFrame
             }
         });
 		
-
         
 		getContentPane().setLayout(new GridLayout(1, 1));
 		tabbedPrincipale = new JTabbedPane(JTabbedPane.TOP);
@@ -241,163 +220,20 @@ public class PrimaryView extends JFrame
 	
 	
 	/*metodi pubblici*/
-	
-	
-	public void setSchedaCliente(String id, String cognome, String nome, String codice_fiscale, String partita_iva,String indirizzo, String citta,  String cap, String email, String telefono,String cellulare,  String fax, M_Agente rifAgente) {
-		
-		((RiepilogoClienteView) riep_cliente).setRiepilogoCliente(id, cognome, nome, codice_fiscale, partita_iva, citta, cap, indirizzo, email, telefono, cellulare, fax, (rifAgente.getCognome()+" "+rifAgente.getNome()));
 
+	public void selectTabAgente() {
+		tabbedPrincipale.setSelectedIndex(0);
 	}
 
-	//sblocca i campi per la modifica cliente
-	public void setModifiche(boolean b) {
-		((RiepilogoClienteView) riep_cliente).setTFeditable(b);
-		
-	}
-	
-	//rende visibili i tooltip solo quando si modifica il cliente
-	public void setVisibleToolTip(){
-		((RiepilogoClienteView) riep_cliente).abilitaToolTip();
-	}
-		
-	//rende invisibili i tooltip solo quando si modifica il cliente
-	public void setInvisibleToolTip(){
-		((RiepilogoClienteView) riep_cliente).disabilitaToolTip();
-	}	
-	
-	//blocca e sblocca bottoni relativi al tab cliente
-	//modificato il nome della funzione interna
-	public void disattivaModifica(boolean b){
-		((RiepilogoClienteView) riep_cliente).setVisibleBtnModifiche(b);
-	}
-	
-	//modificato il nome della funzione interna
-	public void disattivaSalvaModifiche(boolean b){
-		((RiepilogoClienteView) riep_cliente).setVisibleBtnSalvaModifiche(b);
-	}
-	
-	//modificato il nome della funzione interna
-	public void disattivaAnnullaModifiche(boolean b){
-		((RiepilogoClienteView) riep_cliente).setVisibleBtnAnnullaModifiche(b);
-	}
-	
-	public void disattivaInviaPosta(boolean b){
-		((RiepilogoClienteView) riep_cliente).setVisibleBtnInviaPosta(b);
-	}
-	
-	//cambiato il nome
-	public void disattivaCancella(boolean b){
-		((RiepilogoClienteView) riep_cliente).setVisibleBtnCancella(b);
-	}
-	
-	public void resetNuovoCliente() {
-		((DettaglioClienteView) dettaglioCliente).resetNewCliente();
-	}
-	
-	public void resetCliente() {
-		((RiepilogoClienteView) riep_cliente).resetCampiModifica();
-		
-	}
-	
-	public void setEnableNewCliente(boolean b){
-		bottoneNuovoAgente.setEnabled(b);
-	}
-	
-	public void setEnableCercaCliente(boolean b){
-		bottoneCercaAgente.setEnabled(b);
-	}
-	
-	
-	public void setVisibleIntestazione(boolean b){
-		intestazione.setVisible(b);
-	}
-	
-	public void setVisibleItemPreventivi(boolean b){
-		item.setVisible(b);
-	}
-
-	public JPanel getInstanceIntestazione(){
-		return intestazione;
-	}
-	
-	public void setNewIntestAgente(String a){
-		((IntestazioneNuovoPreventivoView) intestazione).setAgente(a);
-	}
-	
-	public void setNewIntestCliente(String cognome, String nome, String indirizzo, String email){
-		((IntestazioneNuovoPreventivoView) intestazione).setCliente(cognome, nome, indirizzo, email);
-	}
-	
-	public void setNewIntestData (Date data){
-		((IntestazioneNuovoPreventivoView) intestazione).setData(data);
-	}
-	
-	public void setNewIntestNumPrev(int i){
-		((IntestazioneNuovoPreventivoView) intestazione).setNumPrev(i);
-	}
-	
-//	public void setRiepIntestAgente(M_Preventivo p){
-//		String a=p.getRif_Agente().getCognome()+" "+p.getRif_Agente().getNome();
-//		((RiepilogoIntestazionePreventivoView) riep_intestazione).setAgente(a);
-//	}
-//	
-//	public void setRiepIntestCliente(M_Preventivo p){
-//	
-//		String cognome =p.getRif_Cliente().getCognome();
-//		String nome =p.getRif_Cliente().getNome();
-//		String indirizzo =p.getRif_Cliente().getIndirizzo();
-//		String email = p.getRif_Cliente().getEmail();
-//		((RiepilogoIntestazionePreventivoView) riep_intestazione).setCliente(cognome, nome, indirizzo, email);
-//	}
-	
-	public void setRiepIntestData (Date data){
-		((RiepilogoIntestazionePreventivoView) riep_intestazione).setData(data);
-	}
-	
-	public void setRiepIntestNumPrev(int i){
-		((RiepilogoIntestazionePreventivoView) riep_intestazione).setNumPrev(i);
-	}
-
-	public void selectTabCatalogo() {
-		tabbedPrincipale.setSelectedIndex(2);
-	}
-
-	public void setEnableTabCliente(boolean b ) {
-		tabbedPrincipale.setEnabledAt(1, b);
-	}
-	
-	public void setEnableTabPreventivo(boolean b ) {
-		tabbedPrincipale.setEnabledAt(2, b);
-	}
-	
-	public void setEnableTabCatalogo(boolean b ) {
+	public void setEnableTabAgente(boolean b ) {
 		tabbedPrincipale.setEnabledAt(0, b);
 	}
 	
-//	public void setVisibleErroreNuovoCliente(boolean b){
-//		((DettaglioClienteView) dettaglioCliente).setVisibleErroreNuovoCliente(b);
-//	}
-//	
-//	public void setVisibleErroreRiepCliente(boolean b){
-//		((RiepilogoClienteView) riep_cliente).setVisibleErroreRiepCliente(b);
-//	}
-	
-	
-	public void resetPannelloCentralePreventivo(){
-		
-		pannello_centrale_preventivo.removeAll();
-		pannello_centrale_preventivo.repaint();
-	}
 	
 	public void resetPannelloCentraleAgente(){
 		pannello_centrale_agente.removeAll();
 		pannello_centrale_agente.repaint();
 		
 	}
-	
 
-	public void setEnableSalva(boolean b) {
-		
-		((ItemNuovoPreventivoView) item).enableSave(b);
-	}	
 }

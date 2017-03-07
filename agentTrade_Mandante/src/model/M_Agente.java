@@ -92,21 +92,15 @@ public class M_Agente {
 		M_AgenteCriteria criteriaAgente;
 		try {
 			criteriaAgente = new M_AgenteCriteria();
-			//JOIN per recuperare solo i clienti dell'agente loggato
-			//criteriaAgente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
-			
 			return criteriaAgente.listM_Agente();
 		} 
 		catch (PersistentException e) {
 			e.printStackTrace();
 		}
-		finally {
-//			AgentTradePersistentManager.instance().disposePersistentManager();
-		}
 		return null;
 	}
 	
-	public static M_Agente[] caricaAgentiParametri(String c, /*int lvl,*/ String email, String city)throws PersistentException{
+	public static M_Agente[] caricaAgentiParametri(String c, int lvl, String email, String city)throws PersistentException{
 		
 		try{
 			M_AgenteCriteria criteriaAgente= new M_AgenteCriteria();
@@ -114,7 +108,9 @@ public class M_Agente {
 			//criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
 			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
 			criteriaAgente.cognome.like("%"+c+"%");
-			//criteriaAgente.livello.eq(lvl);
+			if(lvl!=-1){
+				criteriaAgente.livello.eq(lvl);
+			}
 			criteriaAgente.email.like("%"+email+"%");
 			criteriaAgente.citta.like("%"+city+"%");
 			//criteriaCliente.attivo.eq(1);

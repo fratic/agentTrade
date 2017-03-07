@@ -24,7 +24,7 @@
     <URL>jdbc:postgresql://localhost:5433/agentTrade_Mandante</URL>
     <UserName>postgres</UserName>
     <EncryptedPassword>A762D72606F50F433EB4CBAB8AD11BA7</EncryptedPassword>
-    <HostName>localhost</HostName>
+    <HostName>192.168.1.13</HostName>
     <PortNO>5433</PortNO>
     <DBName>agentTrade_Mandante</DBName>
     <ServiceName></ServiceName>

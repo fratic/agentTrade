@@ -18,7 +18,6 @@ import javax.swing.tree.TreePath;
 
 import org.orm.PersistentException;
 
-import ui.content.preventivi.AlberoPreventivi;
 import util.Costanti;
 
 public class AlberoAgenti extends JPanel {
@@ -54,7 +53,7 @@ public class AlberoAgenti extends JPanel {
 			
 			add(scroller);
 			
-			ImageIcon imageIcon = new ImageIcon(AlberoPreventivi.class.getResource(Costanti.ALBERO_AGENTI_ICON));
+			ImageIcon imageIcon = new ImageIcon(AlberoAgenti.class.getResource(Costanti.ALBERO_AGENTI_ICON));
 	        DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();       
 	        renderer.setLeafIcon(imageIcon);
 

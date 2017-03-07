@@ -170,7 +170,7 @@ public final class Costanti {
 	
 	
 	public final static String LABEL_ID = "Codice cliente";
-	public final static String LABEL_COGNOME = "Cognome o Ragione sociale";
+	public final static String LABEL_COGNOME = "Cognome";
 	public final static String LABEL_NOME_CLIENTE = "Nome";
 	public final static String LABEL_COD_FISC = "Codice Fiscale";
 	public final static String LABEL_PARTITA_IVA = "Partita Iva";
