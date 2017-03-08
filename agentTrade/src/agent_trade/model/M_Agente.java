@@ -13,9 +13,13 @@
  */
 package agent_trade.model;
 
+import org.hibernate.criterion.Projections;
 import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
 
+import agent_trade.persistent.AgentTradeMandantePersistentManager;
 import agent_trade.persistent.AgenteCriteria;
+import agent_trade.persistent.Rem_AgenteCriteria;
 
 public class M_Agente {
 	
@@ -100,7 +104,91 @@ public class M_Agente {
 		return AgenteCriteria.uniqueAgente();
 	}
 	
+	public static M_Agente caricaAgenteRemoto(String username) throws PersistentException{
+		Rem_AgenteCriteria AgenteCriteria = new Rem_AgenteCriteria();
+		AgenteCriteria.username.eq(username);
+		return AgenteCriteria.uniqueM_Agente();
+	}
 	
+	
+	public static void salvaAgenteRemoto(M_Agente a)throws PersistentException{
+		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradeMandantePersistentManager.instance().getSession().save(a);
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+	}
+	
+	public static M_Agente[] caricaAgentiRemoto() throws PersistentException {
+		
+		Rem_AgenteCriteria criteriaAgente;
+		try {
+			criteriaAgente = new Rem_AgenteCriteria();
+			return criteriaAgente.listM_Agente();
+		} 
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static M_Agente[] caricaAgentiRemotoParametri(String c, int lvl, String email, String city)throws PersistentException{
+		
+		try{
+			Rem_AgenteCriteria criteriaAgente= new Rem_AgenteCriteria();
+			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
+			criteriaAgente.cognome.like("%"+c+"%");
+			if(lvl!=-1){
+				criteriaAgente.livello.eq(lvl);
+			}
+			criteriaAgente.email.like("%"+email+"%");
+			criteriaAgente.citta.like("%"+city+"%");
+
+			return criteriaAgente.listM_Agente();
+
+		}
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		return null;
+	}
+	
+	public static M_Agente cercaAgenteRemoto(int id_agente) throws PersistentException{
+		
+		try{
+			
+			Rem_AgenteCriteria criteriaAgente = new Rem_AgenteCriteria();
+			criteriaAgente.IdAgente.eq(id_agente);
+
+			return criteriaAgente.uniqueM_Agente();
+		}
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
+	
+	public static int getMaxIdRemoto()throws PersistentException{
+		
+		try 
+		{				
+			Rem_AgenteCriteria criteriaAgente = new Rem_AgenteCriteria();
+			criteriaAgente.setProjection(Projections.max("id"));
+			int id=(int) criteriaAgente.uniqueResult();
+			return id;
+		}
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
 	
 	/*
 	 * metodi privati

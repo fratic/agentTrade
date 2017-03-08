@@ -23,12 +23,15 @@ import javax.swing.border.TitledBorder;
 
 import org.orm.PersistentException;
 
-import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.controller.Ctrl_gestisciAgente;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
+import agent_trade.ui.content.agenti.AlberoAgenti;
+import agent_trade.ui.content.agenti.DettaglioAgenteView;
+import agent_trade.ui.content.agenti.RiepilogoAgenteView;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
@@ -39,6 +42,7 @@ import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.util.Costanti;
+import agent_trade.util.Sfondo_Agente;
 import agent_trade.util.Sfondo_Cliente;
 import agent_trade.util.Sfondo_Preventivo;
 
@@ -62,6 +66,11 @@ public class PrimaryView extends JFrame
 	
 	private static JPanel pannello_centrale_cliente;
 		
+	private static RiepilogoAgenteView riep_agente;
+	private static DettaglioAgenteView dettaglio_agente;
+	
+	private static JPanel pannello_centrale_agente;
+
 	
 	/*attributi privati*/
 	
@@ -94,6 +103,21 @@ public class PrimaryView extends JFrame
 	
 	private JTabbedPane tabbedPrincipale;
 		
+	private JButton bottoneCercaAgente;
+	private JButton bottoneNuovoAgente;
+	
+	
+	
+	private JPanel Agente;
+	private JPanel panello_menu_agente;
+	private JPanel panello_sottomenu_agente;
+	private JPanel panello_laterale_agente;
+	
+	private JPanel alberoAgenti;
+
+	
+	
+	
 	/*costruttori*/
 	
 	private PrimaryView() {
@@ -107,6 +131,11 @@ public class PrimaryView extends JFrame
 		initTabCliente();
 		
 		initTabCatalogo();
+
+		//ovviamente adesso è abilitata, ma poi dovrà esserlo solo se
+		//si è loggato un mandante
+		initTabAgente();
+
 		
 	}
 	
@@ -183,6 +212,25 @@ public class PrimaryView extends JFrame
 		ItemNuovoPreventivoView.cancItem();
 		item=null;
 	}
+	
+	
+	public static void initDettaglioAgente() {
+		
+		dettaglio_agente = DettaglioAgenteView.getInstance();
+		pannello_centrale_agente.add(dettaglio_agente);
+		pannello_centrale_agente.repaint();
+	}
+	
+	
+	public static void initRiepilogoAgenteView() {
+		
+		riep_agente = RiepilogoAgenteView.getInstance();
+		pannello_centrale_agente.add(riep_agente);
+		pannello_centrale_agente.repaint();
+		
+	}
+	
+	
 	
 		
 	/*metodi privati*/
@@ -377,6 +425,82 @@ public class PrimaryView extends JFrame
 		pannelloProdotti = ProdottiView.getInstance();
 		panello_centrale_catalogo.add(pannelloProdotti);
 	}
+	
+	
+	private void initTabAgente(){
+		
+		Agente = new JPanel();
+		tabbedPrincipale.addTab(Costanti.TAB_AGENTE, new ImageIcon(PrimaryView.class.getResource(Costanti.AGENTE_ICON)), Agente, Costanti.TIP_GESTISCI_AGENTE);
+		Agente.setLayout(new BorderLayout());
+		
+		panello_menu_agente = new JPanel();
+		panello_menu_agente.setPreferredSize(new Dimension(1013, 100));
+		panello_menu_agente.setLayout(null);
+
+		panello_menu_agente.setBackground(Color.WHITE);
+		Agente.add(panello_menu_agente,BorderLayout.NORTH);
+		
+		bottoneNuovoAgente = new JButton();
+		bottoneNuovoAgente.setIcon(new ImageIcon(PrimaryView.class.getResource(Costanti.NUOVO_AGENTE_ICON)));
+		bottoneNuovoAgente.setToolTipText(Costanti.TIP_NUOVO_AGENTE);
+		bottoneNuovoAgente.setBounds(25, 25, 50, 50);
+		panello_menu_agente.add(bottoneNuovoAgente);
+		
+		bottoneCercaAgente = new JButton("");
+		bottoneCercaAgente.setIcon(new ImageIcon(PrimaryView.class.getResource(Costanti.CERCA_AGENTE_ICON)));
+		bottoneCercaAgente.setToolTipText(Costanti.TIP_CERCA_AGENTE);
+		bottoneCercaAgente.setBounds(103, 25, 50, 50);
+		panello_menu_agente.add(bottoneCercaAgente);
+		
+		panello_sottomenu_agente= new JPanel();
+		panello_sottomenu_agente.setPreferredSize(new Dimension(1013, 617));
+		panello_sottomenu_agente.setLayout(new BorderLayout());
+		Agente.add(panello_sottomenu_agente, BorderLayout.CENTER);
+
+		
+		panello_laterale_agente = new JPanel();
+		panello_laterale_agente.setPreferredSize(new Dimension(260, 617));
+		panello_sottomenu_agente.add(panello_laterale_agente, BorderLayout.WEST);
+		panello_laterale_agente.setLayout(null);
+
+		
+		alberoAgenti = new AlberoAgenti();
+		alberoAgenti.setBounds(0, 0, 261, 617);
+		panello_laterale_agente.add(alberoAgenti);
+		
+		pannello_centrale_agente = new JPanel();
+		pannello_centrale_agente.setBackground(SystemColor.control);
+
+		pannello_centrale_agente.setPreferredSize(new Dimension(753, 617));
+		panello_sottomenu_agente.add(pannello_centrale_agente, BorderLayout.CENTER);
+		pannello_centrale_agente.setLayout(new GridLayout(1,1));
+		pannello_centrale_agente.setBorder(new EmptyBorder(7, 7, 0, 7));
+		
+		setSfondoAgente();
+		
+		bottoneCercaAgente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					Ctrl_gestisciAgente.getInstance().btnCerca();
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+			}
+		});
+		
+		bottoneNuovoAgente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Ctrl_gestisciAgente.getInstance().btnNewAgente();
+				
+			}
+		});
+			
+	}
+	
 	
 	private void initComponents()
 	{
@@ -616,4 +740,40 @@ public class PrimaryView extends JFrame
 		
 		((ItemNuovoPreventivoView) item).enableSave(b);
 	}	
+	
+	
+	public void setSfondoAgente() 
+	{
+		JPanel sfondoAgente=new Sfondo_Agente();
+		pannello_centrale_agente.add(sfondoAgente);
+		
+	}
+	
+	public void resetPannelloCentraleAgente(){
+		pannello_centrale_agente.removeAll();
+		pannello_centrale_agente.repaint();		
+	}
+	
+	public void resetNuovoAgente() {
+		((DettaglioAgenteView) dettaglio_agente).resetNewAgente();
+	}
+	
+	public void setEnableCercaAgente(boolean b){
+		bottoneCercaAgente.setEnabled(b);
+	}
+	
+	public void setVisibleErroreRiepAgente(boolean b){
+		((RiepilogoAgenteView) riep_agente).setVisibleErroreRiepAgente(b);
+	}
+	
+	public void setSchedaAgente(String id, String cognome, String nome, String livello, String citta, String cap, String indirizzo, String email, String cellulare,  String username, String password) {
+		
+		((RiepilogoAgenteView) riep_agente).setRiepilogoAgente(id, cognome, nome, livello, citta, cap, indirizzo, email, cellulare, username, password);
+	}
+	
+	public void setVisibleErroreNuovoAgente(boolean b){
+		((DettaglioAgenteView) dettaglio_agente).setVisibleErroreNuovoAgente(b);
+	}
+	
+	
 }

@@ -26,7 +26,7 @@ public class M_Agente {
 	public M_Agente() {
 	}
 	
-	private int idAgente;
+	private int IdAgente;
 	
 	private String nome;
 	
@@ -153,11 +153,11 @@ public class M_Agente {
 	
 	
 	private void setIdAgente(int value) {
-		this.idAgente = value;
+		this.IdAgente = value;
 	}
 	
 	public int getIdAgente() {
-		return idAgente;
+		return IdAgente;
 	}
 	
 	public int getORMID() {

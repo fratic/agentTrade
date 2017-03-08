@@ -27,6 +27,11 @@ public final class Costanti {
 	public final static String TITOLO_CANCELLA_CLIENTE = "Attenzione!";
 	public final static String TITOLO_NUOVO_CLIENTE = "Nuova scheda cliente";
 	public final static String TITOLO_SCHEDA_CLIENTE = "Scheda Cliente";
+	
+	public final static String TITOLO_NUOVO_AGENTE = "Nuova scheda agente";
+	public final static String TITOLO_SCHEDA_AGENTE = "Scheda Agente";
+	public final static String TITOLO_CERCA_AGENTE = "Cerca Agente ";
+
 
 	/**
 	 * Messaggi dei Dialog
@@ -40,6 +45,9 @@ public final class Costanti {
 	public final static String MESSAGGIO_CAMPI_ERRATI = "I seguenti campi sono errati: ";
 	public final static String MESSAGGIO_CLIENTE_NON_TROVATO = "Cliente non trovato";
 	public final static String MESSAGGIO_CANCELLA_CLIENTE = "Sei sicuro di voler cancellare il cliente corrente?";
+	public final static String MESSAGGIO_AGENTE_NON_TROVATO = "Agente non trovato";
+
+	
 	
 	/**
 	 * Icone e immagini
@@ -48,6 +56,7 @@ public final class Costanti {
 	public static final String AGENTTRADE_ICON = "/agent_trade/ui/img/icon.png";
 	public static final String IMG_SFONDO_CLIENTE = "/agent_trade/ui/img/sfondoAgentTradeCliente.png";
 	public static final String IMG_SFONDO_PREVENTIVO= "/agent_trade/ui/img/sfondoAgentTrade2.png";
+	public static final String IMG_SFONDO_AGENTE = "/agent_trade/ui/img/sfondoAgentTradeCliente.png";	
 	public static final String CLOSE_ICON= "/agent_trade/ui/img/close_icon.png";
 	public static final String PLUS_ICON= "/agent_trade/ui/img/plus.png";
 	public static final String PREVENTIVO_ICON= "/agent_trade/ui/img/preventivo.png";
@@ -72,6 +81,22 @@ public final class Costanti {
 	public static final String ANNULLA_MOD_CLIENTE_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String RIEPILOGO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String DETTAGLIO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
+	
+	public static final String AGENTE_ICON= "/agent_trade/ui/img/cliente.png";
+	public static final String NUOVO_AGENTE_ICON= "/agent_trade/ui/img/new_user.png";
+	public static final String CERCA_AGENTE_ICON= "/agent_trade/ui/img/search.png";
+
+	public static final String SALVA_AGENTI_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String COMUNICAZIONE_AGENTE_ICON = "/agent_trade/ui/img/send-icon.png";
+	public static final String MOD_AGENTE_ICON = "/agent_trade/ui/img/settings_client.png";
+	public static final String CANC_AGENTE_ICON = "/agent_trade/ui/img/trash-icon.png";
+	public static final String SALVA_MOD_AGENTE_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String ANNULLA_MOD_AGENTE_ICON = "/agent_trade/ui/img/back-icon.png";
+	public static final String RIEPILOGO_AGENTE_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
+	public static final String DETTAGLIO_AGENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
+	public static final String ALBERO_AGENTI_ICON = "/agent_trade/ui/img/ico-cliente1.png";
+
+	
 		
 	/**
 	 * URL dei Sistemi Esterni
@@ -146,7 +171,8 @@ public final class Costanti {
 	public final static String TAB_PREVENTIVO= "Preventivo";
 	public final static String TAB_CATALOGO= "Catalogo";
 	public final static String TAB_CLIENTE= "Cliente";
-	
+	public final static String TAB_AGENTE= "Agente";
+
 	public final static String ROOT_PREVENTIVI= "Preventivi";
 	public final static String ROOT_CLIENTI= "Clienti";
 
@@ -176,6 +202,16 @@ public final class Costanti {
 	public final static String LABEL_EMAIL = "Email";
 	public final static String LABEL_AGENTE_RIF = "Agente di riferimento";
 	public final static String LABEL_ERRORE_CAMPI = "";
+	
+	public final static String LABEL_CERCA_AGENTE = "Cerca Agente";
+
+	public final static String LABEL_ID_AGENTE = "Codice agente";
+	public final static String LABEL_NOME = "Nome";
+	public final static String LABEL_LVL ="Livello";
+	
+	public final static String ROOT_AGENTI= "Agenti";
+
+	
 
 	/**
 	 * Tip
@@ -211,6 +247,23 @@ public final class Costanti {
 	//public final static String TIP_SALVA_MOD_CLIENTE = "Salva modifiche";
 	//public final static String TIP_ANNULLA_MOD_CLIENTE = "Annulla modifiche";
 	
+	public final static String TIP_NUOVO_AGENTE= "Inserisci un nuovo agente";
+	public final static String TIP_CERCA_AGENTE= "Cerca un agente";
+	public final static String TIP_GESTISCI_AGENTE= "Gestisci gli agenti";
+
+	public final static String TIP_SALVA_AGENTE = "Salva il agente";
+	public final static String TIP_COMUNICAZIONE_AGENTE = "Invia comunicazione";
+	public final static String TIP_MODIFICA_AGENTE = "Modifica i dati dell'agente";
+	public final static String TIP_CANCELLA_AGENTE = "Cancella agente";
+
+	
+	
+	public final static String TIP_NOME = "Non sono ammessi caratteri numerici";
+	public final static String TIP_LIVELLO = "Inserire il livello dell'agente (da 1 a 5)";	
+	public final static String TIP_USERNAME = "Inserire un username di almeno 4 caratteri";
+	public final static String TIP_PASSWORD = "Inserire un password di almeno 4 caratteri";
+	
+	
 	
 	/**
 	 * Bottoni
@@ -227,7 +280,6 @@ public final class Costanti {
 	/**
 	 * Intestazioni tabelle
 	 */
-//	public final static String[] LISTA_RUOLI = { "Commesso", "Responsabile Offerte", "Direttore" };
 
 	
 	public final static String[] INTESTAZIONE_TABELLA_PREVENTIVI = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo Unitario", "Sconto", "Parziale" };
@@ -235,6 +287,10 @@ public final class Costanti {
 	public final static String[] INTESTAZIONE_TABELLA_PRODOTTI = {"ID prodotto", "Nome", "Categoria", "Sconto", "Prezzo", "Aggiungi" };
 	public final static String[] INTESTAZIONE_TABELLA_CERCA_CLIENTI = {"ID", "Cognome", "Nome", "Codice Fiscale", "P.IVA"};
 	public final static String[] INTESTAZIONE_TABELLA_RICERCA_CLIENTI = {"ID", "Cognome", "Nome","Codice Fiscale", "Partita iva", "Citt\u00E0" };
+	
+	public final static String[] INTESTAZIONE_TABELLA_CERCA_AGENTI = {"ID", "Cognome", "Nome", "Codice Fiscale", "P.IVA"};
+	public final static String[] INTESTAZIONE_TABELLA_RICERCA_AGENTI = {"ID", "Cognome", "Nome", "Livello", "Email", "Citt\u00E0"};
+	
 	
 	/**
 	 * Costanti colonne
