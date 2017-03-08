@@ -6,9 +6,12 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import org.orm.PersistentException;
+
 import ui.PrimaryView;
 import ui.SplashScreen;
 import de.javasoft.plaf.synthetica.SyntheticaWhiteVisionLookAndFeel;
+import model.M_Agente;
 /****NON TOCCARE***/
 
 
@@ -23,8 +26,13 @@ public class Main {
 			public void run() {
 								
 				try {
+					
+//					M_Agente.getMaxId();
+
 					Thread.sleep(1500);
-										
+					
+					
+					
 					/***non toccare***/
 					/*******Per ora lasciare*********/
 					

@@ -48,9 +48,7 @@ public class M_Agente {
 	
 	private String cap;
 	
-	
-		
-	
+
 	public M_Agente(String nome, String cognome, String password, String username, String citta, String indirizzo,
 			int livello, String cell, String email, String cap) {
 		super();
@@ -104,8 +102,6 @@ public class M_Agente {
 		
 		try{
 			M_AgenteCriteria criteriaAgente= new M_AgenteCriteria();
-			//JOIN per recuperare solo i clienti dell'agente loggato
-			//criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
 			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
 			criteriaAgente.cognome.like("%"+c+"%");
 			if(lvl!=-1){
@@ -113,7 +109,7 @@ public class M_Agente {
 			}
 			criteriaAgente.email.like("%"+email+"%");
 			criteriaAgente.citta.like("%"+city+"%");
-			//criteriaCliente.attivo.eq(1);
+
 			return criteriaAgente.listM_Agente();
 
 		}
@@ -131,11 +127,8 @@ public class M_Agente {
 		try{
 			
 			M_AgenteCriteria criteriaAgente = new M_AgenteCriteria();
-			
-			//JOIN per recuperare solo i clienti dell'agente loggato
-			//criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
 			criteriaAgente.idAgente.eq(id_agente);
-			//criteriaAgente.attivo.eq(1);
+
 			return criteriaAgente.uniqueM_Agente();
 		}
 		finally {
@@ -153,7 +146,6 @@ public class M_Agente {
 			int id=(int) criteriaAgente.uniqueResult();
 			return id;
 		}
-		
 		finally {
 //			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
