@@ -75,7 +75,7 @@ public class Ricerca_agente extends JDialog {
 		getContentPane().add(panelloCerca);
 		panelloCerca.setLayout(null);
 		
-		LabelCerca = new JLabel(Costanti.LABEL_COGNOME);
+		LabelCerca = new JLabel(Costanti.LABEL_COGNOME_AGENTE);
 		LabelCerca.setBounds(10, 11, 137, 40);
 		panelloCerca.add(LabelCerca);
 		

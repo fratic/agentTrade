@@ -160,7 +160,7 @@ public class DettaglioAgenteView extends JPanel {
 		pannCognome.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannCognome);
 		
-		labelCognome = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_COGNOME);
+		labelCognome = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_COGNOME_AGENTE);
 		labelCognome.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelCognome.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannCognome.add(labelCognome);

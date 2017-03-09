@@ -35,6 +35,7 @@ public class AgenteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression cell;
 	public final StringExpression email;
 	public final StringExpression cap;
+	public final IntegerExpression attivo;
 	
 	public AgenteDetachedCriteria() {
 		super(agent_trade.model.M_Agente.class, AgenteCriteria.class);
@@ -49,6 +50,7 @@ public class AgenteDetachedCriteria extends AbstractORMDetachedCriteria {
 		cell = new StringExpression("cell", this.getDetachedCriteria());
 		email = new StringExpression("email", this.getDetachedCriteria());
 		cap = new StringExpression("cap", this.getDetachedCriteria());
+		attivo = new IntegerExpression("attivo", this.getDetachedCriteria());
 	}
 	
 	public AgenteDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -64,6 +66,7 @@ public class AgenteDetachedCriteria extends AbstractORMDetachedCriteria {
 		cell = new StringExpression("cell", this.getDetachedCriteria());
 		email = new StringExpression("email", this.getDetachedCriteria());
 		cap = new StringExpression("cap", this.getDetachedCriteria());
+		attivo = new IntegerExpression("attivo", this.getDetachedCriteria());
 	}
 	
 	public M_Agente uniqueM_Agente(PersistentSession session) {

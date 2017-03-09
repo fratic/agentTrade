@@ -34,6 +34,7 @@ public class Rem_AgenteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression cell;
 	public final StringExpression email;
 	public final StringExpression cap;
+	public final IntegerExpression attivo;
 	
 	public Rem_AgenteDetachedCriteria() {
 		super(M_Agente.class, Rem_AgenteCriteria.class);
@@ -48,6 +49,7 @@ public class Rem_AgenteDetachedCriteria extends AbstractORMDetachedCriteria {
 		cell = new StringExpression("cell", this.getDetachedCriteria());
 		email = new StringExpression("email", this.getDetachedCriteria());
 		cap = new StringExpression("cap", this.getDetachedCriteria());
+		attivo = new IntegerExpression("livello", this.getDetachedCriteria());
 	}
 	
 	public Rem_AgenteDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -63,6 +65,7 @@ public class Rem_AgenteDetachedCriteria extends AbstractORMDetachedCriteria {
 		cell = new StringExpression("cell", this.getDetachedCriteria());
 		email = new StringExpression("email", this.getDetachedCriteria());
 		cap = new StringExpression("cap", this.getDetachedCriteria());
+		attivo = new IntegerExpression("livello", this.getDetachedCriteria());
 	}
 	
 	public M_Agente uniqueM_Agente(PersistentSession session) {

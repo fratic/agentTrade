@@ -1,12 +1,19 @@
 package agent_trade.controller;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.orm.PersistentException;
 
 import agent_trade.model.M_Agente;
 import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.agenti.AlberoAgenti;
+import agent_trade.ui.content.agenti.DettaglioAgenteView;
 import agent_trade.ui.content.agenti.Ricerca_agente;
-import agent_trade.ui.content.clienti.AlberoClienti;
+import agent_trade.ui.content.agenti.RiepilogoAgenteView;
+import agent_trade.ui.content.agenti.confermaCancAgente;
+import agent_trade.ui.content.clienti.DettaglioClienteView;
+import agent_trade.ui.content.clienti.RiepilogoClienteView;
 import agent_trade.util.Costanti;
 
 
@@ -34,6 +41,63 @@ public class Ctrl_gestisciAgente {
 	/*metodi privati*/
 	
 	
+	private boolean check(String regex, String input){
+		
+		  Pattern pattern = Pattern.compile(regex);
+		  Matcher matcher = pattern.matcher(input);
+
+		  if (matcher.matches())
+		    return true;
+		  else
+		    return false;
+		}
+	
+	private String ControlloCampi(String nome, String cognome, String livello, String citta, String cap, String indirizzo, String email, String cellulare, String username, String password){
+		
+		String errore= null;
+		String campoErrato = "";
+		
+		if(nome.equals("") || cognome.equals("") || livello.equals("") || citta.equals("") || cap.equals("") || indirizzo.equals("") || email.equals("") || cellulare.equals("") || username.equals("") || password.equals("")){
+			return errore = Costanti.MESSAGGIO_CAMPI_VUOTI;
+		}
+		if(!check(Costanti.REG_EX_COGNOME_AGENTE, cognome)){
+			campoErrato = campoErrato + "cognome ";
+		}
+		if(!check(Costanti.REG_EX_NOME, nome)){
+			campoErrato = campoErrato + "nome ";
+		}
+		if(!check(Costanti.REG_EX_LIVELLO, livello)){
+			campoErrato = campoErrato + "livello ";
+		}
+		if(!check(Costanti.REG_EX_INDIRIZZO, indirizzo)){
+			campoErrato = campoErrato +"indirizzo ";
+		}
+		if(!check(Costanti.REG_EX_CITTA, citta)){
+			campoErrato = campoErrato +"città ";
+		}
+		if(!check(Costanti.REG_EX_CAP, cap)){
+			campoErrato = campoErrato +"cap ";
+		}
+		if(!check(Costanti.REG_EX_CELLULARE, cellulare)){
+			campoErrato = campoErrato +"cellulare ";
+		}
+		if(!check(Costanti.REG_EX_EMAIL, email)){
+			campoErrato = campoErrato +"email ";
+		}
+		if(!check(Costanti.REG_EX_USERNAME, username)){
+			campoErrato = campoErrato +"username ";
+		}
+		if(!check(Costanti.REG_EX_PASSWORD, password)){
+			campoErrato = campoErrato +"password ";
+		}
+		if (errore == null && campoErrato != "")
+		{
+			errore = Costanti.MESSAGGIO_CAMPI_ERRATI + campoErrato;
+		}
+		return errore;
+	}
+	
+	
 	/*metodi pubblici*/
 	
 //	uasta in example (test insert agente)
@@ -46,63 +110,81 @@ public class Ctrl_gestisciAgente {
 	
 	public void inserisciNuovoAgente(String nome, String cognome, String livello, String citta, String cap, String indirizzo, String email, String cell, String user, String psw) throws PersistentException
 	{
-//		Manca il controllo dei campi
-		int lvl = Integer.parseInt(livello);
-		M_Agente agente = new M_Agente(nome, cognome, psw, user, citta, indirizzo, lvl, cell, email, cap);
-		M_Agente.salvaAgenteRemoto(agente); 
-
-		PrimaryView.getInstance().resetNuovoAgente();
-		PrimaryView.getInstance().resetPannelloCentraleAgente();
-				
-		int id = M_Agente.getMaxIdRemoto();
-		recuperaAgente(id);
-				
-//		AlberoAgenti.inserisciNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
-//		AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
-//		AlberoAgenti.abilitaAlbero();
-
-		PrimaryView.getInstance().setEnableCercaAgente(true);
+		String errore = ControlloCampi(nome, cognome, livello, citta, cap, indirizzo, email, cell, user, psw);
+		if(errore==null){
 			
+			int lvl = Integer.parseInt(livello);
+			M_Agente agente = new M_Agente(nome, cognome, psw, user, citta, indirizzo, lvl, cell, email, cap);
+			agente.setAttivo(1);
+			M_Agente.salvaAgenteRemoto(agente); 
+
+			PrimaryView.getInstance().resetNuovoAgente();
+			PrimaryView.getInstance().resetPannelloCentraleAgente();
+					
+			int id = M_Agente.getMaxIdRemoto();
+			recuperaAgente(id);
+					
+//			AlberoAgenti.inserisciNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+//			AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+//			AlberoAgenti.abilitaAlbero();
+
+			PrimaryView.getInstance().setEnableCercaAgente(true);
+		}
+		else{
+			PrimaryView.getInstance().setVisibleErroreNuovoAgente(true);
+			DettaglioAgenteView.getInstance().setErrore(errore);
+		}		
 	}
 	
-	public void modificaAgente(int id, String nome, String cognome, int livello, String citta, String cap, String indirizzo, String email, String cellulare, String username, String password) throws PersistentException
+	public void modificaAgente(int id, String nome, String cognome, String livello, String citta, String cap, String indirizzo, String email, String cellulare, String username, String password) throws PersistentException
 	{
-		M_Agente agente = M_Agente.cercaAgenteRemoto(id);
-		
-		agente.setNome(nome);
-		agente.setCognome(cognome);
-		agente.setLivello(livello);
-		agente.setIndirizzo(indirizzo);
-		agente.setEmail(email);
-		agente.setCitta(citta);
-		agente.setCap(cap);
-		agente.setCell(cellulare);
-		agente.setUsername(username);
-		agente.setPassword(password);
-		
-		M_Agente.aggiornaAgenteRemoto(agente);
-						
-		PrimaryView.getInstance().resetAgente();
-		PrimaryView.getInstance().disattivaModificaAgente(true);
-		PrimaryView.getInstance().disattivaSalvaModificheAgente(false);
-		PrimaryView.getInstance().disattivaCancellaAgente(true);
-		PrimaryView.getInstance().disattivaAnnullaModificheAgente(false);
-		PrimaryView.getInstance().setEnableTabPreventivo(true);
-		PrimaryView.getInstance().setEnableTabCatalogo(true);
-		PrimaryView.getInstance().setEnableNewAgente(true);
-		PrimaryView.getInstance().setEnableCercaAgente(true);
-		PrimaryView.getInstance().disattivaInviaPostaAgente(true);
-		PrimaryView.getInstance().setInvisibleToolTipAgente();
-//		AlberoAgenti.updateNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
-//		AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
-//		AlberoAgenti.abilitaAlbero();
+		String errore = ControlloCampi(nome, cognome, livello, citta, cap, indirizzo, email, cellulare, username, password);
+		if(errore==null){
+			
+			M_Agente agente = M_Agente.cercaAgenteRemoto(id);
+			
+			int lvl = Integer.parseInt(livello);
+			
+			agente.setNome(nome);
+			agente.setCognome(cognome);
+			agente.setLivello(lvl);
+			agente.setIndirizzo(indirizzo);
+			agente.setEmail(email);
+			agente.setCitta(citta);
+			agente.setCap(cap);
+			agente.setCell(cellulare);
+			agente.setUsername(username);
+			agente.setPassword(password);
+			
+			M_Agente.aggiornaAgenteRemoto(agente);
+							
+			PrimaryView.getInstance().resetAgente();
+			PrimaryView.getInstance().disattivaModificaAgente(true);
+			PrimaryView.getInstance().disattivaSalvaModificheAgente(false);
+			PrimaryView.getInstance().disattivaCancellaAgente(true);
+			PrimaryView.getInstance().disattivaAnnullaModificheAgente(false);
+			PrimaryView.getInstance().setEnableTabPreventivo(true);
+			PrimaryView.getInstance().setEnableTabCatalogo(true);
+			PrimaryView.getInstance().setEnableNewAgente(true);
+			PrimaryView.getInstance().setEnableCercaAgente(true);
+			PrimaryView.getInstance().disattivaInviaPostaAgente(true);
+			PrimaryView.getInstance().setInvisibleToolTipAgente();
+//			AlberoAgenti.updateNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+//			AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+//			AlberoAgenti.abilitaAlbero();
+		}
+		else{
+			PrimaryView.getInstance().setVisibleErroreRiepAgente(true);
+			RiepilogoAgenteView.getInstance().setErrore(errore);
+		}
 	}
 	
 
 	public void cancellaAgente(String id){
 		
+		confermaCancAgente.getInstance().setAgente(id);
+		confermaCancAgente.getInstance().setVisible(true);
 	}
-
 
 
 	public void btnCerca() throws PersistentException {
@@ -199,6 +281,43 @@ public class Ctrl_gestisciAgente {
 		PrimaryView.getInstance().setEnableCercaAgente(false);
 		PrimaryView.getInstance().setVisibleToolTipAgente();
 		//AlberoAgenti.disabilitaAlbero();
+	}
+	
+	public void annullaModificheAgente(String id) throws PersistentException
+	{
+		PrimaryView.getInstance().resetAgente();
+		int idAgente=Integer.parseInt(id);
+		recuperaAgente(idAgente);
+		PrimaryView.getInstance().disattivaModificaAgente(true);
+		PrimaryView.getInstance().disattivaCancellaAgente(true);
+		PrimaryView.getInstance().setVisibleErroreRiepAgente(false);
+		PrimaryView.getInstance().disattivaInviaPostaAgente(true);
+		PrimaryView.getInstance().setEnableTabCatalogo(true);
+		PrimaryView.getInstance().setEnableTabPreventivo(true);
+		PrimaryView.getInstance().setEnableNewAgente(true);
+		PrimaryView.getInstance().setEnableCercaAgente(true);
+		PrimaryView.getInstance().setInvisibleToolTipAgente();
+		//AlberoClienti.abilitaAlbero();
+	}
+	
+	public void postConfermaCancAgente(String id) throws PersistentException{
+		
+		int idAgente=Integer.parseInt(id);
+		
+		M_Agente agente=M_Agente.cercaAgenteRemoto(idAgente);
+		agente.setAttivo(0);
+		M_Agente.aggiornaAgenteRemoto(agente);
+
+		AlberoAgenti.rimuoviNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+		confermaCancAgente.getInstance().setVisible(false);		
+		confermaCancAgente.cancInst();
+		PrimaryView.getInstance().resetPannelloCentraleAgente();
+		PrimaryView.getInstance().setSfondoAgente();
+	}
+	
+	public void notConfermaCancAgente(){
+		confermaCancAgente.getInstance().setVisible(false);
+		confermaCancAgente.cancInst();
 	}
 
 	

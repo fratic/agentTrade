@@ -46,6 +46,7 @@ public class M_Agente {
 	private String cell;
 	private String email;
 	private String cap;
+	private int attivo;
 	
 	
 	
@@ -102,12 +103,14 @@ public class M_Agente {
 	public static M_Agente caricaAgente(String username) throws PersistentException{
 		AgenteCriteria AgenteCriteria = new AgenteCriteria();
 		AgenteCriteria.username.eq(username);
+		AgenteCriteria.attivo.eq(1);
 		return AgenteCriteria.uniqueAgente();
 	}
 	
 	public static M_Agente caricaAgenteRemoto(String username) throws PersistentException{
 		Rem_AgenteCriteria AgenteCriteria = new Rem_AgenteCriteria();
 		AgenteCriteria.username.eq(username);
+		AgenteCriteria.attivo.eq(1);
 		return AgenteCriteria.uniqueM_Agente();
 	}
 	
@@ -156,6 +159,8 @@ public class M_Agente {
 		Rem_AgenteCriteria criteriaAgente;
 		try {
 			criteriaAgente = new Rem_AgenteCriteria();
+			criteriaAgente.attivo.eq(1);
+			
 			return criteriaAgente.listM_Agente();
 		} 
 		catch (PersistentException e) {
@@ -175,6 +180,7 @@ public class M_Agente {
 			}
 			criteriaAgente.email.like("%"+email+"%");
 			criteriaAgente.citta.like("%"+city+"%");
+			criteriaAgente.attivo.eq(1);
 
 			return criteriaAgente.listM_Agente();
 
@@ -194,6 +200,7 @@ public class M_Agente {
 			
 			Rem_AgenteCriteria criteriaAgente = new Rem_AgenteCriteria();
 			criteriaAgente.IdAgente.eq(id_agente);
+			criteriaAgente.attivo.eq(1);
 
 			return criteriaAgente.uniqueM_Agente();
 		}
@@ -317,6 +324,14 @@ public class M_Agente {
 	
 	public String getCap() {
 		return cap;
+	}
+	
+	public void setAttivo(int value) {
+		this.attivo = value;
+	}
+	
+	public int getAttivo() {
+		return attivo;
 	}
 	
 	public String toString() {

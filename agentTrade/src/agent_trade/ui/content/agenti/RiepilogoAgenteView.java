@@ -66,43 +66,24 @@ public class RiepilogoAgenteView extends JPanel {
 	private JButton bottoneInviaComunicazione;
 	
 	private JPanel pannelloCampi;
-
 	private JPanel pannelloBottoni;
-
 	private JPanel pannelloCentro;
-
 	private JScrollPane scrollPane;
-
 	private JPanel pannelloContenitore;
-
 	private JPanel pannelloIcona;
-
 	private JPanel contenitoreCampi;
-
 	private JPanel pannIdAgente;
-
 	private JPanel pannCognome;
-
 	private JPanel pannNome;
-
 	private JPanel pannLivello;
-	
 	private JPanel pannIndirizzo;
-
 	private JPanel pannCitta;
-
 	private JPanel pannCap;
-
 	private JPanel pannCellulare;
-	
 	private JPanel pannEmail;
-
 	private JPanel pannUsername;
-	
 	private JPanel pannPassword;
-
 	private JPanel pannErrore;
-
 	private JPanel pannelloEast;
 	
 	
@@ -181,7 +162,7 @@ public class RiepilogoAgenteView extends JPanel {
 		pannCognome.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannCognome);
 		
-		labelCognome = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_COGNOME);
+		labelCognome = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_COGNOME_AGENTE);
 		labelCognome.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelCognome.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannCognome.add(labelCognome);
@@ -391,13 +372,13 @@ public class RiepilogoAgenteView extends JPanel {
 		bottoneSalvaModifiche = new JButton("");
 		bottoneSalvaModifiche.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
 		pannelloBottoni.add(bottoneSalvaModifiche);
-		//bottoneSalvaModifiche.setToolTipText(Costanti.TIP_SALVA_MOD_AGENTE);
+		bottoneSalvaModifiche.setToolTipText(Costanti.TIP_SALVA_MOD_AGENTE);
 		bottoneSalvaModifiche.setIcon(new ImageIcon(DettaglioAgenteView.class.getResource(Costanti.SALVA_MOD_AGENTE_ICON)));
 		
 		bottoneAnnullaModifica = new JButton("");
 		bottoneAnnullaModifica.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
 		pannelloBottoni.add(bottoneAnnullaModifica);
-		//bottoneAnnullaModifica.setToolTipText(Costanti.TIP_ANNULLA_MOD_AGENTE);
+		bottoneAnnullaModifica.setToolTipText(Costanti.TIP_ANNULLA_MOD_AGENTE);
 		bottoneAnnullaModifica.setIcon(new ImageIcon(DettaglioAgenteView.class.getResource(Costanti.ANNULLA_MOD_AGENTE_ICON)));
 		
 
@@ -411,7 +392,7 @@ public class RiepilogoAgenteView extends JPanel {
 		bottoneCancellaAgente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 	
-//				Ctrl_gestisciAgente.getInstance().cancellaAgente((String)TFidAgente.getText());
+				Ctrl_gestisciAgente.getInstance().cancellaAgente((String)TFidAgente.getText());
 			}
 		});
 		
@@ -419,7 +400,7 @@ public class RiepilogoAgenteView extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				try {
-					Ctrl_gestisciAgente.getInstance().modificaAgente(Integer.parseInt(TFidAgente.getText()),(String)TFnome.getText(), (String)TFcognome.getText(), Integer.parseInt(TFlivello.getText()), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFcell.getText(), (String)TFusername.getText(), (String)TFpassword.getText());
+					Ctrl_gestisciAgente.getInstance().modificaAgente(Integer.parseInt(TFidAgente.getText()),(String)TFnome.getText(), (String)TFcognome.getText(), (String)TFlivello.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFcell.getText(), (String)TFusername.getText(), (String)TFpassword.getText());
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -430,13 +411,12 @@ public class RiepilogoAgenteView extends JPanel {
 		bottoneAnnullaModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 	
-				
-//				try {
-//					Ctrl_gestisciCliente.getInstance().annullaModificheCliente(TFidCliente.getText());
-//				} 
-//				catch (PersistentException e) {
-//					e.printStackTrace();
-//				}
+				try {
+					Ctrl_gestisciAgente.getInstance().annullaModificheAgente(TFidAgente.getText());
+				} 
+				catch (PersistentException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		

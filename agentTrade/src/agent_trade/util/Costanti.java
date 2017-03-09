@@ -23,6 +23,7 @@ public final class Costanti {
 	public final static String TITOLO_LOGIN = "Agent Trade | Login ";
 	public final static String TITOLO_PRIMARY_VIEW = "Agent Trade";
 	public final static String TITOLO_DIALOG_CLOSE = "Agent Trade | Exit  ";
+	
 	public final static String TITOLO_CERCA_CLIENTE = "Cerca Cliente";
 	public final static String TITOLO_CANCELLA_CLIENTE = "Attenzione!";
 	public final static String TITOLO_NUOVO_CLIENTE = "Nuova scheda cliente";
@@ -31,6 +32,7 @@ public final class Costanti {
 	public final static String TITOLO_NUOVO_AGENTE = "Nuova scheda agente";
 	public final static String TITOLO_SCHEDA_AGENTE = "Scheda Agente";
 	public final static String TITOLO_CERCA_AGENTE = "Cerca Agente ";
+	public final static String TITOLO_CANCELLA_AGENTE = "Attenzione!";
 
 
 	/**
@@ -46,6 +48,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_CLIENTE_NON_TROVATO = "Cliente non trovato";
 	public final static String MESSAGGIO_CANCELLA_CLIENTE = "Sei sicuro di voler cancellare il cliente corrente?";
 	public final static String MESSAGGIO_AGENTE_NON_TROVATO = "Agente non trovato";
+	public final static String MESSAGGIO_CANCELLA_AGENTE = "Sei sicuro di voler cancellare l'agente corrente?";
 
 	
 	
@@ -85,7 +88,6 @@ public final class Costanti {
 	public static final String AGENTE_ICON= "/agent_trade/ui/img/cliente.png";
 	public static final String NUOVO_AGENTE_ICON= "/agent_trade/ui/img/new_user.png";
 	public static final String CERCA_AGENTE_ICON= "/agent_trade/ui/img/search.png";
-
 	public static final String SALVA_AGENTI_ICON = "/agent_trade/ui/img/save_32.png";
 	public static final String COMUNICAZIONE_AGENTE_ICON = "/agent_trade/ui/img/send-icon.png";
 	public static final String MOD_AGENTE_ICON = "/agent_trade/ui/img/settings_client.png";
@@ -120,7 +122,11 @@ public final class Costanti {
 	public final static String REG_EX_CELLULARE = "[0-9]{10}";
 	public final static String REG_EX_FAX = "[0-9]{10}";
 	public final static String REG_EX_EMAIL = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}";
-		
+	public final static String REG_EX_LIVELLO = "[1-5]{1}";
+	public final static String REG_EX_COGNOME_AGENTE = "[a-zA-Z'\\s]+";
+	public final static String REG_EX_USERNAME = "[a-zA-Z0-9'\\s]{3,10}";
+	public final static String REG_EX_PASSWORD = "[a-zA-Z0-9'\\s]{3,10}";
+	
 	/**
 	 * Dimensioni finestre
 	 */
@@ -133,7 +139,7 @@ public final class Costanti {
 	public final static int MIN_HEIGHT_PRIMARY = 512;
 
 	/**
-	 * Dimensioni contenitori, label e TF nelle view dettaglio/riepilogo cliente
+	 * Dimensioni contenitori, label e TF nelle view dettaglio/riepilogo cliente/agente
 	 */
 	public final static int WIDTH_PANN_CENTRO = 485;
 	public final static int HEIGHT_PANN_CENTRO = 610;
@@ -207,6 +213,7 @@ public final class Costanti {
 
 	public final static String LABEL_ID_AGENTE = "Codice agente";
 	public final static String LABEL_NOME = "Nome";
+	public final static String LABEL_COGNOME_AGENTE = "Cognome";
 	public final static String LABEL_LVL ="Livello";
 	
 	public final static String ROOT_AGENTI= "Agenti";
@@ -244,8 +251,8 @@ public final class Costanti {
 	public final static String TIP_COMUNICAZIONE_CLIENTE = "Invia comunicazione";
 	public final static String TIP_MODIFICA_CLIENTE = "Modifica i dati del cliente";
 	public final static String TIP_CANCELLA_CLIENTE = "Cancella cliente";
-	//public final static String TIP_SALVA_MOD_CLIENTE = "Salva modifiche";
-	//public final static String TIP_ANNULLA_MOD_CLIENTE = "Annulla modifiche";
+	public final static String TIP_SALVA_MOD_CLIENTE = "Salva modifiche";
+	public final static String TIP_ANNULLA_MOD_CLIENTE = "Annulla modifiche";
 	
 	public final static String TIP_NUOVO_AGENTE= "Inserisci un nuovo agente";
 	public final static String TIP_CERCA_AGENTE= "Cerca un agente";
@@ -255,7 +262,8 @@ public final class Costanti {
 	public final static String TIP_COMUNICAZIONE_AGENTE = "Invia comunicazione";
 	public final static String TIP_MODIFICA_AGENTE = "Modifica i dati dell'agente";
 	public final static String TIP_CANCELLA_AGENTE = "Cancella agente";
-
+	public final static String TIP_SALVA_MOD_AGENTE = "Salva modifiche";
+	public final static String TIP_ANNULLA_MOD_AGENTE = "Annulla modifiche";
 	
 	
 	public final static String TIP_NOME = "Non sono ammessi caratteri numerici";

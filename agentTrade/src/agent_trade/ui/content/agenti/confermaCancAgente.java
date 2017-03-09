@@ -1,25 +1,26 @@
-package agent_trade.ui.content.clienti;
+package agent_trade.ui.content.agenti;
 
+import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
-
-import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.util.Costanti;
+import javax.swing.JPanel;
 
 import org.orm.PersistentException;
 
-public class confermaCancCliente extends JDialog {
+import agent_trade.controller.Ctrl_gestisciAgente;
+import agent_trade.util.Costanti;
+
+public class confermaCancAgente extends JDialog{
 	
-	/*attributi di classe*/
+/*attributi di classe*/
 	
 	//private static final long serialVersionUID = 1L;
 	
-	private static confermaCancCliente instance;	
+	private static confermaCancAgente instance;	
 
 	
 	/*attributi privati*/
@@ -32,11 +33,11 @@ public class confermaCancCliente extends JDialog {
 	private JButton okButton;
 	private JButton cancelButton;
 	
-	private String cliente = null; //per tenere traccia del cliente
+	private String agente = null; //per tenere traccia dell'agente
 	
 	/*costruttori*/
 
-	public confermaCancCliente() 
+	public confermaCancAgente() 
 	{
 		setType(Type.UTILITY);
 		setResizable(false);
@@ -44,7 +45,7 @@ public class confermaCancCliente extends JDialog {
 		setAlwaysOnTop(true);
 		
 		
-		setTitle(Costanti.TITOLO_CANCELLA_CLIENTE);
+		setTitle(Costanti.TITOLO_CANCELLA_AGENTE);
 		setBounds(350, 200, 340, 151);
 		getContentPane().setLayout(null);
 		
@@ -53,7 +54,7 @@ public class confermaCancCliente extends JDialog {
 		getContentPane().add(contentPane);
 		contentPane.setLayout(null);
 		
-		LabelTesto = new JLabel(Costanti.MESSAGGIO_CANCELLA_CLIENTE);
+		LabelTesto = new JLabel(Costanti.MESSAGGIO_CANCELLA_AGENTE);
 		LabelTesto.setBounds(43, 11, 241, 40);
 		contentPane.add(LabelTesto);
 		
@@ -73,7 +74,7 @@ public class confermaCancCliente extends JDialog {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					Ctrl_gestisciCliente.getInstance().postConfermaCancCliente(cliente);
+					Ctrl_gestisciAgente.getInstance().postConfermaCancAgente(agente);
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -83,7 +84,7 @@ public class confermaCancCliente extends JDialog {
 	
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().notConfermaCancCliente();
+				Ctrl_gestisciAgente.getInstance().notConfermaCancAgente();
 			}
 		});
 		 
@@ -91,9 +92,9 @@ public class confermaCancCliente extends JDialog {
 	
 	/*metodi di classe*/
 	
-	public static confermaCancCliente getInstance(){
+	public static confermaCancAgente getInstance(){
 		if (instance==null)
-			instance = new confermaCancCliente();
+			instance = new confermaCancAgente();
 		return instance;	 
 	}
 	
@@ -106,12 +107,12 @@ public class confermaCancCliente extends JDialog {
 		instance=null;	 
 	}
 	
-	public String getCliente(){
-		return cliente;
+	public String getAgente(){
+		return agente;
 	}
 	
-	public void setCliente(String id){
-		 cliente=id;
+	public void setAgente(String id){
+		 agente=id;
 	}
-	
+
 }

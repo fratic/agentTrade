@@ -20,5 +20,6 @@ License Type: Academic
 		<property name="cell" column="Cell" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="email" column="Email" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="cap" column="Cap" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="attivo" column="Attivo" type="integer" length="11" not-null="false" lazy="false"/>
 	</class>
 </hibernate-mapping>

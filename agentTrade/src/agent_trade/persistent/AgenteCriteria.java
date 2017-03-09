@@ -32,6 +32,7 @@ public class AgenteCriteria extends AbstractORMCriteria {
 	public final StringExpression cell;
 	public final StringExpression email;
 	public final StringExpression cap;
+	public final IntegerExpression attivo;
 	
 	public AgenteCriteria(Criteria criteria) {
 		super(criteria);
@@ -46,6 +47,7 @@ public class AgenteCriteria extends AbstractORMCriteria {
 		cell = new StringExpression("cell", this);
 		email = new StringExpression("email", this);
 		cap = new StringExpression("cap", this);
+		attivo = new IntegerExpression("attivo", this);
 	}
 	
 	public AgenteCriteria(PersistentSession session) {
