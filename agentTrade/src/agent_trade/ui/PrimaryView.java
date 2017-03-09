@@ -586,12 +586,12 @@ public class PrimaryView extends JFrame
 		((RiepilogoClienteView) riep_cliente).setVisibleBtnModifiche(b);
 	}
 	
-	//modificato il nome della funzione interna
+	//modificato il nome della funzione interna - - relativo al cliente
 	public void disattivaSalvaModifiche(boolean b){
 		((RiepilogoClienteView) riep_cliente).setVisibleBtnSalvaModifiche(b);
 	}
 	
-	//modificato il nome della funzione interna
+	//modificato il nome della funzione interna - relativo al cliente
 	public void disattivaAnnullaModifiche(boolean b){
 		((RiepilogoClienteView) riep_cliente).setVisibleBtnAnnullaModifiche(b);
 	}
@@ -758,8 +758,56 @@ public class PrimaryView extends JFrame
 		((DettaglioAgenteView) dettaglio_agente).resetNewAgente();
 	}
 	
+	public void resetAgente() {
+		((RiepilogoAgenteView) riep_agente).resetCampiModifica();
+	}
+	
 	public void setEnableCercaAgente(boolean b){
 		bottoneCercaAgente.setEnabled(b);
+	}
+	
+	public void setEnableNewAgente(boolean b){
+		bottoneNuovoAgente.setEnabled(b);
+	}
+	
+	//sblocca i campi per la modifica agente
+	public void setModificheAgente(boolean b) {
+		((RiepilogoAgenteView) riep_agente).setTFeditable(b);	
+	}
+	
+	//rende visibili i tooltip solo quando si modifica il cliente
+	public void setVisibleToolTipAgente(){
+		((RiepilogoAgenteView) riep_agente).abilitaToolTip();
+	}
+			
+	//rende invisibili i tooltip solo quando si modifica il cliente
+	public void setInvisibleToolTipAgente(){
+		((RiepilogoAgenteView) riep_agente).disabilitaToolTip();
+	}	
+	
+	//blocca e sblocca bottoni relativi al tab agente
+	public void disattivaModificaAgente(boolean b){
+		((RiepilogoAgenteView) riep_agente).setVisibleBtnModifiche(b);
+	}
+		
+	// relativo all'agente
+	public void disattivaSalvaModificheAgente(boolean b){
+		((RiepilogoAgenteView) riep_agente).setVisibleBtnSalvaModifiche(b);
+	}
+			
+	//relativo all'agente
+	public void disattivaAnnullaModificheAgente(boolean b){
+		((RiepilogoAgenteView) riep_agente).setVisibleBtnAnnullaModifiche(b);
+	}
+	
+	//relativo all'agente
+	public void disattivaCancellaAgente(boolean b){
+		((RiepilogoAgenteView) riep_agente).setVisibleBtnCancella(b);
+	}
+	
+	//relativo all'agente
+	public void disattivaInviaPostaAgente(boolean b){
+		((RiepilogoAgenteView) riep_agente).setVisibleBtnInviaPosta(b);
 	}
 	
 	public void setVisibleErroreRiepAgente(boolean b){

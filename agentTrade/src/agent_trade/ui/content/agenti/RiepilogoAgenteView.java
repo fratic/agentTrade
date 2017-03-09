@@ -19,8 +19,11 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
+import org.orm.PersistentException;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
+import agent_trade.controller.Ctrl_gestisciAgente;
 import agent_trade.util.Costanti;
 
 public class RiepilogoAgenteView extends JPanel {
@@ -401,26 +404,26 @@ public class RiepilogoAgenteView extends JPanel {
 		
 		bottoneModificaAgente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				Ctrl_gestisciCliente.getInstance().abilitaModifica();
+				Ctrl_gestisciAgente.getInstance().abilitaModifica();
 			}
 		});
 		
 		bottoneCancellaAgente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 	
-//				Ctrl_gestisciCliente.getInstance().cancellaCliente((String)TFidCliente.getText());
+//				Ctrl_gestisciAgente.getInstance().cancellaAgente((String)TFidAgente.getText());
 			}
 		});
 		
 		bottoneSalvaModifiche.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-//				try {
-//					Ctrl_gestisciCliente.getInstance().modificaCliente(Integer.parseInt(TFidCliente.getText()),(String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFcell.getText(), (String)TFfax.getText());
-//				} 
-//				catch (PersistentException e) {
-//					e.printStackTrace();
-//				}
+				try {
+					Ctrl_gestisciAgente.getInstance().modificaAgente(Integer.parseInt(TFidAgente.getText()),(String)TFnome.getText(), (String)TFcognome.getText(), Integer.parseInt(TFlivello.getText()), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFcell.getText(), (String)TFusername.getText(), (String)TFpassword.getText());
+				} 
+				catch (PersistentException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		

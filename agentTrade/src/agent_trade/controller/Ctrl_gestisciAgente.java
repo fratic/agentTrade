@@ -4,7 +4,9 @@ import org.orm.PersistentException;
 
 import agent_trade.model.M_Agente;
 import agent_trade.ui.PrimaryView;
+import agent_trade.ui.content.agenti.AlberoAgenti;
 import agent_trade.ui.content.agenti.Ricerca_agente;
+import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.util.Costanti;
 
 
@@ -63,16 +65,41 @@ public class Ctrl_gestisciAgente {
 			
 	}
 	
-
-	
-	
-	public void modificaCliente(int id, String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax) throws PersistentException
+	public void modificaAgente(int id, String nome, String cognome, int livello, String citta, String cap, String indirizzo, String email, String cellulare, String username, String password) throws PersistentException
 	{
+		M_Agente agente = M_Agente.cercaAgenteRemoto(id);
 		
+		agente.setNome(nome);
+		agente.setCognome(cognome);
+		agente.setLivello(livello);
+		agente.setIndirizzo(indirizzo);
+		agente.setEmail(email);
+		agente.setCitta(citta);
+		agente.setCap(cap);
+		agente.setCell(cellulare);
+		agente.setUsername(username);
+		agente.setPassword(password);
+		
+		M_Agente.aggiornaAgenteRemoto(agente);
+						
+		PrimaryView.getInstance().resetAgente();
+		PrimaryView.getInstance().disattivaModificaAgente(true);
+		PrimaryView.getInstance().disattivaSalvaModificheAgente(false);
+		PrimaryView.getInstance().disattivaCancellaAgente(true);
+		PrimaryView.getInstance().disattivaAnnullaModificheAgente(false);
+		PrimaryView.getInstance().setEnableTabPreventivo(true);
+		PrimaryView.getInstance().setEnableTabCatalogo(true);
+		PrimaryView.getInstance().setEnableNewAgente(true);
+		PrimaryView.getInstance().setEnableCercaAgente(true);
+		PrimaryView.getInstance().disattivaInviaPostaAgente(true);
+		PrimaryView.getInstance().setInvisibleToolTipAgente();
+//		AlberoAgenti.updateNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+//		AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+//		AlberoAgenti.abilitaAlbero();
 	}
 	
 
-	public void cancellaCliente(String id){
+	public void cancellaAgente(String id){
 		
 	}
 
@@ -150,11 +177,28 @@ public class Ctrl_gestisciAgente {
 		
 		PrimaryView.initRiepilogoAgenteView();
 		PrimaryView.getInstance().setSchedaAgente(""+agente.getIdAgente(), agente.getCognome(), agente.getNome(), ""+agente.getLivello(), agente.getCitta(), agente.getCap(), agente.getIndirizzo(), agente.getEmail(), agente.getCell(), agente.getUsername(), agente.getPassword());
-		PrimaryView.getInstance().disattivaSalvaModifiche(false);
-		PrimaryView.getInstance().disattivaAnnullaModifiche(false);
+		PrimaryView.getInstance().disattivaSalvaModificheAgente(false);
+		PrimaryView.getInstance().disattivaAnnullaModificheAgente(false);
 		PrimaryView.getInstance().setVisibleErroreRiepAgente(false);
 //		AlberoClienti.abilitaAlbero();
 //		AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
+	}
+	
+	public void abilitaModifica()
+	{
+		PrimaryView.getInstance().setModificheAgente(true);
+		PrimaryView.getInstance().disattivaModificaAgente(false);
+		PrimaryView.getInstance().disattivaCancellaAgente(false);
+		PrimaryView.getInstance().disattivaInviaPostaAgente(false);
+		PrimaryView.getInstance().disattivaSalvaModificheAgente(true);
+		PrimaryView.getInstance().disattivaAnnullaModificheAgente(true);
+		PrimaryView.getInstance().setEnableTabCatalogo(false);
+		PrimaryView.getInstance().setEnableTabPreventivo(false);
+		PrimaryView.getInstance().setVisibleErroreRiepAgente(false);
+		PrimaryView.getInstance().setEnableNewAgente(false);
+		PrimaryView.getInstance().setEnableCercaAgente(false);
+		PrimaryView.getInstance().setVisibleToolTipAgente();
+		//AlberoAgenti.disabilitaAlbero();
 	}
 
 	

@@ -124,6 +124,20 @@ public class M_Agente {
 		}
 	}
 	
+	public static void aggiornaAgenteRemoto(M_Agente a)throws PersistentException{
+		PersistentTransaction t =  AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+		try {
+			 AgentTradeMandantePersistentManager.instance().getSession().update(a);
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
 	public static M_Agente[] caricaAgentiRemoto() throws PersistentException {
 		
 		Rem_AgenteCriteria criteriaAgente;
