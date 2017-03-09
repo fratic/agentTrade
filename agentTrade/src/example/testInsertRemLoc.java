@@ -12,7 +12,7 @@ public class testInsertRemLoc {
 	public static void main(String[] args) throws PersistentException {
 
 		
-		M_Agente a= new M_Agente("marco", "civoli", "asd", "mark", "sgr", "via foggia 217", 2, "3214565789", "fratic@asd.it", "74152");
+		M_Agente a= new M_Agente("marcell", "one", "asd", "marcel", "sgr", "via foggia 217", 5, "3214565789", "fratic@asd.it", "74152");
 
 		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
 		try 

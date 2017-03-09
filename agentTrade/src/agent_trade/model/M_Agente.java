@@ -18,6 +18,7 @@ import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
 import agent_trade.persistent.AgentTradeMandantePersistentManager;
+import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.AgenteCriteria;
 import agent_trade.persistent.Rem_AgenteCriteria;
 
@@ -110,6 +111,18 @@ public class M_Agente {
 		return AgenteCriteria.uniqueM_Agente();
 	}
 	
+	public static void salvaAgente(M_Agente a)throws PersistentException{
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradePersistentManager.instance().getSession().save(a);
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+	}
 	
 	public static void salvaAgenteRemoto(M_Agente a)throws PersistentException{
 		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
