@@ -8,13 +8,14 @@ import org.orm.PersistentException;
 import agent_trade.external_system.SystemDaemon;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
+import agent_trade.model.M_Mandante;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Prodotto;
-import agent_trade.ui.LoginView;
-import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.prodotti.ProdottiView;
+import agent_trade.ui.login.LoginViewFactory;
+import agent_trade.ui.primaryView.PrimaryViewFactory;
 import agent_trade.util.Costanti;
 
 
@@ -64,6 +65,7 @@ public class Ctrl_System {
 	{
 		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
 
+		//probabilmente queste cose non vanno fatte qui, oppure bisogna chiedere ad una factory
 		initAlberoClienti();
 
 		initProdotti();
@@ -79,7 +81,7 @@ public class Ctrl_System {
 	 */
 	
 
-	public void login(String username, String psw) throws PersistentException  
+	public void loginAgente(String username, String psw) throws PersistentException  
 	{					
 
 			M_Agente agLoad =null;
@@ -96,30 +98,63 @@ public class Ctrl_System {
 	
 				if (agLoad.getUsername().equals(username) & agLoad.getPassword().equals(psw))
 				{
-					PrimaryView.getInstance().setVisible(true);
-					LoginView.getInstance().setVisible(false);
+					PrimaryViewFactory.getInstance().setVisible(true);
+					LoginViewFactory.getInstance().setVisible(false);
 					instanceAgenteLog=agLoad;
 					
 					inizializzaSistema();
 					
 				}
 					else{
-					LoginView.getInstance().setMex(Costanti.MESSAGGIO_NO_LOGIN);
-					LoginView.getInstance().enableAccedi();
+						LoginViewFactory.getInstance().setMex(Costanti.MESSAGGIO_NO_LOGIN);
+						LoginViewFactory.getInstance().enableAccedi();
 				}
 			}
 			else{
-				LoginView.getInstance().setMex("Sincronizzazione database centrale");
+				LoginViewFactory.getInstance().setMex("Sincronizzazione database centrale");
 
 				if (SystemDaemon.getInstance().sincronizzaAgente(username))
-					login(username,psw);
+					loginAgente(username,psw);
 				else{
-					LoginView.getInstance().setMex(Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
-					LoginView.getInstance().enableAccedi();
+					LoginViewFactory.getInstance().setMex(Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
+					LoginViewFactory.getInstance().enableAccedi();
 				}
 
 			}	
 	}
+	
+	
+	public void loginMandante(String username, String psw) throws PersistentException  {
+	
+		//prima di tutto va verificata la connesione. se ok si procede, altrimenti mex errore
+		
+		
+		M_Mandante mandante = M_Mandante.caricaMandante(username);
+			
+		
+		//bisogna far si che lo username sia univoco all'interno del db
+		if (mandante!=null){
+
+			if (mandante.getUsername().equals(username) & mandante.getPassword().equals(psw))
+			{
+				PrimaryViewFactory.getInstance().setVisible(true);
+				LoginViewFactory.getInstance().setVisible(false);
+				
+				inizializzaSistema();
+				
+			}
+				else{
+					LoginViewFactory.getInstance().setMex(Costanti.MESSAGGIO_NO_LOGIN);
+					LoginViewFactory.getInstance().enableAccedi();
+			}
+		}
+		else{
+				LoginViewFactory.getInstance().setMex(Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
+				LoginViewFactory.getInstance().enableAccedi();
+			}
+
+		}	
+
 	
 	
 	public void initAlberoClienti() throws PersistentException{

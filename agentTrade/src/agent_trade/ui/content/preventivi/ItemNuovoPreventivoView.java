@@ -210,7 +210,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		int id = p.getIdProdotto();
 		String nome = p.getNome();
 		String categoria = p.getCategoria();
-		int quant = 1;
+		int quant = prev_item.getQuantita();
 		String prezzo = Float.toString(p.getPrezzo()); 
 		String sconto = "";
 		String parziale = Float.toString(prev_item.calcolaParziale());

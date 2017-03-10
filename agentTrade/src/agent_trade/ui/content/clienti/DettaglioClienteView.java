@@ -213,16 +213,14 @@
 
 package agent_trade.ui.content.clienti;
 
-import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.SystemColor;
-import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
@@ -231,29 +229,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+
+import org.orm.PersistentException;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.ui.PrimaryView;
 import agent_trade.util.Costanti;
-
-import java.awt.Color;
-import java.awt.SystemColor;
-import java.awt.Toolkit;
-
-import javax.swing.DropMode;
-import javax.swing.SwingConstants;
-import javax.swing.JInternalFrame;
-
-import org.orm.PersistentException;
-
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Rectangle;
 
 public class DettaglioClienteView extends JPanel {
 

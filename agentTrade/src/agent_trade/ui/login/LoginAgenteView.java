@@ -1,8 +1,7 @@
-package agent_trade.ui;
+package agent_trade.ui.login;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -23,33 +22,22 @@ import org.orm.PersistentException;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_System;
+import agent_trade.ui.SplashScreen;
 import agent_trade.util.Costanti;
 
-public class LoginView extends JFrame {
+public class LoginAgenteView extends LoginViewFactory {
 
 	/*attributi di classe*/
 	
-	private static LoginView instance;
+	private static LoginViewFactory instance;
 
 	
 	/*attributi privati*/
 
-	private JPanel contentPane;
-	private JLayeredPane layeredPane;
-	
-	private JTextField username;
-	private JPasswordField password; 
-	
-	private JLabel mex;
-	private JLabel labelUser;
-	private JLabel labelPass;
-	private JLabel labelInfo;
-
-	private JButton buttoneAccedi;
 	
 	/*costruttori*/
 	
-	private LoginView() {
+	private LoginAgenteView() {
 		
 		setResizable(false);
 		
@@ -108,7 +96,7 @@ public class LoginView extends JFrame {
 
 				disableAccedi();
 				try {
-					Ctrl_System.getInstance().login((String)username.getText(), (String)password.getText());
+					Ctrl_System.getInstance().loginAgente((String)username.getText(), (String)password.getText());
 				}
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -120,34 +108,14 @@ public class LoginView extends JFrame {
 
 	/*metodi di classe*/
 	
-	public static LoginView getInstance(){
+	public static LoginViewFactory getInstance(){
 		if(instance == null)
-			instance = new LoginView();
+			instance = new LoginAgenteView();
 		
 		return instance;
 	}
 
 	/*metodi privati*/
 	/*metodi pubblici*/
-	
-	public JTextField getUsername() {
-		return username;
-	}
-	public void setUsername(String user) {
-		username.setText(user);
-	}
-	public void setMex(String m){
-		mex.setText(m);
-	}
-	
-	public void disableAccedi(){
-		buttoneAccedi.setEnabled(false);
-		contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-	}
-	
-	public void enableAccedi(){
-		buttoneAccedi.setEnabled(true);
-		contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-	}
 	
 }

@@ -6,13 +6,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import agent_trade.ui.LoginView;
 import agent_trade.ui.SplashScreen;
-
-/****NON TOCCARE***/
+import agent_trade.ui.login.LoginViewFactory;
+import agent_trade.util.Costanti;
 import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaBlackEyeLookAndFeel;
-import de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel;
 import de.javasoft.plaf.synthetica.SyntheticaBlueSteelLookAndFeel;
 import de.javasoft.plaf.synthetica.SyntheticaPlainLookAndFeel;
 import de.javasoft.plaf.synthetica.SyntheticaSimple2DLookAndFeel;
@@ -31,34 +28,62 @@ public class Main {
 								
 				try {
 					Thread.sleep(1500);
-										
-					/***non toccare***/
-					/*******Per ora lasciare*********/
-					
-//					UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
-//					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
-//				    UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
-//	    		    UIManager.setLookAndFeel(new SyntheticaBlueSteelLookAndFeel());
-				    UIManager.setLookAndFeel(new SyntheticaWhiteVisionLookAndFeel());
-//					UIManager.setLookAndFeel(new SyntheticaPlainLookAndFeel());
-//					splash.setVisible(false);
-					/****************/
-
-				    LoginView.getInstance().setVisible(true);
+													
+					setLook();
+				    LoginViewFactory.getInstance().setVisible(true);
 					splash.dispose();
 					
 			    } 
 				catch (InterruptedException e) {
 					e.printStackTrace();
-				} 
-				catch (UnsupportedLookAndFeelException e) {
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				} catch (InstantiationException e) {
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				} catch (UnsupportedLookAndFeelException e) {
+					e.printStackTrace();
+				} catch (ParseException e) {
 					e.printStackTrace();
 				} 
-				catch (ParseException e) {
-					e.printStackTrace();
-				}
 			}
 		});
 	}
+	
+	
+	public static void setLook() throws UnsupportedLookAndFeelException, ParseException, ClassNotFoundException, InstantiationException, IllegalAccessException{
+		
+		
+		switch (Costanti.Look_Feel) {
+			case 1:{
+				UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
+				break;
+			}
+			case 2:{
+				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+				break;
+			}
+			case 3:{
+			    UIManager.setLookAndFeel(new SyntheticaAluOxideLookAndFeel());
+				break;
+			}
+			case 4:{
+			    UIManager.setLookAndFeel(new SyntheticaBlueSteelLookAndFeel());
+				break;
+			}
+			case 5:{
+			    UIManager.setLookAndFeel(new SyntheticaWhiteVisionLookAndFeel());
+				break;
+			}
+			case 6:{
+				UIManager.setLookAndFeel(new SyntheticaPlainLookAndFeel());
+				break;
+			}
+
+		}
+		
+	}
+	
+	
 }

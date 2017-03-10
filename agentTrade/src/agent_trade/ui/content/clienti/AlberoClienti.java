@@ -9,7 +9,6 @@ import javax.swing.JTree;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
-import javax.swing.plaf.basic.BasicTreeUI.TreeSelectionHandler;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
@@ -21,7 +20,6 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.ui.PrimaryView;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 
 public class AlberoClienti extends JPanel {

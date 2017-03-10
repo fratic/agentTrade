@@ -15,15 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
-import javax.xml.crypto.Data;
 
 import org.orm.PersistentException;
 
-import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.ui.PrimaryView;
-import agent_trade.util.Costanti;
-
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
+import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.ui.primaryView.PrimaryViewFactory;
+import agent_trade.util.Costanti;
 
 public class IntestazioneNuovoPreventivoView extends JPanel {
 
@@ -152,7 +151,7 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			PrimaryView.getInstance().selectTabCatalogo();		
+			PrimaryViewFactory.getInstance().selectTabCatalogo();		
 			}
 		});
 		

@@ -3,7 +3,6 @@ package agent_trade.external_system;
 import org.orm.PersistentException;
 
 import agent_trade.model.M_Agente;
-import agent_trade.ui.LoginView;
 
 public class SystemDaemon {
 

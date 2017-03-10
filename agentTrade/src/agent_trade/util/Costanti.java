@@ -7,6 +7,31 @@ package agent_trade.util;
 
 public final class Costanti {
 	
+	
+	
+	/**
+	 * Versione software
+	 */
+	
+//	public final static String  version = "agente";
+	public final static String  version = "mandante";
+
+	public final static String  agente = "agente";
+	public final static String  mandante = "mandante";
+
+
+	/**
+	 * Look & Feel
+	 */
+	
+//	public final static int  Look_Feel = 1;
+//	public final static int  Look_Feel = 2;
+//	public final static int  Look_Feel = 3;
+//	public final static int  Look_Feel = 4;
+	public final static int  Look_Feel = 5;
+//	public final static int  Look_Feel = 6;
+	
+	
 	/**
 	 * Formato della Data
 	 */
@@ -21,7 +46,13 @@ public final class Costanti {
 	 * Titoli delle Schermate
 	 */
 	public final static String TITOLO_LOGIN = "Agent Trade | Login ";
+	public final static String TITOLO_MANDANTE_LOGIN = "Agent Trade - Versione Mandante| Login ";
+
+	
 	public final static String TITOLO_PRIMARY_VIEW = "Agent Trade";
+	public final static String TITOLO_MANDANTE_PRIMARY_VIEW = "Agent Trade - Versione Mandante";
+
+	
 	public final static String TITOLO_DIALOG_CLOSE = "Agent Trade | Exit  ";
 	
 	public final static String TITOLO_CERCA_CLIENTE = "Cerca Cliente";

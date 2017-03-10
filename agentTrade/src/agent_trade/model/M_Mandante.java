@@ -8,6 +8,11 @@ package agent_trade.model;
  * Modifying its content may cause the program not work, or your work may lost.
  */
 
+import org.orm.PersistentException;
+
+import agent_trade.persistent.AgenteCriteria;
+import agent_trade.persistent.Rem_MandanteCriteria;
+
 /**
  * Licensee: Universita degli Studi dell'Aquila
  * License Type: Academic
@@ -25,6 +30,14 @@ public class M_Mandante {
 	private String username;
 	
 	private String password;
+	
+	
+	public static M_Mandante caricaMandante(String username) throws PersistentException{
+		Rem_MandanteCriteria MandanteCriteria = new Rem_MandanteCriteria();
+		MandanteCriteria.username.eq(username);
+		return MandanteCriteria.uniqueM_Mandante();
+	}
+	
 	
 	private void setIdMandante(int value) {
 		this.idMandante = value;
