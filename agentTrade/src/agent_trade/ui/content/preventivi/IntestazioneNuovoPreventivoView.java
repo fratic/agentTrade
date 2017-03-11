@@ -21,7 +21,7 @@ import org.orm.PersistentException;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.ui.primaryView.PrimaryViewFactory;
+import agent_trade.ui.primaryView.PrimaryAgenteView;
 import agent_trade.util.Costanti;
 
 public class IntestazioneNuovoPreventivoView extends JPanel {
@@ -151,7 +151,7 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			PrimaryViewFactory.getInstance().selectTabCatalogo();		
+			PrimaryAgenteView.getInstance().selectTabCatalogo();		
 			}
 		});
 		

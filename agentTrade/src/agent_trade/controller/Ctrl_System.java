@@ -140,7 +140,7 @@ public class Ctrl_System {
 				PrimaryViewFactory.getInstance().setVisible(true);
 				LoginViewFactory.getInstance().setVisible(false);
 				
-				inizializzaSistema();
+//				inizializzaSistema();
 				
 			}
 				else{

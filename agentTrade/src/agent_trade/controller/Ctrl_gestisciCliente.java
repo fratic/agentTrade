@@ -14,7 +14,7 @@ import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.Ricerca_cliente;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
 import agent_trade.ui.content.clienti.confermaCancCliente;
-import agent_trade.ui.primaryView.PrimaryViewFactory;
+import agent_trade.ui.primaryView.PrimaryAgenteView;
 import agent_trade.util.Costanti;
 
 public class Ctrl_gestisciCliente {
@@ -167,20 +167,20 @@ public class Ctrl_gestisciCliente {
 	public void recuperaCliente(int idCliente) throws PersistentException
 	{	
 	
-			PrimaryViewFactory.getInstance().resetPannelloCentraleCliente();
+			PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 			
 			M_Cliente cliente = M_Cliente.cercaCliente(idCliente);
 			
 			Ricerca_cliente.getInstance().dispose();
 			Ricerca_cliente.cancInstanza();
 			
-			PrimaryViewFactory.initRiepilogoClienteView();
-			PrimaryViewFactory.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCell(),cliente.getFax(), cliente.getAgenteAssociato());
-			PrimaryViewFactory.getInstance().disattivaSalvaModifiche(false);
-			PrimaryViewFactory.getInstance().disattivaAnnullaModifiche(false);
-			PrimaryViewFactory.getInstance().setEnableTabPreventivo(true);
-			PrimaryViewFactory.getInstance().setEnableTabCatalogo(true);
-			PrimaryViewFactory.getInstance().setVisibleErroreRiepCliente(false);
+			PrimaryAgenteView.initRiepilogoClienteView();
+			PrimaryAgenteView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCell(),cliente.getFax(), cliente.getAgenteAssociato());
+			PrimaryAgenteView.getInstance().disattivaSalvaModifiche(false);
+			PrimaryAgenteView.getInstance().disattivaAnnullaModifiche(false);
+			PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);
+			PrimaryAgenteView.getInstance().setEnableTabCatalogo(true);
+			PrimaryAgenteView.getInstance().setVisibleErroreRiepCliente(false);
 			AlberoClienti.abilitaAlbero();
 			AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 	}
@@ -209,8 +209,8 @@ public class Ctrl_gestisciCliente {
 			
 			M_Cliente.salvaCliente(cliente);
 
-			PrimaryViewFactory.getInstance().resetNuovoCliente();
-			PrimaryViewFactory.getInstance().resetPannelloCentraleCliente();
+			PrimaryAgenteView.getInstance().resetNuovoCliente();
+			PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 				
 			int id = M_Cliente.getMaxId();
 			recuperaCliente(id);
@@ -219,13 +219,13 @@ public class Ctrl_gestisciCliente {
 			AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 			AlberoClienti.abilitaAlbero();
 			
-			PrimaryViewFactory.getInstance().setEnableTabPreventivo(true);
-			PrimaryViewFactory.getInstance().setEnableTabCatalogo(true);
-			PrimaryViewFactory.getInstance().setEnableCercaCliente(true);
+			PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);
+			PrimaryAgenteView.getInstance().setEnableTabCatalogo(true);
+			PrimaryAgenteView.getInstance().setEnableCercaCliente(true);
 			
 		}
 		else{
-			PrimaryViewFactory.getInstance().setVisibleErroreNuovoCliente(true);
+			PrimaryAgenteView.getInstance().setVisibleErroreNuovoCliente(true);
 			DettaglioClienteView.getInstance().setErrore(errore);
 		}
 	}
@@ -254,24 +254,24 @@ public class Ctrl_gestisciCliente {
 			
 			M_Cliente.aggiornaCliente(cliente);
 							
-			PrimaryViewFactory.getInstance().resetCliente();
-			PrimaryViewFactory.getInstance().disattivaModifica(true);
-			PrimaryViewFactory.getInstance().disattivaSalvaModifiche(false);
-			PrimaryViewFactory.getInstance().disattivaCancella(true);
-			PrimaryViewFactory.getInstance().disattivaAnnullaModifiche(false);
-			PrimaryViewFactory.getInstance().setEnableTabPreventivo(true);
-			PrimaryViewFactory.getInstance().setEnableTabCatalogo(true);
-			PrimaryViewFactory.getInstance().setEnableNewCliente(true);
-			PrimaryViewFactory.getInstance().setEnableCercaCliente(true);
-			PrimaryViewFactory.getInstance().disattivaInviaPosta(true);
-			PrimaryViewFactory.getInstance().setInvisibleToolTip();
+			PrimaryAgenteView.getInstance().resetCliente();
+			PrimaryAgenteView.getInstance().disattivaModifica(true);
+			PrimaryAgenteView.getInstance().disattivaSalvaModifiche(false);
+			PrimaryAgenteView.getInstance().disattivaCancella(true);
+			PrimaryAgenteView.getInstance().disattivaAnnullaModifiche(false);
+			PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);
+			PrimaryAgenteView.getInstance().setEnableTabCatalogo(true);
+			PrimaryAgenteView.getInstance().setEnableNewCliente(true);
+			PrimaryAgenteView.getInstance().setEnableCercaCliente(true);
+			PrimaryAgenteView.getInstance().disattivaInviaPosta(true);
+			PrimaryAgenteView.getInstance().setInvisibleToolTip();
 			AlberoClienti.updateNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 			AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 			AlberoClienti.abilitaAlbero();
 								
 		}
 		else{
-			PrimaryViewFactory.getInstance().setVisibleErroreRiepCliente(true);
+			PrimaryAgenteView.getInstance().setVisibleErroreRiepCliente(true);
 			RiepilogoClienteView.getInstance().setErrore(errore);
 		}
 	}
@@ -299,37 +299,37 @@ public class Ctrl_gestisciCliente {
 	
 	public void newCliente()
 	{	
-		PrimaryViewFactory.getInstance().resetPannelloCentraleCliente();
-		PrimaryViewFactory.initDettaglioCliente();
+		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
+		PrimaryAgenteView.initDettaglioCliente();
 		AlberoClienti.disabilitaAlbero();
-		PrimaryViewFactory.getInstance().setEnableTabPreventivo(false);
-		PrimaryViewFactory.getInstance().setEnableTabCatalogo(false);
-		PrimaryViewFactory.getInstance().setEnableCercaCliente(false);
+		PrimaryAgenteView.getInstance().setEnableTabPreventivo(false);
+		PrimaryAgenteView.getInstance().setEnableTabCatalogo(false);
+		PrimaryAgenteView.getInstance().setEnableCercaCliente(false);
 	}
 	
 	public void annullaNewCliente()
 	{
-		PrimaryViewFactory.getInstance().resetNuovoCliente();
-		PrimaryViewFactory.getInstance().setVisibleErroreNuovoCliente(false);
+		PrimaryAgenteView.getInstance().resetNuovoCliente();
+		PrimaryAgenteView.getInstance().setVisibleErroreNuovoCliente(false);
 	}
 	
 	public void esciNewCliente() {
 		
-		PrimaryViewFactory.getInstance().resetNuovoCliente();
-		PrimaryViewFactory.getInstance().resetPannelloCentraleCliente();
-		PrimaryViewFactory.getInstance().setSfondoCliente();
-		PrimaryViewFactory.getInstance().setEnableTabCatalogo(true);
-		PrimaryViewFactory.getInstance().setEnableTabPreventivo(true);
-		PrimaryViewFactory.getInstance().setEnableCercaCliente(true);
-		PrimaryViewFactory.getInstance().setVisibleErroreNuovoCliente(false);
+		PrimaryAgenteView.getInstance().resetNuovoCliente();
+		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
+		PrimaryAgenteView.getInstance().setSfondoCliente();
+		PrimaryAgenteView.getInstance().setEnableTabCatalogo(true);
+		PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);
+		PrimaryAgenteView.getInstance().setEnableCercaCliente(true);
+		PrimaryAgenteView.getInstance().setVisibleErroreNuovoCliente(false);
 		AlberoClienti.abilitaAlbero();
 		
 	}
 	
 	public void btnCerca() 
 	{	
-		PrimaryViewFactory.getInstance().resetPannelloCentraleCliente();
-		PrimaryViewFactory.getInstance().setSfondoCliente();
+		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
+		PrimaryAgenteView.getInstance().setSfondoCliente();
 		try {
 			Ricerca_cliente.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
 		} catch (PersistentException e) {
@@ -342,36 +342,36 @@ public class Ctrl_gestisciCliente {
 	public void abilitaModifica()
 	{
 
-		PrimaryViewFactory.getInstance().setModifiche(true);
-		PrimaryViewFactory.getInstance().disattivaModifica(false);
-		PrimaryViewFactory.getInstance().disattivaCancella(false);
-		PrimaryViewFactory.getInstance().disattivaInviaPosta(false);
-		PrimaryViewFactory.getInstance().disattivaSalvaModifiche(true);
-		PrimaryViewFactory.getInstance().disattivaAnnullaModifiche(true);
-		PrimaryViewFactory.getInstance().setEnableTabCatalogo(false);
-		PrimaryViewFactory.getInstance().setEnableTabPreventivo(false);
-		PrimaryViewFactory.getInstance().setVisibleErroreRiepCliente(false);
-		PrimaryViewFactory.getInstance().setEnableNewCliente(false);
-		PrimaryViewFactory.getInstance().setEnableCercaCliente(false);
-		PrimaryViewFactory.getInstance().setVisibleToolTip();
+		PrimaryAgenteView.getInstance().setModifiche(true);
+		PrimaryAgenteView.getInstance().disattivaModifica(false);
+		PrimaryAgenteView.getInstance().disattivaCancella(false);
+		PrimaryAgenteView.getInstance().disattivaInviaPosta(false);
+		PrimaryAgenteView.getInstance().disattivaSalvaModifiche(true);
+		PrimaryAgenteView.getInstance().disattivaAnnullaModifiche(true);
+		PrimaryAgenteView.getInstance().setEnableTabCatalogo(false);
+		PrimaryAgenteView.getInstance().setEnableTabPreventivo(false);
+		PrimaryAgenteView.getInstance().setVisibleErroreRiepCliente(false);
+		PrimaryAgenteView.getInstance().setEnableNewCliente(false);
+		PrimaryAgenteView.getInstance().setEnableCercaCliente(false);
+		PrimaryAgenteView.getInstance().setVisibleToolTip();
 		AlberoClienti.disabilitaAlbero();
 	}
 		
 	public void annullaModificheCliente(String id) throws PersistentException
 	{
-		PrimaryViewFactory.getInstance().resetCliente();
+		PrimaryAgenteView.getInstance().resetCliente();
 //		M: trasforma stringa in intero
 		int idCliente=Integer.parseInt(id);
 		recuperaCliente(idCliente);
-		PrimaryViewFactory.getInstance().disattivaModifica(true);
-		PrimaryViewFactory.getInstance().disattivaCancella(true);
-		PrimaryViewFactory.getInstance().setVisibleErroreRiepCliente(false);
-		PrimaryViewFactory.getInstance().disattivaInviaPosta(true);
-		PrimaryViewFactory.getInstance().setEnableTabCatalogo(true);
-		PrimaryViewFactory.getInstance().setEnableTabPreventivo(true);
-		PrimaryViewFactory.getInstance().setEnableNewCliente(true);
-		PrimaryViewFactory.getInstance().setEnableCercaCliente(true);
-		PrimaryViewFactory.getInstance().setInvisibleToolTip();
+		PrimaryAgenteView.getInstance().disattivaModifica(true);
+		PrimaryAgenteView.getInstance().disattivaCancella(true);
+		PrimaryAgenteView.getInstance().setVisibleErroreRiepCliente(false);
+		PrimaryAgenteView.getInstance().disattivaInviaPosta(true);
+		PrimaryAgenteView.getInstance().setEnableTabCatalogo(true);
+		PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);
+		PrimaryAgenteView.getInstance().setEnableNewCliente(true);
+		PrimaryAgenteView.getInstance().setEnableCercaCliente(true);
+		PrimaryAgenteView.getInstance().setInvisibleToolTip();
 		AlberoClienti.abilitaAlbero();
 	}
 	
@@ -386,8 +386,8 @@ public class Ctrl_gestisciCliente {
 		AlberoClienti.rimuoviNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 		confermaCancCliente.getInstance().setVisible(false);		
 		confermaCancCliente.cancInst();
-		PrimaryViewFactory.getInstance().resetPannelloCentraleCliente();
-		PrimaryViewFactory.getInstance().setSfondoCliente();
+		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
+		PrimaryAgenteView.getInstance().setSfondoCliente();
 	}
 	
 	public void notConfermaCancCliente(){
@@ -406,15 +406,15 @@ public class Ctrl_gestisciCliente {
 			if(i!=-1){
 				c = c.substring(0, i);
 				int id=Integer.parseInt(c);
-				PrimaryViewFactory.getInstance().resetPannelloCentraleCliente();
+				PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 				recuperaCliente(id);
-				PrimaryViewFactory.getInstance().setVisibleErroreRiepCliente(false);
-				PrimaryViewFactory.getInstance().setEnableTabCatalogo(true);
-				PrimaryViewFactory.getInstance().setEnableTabPreventivo(true);}
+				PrimaryAgenteView.getInstance().setVisibleErroreRiepCliente(false);
+				PrimaryAgenteView.getInstance().setEnableTabCatalogo(true);
+				PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);}
 		}
 			else {
-				PrimaryViewFactory.getInstance().resetPannelloCentraleCliente();
-				PrimaryViewFactory.getInstance().setSfondoCliente();
+				PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
+				PrimaryAgenteView.getInstance().setSfondoCliente();
 			}
 	}	
 }

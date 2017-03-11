@@ -23,7 +23,8 @@ import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
-import agent_trade.ui.primaryView.PrimaryViewFactory;
+import agent_trade.ui.primaryView.PrimaryAgenteView;
+import agent_trade.ui.primaryView.PrimaryAgenteView;
 
 public class Ctrl_elaboraPreventivo {
 
@@ -66,19 +67,19 @@ public class Ctrl_elaboraPreventivo {
 		CercaClienteView.getInstance().dispose();
 		CercaClienteView.cancInst();				
 
-		PrimaryViewFactory.initIntestazione();
-		PrimaryViewFactory.initItem();
+		PrimaryAgenteView.initIntestazione();
+		PrimaryAgenteView.initItem();
 		
-		PrimaryViewFactory.getInstance().setEnableNewPreventivo(false);
-		PrimaryViewFactory.getInstance().setEnableTabCliente(false);
-		PrimaryViewFactory.getInstance().setEnableSalva(false);
+		PrimaryAgenteView.getInstance().setEnableNewPreventivo(false);
+		PrimaryAgenteView.getInstance().setEnableTabCliente(false);
+		PrimaryAgenteView.getInstance().setEnableSalva(false);
 		
 		AlberoPreventivi.disabilitaAlbero();
 		
-		PrimaryViewFactory.getInstance().setNewIntestAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
-		PrimaryViewFactory.getInstance().setNewIntestData(M_Preventivo.getInstance().getData());
-		PrimaryViewFactory.getInstance().setNewIntestNumPrev(M_Preventivo.getInstance().getIdPreventivo());
-		PrimaryViewFactory.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
+		PrimaryAgenteView.getInstance().setNewIntestAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
+		PrimaryAgenteView.getInstance().setNewIntestData(M_Preventivo.getInstance().getData());
+		PrimaryAgenteView.getInstance().setNewIntestNumPrev(M_Preventivo.getInstance().getIdPreventivo());
+		PrimaryAgenteView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
 
 		ProdottiView.getInstance().enableBottoni();
 	}
@@ -93,14 +94,14 @@ public class Ctrl_elaboraPreventivo {
 		}
 		AlberoPreventivi.selezionaNodo(nodo);
 
-		PrimaryViewFactory.getInstance().setEnableNewPreventivo(true);
-		PrimaryViewFactory.getInstance().setEnableTabCliente(true);
+		PrimaryAgenteView.getInstance().setEnableNewPreventivo(true);
+		PrimaryAgenteView.getInstance().setEnableTabCliente(true);
 
-		PrimaryViewFactory.getInstance().setVisibleIntestazione(false);
-		PrimaryViewFactory.getInstance().setVisibleItemPreventivi(false);
+		PrimaryAgenteView.getInstance().setVisibleIntestazione(false);
+		PrimaryAgenteView.getInstance().setVisibleItemPreventivi(false);
 		
-		PrimaryViewFactory.cancIntestazione();
-		PrimaryViewFactory.cancItem();
+		PrimaryAgenteView.cancIntestazione();
+		PrimaryAgenteView.cancItem();
 		
 		M_Preventivo.cancIstanza();	
 		
@@ -113,17 +114,17 @@ public class Ctrl_elaboraPreventivo {
 	
 	private void initAnnullaPrev() {
 		
-		PrimaryViewFactory.getInstance().setEnableNewPreventivo(true);
-		PrimaryViewFactory.getInstance().setEnableTabCliente(true);
-		PrimaryViewFactory.getInstance().setVisibleIntestazione(false);
-		PrimaryViewFactory.getInstance().setVisibleItemPreventivi(false);
+		PrimaryAgenteView.getInstance().setEnableNewPreventivo(true);
+		PrimaryAgenteView.getInstance().setEnableTabCliente(true);
+		PrimaryAgenteView.getInstance().setVisibleIntestazione(false);
+		PrimaryAgenteView.getInstance().setVisibleItemPreventivi(false);
 		
-		PrimaryViewFactory.cancIntestazione();
-		PrimaryViewFactory.cancItem();
+		PrimaryAgenteView.cancIntestazione();
+		PrimaryAgenteView.cancItem();
 		
 		AlberoPreventivi.abilitaAlbero();
 		ProdottiView.getInstance().disableBottoni();
-		PrimaryViewFactory.getInstance().setSfondoPrev();
+		PrimaryAgenteView.getInstance().setSfondoPrev();
 	}
 	
 	
@@ -133,21 +134,21 @@ public class Ctrl_elaboraPreventivo {
 		M_Cliente cliente=prevMod.getRif_Cliente();
 		
 		
-		PrimaryViewFactory.getInstance().resetPannelloCentralePreventivo();
-		PrimaryViewFactory.initIntestazione();
-		PrimaryViewFactory.initItem();
+		PrimaryAgenteView.getInstance().resetPannelloCentralePreventivo();
+		PrimaryAgenteView.initIntestazione();
+		PrimaryAgenteView.initItem();
 
-		PrimaryViewFactory.getInstance().setEnableNewPreventivo(false);
-		PrimaryViewFactory.getInstance().setEnableTabCliente(false);
-		PrimaryViewFactory.getInstance().setEnableSalva(true);
+		PrimaryAgenteView.getInstance().setEnableNewPreventivo(false);
+		PrimaryAgenteView.getInstance().setEnableTabCliente(false);
+		PrimaryAgenteView.getInstance().setEnableSalva(true);
 
 		AlberoPreventivi.disabilitaAlbero();
 				
-		PrimaryViewFactory.getInstance().setNewIntestAgente(prevMod.getRif_Agente().getCognome()+" "+prevMod.getRif_Agente().getNome());
-		PrimaryViewFactory.getInstance().setNewIntestData(prevMod.getData());
-		PrimaryViewFactory.getInstance().setNewIntestNumPrev(prevMod.getIdPreventivo());
+		PrimaryAgenteView.getInstance().setNewIntestAgente(prevMod.getRif_Agente().getCognome()+" "+prevMod.getRif_Agente().getNome());
+		PrimaryAgenteView.getInstance().setNewIntestData(prevMod.getData());
+		PrimaryAgenteView.getInstance().setNewIntestNumPrev(prevMod.getIdPreventivo());
 		
-		PrimaryViewFactory.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
+		PrimaryAgenteView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
 
 		ProdottiView.getInstance().enableBottoni();
 						
@@ -174,13 +175,13 @@ public class Ctrl_elaboraPreventivo {
 
 	private void initRiepilogoPreventivo(M_Preventivo p) {
 	
-		PrimaryViewFactory.initRiepilogo();
+		PrimaryAgenteView.initRiepilogo();
 	
-		PrimaryViewFactory.getInstance().setRiepIntestAgente(p);
-		PrimaryViewFactory.getInstance().setRiepIntestData(p.getData());
-		PrimaryViewFactory.getInstance().setRiepIntestNumPrev(p.getIdPreventivo());
+		PrimaryAgenteView.getInstance().setRiepIntestAgente(p);
+		PrimaryAgenteView.getInstance().setRiepIntestData(p.getData());
+		PrimaryAgenteView.getInstance().setRiepIntestNumPrev(p.getIdPreventivo());
 		
-		PrimaryViewFactory.getInstance().setRiepIntestCliente(p);
+		PrimaryAgenteView.getInstance().setRiepIntestCliente(p);
 		List<M_Preventivo_Item> elementi = (List<M_Preventivo_Item>) p.getItem();
 	
 		Iterator<M_Preventivo_Item> i = elementi.iterator();
@@ -189,7 +190,7 @@ public class Ctrl_elaboraPreventivo {
 		while (i.hasNext()) {
 		
 			pr_it = (M_Preventivo_Item) i.next();
-			PrimaryViewFactory.getInstance().updateTableRiepilogo(pr_it);
+			PrimaryAgenteView.getInstance().updateTableRiepilogo(pr_it);
 			
 		}
 		
@@ -201,7 +202,7 @@ public class Ctrl_elaboraPreventivo {
 	//CO1
 	public void newPreventivo() throws PersistentException {
 	
-		PrimaryViewFactory.getInstance().resetPannelloCentralePreventivo();
+		PrimaryAgenteView.getInstance().resetPannelloCentralePreventivo();
 		
 		M_Agente a = Ctrl_System.getAgenteLog();
 		
@@ -235,7 +236,7 @@ public class Ctrl_elaboraPreventivo {
 		M_Preventivo_Item prev_item= M_Preventivo.getInstance().addItem(p);
 		
 		if (!M_Preventivo.getInstance().getItem().isEmpty()){
-			PrimaryViewFactory.getInstance().setEnableSalva(true);
+			PrimaryAgenteView.getInstance().setEnableSalva(true);
 		}
 		
 		ItemNuovoPreventivoView.getInstance().updateTable(p, prev_item);
@@ -294,8 +295,8 @@ public class Ctrl_elaboraPreventivo {
 		}
 		else{
 			
-			PrimaryViewFactory.getInstance().resetPannelloCentralePreventivo();
-			PrimaryViewFactory.getInstance().setSfondoPrev();
+			PrimaryAgenteView.getInstance().resetPannelloCentralePreventivo();
+			PrimaryAgenteView.getInstance().setSfondoPrev();
 		}
 	}
 	
@@ -339,10 +340,10 @@ public class Ctrl_elaboraPreventivo {
 				}
 				try {
 					if (M_Preventivo.getInstance().getItem().isEmpty()){
-						PrimaryViewFactory.getInstance().setEnableSalva(false);
+						PrimaryAgenteView.getInstance().setEnableSalva(false);
 					}
 					else{
-						PrimaryViewFactory.getInstance().setEnableSalva(true);
+						PrimaryAgenteView.getInstance().setEnableSalva(true);
 					}
 				}
 				catch (PersistentException e) {
@@ -389,7 +390,7 @@ public class Ctrl_elaboraPreventivo {
 			*dell'albero ogni qual volta c'è una modifica
 			*/
 			AlberoPreventivi.cancellaNodo();
-			PrimaryViewFactory.getInstance().resetPannelloCentralePreventivo();
+			PrimaryAgenteView.getInstance().resetPannelloCentralePreventivo();
 			
 			prev.delete();
 	}

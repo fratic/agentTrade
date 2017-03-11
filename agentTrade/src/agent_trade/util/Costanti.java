@@ -16,6 +16,7 @@ public final class Costanti {
 //	public final static String  version = "agente";
 	public final static String  version = "mandante";
 
+	
 	public final static String  agente = "agente";
 	public final static String  mandante = "mandante";
 

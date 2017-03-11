@@ -1,11 +1,6 @@
 package agent_trade.ui.content.prodotti;
 
-import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-
-import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -19,7 +14,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
 import agent_trade.model.M_Prodotto;
-
 import agent_trade.util.Costanti;
 import agent_trade.util.DisableButton;
 import agent_trade.util.MyEditor;
