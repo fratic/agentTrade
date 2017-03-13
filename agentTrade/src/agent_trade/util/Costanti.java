@@ -90,8 +90,8 @@ public final class Costanti {
 	public static final String SPLASH_AGENTTRADE = "/agent_trade/ui/img/splash.png";
 	public static final String AGENTTRADE_ICON = "/agent_trade/ui/img/icon.png";
 	public static final String IMG_SFONDO_CLIENTE = "/agent_trade/ui/img/sfondoAgentTradeCliente.png";
-	public static final String IMG_SFONDO_PREVENTIVO= "/agent_trade/ui/img/sfondoAgentTrade2.png";
-	public static final String IMG_SFONDO_AGENTE = "/agent_trade/ui/img/sfondoAgentTradeCliente.png";	
+	public static final String IMG_SFONDO_PREVENTIVO= "/agent_trade/ui/img/sfondoAgentTradePreventivo.png";
+	public static final String IMG_SFONDO_AGENTE = "/agent_trade/ui/img/sfondoAgentTradeAgente.png";	
 	public static final String CLOSE_ICON= "/agent_trade/ui/img/close_icon.png";
 	public static final String PLUS_ICON= "/agent_trade/ui/img/plus.png";
 	public static final String PREVENTIVO_ICON= "/agent_trade/ui/img/preventivo.png";
