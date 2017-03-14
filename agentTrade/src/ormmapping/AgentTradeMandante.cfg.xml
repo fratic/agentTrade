@@ -26,5 +26,6 @@ License Type: Academic
 		<!-- mapping files -->
 		<mapping resource="ormmapping/agent_trade/model/M_Agente.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/M_Mandante.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/M_Azienda.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

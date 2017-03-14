@@ -65,6 +65,11 @@ public final class Costanti {
 	public final static String TITOLO_SCHEDA_AGENTE = "Scheda Agente";
 	public final static String TITOLO_CERCA_AGENTE = "Cerca Agente ";
 	public final static String TITOLO_CANCELLA_AGENTE = "Attenzione!";
+	
+	public final static String TITOLO_CERCA_AZIENDA = "Cerca Azienda ";
+	public final static String TITOLO_SCHEDA_AZIENDA = "Scheda Azienda";
+	public final static String TITOLO_NUOVA_AZIENDA = "Nuova scheda Azienda";
+	public final static String TITOLO_CANCELLA_AZIENDA = "Attenzione!";
 
 
 	/**
@@ -81,7 +86,9 @@ public final class Costanti {
 	public final static String MESSAGGIO_CANCELLA_CLIENTE = "Sei sicuro di voler cancellare il cliente corrente?";
 	public final static String MESSAGGIO_AGENTE_NON_TROVATO = "Agente non trovato";
 	public final static String MESSAGGIO_CANCELLA_AGENTE = "Sei sicuro di voler cancellare l'agente corrente?";
-
+	public final static String MESSAGGIO_AZIENDA_NON_TROVATA = "Azienda non trovata";
+	public final static String MESSAGGIO_CANCELLA_AZIENDA = "Sei sicuro di voler cancellare l'azienda corrente?";
+	
 	
 	
 	/**
@@ -130,7 +137,20 @@ public final class Costanti {
 	public static final String DETTAGLIO_AGENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
 	public static final String ALBERO_AGENTI_ICON = "/agent_trade/ui/img/ico-cliente1.png";
 
-	
+	public static final String AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
+//	CAMBIARE ICONE
+	public static final String NUOVA_AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
+	public static final String CERCA_AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
+	public static final String SALVA_AZIENDA_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String IMG_SFONDO_AZIENDA = "/agent_trade/ui/img/sfondoAgentTradeAgente.png";
+	public static final String RIEPILOGO_AZIENDA_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
+	public static final String COMUNICAZIONE_AZIENDA_ICON = "/agent_trade/ui/img/send-icon.png";
+	public static final String MOD_AZIENDA_ICON = "/agent_trade/ui/img/settings_client.png";
+	public static final String CANC_AZIENDA_ICON = "/agent_trade/ui/img/trash-icon.png";
+	public static final String SALVA_MOD_AZIENDA_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String ANNULLA_MOD_AZIENDA_ICON = "/agent_trade/ui/img/back-icon.png";
+	public static final String DETTAGLIO_AZIENDA_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
+	public static final String ALBERO_AZIENDE_ICON = "/agent_trade/ui/img/ico-cliente1.png";
 		
 	/**
 	 * URL dei Sistemi Esterni
@@ -210,6 +230,7 @@ public final class Costanti {
 	public final static String TAB_CATALOGO= "Catalogo";
 	public final static String TAB_CLIENTE= "Cliente";
 	public final static String TAB_AGENTE= "Agente";
+	public final static String TAB_AZIENDA= "Azienda";
 
 	public final static String ROOT_PREVENTIVI= "Preventivi";
 	public final static String ROOT_CLIENTI= "Clienti";
@@ -250,6 +271,11 @@ public final class Costanti {
 	
 	public final static String ROOT_AGENTI= "Agenti";
 
+	public final static String LABEL_NOME_AZIENDA = "Ragione sociale";
+	public final static String LABEL_ID_AZIENDA = "Codice azienda";
+	public final static String LABEL_URL_AZIENDA = "Url";
+	
+	public final static String ROOT_AZIENDE = "Aziende";
 	
 
 	/**
@@ -290,7 +316,7 @@ public final class Costanti {
 	public final static String TIP_CERCA_AGENTE= "Cerca un agente";
 	public final static String TIP_GESTISCI_AGENTE= "Gestisci gli agenti";
 
-	public final static String TIP_SALVA_AGENTE = "Salva il agente";
+	public final static String TIP_SALVA_AGENTE = "Salva l'agente";
 	public final static String TIP_COMUNICAZIONE_AGENTE = "Invia comunicazione";
 	public final static String TIP_MODIFICA_AGENTE = "Modifica i dati dell'agente";
 	public final static String TIP_CANCELLA_AGENTE = "Cancella agente";
@@ -303,6 +329,19 @@ public final class Costanti {
 	public final static String TIP_USERNAME = "Inserire un username di almeno 4 caratteri";
 	public final static String TIP_PASSWORD = "Inserire un password di almeno 4 caratteri";
 	
+	public final static String TIP_GESTISCI_AZIENDA = "Gestisci le aziende";
+	public final static String TIP_NUOVA_AZIENDA = "Inserisci una nuova azienda";
+	public final static String TIP_CERCA_AZIENDA = "Cerca un'azienda";
+	//MODIFICARE TIP NOME AZIENDA
+	public final static String TIP_NOME_AZIENDA = "Non sono ammessi caratteri numerici";
+	public final static String TIP_URL_AZIENDA = "Inserire l'url del DB dell'azienda se disponibile";
+	
+	public final static String TIP_SALVA_AZIENDA = "Salva l'azienda";
+	public final static String TIP_COMUNICAZIONE_AZIENDA = "Invia comunicazione";
+	public final static String TIP_MODIFICA_AZIENDA = "Modifica i dati dell'azienda";
+	public final static String TIP_CANCELLA_AZIENDA = "Cancella azienda";
+	public final static String TIP_SALVA_MOD_AZIENDA = "Salva modifiche";
+	public final static String TIP_ANNULLA_MOD_AZIENDA = "Annulla modifiche";
 	
 	
 	/**
@@ -312,7 +351,7 @@ public final class Costanti {
 
 	public final static String BOTTONE_CERCA = "Cerca";
 	public final static String BOTTONE_INSERISCI = "Inserisci";
-	public final static String BOTTONE_CONFERMA = "Conferma";
+	public final static String BOTTONE_CONFERMA = "Ok";
 	public final static String BOTTONE_ANNULLA = "Annulla";
 	public final static String BOTTONE_VISUALIZZA = "Visualizza";
 	
@@ -331,6 +370,7 @@ public final class Costanti {
 	public final static String[] INTESTAZIONE_TABELLA_CERCA_AGENTI = {"ID", "Cognome", "Nome", "Codice Fiscale", "P.IVA"};
 	public final static String[] INTESTAZIONE_TABELLA_RICERCA_AGENTI = {"ID", "Cognome", "Nome", "Livello", "Email", "Citt\u00E0"};
 	
+	public final static String[] INTESTAZIONE_TABELLA_RICERCA_AZIENDE = {"ID", "Nome o Ragione Sociale", "Codice Fiscale", "P.IVA", "Citt\u00E0"};
 	
 	/**
 	 * Costanti colonne

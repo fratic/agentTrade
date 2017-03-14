@@ -1,5 +1,7 @@
 package agent_trade.ui.content.clienti;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -45,7 +47,10 @@ public class confermaCancCliente extends JDialog {
 		
 		
 		setTitle(Costanti.TITOLO_CANCELLA_CLIENTE);
-		setBounds(350, 200, 340, 151);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screen.width-Costanti.WIDTH_LOGIN)/2;
+        int y = (screen.height-Costanti.HEIGHT_LOGIN)/2;
+		setBounds(x, y, 340, 151);
 		getContentPane().setLayout(null);
 		
 		contentPane = new JPanel();

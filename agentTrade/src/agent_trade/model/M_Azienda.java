@@ -1,33 +1,39 @@
 package agent_trade.model;
 
+import org.hibernate.criterion.Projections;
+import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
+
+import agent_trade.persistent.AgentTradeMandantePersistentManager;
+import agent_trade.persistent.Rem_AziendaCriteria;
+
+
+
+
 public class M_Azienda {
 
+	private static agent_trade.model.M_Azienda instance;
 	/*attributi di classe*/
 	
 	/*attributi privati*/
 	private int idAzienda;
-	
 	private String ragioneSociale;
-	
+	private String codiceFiscale;
+	private String partitaIva;
 	private String citta;
-	
 	private String cap;
-	
 	private String Indirizzo;
-	
-	private String telefono;
-	
-	private String fax;
-	
 	private String email;
-	
-	private String partita_iva;
-	
-	private String codice_fiscale;
+	private String telefono;
+	private String fax;
+	private String url;
 
 	/*costruttori*/
 	
-	public M_Azienda (String ragioneSociale, String citta, String CAP, String Indirizzo, String telefono, String fax, String email, String partita_iva, String codice_fiscale)
+	public M_Azienda(){
+	}
+	
+	public M_Azienda (String ragioneSociale, String citta, String CAP, String Indirizzo, String telefono, String fax, String email, String partita_iva, String codice_fiscale, String url)
 	{
 		this.ragioneSociale=ragioneSociale;
 		this.citta=citta;
@@ -36,13 +42,125 @@ public class M_Azienda {
 		this.telefono=telefono;
 		this.fax=fax;
 		this.email=email;
-		this.partita_iva=partita_iva;
-		this.codice_fiscale=codice_fiscale;
+		this.partitaIva=partita_iva;
+		this.codiceFiscale=codice_fiscale;
+		this.url=url;
 	}
+	
 	
 	/*metodi di classe*/
 	
+	public static M_Azienda getInstance(){
+
+		return ((instance == null) ? instance = new M_Azienda() : instance);	
+	}
+	
+	public static M_Azienda[] caricaAziendeRemoto()throws PersistentException{
+		
+		Rem_AziendaCriteria criteriaAzienda;
+		try {
+			criteriaAzienda = new Rem_AziendaCriteria();
+			//criteriaAzienda.attivo.eq(1);
+			
+			return criteriaAzienda.listM_Azienda();
+		} 
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static M_Azienda[] caricaAziendeRemotoParametri(String ragSoc, String pIva, String codFis, String citta) throws PersistentException{
+		
+		Rem_AziendaCriteria criteriaAzienda;
+		try {
+			criteriaAzienda = new Rem_AziendaCriteria();
+			
+			criteriaAzienda.ragioneSociale.like("%"+ragSoc+"%");
+			criteriaAzienda.partitaIva.like("%"+pIva+"%");
+			criteriaAzienda.codiceFiscale.like("%"+codFis+"%");
+			criteriaAzienda.citta.like("%"+citta+"%");
+			
+			return criteriaAzienda.listM_Azienda();
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static M_Azienda cercaAziendaRemoto(int idAzienda) throws PersistentException {
+		try{
+			
+			Rem_AziendaCriteria criteriaAzienda = new Rem_AziendaCriteria();
+			criteriaAzienda.IdAzienda.eq(idAzienda);
+			//criteriaAzienda.attivo.eq(1);
+
+			return criteriaAzienda.uniqueM_Azienda();
+		}
+		finally {	
+		}
+	}
+
+
+	public static void aggiornaAziendaRemoto(M_Azienda a) throws PersistentException{
+		
+		PersistentTransaction t =  AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+		try {
+			 AgentTradeMandantePersistentManager.instance().getSession().update(a);
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+		finally {
+
+		}
+	}
+	
+	public static void salvaAziendaRemoto(M_Azienda a) throws PersistentException {
+
+		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradeMandantePersistentManager.instance().getSession().save(a);
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+	}
+	
+	public static void cancellaAziendaRemoto(M_Azienda a) throws PersistentException {
+
+		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradeMandantePersistentManager.instance().getSession().delete(a);
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+	}
+
+	public static int getMaxIdRemoto() throws PersistentException{
+		
+		try 
+		{				
+			Rem_AziendaCriteria criteriaAzienda = new Rem_AziendaCriteria();
+			criteriaAzienda.setProjection(Projections.max("id"));
+			int id =(int) criteriaAzienda.uniqueResult();
+			return id;
+		}
+		finally {
+		}
+	}
+
+	
 	/*metodi privati*/
+	
 	
 	/*metodi pubblici*/
 	
@@ -74,11 +192,11 @@ public class M_Azienda {
 		return citta;
 	}
 	
-	public void setCAP(String value) {
+	public void setCap(String value) {
 		this.cap = value;
 	}
 	
-	public String getCAP() {
+	public String getCap() {
 		return cap;
 	}
 	
@@ -114,24 +232,33 @@ public class M_Azienda {
 		return email;
 	}
 	
-	public void setPartita_iva(String value) {
-		this.partita_iva = value;
+	public void setPartitaIva(String value) {
+		this.partitaIva = value;
 	}
 	
-	public String getPartita_iva() {
-		return partita_iva;
+	public String getPartitaIva() {
+		return partitaIva;
 	}
 	
-	public void setCodice_fiscale(String value) {
-		this.codice_fiscale = value;
+	public void setCodiceFiscale(String value) {
+		this.codiceFiscale = value;
 	}
 	
-	public String getCodice_fiscale() {
-		return codice_fiscale;
+	public String getCodiceFiscale() {
+		return codiceFiscale;
 	}
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}	
 	
 	public String toString() {
 		return String.valueOf(getIdAzienda());
 	}
+
 
 }

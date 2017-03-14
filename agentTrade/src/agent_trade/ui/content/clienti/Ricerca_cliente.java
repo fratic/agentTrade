@@ -124,7 +124,7 @@ public class Ricerca_cliente extends JDialog {
 		panelloCerca.add(labelError);
 		
 		panelloRisultati = new JPanel();
-		panelloRisultati.setBounds(0, 114, 743, 176);
+		panelloRisultati.setBounds(0, 114, 743, 216);
 		getContentPane().add(panelloRisultati);
 		panelloRisultati.setLayout(null);
 		
@@ -140,11 +140,11 @@ public class Ricerca_cliente extends JDialog {
         table.setRowSorter (new TableRowSorter (JTableModel)); 
 
 	    scrollPane = new JScrollPane(table);
-	    scrollPane.setBounds(10, 11, 723, 154);
+	    scrollPane.setBounds(10, 11, 723, 200);
 	    panelloRisultati.add(scrollPane);
 		 
 	  	panelloBottoni = new JPanel();
-		panelloBottoni.setBounds(0, 291, 743, 47);
+		panelloBottoni.setBounds(0, 321, 743, 47);
 		getContentPane().add(panelloBottoni);
 		panelloBottoni.setLayout(null);
 		

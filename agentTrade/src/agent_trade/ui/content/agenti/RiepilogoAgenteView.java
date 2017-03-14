@@ -116,7 +116,7 @@ public class RiepilogoAgenteView extends JPanel {
 		label_IMG.setHorizontalAlignment(SwingConstants.CENTER);
 //		label_IMG.setBounds(24, 24, 163, 179);;
 		label_IMG.setPreferredSize(new Dimension(Costanti.WIDTH_ICON, Costanti.HEIGHT_ICON));
-		label_IMG.setIcon(new ImageIcon(DettaglioAgenteView.class.getResource(Costanti.RIEPILOGO_AGENTE_ICON)));
+		label_IMG.setIcon(new ImageIcon(RiepilogoAgenteView.class.getResource(Costanti.RIEPILOGO_AGENTE_ICON)));
 		pannelloIcona.add(label_IMG);
 		
 		pannelloCampi = new JPanel();
