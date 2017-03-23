@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -111,6 +112,9 @@ public class LoginViewOld extends JFrame {
 					Ctrl_System.getInstance().loginAgente((String)username.getText(), (String)password.getText());
 				}
 				catch (PersistentException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

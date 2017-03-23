@@ -14,5 +14,7 @@
 	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/syntheticaPlain.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/syntheticaSimple2D.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/syntheticaWhiteVision.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.8.0.jar"/>
+	<classpathentry kind="lib" path="lib/java-json.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

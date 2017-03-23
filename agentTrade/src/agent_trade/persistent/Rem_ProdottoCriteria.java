@@ -16,11 +16,14 @@ package agent_trade.persistent;
 import org.hibernate.Criteria;
 import org.orm.PersistentException;
 import org.orm.PersistentSession;
-import org.orm.criteria.*;
+import org.orm.criteria.AbstractORMCriteria;
+import org.orm.criteria.FloatExpression;
+import org.orm.criteria.IntegerExpression;
+import org.orm.criteria.StringExpression;
 
 import agent_trade.model.M_Prodotto;
 
-public class ProdottoCriteria extends AbstractORMCriteria {
+public class Rem_ProdottoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression IdProdotto;
 	public final IntegerExpression idProdottoAzienda;
 
@@ -32,7 +35,7 @@ public class ProdottoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression versione;
 
 	
-	public ProdottoCriteria(Criteria criteria) {
+	public Rem_ProdottoCriteria(Criteria criteria) {
 		super(criteria);
 		IdProdotto = new IntegerExpression("IdProdotto", this);
 		idProdottoAzienda = new IntegerExpression("idProdottoAzienda", this);
@@ -45,12 +48,12 @@ public class ProdottoCriteria extends AbstractORMCriteria {
 
 	}
 	
-	public ProdottoCriteria(PersistentSession session) {
+	public Rem_ProdottoCriteria(PersistentSession session) {
 		this(session.createCriteria(M_Prodotto.class));
 	}
 	
-	public ProdottoCriteria() throws PersistentException {
-		this(agent_trade.persistent.AgentTradePersistentManager.instance().getSession());
+	public Rem_ProdottoCriteria() throws PersistentException {
+		this(agent_trade.persistent.AgentTradeMandantePersistentManager.instance().getSession());
 	}
 	
 	public M_Prodotto uniqueProdotto() {

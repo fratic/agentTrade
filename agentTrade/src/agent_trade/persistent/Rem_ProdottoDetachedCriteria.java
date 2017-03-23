@@ -20,7 +20,7 @@ import org.orm.criteria.*;
 
 import agent_trade.model.M_Prodotto;
 
-public class ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
+public class Rem_ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression IdProdotto;
 	public final IntegerExpression idProdottoAzienda;
 	public final StringExpression nome;
@@ -31,7 +31,7 @@ public class ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression versione;
 
 	
-	public ProdottoDetachedCriteria() {
+	public Rem_ProdottoDetachedCriteria() {
 		super(agent_trade.model.M_Prodotto.class, agent_trade.persistent.ProdottoCriteria.class);
 		IdProdotto = new IntegerExpression("IdProdotto", this.getDetachedCriteria());
 		idProdottoAzienda = new IntegerExpression("idProdottoAzienda", this.getDetachedCriteria());
@@ -44,7 +44,7 @@ public class ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 
 	}
 	
-	public ProdottoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
+	public Rem_ProdottoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, agent_trade.persistent.ProdottoCriteria.class);
 		IdProdotto = new IntegerExpression("IdProdotto", this.getDetachedCriteria());
 		idProdottoAzienda = new IntegerExpression("idProdottoAzienda", this.getDetachedCriteria());

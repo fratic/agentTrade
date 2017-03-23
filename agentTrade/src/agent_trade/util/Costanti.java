@@ -1,5 +1,7 @@
 package agent_trade.util;
 
+import agent_trade.external_system.AziendaViniAdapter;
+import agent_trade.external_system.beverage.BeverageAdapter;
 
 /**
  * Classe usata per aumentare la flessibilità che contiene tutte le costanti usate in agentTrade
@@ -25,6 +27,8 @@ public final class Costanti {
 	 * Look & Feel
 	 */
 	
+	
+//	public final static int  Look_Feel = 0;
 //	public final static int  Look_Feel = 1;
 //	public final static int  Look_Feel = 2;
 //	public final static int  Look_Feel = 3;
@@ -155,7 +159,8 @@ public final class Costanti {
 	/**
 	 * URL dei Sistemi Esterni
 	 */
-//	public final static String URL_blabla= "http://www.boh.com/";
+	
+	public final static String URL_post_prod = "http://fratic.altervista.org/prodPost.php";
 
 	
 	
@@ -388,8 +393,22 @@ public final class Costanti {
 	public final static int  COLONNA_PARZIALE_TAB_PREV= 7;
 
 	
+	/**
+	 * Sistemi Esterni: Aziende di Vino
+	 */
+	public final static AziendaViniAdapter[] SISTEMI_ESTERNI_AZIENDE_VINI = { BeverageAdapter.getInstance()};
+
 	
-	
+	/**
+	 * Sistemi Esterni: Aziende di Carne
+	 */
+//	public final static ImpresaCarniAdapter[] SISTEMI_ESTERNI_AZIENDE_CARNI = { ....Adapter.getInstance() };
+
+	/**
+	 * Nomi Aziende con Sistemi Esterni: Aziende di Vino
+	 */
+	public final static String BEVERAGE = "Beverage";
+
 	
 	
 	

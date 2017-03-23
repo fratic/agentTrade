@@ -1,6 +1,7 @@
 
 package agent_trade.controller;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 import org.orm.PersistentException;
@@ -81,7 +82,7 @@ public class Ctrl_System {
 	 */
 	
 
-	public void loginAgente(String username, String psw) throws PersistentException  
+	public void loginAgente(String username, String psw) throws PersistentException, IOException  
 	{					
 
 			M_Agente agLoad =null;

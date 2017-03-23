@@ -13,11 +13,16 @@
  */
 package agent_trade.model;
 
-import org.orm.PersistentException;
+import java.util.ArrayList;
 
+import org.orm.PersistentException;
+import org.orm.PersistentSession;
+import org.orm.PersistentTransaction;
+
+import agent_trade.persistent.AgentTradeMandantePersistentManager;
 import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.ProdottoCriteria;
-import agent_trade.ui.content.prodotti.ProdottiView;
+import agent_trade.persistent.Rem_ProdottoCriteria;
 
 public abstract class M_Prodotto {
 
@@ -37,11 +42,14 @@ public abstract class M_Prodotto {
 	 */
 	
 	protected int IdProdotto;
+	protected int idProdottoAzienda;
 	protected String nome;
 	protected float prezzo;
 	protected String categoria;
 	protected String idDescrizioneProdotto;
 	protected float sconto;
+	protected int versione;
+	
 
 	
 	/*
@@ -100,7 +108,190 @@ public abstract class M_Prodotto {
 			AgentTradePersistentManager.instance().disposePersistentManager();
 		}
 	}
+	
+	
+	public static M_Prodotto[] caricaProdottiRemoto() throws PersistentException{
+		
+		try{
+			
+			Rem_ProdottoCriteria criteriaProdotto= new Rem_ProdottoCriteria();
+			criteriaProdotto.setMaxResults(10000);
+			return criteriaProdotto.listProdotto();
 
+		}
+		finally {
+			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
+	public static void salvaProdotto(M_Prodotto p)throws PersistentException{
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+//			AgentTradePersistentManager.instance().getSession().saveOrUpdate(p);
+			AgentTradePersistentManager.instance().getSession().save(p);
+
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			System.out.println("Eccezione: "+e);
+			t.rollback();
+		}
+		finally {
+			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
+		}
+	}
+	
+	/**funziona per il db locale, ma questa op va fatta nel remoto**/
+//	public static void aggiornaProdotti(ArrayList<M_Prodotto> prodotti)throws PersistentException{
+//
+//		
+//		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+//		
+//		for (M_Prodotto remoto : prodotti) {
+//			
+//			ProdottoCriteria criteria= new ProdottoCriteria();
+//			criteria.idProdottoAzienda.eq(remoto.getIdProdottoAzienda());
+//			M_Vini locale=(M_Vini) criteria.uniqueProdotto();
+//			M_Vini rem=(M_Vini)remoto;
+//			
+//			if(locale!=null){
+//		
+//				if(remoto.getVersione()>locale.getVersione()){
+//					/**PROCATA, TROVARE SOLUZIONE**/
+//					/**
+//					 *una probabile soluzione è che quando si ha un aggiornamento, 
+//					 *questo viene visto come un nuovo prodotto. Quindi potremmo
+//					 *continuare a tenere il vecchio impostando versione a 0.
+//					 *cosi facendo, avremmo uno storico coerente. 
+//					 *Ovviamente quando si mostrano i prodotti, si prenderanno 
+//					 *solo quelli con versione maggiore di 0 mentre non cambierà nulla 
+//					 *per il caricamento dei prodotti nei preventivi   
+//					 *
+//					 */
+//					
+//					locale.setCategoria(remoto.getCategoria());
+//					locale.setIdDescrizioneProdotto(remoto.getIdDescrizioneProdotto());
+//					locale.setIdProdottoAzienda(remoto.getIdProdottoAzienda());
+//					locale.setNome(remoto.getNome());
+//					locale.setPrezzo(remoto.getPrezzo());
+//					locale.setSconto(remoto.getSconto());
+//					locale.setVersione(remoto.getVersione());
+//					locale.setCantina(rem.getCantina());
+//					locale.setColore(rem.getColore());
+//					locale.setIndicazione_geografica(rem.getIndicazione_geografica());
+//
+//					
+//					/***/
+//					System.out.println("prodotto locale con id: "+locale.getIdProdottoAzienda()+" obsoleto. AGGIORNAMENTO");
+//						AgentTradePersistentManager.instance().getSession().saveOrUpdate(locale);
+//					
+//					
+//										
+//					/**ALTERNATIVA**/
+////					System.out.println("prodotto locale con id: "+locale.getIdProdottoAzienda()+" obsoleto. AGGIORNAMENTO");
+////				
+////					locale.setVersione(0);
+////					AgentTradePersistentManager.instance().getSession().update(locale);
+////					AgentTradePersistentManager.instance().getSession().save(remoto);
+//
+//					
+//					/***/
+//					
+//				}
+//			}
+//			
+//			else{
+//				
+//				System.out.println("prodotto remoto nuovo. id: "+remoto.getIdProdottoAzienda()+" new insert");
+//				
+//				AgentTradePersistentManager.instance().getSession().save(remoto);
+//
+//			}
+//		}
+//		t.commit();
+//
+//	}
+	
+	
+	
+public static void aggiornaProdottiRemoto(ArrayList<M_Prodotto> prodotti)throws PersistentException{
+
+		
+		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+		PersistentSession sessione = AgentTradeMandantePersistentManager.instance().getSession();
+		
+		for (M_Prodotto remoto : prodotti) {
+			
+			Rem_ProdottoCriteria criteria= new Rem_ProdottoCriteria();
+			criteria.idProdottoAzienda.eq(remoto.getIdProdottoAzienda());
+			M_Vini locale=(M_Vini) criteria.uniqueProdotto();
+			M_Vini rem=(M_Vini)remoto;
+			
+			if(locale!=null){
+		
+				if(remoto.getVersione()>locale.getVersione()){
+					/**PORCATA, TROVARE SOLUZIONE**/
+					/**
+					 *una probabile soluzione è che quando si ha un aggiornamento, 
+					 *questo viene visto come un nuovo prodotto. Quindi potremmo
+					 *continuare a tenere il vecchio impostando versione a 0.
+					 *cosi facendo, avremmo uno storico coerente. 
+					 *Ovviamente quando si mostrano i prodotti, si prenderanno 
+					 *solo quelli con versione maggiore di 0 mentre non cambierà nulla 
+					 *per il caricamento dei prodotti nei preventivi   
+					 *
+					 *
+					 *ALTRIMENTI
+					 *implementare qui e in ogni classe derivata il metodo
+					 *clone() e quindi applicare il polimorfismo
+					 */
+					
+					locale.setCategoria(remoto.getCategoria());
+					locale.setIdDescrizioneProdotto(remoto.getIdDescrizioneProdotto());
+					locale.setIdProdottoAzienda(remoto.getIdProdottoAzienda());
+					locale.setNome(remoto.getNome());
+					locale.setPrezzo(remoto.getPrezzo());
+					locale.setSconto(remoto.getSconto());
+					locale.setVersione(remoto.getVersione());
+					locale.setCantina(rem.getCantina());
+					locale.setColore(rem.getColore());
+					locale.setIndicazione_geografica(rem.getIndicazione_geografica());
+
+					
+					/***/
+					System.out.println("prodotto locale con id: "+locale.getIdProdottoAzienda()+" obsoleto. AGGIORNAMENTO");
+					sessione.saveOrUpdate(locale);
+					
+					
+										
+					/**ALTERNATIVA**/
+//					System.out.println("prodotto locale con id: "+locale.getIdProdottoAzienda()+" obsoleto. AGGIORNAMENTO");
+//				
+//					locale.setVersione(0);
+//					AgentTradeMandantePersistentManager.instance().getSession().update(locale);
+//					AgentTradeMandantePersistentManager.instance().getSession().save(remoto);
+
+					
+					/***/
+					
+				}
+			}
+			
+			else{
+				
+				System.out.println("prodotto remoto nuovo. id: "+remoto.getIdProdottoAzienda()+" new insert");
+				
+				sessione.save(remoto);
+
+			}
+		}
+		t.commit();
+
+	}
+
+	
 	
 	/*
 	 * metodi privati
@@ -163,6 +354,24 @@ public abstract class M_Prodotto {
 
 	public void setSconto(float sconto) {
 		this.sconto = sconto;
+	}
+
+	
+	public int getVersione() {
+		return versione;
+	}
+
+	public void setVersione(int versione) {
+		this.versione = versione;
+	}
+	
+
+	public int getIdProdottoAzienda() {
+		return idProdottoAzienda;
+	}
+
+	public void setIdProdottoAzienda(int dProdottoAzienda) {
+		this.idProdottoAzienda = dProdottoAzienda;
 	}
 
 	public String toString() {

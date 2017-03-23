@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,10 +22,11 @@ import javax.swing.border.TitledBorder;
 
 import org.orm.PersistentException;
 
-import agent_trade.controller.Ctrl_gestisciAzienda;
-import agent_trade.util.Costanti;
-
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
+import agent_trade.controller.Ctrl_gestisciAzienda;
+import agent_trade.external_system.SystemDaemon;
+import agent_trade.util.Costanti;
 
 
 public class RiepilogoAziendaView extends JPanel {
@@ -422,6 +424,19 @@ public class RiepilogoAziendaView extends JPanel {
 		bottoneInviaComunicazione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//da implementare invio documenti
+				
+				/**ATTENZIONE---usato per aggiornare il listino di beverage***/
+				try {
+					SystemDaemon.getInstance().sincronizzaListinoRemoto("Beverage");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				
 			}
 		});
 	}
