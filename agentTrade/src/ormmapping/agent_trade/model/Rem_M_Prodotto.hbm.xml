@@ -6,7 +6,10 @@ License Type: Academic
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="agent_trade.model.M_Prodotto" table="Prodotto" lazy="false" discriminator-value="M_Prodotto">
-		<id name="IdProdotto" column="IdProdotto" type="integer" unsaved-value="0"></id>
+		<id name="IdProdotto" column="IdProdotto" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
 		<discriminator column="Discriminator" type="string"/>
 		<property name="nome" column="Nome" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="prezzo" column="Prezzo" type="float" not-null="true" lazy="false"/>
@@ -16,6 +19,7 @@ License Type: Academic
 		
 		<property name="idProdottoAzienda" column="idprodottoazienda" type="integer" />
 		<property name="versione" column="versione" type="integer"/>
+		
 		
 		<subclass name="agent_trade.model.M_Latticini" discriminator-value="M_Latticini" lazy="false">
 			<property name="stagionatura" column="Stagionatura" type="integer" length="11" not-null="false" lazy="false"/>

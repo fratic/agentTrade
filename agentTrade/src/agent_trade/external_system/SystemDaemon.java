@@ -103,7 +103,7 @@ public class SystemDaemon {
 				System.out.println("remoti id "+remoti[i].getIdProdotto()+" versione "+remoti[i].getVersione());
 
 				
-				if(remoti[i].getVersione()>locale.getVersione()&& locale.getClass()==M_Vini){
+				if(remoti[i].getVersione()>locale.getVersione()){
 					
 					
 					locale.setCategoria(remoti[i].getCategoria());
