@@ -355,6 +355,11 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		((DettaglioAgenteView) dettaglio_agente).setVisibleErroreNuovoAgente(b);
 	}
 	
+	public void setEnableTabAgente(boolean b ) {
+		tabbedPrincipale.setEnabledAt(0, b);
+	}
+	
+	
 	
 	
 	public void setSfondoAzienda() {
@@ -428,5 +433,8 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		((DettaglioAziendaView) dettaglio_azienda).resetNewAzienda();
 	}
 
+	public void setEnableTabAzienda(boolean b ) {
+		tabbedPrincipale.setEnabledAt(1, b);
+	}
 	
 }

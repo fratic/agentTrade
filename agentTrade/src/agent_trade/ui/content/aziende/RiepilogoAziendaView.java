@@ -518,7 +518,7 @@ public class RiepilogoAziendaView extends JPanel {
 	public void abilitaToolTip(){
 		
 		TFRagioneSociale.setToolTipText(Costanti.TIP_NOME_AZIENDA);
-		TFCodiceFiscale.setToolTipText(Costanti.TIP_COD_FIS);
+		TFCodiceFiscale.setToolTipText(Costanti.TIP_COD_FIS_AZIENDA);
 		TFPartitaIva.setToolTipText(Costanti.TIP_PARTITA_IVA);
 		TFindirizzo.setToolTipText(Costanti.TIP_INDIRIZZO);
 		TFcitta.setToolTipText(Costanti.TIP_CITTA);

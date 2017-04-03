@@ -183,6 +183,8 @@ public final class Costanti {
 	public final static String REG_EX_COGNOME_AGENTE = "[a-zA-Z'\\s]+";
 	public final static String REG_EX_USERNAME = "[a-zA-Z0-9'\\s]{3,10}";
 	public final static String REG_EX_PASSWORD = "[a-zA-Z0-9'\\s]{3,10}";
+	public final static String REG_EX_RAGIONE_SOCIALE = "[a-zA-Z0-9'._%-& \\s]+";
+	public final static String REG_EX_COD_FISC_AZIENDA = "[0-9]{11}";
 	
 	/**
 	 * Dimensioni finestre
@@ -337,9 +339,9 @@ public final class Costanti {
 	public final static String TIP_GESTISCI_AZIENDA = "Gestisci le aziende";
 	public final static String TIP_NUOVA_AZIENDA = "Inserisci una nuova azienda";
 	public final static String TIP_CERCA_AZIENDA = "Cerca un'azienda";
-	//MODIFICARE TIP NOME AZIENDA
-	public final static String TIP_NOME_AZIENDA = "Non sono ammessi caratteri numerici";
+	public final static String TIP_NOME_AZIENDA = "Inserire la ragione sociale dell'azienda";
 	public final static String TIP_URL_AZIENDA = "Inserire l'url del DB dell'azienda se disponibile";
+	public final static String TIP_COD_FIS_AZIENDA = "Codice di undici cifre Es: '12345678901'";
 	
 	public final static String TIP_SALVA_AZIENDA = "Salva l'azienda";
 	public final static String TIP_COMUNICAZIONE_AZIENDA = "Invia comunicazione";

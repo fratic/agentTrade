@@ -184,7 +184,7 @@ public class DettaglioAziendaView extends JPanel {
 
 		TFCodiceFiscale = new JTextField();
 		TFCodiceFiscale.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		TFCodiceFiscale.setToolTipText(Costanti.TIP_COD_FIS);
+		TFCodiceFiscale.setToolTipText(Costanti.TIP_COD_FIS_AZIENDA);
 		pannCodFis.add(TFCodiceFiscale);
 		 
 		pannIndirizzo= new JPanel();
