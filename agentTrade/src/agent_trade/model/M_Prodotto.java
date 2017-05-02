@@ -49,6 +49,7 @@ public abstract class M_Prodotto {
 	protected String idDescrizioneProdotto;
 	protected float sconto;
 	protected int versione;
+	protected int idAzienda;
 	
 
 	
@@ -124,6 +125,31 @@ public abstract class M_Prodotto {
 		}
 	}
 	
+	
+	public static M_Prodotto[] caricaProdottiRemotoAzienda(int idAzienda) throws PersistentException{
+		
+		try{
+			
+			Rem_ProdottoCriteria criteriaProdotto= new Rem_ProdottoCriteria();
+			criteriaProdotto.idAzienda.eq(idAzienda);
+			criteriaProdotto.setMaxResults(10000);
+			return criteriaProdotto.listProdotto();
+
+		}
+		finally {
+			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
+	
+	public static M_Prodotto caricaProdottoRemoto(int idProdotto) throws PersistentException{
+		
+		Rem_ProdottoCriteria criteria= new Rem_ProdottoCriteria();
+		criteria.IdProdotto.eq(idProdotto);
+		return criteria.uniqueProdotto();
+	}
+	
+	
 	public static void salvaProdotto(M_Prodotto p)throws PersistentException{
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try 
@@ -142,6 +168,26 @@ public abstract class M_Prodotto {
 			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
 		}
 	}
+	
+	
+	public static void salvaProdottoRemoto(M_Prodotto p)throws PersistentException{
+		
+		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradeMandantePersistentManager.instance().getSession().save(p);
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			System.out.println("Eccezione: "+e);
+			t.rollback();
+		}
+		finally {
+			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
+		}
+	}
+	
 	
 	/**funziona per il db locale, ma questa op va fatta nel remoto**/
 //	public static void aggiornaProdotti(ArrayList<M_Prodotto> prodotti)throws PersistentException{
@@ -216,7 +262,7 @@ public abstract class M_Prodotto {
 	
 	
 	
-public static void aggiornaProdottiRemoto(ArrayList<M_Prodotto> prodotti)throws PersistentException{
+	public static void aggiornaProdottiRemoto(ArrayList<M_Prodotto> prodotti)throws PersistentException{
 
 		
 		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
@@ -372,6 +418,14 @@ public static void aggiornaProdottiRemoto(ArrayList<M_Prodotto> prodotti)throws 
 
 	public void setIdProdottoAzienda(int dProdottoAzienda) {
 		this.idProdottoAzienda = dProdottoAzienda;
+	}
+	
+	public int getIdAzienda(){
+		return idAzienda;
+	}
+	
+	public void setIdAzienda(int id){
+		this.idAzienda = id;
 	}
 
 	public String toString() {

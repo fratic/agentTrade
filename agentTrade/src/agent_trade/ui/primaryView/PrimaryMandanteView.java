@@ -17,15 +17,23 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_gestisciAgente;
 import agent_trade.controller.Ctrl_gestisciAzienda;
+import agent_trade.controller.Ctrl_gestisciListino;
+import agent_trade.model.M_Azienda;
+import agent_trade.model.M_Prodotto;
 import agent_trade.ui.content.agenti.AlberoAgenti;
 import agent_trade.ui.content.agenti.DettaglioAgenteView;
 import agent_trade.ui.content.agenti.RiepilogoAgenteView;
 import agent_trade.ui.content.aziende.AlberoAziende;
 import agent_trade.ui.content.aziende.DettaglioAziendaView;
 import agent_trade.ui.content.aziende.RiepilogoAziendaView;
+import agent_trade.ui.content.listini.RiepilogoIntestazioneListinoView;
+import agent_trade.ui.content.listini.RiepilogoListinoView;
+import agent_trade.ui.content.prodotti.nuovo.NuovoProdottoFactoryView;
+import agent_trade.ui.content.prodotti.riepilogo.RiepilogoProdottoFactoryView;
 import agent_trade.util.Costanti;
 import agent_trade.util.Sfondo_Agente;
 import agent_trade.util.Sfondo_Azienda;
+import agent_trade.util.Sfondo_Listino;
 
 public class PrimaryMandanteView extends PrimaryViewFactory 
 {
@@ -41,8 +49,11 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	private static RiepilogoAziendaView riep_azienda;
 	private static DettaglioAziendaView dettaglio_azienda;
 	private static JPanel pannello_centrale_azienda;
-	
-		
+
+	private static JPanel riep_listino;
+	private static JPanel riep_intestaz_listino;	
+	private static JPanel pannello_centrale_listino;
+
 	/*attributi privati*/
 	
 	private JButton bottoneCercaAgente;
@@ -65,6 +76,13 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	private JPanel alberoAziende;
 	
+	private JPanel Listino;
+	private JPanel pannello_menu_listino;
+	private JPanel pannello_sottomenu_listino;
+	private JPanel pannello_laterale_listino;
+	
+	private JButton bottoneNuovoListino;
+	private JButton bottoneCercaListino;
 	
 	/*costruttori*/
 	
@@ -74,6 +92,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		
 		initTabAgente();
 		initTabAzienda();
+		initTabListino();
 		
 	}
 	
@@ -118,6 +137,63 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		pannello_centrale_azienda.repaint();
 	}
 	
+	
+	public static void initRiepilogoIntestazListinoView(){
+		
+		riep_intestaz_listino = RiepilogoIntestazioneListinoView.getInstance();
+		pannello_centrale_listino.add(riep_intestaz_listino, BorderLayout.NORTH);
+		pannello_centrale_listino.repaint();
+	}
+	
+	
+	public static void initRiepilogoListinoView(){
+		
+		riep_listino = RiepilogoListinoView.getInstance();
+		pannello_centrale_listino.add(riep_listino, BorderLayout.CENTER);
+		pannello_centrale_listino.repaint();
+	}
+	
+	
+	public static void cancRiepilogoListinoView(){
+		
+		RiepilogoListinoView.cancRiepilogoListino();
+		pannello_centrale_listino.remove(riep_listino);
+		//pannello_centrale_listino.removeAll();
+		riep_listino = null;
+	}
+	
+	
+	public static void initRiepilogoProdottoView(M_Prodotto prod){
+		
+		riep_listino = RiepilogoProdottoFactoryView.getInstance(prod);
+		pannello_centrale_listino.add(riep_listino, BorderLayout.CENTER);
+		pannello_centrale_listino.repaint();
+	}
+	
+	
+	public static void cancRiepilogoProdottoView(){
+		
+		RiepilogoProdottoFactoryView.cancRiepilogoProdotto();
+		pannello_centrale_listino.remove(riep_listino);
+		//pannello_centrale_listino.removeAll();
+		riep_listino = null;
+	}
+	
+	
+	public static void initNuovoProdottoView(M_Azienda azienda){
+		
+		riep_listino = NuovoProdottoFactoryView.getInstance(azienda);
+		pannello_centrale_listino.add(riep_listino, BorderLayout.CENTER);
+		pannello_centrale_listino.repaint();
+	}
+	
+	
+	public static void cancNuovoProdottoView(){
+		
+		NuovoProdottoFactoryView.cancNuovoProdotto();
+		pannello_centrale_listino.remove(riep_listino);
+		riep_listino = null;
+	}
 		
 	/*metodi privati*/
 	
@@ -271,6 +347,64 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 				
 			}
 		});
+		
+	}
+	
+	private void initTabListino(){
+		
+		Listino = new JPanel();
+		Listino.setBackground(Color.WHITE);
+		tabbedPrincipale.addTab(Costanti.TAB_LISTINO, new ImageIcon(PrimaryMandanteView.class.getResource(Costanti.LISTINO_ICON)), Listino, Costanti.TIP_GESTISCI_LISTINO);
+		Listino.setLayout(new BorderLayout());
+		
+		pannello_menu_listino = new JPanel();
+		pannello_menu_listino.setBackground(Color.WHITE);
+		pannello_menu_listino.setPreferredSize(new Dimension(1013, 100));
+		pannello_menu_listino.setLayout(null);
+		Listino.add(pannello_menu_listino, BorderLayout.NORTH);
+		
+		bottoneCercaListino = new JButton();		
+		bottoneCercaListino.setIcon(new ImageIcon(PrimaryMandanteView.class.getResource(Costanti.CERCA_LISTINO_ICON)));
+		bottoneCercaListino.setToolTipText(Costanti.TIP_CERCA_LISTINO);
+		bottoneCercaListino.setBounds(25, 25, 50, 50);
+		pannello_menu_listino.add(bottoneCercaListino);
+		
+		pannello_sottomenu_listino = new JPanel();
+		pannello_sottomenu_listino.setPreferredSize(new Dimension(1013, 617));
+		pannello_sottomenu_listino.setLayout(new BorderLayout());
+		Listino.add(pannello_sottomenu_listino, BorderLayout.CENTER);
+		
+		pannello_laterale_listino = new JPanel();
+		pannello_laterale_listino.setPreferredSize(new Dimension(260, 617));
+		pannello_laterale_listino.setLayout(null);
+		pannello_sottomenu_listino.add(pannello_laterale_listino, BorderLayout.WEST);
+		
+//		alberoListini = new AlberoListini();
+//		alberoListini.setBounds(0, 0, 261, 617);
+//		pannello_laterale_listino.add(alberoListini);
+		
+		pannello_centrale_listino = new JPanel();
+		pannello_centrale_listino.setBackground(SystemColor.control);
+		
+		pannello_centrale_listino.setPreferredSize(new Dimension(753, 617));
+		pannello_sottomenu_listino.add(pannello_centrale_listino, BorderLayout.CENTER);
+		pannello_centrale_listino.setLayout(new BorderLayout());
+		pannello_centrale_listino.setBorder(new EmptyBorder(7, 7, 0, 7));
+		
+		setSfondoListino();
+		
+		bottoneCercaListino.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					Ctrl_gestisciListino.getInstance().btnCerca();
+				} 
+				catch (PersistentException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
 		
 	}
 	
@@ -437,4 +571,71 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		tabbedPrincipale.setEnabledAt(1, b);
 	}
 	
+	
+	
+	public void setSfondoListino() {
+		JPanel sfondoListino = new Sfondo_Listino();
+		pannello_centrale_listino.add(sfondoListino);
+	}
+	
+	
+	public void resetPannelloCentraleListino(){
+		pannello_centrale_listino.removeAll();
+		pannello_centrale_listino.repaint();
+	}
+	
+	
+	public void setIntestazioneListino(String nomeAzienda, String idAzienda, String citta, String automatico){
+		((RiepilogoIntestazioneListinoView) riep_intestaz_listino).setIntestazioneListino(nomeAzienda, idAzienda, citta, automatico);
+	}
+	
+	
+	public void setAbilitaAggiungi(boolean b){
+		((RiepilogoIntestazioneListinoView) riep_intestaz_listino).setAbilitaAddProdotto(b);
+	}
+	
+	
+	public void initTable(M_Prodotto[] listaProdotti){
+		((RiepilogoListinoView) riep_listino).initTable(listaProdotti);
+	}
+	
+	
+	public void setSchedaProdotto(M_Prodotto prod){
+		((RiepilogoProdottoFactoryView) riep_listino).setSchedaProdotto(prod);
+	}
+
+	
+	public void disattivaSalvaModificheProdotto(boolean b){
+		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnSalvaModifiche(b);
+	}
+
+
+	public void disattivaAnnullaModificheProdotto(boolean b){
+		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnAnnullaModifiche(b);
+	}
+
+	
+	public void disattivaModificaProd(boolean b){
+		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnModifica(b);
+	}
+	
+	
+	public void disattivaCancellaProd(boolean b){
+		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnCancella(b);
+	}
+	
+	
+	public void setEnableTabListino(boolean b ) {
+		tabbedPrincipale.setEnabledAt(2, b);
+	}
+	
+	
+	public void resetNuovoProdotto() {
+		((NuovoProdottoFactoryView) riep_listino).resetNewProdotto();
+	}
+
+	
+	public void setEnableCercaListino(boolean b){
+		bottoneCercaListino.setEnabled(b);
+	}
 }

@@ -27,13 +27,14 @@ public class M_Azienda {
 	private String telefono;
 	private String fax;
 	private String url;
+	private String tipoProdotto;
 
 	/*costruttori*/
 	
 	public M_Azienda(){
 	}
 	
-	public M_Azienda (String ragioneSociale, String citta, String CAP, String Indirizzo, String telefono, String fax, String email, String partita_iva, String codice_fiscale, String url)
+	public M_Azienda (String ragioneSociale, String citta, String CAP, String Indirizzo, String telefono, String fax, String email, String partita_iva, String codice_fiscale, String url, String tipo)
 	{
 		this.ragioneSociale=ragioneSociale;
 		this.citta=citta;
@@ -45,6 +46,7 @@ public class M_Azienda {
 		this.partitaIva=partita_iva;
 		this.codiceFiscale=codice_fiscale;
 		this.url=url;
+		this.tipoProdotto=tipo;
 	}
 	
 	
@@ -255,6 +257,13 @@ public class M_Azienda {
 	public void setUrl(String url) {
 		this.url = url;
 	}	
+	
+	public String getTipoProdotto(){
+		return tipoProdotto;
+	}
+	public void setTipoProdotto(String tipo){
+		this.tipoProdotto = tipo;
+	}
 	
 	public String toString() {
 		return String.valueOf(getIdAzienda());

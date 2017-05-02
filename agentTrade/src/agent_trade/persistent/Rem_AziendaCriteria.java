@@ -35,6 +35,7 @@ public class Rem_AziendaCriteria extends AbstractORMCriteria {
 	public final StringExpression telefono;
 	public final StringExpression fax;
 	public final StringExpression url;
+	public final StringExpression tipoProdotto;
 	
 	public Rem_AziendaCriteria(Criteria criteria) {
 		
@@ -51,6 +52,7 @@ public class Rem_AziendaCriteria extends AbstractORMCriteria {
 		telefono = new StringExpression("telefono", this);
 		fax = new StringExpression("fax", this);
 		url = new StringExpression("url", this);
+		tipoProdotto = new StringExpression("tipoProdotto", this);
 	}
 	
 	public Rem_AziendaCriteria(PersistentSession session) {

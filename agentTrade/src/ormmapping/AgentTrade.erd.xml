@@ -527,6 +527,17 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
+    <Column name="idAzienda">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
     <Column name="Discriminator">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>false</ForeignKey>

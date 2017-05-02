@@ -14,6 +14,7 @@
 package agent_trade.persistent;
 
 import java.util.List;
+
 import org.hibernate.criterion.DetachedCriteria;
 import org.orm.PersistentSession;
 import org.orm.criteria.*;
@@ -29,6 +30,7 @@ public class ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression idDescrizioneProdotto;
 	public final FloatExpression sconto;
 	public final IntegerExpression versione;
+	public final IntegerExpression idAzienda;
 
 	
 	public ProdottoDetachedCriteria() {
@@ -41,7 +43,8 @@ public class ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this.getDetachedCriteria());
 		sconto = new FloatExpression("sconto", this.getDetachedCriteria());
 		versione = new IntegerExpression("versione", this.getDetachedCriteria());
-
+		idAzienda = new IntegerExpression("idAzienda", this.getDetachedCriteria());
+		
 	}
 	
 	public ProdottoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -54,7 +57,7 @@ public class ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this.getDetachedCriteria());
 		sconto = new FloatExpression("sconto", this.getDetachedCriteria());
 		versione = new IntegerExpression("versione", this.getDetachedCriteria());
-
+		idAzienda = new IntegerExpression("idAzienda", this.getDetachedCriteria());
 
 	}
 	

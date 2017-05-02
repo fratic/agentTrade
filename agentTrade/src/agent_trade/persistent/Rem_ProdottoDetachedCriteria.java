@@ -29,6 +29,7 @@ public class Rem_ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression idDescrizioneProdotto;
 	public final FloatExpression sconto;
 	public final IntegerExpression versione;
+	public final IntegerExpression idAzienda;
 
 	
 	public Rem_ProdottoDetachedCriteria() {
@@ -41,6 +42,7 @@ public class Rem_ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this.getDetachedCriteria());
 		sconto = new FloatExpression("sconto", this.getDetachedCriteria());
 		versione = new IntegerExpression("versione", this.getDetachedCriteria());
+		idAzienda = new IntegerExpression("idAzienda", this.getDetachedCriteria());
 
 	}
 	
@@ -54,6 +56,7 @@ public class Rem_ProdottoDetachedCriteria extends AbstractORMDetachedCriteria {
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this.getDetachedCriteria());
 		sconto = new FloatExpression("sconto", this.getDetachedCriteria());
 		versione = new IntegerExpression("versione", this.getDetachedCriteria());
+		idAzienda = new IntegerExpression("idAzienda", this.getDetachedCriteria());
 
 
 	}

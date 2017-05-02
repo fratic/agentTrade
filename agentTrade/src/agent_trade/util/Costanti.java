@@ -75,7 +75,13 @@ public final class Costanti {
 	public final static String TITOLO_NUOVA_AZIENDA = "Nuova scheda Azienda";
 	public final static String TITOLO_CANCELLA_AZIENDA = "Attenzione!";
 
-
+	public final static String TITOLO_CERCA_LISTINO = "Cerca l'azienda di cui si vuole visualizzare il listino";
+	public final static String TITOLO_SCHEDA_LISTINO = "Catalogo Prodotti";
+	public final static String TITOLO_INTESTAZIONE_LISTINO = "Riepilogo Azienda";
+	public final static String TITOLO_SCHEDA_PRODOTTO = "Dettaglio Prodotto";
+	public final static String TITOLO_NUOVO_PRODOTTO = "Nuovo Prodotto";
+	
+	
 	/**
 	 * Messaggi dei Dialog
 	 */
@@ -155,13 +161,23 @@ public final class Costanti {
 	public static final String ANNULLA_MOD_AZIENDA_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String DETTAGLIO_AZIENDA_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
 	public static final String ALBERO_AZIENDE_ICON = "/agent_trade/ui/img/ico-cliente1.png";
-		
+//	CAMBIARE ICONE
+	public static final String LISTINO_ICON = "/agent_trade/ui/img/azienda.png";
+	public static final String NUOVO_LISTINO_ICON = "/agent_trade/ui/img/azienda.png";
+	public static final String CERCA_LISTINO_ICON = "/agent_trade/ui/img/azienda.png";
+	public static final String IMG_SFONDO_LISTINO = "/agent_trade/ui/img/sfondoAgentTradePreventivo.png";
+	public static final String SHOW_ICON =  "/agent_trade/ui/img/arrow_icon.png";
+	public static final String MOD_PRODOTTO_ICON = "/agent_trade/ui/img/settings_client.png";
+	public static final String CANC_PRODOTTO_ICON = "/agent_trade/ui/img/trash-icon.png";
+	public static final String SALVA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String ANNULLA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/back-icon.png";
+	
+	
 	/**
 	 * URL dei Sistemi Esterni
 	 */
 	
 	public final static String URL_post_prod = "http://fratic.altervista.org/prodPost.php";
-
 	
 	
 	/**
@@ -238,6 +254,7 @@ public final class Costanti {
 	public final static String TAB_CLIENTE= "Cliente";
 	public final static String TAB_AGENTE= "Agente";
 	public final static String TAB_AZIENDA= "Azienda";
+	public final static String TAB_LISTINO= "Listino";
 
 	public final static String ROOT_PREVENTIVI= "Preventivi";
 	public final static String ROOT_CLIENTI= "Clienti";
@@ -284,6 +301,20 @@ public final class Costanti {
 	
 	public final static String ROOT_AZIENDE = "Aziende";
 	
+	public final static String LABEL_AZIENDA = "Azienda: ";
+	public final static String LABEL_AGGIORNAMENTO_AUTO = "Aggiornamento automatico: ";
+	
+	public final static String LABEL_ID_PROD = "ID prodotto";
+	public final static String LABEL_NOME_PROD = "Nome";
+	public final static String LABEL_CATEGORIA_PROD = "Categoria";
+	public final static String LABEL_PREZZO_PROD = "Prezzo";
+	public final static String LABEL_SCONTO_PROD = "Sconto";
+	public final static String LABEL_VERSIONE_PROD = "Versione aggiornamento";
+	public final static String LABEL_DESCRIZIONE_PROD = "Descrizione";
+	
+	public final static String LABEL_COLORE = "Colore";
+	public final static String LABEL_IND_GEOG = "Ind. Geografica";
+	public final static String LABEL_CANTINA = "Cantina";
 
 	/**
 	 * Tip
@@ -350,6 +381,30 @@ public final class Costanti {
 	public final static String TIP_SALVA_MOD_AZIENDA = "Salva modifiche";
 	public final static String TIP_ANNULLA_MOD_AZIENDA = "Annulla modifiche";
 	
+	public final static String TIP_GESTISCI_LISTINO = "Gestisci i listini";
+	public final static String TIP_NUOVO_LISTINO = "Crea un nuovo listino";
+	public final static String TIP_CERCA_LISTINO = "Cerca un listino";
+	public static final String TIP_AGGIUNGI_PRODOTTO = "aggiungi un prodotto al catalogo (possibile solo se l'azienda non possiede un aggiornamento automatico del catalogo)";
+	public static final String TIP_DETTAGLIO_PRODOTTO = "Visualizza il prodotto nel dettaglio (consente la modifica e la cancellazione del prodotto)";
+	public static final String TIP_MODIFICA_PRODOTTO = "Modifica il prodotto (possibile solo se l'azienda non possiede un aggiornamento automatico del catalogo)";
+	public static final String TIP_CANCELLA_PRODOTTO = "Elimina il prodotto (possibile solo se l'azienda non possiede un aggiornamento automatico del catalogo)";
+	public final static String TIP_SALVA_MOD_PRODOTTO = "Salva modifiche";
+	public final static String TIP_ANNULLA_MOD_PRODOTTO = "Annulla modifiche";
+	public final static String TIP_TORNA_ELENCO = "Ritorna al catalogo";
+	
+	public final static String TIP_NOME_PRODOTTO = "Nome prodotto";
+	public final static String TIP_CATEGORIA_PRODOTTO = "Categoria prodotto";
+	public final static String TIP_PREZZO_PRODOTTO = "Prezzo prodotto";	
+	public final static String TIP_SCONTO_PRODOTTO = "Sconto prodotto";	
+	public final static String TIP_DESCRIZIONE_PRODOTTO = "Prezzo prodotto";
+	public final static String TIP_SALVA_NUOVO_PRODOTTO = "Salva il prodotto";	
+	public final static String TIP_ANNULLA_NUOVO_PRODOTTO = "Annulla inserimento";	
+	
+	public final static String TIP_COLORE_VINO = "Colore vino";
+	public final static String TIP_IND_GEOG_VINO = "Indicazione geografica";
+	public final static String TIP_CANTINA_VINO = "Cantina vino";
+	
+	
 	
 	/**
 	 * Bottoni
@@ -361,6 +416,8 @@ public final class Costanti {
 	public final static String BOTTONE_CONFERMA = "Ok";
 	public final static String BOTTONE_ANNULLA = "Annulla";
 	public final static String BOTTONE_VISUALIZZA = "Visualizza";
+	public final static String BOTTONE_VISUALIZZA_LISTINO = "Mostra Listino";
+	public final static String BOTTONE_AGIIUNGI_PRODOTTO = "Aggiungi prodotto";
 	
 	
 	/**
@@ -379,6 +436,8 @@ public final class Costanti {
 	
 	public final static String[] INTESTAZIONE_TABELLA_RICERCA_AZIENDE = {"ID", "Nome o Ragione Sociale", "Codice Fiscale", "P.IVA", "Citt\u00E0"};
 	
+	public final static String[] INTESTAZIONE_LISTINO_PRODOTTI = {"ID prodotto", "Nome", "Categoria", "Sconto", "Prezzo", "Visualizza" };
+	
 	/**
 	 * Costanti colonne
 	 */
@@ -394,6 +453,8 @@ public final class Costanti {
 
 	public final static int  COLONNA_PARZIALE_TAB_PREV= 7;
 
+	public static final int COLONNA_ID_SHOW_ITEM_BUTTON = 0;
+	public final static int  COLONNA_SHOW_ITEM_BUTTON = 5;
 	
 	/**
 	 * Sistemi Esterni: Aziende di Vino

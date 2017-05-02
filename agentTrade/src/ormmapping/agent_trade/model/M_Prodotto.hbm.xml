@@ -16,6 +16,7 @@ License Type: Academic
 		
 		<property name="idProdottoAzienda" column="idprodottoazienda" type="integer" />
 		<property name="versione" column="versione" type="integer"/>
+		<property name="idAzienda" column="idAzienda" type="integer" />
 		
 		<subclass name="agent_trade.model.M_Latticini" discriminator-value="M_Latticini" lazy="false">
 			<property name="stagionatura" column="Stagionatura" type="integer" length="11" not-null="false" lazy="false"/>

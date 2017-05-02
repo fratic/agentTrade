@@ -144,7 +144,10 @@ public class Ctrl_gestisciAzienda {
 		String errore = ControlloCampi(ragSoc, pIva, codFis, citta, cap, indirizzo, email, tel, fax, url);
 		if(errore==null){
 			
-			M_Azienda azienda = new M_Azienda( ragSoc, citta, cap, indirizzo, tel, fax, email, pIva, codFis, url);
+//			inserire il tipoProdotti manualmente finchè non viene aggiornato tutto
+			String tipo = "carni" ;
+			
+			M_Azienda azienda = new M_Azienda( ragSoc, citta, cap, indirizzo, tel, fax, email, pIva, codFis, url, tipo);
 			M_Azienda.salvaAziendaRemoto(azienda); 
 
 			PrimaryMandanteView.getInstance().resetNuovaAzienda();

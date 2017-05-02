@@ -33,6 +33,7 @@ public class Rem_ProdottoCriteria extends AbstractORMCriteria {
 	public final StringExpression idDescrizioneProdotto;
 	public final FloatExpression sconto;
 	public final IntegerExpression versione;
+	public final IntegerExpression idAzienda;
 
 	
 	public Rem_ProdottoCriteria(Criteria criteria) {
@@ -45,6 +46,7 @@ public class Rem_ProdottoCriteria extends AbstractORMCriteria {
 		idDescrizioneProdotto = new StringExpression("idDescrizioneProdotto", this);
 		sconto = new FloatExpression("sconto", this);
 		versione = new IntegerExpression("versione", this);
+		idAzienda = new IntegerExpression("idAzienda", this);
 
 	}
 	

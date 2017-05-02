@@ -729,13 +729,13 @@ public class RiepilogoClienteView extends JPanel {
 		bottoneSalvaModifiche = new JButton("");
 		bottoneSalvaModifiche.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
 		pannelloBottoni.add(bottoneSalvaModifiche);
-		bottoneCancellaCliente.setToolTipText(Costanti.TIP_SALVA_MOD_CLIENTE);
+		bottoneSalvaModifiche.setToolTipText(Costanti.TIP_SALVA_MOD_CLIENTE);
 		bottoneSalvaModifiche.setIcon(new ImageIcon(DettaglioClienteView.class.getResource(Costanti.SALVA_MOD_CLIENTE_ICON)));
 		
 		bottoneAnnullaModifica = new JButton("");
 		bottoneAnnullaModifica.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
 		pannelloBottoni.add(bottoneAnnullaModifica);
-		bottoneCancellaCliente.setToolTipText(Costanti.TIP_ANNULLA_MOD_CLIENTE);
+		bottoneAnnullaModifica.setToolTipText(Costanti.TIP_ANNULLA_MOD_CLIENTE);
 		bottoneAnnullaModifica.setIcon(new ImageIcon(DettaglioClienteView.class.getResource(Costanti.ANNULLA_MOD_CLIENTE_ICON)));
 		
 
