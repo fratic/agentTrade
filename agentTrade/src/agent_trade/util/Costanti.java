@@ -15,8 +15,8 @@ public final class Costanti {
 	 * Versione software
 	 */
 	
-//	public final static String  version = "agente";
-	public final static String  version = "mandante";
+	public final static String  version = "agente";
+//	public final static String  version = "mandante";
 
 	
 	public final static String  agente = "agente";
@@ -110,6 +110,7 @@ public final class Costanti {
 	public static final String IMG_SFONDO_PREVENTIVO= "/agent_trade/ui/img/sfondoAgentTradePreventivo.png";
 	public static final String IMG_SFONDO_AGENTE = "/agent_trade/ui/img/sfondoAgentTradeAgente.png";	
 	public static final String CLOSE_ICON= "/agent_trade/ui/img/close_icon.png";
+	public static final String MINUS_ICON= "/agent_trade/ui/img/minus.png";
 	public static final String PLUS_ICON= "/agent_trade/ui/img/plus.png";
 	public static final String PREVENTIVO_ICON= "/agent_trade/ui/img/preventivo.png";
 	public static final String NUOVO_PREVENTIVO_ICON= "/agent_trade/ui/img/nuovo_icon.png";
@@ -124,12 +125,12 @@ public final class Costanti {
 	public static final String CONFERMA_ORDINE_ICON= "/agent_trade/ui/img/carrelloOrdine.png";
 	public static final String CANCELLA_PREV_ICON= "/agent_trade/ui/img/delete.png";
 	public static final String ALBERO_CLIENTI_ICON = "/agent_trade/ui/img/ico-cliente1.png";
-	public static final String SALVA_CLIENTI_ICON = "/agent_trade/ui/img/save_32.png";
-	public static final String INDIETRO_ICON = "/agent_trade/ui/img/sign-out.png";
+	public static final String SALVA_CLIENTI_ICON ="/agent_trade/ui/img/save-icon.png";
+	public static final String INDIETRO_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String COMUNICAZIONE_CLIENTE_ICON = "/agent_trade/ui/img/send-icon.png";
-	public static final String MOD_CLIENTE_ICON = "/agent_trade/ui/img/settings_client.png";
-	public static final String CANC_CLIENTE_ICON = "/agent_trade/ui/img/trash-icon.png";
-	public static final String SALVA_MOD_CLIENTE_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String MOD_CLIENTE_ICON = "/agent_trade/ui/img/setting.png";
+	public static final String CANC_CLIENTE_ICON = "/agent_trade/ui/img/delete.png";
+	public static final String SALVA_MOD_CLIENTE_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String ANNULLA_MOD_CLIENTE_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String RIEPILOGO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String DETTAGLIO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
@@ -137,41 +138,42 @@ public final class Costanti {
 	public static final String AGENTE_ICON= "/agent_trade/ui/img/cliente.png";
 	public static final String NUOVO_AGENTE_ICON= "/agent_trade/ui/img/new_user.png";
 	public static final String CERCA_AGENTE_ICON= "/agent_trade/ui/img/search.png";
-	public static final String SALVA_AGENTI_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String SALVA_AGENTI_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String COMUNICAZIONE_AGENTE_ICON = "/agent_trade/ui/img/send-icon.png";
-	public static final String MOD_AGENTE_ICON = "/agent_trade/ui/img/settings_client.png";
-	public static final String CANC_AGENTE_ICON = "/agent_trade/ui/img/trash-icon.png";
-	public static final String SALVA_MOD_AGENTE_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String MOD_AGENTE_ICON = "/agent_trade/ui/img/setting.png";
+	public static final String CANC_AGENTE_ICON = "/agent_trade/ui/img/delete.png";
+	public static final String SALVA_MOD_AGENTE_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String ANNULLA_MOD_AGENTE_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String RIEPILOGO_AGENTE_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String DETTAGLIO_AGENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
-	public static final String ALBERO_AGENTI_ICON = "/agent_trade/ui/img/ico-cliente1.png";
+	public static final String ALBERO_AGENTI_ICON = "/agent_trade/ui/img/ico-agente.png";
 
 	public static final String AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
 //	CAMBIARE ICONE
 	public static final String NUOVA_AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
 	public static final String CERCA_AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
-	public static final String SALVA_AZIENDA_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String SALVA_AZIENDA_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String IMG_SFONDO_AZIENDA = "/agent_trade/ui/img/sfondoAgentTradeAgente.png";
 	public static final String RIEPILOGO_AZIENDA_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String COMUNICAZIONE_AZIENDA_ICON = "/agent_trade/ui/img/send-icon.png";
-	public static final String MOD_AZIENDA_ICON = "/agent_trade/ui/img/settings_client.png";
-	public static final String CANC_AZIENDA_ICON = "/agent_trade/ui/img/trash-icon.png";
-	public static final String SALVA_MOD_AZIENDA_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String MOD_AZIENDA_ICON = "/agent_trade/ui/img/setting.png";
+	public static final String CANC_AZIENDA_ICON = "/agent_trade/ui/img/delete.png";
+	public static final String SALVA_MOD_AZIENDA_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String ANNULLA_MOD_AZIENDA_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String DETTAGLIO_AZIENDA_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
-	public static final String ALBERO_AZIENDE_ICON = "/agent_trade/ui/img/ico-cliente1.png";
+	public static final String ALBERO_AZIENDE_ICON = "/agent_trade/ui/img/ico-azienda.png";
 //	CAMBIARE ICONE
-	public static final String LISTINO_ICON = "/agent_trade/ui/img/azienda.png";
-	public static final String NUOVO_LISTINO_ICON = "/agent_trade/ui/img/azienda.png";
-	public static final String CERCA_LISTINO_ICON = "/agent_trade/ui/img/azienda.png";
+	public static final String LISTINO_ICON = "/agent_trade/ui/img/listino.png";
+	public static final String NUOVO_LISTINO_ICON = "/agent_trade/ui/img/listino.png";
+	public static final String CERCA_LISTINO_ICON = "/agent_trade/ui/img/listino.png";
 	public static final String IMG_SFONDO_LISTINO = "/agent_trade/ui/img/sfondoAgentTradePreventivo.png";
 	public static final String SHOW_ICON =  "/agent_trade/ui/img/arrow_icon.png";
-	public static final String MOD_PRODOTTO_ICON = "/agent_trade/ui/img/settings_client.png";
-	public static final String CANC_PRODOTTO_ICON = "/agent_trade/ui/img/trash-icon.png";
-	public static final String SALVA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/save_32.png";
+	public static final String MOD_PRODOTTO_ICON = "/agent_trade/ui/img/setting.png";
+	public static final String CANC_PRODOTTO_ICON = "/agent_trade/ui/img/delete.png";
+	public static final String SALVA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String ANNULLA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/back-icon.png";
-	
+	public static final String ALBERO_LISTINO_ICON = "/agent_trade/ui/img/ico-listino.png";
+
 	
 	/**
 	 * URL dei Sistemi Esterni
@@ -258,6 +260,9 @@ public final class Costanti {
 
 	public final static String ROOT_PREVENTIVI= "Preventivi";
 	public final static String ROOT_CLIENTI= "Clienti";
+	public final static String ROOT_PRODOTTI= "Prodotti";
+
+	
 
 	public final static String LABEL_INTESTAZIONE= "Intestazione";
 	public final static String LABEL_NPREV= "Preventivo n\u00B0";

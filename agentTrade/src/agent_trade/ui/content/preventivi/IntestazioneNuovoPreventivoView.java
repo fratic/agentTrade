@@ -142,7 +142,7 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		btnNewButton = new JButton();
 		btnNewButton.setToolTipText(Costanti.TIP_ADD_ITEM);
 		btnNewButton.setIcon(new ImageIcon(IntestazioneNuovoPreventivoView.class.getResource(Costanti.ADD_ITEM_ICON)));
-		btnNewButton.setPreferredSize(new Dimension(40,30));
+		btnNewButton.setPreferredSize(new Dimension(40,40));
 		pannelloSud.add(btnNewButton);
 		
 		JSeparator separator = new JSeparator();

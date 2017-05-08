@@ -57,18 +57,6 @@ public class SistemaEsternoFactory {
 		return aziende_vino;
 	}
 
-	/**
-	 * Restituisce le Aziende di Carne supportate dal Software
-	 * 
-	 * @return ArrayList<ImpresaRicettivaAdapter>
-	 */
-//	public ArrayList<AziendaCarniAdapter> getAziendeCarne() {
-//		ArrayList<AziendaCarniAdapter> imprese_ricettive = new ArrayList<AziendaCarniAdapter>();
-//		for (AziendaCarniAdapter impresa_ricettiva : Costanti.SISTEMI_ESTERNI_AZIENDE_VINIRICETTIVE) {
-//			imprese_ricettive.add(impresa_ricettiva);
-//		}
-//		return imprese_ricettive;
-//	}
 
 	public SistemaEsterno getAdapter(String azienda) {
 		

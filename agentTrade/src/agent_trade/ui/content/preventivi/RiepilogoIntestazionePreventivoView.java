@@ -150,19 +150,19 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		bottoneModifica = new JButton("");
 		bottoneModifica.setToolTipText(Costanti.TIP_MODIFICA_PREV);
 		bottoneModifica.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource(Costanti.SETTING_ICON)));
-		bottoneModifica.setPreferredSize(new Dimension(40,30));
+		bottoneModifica.setPreferredSize(new Dimension(40,40));
 		pannelloSudEst.add(bottoneModifica);
 		
 		bottoneConfermaVendita = new JButton("");
 		bottoneConfermaVendita.setToolTipText(Costanti.TIP_CONFERMA_ORDINE);
 		bottoneConfermaVendita.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource(Costanti.CONFERMA_ORDINE_ICON)));
-		bottoneConfermaVendita.setPreferredSize(new Dimension(40,30));
+		bottoneConfermaVendita.setPreferredSize(new Dimension(40,40));
 		pannelloSudEst.add(bottoneConfermaVendita);
 		
 		cancPrevButton = new JButton("");
 		cancPrevButton.setToolTipText(Costanti.TIP_CANCELLA_PREV);
 		cancPrevButton.setIcon(new ImageIcon(RiepilogoIntestazionePreventivoView.class.getResource(Costanti.CANCELLA_PREV_ICON)));
-		cancPrevButton.setPreferredSize(new Dimension(40,30));
+		cancPrevButton.setPreferredSize(new Dimension(40,40));
 		pannelloSudOvest.add(cancPrevButton);
 		
 		JSeparator separator = new JSeparator();
