@@ -92,12 +92,15 @@ public class NuovoProdottoFactoryView extends JPanel{
 			if(azienda.getTipoProdotto().equals("vini")){
 				instance = NuovoViniView.getInstance();
 			}
-//			else if(azienda.getTipoProdotto() == "dolci"){
-//				instance = NuovoDolciView.getInstance();
-//			}
-//			else if(azienda.getTipoProdotto() == "carni"){
-//				instance = NuovoCarniView.getInstance();
-//			}
+			else if(azienda.getTipoProdotto().equals("dolci")){
+				instance = NuovoDolciView.getInstance();
+			}
+			else if(azienda.getTipoProdotto().equals("carni")){
+				instance = NuovoCarniView.getInstance();
+			}
+			else if(azienda.getTipoProdotto().equals("latticini")){
+				instance = NuovoLatticiniView.getInstance();
+			}
 		}
 		return instance;
 	}
@@ -183,7 +186,8 @@ public class NuovoProdottoFactoryView extends JPanel{
 
 		TFCategoria = new JTextField();
 		TFCategoria.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		TFCategoria.setToolTipText(Costanti.TIP_CATEGORIA_PRODOTTO);
+		TFCategoria.setEditable(false);
+		//TFCategoria.setToolTipText(Costanti.TIP_CATEGORIA_PRODOTTO);
 		pannCategoria.add(TFCategoria);
 		
 		pannPrezzo = new JPanel();
@@ -306,7 +310,7 @@ public class NuovoProdottoFactoryView extends JPanel{
 	public void resetNewProdotto(){
 		
 		TFNome.setText(null);
-		TFCategoria.setText(null);
+		//TFCategoria.setText(null);
 		TFPrezzo.setText(null);
 		TFSconto.setText(null);
 		TADescrizione.setText(null);

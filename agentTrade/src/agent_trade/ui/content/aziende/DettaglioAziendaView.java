@@ -12,7 +12,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -47,6 +49,7 @@ public class DettaglioAziendaView extends JPanel {
 	private JLabel labelTelefono;
 	private JLabel labelFax;
 	private JLabel labelUrl;
+	private JLabel labelTipo;
 	
 	private JLabel labelErrore;
 	
@@ -61,6 +64,8 @@ public class DettaglioAziendaView extends JPanel {
 	private JTextField TFTelefono;
 	private JTextField TFFax;
 	private JTextField TFUrl;
+	
+	private JComboBox JCTipo;
 	
 	private JButton bottoneSalvaAzienda;
 	private JButton bottoneEsci;
@@ -82,6 +87,7 @@ public class DettaglioAziendaView extends JPanel {
 	private JPanel pannEmail;
 	private JPanel pannFax;
 	private JPanel pannUrl;
+	private JPanel pannTipo;
 	private JPanel pannErrore;
 	private JPanel pannelloEast;
 	
@@ -296,15 +302,33 @@ public class DettaglioAziendaView extends JPanel {
 		pannUrl.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannUrl);
 		
-		labelFax = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_URL_AZIENDA);
-		labelFax.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
-		labelFax.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
-		pannUrl.add(labelFax);
+		labelUrl = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_URL_AZIENDA);
+		labelUrl.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
+		labelUrl.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
+		pannUrl.add(labelUrl);
 		 
 		TFUrl = new JTextField();
 		TFUrl.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
 		TFUrl.setToolTipText(Costanti.TIP_URL_AZIENDA);
 		pannUrl.add(TFUrl);
+		
+		pannTipo = new JPanel();
+		FlowLayout flowLayout17 = (FlowLayout) pannTipo.getLayout();
+		flowLayout17.setHgap(0);
+		flowLayout17.setVgap(0);
+		pannTipo.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
+		contenitoreCampi.add(pannTipo);
+		
+		labelTipo = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_TIPO_AZIENDA);
+		labelTipo.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
+		labelTipo.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
+		pannTipo.add(labelTipo);
+		
+		JCTipo = new JComboBox(Costanti.LISTA_PRODOTTI);
+		JCTipo.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		JCTipo.setToolTipText(Costanti.TIP_TIPO_AZIENDA);
+		JCTipo.setSelectedIndex(0);
+		pannTipo.add(JCTipo);
 		
 		pannErrore= new JPanel();
 		FlowLayout flowLayout15 = (FlowLayout) pannErrore.getLayout();
@@ -346,7 +370,7 @@ public class DettaglioAziendaView extends JPanel {
 		bottoneSalvaAzienda.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-				Ctrl_gestisciAzienda.getInstance().inserisciNuovaAzienda((String)TFRagioneSociale.getText(), (String)TFPartitaIva.getText(), (String)TFCodiceFiscale.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFTelefono.getText(), (String)TFFax.getText(), (String)TFUrl.getText());
+				Ctrl_gestisciAzienda.getInstance().inserisciNuovaAzienda((String)TFRagioneSociale.getText(), (String)TFPartitaIva.getText(), (String)TFCodiceFiscale.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFTelefono.getText(), (String)TFFax.getText(), (String)TFUrl.getText(), (String)JCTipo.getSelectedItem());
 
 			} 
 			catch (PersistentException e) {
@@ -395,6 +419,7 @@ public class DettaglioAziendaView extends JPanel {
 		TFTelefono.setText(null);
 		TFFax.setText(null);
 		TFUrl.setText(null);
+		JCTipo.setSelectedIndex(0);
 	}
 	
 	

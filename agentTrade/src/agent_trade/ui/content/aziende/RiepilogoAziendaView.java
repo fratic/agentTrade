@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -47,7 +48,7 @@ public class RiepilogoAziendaView extends JPanel {
 	private JLabel labelTelefono;
 	private JLabel labelFax;
 	private JLabel labelUrl;
-	
+	private JLabel labelTipo;
 	private JLabel labelErrore;
 	
 	private JTextField TFidAzienda;
@@ -61,6 +62,7 @@ public class RiepilogoAziendaView extends JPanel {
 	private JTextField TFTelefono;
 	private JTextField TFFax;
 	private JTextField TFUrl;
+	private JTextField TFTipo;
 	
 	private JButton bottoneModificaAzienda;
 	private JButton bottoneCancellaAzienda;
@@ -86,8 +88,10 @@ public class RiepilogoAziendaView extends JPanel {
 	private JPanel pannEmail;
 	private JPanel pannFax;
 	private JPanel pannUrl;
+	private JPanel pannTipo;
 	private JPanel pannErrore;
 	private JPanel pannelloEast;
+	
 	
 	/*costruttori*/
 	
@@ -327,6 +331,23 @@ public class RiepilogoAziendaView extends JPanel {
 		TFUrl.setEditable(false);
 		pannUrl.add(TFUrl);
 		
+		pannTipo = new JPanel();
+		FlowLayout flowLayout17 = (FlowLayout) pannTipo.getLayout();
+		flowLayout17.setHgap(0);
+		flowLayout17.setVgap(0);
+		pannTipo.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
+		contenitoreCampi.add(pannTipo);
+		
+		labelTipo = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_TIPO_AZIENDA);
+		labelTipo.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
+		labelTipo.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
+		pannTipo.add(labelTipo);
+		
+		TFTipo = new JTextField();
+		TFTipo.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		TFTipo.setEditable(false);
+		pannTipo.add(TFTipo);
+		
 		pannErrore= new JPanel();
 		FlowLayout flowLayout15 = (FlowLayout) pannErrore.getLayout();
 		flowLayout15.setHgap(0);
@@ -401,7 +422,7 @@ public class RiepilogoAziendaView extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				try {
-					Ctrl_gestisciAzienda.getInstance().modificaAzienda(Integer.parseInt(TFidAzienda.getText()),(String)TFRagioneSociale.getText(), (String)TFPartitaIva.getText(), (String)TFCodiceFiscale.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFTelefono.getText(), (String)TFFax.getText(), (String)TFUrl.getText());
+					Ctrl_gestisciAzienda.getInstance().modificaAzienda(Integer.parseInt(TFidAzienda.getText()),(String)TFRagioneSociale.getText(), (String)TFPartitaIva.getText(), (String)TFCodiceFiscale.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFTelefono.getText(), (String)TFFax.getText(), (String)TFUrl.getText(), (String)TFTipo.getText());
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -454,7 +475,7 @@ public class RiepilogoAziendaView extends JPanel {
 	
 	/*metodi pubblici*/
 	
-	public void setRiepilogoAzienda(String id, String ragSoc, String codFis, String PIva, String citta, String cap, String indirizzo, String email, String tel, String fax, String url ) {
+	public void setRiepilogoAzienda(String id, String ragSoc, String codFis, String PIva, String citta, String cap, String indirizzo, String email, String tel, String fax, String url, String tipo ) {
 		
 		this.TFidAzienda.setText(id);
 		this.TFRagioneSociale.setText(ragSoc);
@@ -467,6 +488,7 @@ public class RiepilogoAziendaView extends JPanel {
 		this.TFTelefono.setText(tel);
 		this.TFFax.setText(fax);
 		this.TFUrl.setText(url);
+		this.TFTipo.setText(tipo);
 		}
 	
 	//questo metodo rende le TF modificabili per effettuare update dei dati

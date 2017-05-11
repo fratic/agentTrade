@@ -16,6 +16,7 @@ import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Vini;
 import agent_trade.ui.content.aziende.Ricerca_azienda;
 import agent_trade.ui.content.listini.Ricerca_listino;
+import agent_trade.ui.content.prodotti.riepilogo.confermaCancProdotto;
 import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
 
@@ -110,7 +111,7 @@ public class Ctrl_gestisciListino {
 		
 //		se l'azienda ha un'api i bottoni per la modifica del listino devono essere disabilitati
 		
-		if (azienda.getUrl()== null || azienda.getUrl()=="" ){
+		if (azienda.getUrl()== null || azienda.getUrl()== "" ){
 			listino = "assente";
 			abilitaAggiungi = true;
 		}
@@ -129,7 +130,7 @@ public class Ctrl_gestisciListino {
 	}
 	
 	
-	public void mostraProdotto (int idProd) throws PersistentException{
+	public void mostraProdotto (int idProd){
 		
 		M_Prodotto prod = null;
 		
@@ -153,6 +154,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setSchedaProdotto(prod);
 	}
 	
+	
 	public void mostraCatalogo() throws PersistentException{
 		
 		PrimaryMandanteView.cancRiepilogoProdottoView();
@@ -166,7 +168,8 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().initTable(elencoProd);
 	}
 
-	public void SalvaProdotto(M_Prodotto prod) throws PersistentException {
+	
+	public void salvaProdotto(M_Prodotto prod) throws PersistentException {
 		
 		M_Prodotto.salvaProdottoRemoto(prod);
 		
@@ -176,7 +179,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
-		
+		//vedere se c'è una soluzione migliore in quanto questa implica una chiamata al db
 		updateElencoProdotti();		
 		
 		PrimaryMandanteView.initRiepilogoListinoView();
@@ -185,5 +188,100 @@ public class Ctrl_gestisciListino {
 		
 	}
 	
+	
+	public void abilitaModifica(){
+		
+		PrimaryMandanteView.getInstance().setModificheProdotto(true);
+		PrimaryMandanteView.getInstance().disattivaModificaProd(false);
+		PrimaryMandanteView.getInstance().disattivaCancellaProd(false);
+		PrimaryMandanteView.getInstance().disattivaIndietro(false);
+		PrimaryMandanteView.getInstance().setVisibleErroreRiepProd(false);
+		PrimaryMandanteView.getInstance().disattivaSalvaModificheProdotto(true);
+		PrimaryMandanteView.getInstance().disattivaAnnullaModificheProdotto(true);
+		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
+		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
+		PrimaryMandanteView.getInstance().setEnableCercaListino(false);
+		PrimaryMandanteView.getInstance().setVisibleToolTipListino();
+	}
+	
+	
+	public void annullaModifica(M_Prodotto prod){
+		
+//		PrimaryMandanteView.cancRiepilogoProdottoView();
+//		PrimaryMandanteView.initRiepilogoProdottoView(prod);
+		
+		mostraProdotto(prod.getIdProdotto());
+		
+		PrimaryMandanteView.getInstance().setModificheProdotto(false);
+		PrimaryMandanteView.getInstance().disattivaModificaProd(true);
+		PrimaryMandanteView.getInstance().disattivaCancellaProd(true);
+		PrimaryMandanteView.getInstance().disattivaIndietro(true);
+		PrimaryMandanteView.getInstance().disattivaSalvaModificheProdotto(false);
+		PrimaryMandanteView.getInstance().disattivaAnnullaModificheProdotto(false);
+		PrimaryMandanteView.getInstance().setVisibleErroreRiepProd(false);
+		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
+		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
+		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
+	}
+	
+	
+	public void modificaProdotto(M_Prodotto prod) throws PersistentException{
+		
+		prod.setVersione(prod.getVersione()+ 1);
+		
+		M_Prodotto.aggiornaProdottoRemoto(prod);
+		
+//		for (M_Prodotto p : elencoProd) {
+//			if(p.getIdProdotto()== prod.getIdProdotto()){
+//				p = prod;
+//			}
+//		}
+		updateElencoProdotti();
+//		PrimaryMandanteView.cancRiepilogoProdottoView();
+//		PrimaryMandanteView.initRiepilogoProdottoView(prod);
+		
+		mostraProdotto(prod.getIdProdotto());
+		
+		PrimaryMandanteView.getInstance().setModificheProdotto(false);
+		PrimaryMandanteView.getInstance().disattivaModificaProd(true);
+		PrimaryMandanteView.getInstance().disattivaSalvaModificheProdotto(false);
+		PrimaryMandanteView.getInstance().disattivaCancellaProd(true);
+		PrimaryMandanteView.getInstance().disattivaIndietro(true);
+		PrimaryMandanteView.getInstance().disattivaAnnullaModificheProdotto(false);
+		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
+		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
+		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
+		
+	}
+	
+	
+	public void cancellaProdotto(M_Prodotto prod){
+		
+		confermaCancProdotto.getInstance().setProdotto(prod);
+		confermaCancProdotto.getInstance().setVisible(true);
+	}
+	
+	
+	public void postConfermaCancProdotto(M_Prodotto prod) throws PersistentException{
+		
+		prod.setVersione(0);
+		
+		M_Prodotto.aggiornaProdottoRemoto(prod);
+		
+		confermaCancProdotto.getInstance().setVisible(false);
+		confermaCancProdotto.cancInst();
+		
+		updateElencoProdotti();
+		mostraCatalogo();
+	}
+	
+	
+	public void notConfermaCancProdotto(){
+		
+		confermaCancProdotto.getInstance().setVisible(false);
+		confermaCancProdotto.cancInst();
+	}
 		
 }

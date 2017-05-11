@@ -48,12 +48,12 @@ public class Ctrl_gestisciAzienda {
 		    return false;
 		}
 	
-	private String ControlloCampi(String ragSoc, String pIva, String codFis, String citta, String cap, String indirizzo, String email, String tel, String fax, String url){
+	private String ControlloCampi(String ragSoc, String pIva, String codFis, String citta, String cap, String indirizzo, String email, String tel, String fax, String url, String tipo){
 		
 		String errore= null;
 		String campoErrato = "";
 		
-		if(ragSoc.equals("") || pIva.equals("") || codFis.equals("") || citta.equals("") || cap.equals("") || indirizzo.equals("") || email.equals("") || tel.equals("") || fax.equals("") /*|| url.equals("")*/){
+		if(ragSoc.equals("") || pIva.equals("") || codFis.equals("") || citta.equals("") || cap.equals("") || indirizzo.equals("") || email.equals("") || tel.equals("") || fax.equals("") /*|| url.equals("")*/ || tipo.equals("Seleziona un tipo")){
 			return errore = Costanti.MESSAGGIO_CAMPI_VUOTI;
 		}
 		if(!check(Costanti.REG_EX_RAGIONE_SOCIALE, ragSoc)){
@@ -130,22 +130,23 @@ public class Ctrl_gestisciAzienda {
 		Ricerca_azienda.cancInstanza();
 		
 		PrimaryMandanteView.initRiepilogoAziendaView();
-		PrimaryMandanteView.getInstance().setSchedaAzienda(""+azienda.getIdAzienda(), azienda.getRagioneSociale(), azienda.getCodiceFiscale(), azienda.getPartitaIva(), azienda.getCitta(), azienda.getCap(), azienda.getIndirizzo(), azienda.getEmail(), azienda.getTelefono(), azienda.getFax(), azienda.getUrl());
+		PrimaryMandanteView.getInstance().setSchedaAzienda(""+azienda.getIdAzienda(), azienda.getRagioneSociale(), azienda.getCodiceFiscale(), azienda.getPartitaIva(), azienda.getCitta(), azienda.getCap(), azienda.getIndirizzo(), azienda.getEmail(), azienda.getTelefono(), azienda.getFax(), azienda.getUrl(), azienda.getTipoProdotto());
 		PrimaryMandanteView.getInstance().disattivaSalvaModificheAzienda(false);
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(false);
 //		AlberoAziende.abilitaAlbero();
 //		AlberoAziende.selectNode(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
 	}
 
-	public void inserisciNuovaAzienda(String ragSoc, String pIva, String codFis, String citta, String cap, String indirizzo, String email, String tel, String fax, String url) throws PersistentException {
+	public void inserisciNuovaAzienda(String ragSoc, String pIva, String codFis, String citta, String cap, String indirizzo, String email, String tel, String fax, String url, String tipo) throws PersistentException {
 		
-		String errore = ControlloCampi(ragSoc, pIva, codFis, citta, cap, indirizzo, email, tel, fax, url);
-		if(errore==null){
-			
-//			inserire il tipoProdotti manualmente finchè non viene aggiornato tutto
-			String tipo = "carni" ;
+		String errore = ControlloCampi(ragSoc, pIva, codFis, citta, cap, indirizzo, email, tel, fax, url, tipo);
+		
+		if(errore == null){
+////			NON VA BENE
+//			if(url == "") url = null;			
 			
 			M_Azienda azienda = new M_Azienda( ragSoc, citta, cap, indirizzo, tel, fax, email, pIva, codFis, url, tipo);
 			M_Azienda.salvaAziendaRemoto(azienda); 
@@ -160,6 +161,7 @@ public class Ctrl_gestisciAzienda {
 //			AlberoAziende.selectNode(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
 //			AlberoAziende.abilitaAlbero();
 			PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+			PrimaryMandanteView.getInstance().setEnableTabListino(true);
 			PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
 		}
 		else{
@@ -168,10 +170,12 @@ public class Ctrl_gestisciAzienda {
 		}	
 	}
 	
-	public void modificaAzienda (int id, String ragSoc, String pIva, String codFis, String citta, String cap, String indirizzo,	String email, String tel, String fax, String url) throws PersistentException {
+	public void modificaAzienda (int id, String ragSoc, String pIva, String codFis, String citta, String cap, String indirizzo,	String email, String tel, String fax, String url, String tipo) throws PersistentException {
 		
-		String errore = ControlloCampi(ragSoc, pIva, codFis, citta, cap, indirizzo, email, tel, fax, url);
+		String errore = ControlloCampi(ragSoc, pIva, codFis, citta, cap, indirizzo, email, tel, fax, url, tipo);
 		if(errore==null){
+////			NON VA BENE
+//			if(url == "") url = null;
 			
 			M_Azienda azienda = M_Azienda.cercaAziendaRemoto(id);
 						
@@ -195,10 +199,12 @@ public class Ctrl_gestisciAzienda {
 			PrimaryMandanteView.getInstance().disattivaAnnullaModificheAzienda(false);
 		
 			PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+			PrimaryMandanteView.getInstance().setEnableTabListino(true);
 			
 			PrimaryMandanteView.getInstance().setEnableNewAzienda(true);
 			PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
 			PrimaryMandanteView.getInstance().disattivaInviaPostaAzienda(true);
+			PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(false);
 			PrimaryMandanteView.getInstance().setInvisibleToolTipAzienda();
 //			AlberoAziende.updateNodo(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
 //			AlberoAziende.selectNode(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
@@ -232,6 +238,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.initDettaglioAzienda();
 		//AlberoAziende.disabilitaAlbero();
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
+		PrimaryMandanteView.getInstance().setEnableTabListino(false);
 		PrimaryMandanteView.getInstance().setEnableCercaAzienda(false);
 	}
 	
@@ -242,6 +249,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().setSfondoAzienda();
 		PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreNuovaAzienda(false);
 //		AlberoAziende.abilitaAlbero();
 	}
@@ -255,6 +263,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().disattivaSalvaModificheAzienda(true);
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
+		PrimaryMandanteView.getInstance().setEnableTabListino(false);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableNewAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableCercaAzienda(false);
@@ -272,6 +281,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(false);
 		PrimaryMandanteView.getInstance().disattivaInviaPostaAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableNewAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipAzienda();

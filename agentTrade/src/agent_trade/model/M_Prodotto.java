@@ -132,6 +132,7 @@ public abstract class M_Prodotto {
 			
 			Rem_ProdottoCriteria criteriaProdotto= new Rem_ProdottoCriteria();
 			criteriaProdotto.idAzienda.eq(idAzienda);
+			criteriaProdotto.versione.ne(0);
 			criteriaProdotto.setMaxResults(10000);
 			return criteriaProdotto.listProdotto();
 
@@ -336,6 +337,22 @@ public abstract class M_Prodotto {
 		t.commit();
 
 	}
+	
+	
+	public static void aggiornaProdottoRemoto(M_Prodotto prod) throws PersistentException{
+		
+		PersistentTransaction t =  AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+		try {
+			 AgentTradeMandantePersistentManager.instance().getSession().update(prod);
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+		finally {
+
+		}
+	}
 
 	
 	
@@ -343,16 +360,14 @@ public abstract class M_Prodotto {
 	 * metodi privati
 	 */
 	
-
-	private void setIdProdotto(int value) {
-		this.IdProdotto = value;
-	}
-	
 	
 	/*
 	 * metodi pubblici
 	 */
 	
+	public void setIdProdotto(int value) {
+		this.IdProdotto = value;
+	}
 
 	public int getIdProdotto() {
 		return IdProdotto;

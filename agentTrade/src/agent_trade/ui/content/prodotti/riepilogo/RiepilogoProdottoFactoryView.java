@@ -22,6 +22,9 @@ import javax.swing.border.TitledBorder;
 import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_gestisciListino;
+import agent_trade.model.M_Carni;
+import agent_trade.model.M_Dolci;
+import agent_trade.model.M_Latticini;
 import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Vini;
 import agent_trade.util.Costanti;
@@ -46,6 +49,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 	protected JPanel pannSconto;
 	protected JPanel pannVersione;
 	protected JPanel pannDescrizione;
+	protected JPanel pannErrore;
 	protected JPanel pannelloEast;
 	protected JPanel pannelloBottoni;
 	
@@ -56,6 +60,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 	protected JLabel labelSconto;
 	protected JLabel labelDescrizione;
 	protected JLabel labelVersione;
+	protected JLabel labelErrore;
 	
 	protected JTextField TFidProdotto;	
 	protected JTextField TFNome;
@@ -88,6 +93,15 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		if (instance == null){			
 			if(prod instanceof M_Vini){
 				instance = RiepilogoViniView.getInstance();
+			}
+			else if(prod instanceof M_Carni){
+				instance = RiepilogoCarniView.getInstance();
+			}
+			else if(prod instanceof M_Dolci){
+				instance = RiepilogoDolciView.getInstance();
+			}
+			else if(prod instanceof M_Latticini){
+				instance = RiepilogoLatticiniView.getInstance();
 			}
 		}
 		return instance;
@@ -299,6 +313,24 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 				}
 			}
 		});
+		
+		bottoneModificaProdotto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					Ctrl_gestisciListino.getInstance().abilitaModifica();
+			}
+		});
+		
+		bottoneCancellaProdotto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					Ctrl_gestisciListino.getInstance().cancellaProdotto(prodotto);
+			}
+		});
+		
+		bottoneAnnullaModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					Ctrl_gestisciListino.getInstance().annullaModifica(prodotto);
+			}
+		});
 	}
 	
 	/*metodi pubblici*/	
@@ -340,7 +372,44 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		bottoneCancellaProdotto.setVisible(b);
 	}
 	
+	public void setVisibleBtnIndietro(boolean b) {
+		
+		bottoneIndietro.setVisible(b);
+	}
 	
 	
+	public void setTFeditable(boolean b) {
+		TFNome.setEditable(b);
+		//TFCategoria.setEditable(b);
+		TFPrezzo.setEditable(b);
+		TFSconto.setEditable(b);
+		TADescrizione.setEditable(b);
+	}
+	
+	
+	public void setErrore(String err){
+		labelErrore.setText(err);
+	}
+	
+	
+	public void setVisibleErroreRiepProdotto(boolean b){
+		labelErrore.setVisible(b);
+	}
+	
+	public void abilitaToolTip(){
+		TFNome.setToolTipText(Costanti.TIP_NOME_PRODOTTO);
+		//TFCategoria.setToolTipText(Costanti.TIP_CATEGORIA_PRODOTTO);
+		TFPrezzo.setToolTipText(Costanti.TIP_PREZZO_PRODOTTO);
+		TFSconto.setToolTipText(Costanti.TIP_SCONTO_PRODOTTO);
+		TADescrizione.setToolTipText(Costanti.TIP_DESCRIZIONE_PRODOTTO);
+	}
+	
+	public void disabilitaToolTip(){
+		TFNome.setToolTipText(null);
+		//TFCategoria.setToolTipText(null);
+		TFPrezzo.setToolTipText(null);
+		TFSconto.setToolTipText(null);
+		TADescrizione.setToolTipText(null);
+	}
 	
 }

@@ -1,14 +1,20 @@
 package agent_trade.ui.content.prodotti.riepilogo;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.orm.PersistentException;
+
+import agent_trade.controller.Ctrl_gestisciListino;
 import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Vini;
 import agent_trade.util.Costanti;
@@ -83,6 +89,41 @@ public class RiepilogoViniView extends RiepilogoProdottoFactoryView{
 		TFCantina.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
 		TFCantina.setEditable(false);
 		pannCantina.add(TFCantina);
+	
+		pannErrore= new JPanel();
+		FlowLayout flowLayout15 = (FlowLayout) pannErrore.getLayout();
+		flowLayout15.setHgap(0);
+		flowLayout15.setVgap(0);
+		pannErrore.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_ERRORE, Costanti.HEIGHT_PANN_LABEL_ERRORE));
+		contenitoreCampi.add(pannErrore);
+		
+		labelErrore = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_ERRORE_CAMPI);
+		labelErrore.setForeground(Color.RED);
+		labelErrore.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL_ERRORE, Costanti.HEIGHT_LABEL_ERRORE));
+		pannErrore.add(labelErrore);
+	
+		bottoneSalvaModifiche.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					M_Vini vino = new M_Vini();
+					vino.setIdProdotto(prodotto.getIdProdotto());
+					vino.setNome(TFNome.getText());
+					vino.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
+					vino.setCategoria(TFCategoria.getText());
+					vino.setIdDescrizioneProdotto(TADescrizione.getText());
+					vino.setSconto(Float.parseFloat(TFSconto.getText()));
+					vino.setIdAzienda(prodotto.getIdAzienda());
+					vino.setVersione(prodotto.getVersione());
+					vino.setColore(TFColore.getText());
+					vino.setIndicazione_geografica(TFGeo.getText());
+					vino.setCantina(TFCantina.getText());
+					Ctrl_gestisciListino.getInstance().modificaProdotto(vino);
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
 	
@@ -99,5 +140,29 @@ public class RiepilogoViniView extends RiepilogoProdottoFactoryView{
 		TFColore.setText(vino.getColore());
 		TFGeo.setText(vino.getIndicazione_geografica());
 		TFCantina.setText(vino.getCantina());
+	}
+	
+	
+	public void setTFeditable(boolean b){
+		super.setTFeditable(b);
+		TFColore.setEditable(b);
+		TFGeo.setEditable(b);
+		TFCantina.setEditable(b);
+	}
+	
+	
+	public void abilitaToolTip(){
+		super.abilitaToolTip();
+		TFColore.setToolTipText(Costanti.TIP_COLORE_VINO);
+		TFGeo.setToolTipText(Costanti.TIP_IND_GEOG_VINO);
+		TFCantina.setToolTipText(Costanti.TIP_CANTINA_VINO);
+	}
+	
+	
+	public void disabilitaToolTip(){
+		super.disabilitaToolTip();
+		TFColore.setToolTipText(null);
+		TFGeo.setToolTipText(null);
+		TFCantina.setToolTipText(null);
 	}
 }

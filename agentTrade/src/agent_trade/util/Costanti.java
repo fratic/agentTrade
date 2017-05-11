@@ -15,8 +15,8 @@ public final class Costanti {
 	 * Versione software
 	 */
 	
-	public final static String  version = "agente";
-//	public final static String  version = "mandante";
+//	public final static String  version = "agente";
+	public final static String  version = "mandante";
 
 	
 	public final static String  agente = "agente";
@@ -79,8 +79,8 @@ public final class Costanti {
 	public final static String TITOLO_SCHEDA_LISTINO = "Catalogo Prodotti";
 	public final static String TITOLO_INTESTAZIONE_LISTINO = "Riepilogo Azienda";
 	public final static String TITOLO_SCHEDA_PRODOTTO = "Dettaglio Prodotto";
-	public final static String TITOLO_NUOVO_PRODOTTO = "Nuovo Prodotto";
-	
+	public final static String TITOLO_NUOVO_PRODOTTO = "Nuovo Prodotto";	
+	public final static String TITOLO_CANCELLA_PRODOTTO = "Attenzione!";
 	
 	/**
 	 * Messaggi dei Dialog
@@ -98,7 +98,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_CANCELLA_AGENTE = "Sei sicuro di voler cancellare l'agente corrente?";
 	public final static String MESSAGGIO_AZIENDA_NON_TROVATA = "Azienda non trovata";
 	public final static String MESSAGGIO_CANCELLA_AZIENDA = "Sei sicuro di voler cancellare l'azienda corrente?";
-	
+	public final static String MESSAGGIO_CANCELLA_PRODOTTO = "Sei sicuro di voler cancellare il prodotto corrente?";
 	
 	
 	/**
@@ -147,7 +147,7 @@ public final class Costanti {
 	public static final String RIEPILOGO_AGENTE_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String DETTAGLIO_AGENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
 	public static final String ALBERO_AGENTI_ICON = "/agent_trade/ui/img/ico-agente.png";
-
+	
 	public static final String AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
 //	CAMBIARE ICONE
 	public static final String NUOVA_AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
@@ -303,6 +303,7 @@ public final class Costanti {
 	public final static String LABEL_NOME_AZIENDA = "Ragione sociale";
 	public final static String LABEL_ID_AZIENDA = "Codice azienda";
 	public final static String LABEL_URL_AZIENDA = "Url";
+	public final static String LABEL_TIPO_AZIENDA = "Produce";
 	
 	public final static String ROOT_AZIENDE = "Aziende";
 	
@@ -320,6 +321,12 @@ public final class Costanti {
 	public final static String LABEL_COLORE = "Colore";
 	public final static String LABEL_IND_GEOG = "Ind. Geografica";
 	public final static String LABEL_CANTINA = "Cantina";
+	public final static String LABEL_ARTIGIANALE = "Artigianale";
+	public final static String LABEL_FREE_GLUTEN = "Senza Glutine";
+	public final static String LABEL_PROVENIENZA = "Provenienza";
+	public final static String LABEL_TAGLIO = "Taglio";
+	public final static String LABEL_TIPO = "Tipo";
+	public final static String LABEL_STAGIONATURA = "Stagionatura";
 
 	/**
 	 * Tip
@@ -378,6 +385,7 @@ public final class Costanti {
 	public final static String TIP_NOME_AZIENDA = "Inserire la ragione sociale dell'azienda";
 	public final static String TIP_URL_AZIENDA = "Inserire l'url del DB dell'azienda se disponibile";
 	public final static String TIP_COD_FIS_AZIENDA = "Codice di undici cifre Es: '12345678901'";
+	public final static String TIP_TIPO_AZIENDA = "Selezionare il genere di prodotto fornito";
 	
 	public final static String TIP_SALVA_AZIENDA = "Salva l'azienda";
 	public final static String TIP_COMUNICAZIONE_AZIENDA = "Invia comunicazione";
@@ -409,7 +417,12 @@ public final class Costanti {
 	public final static String TIP_IND_GEOG_VINO = "Indicazione geografica";
 	public final static String TIP_CANTINA_VINO = "Cantina vino";
 	
-	
+	public final static String TIP_PROV_CARNE = "Provenienza";
+	public final static String TIP_TAGLIO_CARNE = "Selezionare il taglio";
+	public final static String TIP_TIPO_CARNE = "Selezionare il tipo";
+		
+	public final static String TIP_TIPO_LATT = "Tipo";
+	public final static String TIP_STAGIONATURA_LATT = "Inserire il numero di mesi della stagionatura";
 	
 	/**
 	 * Bottoni
@@ -442,6 +455,12 @@ public final class Costanti {
 	public final static String[] INTESTAZIONE_TABELLA_RICERCA_AZIENDE = {"ID", "Nome o Ragione Sociale", "Codice Fiscale", "P.IVA", "Citt\u00E0"};
 	
 	public final static String[] INTESTAZIONE_LISTINO_PRODOTTI = {"ID prodotto", "Nome", "Categoria", "Sconto", "Prezzo", "Visualizza" };
+	
+	public final static String[] LISTA_PRODOTTI = {"Seleziona un tipo", "vini", "dolci", "carni", "latticini"};
+	
+	public final static String[] LISTA_TAGLIO_CARNE = {"Seleziona un taglio", "Cat1", "Cat2", "Cat3"};
+		
+	public final static String[] LISTA_TIPO_CARNE = {"Seleziona un tipo", "Tipo1", "Tipo2", "Tipo3"};
 	
 	/**
 	 * Costanti colonne

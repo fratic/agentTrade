@@ -527,8 +527,8 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		((RiepilogoAziendaView) riep_azienda).setVisibleBtnAnnullaModifiche(b);
 	}
 	
-	public void setSchedaAzienda(String idAzienda, String ragioneSociale, String codice_fiscale, String partita_iva, String citta, String cap, String indirizzo, String email, String telefono, String fax,String url) {
-		((RiepilogoAziendaView) riep_azienda).setRiepilogoAzienda(idAzienda, ragioneSociale, codice_fiscale, partita_iva, citta, cap, indirizzo, email, telefono, fax, url);
+	public void setSchedaAzienda(String idAzienda, String ragioneSociale, String codice_fiscale, String partita_iva, String citta, String cap, String indirizzo, String email, String telefono, String fax, String url, String tipo) {
+		((RiepilogoAziendaView) riep_azienda).setRiepilogoAzienda(idAzienda, ragioneSociale, codice_fiscale, partita_iva, citta, cap, indirizzo, email, telefono, fax, url, tipo);
 	}
 
 	public void setVisibleErroreRiepAzienda(boolean b) {
@@ -619,6 +619,9 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnModifica(b);
 	}
 	
+	public void disattivaIndietro(boolean b){
+		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnIndietro(b);
+	}
 	
 	public void disattivaCancellaProd(boolean b){
 		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnCancella(b);
@@ -637,5 +640,25 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	public void setEnableCercaListino(boolean b){
 		bottoneCercaListino.setEnabled(b);
+	}
+	
+	
+	public void setModificheProdotto(boolean b){
+		((RiepilogoProdottoFactoryView) riep_listino).setTFeditable(b);
+	}
+	
+	
+	public void setVisibleErroreRiepProd(boolean b){
+		((RiepilogoProdottoFactoryView) riep_listino).setVisibleErroreRiepProdotto(b);
+	}
+	
+	
+	public void setVisibleToolTipListino(){
+		((RiepilogoProdottoFactoryView) riep_listino).abilitaToolTip();
+	}
+	
+	
+	public void setInvisibleToolTipListino(){
+		((RiepilogoProdottoFactoryView) riep_listino).disabilitaToolTip();
 	}
 }

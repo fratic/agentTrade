@@ -38,6 +38,8 @@ public class NuovoViniView extends NuovoProdottoFactoryView{
 		
 		super();
 		
+		TFCategoria.setText("Vini");
+		
 		pannColore = new JPanel();
 		FlowLayout flowLayout9 = (FlowLayout) pannColore.getLayout();
 		flowLayout9.setHgap(0);
@@ -116,7 +118,7 @@ public class NuovoViniView extends NuovoProdottoFactoryView{
 					vino.setColore(TFColore.getText());
 					vino.setIndicazione_geografica(TFGeo.getText());
 					vino.setCantina(TFCantina.getText());
-					Ctrl_gestisciListino.getInstance().SalvaProdotto(vino);
+					Ctrl_gestisciListino.getInstance().salvaProdotto(vino);
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -134,7 +136,6 @@ public class NuovoViniView extends NuovoProdottoFactoryView{
 	
 	
 	public void resetNewProdotto(){
-		
 		super.resetNewProdotto();
 		TFGeo.setText(null);
 		TFColore.setText(null);
