@@ -15,8 +15,8 @@ public final class Costanti {
 	 * Versione software
 	 */
 	
-//	public final static String  version = "agente";
-	public final static String  version = "mandante";
+	public final static String  version = "agente";
+//	public final static String  version = "mandante";
 
 	
 	public final static String  agente = "agente";

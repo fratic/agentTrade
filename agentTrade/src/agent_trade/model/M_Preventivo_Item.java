@@ -110,6 +110,7 @@ public class M_Preventivo_Item extends Observable{
 
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
+//		DA COMMENTARE PER IL TEST SCONTO
 		NotifyObservers();
 	}
 
@@ -137,6 +138,11 @@ public class M_Preventivo_Item extends Observable{
 		float parziale=(this.getIdProdotto().getPrezzo()*this.getQuantita())*(1-this.getIdProdotto().getSconto());
 		parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2));
 		return parziale;
+		
+//		MODIFICA DA FARE PER IL TEST SCONTO
+//		float parziale=(this.getIdProdotto().getPrezzo()*this.getQuantita())/**(1-this.getIdProdotto().getSconto());
+//		parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2))*/;
+//		return parziale;
 	}
 
 }

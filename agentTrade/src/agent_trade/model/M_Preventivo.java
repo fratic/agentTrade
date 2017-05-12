@@ -30,6 +30,8 @@ import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.PreventivoCriteria;
+import agent_trade.sconti.IScontoStrategy;
+import agent_trade.sconti.ScontoStrategyFactory;
 import agent_trade.util.Costanti;
 
 public class M_Preventivo implements Observer {
@@ -54,7 +56,9 @@ public class M_Preventivo implements Observer {
 	private List<M_Preventivo_Item> item = new ArrayList<M_Preventivo_Item>();
 	
 	private boolean modificato=false;
-
+	
+	private float totale;
+	private float parziale;
 	
 	
 	/*
@@ -351,7 +355,93 @@ public class M_Preventivo implements Observer {
 				
 	}
 	
+//	MODIFICA FUNZIONI AGGIUNTE PER IL TEST SCONTO
 	
+	
+	
+//	public void calcolaTotale() {
+//		
+//		List<M_Preventivo_Item> lista = this.getItem();
+//		Iterator<M_Preventivo_Item> itera = lista.iterator();
+//		this.totale = 0;
+//		
+//		while (itera.hasNext()){
+//			M_Preventivo_Item item = (M_Preventivo_Item) itera.next();
+//			totale = totale+ item.calcolaParziale(); 
+// 		}
+//	}
+	
+	
+	public void calcolaParziale(int idProd){ //serve per calcolare il parziale di un prodotto
+		
+		List<M_Preventivo_Item> lista = this.getItem();
+		Iterator<M_Preventivo_Item> itera = lista.iterator();
+		
+		while (itera.hasNext()){
+			M_Preventivo_Item item = (M_Preventivo_Item) itera.next();
+			if(item.getIdProdotto().getIdProdotto()== idProd){
+				this.parziale = item.calcolaParziale();
+			}
+		}
+	}
+
+	public float calcolaSconto(String Type) throws PersistentException{
+
+		IScontoStrategy strategy = ScontoStrategyFactory.getInstance(Type);
+		return strategy.calcolaSconto(this);
+//		return ScontoStrategyFactory.getInstance().getClienteScontoStrategy().calcolaSconto(this);
+	}
+
+	public float getTotale() {
+		return totale;
+	}
+
+	public void setTotale(float totale) {
+		this.totale = totale;
+	}
+
+	public float getParziale() {
+		return parziale;
+	}
+
+	public void setParziale(float parziale) {
+		this.parziale = parziale;
+	}
+
+/*	secondo me usando la factory dovrebbe essere
+	
+	private IScontoStrategy strategy;
+	
+	public IScontoStrategy getStrategy(){
+		return ScontoStrategyFactory.getInstance().getStrategy()
+	}
+ 
+ 	il problema è capire come far creare la strategy giusta alla factory 
+ 	gli passiamo un parametro ogni volta che dice quale strategy creare? ma ha senso poi la factory?
+ 	oppure gli passiamo preventivo però poi lui deve vedere ogni volta tutto il preventivo
+ 
+	public float calcolaSconto(strategy){
+	 	return strategy.calcolaSconto(this);	
+	}
+*/
+	
+/*
+ 	altra soluzione: facciamo come nell'esempio sul sito di dellabate (senza factory): 
+ 	usiamo il client che nel nostro caso potrebbe essere il controller che dice al 
+ 	preventivo "vedi che hai inserito un cliente/prodotto con questo tipo di sconto 
+ 	applica questa strategia" 
+ 	
+ 	private IScontoStrategy strategy;
+	
+	public setStrategy(IScontoStrategy strategy){
+		this.strategy = strategy;
+	}
+ 
+	public float calcolaSconto(strategy){
+	 	return strategy.calcolaSconto(this);	
+	}
+ 	
+ */
 	
 
 	
