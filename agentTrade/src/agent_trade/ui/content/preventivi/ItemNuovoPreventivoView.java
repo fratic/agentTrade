@@ -200,26 +200,33 @@ public class ItemNuovoPreventivoView extends JPanel
 	/*metodi pubblici*/
 	
 	
-	public void updateRow(float parz){
+	public void updateRow(float parz, float parziale_scontato){
 		
 		((DefaultTableModel) JTableModel).setValueAt(parz, table.getSelectedRow(), Costanti.COLONNA_PARZIALE_TAB_PREV);
+		((DefaultTableModel) JTableModel).setValueAt(parziale_scontato, table.getSelectedRow(), Costanti.COLONNA_PARZIALE_SCONTATO_TAB_PREV);
+
 	}
 	
-	public void updateTable(M_Prodotto p, M_Preventivo_Item prev_item){
+	public void updateTable(M_Prodotto prod, M_Preventivo_Item prev_item){
 	
-		int id = p.getIdProdotto();
-		String nome = p.getNome();
-		String categoria = p.getCategoria();
+		int id = prod.getIdProdotto();
+		String nome = prod.getNome();
+		String categoria = prod.getCategoria();
 		int quant = prev_item.getQuantita();
-		String prezzo = Float.toString(p.getPrezzo()); 
+		String prezzo = Float.toString(prod.getPrezzo()); 
+		//qui deve sapere di quant'è lo sconto
 		String sconto = "";
+		
 		String parziale = Float.toString(prev_item.calcolaParziale());
-
-		if (p.getSconto()!=0){
-			sconto=(java.lang.Math.ceil(p.getSconto()*100))+"%";
+		//sarebbe opportuno visualizzare il parziale scontato
+		String parziale_scontato = Float.toString(prev_item.calcolaParzialeScontato());
+		
+		//se lo sconto è zero, non visualizzo nulla, altrimenti adatto a x,dd 
+		if (prod.getSconto()!=0){
+			sconto=(java.lang.Math.ceil(prod.getSconto()*100))+"%";
 		}
 		
-		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quant, prezzo, sconto, parziale});
+		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quant, prezzo, sconto, parziale, parziale_scontato});
 	}
 	
 	public void deleteRow(int row) {
@@ -244,16 +251,50 @@ public class ItemNuovoPreventivoView extends JPanel
 
 	public void setTot() throws PersistentException {
 		
-		float imp= M_Preventivo.getInstance().calcolaImponibile();
+//		somma di quant*prezzo unit
+//		-Totale non scontato
+		
+//		somma di tutti gli sconti
+//		-Sconto totale
+		
+//		somma di quant*prezzo - gli sconti (incluso anche quello cliente)
+//		-Totale scontato (imponibile)
+		
+//		-iva
+		
+//		prezzo che effettivamente il cliente deve pagare
+//		-Totale
+		
+		
+		float tot_non_scontato = M_Preventivo.getInstance().calcolaTotaleNonScontato();
+		
+		//questa funzione calcola anche gli sconti clienti. In pratica calcola qualsiasi sconto 
+		float sconto_tot = M_Preventivo.getInstance().calcolaScontoTotale();
+		
+//		imponibile, cioè il prezzo su cui si pagano le tasse
+		float totale_scontato = tot_non_scontato-sconto_tot;
+	
+		float iva=M_Preventivo.getInstance().calcolaIva(totale_scontato);
 
-		float iva=M_Preventivo.getInstance().calcolaIva(imp);
-				
-		float tot=imp+iva;
-		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
+		float totale = totale_scontato+iva;
 
-		setImponibile(Float.toString(imp));
+		//eventualmente si può mettere anche lo sconto relativo al cliente
+//		float scontoCliente = M_Preventivo.getInstance().calcolaScontoCliente();
+		
+		totale= (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
+
+
+//		System.out.println("----------------------------------------");
+//
+//		System.out.println("Sconto Totale"+sconto_tot);
+//
+//		System.out.println("Totale non scontato"+tot_non_scontato);
+//		
+//		System.out.println("...............................");
+
+		setImponibile(Float.toString(totale_scontato));
 		setIva(Float.toString(iva));
-		setTotale(Float.toString(tot));		
+		setTotale(Float.toString(totale));		
 	}
 
 

@@ -256,8 +256,9 @@ public class M_Preventivo implements Observer {
 	}
 	
 	
-	public float calcolaImponibile(){
-		float totale=0;
+	public float calcolaTotaleNonScontato(){
+		
+		float totaleNoScont=0;
 		Iterator<?> iteraItem = null;
 		
 		iteraItem = this.getItem().iterator();
@@ -266,12 +267,53 @@ public class M_Preventivo implements Observer {
 		while (iteraItem.hasNext()) 
 		{
 			item = (M_Preventivo_Item) iteraItem.next();
-			totale= totale+((item.getQuantita()*item.getIdProdotto().getPrezzo())*(1-item.getIdProdotto().getSconto()));
+			totaleNoScont= totaleNoScont+(item.getQuantita()*item.getIdProdotto().getPrezzo());
+			
+			System.out.println("----------------------------------------");
+			System.out.println("--------FUNZIONE CALCOLA TOTALE NON SCONTATO----------");
+			System.out.println("PROD con id = "+item.getIdProdotto()+" -- quantita : "+item.getQuantita()+" prezzo: "+item.getIdProdotto().getPrezzo());
+			System.out.println(" totale preventivo no sconto"+totaleNoScont);
+
+
+			
 		}
-		totale= (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
+		totaleNoScont= (float) (Math.ceil(totaleNoScont * Math.pow(10, 2)) / Math.pow(10, 2));
 		
-		return totale;
+		return totaleNoScont;
 	}
+	
+	public float calcolaScontoTotale(){
+		
+		float ScontoTot=0;
+		Iterator<?> iteraItem = null;
+		
+		iteraItem = this.getItem().iterator();
+		M_Preventivo_Item item;
+	
+		while (iteraItem.hasNext()) 
+		{
+			item = (M_Preventivo_Item) iteraItem.next();
+			ScontoTot= ScontoTot+(item.calcolaScontoxQuantita());
+			
+			System.out.println("----------------------------------------");
+			System.out.println("--------FUNZIONE CALCOLA sconto totale----------");
+			System.out.println("PROD con id = "+item.getIdProdotto()+" -- quantita : "+item.getQuantita()+" prezzo: "+item.getIdProdotto().getPrezzo());
+			System.out.println(" parziale scontato "+item.calcolaScontoxQuantita());
+
+
+			
+			
+		}
+		
+		/**++
+		 * qui vanno aggiunti i calcoli di ulteriori tipi di sconto (non legati al cliente)*/
+		
+		ScontoTot= (float) (Math.ceil(ScontoTot * Math.pow(10, 2)) / Math.pow(10, 2));
+		
+		return ScontoTot;
+	}
+	
+	
 	
 	public float calcolaIva(float imponibile){
 		float iva=(float)(imponibile*Costanti.IVA);

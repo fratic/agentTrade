@@ -90,6 +90,9 @@ public class M_Azienda {
 		return null;
 	}
 	
+	
+	
+	
 	public static M_Azienda cercaAziendaRemoto(int idAzienda) throws PersistentException {
 		try{
 			
@@ -103,6 +106,19 @@ public class M_Azienda {
 		}
 	}
 
+	public static M_Azienda cercaAziendaNome(String nome) throws PersistentException {
+		try{
+			
+			Rem_AziendaCriteria criteriaAzienda = new Rem_AziendaCriteria();
+			criteriaAzienda.ragioneSociale.eq(nome);
+			//criteriaAzienda.attivo.eq(1);
+
+			return criteriaAzienda.uniqueM_Azienda();
+		}
+		finally {	
+		}
+	}
+	
 
 	public static void aggiornaAziendaRemoto(M_Azienda a) throws PersistentException{
 		

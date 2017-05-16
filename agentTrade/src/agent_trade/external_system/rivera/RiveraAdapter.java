@@ -1,4 +1,4 @@
-package agent_trade.external_system.beverage;
+package agent_trade.external_system.rivera;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,28 +14,27 @@ import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Vini;
 import agent_trade.util.Costanti;
 
-public class BeverageAdapter extends AziendaViniAdapter {
+public class RiveraAdapter extends AziendaViniAdapter {
 
-	private static BeverageAdapter instance;
+	private static RiveraAdapter instance;
 	
 
 
-	public BeverageAdapter() {
-		nomeAzienda=Costanti.BEVERAGE;
+	public RiveraAdapter() {
+		nomeAzienda=Costanti.RIVERA;
 		try {
-			int id=M_Azienda.cercaAziendaNome(Costanti.BEVERAGE).getIdAzienda();
+			int id=M_Azienda.cercaAziendaNome(Costanti.RIVERA).getIdAzienda();
 			idAzienda=id;
 
 		} 
 		catch (PersistentException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
-	public static BeverageAdapter getInstance() {
+	public static RiveraAdapter getInstance() {
 		if (instance == null)
-			instance = new BeverageAdapter();
+			instance = new RiveraAdapter();
 		return instance;
 	}
 
@@ -43,7 +42,7 @@ public class BeverageAdapter extends AziendaViniAdapter {
 	@Override
 	public String getUrlRicerca() {
 
-		return Costanti.URL_BEVERAGE;
+		return Costanti.URL_RIVERA;
 	}
 
 	@SuppressWarnings("null")
@@ -52,9 +51,9 @@ public class BeverageAdapter extends AziendaViniAdapter {
 	
 		Gson gson = new Gson();
 		
-		ProdottiBeverageJSON js = gson.fromJson(jsonVINO, ProdottiBeverageJSON.class);
+		ProdottiRiveraJSON js = gson.fromJson(jsonVINO, ProdottiRiveraJSON.class);
 
-		ProdottoBeverage[] elencoVini=js.getProdotti();
+		ProdottoRivera[] elencoVini=js.getProdotti();
 
 		ArrayList<M_Prodotto> vini = new ArrayList<M_Prodotto>();
 		
@@ -72,8 +71,7 @@ public class BeverageAdapter extends AziendaViniAdapter {
 			vino.setSconto((float) elencoVini[i].getSconto());	
 			vino.setVersione(elencoVini[i].getVersione());
 			vino.setIdAzienda(idAzienda);
-			
-			
+
 			vini.add(vino);
 
 		}

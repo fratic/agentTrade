@@ -1,7 +1,10 @@
 package agent_trade.util;
 
+import agent_trade.external_system.AziendaCarniAdapter;
 import agent_trade.external_system.AziendaViniAdapter;
 import agent_trade.external_system.beverage.BeverageAdapter;
+import agent_trade.external_system.lem.LemAdapter;
+import agent_trade.external_system.rivera.RiveraAdapter;
 
 /**
  * Classe usata per aumentare la flessibilità che contiene tutte le costanti usate in agentTrade
@@ -179,8 +182,11 @@ public final class Costanti {
 	 * URL dei Sistemi Esterni
 	 */
 	
-	public final static String URL_post_prod = "http://fratic.altervista.org/prodPost.php";
+	public final static String URL_BEVERAGE= "http://fratic.altervista.org/beverage.php";
+
+	public final static String URL_LEM = "http://pianetaverdesgr.altervista.org/lem.php";
 	
+	public final static String URL_RIVERA = "http://pianetaverdesgr.altervista.org/rivera.php";
 	
 	/**
 	 * Espressioni regolari 
@@ -372,7 +378,8 @@ public final class Costanti {
 	public final static String TIP_CANCELLA_AGENTE = "Cancella agente";
 	public final static String TIP_SALVA_MOD_AGENTE = "Salva modifiche";
 	public final static String TIP_ANNULLA_MOD_AGENTE = "Annulla modifiche";
-	
+	public final static String TIP_NUOVO_CLIENTE= "Crea un nuovo cliente";
+
 	
 	public final static String TIP_NOME = "Non sono ammessi caratteri numerici";
 	public final static String TIP_LIVELLO = "Inserire il livello dell'agente (da 1 a 5)";	
@@ -443,8 +450,8 @@ public final class Costanti {
 	 */
 
 	
-	public final static String[] INTESTAZIONE_TABELLA_PREVENTIVI = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo Unitario", "Sconto", "Parziale" };
-	public final static String[] INTESTAZIONE_TABELLA_RIEPILOGO_ITEM= {"ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo Unitario", "Sconto", "Parziale" };
+	public final static String[] INTESTAZIONE_TABELLA_PREVENTIVI = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo Unitario", "Sconto", "Parziale", "Parziale scontato" };
+	public final static String[] INTESTAZIONE_TABELLA_RIEPILOGO_ITEM= {"ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo Unitario", "Sconto", "Parziale", "Parziale scontato" };
 	public final static String[] INTESTAZIONE_TABELLA_PRODOTTI = {"ID prodotto", "Nome", "Categoria", "Sconto", "Prezzo", "Aggiungi" };
 	public final static String[] INTESTAZIONE_TABELLA_CERCA_CLIENTI = {"ID", "Cognome", "Nome", "Codice Fiscale", "P.IVA"};
 	public final static String[] INTESTAZIONE_TABELLA_RICERCA_CLIENTI = {"ID", "Cognome", "Nome","Codice Fiscale", "Partita iva", "Citt\u00E0" };
@@ -476,6 +483,7 @@ public final class Costanti {
 	public final static int  COLONNA_REMOVE_TAB_PROD= 0;
 
 	public final static int  COLONNA_PARZIALE_TAB_PREV= 7;
+	public final static int  COLONNA_PARZIALE_SCONTATO_TAB_PREV= 8;	
 
 	public static final int COLONNA_ID_SHOW_ITEM_BUTTON = 0;
 	public final static int  COLONNA_SHOW_ITEM_BUTTON = 5;
@@ -483,20 +491,28 @@ public final class Costanti {
 	/**
 	 * Sistemi Esterni: Aziende di Vino
 	 */
-	public final static AziendaViniAdapter[] SISTEMI_ESTERNI_AZIENDE_VINI = { BeverageAdapter.getInstance()};
+	public final static AziendaViniAdapter[] SISTEMI_ESTERNI_AZIENDE_VINI = { BeverageAdapter.getInstance(), RiveraAdapter.getInstance()};
 
 	
 	/**
 	 * Sistemi Esterni: Aziende di Carne
 	 */
-//	public final static ImpresaCarniAdapter[] SISTEMI_ESTERNI_AZIENDE_CARNI = { ....Adapter.getInstance() };
+	public final static AziendaCarniAdapter[] SISTEMI_ESTERNI_AZIENDE_CARNI = { LemAdapter.getInstance() };
 
+	
 	/**
 	 * Nomi Aziende con Sistemi Esterni: Aziende di Vino
 	 */
 	public final static String BEVERAGE = "Beverage";
+	public final static String RIVERA = "Rivera";
 
-	
+
+	/**
+	 * Nomi Aziende con Sistemi Esterni: Aziende di Carne
+	 */
+	public final static String LEM = "Lem";
+
+
 	
 	
 }

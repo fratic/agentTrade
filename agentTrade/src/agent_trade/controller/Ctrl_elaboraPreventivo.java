@@ -290,7 +290,7 @@ public class Ctrl_elaboraPreventivo {
 			if (m!=null){
 			initRiepilogoPreventivo(m);
 			
-			RiepilogoItemPreventivoView.getInstance().setTot();
+			RiepilogoItemPreventivoView.getInstance().setTot(m);
 			}
 		}
 		else{
@@ -307,7 +307,7 @@ public class Ctrl_elaboraPreventivo {
 		
 		ItemNuovoPreventivoView.getInstance().setTot();
 		
-		ItemNuovoPreventivoView.getInstance().updateRow((pr_it.calcolaParziale()));
+		ItemNuovoPreventivoView.getInstance().updateRow(pr_it.calcolaParziale(), pr_it.calcolaParzialeScontato());
 
 	}
 

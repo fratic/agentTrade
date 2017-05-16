@@ -40,7 +40,7 @@ public class SistemaEsternoFactory {
 	public ArrayList<SistemaEsterno> getSistemiEsterni() {
 		ArrayList<SistemaEsterno> sistemi_esterni = new ArrayList<SistemaEsterno>();
 		sistemi_esterni.addAll(this.getAziendeVino());
-//		sistemi_esterni.addAll(this.getAziendeCarne());
+		sistemi_esterni.addAll(this.getAziendeCarne());
 		return sistemi_esterni;
 	}
 
@@ -57,6 +57,14 @@ public class SistemaEsternoFactory {
 		return aziende_vino;
 	}
 
+	public ArrayList<AziendaCarniAdapter> getAziendeCarne() {
+		ArrayList<AziendaCarniAdapter> aziende_carne = new ArrayList<AziendaCarniAdapter>();
+		for (AziendaCarniAdapter azienda_carne : Costanti.SISTEMI_ESTERNI_AZIENDE_CARNI) {
+			aziende_carne.add(azienda_carne);
+		}
+		return aziende_carne;
+	}
+	
 
 	public SistemaEsterno getAdapter(String azienda) {
 		

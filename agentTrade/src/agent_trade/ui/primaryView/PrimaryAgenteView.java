@@ -284,7 +284,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		
 		bottoneNuovoCliente = new JButton();
 		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.NUOVO_CLIENTE_ICON)));
-		bottoneNuovoCliente.setToolTipText(Costanti.TIP_NUOVO_PREVENTIVO);
+		bottoneNuovoCliente.setToolTipText(Costanti.TIP_NUOVO_CLIENTE);
 		bottoneNuovoCliente.setBounds(25, 25, 50, 50);
 		panello_menu_cliente.add(bottoneNuovoCliente);
 		
@@ -552,11 +552,14 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		String prezzo = Float.toString(pr_it.getIdProdotto().getPrezzo());
 		String sconto = "";
 		String parziale = Float.toString((pr_it.calcolaParziale()));
+		String parziale_scontato = Float.toString(pr_it.calcolaParzialeScontato());
+
+		
 		if (pr_it.getIdProdotto().getSconto()!=0){
 			sconto=(java.lang.Math.ceil(pr_it.getIdProdotto().getSconto()*100))+"%";
 		}
 		
-		((RiepilogoItemPreventivoView) riep_item).updateTable(id, nome, categoria, quantita, prezzo, sconto, parziale);	
+		((RiepilogoItemPreventivoView) riep_item).updateTable(id, nome, categoria, quantita, prezzo, sconto, parziale, parziale_scontato);	
 	}
 		
 	public void disabilitaAlbero(){

@@ -12,7 +12,7 @@ import agent_trade.model.M_Vini;
 
 public class SystemDaemon {
 
-	private static final Class<? extends M_Vini> M_Vini = null;
+//	private static final Class<? extends M_Vini> M_Vini = null;
 	/*attributi di classe*/
 	private static SystemDaemon instance;
 
@@ -41,7 +41,9 @@ public class SystemDaemon {
 	
 	/*metodi pubblici*/
 	
-	
+	/**
+	 * Metodo che permette di caricare un certo agente dal db remoto e salvarlo nel db locale  
+	 **/
 	public boolean sincronizzaAgente(String username) throws PersistentException{
 		
 		M_Agente agente = M_Agente.caricaAgenteRemoto(username);
@@ -56,7 +58,10 @@ public class SystemDaemon {
 	}
 	
 	
-	
+	/**
+	 * Metodo che permette di sincronizzare nel db remoto di agentTrade i prodotti (di una certa azienda 
+	 * passata come parametro) presenti nel db dell'azienda
+	 **/
 	public void sincronizzaListinoRemoto(String azienda) throws IOException, PersistentException{
 		
 		SistemaEsterno aziendaAdapter = SistemaEsternoFactory.getInstance().getAdapter(azienda);
@@ -65,7 +70,11 @@ public class SystemDaemon {
 
 	}
 	
-	
+
+	/**
+	 * Metodo che permette di sincronizzare nel db remoto di agentTrade i prodotti di tutte le
+	 * aziende che hanno un sistema esterno
+	 **/
 	public void sincronizzaListiniRemoti() throws IOException, PersistentException{
 		
 		ArrayList<SistemaEsterno> ext_sistem = SistemaEsternoFactory.getInstance().getSistemiEsterni();		
@@ -80,8 +89,12 @@ public class SystemDaemon {
 	
 	
 	
-	
+	/**
+	 * Metodo che permette di sincronizzare i prodotti presenti sul db remoto all'interno del db locale
+	 **/
 	public void sincronizzaListino() throws PersistentException{
+		
+		/**aggiustare */
 		
 		M_Prodotto[] remoti = M_Prodotto.caricaProdottiRemoto();
 		
@@ -89,39 +102,45 @@ public class SystemDaemon {
 		
 		
 		for (int i = 0; i < remoti.length; i++) {
+			
 			int id=remoti[i].getIdProdotto();
+			
 			M_Prodotto locale=M_Prodotto.caricaProdotto(id);
 			
-			M_Vini rem=(M_Vini) remoti[i];
+//			M_Vini rem=(M_Vini) remoti[i];
 			
 
-			
-			
 			if(locale!=null){
 				System.out.println("locale id "+locale.getIdProdotto()+" versione "+locale.getVersione());
 
 				System.out.println("remoti id "+remoti[i].getIdProdotto()+" versione "+remoti[i].getVersione());
 
 				
-				if(remoti[i].getVersione()>locale.getVersione()){
+				if(remoti[i].getVersione()>locale.getVersione() && locale.getVersione()!=0 ){
 					
 					
-					locale.setCategoria(remoti[i].getCategoria());
-					locale.setIdDescrizioneProdotto(remoti[i].getIdDescrizioneProdotto());
-					locale.setIdProdottoAzienda(remoti[i].getIdProdottoAzienda());
-					locale.setNome(remoti[i].getNome());
-					locale.setPrezzo(remoti[i].getPrezzo());
-					locale.setSconto(remoti[i].getSconto());
-					locale.setVersione(remoti[i].getVersione());
+//					locale.setCategoria(remoti[i].getCategoria());
+//					locale.setIdDescrizioneProdotto(remoti[i].getIdDescrizioneProdotto());
+//					locale.setIdProdottoAzienda(remoti[i].getIdProdottoAzienda());
+//					locale.setNome(remoti[i].getNome());
+//					locale.setPrezzo(remoti[i].getPrezzo());
+//					locale.setSconto(remoti[i].getSconto());
+//					locale.setVersione(remoti[i].getVersione());
 //					locale.setCantina(rem.getCantina());
 //					locale.setColore(rem.getColore());
 //					locale.setIndicazione_geografica(rem.getIndicazione_geografica());
+					
+					locale.setVersione(0);
+					
 					M_Prodotto.salvaProdotto(locale);
+					M_Prodotto.salvaProdotto(remoti[i]);
 					
 					System.out.println("prodotto con id "+locale.getIdProdotto()+" obsoleto. Aggiornamento");
 				}
 			}
+			
 			else{
+				
 				M_Prodotto.salvaProdotto(remoti[i]);
 				System.out.println("Nuovo prodotto. Inserimento");
 				System.out.println("prod remoto "+remoti[i].toString());
