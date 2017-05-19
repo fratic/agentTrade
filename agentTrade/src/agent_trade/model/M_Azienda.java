@@ -5,6 +5,8 @@ import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
 import agent_trade.persistent.AgentTradeMandantePersistentManager;
+import agent_trade.persistent.AgentTradePersistentManager;
+import agent_trade.persistent.AziendaCriteria;
 import agent_trade.persistent.Rem_AziendaCriteria;
 
 
@@ -109,10 +111,23 @@ public class M_Azienda {
 	public static M_Azienda cercaAziendaNome(String nome) throws PersistentException {
 		try{
 			
-			Rem_AziendaCriteria criteriaAzienda = new Rem_AziendaCriteria();
+			AziendaCriteria criteriaAzienda = new AziendaCriteria();
 			criteriaAzienda.ragioneSociale.eq(nome);
 			//criteriaAzienda.attivo.eq(1);
-
+			System.out.println("sono in cerca azienda locale " + nome);
+			return criteriaAzienda.uniqueM_Azienda();
+		}
+		finally {	
+		}
+	}
+	
+	
+	public static M_Azienda caricaAziendaId (int id) throws PersistentException {
+		try{
+			
+			AziendaCriteria criteriaAzienda = new AziendaCriteria();
+			criteriaAzienda.IdAzienda.eq(id);
+			//criteriaAzienda.attivo.eq(1);
 			return criteriaAzienda.uniqueM_Azienda();
 		}
 		finally {	
@@ -148,6 +163,22 @@ public class M_Azienda {
 			t.rollback();
 		}
 	}
+	
+	
+	public static void salvaAzienda(M_Azienda a) throws PersistentException {
+
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradePersistentManager.instance().getSession().save(a);
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+	}
+	
 	
 	public static void cancellaAziendaRemoto(M_Azienda a) throws PersistentException {
 

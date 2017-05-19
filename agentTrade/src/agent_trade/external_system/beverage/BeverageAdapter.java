@@ -71,9 +71,7 @@ public class BeverageAdapter extends AziendaViniAdapter {
 			vino.setPrezzo(elencoVini[i].getPrezzo());
 			vino.setSconto((float) elencoVini[i].getSconto());	
 			vino.setVersione(elencoVini[i].getVersione());
-			vino.setIdAzienda(idAzienda);
-			
-			
+
 			vini.add(vino);
 
 		}

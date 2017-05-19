@@ -2,13 +2,12 @@ package agent_trade.external_system;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.orm.PersistentException;
 
 import agent_trade.model.M_Agente;
+import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Prodotto;
-import agent_trade.model.M_Vini;
 
 public class SystemDaemon {
 
@@ -148,6 +147,48 @@ public class SystemDaemon {
 		}
 		
 	}
+	
+	
+	
+	/**
+	 * Metodo che permette di sincronizzare le aziende presenti sul db remoto all'interno del db locale
+	 **/
+	public void sincronizzaAziende() throws PersistentException{
+		
+		
+		M_Azienda[] aziende_remote = M_Azienda.caricaAziendeRemoto();
+		
+		
+		for (int i = 0; i < aziende_remote.length; i++) {
+			
+			
+			/**implementare la versione, quindi controllare se esiste, ecc*/
+
+//			int id=aziende_remote[i].getIdAzienda();
+			
+			/**implementare la versione, quindi controllare se esiste, ecc*/
+
+			
+//			M_Azienda azienda_locale=M_Azienda.caricaAziendaId(id);
+			
+
+//			if(azienda_locale!=null){
+				
+				
+			//	if(remoti[i].getVersione()>locale.getVersione() && locale.getVersione()!=0 ){
+					
+				
+					
+					M_Azienda.salvaAzienda(aziende_remote[i]);
+					
+				}
+//			}
+			
+//			else{
+//				
+//			}
+		}
+	
 	
 	
 }

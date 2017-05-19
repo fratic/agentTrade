@@ -20,7 +20,7 @@ public abstract class SistemaEsterno {
 	protected String nomeAzienda;
 
 	protected int idAzienda;
-	
+
 
 	protected String sendRequest(String url, String parameters) throws IOException {
 	
@@ -75,7 +75,6 @@ public abstract class SistemaEsterno {
 		String url = getUrlRicerca();
 		String parameters = serializzaParametri(parametri);
 		String response = sendRequest(url, parameters);
-		System.out.println("url: "+url+" resp"+response);
 		return response;
 	};
 	

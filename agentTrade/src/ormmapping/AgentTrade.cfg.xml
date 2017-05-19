@@ -24,6 +24,7 @@ License Type: Academic
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
 		<!-- mapping files -->
 		<mapping resource="ormmapping/agent_trade/model/M_Agente.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/M_Azienda.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/M_Cliente.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/M_Preventivo.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/M_Preventivo_Item.hbm.xml" />

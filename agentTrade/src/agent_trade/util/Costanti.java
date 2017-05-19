@@ -188,6 +188,7 @@ public final class Costanti {
 	
 	public final static String URL_RIVERA = "http://pianetaverdesgr.altervista.org/rivera.php";
 	
+	
 	/**
 	 * Espressioni regolari 
 	 */
@@ -367,7 +368,8 @@ public final class Costanti {
 	public final static String TIP_CANCELLA_CLIENTE = "Cancella cliente";
 	public final static String TIP_SALVA_MOD_CLIENTE = "Salva modifiche";
 	public final static String TIP_ANNULLA_MOD_CLIENTE = "Annulla modifiche";
-	
+	public final static String TIP_NUOVO_CLIENTE= "Inserisci un nuovo cliente";
+
 	public final static String TIP_NUOVO_AGENTE= "Inserisci un nuovo agente";
 	public final static String TIP_CERCA_AGENTE= "Cerca un agente";
 	public final static String TIP_GESTISCI_AGENTE= "Gestisci gli agenti";
@@ -378,8 +380,7 @@ public final class Costanti {
 	public final static String TIP_CANCELLA_AGENTE = "Cancella agente";
 	public final static String TIP_SALVA_MOD_AGENTE = "Salva modifiche";
 	public final static String TIP_ANNULLA_MOD_AGENTE = "Annulla modifiche";
-	public final static String TIP_NUOVO_CLIENTE= "Crea un nuovo cliente";
-
+	
 	
 	public final static String TIP_NOME = "Non sono ammessi caratteri numerici";
 	public final static String TIP_LIVELLO = "Inserire il livello dell'agente (da 1 a 5)";	
@@ -452,6 +453,7 @@ public final class Costanti {
 	
 	public final static String[] INTESTAZIONE_TABELLA_PREVENTIVI = {"Rimuovi", "ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo Unitario", "Sconto", "Parziale", "Parziale scontato" };
 	public final static String[] INTESTAZIONE_TABELLA_RIEPILOGO_ITEM= {"ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo Unitario", "Sconto", "Parziale", "Parziale scontato" };
+	
 	public final static String[] INTESTAZIONE_TABELLA_PRODOTTI = {"ID prodotto", "Nome", "Categoria", "Sconto", "Prezzo", "Aggiungi" };
 	public final static String[] INTESTAZIONE_TABELLA_CERCA_CLIENTI = {"ID", "Cognome", "Nome", "Codice Fiscale", "P.IVA"};
 	public final static String[] INTESTAZIONE_TABELLA_RICERCA_CLIENTI = {"ID", "Cognome", "Nome","Codice Fiscale", "Partita iva", "Citt\u00E0" };
@@ -499,7 +501,6 @@ public final class Costanti {
 	 */
 	public final static AziendaCarniAdapter[] SISTEMI_ESTERNI_AZIENDE_CARNI = { LemAdapter.getInstance() };
 
-	
 	/**
 	 * Nomi Aziende con Sistemi Esterni: Aziende di Vino
 	 */
@@ -512,7 +513,5 @@ public final class Costanti {
 	 */
 	public final static String LEM = "Lem";
 
-
-	
 	
 }

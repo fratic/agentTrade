@@ -2,18 +2,18 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
 	<classpathentry kind="lib" path="lib/orm.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/synthetica.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/syntheticaAluOxide.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/syntheticaBlackEye.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/syntheticaBlackStar.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/syntheticaBlueSteel.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/syntheticaPlain.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/syntheticaSimple2D.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Antonio/Documents/Github-official/agentTrade/agentTrade/lib/syntheticaWhiteVision.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/synthetica.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/syntheticaAluOxide.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/syntheticaBlackEye.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/syntheticaBlackStar.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/syntheticaBlueSteel.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/syntheticaPlain.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/syntheticaSimple2D.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Antonio/agentTrade/agentTrade/lib/syntheticaWhiteVision.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.8.0.jar"/>
 	<classpathentry kind="lib" path="lib/java-json.jar"/>
 	<classpathentry kind="output" path="bin"/>
