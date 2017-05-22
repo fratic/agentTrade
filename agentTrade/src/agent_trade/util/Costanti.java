@@ -223,7 +223,7 @@ public final class Costanti {
 	public final static int MIN_HEIGHT_PRIMARY = 512;
 
 	/**
-	 * Dimensioni contenitori, label e TF nelle view dettaglio/riepilogo cliente/agente
+	 * Dimensioni contenitori, label e TF nelle view dettaglio/riepilogo cliente/agente/azienda
 	 */
 	public final static int WIDTH_PANN_CENTRO = 485;
 	public final static int HEIGHT_PANN_CENTRO = 610;
@@ -250,6 +250,28 @@ public final class Costanti {
 	public final static int FONT = 13;
 	public final static int WIDTH_ICON = 50;
 	public final static int HEIGHT_ICON = 50;
+	
+	/**
+	 * Dimensioni contenitori, label e TF nelle view nuovo/riepilogo item preventivo
+	 */
+	public final static int WIDTH_PANN_TAB = 733;
+	public final static int HEIGHT_PANN_TAB = 360;
+	public final static int WIDTH_PANN_RIEPILOGO = 733;
+	public final static int HEIGHT_PANN_RIEPILOGO = 85;
+	public final static int WIDTH_SOTTO_PANN_RIEPILOGO1 = 95;
+	public final static int HEIGHT_SOTTO_PANN_RIEPILOGO1 = 85;
+	public final static int WIDTH_BUTTON_SALVA = 50;
+	public final static int HEIGHT_BUTTON_SALVA = 50;
+	public final static int WIDTH_SOTTO_PANN_RIEP_CAMPI = 400;
+	public final static int HEIGHT_SOTTO_PANN_RIEP_CAMPI = 40;
+	public final static int WIDTH_SOTTO_PANN = 400;
+	public final static int HEIGHT_SOTTO_PANN = 80;
+	public final static int WIDTH_PANN_LABEL_PREV = 190;
+	public final static int HEIGHT_PANN_LABEL_PREV = 20;
+	public final static int WIDTH_LABEL_PREV = 100;
+	public final static int HEIGHT_LABEL_PREV = 14;
+	public final static int WIDTH_TEXT_FIELD_PREV = 94;
+	public final static int HEIGHT_TEXT_FIELD_PREV = 20;
 	
 	
 	/**
@@ -280,6 +302,10 @@ public final class Costanti {
 	public final static String LABEL_IMPONIBILE= "Imponibile";
 	public final static String LABEL_IVA= "IVA "+java.lang.Math.ceil(IVA*100)+"%";
 	public final static String LABEL_TOTALE= "Totale";
+	public final static String LABEL_TOTALE_NON_SCONTATO = "Tot. non scontato";
+	public final static String LABEL_SCONTO_TOTALE = "Sconto Totale";
+	public final static String LABEL_SCONTO_CLIENTE = "Sconto Cliente";
+
 
 	public final static String LABEL_CERCA_CLIENTE = "Cerca Cliente";
 	
@@ -396,12 +422,13 @@ public final class Costanti {
 	public final static String TIP_TIPO_AZIENDA = "Selezionare il genere di prodotto fornito";
 	
 	public final static String TIP_SALVA_AZIENDA = "Salva l'azienda";
-	public final static String TIP_COMUNICAZIONE_AZIENDA = "Invia comunicazione";
 	public final static String TIP_MODIFICA_AZIENDA = "Modifica i dati dell'azienda";
 	public final static String TIP_CANCELLA_AZIENDA = "Cancella azienda";
 	public final static String TIP_SALVA_MOD_AZIENDA = "Salva modifiche";
 	public final static String TIP_ANNULLA_MOD_AZIENDA = "Annulla modifiche";
 	
+
+	public final static String TIP_VISUALIZZA_LISTINO = "Visualizza listino";
 	public final static String TIP_GESTISCI_LISTINO = "Gestisci i listini";
 	public final static String TIP_NUOVO_LISTINO = "Crea un nuovo listino";
 	public final static String TIP_CERCA_LISTINO = "Cerca un listino";

@@ -203,7 +203,7 @@ public class Ctrl_gestisciAzienda {
 			
 			PrimaryMandanteView.getInstance().setEnableNewAzienda(true);
 			PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
-			PrimaryMandanteView.getInstance().disattivaInviaPostaAzienda(true);
+			PrimaryMandanteView.getInstance().disattivaVisualizzaListinoAzienda(true);
 			PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(false);
 			PrimaryMandanteView.getInstance().setInvisibleToolTipAzienda();
 //			AlberoAziende.updateNodo(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
@@ -259,7 +259,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().setModificheAzienda(true);
 		PrimaryMandanteView.getInstance().disattivaModificaAzienda(false);
 		PrimaryMandanteView.getInstance().disattivaCancellaAzienda(false);
-		PrimaryMandanteView.getInstance().disattivaInviaPostaAzienda(false);
+		PrimaryMandanteView.getInstance().disattivaVisualizzaListinoAzienda(false);
 		PrimaryMandanteView.getInstance().disattivaSalvaModificheAzienda(true);
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
@@ -279,7 +279,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().disattivaModificaAzienda(true);
 		PrimaryMandanteView.getInstance().disattivaCancellaAzienda(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(false);
-		PrimaryMandanteView.getInstance().disattivaInviaPostaAzienda(true);
+		PrimaryMandanteView.getInstance().disattivaVisualizzaListinoAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableNewAzienda(true);
@@ -305,6 +305,16 @@ public class Ctrl_gestisciAzienda {
 	public void notConfermaCancAzienda(){
 		confermaCancAzienda.getInstance().setVisible(false);
 		confermaCancAzienda.cancInst();
+	}
+	
+	public void visualizzaListino(int idAzienda){
+		try {
+			Ctrl_gestisciListino.getInstance().recuperaListino(idAzienda);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		PrimaryMandanteView.getInstance().selectTabListino();
 	}
 	
 }

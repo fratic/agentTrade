@@ -543,8 +543,8 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		((RiepilogoAziendaView) riep_azienda).resetCampiModifica();
 	}
 	
-	public void disattivaInviaPostaAzienda(boolean b) {
-		((RiepilogoAziendaView) riep_azienda).setVisibleBtnInviaPosta(b);
+	public void disattivaVisualizzaListinoAzienda(boolean b) {
+		((RiepilogoAziendaView) riep_azienda).setVisibleBtnListino(b);
 	}
 
 	public void setInvisibleToolTipAzienda() {
@@ -632,6 +632,9 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		tabbedPrincipale.setEnabledAt(2, b);
 	}
 	
+	 public void selectTabListino(){
+		 tabbedPrincipale.setSelectedIndex(2);
+	 }
 	
 	public void resetNuovoProdotto() {
 		((NuovoProdottoFactoryView) riep_listino).resetNewProdotto();

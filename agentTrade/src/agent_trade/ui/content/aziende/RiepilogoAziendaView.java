@@ -68,7 +68,7 @@ public class RiepilogoAziendaView extends JPanel {
 	private JButton bottoneCancellaAzienda;
 	private JButton bottoneSalvaModifiche;
 	private JButton bottoneAnnullaModifica;
-	private JButton bottoneInviaComunicazione;
+	private JButton bottoneVisualizzaElenco;
 	
 	private JPanel pannelloCampi;
 	private JPanel pannelloBottoni;
@@ -373,11 +373,11 @@ public class RiepilogoAziendaView extends JPanel {
 		pannelloBottoni.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_BOTTONI, Costanti.HEIGHT_PANN_BOTTONI));//DA MODIFICARE I DUE BOTTONI SOTTO IN TEORIA NN DEVONO COMPARIRE
 		pannelloEast.add(pannelloBottoni);
 
-		bottoneInviaComunicazione = new JButton("");
-		bottoneInviaComunicazione.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
-		pannelloBottoni.add(bottoneInviaComunicazione);
-		bottoneInviaComunicazione.setToolTipText(Costanti.TIP_COMUNICAZIONE_AGENTE);
-		bottoneInviaComunicazione.setIcon(new ImageIcon(RiepilogoAziendaView.class.getResource(Costanti.COMUNICAZIONE_AZIENDA_ICON)));
+		bottoneVisualizzaElenco = new JButton("");
+		bottoneVisualizzaElenco.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
+		pannelloBottoni.add(bottoneVisualizzaElenco);
+		bottoneVisualizzaElenco.setToolTipText(Costanti.TIP_VISUALIZZA_LISTINO);
+		bottoneVisualizzaElenco.setIcon(new ImageIcon(RiepilogoAziendaView.class.getResource(Costanti.LISTINO_ICON)));
 		
 		bottoneModificaAzienda = new JButton("");
 		bottoneModificaAzienda.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
@@ -442,22 +442,10 @@ public class RiepilogoAziendaView extends JPanel {
 			}
 		});
 		
-		bottoneInviaComunicazione.addActionListener(new ActionListener() {
+		bottoneVisualizzaElenco.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//da implementare invio documenti
 				
-				/**ATTENZIONE---usato per aggiornare il listino di beverage***/
-				try {
-					SystemDaemon.getInstance().sincronizzaListinoRemoto("Beverage");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				
+				Ctrl_gestisciAzienda.getInstance().visualizzaListino(Integer.parseInt(TFidAzienda.getText()));
 			}
 		});
 	}
@@ -525,8 +513,8 @@ public class RiepilogoAziendaView extends JPanel {
 		bottoneCancellaAzienda.setVisible(b);
 	}
 	
-	public void setVisibleBtnInviaPosta(boolean b) {
-		bottoneInviaComunicazione.setVisible(b);
+	public void setVisibleBtnListino(boolean b) {
+		bottoneVisualizzaElenco.setVisible(b);
 	}
 	
 	public void setErrore(String err){
