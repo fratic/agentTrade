@@ -1,22 +1,24 @@
 package example;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
+import javax.swing.BoxLayout;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import agent_trade.ui.Setting;
-import java.awt.FlowLayout;
-import javax.swing.BoxLayout;
-import java.awt.Window.Type;
 import javax.swing.JScrollPane;
 
-public class Impostazioni extends JFrame {
+import agent_trade.ui.Setting;
+
+public class Impostazioni extends JDialog {
 
 	private JPanel contentPane;
+	
+	 private final int WIDTH = 500;
+	 private final int HEIGHT = 800;
+
 
 	/**
 	 * Launch the application.
@@ -38,17 +40,21 @@ public class Impostazioni extends JFrame {
 	 * Create the frame.
 	 */
 	public Impostazioni() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setAlwaysOnTop(true);
+		setResizable(false);
+		setModal(true);
+		
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screen.width-WIDTH)/2;
+        int y = (screen.height-HEIGHT)/2;
+        setBounds(x,y,WIDTH,HEIGHT);
+
+		
 		contentPane = new Setting();
-//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-//		contentPane.setLayout(new BorderLayout(0, 0));
-		this.setMinimumSize(new Dimension(1, 800));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		
-		JScrollPane scrollPane = new JScrollPane();
-		contentPane.add(scrollPane);
 	}
 
 }

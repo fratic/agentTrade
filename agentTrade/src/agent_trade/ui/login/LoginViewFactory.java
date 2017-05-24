@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import agent_trade.controller.Ctrl_System;
 import agent_trade.util.Costanti;
 
 public class LoginViewFactory extends JFrame {
@@ -37,6 +38,8 @@ public class LoginViewFactory extends JFrame {
 
 	protected JButton buttoneAccedi;
 	
+	protected JButton buttoneSetting;
+
 	/*costruttori*/
 	
 	public LoginViewFactory() {
@@ -47,6 +50,7 @@ public class LoginViewFactory extends JFrame {
 	/*metodi di classe*/
 	
 	public static LoginViewFactory getInstance(){
+		
 		if(instance == null){
 			if(Costanti.version.equals(Costanti.agente))
 				instance = LoginAgenteView.getInstance();
@@ -55,6 +59,16 @@ public class LoginViewFactory extends JFrame {
 		}
 		return instance;
 			
+//		String versione=Ctrl_System.getVersion();
+//		System.out.println("versione: "+versione);
+//		if(instance == null){
+//			if(versione.equals(Costanti.agente))
+//				instance = LoginAgenteView.getInstance();
+//			else if(versione.equals(Costanti.mandante))
+//				instance = LoginMandanteView.getInstance();
+//		}
+//		return instance;
+		
 	}
 	
 

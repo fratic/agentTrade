@@ -7,12 +7,13 @@ import agent_trade.model.M_Preventivo_Item;
 
 public class ClienteScontoStrategy implements IScontoStrategy {
 
+	/**
+	 * Questo sconto è relativo al cliente ed è una percentuale fissa sul totale. 
+	 * Non è in conflitto con altri sconti. 
+	 **/
 	private float percentuale;
-	private float totScontato;
 	
-	
-	
-	
+
 	public ClienteScontoStrategy(float percent) {
 		this.percentuale = percent;
 	}
@@ -20,25 +21,10 @@ public class ClienteScontoStrategy implements IScontoStrategy {
 
 	@Override
 	public float calcolaSconto(M_Preventivo prev) {
-//		NON SO SE VA BENE
-		totScontato = prev.getTotale();
-//		Iterator<?> iteraItem = null;
-//		
-//		iteraItem = prev.getItem().iterator();
-//		M_Preventivo_Item item;
-//		
-//		while (iteraItem.hasNext()) 
-//		{
-//			item = (M_Preventivo_Item) iteraItem.next();
-//			totScontato= totScontato+((item.getQuantita()*item.getIdProdotto().getPrezzo())/**(1-item.getIdProdotto().getSconto())*/);
-//				}
+
+		float scontoCliente=prev.getTotale()*percentuale;
 		
-		if(prev.getRif_Cliente().getIdCliente()== 6){ // in realtà questa if non serve (è stata messa solo per fare una prova con un cliente diverso)
-			
-			totScontato = totScontato - (totScontato * percentuale);
-		}
-		return totScontato;
+		return scontoCliente;
 	}
 	
-
 }

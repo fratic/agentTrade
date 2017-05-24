@@ -24,6 +24,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.ui.SplashScreen;
+import agent_trade.ui.primaryView.PrimaryAgenteView;
 import agent_trade.util.Costanti;
 
 public class LoginAgenteView extends LoginViewFactory {
@@ -80,8 +81,15 @@ public class LoginAgenteView extends LoginViewFactory {
 		layeredPane.add(password);
 		
 		buttoneAccedi = new JButton(Costanti.BOTTONE_ACCEDI);
-		buttoneAccedi.setBounds(201, 136, 89, 23);
+		buttoneAccedi.setBounds(201, 150, 89, 23);
 		layeredPane.add(buttoneAccedi);
+		
+
+		buttoneSetting = new JButton();
+		buttoneSetting.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.SETTING_ICON)));
+		buttoneSetting.setBounds(35, 140, 32, 32);
+		layeredPane.add(buttoneSetting);
+
 		
 		labelInfo = new JLabel(Costanti.MESSAGGIO_INSERISCI_CREDENZIALI);
 		labelInfo.setBounds(10, 11, 334, 20);
@@ -107,6 +115,16 @@ public class LoginAgenteView extends LoginViewFactory {
 				}
 			}
 		});	
+		
+		
+		buttoneSetting.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				Ctrl_System.getInstance().settingWindows(); 
+			}
+		});	
+		
+		
 	}
 
 

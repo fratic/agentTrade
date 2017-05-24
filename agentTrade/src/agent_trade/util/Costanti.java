@@ -18,10 +18,11 @@ public final class Costanti {
 	 * Versione software
 	 */
 	
-	public final static String  version = "agente";
+	public static String  version = "agente";
 //	public final static String  version = "mandante";
 
-	
+	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
+
 	public final static String  agente = "agente";
 	public final static String  mandante = "mandante";
 
@@ -31,14 +32,17 @@ public final class Costanti {
 	 */
 	
 	
-//	public final static int  Look_Feel = 0;
+	public static int  Look_Feel = 0;
 //	public final static int  Look_Feel = 1;
 //	public final static int  Look_Feel = 2;
 //	public final static int  Look_Feel = 3;
 //	public final static int  Look_Feel = 4;
-	public final static int  Look_Feel = 5;
+//	public final static int  Look_Feel = 5;
 //	public final static int  Look_Feel = 6;
+
 	
+	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
+
 	
 	/**
 	 * Formato della Data

@@ -10,7 +10,7 @@ public class sincronizzazioneProdottiDBRemotoLocale {
 
 	public static void main(String[] args) throws PersistentException, IOException {
 
-		SystemDaemon.getInstance().sincronizzaListiniRemoti();
+//		SystemDaemon.getInstance().sincronizzaListiniRemoti();
 		
 		SystemDaemon.getInstance().sincronizzaListino();
 	}

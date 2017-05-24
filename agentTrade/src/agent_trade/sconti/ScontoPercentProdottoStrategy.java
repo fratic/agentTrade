@@ -9,13 +9,25 @@ import agent_trade.model.M_Prodotto;
 
 public class ScontoPercentProdottoStrategy implements IScontoStrategy{
 
-	private float sconto;
-	private float prezzo;
-	private int IdProdotto;
+	/**
+	 * Questo sconto è relativo al singolo prodotto ed è una percentuale fissa sul totale. 
+	 * Non è in conflitto con altri sconti. 
+	 **/
+
+	
+	private float percent;
+	private int id_item;
 	
 	
-	public ScontoPercentProdottoStrategy(int idProd){
-		this.IdProdotto = idProd;
+//	public ScontoPercentProdottoStrategy(float percent){
+//		this.percent = percent;
+//	}
+	
+	public ScontoPercentProdottoStrategy(int id_item, float percent){
+		this.id_item = id_item;
+		this.percent = percent;
+		
+		System.out.println("ITEM ////////"+id_item);
 	}
 	
 	
@@ -26,18 +38,25 @@ public class ScontoPercentProdottoStrategy implements IScontoStrategy{
 		Iterator iteraItem = null;
 		iteraItem = prev.getItem().iterator();
 		M_Preventivo_Item item;
-		
+		float sconto=0;
+	
+		System.out.println("SONO IN CALCOLCAscONTO DI SCONTO %%%.ID ITEM STRATEGY"+id_item);
+
 		while (iteraItem.hasNext()) {
 			item = (M_Preventivo_Item) iteraItem.next();
-			if (item.getIdProdotto().getIdProdotto()==IdProdotto)
+			if (item.getIdProdotto().getIdProdotto()==this.id_item)
 			{
-				prezzo = item.getIdProdotto().getPrezzo();
-				sconto = item.getIdProdotto().getSconto();
-				prezzo = prezzo - (prezzo * sconto);
+
+			System.out.println("id prodotto "+item.getIdProdotto()+" applicato sconto di tipo"+this);
+
+//			if (item.getIdProdotto().getIdProdotto()==IdProdotto)
+//			{
+				sconto = sconto + (item.calcolaParziale()*percent);
+
 				
 			}
 		}
-		return prezzo;
+		return sconto;
 	}
 
 }

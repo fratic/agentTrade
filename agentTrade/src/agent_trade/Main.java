@@ -6,6 +6,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import agent_trade.controller.Ctrl_System;
 import agent_trade.ui.SplashScreen;
 import agent_trade.ui.login.LoginViewFactory;
 import agent_trade.util.Costanti;
@@ -28,8 +29,8 @@ public class Main {
 								
 				try {
 					Thread.sleep(1500);
-													
 					setLook();
+					setVersione();
 				    LoginViewFactory.getInstance().setVisible(true);
 					splash.dispose();
 					
@@ -52,9 +53,12 @@ public class Main {
 	}
 	
 	
+	
+	
 	public static void setLook() throws UnsupportedLookAndFeelException, ParseException, ClassNotFoundException, InstantiationException, IllegalAccessException{
 		
-		
+		Ctrl_System.getLook();						
+
 		switch (Costanti.Look_Feel) {
 			case 1:{
 				UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
@@ -83,6 +87,13 @@ public class Main {
 
 		}
 		
+	}
+	
+	
+	public static void setVersione(){
+		
+		Ctrl_System.getVersion();						
+
 	}
 	
 	

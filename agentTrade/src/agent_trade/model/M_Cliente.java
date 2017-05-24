@@ -22,6 +22,8 @@ import org.orm.PersistentTransaction;
 import agent_trade.controller.Ctrl_System;
 import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.ClienteCriteria;
+import agent_trade.sconti.ClienteScontoStrategy;
+import agent_trade.sconti.IScontoStrategy;
 
 public class M_Cliente {
 
@@ -52,6 +54,8 @@ public class M_Cliente {
 	private int attivo;
 	
 
+	private IScontoStrategy strategiaCliente;
+	
 	/*
 	 * costruttori
 	 */
@@ -341,5 +345,15 @@ public class M_Cliente {
 	public String toString() {
 		return String.valueOf(getIdCliente());
 	}
+
+	public IScontoStrategy getStrategiaCliente() {
+		return strategiaCliente;
+	}
+
+	public void setStrategiaCliente(IScontoStrategy strategiaCliente) {
+		this.strategiaCliente = strategiaCliente;
+	}
+	
+	
 	
 }

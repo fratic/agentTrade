@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -350,22 +351,7 @@ public class ItemNuovoPreventivoView extends JPanel
 	}
 
 	public void setTot() throws PersistentException {
-		
-//		somma di quant*prezzo unit
-//		-Totale non scontato
-		
-//		somma di tutti gli sconti
-//		-Sconto totale
-		
-//		somma di quant*prezzo - gli sconti (incluso anche quello cliente)
-//		-Totale scontato (imponibile)
-		
-//		-iva
-		
-//		prezzo che effettivamente il cliente deve pagare
-//		-Totale
-		
-		
+			
 		float tot_non_scontato = M_Preventivo.getInstance().calcolaTotaleNonScontato();
 		
 		//questa funzione calcola anche gli sconti clienti. In pratica calcola qualsiasi sconto 
@@ -378,8 +364,7 @@ public class ItemNuovoPreventivoView extends JPanel
 
 		float totale = totale_scontato+iva;
 
-		//eventualmente si può mettere anche lo sconto relativo al cliente
-//		float scontoCliente = M_Preventivo.getInstance().calcolaScontoCliente();
+		float scontoCliente = M_Preventivo.getInstance().calcolaScontoCliente();
 		
 		totale= (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
 
@@ -397,8 +382,12 @@ public class ItemNuovoPreventivoView extends JPanel
 		setTotale(Float.toString(totale));	
 		setTotNonScontato(Float.toString(tot_non_scontato));
 		setScontoTotale(Float.toString(sconto_tot));
+		setScontoCliente(Float.toString(scontoCliente));
+		
+	
 	}
 
+	
 
 }
 

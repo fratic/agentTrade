@@ -37,15 +37,15 @@ public class TestSconto {
 
 		
 		
-		M_Prodotto p1 = M_Prodotto.caricaProdotto(78);
+		M_Prodotto p1 = M_Prodotto.caricaProdotto(135);
 //		System.out.println("prodotto: "+p1.getIdProdotto());
 //		System.out.println("prezzo: "+p1.getPrezzo());
 		
-		M_Prodotto p2 = M_Prodotto.caricaProdotto(79); //PRODOTTO SCONTATO IN PERCENTUALE del 15%
+		M_Prodotto p2 = M_Prodotto.caricaProdotto(145); //PRODOTTO SCONTATO IN PERCENTUALE del 15%
 //		System.out.println("prodotto: "+p2.getIdProdotto());
 //		System.out.println("prezzo: "+p2.getPrezzo());
 
-		M_Prodotto p3 = M_Prodotto.caricaProdotto(80);
+		M_Prodotto p3 = M_Prodotto.caricaProdotto(148);
 //		System.out.println("prodotto: "+p3.getIdProdotto());
 //		System.out.println("prezzo: "+p3.getPrezzo());
 
@@ -55,71 +55,72 @@ public class TestSconto {
 		p.addItem(p3);
 	
 		p.addQuant(p1.getIdProdotto(), 5);
-/*
- * 
- * in teoria per ogni prodotto non dovremmo fare il calcolo dello sconto due volte come 
- * è fatto qui p.calcolaSconto("percentProd1") e p.calcolaSconto("assolutoProd1") ma 
- * secondo me bisogna leggere in un campo del prodotto che tipo di sconto è "percentProd1"
- * o "assolutoProd1" e poi chiamare calcolaSconto cmq è da rivedere meglio perchè nel 
- * primo caso chiamo calcola sconto in setPrezzo nel secondo in setParziale (ma credo 
- * che basti rivedere l'algoritmo)
- * cmq ogni volta che si deve calcolare il parziale di una riga andrebbero calcolati 
- * gli sconti sul prodotto e lo sconto cliente ogni volta che si deve calcolare il 
- * parziale totale
- * 
-*/
-		p.calcolaParziale(p1.getIdProdotto());
-		System.out.println("parziale riga1 non scontato: "+ p.getParziale());
-		
-		p1.setPrezzo(p.calcolaSconto("percentProd1"));
-		p.calcolaParziale(p1.getIdProdotto());
-		System.out.println("parziale riga1 sconto %: "+p.getParziale());
-		
-		p.setParziale(p.calcolaSconto("assolutoProd1"));
-		System.out.println("parziale riga1 sconto assoluto: "+p.getParziale());
-		
-		p.setTotale(p.getTotale() + p.getParziale());
-		System.out.println("totale parziale: "+p.getTotale());
-//		lo sconto sul cliente viene solo visualizzato non modifica il totale parziale 
-		System.out.println("totale parziale con sconto cliente: "+ p.calcolaSconto("cliente"));
-		System.out.println("");
-		
-		p.addQuant(p2.getIdProdotto(), 8);
-		p.calcolaParziale(p2.getIdProdotto());
-		System.out.println("parziale riga2 non scontato: "+ p.getParziale());
-		
-	
-		p2.setPrezzo(p.calcolaSconto("percentProd2"));
-		p.calcolaParziale(p2.getIdProdotto());
-		System.out.println("parziale riga2 sconto %: "+p.getParziale());
-		
-		p.setParziale(p.calcolaSconto("assolutoProd2"));
-		System.out.println("parziale riga2 sconto assoluto: "+p.getParziale());
-		
-		p.setTotale(p.getTotale() + p.getParziale());
-		System.out.println("totale parziale: "+p.getTotale());
-		System.out.println("totale parziale con sconto cliente: "+ p.calcolaSconto("cliente"));
-		System.out.println("");
-		
-		p.addQuant(p3.getIdProdotto(), 12); //prodotto che ha uno sconto con una quantità >10
-		p.calcolaParziale(p3.getIdProdotto());
-		System.out.println("parziale riga3 non scontato: "+ p.getParziale());
-		
-		p3.setPrezzo(p.calcolaSconto("percentProd3"));
-		p.calcolaParziale(p3.getIdProdotto());
-		System.out.println("parziale riga3 sconto %: "+p.getParziale());
-		
-		p.setParziale(p.calcolaSconto("assolutoProd3"));
-		System.out.println("parziale riga3 sconto assoluto: "+p.getParziale());
-		
-		p.setTotale(p.getTotale() + p.getParziale());
-		System.out.println("totale parziale:  "+p.getTotale());
-		System.out.println("totale parziale con sconto cliente: "+ p.calcolaSconto("cliente"));
-		System.out.println("");
-
-		System.out.println("totale scontato senza sconto cliente: "+ p.getTotale());
-		System.out.println("totale scontato per il cliente "+p.calcolaSconto("cliente"));
-		
+///*
+// * 
+// * in teoria per ogni prodotto non dovremmo fare il calcolo dello sconto due volte come 
+// * è fatto qui p.calcolaSconto("percentProd1") e p.calcolaSconto("assolutoProd1") ma 
+// * secondo me bisogna leggere in un campo del prodotto che tipo di sconto è "percentProd1"
+// * o "assolutoProd1" e poi chiamare calcolaSconto cmq è da rivedere meglio perchè nel 
+// * primo caso chiamo calcola sconto in setPrezzo nel secondo in setParziale (ma credo 
+// * che basti rivedere l'algoritmo)
+// * cmq ogni volta che si deve calcolare il parziale di una riga andrebbero calcolati 
+// * gli sconti sul prodotto e lo sconto cliente ogni volta che si deve calcolare il 
+// * parziale totale
+// * 
+//*/
+//		p.calcolaParziale(p1.getIdProdotto());
+//		System.out.println("parziale riga1 non scontato: "+ p.getParziale());
+//		
+//		p1.setPrezzo(p.calcolaSconto("percentProd1"));
+//		p.calcolaParziale(p1.getIdProdotto());
+//		System.out.println("parziale riga1 sconto %: "+p.getParziale());
+//		
+//		p.setParziale(p.calcolaSconto("assolutoProd1"));
+//		System.out.println("parziale riga1 sconto assoluto: "+p.getParziale());
+//		
+////		p.setTotale(p.getTotale() + p.getParziale());
+//		System.out.println("totale parziale: "+p.getTotale());
+////		lo sconto sul cliente viene solo visualizzato non modifica il totale parziale 
+//		System.out.println("totale parziale con sconto cliente: "+ p.calcolaSconto("cliente"));
+//		System.out.println("");
+//		
+//		
+//		p.addQuant(p2.getIdProdotto(), 8);
+//		p.calcolaParziale(p2.getIdProdotto());
+//		System.out.println("parziale riga2 non scontato: "+ p.getParziale());
+//		
+//	
+//		p2.setPrezzo(p.calcolaSconto("percentProd2"));
+//		p.calcolaParziale(p2.getIdProdotto());
+//		System.out.println("parziale riga2 sconto %: "+p.getParziale());
+//		
+//		p.setParziale(p.calcolaSconto("assolutoProd2"));
+//		System.out.println("parziale riga2 sconto assoluto: "+p.getParziale());
+//		
+////		p.setTotale(p.getTotale() + p.getParziale());
+//		System.out.println("totale parziale: "+p.getTotale());
+//		System.out.println("totale parziale con sconto cliente: "+ p.calcolaSconto("cliente"));
+//		System.out.println("");
+//		
+//		p.addQuant(p3.getIdProdotto(), 12); //prodotto che ha uno sconto con una quantità >10
+//		p.calcolaParziale(p3.getIdProdotto());
+//		System.out.println("parziale riga3 non scontato: "+ p.getParziale());
+//		
+//		p3.setPrezzo(p.calcolaSconto("percentProd3"));
+//		p.calcolaParziale(p3.getIdProdotto());
+//		System.out.println("parziale riga3 sconto %: "+p.getParziale());
+//		
+//		p.setParziale(p.calcolaSconto("assolutoProd3"));
+//		System.out.println("parziale riga3 sconto assoluto: "+p.getParziale());
+//		
+////		p.setTotale(p.getTotale() + p.getParziale());
+//		System.out.println("totale parziale:  "+p.getTotale());
+//		System.out.println("totale parziale con sconto cliente: "+ p.calcolaSconto("cliente"));
+//		System.out.println("");
+//
+//		System.out.println("totale scontato senza sconto cliente: "+ p.getTotale());
+//		System.out.println("totale scontato per il cliente "+p.calcolaSconto("cliente"));
+//		
 	}
 
 }

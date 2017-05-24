@@ -17,13 +17,15 @@ import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
+import agent_trade.sconti.ClienteScontoStrategy;
+import agent_trade.sconti.IScontoStrategy;
+import agent_trade.sconti.ScontoStrategyFactory;
 import agent_trade.ui.content.clienti.CercaClienteView;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
-import agent_trade.ui.primaryView.PrimaryAgenteView;
 import agent_trade.ui.primaryView.PrimaryAgenteView;
 
 public class Ctrl_elaboraPreventivo {
@@ -212,6 +214,12 @@ public class Ctrl_elaboraPreventivo {
 		p.setIdPrev();
 		p.setData(Ctrl_System.calendario.getTime());
 		
+		/**
+		 * qui il prev è stato già creato quindi potrei chiedere alla factory se il 
+		 * preventivo ha una qualche strategy associata.. tipo oggi 20% oppure 10 euro sul tot, ecc
+		 * **/
+		
+		
 		Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();
 	}
 
@@ -219,8 +227,26 @@ public class Ctrl_elaboraPreventivo {
 	public void inserisciCliente(int id_cliente) throws PersistentException {
 		
 		M_Cliente cliente= M_Cliente.cercaCliente(id_cliente);
-					
-		M_Preventivo.getInstance().setRif_Cliente(cliente);	
+		
+		
+		//qui già si potrebbe richiedere la strategia per il cliente
+		
+		/************/
+		
+		IScontoStrategy strategiaCliente= (IScontoStrategy) ScontoStrategyFactory.getStrategy(cliente);
+//		cliente.setStrategiaCliente(new ClienteScontoStrategy(percent));
+
+		cliente.setStrategiaCliente(strategiaCliente);
+	
+		/***
+		 *a questo punto M_Cliente ha la sua strategia con il volore percentuale impostato. 
+		 *Dopo di questo basterà chiamare calcolaSconto(preventivo) per ottenere il valore dello sconto legato 
+		 *al cliente in questione
+		 */
+		
+		
+		M_Preventivo.getInstance().setRif_Cliente(cliente);
+
 		
 		//init della view
 		initNuovoPreventivo(cliente);
@@ -246,6 +272,10 @@ public class Ctrl_elaboraPreventivo {
 		
 		ItemNuovoPreventivoView.getInstance().setTot();
 
+//		System.out.println("SONO IN ADD ITEM. LO SCONTO CLIENTE (10%) è:"+ M_Preventivo.getInstance().getRif_Cliente().getStrategiaCliente().calcolaSconto(M_Preventivo.getInstance()));
+
+
+		
 	}
 
 	
@@ -315,6 +345,7 @@ public class Ctrl_elaboraPreventivo {
 	public void addQuant(int id_prod, int qt) throws PersistentException {
 
 		M_Preventivo.getInstance().addQuant(id_prod,qt);
+		
 	}
 
 	

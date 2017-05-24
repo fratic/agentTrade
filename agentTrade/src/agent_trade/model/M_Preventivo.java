@@ -30,6 +30,7 @@ import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.PreventivoCriteria;
+import agent_trade.sconti.ClienteScontoStrategy;
 import agent_trade.sconti.IScontoStrategy;
 import agent_trade.sconti.ScontoStrategyFactory;
 import agent_trade.util.Costanti;
@@ -57,7 +58,10 @@ public class M_Preventivo implements Observer {
 	
 	private boolean modificato=false;
 	
-	private float totale;
+//	private XScontoStrategy strategiaCliente;
+
+	
+//	private float totale;
 	private float parziale;
 	
 	
@@ -235,6 +239,25 @@ public class M_Preventivo implements Observer {
 	public M_Preventivo_Item addItem(M_Prodotto Prodotto ) throws PersistentException{
 		
 		M_Preventivo_Item it= new M_Preventivo_Item(M_Preventivo.getInstance(), Prodotto);
+		
+		/**
+		 * l'item è stato creato. Di conseguenza posso chiedere alla factory se il prodotto associato all'item  
+		 * ha un qualche tipo di sconto, e quindi posso salvarmi l'interfaccia per poi usarla a tempo debito
+		 * */
+		
+		//quindi, recupero l'id dello sconto e quindi eventualmente la sua percentuale
+		
+		System.out.println("CREAZIONE ITEM"+it.getIdPreventivo_Item());
+		
+		IScontoStrategy strategiaProdotto= (IScontoStrategy) ScontoStrategyFactory.getStrategy(it);
+		
+//		cliente.setStrategiaCliente(new ClienteScontoStrategy(percent));
+
+		it.setStrategiaProdotto(strategiaProdotto);
+
+		System.out.println("Strategia aggiunta al prodotto: "+it.getIdProdotto());
+		System.out.println("tipo strategia: "+it.getStrategiaProdotto());
+
 		this.item.add(it);
 
 		return it;
@@ -269,13 +292,6 @@ public class M_Preventivo implements Observer {
 			item = (M_Preventivo_Item) iteraItem.next();
 			totaleNoScont= totaleNoScont+(item.getQuantita()*item.getIdProdotto().getPrezzo());
 			
-			System.out.println("----------------------------------------");
-			System.out.println("--------FUNZIONE CALCOLA TOTALE NON SCONTATO----------");
-			System.out.println("PROD con id = "+item.getIdProdotto()+" -- quantita : "+item.getQuantita()+" prezzo: "+item.getIdProdotto().getPrezzo());
-			System.out.println(" totale preventivo no sconto"+totaleNoScont);
-
-
-			
 		}
 		totaleNoScont= (float) (Math.ceil(totaleNoScont * Math.pow(10, 2)) / Math.pow(10, 2));
 		
@@ -284,33 +300,46 @@ public class M_Preventivo implements Observer {
 	
 	public float calcolaScontoTotale(){
 		
-		float ScontoTot=0;
-		Iterator<?> iteraItem = null;
+//		float ScontoTot=0;
+//		Iterator<?> iteraItem = null;
+//		
+//		iteraItem = this.getItem().iterator();
+//		M_Preventivo_Item item;
+//	
+//		while (iteraItem.hasNext()) 
+//		{
+//			item = (M_Preventivo_Item) iteraItem.next();
+//			ScontoTot= ScontoTot+(item.calcolaScontoxQuantita());		
+//			
+//		}
+//		
+//		
+//		ScontoTot= (float) (Math.ceil(ScontoTot * Math.pow(10, 2)) / Math.pow(10, 2));
+//		
+//		return ScontoTot;
 		
+		
+//		System.out.println("SONO IN setTOT. LO SCONTO CLIENTE (20%) è:"+ M_Preventivo.getInstance().getRif_Cliente().getStrategiaCliente().calcolaSconto(M_Preventivo.getInstance()));
+		
+		Iterator<?> iteraItem = null;
 		iteraItem = this.getItem().iterator();
 		M_Preventivo_Item item;
 	
+		float scontoTot=0;
+		
 		while (iteraItem.hasNext()) 
-		{
+		{			
 			item = (M_Preventivo_Item) iteraItem.next();
-			ScontoTot= ScontoTot+(item.calcolaScontoxQuantita());
-			
-			System.out.println("----------------------------------------");
-			System.out.println("--------FUNZIONE CALCOLA sconto totale----------");
-			System.out.println("PROD con id = "+item.getIdProdotto()+" -- quantita : "+item.getQuantita()+" prezzo: "+item.getIdProdotto().getPrezzo());
-			System.out.println(" parziale scontato "+item.calcolaScontoxQuantita());
+//				System.out.println("SONO IN setTOT. LO SCONTO Fisso qt è:"+ item.getStrategiaProdotto().calcolaSconto(M_Preventivo.getInstance()));
 
-
-			
-			
+			scontoTot = scontoTot + item.getStrategiaProdotto().calcolaSconto(this);
 		}
+		scontoTot=scontoTot+calcolaScontoCliente();
+
+//		System.out.println("-------------------SET TOTALE-------"+scontoTot);
+
+		return scontoTot;
 		
-		/**++
-		 * qui vanno aggiunti i calcoli di ulteriori tipi di sconto (non legati al cliente)*/
-		
-		ScontoTot= (float) (Math.ceil(ScontoTot * Math.pow(10, 2)) / Math.pow(10, 2));
-		
-		return ScontoTot;
 	}
 	
 	
@@ -334,7 +363,9 @@ public class M_Preventivo implements Observer {
 			item = (M_Preventivo_Item) iteraItem.next();
 			if (item.getIdProdotto().getIdProdotto()==id)
 			{
-				item.setQuantita(qt);				
+				item.setQuantita(qt);		
+//				System.out.println("SONO IN ADD ITEM. LO SCONTO Fisso qt è:"+ item.getStrategiaProdotto().calcolaSconto(M_Preventivo.getInstance()));
+
 			}
 		}
 	}
@@ -427,20 +458,31 @@ public class M_Preventivo implements Observer {
 		}
 	}
 
-	public float calcolaSconto(String Type) throws PersistentException{
-
-		IScontoStrategy strategy = ScontoStrategyFactory.getInstance(Type);
-		return strategy.calcolaSconto(this);
-//		return ScontoStrategyFactory.getInstance().getClienteScontoStrategy().calcolaSconto(this);
-	}
-
+//	public float calcolaSconto(String Type) throws PersistentException{
+//
+//		IScontoStrategy strategy = ScontoStrategyFactory.getInstance(Type);
+//		return strategy.calcolaSconto(this);
+////		return ScontoStrategyFactory.getInstance().getClienteScontoStrategy().calcolaSconto(this);
+//	}	
+	
 	public float getTotale() {
-		return totale;
+		
+		//per problemi di inconsistenza dei dati forse è meglio calcolare il tot ogni volta
+		
+		List<M_Preventivo_Item> lista = this.getItem();
+		Iterator<M_Preventivo_Item> itera = lista.iterator();
+		float tot=0;
+		while (itera.hasNext()){
+			M_Preventivo_Item item = (M_Preventivo_Item) itera.next();
+			tot = tot+item.calcolaParziale();
+		}
+		
+		return tot;
 	}
 
-	public void setTotale(float totale) {
-		this.totale = totale;
-	}
+//	public void setTotale(float totale) {
+//		this.totale = totale;
+//	}
 
 	public float getParziale() {
 		return parziale;
@@ -448,6 +490,12 @@ public class M_Preventivo implements Observer {
 
 	public void setParziale(float parziale) {
 		this.parziale = parziale;
+	}
+
+	public float calcolaScontoCliente() {
+		
+		return this.getRif_Cliente().getStrategiaCliente().calcolaSconto(this);		
+		
 	}
 
 /*	secondo me usando la factory dovrebbe essere

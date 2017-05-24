@@ -410,6 +410,7 @@ public abstract class M_Prodotto {
 	}
 	
 	public float getSconto() {
+		//PROBABILMENTE QUI DEVE CHIAMARE IL CALCOLA SCONTO FACTORY
 		return sconto;
 	}
 

@@ -1,6 +1,9 @@
 
 package agent_trade.controller;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
 
@@ -18,6 +21,7 @@ import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.ui.login.LoginViewFactory;
 import agent_trade.ui.primaryView.PrimaryViewFactory;
 import agent_trade.util.Costanti;
+import example.Impostazioni;
 
 
 public class Ctrl_System {
@@ -53,10 +57,16 @@ public class Ctrl_System {
 		return ((instance == null) ? instance = new Ctrl_System() : instance);	
 	}
 	
+	
+	/**
+	 * Restituisce l'istanza dell'agente che si è loggato
+	 * @throws PersistentException
+	 */
 	public static M_Agente getAgenteLog(){
 
 		return ((instance == null) ? null : instanceAgenteLog);	
 	}
+	
 	
 	/*
 	 * metodi privati
@@ -193,5 +203,109 @@ public class Ctrl_System {
 				
 		return instanceAgenteLog.getIdAgente();
 	}
+
+	
+	public static String getVersion() {
+
+	    char[] in = new char[50];
+	    int size = 0;
+	    String versione="";
+	    
+	    try {
+	    	
+	        File file = new File(Costanti.pathVersion);
+	        FileReader fr = new FileReader(file);
+	        size = fr.read(in);
+	         
+	        for(int i=0; i<size; i++)
+	        	versione=versione+in[i];
+	        fr.close();
+	         
+	    } 
+	    catch(IOException e) { 
+	        e.printStackTrace();
+	    }
+	 
+
+        Costanti.version=versione;
+		return versione;
+	}
+
+	public static void setVersione(String versione) {
+		     
+		    try {
+		        File file = new File(Costanti.pathVersion);
+		        FileWriter fw = new FileWriter(file);
+		        fw.write(versione);
+		        fw.flush();
+		        fw.close();
+		    }
+		    catch(IOException e) {
+		        e.printStackTrace();
+		    }
+	}
+	
+	
+	public static int getLook() {
+
+	    char[] in = new char[50];
+	    int size = 0;
+		int look = 0;
+		
+	    try {
+	    	
+	        File file = new File(Costanti.pathLook);
+	        FileReader fr = new FileReader(file);
+	        size = fr.read(in);
+	         
+	        //aggiustare. probabilmente non serve il ciclo
+	        for(int i=0; i<size; i++){
+	        	look=java.lang.Character.getNumericValue(in[i]);
+	        	System.out.println("char "+in[i]);
+	        	System.out.println("look ciclo "+look);
+
+	        }
+	        	fr.close();
+	         
+	    } 
+	    catch(IOException e) { 
+	        e.printStackTrace();
+	    }
+	 
+        System.out.println(" LOOK "+Costanti.Look_Feel);
+
+        Costanti.Look_Feel=look;
+        
+        System.out.println("cost look "+Costanti.Look_Feel);
+		return look;
+	}
+
+	public static void setLook(int look) {
+		     
+		    try {
+		        File file = new File(Costanti.pathLook);
+		        FileWriter fw = new FileWriter(file);
+		        fw.write(look);
+		        fw.flush();
+		        fw.close();
+		    }
+		    catch(IOException e) {
+		        e.printStackTrace();
+		    }
+	}
+
+
+	public void settingWindows() {
+		//centrare al centro dello schermo
+		Impostazioni frame = new Impostazioni();
+		frame.setVisible(true);
+
+	}
+	
+	public void salvaSetting(){
+		
+	}
+	
+	
 	
 }

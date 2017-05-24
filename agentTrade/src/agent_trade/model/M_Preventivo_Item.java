@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import agent_trade.sconti.IScontoStrategy;
+
 public class M_Preventivo_Item extends Observable{
 	
 	
@@ -35,6 +37,8 @@ public class M_Preventivo_Item extends Observable{
 	private int quantita;
 	private List<Observer> observer = new ArrayList<Observer>();
 	
+	private IScontoStrategy strategiaProdotto;
+
 	
 	/*
 	 * costruttori
@@ -129,6 +133,14 @@ public class M_Preventivo_Item extends Observable{
 
 	
 
+	public IScontoStrategy getStrategiaProdotto() {
+		return strategiaProdotto;
+	}
+
+	public void setStrategiaProdotto(IScontoStrategy strategiaProdotto) {
+		this.strategiaProdotto = strategiaProdotto;
+	}
+
 	public String toString() {
 		return String.valueOf(getIdPreventivo_Item());
 	}
@@ -166,6 +178,16 @@ public class M_Preventivo_Item extends Observable{
 		scontoXQuantita= (float) (Math.ceil(scontoXQuantita * Math.pow(10, 2)) / Math.pow(10, 2));
 		return scontoXQuantita;
 		
+	}
+
+	public void setStrategiaCliente(IScontoStrategy strategiaProdotto2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String calcolaSconto(M_Preventivo instance) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
