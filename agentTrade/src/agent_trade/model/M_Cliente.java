@@ -24,6 +24,7 @@ import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.ClienteCriteria;
 import agent_trade.sconti.ClienteScontoStrategy;
 import agent_trade.sconti.IScontoStrategy;
+import agent_trade.sconti.ScontoStrategyFactory;
 
 public class M_Cliente {
 
@@ -347,6 +348,10 @@ public class M_Cliente {
 	}
 
 	public IScontoStrategy getStrategiaCliente() {
+		
+		IScontoStrategy strategiaCliente= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
+		this.setStrategiaCliente(strategiaCliente);
+
 		return strategiaCliente;
 	}
 

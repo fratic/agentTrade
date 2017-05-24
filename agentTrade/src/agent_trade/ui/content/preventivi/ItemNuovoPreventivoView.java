@@ -93,23 +93,8 @@ public class ItemNuovoPreventivoView extends JPanel
 		panelloRiepilogo = new JPanel();
 		panelloRiepilogo.setLayout(new BorderLayout());
 		panelloRiepilogo.setBackground(SystemColor.scrollbar);		
-		panelloRiepilogo.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_RIEPILOGO,Costanti.HEIGHT_PANN_RIEPILOGO));
+		panelloRiepilogo.setPreferredSize(new Dimension(850, 100));
 		panel.add(panelloRiepilogo,BorderLayout.SOUTH);
-		
-		sottoPannRiepilogo2 = new JPanel();
-		sottoPannRiepilogo2.setBackground(SystemColor.scrollbar);
-		sottoPannRiepilogo2.setPreferredSize(new Dimension(Costanti.WIDTH_SOTTO_PANN_RIEPILOGO1, Costanti.HEIGHT_SOTTO_PANN_RIEPILOGO1));
-		sottoPannRiepilogo2.setBorder(new EmptyBorder(10, 10, 0, 0));
-		panelloRiepilogo.add(sottoPannRiepilogo2,BorderLayout.EAST);
-		
-		
-		
-		buttoneSalva = new JButton("");
-		buttoneSalva.setToolTipText(Costanti.TIP_SALVA_PREV);
-		buttoneSalva.setIcon(new ImageIcon(ItemNuovoPreventivoView.class.getResource(Costanti.SAVE_ICON)));
-	
-		buttoneSalva.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON_SALVA,Costanti.HEIGHT_BUTTON_SALVA));
-		sottoPannRiepilogo2.add(buttoneSalva);
 
 		sottoPannRiepilogo1 = new JPanel();
 		sottoPannRiepilogo1.setBackground(SystemColor.scrollbar);
@@ -118,7 +103,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		
 		sottoPannRiepilogoCampi = new JPanel();
 		sottoPannRiepilogoCampi.setBackground(SystemColor.scrollbar);
-		sottoPannRiepilogoCampi.setPreferredSize(new Dimension(Costanti.WIDTH_SOTTO_PANN_RIEP_CAMPI, Costanti.HEIGHT_SOTTO_PANN_RIEP_CAMPI));
+		sottoPannRiepilogoCampi.setPreferredSize(new Dimension(600, 80));
 		sottoPannRiepilogo1.add(sottoPannRiepilogoCampi,BorderLayout.EAST);
 	
 		
@@ -128,7 +113,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout.setVgap(0);
 		flowLayout.setHgap(0);
 		PannTotNoSconto.setBackground(SystemColor.scrollbar);
-		PannTotNoSconto.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannTotNoSconto.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannTotNoSconto);
 		
 		JLabel labelTotNoSconto = new JLabel(Costanti.LABEL_TOTALE_NON_SCONTATO);
@@ -146,7 +131,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout1.setVgap(0);
 		flowLayout1.setHgap(0);
 		PannImponibile.setBackground(SystemColor.scrollbar);
-		PannImponibile.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannImponibile.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannImponibile);
 		
 		JLabel labelImponibile = new JLabel(Costanti.LABEL_IMPONIBILE);
@@ -164,7 +149,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout2.setVgap(0);
 		flowLayout2.setHgap(0);
 		PannScontoCliente.setBackground(SystemColor.scrollbar);
-		PannScontoCliente.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannScontoCliente.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannScontoCliente);
 		
 		JLabel labelScontoCliente = new JLabel(Costanti.LABEL_SCONTO_CLIENTE);
@@ -182,7 +167,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout3.setVgap(0);
 		flowLayout3.setHgap(0);
 		PannIVA.setBackground(SystemColor.scrollbar);
-		PannIVA.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannIVA.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannIVA);
 		
 		JLabel labelIVA = new JLabel(Costanti.LABEL_IVA);
@@ -200,7 +185,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout4.setVgap(0);
 		flowLayout4.setHgap(0);
 		PannScontoTotale.setBackground(SystemColor.scrollbar);
-		PannScontoTotale.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannScontoTotale.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannScontoTotale);
 		
 		JLabel labelScontoTotale = new JLabel(Costanti.LABEL_SCONTO_TOTALE);
@@ -218,7 +203,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout5.setVgap(0);
 		flowLayout5.setHgap(0);
 		PannTotale.setBackground(SystemColor.scrollbar);
-		PannTotale.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannTotale.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannTotale);
 		
 		JLabel labelTotale = new JLabel(Costanti.LABEL_TOTALE);
@@ -230,6 +215,21 @@ public class ItemNuovoPreventivoView extends JPanel
 		textFieldTotale.setColumns(10);
 		textFieldTotale.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD_PREV,Costanti.HEIGHT_TEXT_FIELD_PREV));
 		PannTotale.add(textFieldTotale);
+		
+		sottoPannRiepilogo2 = new JPanel();
+		panel.add(sottoPannRiepilogo2, BorderLayout.NORTH);
+		sottoPannRiepilogo2.setBackground(SystemColor.scrollbar);
+		sottoPannRiepilogo2.setPreferredSize(new Dimension(Costanti.WIDTH_SOTTO_PANN_RIEPILOGO1, Costanti.HEIGHT_SOTTO_PANN_RIEPILOGO1));
+		sottoPannRiepilogo2.setBorder(new EmptyBorder(10, 10, 0, 0));
+		
+		
+		
+		buttoneSalva = new JButton("");
+		buttoneSalva.setToolTipText(Costanti.TIP_SALVA_PREV);
+		buttoneSalva.setIcon(new ImageIcon(ItemNuovoPreventivoView.class.getResource(Costanti.SAVE_ICON)));
+		
+			buttoneSalva.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON_SALVA,Costanti.HEIGHT_BUTTON_SALVA));
+			sottoPannRiepilogo2.add(buttoneSalva);
 		
 		
 		buttoneSalva.addActionListener(new ActionListener() {
@@ -353,29 +353,18 @@ public class ItemNuovoPreventivoView extends JPanel
 	public void setTot() throws PersistentException {
 			
 		float tot_non_scontato = M_Preventivo.getInstance().calcolaTotaleNonScontato();
-		
-		//questa funzione calcola anche gli sconti clienti. In pratica calcola qualsiasi sconto 
 		float sconto_tot = M_Preventivo.getInstance().calcolaScontoTotale();
-		
-//		imponibile, cioè il prezzo su cui si pagano le tasse
 		float totale_scontato = tot_non_scontato-sconto_tot;
-	
 		float iva=M_Preventivo.getInstance().calcolaIva(totale_scontato);
-
 		float totale = totale_scontato+iva;
-
 		float scontoCliente = M_Preventivo.getInstance().calcolaScontoCliente();
 		
+		totale_scontato= (float) (Math.ceil(totale_scontato * Math.pow(10, 2)) / Math.pow(10, 2));
+		iva= (float) (Math.ceil(iva * Math.pow(10, 2)) / Math.pow(10, 2));
 		totale= (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
-
-
-//		System.out.println("----------------------------------------");
-//
-//		System.out.println("Sconto Totale"+sconto_tot);
-//
-//		System.out.println("Totale non scontato"+tot_non_scontato);
-//		
-//		System.out.println("...............................");
+		tot_non_scontato= (float) (Math.ceil(tot_non_scontato * Math.pow(10, 2)) / Math.pow(10, 2));
+		sconto_tot= (float) (Math.ceil(sconto_tot * Math.pow(10, 2)) / Math.pow(10, 2));		
+		scontoCliente= (float) (Math.ceil(scontoCliente * Math.pow(10, 2)) / Math.pow(10, 2));
 
 		setImponibile(Float.toString(totale_scontato));
 		setIva(Float.toString(iva));
@@ -384,7 +373,6 @@ public class ItemNuovoPreventivoView extends JPanel
 		setScontoTotale(Float.toString(sconto_tot));
 		setScontoCliente(Float.toString(scontoCliente));
 		
-	
 	}
 
 	

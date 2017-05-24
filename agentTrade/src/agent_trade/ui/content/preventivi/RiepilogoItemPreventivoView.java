@@ -95,12 +95,12 @@ public class RiepilogoItemPreventivoView extends JPanel
 		panelloRiepilogo.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		panelloRiepilogo.setBackground(SystemColor.scrollbar);
 		panelloRiepilogo.setBorder(new EmptyBorder(0, 0, 0, 30));
-		panelloRiepilogo.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_RIEPILOGO,Costanti.HEIGHT_PANN_RIEPILOGO));
+		panelloRiepilogo.setPreferredSize(new Dimension(850, 100));
 		panel.add(panelloRiepilogo,BorderLayout.SOUTH);
 
 		sottoPannello = new JPanel();
 		sottoPannello.setBackground(SystemColor.scrollbar);
-		sottoPannello.setPreferredSize(new Dimension(Costanti.WIDTH_SOTTO_PANN, Costanti.HEIGHT_SOTTO_PANN));
+		sottoPannello.setPreferredSize(new Dimension(600, 100));
 		panelloRiepilogo.add(sottoPannello);
 		
 		PannTotNoSconto = new JPanel();
@@ -108,7 +108,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout.setVgap(0);
 		flowLayout.setHgap(0);
 		PannTotNoSconto.setBackground(SystemColor.scrollbar);
-		PannTotNoSconto.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannTotNoSconto.setPreferredSize(new Dimension(250, 30));
 		sottoPannello.add(PannTotNoSconto);
 		
 		JLabel labelTotNoSconto = new JLabel(Costanti.LABEL_TOTALE_NON_SCONTATO);
@@ -126,7 +126,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout1.setVgap(0);
 		flowLayout1.setHgap(0);
 		PannImponibile.setBackground(SystemColor.scrollbar);
-		PannImponibile.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannImponibile.setPreferredSize(new Dimension(250, 30));
 		sottoPannello.add(PannImponibile);
 		
 		JLabel labelImponibile = new JLabel(Costanti.LABEL_IMPONIBILE);
@@ -144,7 +144,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout2.setVgap(0);
 		flowLayout2.setHgap(0);
 		PannScontoCliente.setBackground(SystemColor.scrollbar);
-		PannScontoCliente.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannScontoCliente.setPreferredSize(new Dimension(250, 30));
 		sottoPannello.add(PannScontoCliente);
 		
 		JLabel labelScontoCliente = new JLabel(Costanti.LABEL_SCONTO_CLIENTE);
@@ -162,7 +162,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout3.setVgap(0);
 		flowLayout3.setHgap(0);
 		PannIVA.setBackground(SystemColor.scrollbar);
-		PannIVA.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannIVA.setPreferredSize(new Dimension(250, 30));
 		sottoPannello.add(PannIVA);
 		
 		JLabel labelIVA = new JLabel(Costanti.LABEL_IVA);
@@ -180,7 +180,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout4.setVgap(0);
 		flowLayout4.setHgap(0);
 		PannScontoTotale.setBackground(SystemColor.scrollbar);
-		PannScontoTotale.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannScontoTotale.setPreferredSize(new Dimension(250, 30));
 		sottoPannello.add(PannScontoTotale);
 		
 		JLabel labelScontoTotale = new JLabel(Costanti.LABEL_SCONTO_TOTALE);
@@ -198,7 +198,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout5.setVgap(0);
 		flowLayout5.setHgap(0);
 		PannTotale.setBackground(SystemColor.scrollbar);
-		PannTotale.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannTotale.setPreferredSize(new Dimension(250, 30));
 		sottoPannello.add(PannTotale);
 		
 		JLabel labelTotale = new JLabel(Costanti.LABEL_TOTALE);
@@ -276,77 +276,26 @@ public class RiepilogoItemPreventivoView extends JPanel
 	public void setTot(M_Preventivo m) throws PersistentException {
 		
 		
-		
-//		float imp= M_Preventivo.getInstance().calcolaImponibile();
-//
-//		float iva=M_Preventivo.getInstance().calcolaIva(imp);
-//				
-//		float tot=imp+iva;
-//		tot= (float) (Math.ceil(tot * Math.pow(10, 2)) / Math.pow(10, 2));
-//
-//		
-//		setImponibile(Float.toString(imp));
-//		setIva(Float.toString(iva));
-//		setTotale(Float.toString(tot));	
-		
-		
-		/***/
-		
-//		somma di quant*prezzo unit
-//		-Totale non scontato
-		
-//		somma di tutti gli sconti
-//		-Sconto totale
-		
-//		somma di quant*prezzo - gli sconti (incluso anche quello cliente)
-//		-Totale scontato (imponibile)
-		
-//		-iva
-		
-//		prezzo che effettivamente il cliente deve pagare
-//		-Totale
-		
-		
 		float tot_non_scontato = m.calcolaTotaleNonScontato();
-		
-		//questa funzione calcola anche gli sconti clienti. In pratica calcola qualsiasi sconto 
 		float sconto_tot = m.calcolaScontoTotale();
-		
-//		imponibile, cioè il prezzo su cui si pagano le tasse
 		float totale_scontato = tot_non_scontato-sconto_tot;
-	
 		float iva=m.calcolaIva(totale_scontato);
-
 		float totale = totale_scontato+iva;
-
-		//eventualmente si può mettere anche lo sconto relativo al cliente
-//		float scontoCliente = m.calcolaScontoCliente();
+		float scontoCliente = m.calcolaScontoCliente();
 		
 		totale_scontato= (float) (Math.ceil(totale_scontato * Math.pow(10, 2)) / Math.pow(10, 2));
-		
+		iva= (float) (Math.ceil(iva * Math.pow(10, 2)) / Math.pow(10, 2));
 		totale= (float) (Math.ceil(totale * Math.pow(10, 2)) / Math.pow(10, 2));
-
-
-		System.out.println("--------Sono qui-----------------");
-
-		System.out.println("Sconto Totale"+sconto_tot);
-
-		System.out.println("Totale non scontato"+tot_non_scontato);
-		
-		System.out.println("imponibile"+totale_scontato);
-
-		System.out.println("iva"+iva);
-		
-		System.out.println("totale"+totale);
-
-		
-		System.out.println("...............................");
+		tot_non_scontato= (float) (Math.ceil(tot_non_scontato * Math.pow(10, 2)) / Math.pow(10, 2));
+		sconto_tot= (float) (Math.ceil(sconto_tot * Math.pow(10, 2)) / Math.pow(10, 2));		
+		scontoCliente= (float) (Math.ceil(scontoCliente * Math.pow(10, 2)) / Math.pow(10, 2));
 
 		setImponibile(Float.toString(totale_scontato));
 		setIva(Float.toString(iva));
 		setTotale(Float.toString(totale));	
 		setTotNonScontato(Float.toString(tot_non_scontato));
 		setScontoTotale(Float.toString(sconto_tot));
+		setScontoCliente(Float.toString(scontoCliente));
 
 	}
 	

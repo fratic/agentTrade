@@ -19,6 +19,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import agent_trade.sconti.IScontoStrategy;
+import agent_trade.sconti.ScontoStrategyFactory;
 
 public class M_Preventivo_Item extends Observable{
 	
@@ -52,6 +53,10 @@ public class M_Preventivo_Item extends Observable{
 		this.idProdotto=idProdotto;		
 		this.AddObserver(rifPreventivo);
 		this.quantita=1;
+
+		IScontoStrategy strategiaProdotto= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
+		this.setStrategiaProdotto(strategiaProdotto);
+
 
 	}
 	
@@ -134,6 +139,9 @@ public class M_Preventivo_Item extends Observable{
 	
 
 	public IScontoStrategy getStrategiaProdotto() {
+		IScontoStrategy strategiaProdotto= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
+		this.setStrategiaProdotto(strategiaProdotto);
+
 		return strategiaProdotto;
 	}
 

@@ -233,11 +233,6 @@ public class Ctrl_elaboraPreventivo {
 		
 		/************/
 		
-		IScontoStrategy strategiaCliente= (IScontoStrategy) ScontoStrategyFactory.getStrategy(cliente);
-//		cliente.setStrategiaCliente(new ClienteScontoStrategy(percent));
-
-		cliente.setStrategiaCliente(strategiaCliente);
-	
 		/***
 		 *a questo punto M_Cliente ha la sua strategia con il volore percentuale impostato. 
 		 *Dopo di questo basterà chiamare calcolaSconto(preventivo) per ottenere il valore dello sconto legato 
