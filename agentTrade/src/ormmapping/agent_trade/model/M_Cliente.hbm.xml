@@ -24,5 +24,7 @@ License Type: Academic
 		<property name="CAP" column="CAP" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="cell" column="Cell" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="attivo" column="Attivo" type="integer" length="11" not-null="false" lazy="false"/>
+		<property name="sconto" column="sconto" type="integer" length="11" not-null="false" lazy="false"/>
+		
 	</class>
 </hibernate-mapping>

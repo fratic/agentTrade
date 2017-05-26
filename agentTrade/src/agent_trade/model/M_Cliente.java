@@ -53,6 +53,7 @@ public class M_Cliente {
 	private String CAP;
 	private String cell;
 	private int attivo;
+	private int sconto;
 	
 
 	private IScontoStrategy strategiaCliente;
@@ -343,11 +344,20 @@ public class M_Cliente {
 	public void setAttivo(int attivo) {
 		this.attivo = attivo;
 	}
+	
+	public int getSconto() {
+		return sconto;
+	}
+
+	public void setSconto(int sconto) {
+		this.sconto = sconto;
+	}
+
 	public String toString() {
 		return String.valueOf(getIdCliente());
 	}
 
-	public IScontoStrategy getStrategiaCliente() {
+	public IScontoStrategy getStrategiaCliente() throws PersistentException {
 		
 		IScontoStrategy strategiaCliente= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
 		this.setStrategiaCliente(strategiaCliente);

@@ -214,12 +214,6 @@ public class Ctrl_elaboraPreventivo {
 		p.setIdPrev();
 		p.setData(Ctrl_System.calendario.getTime());
 		
-		/**
-		 * qui il prev è stato già creato quindi potrei chiedere alla factory se il 
-		 * preventivo ha una qualche strategy associata.. tipo oggi 20% oppure 10 euro sul tot, ecc
-		 * **/
-		
-		
 		Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();
 	}
 
@@ -228,21 +222,8 @@ public class Ctrl_elaboraPreventivo {
 		
 		M_Cliente cliente= M_Cliente.cercaCliente(id_cliente);
 		
-		
-		//qui già si potrebbe richiedere la strategia per il cliente
-		
-		/************/
-		
-		/***
-		 *a questo punto M_Cliente ha la sua strategia con il volore percentuale impostato. 
-		 *Dopo di questo basterà chiamare calcolaSconto(preventivo) per ottenere il valore dello sconto legato 
-		 *al cliente in questione
-		 */
-		
-		
 		M_Preventivo.getInstance().setRif_Cliente(cliente);
 
-		
 		//init della view
 		initNuovoPreventivo(cliente);
 	}
@@ -267,9 +248,6 @@ public class Ctrl_elaboraPreventivo {
 		
 		ItemNuovoPreventivoView.getInstance().setTot();
 
-//		System.out.println("SONO IN ADD ITEM. LO SCONTO CLIENTE (10%) è:"+ M_Preventivo.getInstance().getRif_Cliente().getStrategiaCliente().calcolaSconto(M_Preventivo.getInstance()));
-
-
 		
 	}
 
@@ -281,10 +259,6 @@ public class Ctrl_elaboraPreventivo {
 		{
 			initPostSalvaPrev(M_Preventivo.getInstance());	
 		}
-//		else 
-//			System.out.println("Salvataggio non a buon fine");
-//			//qui andrebbe fatto qualcosa, cioè, una dialog che dice che non è stato salvato ed
-//			//eventualmente fare altro tipo recuperare il preventivo 	
 	}
 	
 	

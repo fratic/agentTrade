@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.orm.PersistentException;
+
 import agent_trade.sconti.IScontoStrategy;
 import agent_trade.sconti.ScontoStrategyFactory;
 
@@ -48,7 +50,7 @@ public class M_Preventivo_Item extends Observable{
 	public M_Preventivo_Item() {
 	}
 	
-	public M_Preventivo_Item(M_Preventivo rifPreventivo, M_Prodotto idProdotto){
+	public M_Preventivo_Item(M_Preventivo rifPreventivo, M_Prodotto idProdotto) throws PersistentException{
 		
 		this.idProdotto=idProdotto;		
 		this.AddObserver(rifPreventivo);
@@ -138,7 +140,7 @@ public class M_Preventivo_Item extends Observable{
 
 	
 
-	public IScontoStrategy getStrategiaProdotto() {
+	public IScontoStrategy getStrategiaProdotto() throws PersistentException {
 		IScontoStrategy strategiaProdotto= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
 		this.setStrategiaProdotto(strategiaProdotto);
 

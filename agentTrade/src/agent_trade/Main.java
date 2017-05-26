@@ -57,9 +57,14 @@ public class Main {
 	
 	public static void setLook() throws UnsupportedLookAndFeelException, ParseException, ClassNotFoundException, InstantiationException, IllegalAccessException{
 		
-		Ctrl_System.getLook();						
+		Ctrl_System.readLook();						
 
 		switch (Costanti.Look_Feel) {
+		
+			case 0:{
+				break;
+			}
+		
 			case 1:{
 				UIManager.setLookAndFeel(new SyntheticaSimple2DLookAndFeel());
 				break;
@@ -92,7 +97,7 @@ public class Main {
 	
 	public static void setVersione(){
 		
-		Ctrl_System.getVersion();						
+		Ctrl_System.readVersion();						
 
 	}
 	

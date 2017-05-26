@@ -3,8 +3,14 @@ package agent_trade.sconti;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.orm.PersistentException;
+
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo_Item;
+import agent_trade.model.M_ScontoPercent;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoCliente;
+import agent_trade.model.M_ScontoQuantita;
 
 public class ScontoStrategyFactory {
 
@@ -39,47 +45,45 @@ public class ScontoStrategyFactory {
 	}
 	
 	
-	public static IScontoStrategy getStrategy(Object obj){
+	public static IScontoStrategy getStrategy(Object obj) throws PersistentException{
 		
 		IScontoStrategy strategy = null;
 			
 		if(obj instanceof M_Cliente){
-			
-			//recupero l'idSconto associato al cliente e quindi la percentuale. supponiamo sia perc
-
-//			float perc=M_Cliente.getSconto.getPercent();
-			float perc=(float)0.2;
-			strategy=new ClienteScontoStrategy(perc);
-//			System.out.println("sono dentro strategycliente "+strategy);
+					
+			M_Sconto politicaSconto = M_Sconto.caricaSconto((int) ((M_Cliente) obj).getSconto());
+			if (politicaSconto instanceof M_ScontoCliente)
+			{
+				strategy=new ClienteScontoStrategy(((M_ScontoCliente) politicaSconto).getPercent());
+			}
 
 
 		}
 
-		if(obj instanceof M_Preventivo_Item){
+		else if(obj instanceof M_Preventivo_Item){
 		
 			
 			//recupero l'idSconto associato al prodotto 
-
+			M_Sconto politicaSconto = M_Sconto.caricaSconto((int) ((M_Preventivo_Item) obj).getIdProdotto().getSconto());
 			
-			if (((M_Preventivo_Item) obj).getIdProdotto().getSconto()>5)
+//			fare il controllo se non ha nessun sconto. in tal caso impostare uno sconto percentuale a zero
+			
+			if (politicaSconto instanceof M_ScontoQuantita)
 			{
-			
-				float sconto=(float)5;
-				int quantita= 10;
-				
-	//			strategy=new scontoassolutoprodottostrategy(quantita, sconto);
-	//			System.out.println("sono dentro strategycliente "+strategy);
-				strategy=new ScontoAssolutoProdottoStrategy(((M_Preventivo_Item) obj).getIdProdotto().getIdProdotto(), quantita, sconto);
+				strategy=new ScontoAssolutoProdottoStrategy(((M_Preventivo_Item) obj).getIdProdotto().getIdProdotto(), ((M_ScontoQuantita) politicaSconto).getQuantita(), ((M_ScontoQuantita) politicaSconto).getScontoFisso());
 			}
-			else
+			else if (politicaSconto instanceof M_ScontoPercent)
 			{
-			 float percent=(float)0.15;
 
-			 System.out.println("FACTORY: ID ITEM"+((M_Preventivo_Item) obj).getIdPreventivo_Item());
-			 strategy=new ScontoPercentProdottoStrategy(((M_Preventivo_Item) obj).getIdProdotto().getIdProdotto(), percent);
+				strategy=new ScontoPercentProdottoStrategy(((M_Preventivo_Item) obj).getIdProdotto().getIdProdotto(), ((M_ScontoPercent) politicaSconto).getPercent() );
 
 			}
 		}
+//		else{
+//			strategy=new ScontoPercentProdottoStrategy(((M_Preventivo_Item) obj).getIdProdotto().getIdProdotto(), 0);
+//
+//		}
+			
 			return strategy;
 	}
 

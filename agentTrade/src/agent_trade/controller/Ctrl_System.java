@@ -9,12 +9,14 @@ import java.util.Calendar;
 
 import org.orm.PersistentException;
 
+import agent_trade.Main;
 import agent_trade.external_system.SystemDaemon;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Mandante;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Prodotto;
+import agent_trade.ui.Setting;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.prodotti.ProdottiView;
@@ -33,7 +35,8 @@ public class Ctrl_System {
 	private static Ctrl_System instance;
 	
 	public static Calendar calendario = Calendar.getInstance();
-
+	
+	Impostazioni frame;
 	
 	/*	la responsabilità di tenere l'istanza dell'agente loggato è stata assegnata ad crtl_system, in quanto è il creatore*/
 	private static M_Agente instanceAgenteLog;
@@ -205,7 +208,11 @@ public class Ctrl_System {
 	}
 
 	
-	public static String getVersion() {
+	public static String readVersion() {
+        
+		
+		//a questo punto bisognerebbe vedere se il fil esiste.
+    	//qualora non dovesse esistere bisogna crearne uno di default
 
 	    char[] in = new char[50];
 	    int size = 0;
@@ -231,7 +238,7 @@ public class Ctrl_System {
 		return versione;
 	}
 
-	public static void setVersione(String versione) {
+	public static void writeVersione(String versione) {
 		     
 		    try {
 		        File file = new File(Costanti.pathVersion);
@@ -246,7 +253,7 @@ public class Ctrl_System {
 	}
 	
 	
-	public static int getLook() {
+	public static int readLook() {
 
 	    char[] in = new char[50];
 	    int size = 0;
@@ -254,11 +261,15 @@ public class Ctrl_System {
 		
 	    try {
 	    	
+	    	
+	        //a questo punto bisognerebbe vedere se il fil esiste.
+	    	//qualora non dovesse esistere bisogna crearne uno di default
+
+	    	
 	        File file = new File(Costanti.pathLook);
 	        FileReader fr = new FileReader(file);
 	        size = fr.read(in);
-	         
-	        //aggiustare. probabilmente non serve il ciclo
+
 	        for(int i=0; i<size; i++){
 	        	look=java.lang.Character.getNumericValue(in[i]);
 	        	System.out.println("char "+in[i]);
@@ -280,7 +291,7 @@ public class Ctrl_System {
 		return look;
 	}
 
-	public static void setLook(int look) {
+	public static void writeLook(String look) {
 		     
 		    try {
 		        File file = new File(Costanti.pathLook);
@@ -297,12 +308,32 @@ public class Ctrl_System {
 
 	public void settingWindows() {
 		//centrare al centro dello schermo
-		Impostazioni frame = new Impostazioni();
+		
+		LoginViewFactory.getInstance().setVisible(false);
+
+		LoginViewFactory.getInstance().destroyInstanceLogin();
+
+		
+		
+		frame = new Impostazioni();
 		frame.setVisible(true);
 
 	}
 	
-	public void salvaSetting(){
+	public void salvaSetting(String versione, String look){
+	
+
+		writeVersione(versione);
+		writeLook(look);
+
+		readVersion();
+		readLook();
+		
+		String[] args = null;
+		Main.main(args);
+		
+	    frame.setVisible(false);
+		frame.dispose();
 		
 	}
 	

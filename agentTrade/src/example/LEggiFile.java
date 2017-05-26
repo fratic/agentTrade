@@ -53,7 +53,7 @@ public class LEggiFile {
 //		 
 //	        System.out.print("versione: "+versione);
 
-	        Ctrl_System.setLook(5);
+//	        Ctrl_System.setLook(5);
 
 	}
 

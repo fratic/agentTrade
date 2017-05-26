@@ -1,0 +1,1 @@
+CREATE TABLE Sconto (Id SERIAL NOT NULL, "Percent" float4, "Column" character varying(255), Quantita int4, ScontoFisso float4, Discriminator varchar(255) NOT NULL, PRIMARY KEY (Id));

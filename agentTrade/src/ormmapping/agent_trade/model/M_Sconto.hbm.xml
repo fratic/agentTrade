@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="agent_trade.model.M_Sconto" table="Sconto" lazy="false" discriminator-value="Sconto">
+		<id name="id" column="Id" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<discriminator column="Discriminator" type="string"/>
+		<subclass name="agent_trade.model.M_ScontoQuantita" discriminator-value="ScontoQuantita" lazy="false">
+			<property name="quantita" column="Quantita" type="integer" length="10" not-null="false" lazy="false"/>
+			<property name="scontoFisso" column="ScontoFisso" type="float" length="10" not-null="false" lazy="false"/>
+		</subclass>
+		<subclass name="agent_trade.model.M_ScontoPercent" discriminator-value="SContoPercent" lazy="false">
+			<property name="percent" column="`Column`" type="float" length="10" not-null="false" lazy="false"/>
+		</subclass>
+		<subclass name="agent_trade.model.M_ScontoCliente" discriminator-value="ScontoCliente" lazy="false">
+			<property name="percent" column="`Percent`" type="float" length="10" not-null="false" lazy="false"/>
+		</subclass>
+	</class>
+</hibernate-mapping>

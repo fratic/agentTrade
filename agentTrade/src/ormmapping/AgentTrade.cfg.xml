@@ -29,5 +29,7 @@ License Type: Academic
 		<mapping resource="ormmapping/agent_trade/model/M_Preventivo.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/M_Preventivo_Item.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/M_Prodotto.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/M_Sconto.hbm.xml" />
+		
 	</session-factory>
 </hibernate-configuration>

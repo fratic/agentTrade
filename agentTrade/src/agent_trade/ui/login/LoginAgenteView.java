@@ -120,7 +120,9 @@ public class LoginAgenteView extends LoginViewFactory {
 		buttoneSetting.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				Ctrl_System.getInstance().settingWindows(); 
+				Ctrl_System.getInstance().settingWindows();
+
+
 			}
 		});	
 		

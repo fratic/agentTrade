@@ -1,7 +1,6 @@
 package agent_trade.ui;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -10,7 +9,6 @@ import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -19,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import agent_trade.controller.Ctrl_System;
+import agent_trade.util.Costanti;
 
 public class Setting extends JPanel {
 	private JTextField textField;
@@ -33,7 +32,20 @@ public class Setting extends JPanel {
 	private JTextField textField_9;
 	private JTextField textField_10;
 	private JTextField textField_11;
-
+	
+	JRadioButton radioAgente;
+	JRadioButton radioMandante;
+	JRadioButton radioButton_0;
+	JRadioButton radioButton_1;
+	JRadioButton radioButton_2;
+	JRadioButton radioButton_3;
+	JRadioButton radioButton_4;
+	JRadioButton radioButton_5;
+	JRadioButton radioButton_6;
+	
+	
+	ButtonGroup groupLook;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -54,11 +66,11 @@ public class Setting extends JPanel {
 				JPanel panelJRadioButton = new JPanel();
 				panelJRadioButton.setLayout(new GridLayout(1, 2, 0, 0));
 				
-				JRadioButton radioAgente = new JRadioButton("Agente");
-				radioAgente.setSelected(true);
+				radioAgente = new JRadioButton("Agente");
+//				radioAgente.setSelected(true);
 				panelJRadioButton.add(radioAgente);
 				
-				JRadioButton radioMandante = new JRadioButton("Mandante");
+				radioMandante = new JRadioButton("Mandante");
 				panelJRadioButton.add(radioMandante);
 				
 				Version.add(panelJRadioButton);
@@ -83,145 +95,149 @@ public class Setting extends JPanel {
 		LookandFeel.add(panelJRadioLook);
 		panelJRadioLook.setLayout(new GridLayout(2, 3, 0, 0));
 		
-		JRadioButton radioButton = new JRadioButton("1");
-		panelJRadioLook.add(radioButton);
-		
-		JRadioButton radioButton_1 = new JRadioButton("2");
+		radioButton_0 = new JRadioButton("0");
+		panelJRadioLook.add(radioButton_0);
+
+		radioButton_1 = new JRadioButton("1");
 		panelJRadioLook.add(radioButton_1);
 		
-		JRadioButton radioButton_2 = new JRadioButton("3");
+		radioButton_2 = new JRadioButton("2");
 		panelJRadioLook.add(radioButton_2);
 		
-		JRadioButton radioButton_3 = new JRadioButton("4");
+		radioButton_3 = new JRadioButton("3");
 		panelJRadioLook.add(radioButton_3);
 		
-		JRadioButton radioButton_4 = new JRadioButton("5");
-		radioButton_4.setSelected(true);
+		radioButton_4 = new JRadioButton("4");
 		panelJRadioLook.add(radioButton_4);
 		
-		JRadioButton radioButton_5 = new JRadioButton("6");
+		radioButton_5 = new JRadioButton("5");
+		radioButton_5.setSelected(true);
 		panelJRadioLook.add(radioButton_5);
 		
+		radioButton_6 = new JRadioButton("6");
+		panelJRadioLook.add(radioButton_6);
 		
-        ButtonGroup groupLook = new ButtonGroup();
-        groupLook.add(radioButton);
+		
+        groupLook = new ButtonGroup();
+        groupLook.add(radioButton_0);
         groupLook.add(radioButton_1);
         groupLook.add(radioButton_2);
         groupLook.add(radioButton_3);
         groupLook.add(radioButton_4);
         groupLook.add(radioButton_5);
+        groupLook.add(radioButton_6);
 
 		
 		
-		JPanel databaseLocale = new JPanel();
-		databaseLocale.setMinimumSize(new Dimension(800, 800));
-		panel.add(databaseLocale);
-		//				panel.setPreferredSize(new Dimension(500, 1000));
-		
-		databaseLocale.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		databaseLocale.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Impostazioni Database Locale", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		databaseLocale.setLayout(new BoxLayout(databaseLocale, BoxLayout.PAGE_AXIS));
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new EmptyBorder(10, 15, 0, 0));
-		databaseLocale.add(panel_1);
-		panel_1.setLayout(new GridLayout(6, 2, 10, 10));
-		
-		JLabel label = new JLabel("Host");
-		panel_1.add(label);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		panel_1.add(textField);
-		
-		JLabel label_1 = new JLabel("Nome database");
-		panel_1.add(label_1);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		panel_1.add(textField_1);
-		
-		JLabel label_2 = new JLabel("N\u00B0 porta");
-		panel_1.add(label_2);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		panel_1.add(textField_2);
-		
-		JLabel label_3 = new JLabel("Nome utente");
-		panel_1.add(label_3);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		panel_1.add(textField_3);
-		
-		JLabel label_4 = new JLabel("Password");
-		panel_1.add(label_4);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		panel_1.add(textField_4);
-		
-		JLabel label_5 = new JLabel("URL");
-		panel_1.add(label_5);
-		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		panel_1.add(textField_5);
-		
-		JPanel databaseRemoto = new JPanel();
-		panel.add(databaseRemoto);
-		databaseRemoto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Impostazioni Database Remoto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		databaseRemoto.setAlignmentX(1.0f);
-		databaseRemoto.setLayout(new BoxLayout(databaseRemoto, BoxLayout.Y_AXIS));
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setPreferredSize(new Dimension(100, 100));
-		databaseRemoto.add(panel_2);
-		panel_2.setLayout(new GridLayout(6, 2, 0, 0));
-		
-		JLabel label_6 = new JLabel("Host");
-		panel_2.add(label_6);
-		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		
-		panel_2.add(textField_6);
-		
-		JLabel label_7 = new JLabel("Nome database");
-		panel_2.add(label_7);
-		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		panel_2.add(textField_7);
-		
-		JLabel label_8 = new JLabel("N\u00B0 porta");
-		panel_2.add(label_8);
-		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		panel_2.add(textField_8);
-		
-		JLabel label_9 = new JLabel("Nome utente");
-		panel_2.add(label_9);
-		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		panel_2.add(textField_9);
-		
-		JLabel label_10 = new JLabel("Password");
-		panel_2.add(label_10);
-		
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		panel_2.add(textField_10);
-		
-		JLabel label_11 = new JLabel("URL");
-		panel_2.add(label_11);
-		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		panel_2.add(textField_11);
+//		JPanel databaseLocale = new JPanel();
+//		databaseLocale.setMinimumSize(new Dimension(800, 800));
+//		panel.add(databaseLocale);
+//		//				panel.setPreferredSize(new Dimension(500, 1000));
+//		
+//		databaseLocale.setAlignmentX(Component.RIGHT_ALIGNMENT);
+//		databaseLocale.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Impostazioni Database Locale", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+//		databaseLocale.setLayout(new BoxLayout(databaseLocale, BoxLayout.PAGE_AXIS));
+//		
+//		JPanel panel_1 = new JPanel();
+//		panel_1.setBorder(new EmptyBorder(10, 15, 0, 0));
+//		databaseLocale.add(panel_1);
+//		panel_1.setLayout(new GridLayout(6, 2, 10, 10));
+//		
+//		JLabel label = new JLabel("Host");
+//		panel_1.add(label);
+//		
+//		textField = new JTextField();
+//		textField.setColumns(10);
+//		panel_1.add(textField);
+//		
+//		JLabel label_1 = new JLabel("Nome database");
+//		panel_1.add(label_1);
+//		
+//		textField_1 = new JTextField();
+//		textField_1.setColumns(10);
+//		panel_1.add(textField_1);
+//		
+//		JLabel label_2 = new JLabel("N\u00B0 porta");
+//		panel_1.add(label_2);
+//		
+//		textField_2 = new JTextField();
+//		textField_2.setColumns(10);
+//		panel_1.add(textField_2);
+//		
+//		JLabel label_3 = new JLabel("Nome utente");
+//		panel_1.add(label_3);
+//		
+//		textField_3 = new JTextField();
+//		textField_3.setColumns(10);
+//		panel_1.add(textField_3);
+//		
+//		JLabel label_4 = new JLabel("Password");
+//		panel_1.add(label_4);
+//		
+//		textField_4 = new JTextField();
+//		textField_4.setColumns(10);
+//		panel_1.add(textField_4);
+//		
+//		JLabel label_5 = new JLabel("URL");
+//		panel_1.add(label_5);
+//		
+//		textField_5 = new JTextField();
+//		textField_5.setColumns(10);
+//		panel_1.add(textField_5);
+//		
+//		JPanel databaseRemoto = new JPanel();
+//		panel.add(databaseRemoto);
+//		databaseRemoto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Impostazioni Database Remoto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+//		databaseRemoto.setAlignmentX(1.0f);
+//		databaseRemoto.setLayout(new BoxLayout(databaseRemoto, BoxLayout.Y_AXIS));
+//		
+//		JPanel panel_2 = new JPanel();
+//		panel_2.setPreferredSize(new Dimension(100, 100));
+//		databaseRemoto.add(panel_2);
+//		panel_2.setLayout(new GridLayout(6, 2, 0, 0));
+//		
+//		JLabel label_6 = new JLabel("Host");
+//		panel_2.add(label_6);
+//		
+//		textField_6 = new JTextField();
+//		textField_6.setColumns(10);
+//		
+//		panel_2.add(textField_6);
+//		
+//		JLabel label_7 = new JLabel("Nome database");
+//		panel_2.add(label_7);
+//		
+//		textField_7 = new JTextField();
+//		textField_7.setColumns(10);
+//		panel_2.add(textField_7);
+//		
+//		JLabel label_8 = new JLabel("N\u00B0 porta");
+//		panel_2.add(label_8);
+//		
+//		textField_8 = new JTextField();
+//		textField_8.setColumns(10);
+//		panel_2.add(textField_8);
+//		
+//		JLabel label_9 = new JLabel("Nome utente");
+//		panel_2.add(label_9);
+//		
+//		textField_9 = new JTextField();
+//		textField_9.setColumns(10);
+//		panel_2.add(textField_9);
+//		
+//		JLabel label_10 = new JLabel("Password");
+//		panel_2.add(label_10);
+//		
+//		textField_10 = new JTextField();
+//		textField_10.setColumns(10);
+//		panel_2.add(textField_10);
+//		
+//		JLabel label_11 = new JLabel("URL");
+//		panel_2.add(label_11);
+//		
+//		textField_11 = new JTextField();
+//		textField_11.setColumns(10);
+//		panel_2.add(textField_11);
 		
 		JPanel bottoni = new JPanel();
 		panel.add(bottoni);
@@ -236,11 +252,142 @@ public class Setting extends JPanel {
 		
 		btnSalva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-					Ctrl_System.getInstance().salvaSetting();
-						
+				
+				String versione = null;
+				String look = null;
+				
+				
+				if (radioAgente.isSelected()){
+					versione="agente";
+				}
+				if(radioMandante.isSelected()){
+					versione="mandante";
+				}
+				
+				if(radioButton_0.isSelected()){
+					look="0";
+				}
+				
+				if(radioButton_1.isSelected()){
+					look="1";
+				}
+
+				if(radioButton_2.isSelected()){
+					look="2";
+				}
+				if(radioButton_3.isSelected()){
+					look="3";
+				}
+				if(radioButton_4.isSelected()){
+					look="4";
+				}
+				if(radioButton_5.isSelected()){
+					look="5";
+				}
+				if(radioButton_6.isSelected()){
+					look="6";
+				}
+					
+				
+				Ctrl_System.getInstance().salvaSetting(versione, look);
 			}
 		});
 		
 		
+	}
+	
+	
+	public void setImpostazioni(String readVersion, int readLook) {
+
+
+		if (readVersion.equals(Costanti.agente))
+		{
+			radioAgente.setSelected(true);
+			radioMandante.setSelected(false);
+			System.out.println("VERSIONE   1"+readVersion);
+		}
+		if (readVersion.equals(Costanti.mandante))
+		{
+			radioAgente.setSelected(false);
+			radioMandante.setSelected(true);
+			System.out.println("VERSIONE   2"+readVersion);
+
+		}
+			
+		
+		switch (readLook) {
+		
+		case 0:
+			radioButton_0.setSelected(true);
+			radioButton_1.setSelected(false);
+			radioButton_2.setSelected(false);
+			radioButton_3.setSelected(false);
+			radioButton_4.setSelected(false);
+			radioButton_5.setSelected(false);
+			radioButton_6.setSelected(false);
+
+			break;
+		case 1:
+			radioButton_0.setSelected(false);
+			radioButton_1.setSelected(true);
+			radioButton_2.setSelected(false);
+			radioButton_3.setSelected(false);
+			radioButton_4.setSelected(false);
+			radioButton_5.setSelected(false);
+			radioButton_6.setSelected(false);
+
+			break;
+
+		case 2:
+			radioButton_0.setSelected(false);
+			radioButton_1.setSelected(false);
+			radioButton_2.setSelected(true);
+			radioButton_3.setSelected(false);
+			radioButton_4.setSelected(false);
+			radioButton_5.setSelected(false);
+			radioButton_6.setSelected(false);
+					
+			break;
+		case 3:
+			radioButton_0.setSelected(false);
+			radioButton_1.setSelected(false);
+			radioButton_2.setSelected(false);
+			radioButton_3.setSelected(true);
+			radioButton_4.setSelected(false);
+			radioButton_5.setSelected(false);
+			radioButton_6.setSelected(false);
+
+			break;
+		case 4:
+			radioButton_0.setSelected(false);
+			radioButton_1.setSelected(false);
+			radioButton_2.setSelected(false);
+			radioButton_3.setSelected(false);
+			radioButton_4.setSelected(true);
+			radioButton_5.setSelected(false);
+			radioButton_6.setSelected(false);
+
+			break;
+		case 5:
+			radioButton_0.setSelected(false);
+			radioButton_1.setSelected(false);
+			radioButton_2.setSelected(false);
+			radioButton_3.setSelected(false);
+			radioButton_4.setSelected(false);
+			radioButton_5.setSelected(true);
+			radioButton_6.setSelected(false);
+
+			break;
+		case 6:
+			radioButton_0.setSelected(false);
+			radioButton_1.setSelected(false);
+			radioButton_2.setSelected(false);
+			radioButton_3.setSelected(false);
+			radioButton_4.setSelected(false);
+			radioButton_5.setSelected(false);
+			radioButton_6.setSelected(true);
+
+			break;
+		}
 	}
 }

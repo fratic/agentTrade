@@ -96,4 +96,8 @@ public class LoginViewFactory extends JFrame {
 		contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 	
+	
+	public void destroyInstanceLogin(){
+		instance=null;
+	}
 }

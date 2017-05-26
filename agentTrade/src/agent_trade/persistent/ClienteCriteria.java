@@ -36,6 +36,7 @@ public class ClienteCriteria extends AbstractORMCriteria {
 	public final StringExpression CAP;
 	public final StringExpression cell;
 	public final IntegerExpression attivo;
+	public final IntegerExpression sconto;
 
 	
 	public ClienteCriteria(Criteria criteria) {
@@ -55,6 +56,8 @@ public class ClienteCriteria extends AbstractORMCriteria {
 		CAP = new StringExpression("CAP", this);
 		cell = new StringExpression("cell", this);
 		attivo = new IntegerExpression("attivo", this);
+		sconto = new IntegerExpression("sconto", this);
+
 
 	}
 	

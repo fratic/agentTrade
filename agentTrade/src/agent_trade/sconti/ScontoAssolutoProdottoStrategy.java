@@ -16,11 +16,10 @@ public class ScontoAssolutoProdottoStrategy implements IScontoStrategy {
 	 **/
 	
 	
-	//id serve solo per prova? se cosi non fosse, a che serve?
-	//parziale a che serve?
 	private int quantita;
 	private float sconto;
 	private int id_item;
+	
 	
 	public ScontoAssolutoProdottoStrategy(int quantita, float sconto){
 		this.quantita = quantita;

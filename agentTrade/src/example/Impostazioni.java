@@ -10,14 +10,16 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import agent_trade.controller.Ctrl_System;
 import agent_trade.ui.Setting;
+import agent_trade.util.Costanti;
 
 public class Impostazioni extends JDialog {
 
 	private JPanel contentPane;
 	
-	 private final int WIDTH = 500;
-	 private final int HEIGHT = 800;
+	 private final int WIDTH = 600;
+	 private final int HEIGHT = 400;
 
 
 	/**
@@ -29,7 +31,8 @@ public class Impostazioni extends JDialog {
 				try {
 					Impostazioni frame = new Impostazioni();
 					frame.setVisible(true);
-				} catch (Exception e) {
+				} 
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -50,11 +53,14 @@ public class Impostazioni extends JDialog {
         int y = (screen.height-HEIGHT)/2;
         setBounds(x,y,WIDTH,HEIGHT);
 
-		
-		contentPane = new Setting();
+		Setting pannello= new Setting();
+		pannello.setImpostazioni(Ctrl_System.readVersion(), Ctrl_System.readLook());
+		contentPane = pannello;
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		
 	}
+
+	
 
 }

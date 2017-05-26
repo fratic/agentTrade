@@ -36,7 +36,8 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression CAP;
 	public final StringExpression cell;
 	public final IntegerExpression attivo;
-	
+	public final IntegerExpression sconto;
+
 	
 	public ClienteDetachedCriteria() {
 		super(agent_trade.model.M_Cliente.class, agent_trade.persistent.ClienteCriteria.class);
@@ -55,6 +56,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		CAP = new StringExpression("CAP", this.getDetachedCriteria());
 		cell = new StringExpression("cell", this.getDetachedCriteria());
 		attivo= new IntegerExpression("attivo", this.getDetachedCriteria());
+		sconto= new IntegerExpression("sconto", this.getDetachedCriteria());
 
 	}
 	
@@ -75,6 +77,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		CAP = new StringExpression("CAP", this.getDetachedCriteria());
 		cell = new StringExpression("cell", this.getDetachedCriteria());
 		attivo= new IntegerExpression("attivo", this.getDetachedCriteria());
+		sconto= new IntegerExpression("sconto", this.getDetachedCriteria());
 
 	}
 	

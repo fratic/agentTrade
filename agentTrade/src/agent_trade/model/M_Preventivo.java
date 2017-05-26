@@ -292,7 +292,7 @@ public class M_Preventivo implements Observer {
 		return totaleNoScont;
 	}
 	
-	public float calcolaScontoTotale(){
+	public float calcolaScontoTotale() throws PersistentException{
 		
 //		float ScontoTot=0;
 //		Iterator<?> iteraItem = null;
@@ -331,9 +331,6 @@ public class M_Preventivo implements Observer {
 			System.out.println("strategy"+item.getStrategiaProdotto());
 
 			scontoTot = scontoTot + item.getStrategiaProdotto().calcolaSconto(this);
-			
-			
-			
 			
 		}
 		scontoTot=scontoTot+calcolaScontoCliente();
@@ -494,7 +491,7 @@ public class M_Preventivo implements Observer {
 		this.parziale = parziale;
 	}
 
-	public float calcolaScontoCliente() {
+	public float calcolaScontoCliente() throws PersistentException {
 		
 		return this.getRif_Cliente().getStrategiaCliente().calcolaSconto(this);		
 		
