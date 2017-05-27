@@ -26,8 +26,6 @@ public class ScontoPercentProdottoStrategy implements IScontoStrategy{
 	public ScontoPercentProdottoStrategy(int id_item, float percent){
 		this.id_item = id_item;
 		this.percent = percent;
-		
-		System.out.println("ITEM ////////"+id_item);
 	}
 	
 	
@@ -40,20 +38,11 @@ public class ScontoPercentProdottoStrategy implements IScontoStrategy{
 		M_Preventivo_Item item;
 		float sconto=0;
 	
-		System.out.println("SONO IN CALCOLCAscONTO DI SCONTO %%%.ID ITEM STRATEGY"+id_item);
-
 		while (iteraItem.hasNext()) {
 			item = (M_Preventivo_Item) iteraItem.next();
 			if (item.getIdProdotto().getIdProdotto()==this.id_item)
 			{
-
-			System.out.println("id prodotto "+item.getIdProdotto()+" applicato sconto di tipo"+this);
-
-//			if (item.getIdProdotto().getIdProdotto()==IdProdotto)
-//			{
 				sconto = sconto + (item.calcolaParziale()*percent);
-
-				
 			}
 		}
 		return sconto;

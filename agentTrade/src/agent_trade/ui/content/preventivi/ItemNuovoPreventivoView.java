@@ -3,11 +3,11 @@ package agent_trade.ui.content.preventivi;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -26,13 +27,16 @@ import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoPercent;
+import agent_trade.model.M_ScontoQuantita;
+import agent_trade.sconti.ScontoAssolutoProdottoStrategy;
+import agent_trade.sconti.ScontoPercentProdottoStrategy;
 import agent_trade.util.ButtonsEditorRm;
 import agent_trade.util.ButtonsRendererRm;
 import agent_trade.util.Costanti;
 import agent_trade.util.SpinnerEditor;
 import agent_trade.util.SpinnerRenderer;
-import java.awt.FlowLayout;
-import javax.swing.SwingConstants;
 
 
 public class ItemNuovoPreventivoView extends JPanel
@@ -296,26 +300,50 @@ public class ItemNuovoPreventivoView extends JPanel
 
 	}
 	
-	public void updateTable(M_Prodotto prod, M_Preventivo_Item prev_item){
+	public void updateTable(M_Prodotto prod, M_Preventivo_Item prev_item) throws PersistentException{
 	
 		int id = prod.getIdProdotto();
+		M_Preventivo prev= M_Preventivo.getInstance();
 		String nome = prod.getNome();
 		String categoria = prod.getCategoria();
 		int quant = prev_item.getQuantita();
 		String prezzo = Float.toString(prod.getPrezzo()); 
-		//qui deve sapere di quant'è lo sconto
-		String sconto = "";
+		
+		String sconto = setTipoScontoTabella(prev_item);
 		
 		String parziale = Float.toString(prev_item.calcolaParziale());
 		//sarebbe opportuno visualizzare il parziale scontato
-		String parziale_scontato = Float.toString(prev_item.calcolaParzialeScontato());
+		String parziale_scontato = Float.toString(prev_item.calcolaParziale()-prev_item.getStrategiaProdotto().calcolaSconto(prev));
 		
-		//se lo sconto è zero, non visualizzo nulla, altrimenti adatto a x,dd 
-		if (prod.getSconto()!=0){
-			sconto=(java.lang.Math.ceil(prod.getSconto()*100))+"%";
-		}
+//		//se lo sconto è zero, non visualizzo nulla, altrimenti adatto a x,dd 
+//		if (prod.getSconto()!=0){
+//			sconto=(java.lang.Math.ceil(prod.getSconto()*100))+"%";
+//		}
 		
 		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quant, prezzo, sconto, parziale, parziale_scontato});
+	}
+	
+	public String setTipoScontoTabella(M_Preventivo_Item item) throws PersistentException{
+		
+			String tipoSconto="";
+			
+			M_Sconto politicaSconto = M_Sconto.caricaSconto((int) ((M_Preventivo_Item) item).getIdProdotto().getSconto());
+						
+			if (politicaSconto instanceof M_ScontoQuantita)
+			{
+				if (((M_ScontoQuantita) politicaSconto).getScontoFisso()!=0) {
+					tipoSconto="Sconto di "+((M_ScontoQuantita) politicaSconto).getScontoFisso()+" euro per q.tà superiori a "+((M_ScontoQuantita) politicaSconto).getQuantita();
+				}
+			}
+			else if (politicaSconto instanceof M_ScontoPercent)
+			{
+				if(((M_ScontoPercent) politicaSconto).getPercent()!=0)
+				{
+					tipoSconto=((M_ScontoPercent) politicaSconto).getPercent()*100+" %";
+				}
+			}
+			
+			return tipoSconto;
 	}
 	
 	public void deleteRow(int row) {

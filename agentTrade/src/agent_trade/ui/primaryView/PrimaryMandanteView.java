@@ -595,7 +595,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	}
 	
 	
-	public void initTable(M_Prodotto[] listaProdotti){
+	public void initTable(M_Prodotto[] listaProdotti) throws PersistentException{
 		((RiepilogoListinoView) riep_listino).initTable(listaProdotti);
 	}
 	

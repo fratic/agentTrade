@@ -304,14 +304,11 @@ public class Setting extends JPanel {
 		{
 			radioAgente.setSelected(true);
 			radioMandante.setSelected(false);
-			System.out.println("VERSIONE   1"+readVersion);
 		}
 		if (readVersion.equals(Costanti.mandante))
 		{
 			radioAgente.setSelected(false);
 			radioMandante.setSelected(true);
-			System.out.println("VERSIONE   2"+readVersion);
-
 		}
 			
 		

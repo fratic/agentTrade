@@ -272,9 +272,6 @@ public class Ctrl_System {
 
 	        for(int i=0; i<size; i++){
 	        	look=java.lang.Character.getNumericValue(in[i]);
-	        	System.out.println("char "+in[i]);
-	        	System.out.println("look ciclo "+look);
-
 	        }
 	        	fr.close();
 	         
@@ -283,11 +280,7 @@ public class Ctrl_System {
 	        e.printStackTrace();
 	    }
 	 
-        System.out.println(" LOOK "+Costanti.Look_Feel);
-
         Costanti.Look_Feel=look;
-        
-        System.out.println("cost look "+Costanti.Look_Feel);
 		return look;
 	}
 

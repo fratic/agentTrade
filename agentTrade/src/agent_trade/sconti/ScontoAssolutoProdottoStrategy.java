@@ -39,22 +39,16 @@ public class ScontoAssolutoProdottoStrategy implements IScontoStrategy {
 		M_Preventivo_Item item;
 		float scontoQt=0;
 		
-		System.out.println("SONO IN CALCOLCAscONTO DI SCONTOASSOLUTO.ID ITEM STRATEGY"+id_item);
-
 		while (iteraItem.hasNext()) {
 			item = (M_Preventivo_Item) iteraItem.next();
 			if (item.getIdProdotto().getIdProdotto()==this.id_item)
 			{
 			
-			System.out.println("id prodotto "+item.getIdProdotto()+" applicato sconto di tipo"+this);
 
 				if(item.getQuantita() >= quantita){
 					int multiplo= (int) item.getQuantita()/quantita;
-//					item.calcolaParziale();
-//					System.out.println("id prodotto dentro il id"+item.getIdProdotto());
 					scontoQt = scontoQt+sconto*multiplo;
 				}
-//				else parziale = item.calcolaParziale();
 			}
 		}
 		return scontoQt;

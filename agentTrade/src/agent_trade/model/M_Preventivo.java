@@ -247,11 +247,6 @@ public class M_Preventivo implements Observer {
 		
 		//quindi, recupero l'id dello sconto e quindi eventualmente la sua percentuale
 		
-		System.out.println("CREAZIONE ITEM"+it.getIdPreventivo_Item());
-		
-		System.out.println("Strategia aggiunta al prodotto: "+it.getIdProdotto());
-		System.out.println("tipo strategia: "+it.getStrategiaProdotto());
-
 		this.item.add(it);
 
 		return it;
@@ -325,10 +320,6 @@ public class M_Preventivo implements Observer {
 		{			
 			item = (M_Preventivo_Item) iteraItem.next();
 //				System.out.println("SONO IN setTOT. LO SCONTO Fisso qt è:"+ item.getStrategiaProdotto().calcolaSconto(M_Preventivo.getInstance()));
-
-			
-			System.out.println("This"+this);
-			System.out.println("strategy"+item.getStrategiaProdotto());
 
 			scontoTot = scontoTot + item.getStrategiaProdotto().calcolaSconto(this);
 			

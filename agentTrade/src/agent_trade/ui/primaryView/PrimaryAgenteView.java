@@ -23,6 +23,9 @@ import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoPercent;
+import agent_trade.model.M_ScontoQuantita;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
@@ -544,21 +547,16 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		
 	}
 	
-	public void updateTableRiepilogo(M_Preventivo_Item pr_it){
+	public void updateTableRiepilogo(M_Preventivo prev, M_Preventivo_Item pr_it) throws PersistentException{
 		String id = Integer.toString((pr_it.getIdProdotto().getIdProdotto()));
 		String nome = pr_it.getIdProdotto().getNome();
 		String categoria = pr_it.getIdProdotto().getCategoria();
 		String quantita = Integer.toString(pr_it.getQuantita());
 		String prezzo = Float.toString(pr_it.getIdProdotto().getPrezzo());
-		String sconto = "";
-		String parziale = Float.toString((pr_it.calcolaParziale()));
-		String parziale_scontato = Float.toString(pr_it.calcolaParzialeScontato());
-
+		String sconto = setTipoScontoTabella(pr_it);
 		
-		if (pr_it.getIdProdotto().getSconto()!=0){
-			sconto=(java.lang.Math.ceil(pr_it.getIdProdotto().getSconto()*100))+"%";
-		}
-		
+		String parziale = Float.toString(pr_it.calcolaParziale());
+		String parziale_scontato = Float.toString(pr_it.calcolaParziale()-pr_it.getStrategiaProdotto().calcolaSconto(prev));
 		((RiepilogoItemPreventivoView) riep_item).updateTable(id, nome, categoria, quantita, prezzo, sconto, parziale, parziale_scontato);	
 	}
 		
@@ -575,4 +573,26 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		((ItemNuovoPreventivoView) item).enableSave(b);
 	}	
 	
+	public String setTipoScontoTabella(M_Preventivo_Item item) throws PersistentException{
+		
+		String tipoSconto="";
+		
+		M_Sconto politicaSconto = M_Sconto.caricaSconto((int) ((M_Preventivo_Item) item).getIdProdotto().getSconto());
+					
+		if (politicaSconto instanceof M_ScontoQuantita)
+		{
+			if (((M_ScontoQuantita) politicaSconto).getScontoFisso()!=0) {
+				tipoSconto="Sconto di "+((M_ScontoQuantita) politicaSconto).getScontoFisso()+" euro per q.tà superiori a "+((M_ScontoQuantita) politicaSconto).getQuantita();
+			}
+		}
+		else if (politicaSconto instanceof M_ScontoPercent)
+		{
+			if(((M_ScontoPercent) politicaSconto).getPercent()!=0)
+			{
+				tipoSconto=((M_ScontoPercent) politicaSconto).getPercent()*100+" %";
+			}
+		}
+		
+		return tipoSconto;
+}
 }

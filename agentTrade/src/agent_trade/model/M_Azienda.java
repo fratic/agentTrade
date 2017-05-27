@@ -114,7 +114,6 @@ public class M_Azienda {
 			AziendaCriteria criteriaAzienda = new AziendaCriteria();
 			criteriaAzienda.ragioneSociale.eq(nome);
 			//criteriaAzienda.attivo.eq(1);
-			System.out.println("sono in cerca azienda locale " + nome);
 			return criteriaAzienda.uniqueM_Azienda();
 		}
 		finally {	

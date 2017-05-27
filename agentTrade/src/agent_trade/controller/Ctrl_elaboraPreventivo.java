@@ -131,7 +131,7 @@ public class Ctrl_elaboraPreventivo {
 	
 	
 	
-	private void initModificaPrev(M_Preventivo prevMod) {
+	private void initModificaPrev(M_Preventivo prevMod) throws PersistentException {
 
 		M_Cliente cliente=prevMod.getRif_Cliente();
 		
@@ -175,7 +175,7 @@ public class Ctrl_elaboraPreventivo {
 	}
 	
 
-	private void initRiepilogoPreventivo(M_Preventivo p) {
+	private void initRiepilogoPreventivo(M_Preventivo p) throws PersistentException {
 	
 		PrimaryAgenteView.initRiepilogo();
 	
@@ -192,7 +192,7 @@ public class Ctrl_elaboraPreventivo {
 		while (i.hasNext()) {
 		
 			pr_it = (M_Preventivo_Item) i.next();
-			PrimaryAgenteView.getInstance().updateTableRiepilogo(pr_it);
+			PrimaryAgenteView.getInstance().updateTableRiepilogo(p, pr_it);
 			
 		}
 		
@@ -306,7 +306,7 @@ public class Ctrl_elaboraPreventivo {
 		
 		ItemNuovoPreventivoView.getInstance().setTot();
 		
-		ItemNuovoPreventivoView.getInstance().updateRow(pr_it.calcolaParziale(), pr_it.calcolaParzialeScontato());
+		ItemNuovoPreventivoView.getInstance().updateRow(pr_it.calcolaParziale(),pr_it.calcolaParziale()-pr_it.getStrategiaProdotto().calcolaSconto((p)));
 
 	}
 

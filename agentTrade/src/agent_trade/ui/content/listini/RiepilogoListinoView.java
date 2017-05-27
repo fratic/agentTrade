@@ -20,7 +20,11 @@ import javax.swing.table.TableColumnModel;
 
 
 import agent_trade.controller.Ctrl_gestisciListino;
+import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoPercent;
+import agent_trade.model.M_ScontoQuantita;
 import agent_trade.util.Costanti;
 import agent_trade.util.MyEditor;
 import agent_trade.util.MyRenderer;
@@ -109,7 +113,7 @@ public class RiepilogoListinoView extends JPanel {
 	
 	/*metodi pubblici*/
 	
-	public void initTable(M_Prodotto[] prodotti){
+	public void initTable(M_Prodotto[] prodotti) throws PersistentException{
 		
 		svuotaTabella();
 		
@@ -122,10 +126,9 @@ public class RiepilogoListinoView extends JPanel {
 			btnDettaglio.setToolTipText(Costanti.TIP_DETTAGLIO_PRODOTTO);
 			btnDettaglio.setIcon(new ImageIcon(RiepilogoListinoView.class.getResource(Costanti.SHOW_ICON)));
 			
-			String sconto="";
-			if (p.getSconto()!=0){
-				sconto=(java.lang.Math.ceil(p.getSconto()*100))+"%";
-			}
+			String sconto=setTipoScontoTabella(p);
+	
+			
 	        ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
 	        		p.getNome(), p.getCategoria(), sconto ,Float.toString(p.getPrezzo()),  btnDettaglio});
 	        
@@ -165,10 +168,28 @@ public class RiepilogoListinoView extends JPanel {
 	}
 	
 	
-//	public void mostraProdotto(M_Prodotto prod){
-//		System.out.println("SONO NELLA FUNZIONE DI RIEPLISTINO");
-//	}
-	
+	public String setTipoScontoTabella(M_Prodotto prodotto) throws PersistentException{
+		
+		String tipoSconto="";
+		
+		M_Sconto politicaSconto = M_Sconto.caricaSconto((int) prodotto.getSconto());
+					
+		if (politicaSconto instanceof M_ScontoQuantita)
+		{
+			if (((M_ScontoQuantita) politicaSconto).getScontoFisso()!=0) {
+				tipoSconto="Sconto di "+((M_ScontoQuantita) politicaSconto).getScontoFisso()+" euro per q.tà superiori a "+((M_ScontoQuantita) politicaSconto).getQuantita();
+			}
+		}
+		else if (politicaSconto instanceof M_ScontoPercent)
+		{
+			if(((M_ScontoPercent) politicaSconto).getPercent()!=0)
+			{
+				tipoSconto=((M_ScontoPercent) politicaSconto).getPercent()*100+" %";
+			}
+		}
+		
+		return tipoSconto;
+}
 	
 	
 	

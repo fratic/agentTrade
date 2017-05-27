@@ -13,7 +13,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
+import org.orm.PersistentException;
+
 import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoPercent;
+import agent_trade.model.M_ScontoQuantita;
 import agent_trade.util.Costanti;
 import agent_trade.util.DisableButton;
 import agent_trade.util.MyEditor;
@@ -104,17 +109,15 @@ public class ProdottiView extends JPanel {
 	}
 
 	
-	public void initTable(M_Prodotto[] prodotti){
+	public void initTable(M_Prodotto[] prodotti) throws PersistentException{
 		
 		JButton jb;
 	
 		for (M_Prodotto p : prodotti) {
 		jb= new DisableButton();
 		jb.setEnabled(false);
-		String sconto="";
-		if (p.getSconto()!=0){
-			sconto=(java.lang.Math.ceil(p.getSconto()*100))+"%";
-		}
+		String sconto=setTipoScontoTabella(p);
+
         ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
         		p.getNome(), p.getCategoria(), sconto ,Float.toString(p.getPrezzo()), jb});
         
@@ -149,5 +152,29 @@ public class ProdottiView extends JPanel {
 				table.setValueAt(jb, i, Costanti.COLONNA_ADD_ITEM);
 			}
 	}
+	
+	
+	public String setTipoScontoTabella(M_Prodotto prodotto) throws PersistentException{
+		
+		String tipoSconto="";
+		
+		M_Sconto politicaSconto = M_Sconto.caricaSconto((int) prodotto.getSconto());
+					
+		if (politicaSconto instanceof M_ScontoQuantita)
+		{
+			if (((M_ScontoQuantita) politicaSconto).getScontoFisso()!=0) {
+				tipoSconto="Sconto di "+((M_ScontoQuantita) politicaSconto).getScontoFisso()+" euro per q.tà superiori a "+((M_ScontoQuantita) politicaSconto).getQuantita();
+			}
+		}
+		else if (politicaSconto instanceof M_ScontoPercent)
+		{
+			if(((M_ScontoPercent) politicaSconto).getPercent()!=0)
+			{
+				tipoSconto=((M_ScontoPercent) politicaSconto).getPercent()*100+" %";
+			}
+		}
+		
+		return tipoSconto;
+}
 	
 }

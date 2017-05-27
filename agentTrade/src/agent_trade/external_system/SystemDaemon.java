@@ -97,8 +97,6 @@ public class SystemDaemon {
 		
 		M_Prodotto[] remoti = M_Prodotto.caricaProdottiRemoto();
 		
-//		M_Vini[] locali= (M_Vini[]) M_Prodotto.caricaProdotti();
-		
 		
 		for (int i = 0; i < remoti.length; i++) {
 			
