@@ -8,6 +8,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import org.orm.PersistentException;
 
 import agent_trade.model.M_Cliente;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoCliente;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.clienti.CercaClienteView;
 import agent_trade.ui.content.clienti.DettaglioClienteView;
@@ -57,45 +59,45 @@ public class Ctrl_gestisciCliente {
 		    return false;
 		}
 	
-	private String ControlloCampi(String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax){
+	private String ControlloCampi(M_Cliente cliente){
 		
 		String errore= null;
 		String campoErrato = "";
 		
-		if(nome.equals("") || cognome.equals("") || codFiscale.equals("") || partitaIva.equals("") || citta.equals("") || cap.equals("") || indirizzo.equals("") || email.equals("") || telefono.equals("") || cellulare.equals("") || fax.equals("")){
+		if(cliente.getNome().equals("") || cliente.getCognome().equals("") || cliente.getCodice_fiscale().equals("") || cliente.getPartita_iva().equals("") || cliente.getCitta().equals("") || cliente.getCAP().equals("") || cliente.getIndirizzo().equals("") || cliente.getEmail().equals("") || cliente.getTelefono().equals("") || cliente.getCell().equals("") || cliente.getFax().equals("")){
 			return errore = Costanti.MESSAGGIO_CAMPI_VUOTI;
 		}
-		if(!check(Costanti.REG_EX_COGNOME, cognome)){
+		if(!check(Costanti.REG_EX_COGNOME, cliente.getCognome())){
 			campoErrato = campoErrato + "cognome ";
 		}
-		if(!check(Costanti.REG_EX_NOME, nome)){
+		if(!check(Costanti.REG_EX_NOME, cliente.getNome())){
 			campoErrato = campoErrato + "nome ";
 		}
-		if(!check(Costanti.REG_EX_COD_FISC, codFiscale)){
+		if(!check(Costanti.REG_EX_COD_FISC, cliente.getCodice_fiscale())){
 			campoErrato = campoErrato + "codice fiscale ";
 		}
-		if(!check(Costanti.REG_EX_PART_IVA, partitaIva)){
+		if(!check(Costanti.REG_EX_PART_IVA, cliente.getPartita_iva())){
 			campoErrato = campoErrato + "partita iva ";
 		}
-		if(!check(Costanti.REG_EX_INDIRIZZO, indirizzo)){
+		if(!check(Costanti.REG_EX_INDIRIZZO, cliente.getIndirizzo())){
 			campoErrato = campoErrato +"indirizzo ";
 		}
-		if(!check(Costanti.REG_EX_CITTA, citta)){
+		if(!check(Costanti.REG_EX_CITTA, cliente.getCitta())){
 			campoErrato = campoErrato +"città ";
 		}
-		if(!check(Costanti.REG_EX_CAP, cap)){
+		if(!check(Costanti.REG_EX_CAP, cliente.getCAP())){
 			campoErrato = campoErrato +"cap ";
 		}
-		if(!check(Costanti.REG_EX_TELEFONO, telefono)){
+		if(!check(Costanti.REG_EX_TELEFONO, cliente.getTelefono())){
 			campoErrato = campoErrato +"telefono ";
 		}
-		if(!check(Costanti.REG_EX_CELLULARE, cellulare)){
+		if(!check(Costanti.REG_EX_CELLULARE, cliente.getCell())){
 			campoErrato = campoErrato +"cellulare ";
 		}
-		if(!check(Costanti.REG_EX_FAX, fax)){
+		if(!check(Costanti.REG_EX_FAX, cliente.getFax())){
 			campoErrato = campoErrato +"fax ";
 		}
-		if(!check(Costanti.REG_EX_EMAIL, email)){
+		if(!check(Costanti.REG_EX_EMAIL, cliente.getEmail())){
 			campoErrato = campoErrato +"email ";
 		}
 		if (errore == null && campoErrato != "")
@@ -175,7 +177,8 @@ public class Ctrl_gestisciCliente {
 			Ricerca_cliente.cancInstanza();
 			
 			PrimaryAgenteView.initRiepilogoClienteView();
-			PrimaryAgenteView.getInstance().setSchedaCliente(""+cliente.getIdCliente(), cliente.getCognome(),cliente.getNome(),cliente.getCodice_fiscale(),cliente.getPartita_iva(),cliente.getIndirizzo(),cliente.getCitta(),cliente.getCAP(),cliente.getEmail(),cliente.getTelefono(),cliente.getCell(),cliente.getFax(), cliente.getAgenteAssociato());
+			PrimaryAgenteView.getInstance().setSchedaCliente(cliente);
+			PrimaryAgenteView.getInstance().setScontoCliente(mostraScontoCliente(cliente.getSconto()));
 			PrimaryAgenteView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryAgenteView.getInstance().disattivaAnnullaModifiche(false);
 			PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);
@@ -186,26 +189,15 @@ public class Ctrl_gestisciCliente {
 	}
 	
 	
-	public void inserisciNuovoCliente(String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax) throws PersistentException
+	public void inserisciNuovoCliente(M_Cliente cliente) throws PersistentException
 	{
 //		la stringa errore serve per il controllo campi se viene restituita null vuol dire che non ci sono errori
-		String errore= ControlloCampi(nome, cognome, codFiscale, partitaIva, citta, cap, indirizzo, email, telefono, cellulare, fax);
+		String errore= ControlloCampi(cliente);
 		if(errore==null)
 		{
-			M_Cliente cliente = new M_Cliente();
-				
-			cliente.setNome(nome);
-			cliente.setCognome(cognome);
-			cliente.setCodice_fiscale(codFiscale);
-			cliente.setPartita_iva(partitaIva);
-			cliente.setIndirizzo(indirizzo);
-			cliente.setEmail(email);
-			cliente.setTelefono(telefono);
-			cliente.setFax(fax);
-			cliente.setCitta(citta);
-			cliente.setCAP(cap);
-			cliente.setCell(cellulare);
+			
 			cliente.setAttivo(1);
+//			AGGIUNGERE IL TIPO DI SCONTO
 			
 			M_Cliente.salvaCliente(cliente);
 
@@ -231,28 +223,13 @@ public class Ctrl_gestisciCliente {
 	}
 	
 	
-	public void modificaCliente(int id, String nome, String cognome, String codFiscale, String partitaIva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax) throws PersistentException
+	public void modificaCliente(M_Cliente c) throws PersistentException
 	{
-		String errore = ControlloCampi(nome, cognome, codFiscale, partitaIva, citta, cap, indirizzo, email, telefono, cellulare, fax);
+		String errore = ControlloCampi(c);
 		
 		if(errore == null)
-		{	
-			M_Cliente cliente = M_Cliente.cercaCliente(id);
-		
-			cliente.setNome(nome);
-			cliente.setCognome(cognome);
-			cliente.setCodice_fiscale(codFiscale);
-			cliente.setPartita_iva(partitaIva);
-			cliente.setIndirizzo(indirizzo);
-			cliente.setEmail(email);
-			cliente.setTelefono(telefono);
-			cliente.setFax(fax);
-			//cliente.setAgenteAssociato(Ctrl_System.getAgenteLog());			
-			cliente.setCitta(citta);
-			cliente.setCAP(cap);
-			cliente.setCell(cellulare);
-			
-			M_Cliente.aggiornaCliente(cliente);
+		{				
+			M_Cliente.aggiornaCliente(c);
 							
 			PrimaryAgenteView.getInstance().resetCliente();
 			PrimaryAgenteView.getInstance().disattivaModifica(true);
@@ -265,8 +242,8 @@ public class Ctrl_gestisciCliente {
 			PrimaryAgenteView.getInstance().setEnableCercaCliente(true);
 			PrimaryAgenteView.getInstance().disattivaInviaPosta(true);
 			PrimaryAgenteView.getInstance().setInvisibleToolTip();
-			AlberoClienti.updateNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
-			AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
+			AlberoClienti.updateNodo(c.getIdCliente()+ " - " +c.getCognome()+ " - " +c.getNome());
+			AlberoClienti.selectNode(c.getIdCliente()+ " - " +c.getCognome()+ " - " +c.getNome());
 			AlberoClienti.abilitaAlbero();
 								
 		}
@@ -417,4 +394,19 @@ public class Ctrl_gestisciCliente {
 				PrimaryAgenteView.getInstance().setSfondoCliente();
 			}
 	}	
+	
+//	DA RIVEDERE NON SO SE VA BENE
+	public String mostraScontoCliente(int idSconto) throws PersistentException{
+		
+		String scnt = "0%";
+		
+		M_Sconto sconto = M_Sconto.caricaSconto(idSconto);		
+		
+		if (sconto instanceof M_ScontoCliente){
+			scnt = ((M_ScontoCliente) sconto).getPercent()*100 + "%"; 
+		}
+		return scnt;
+	}
+	
+	
 }

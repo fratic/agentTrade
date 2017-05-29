@@ -21,7 +21,8 @@ public final class Costanti {
 	public static String  version = "agente";
 //	public final static String  version = "mandante";
 
-	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
+//	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
+	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
 
 	public final static String  agente = "agente";
 	public final static String  mandante = "mandante";
@@ -41,7 +42,9 @@ public final class Costanti {
 //	public final static int  Look_Feel = 6;
 
 	
-	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
+//	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
+	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
+
 
 	
 	/**
@@ -66,6 +69,8 @@ public final class Costanti {
 
 	
 	public final static String TITOLO_DIALOG_CLOSE = "Agent Trade | Exit  ";
+	
+	public final static String TITOLO_CERCA_PREVENTIVO = "Cerca Preventivo";
 	
 	public final static String TITOLO_CERCA_CLIENTE = "Cerca Cliente";
 	public final static String TITOLO_CANCELLA_CLIENTE = "Attenzione!";
@@ -106,6 +111,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_AZIENDA_NON_TROVATA = "Azienda non trovata";
 	public final static String MESSAGGIO_CANCELLA_AZIENDA = "Sei sicuro di voler cancellare l'azienda corrente?";
 	public final static String MESSAGGIO_CANCELLA_PRODOTTO = "Sei sicuro di voler cancellare il prodotto corrente?";
+	public final static String MESSAGGIO_PREVENTIVO_NON_TROVATO = "Previentivo non trovato";
 	
 	
 	/**
@@ -121,6 +127,7 @@ public final class Costanti {
 	public static final String PLUS_ICON= "/agent_trade/ui/img/plus.png";
 	public static final String PREVENTIVO_ICON= "/agent_trade/ui/img/preventivo.png";
 	public static final String NUOVO_PREVENTIVO_ICON= "/agent_trade/ui/img/nuovo_icon.png";
+	public static final String CERCA_PREVENTIVO_ICON= "/agent_trade/ui/img/nuovo_icon.png";
 	public static final String CLIENTE_ICON= "/agent_trade/ui/img/cliente.png";	
 	public static final String NUOVO_CLIENTE_ICON= "/agent_trade/ui/img/new_user.png";
 	public static final String CERCA_CLIENTE_ICON= "/agent_trade/ui/img/search.png";
@@ -256,6 +263,56 @@ public final class Costanti {
 	public final static int HEIGHT_ICON = 50;
 	
 	/**
+	 * Dimensioni contenitori, label e TF nelle view nuovo/riepilogo intestazione preventivo
+	 */
+	public final static int WIDTH_PANN_NORD = 733;
+	public final static int HEIGHT_PANN_NORD = 75;
+	public final static int WIDTH_PANN_DESTRA = 280;
+	public final static int HEIGHT_PANN_DESTRA = 60;
+	public final static int WIDTH_PANN_DESTRA_MIN = 200;
+	public final static int HEIGHT_PANN_DESTRA_MIN = 50;
+	public final static int WIDTH_LABEL_PREV_INT = 96;
+	public final static int HEIGHT_LABEL_PREV_INT = 14;
+	public final static int WIDTH_LABEL_NUM_PREV = 27;
+	public final static int HEIGHT_LABEL_NUM_PREV = 14;
+	public final static int WIDTH_LABEL_DEL = 45;
+	public final static int HEIGHT_LABEL_DEL = 14;
+	public final static int WIDTH_LABEL_DATA = 79;
+	public final static int HEIGHT_LABEL_DATA = 14;
+	public final static int WIDTH_LABEL_EFFETTUATO = 128;
+	public final static int HEIGHT_LABEL_EFFETTUATO = 14;
+	public final static int WIDTH_LABEL_AG = 128;
+	public final static int HEIGHT_LABEL_AG = 14;
+	public final static int WIDTH_LABEL_VUOTA_1 = 230;
+	public final static int HEIGHT_LABEL_VUOTA_1 = 5;
+	public final static int WIDTH_LABEL_VUOTA_4 = 230;
+	public final static int HEIGHT_LABEL_VUOTA_4 = 14;
+	public final static int WIDTH_BOTTONE_ANNULLA_PREV = 20;
+	public final static int HEIGHT_BOTTONE_ANNULLA_PREV = 20;
+	public final static int WIDTH_PANN_SINISTRA = 280;
+	public final static int HEIGHT_PANN_SINISTRA = 60;
+	public final static int WIDTH_LABEL_CL_PREV = 50;
+	public final static int HEIGHT_LABEL_CL_PREV = 14;
+	public final static int WIDTH_LABEL_CLIENTE_PREV = 206;
+	public final static int HEIGHT_LABEL_CLIENTE_PREV = 14;
+	public final static int WIDTH_LABEL_VUOTA_2 = 50;
+	public final static int HEIGHT_LABEL_VUOTA_2 = 14;
+	public final static int WIDTH_LABEL_CLIENTE_IND = 206;
+	public final static int HEIGHT_LABEL_CLIENTE_IND = 14;
+	public final static int WIDTH_LABEL_VUOTA_3 = 50;
+	public final static int HEIGHT_LABEL_VUOTA_3 = 14;
+	public final static int WIDTH_LABEL_ALTRE_INFO = 206;
+	public final static int HEIGHT_LABEL_ALTRE_INFO = 14;
+	public final static int WIDTH_LABEL_SCONTO_PREV = 80;
+	public final static int HEIGHT_LABEL_SCONTO_PREV = 14;
+	public final static int WIDTH_LABEL_SCONTO_CL_PREV = 186;
+	public final static int HEIGHT_LABEL_SCONTO_CL_PREV = 14;
+	public final static int WIDTH_PANN_SUD = 733;
+	public final static int HEIGHT_PANN_SUD = 45;
+	public final static int WIDTH_BOTTONE_PREV = 40;
+	public final static int HEIGHT_BOTTONE_PREV = 40;
+	
+	/**
 	 * Dimensioni contenitori, label e TF nelle view nuovo/riepilogo item preventivo
 	 */
 	public final static int WIDTH_PANN_TAB = 733;
@@ -302,6 +359,7 @@ public final class Costanti {
 	public final static String LABEL_DEL= "del";
 	public final static String LABEL_EFFETTUATO_AG= "effettuato dall'agente: ";
 	public final static String LABEL_Cliente= "Cliente: ";
+	public final static String LABEL_SCONTO_INTESTAZ = "Sconto Cliente: ";
 	
 	public final static String LABEL_IMPONIBILE= "Imponibile";
 	public final static String LABEL_IVA= "IVA "+java.lang.Math.ceil(IVA*100)+"%";
@@ -309,7 +367,9 @@ public final class Costanti {
 	public final static String LABEL_TOTALE_NON_SCONTATO = "Tot. non scontato";
 	public final static String LABEL_SCONTO_TOTALE = "Sconto Totale";
 	public final static String LABEL_SCONTO_CLIENTE = "Sconto Cliente";
-
+	
+	public final static String LABEL_COGNOME_CLIENTE = "Cognome Cliente";
+	public final static String LABEL_ID_PREV = "ID Preventivo";
 
 	public final static String LABEL_CERCA_CLIENTE = "Cerca Cliente";
 	
@@ -325,6 +385,7 @@ public final class Costanti {
 	public final static String LABEL_CELLULARE = "Cellulare";
 	public final static String LABEL_FAX = "Fax";
 	public final static String LABEL_EMAIL = "Email";
+	public final static String LABEL_SCONTO = "Sconto";
 	public final static String LABEL_AGENTE_RIF = "Agente di riferimento";
 	public final static String LABEL_ERRORE_CAMPI = "";
 	
@@ -370,6 +431,7 @@ public final class Costanti {
 	 */
 	public final static String TIP_GESTISCI_PREVENTIVO= "Gestisci i preventivi";
 	public final static String TIP_NUOVO_PREVENTIVO= "Crea un nuovo preventivo";
+	public final static String TIP_CERCA_PREVENTIVO= "Cerca un preventivo";
 	public final static String TIP_GESTISCI_CLIENTE= "Gestisci i clienti";
 	public final static String TIP_INSERISCI_CLIENTE= "Inserisci un nuovo cliente";
 	public final static String TIP_CERCA_CLIENTE= "Cerca il cliente";
@@ -486,6 +548,9 @@ public final class Costanti {
 	public final static String[] INTESTAZIONE_TABELLA_RIEPILOGO_ITEM= {"ID prodotto", "Nome", "Categoria", "Quantità", "Prezzo Unitario", "Sconto", "Parziale", "Parziale scontato" };
 	
 	public final static String[] INTESTAZIONE_TABELLA_PRODOTTI = {"ID prodotto", "Nome", "Categoria", "Sconto", "Prezzo", "Aggiungi" };
+	
+	public final static String[] INTESTAZIONE_TABELLA_RICERCA_PREVENTIVI = {"ID", "Cliente", "Data" };
+	
 	public final static String[] INTESTAZIONE_TABELLA_CERCA_CLIENTI = {"ID", "Cognome", "Nome", "Codice Fiscale", "P.IVA"};
 	public final static String[] INTESTAZIONE_TABELLA_RICERCA_CLIENTI = {"ID", "Cognome", "Nome","Codice Fiscale", "Partita iva", "Citt\u00E0" };
 	

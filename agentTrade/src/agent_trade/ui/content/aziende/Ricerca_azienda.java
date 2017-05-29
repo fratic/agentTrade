@@ -1,5 +1,7 @@
 package agent_trade.ui.content.aziende;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,9 +40,15 @@ public class Ricerca_azienda extends JDialog {
 	
 	/*attributi privati*/
 
-	private JPanel panelloCerca;
-	private JPanel panelloRisultati;
-	private JPanel panelloBottoni;
+	private JPanel pannelloCerca;
+	private JPanel pannelloRisultati;
+	private JPanel pannelloBottoni;
+	private JPanel pannNome;
+	private JPanel pannPIVA;
+	private JPanel pannCodFis;
+	private JPanel pannCitta;
+	private JPanel pannErrore;
+	private JPanel pannBottone;
 	
 	private JScrollPane scrollPane;
 
@@ -75,60 +83,80 @@ public class Ricerca_azienda extends JDialog {
 		setBounds(450, 250, 749, 406);
 		getContentPane().setLayout(null);
 		
-		panelloCerca = new JPanel();
-		panelloCerca.setBounds(0, 0, 743, 114);
-		getContentPane().add(panelloCerca);
-		panelloCerca.setLayout(null);
+		pannelloCerca = new JPanel();
+		pannelloCerca.setBounds(0, 0, 743, 114);
+		getContentPane().add(pannelloCerca);
+		
+		pannNome = new JPanel();
+		pannNome.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannNome);
 		
 		LabelCercaNome = new JLabel(Costanti.LABEL_NOME_AZIENDA);
-		LabelCercaNome.setBounds(10, 11, 137, 40);
-		panelloCerca.add(LabelCercaNome);
+		LabelCercaNome.setPreferredSize(new Dimension(137, 14));
+		pannNome.add(LabelCercaNome);
 		
 		TFCercaNome = new JTextField();
-		TFCercaNome.setBounds(157, 21, 180, 20);
-		panelloCerca.add(TFCercaNome);
-		TFCercaNome.setColumns(10);
+		TFCercaNome.setPreferredSize(new Dimension(180, 20));
+		pannNome.add(TFCercaNome);
+		
+		pannPIVA = new JPanel();
+		pannPIVA.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannPIVA);
 		
 		LabelCercaPIVA = new JLabel(Costanti.LABEL_PARTITA_IVA);
-		LabelCercaPIVA.setBounds(365, 11, 64, 40);
-		panelloCerca.add(LabelCercaPIVA);
+		LabelCercaPIVA.setPreferredSize(new Dimension(137, 14));
+		pannPIVA.add(LabelCercaPIVA);
 		
 		TFcercaPIVA = new JTextField();
-		TFcercaPIVA.setColumns(10);
-		TFcercaPIVA.setBounds(439, 21, 180, 20);
-		panelloCerca.add(TFcercaPIVA);
+		TFcercaPIVA.setPreferredSize(new Dimension(180, 20));
+		pannPIVA.add(TFcercaPIVA);
+		
+		pannCodFis = new JPanel();
+		pannCodFis.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannCodFis);
 		
 		LabelCercaCodFisc = new JLabel(Costanti.LABEL_COD_FISC);
-		LabelCercaCodFisc.setBounds(10, 50, 137, 40);
-		panelloCerca.add(LabelCercaCodFisc);
+		LabelCercaCodFisc.setPreferredSize(new Dimension(137, 14));
+		pannCodFis.add(LabelCercaCodFisc);
 		
 		TFcercaCodFisc = new JTextField();
-		TFcercaCodFisc.setColumns(10);
-		TFcercaCodFisc.setBounds(157, 60, 180, 20);
-		panelloCerca.add(TFcercaCodFisc);
+		TFcercaCodFisc.setPreferredSize(new Dimension(180, 20));
+		pannCodFis.add(TFcercaCodFisc);
+		
+		pannCitta = new JPanel();
+		pannCitta.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannCitta);
 		
 		LabelCercaCitta = new JLabel(Costanti.LABEL_CITTA);
-		LabelCercaCitta.setBounds(365, 50, 64, 40);
-		panelloCerca.add(LabelCercaCitta);
+		LabelCercaCitta.setPreferredSize(new Dimension(137, 14));
+		pannCitta.add(LabelCercaCitta);
 		
 		TFcercaCitta = new JTextField();
-		TFcercaCitta.setColumns(10);
-		TFcercaCitta.setBounds(439, 60, 180, 20);
-		panelloCerca.add(TFcercaCitta);
+		TFcercaCitta.setPreferredSize(new Dimension(180, 20));
+		pannCitta.add(TFcercaCitta);
 		
-		BottoneCerca = new JButton(Costanti.BOTTONE_CERCA);
-		BottoneCerca.setBounds(644, 80, 89, 23);
-		panelloCerca.add(BottoneCerca);
-		
+		pannErrore = new JPanel();
+		pannErrore.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannErrore);
+				
 		labelError = DefaultComponentFactory.getInstance().createLabel("");
 		labelError.setHorizontalAlignment(SwingConstants.CENTER);
-		labelError.setBounds(10, 89, 219, 14);
-		panelloCerca.add(labelError);
+		labelError.setPreferredSize(new Dimension(350, 14));
+		pannErrore.add(labelError);
 		
-		panelloRisultati = new JPanel();
-		panelloRisultati.setBounds(0, 114, 743, 216);
-		getContentPane().add(panelloRisultati);
-		panelloRisultati.setLayout(null);
+		pannBottone = new JPanel();
+		pannBottone.setPreferredSize(new Dimension(365, 30));
+		pannBottone.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+		pannelloCerca.add(pannBottone);
+		
+		BottoneCerca = new JButton(Costanti.BOTTONE_CERCA);
+		BottoneCerca.setPreferredSize(new Dimension(90, 25));
+		pannBottone.add(BottoneCerca);
+		
+		pannelloRisultati = new JPanel();
+		pannelloRisultati.setBounds(0, 114, 743, 216);
+		getContentPane().add(pannelloRisultati);
+		pannelloRisultati.setLayout(null);
 		
 		String[] colNames = Costanti.INTESTAZIONE_TABELLA_RICERCA_AZIENDE;
 		JTableModel = new DefaultTableModel(
@@ -143,17 +171,17 @@ public class Ricerca_azienda extends JDialog {
 
 	    scrollPane = new JScrollPane(table);
 	    scrollPane.setBounds(10, 11, 723, 200);
-	    panelloRisultati.add(scrollPane);
+	    pannelloRisultati.add(scrollPane);
 	    
-	    panelloBottoni = new JPanel();
-		panelloBottoni.setBounds(0, 321, 743, 47);
-		getContentPane().add(panelloBottoni);
-		panelloBottoni.setLayout(null);
+	    pannelloBottoni = new JPanel();
+		pannelloBottoni.setBounds(0, 321, 743, 47);
+		getContentPane().add(pannelloBottoni);
+		pannelloBottoni.setLayout(null);
 		
 		BottoneVisualizza = new JButton(Costanti.BOTTONE_VISUALIZZA);
 		BottoneVisualizza.setEnabled(false);
 		BottoneVisualizza.setBounds(634, 11, 99, 23);
-		panelloBottoni.add(BottoneVisualizza);
+		pannelloBottoni.add(BottoneVisualizza);
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 

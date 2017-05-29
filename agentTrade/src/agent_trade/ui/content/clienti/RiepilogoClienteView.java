@@ -316,7 +316,9 @@ import org.orm.PersistentException;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
+import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.model.M_Cliente;
 import agent_trade.util.Costanti;
 
 public class RiepilogoClienteView extends JPanel {
@@ -324,6 +326,7 @@ public class RiepilogoClienteView extends JPanel {
 	/*attributi di classe*/
 	
 	private static RiepilogoClienteView instance;
+	private static M_Cliente cliente;
 	
 	/*attributi privati*/
 	
@@ -339,6 +342,7 @@ public class RiepilogoClienteView extends JPanel {
 	private JLabel labelTelefono;
 	private JLabel labelCell;
 	private JLabel labelFax;
+	private JLabel labelSconto;
 	private JLabel labelRifAgente;
 	private JLabel labelErrore;
 	
@@ -354,62 +358,41 @@ public class RiepilogoClienteView extends JPanel {
 	private JTextField TFtelefono;
 	private JTextField TFcell;
 	private JTextField TFfax;
+	private JTextField TFsconto;
 	private JTextField TFrifAgente;
 	
 	private JButton bottoneModificaCliente;
 	private JButton bottoneCancellaCliente;
-	private JButton bottoneBackToRicerca;
+//	private JButton bottoneBackToRicerca;
 	private JButton bottoneSalvaModifiche;
 	private JButton bottoneAnnullaModifica;
 	private JButton bottoneInviaComunicazione;
 	
 	private JPanel pannelloCampi;
-
 	private JPanel pannelloBottoni;
-
 	private JPanel pannelloCentro;
-
-	private JPanel pannelloOvest;
-
 	private JScrollPane scrollPane;
-
 	private JPanel pannelloContenitore;
-
 	private JPanel pannelloIcona;
-
 	private JPanel contenitoreCampi;
-
 	private JPanel pannIdCliente;
-
 	private JPanel pannCognome;
-
 	private JPanel pannNome;
-
 	private JPanel pannCodFis;
-
 	private JPanel pannPartitaIva;
-
 	private JPanel pannIndirizzo;
-
 	private JPanel pannCitta;
-
 	private JPanel pannCap;
-
 	private JPanel pannTelefono;
-
 	private JPanel pannCellulare;
-
 	private JPanel pannFax;
-
 	private JPanel pannEmail;
-
+	private JPanel pannSconto;
 	private JPanel pannRifAgente;
-
 	private JPanel pannErrore;
-
 	private JPanel pannelloEast;
 	
-	
+
 	/*costruttori*/
 	
 	public RiepilogoClienteView() {
@@ -666,6 +649,23 @@ public class RiepilogoClienteView extends JPanel {
 		TFemail.setEditable(false);
 		pannEmail.add(TFemail);
 		
+		pannSconto = new JPanel();
+		FlowLayout flowLayout16 = (FlowLayout) pannSconto.getLayout();
+		flowLayout16.setHgap(0);
+		flowLayout16.setVgap(0);
+		pannSconto.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
+		contenitoreCampi.add(pannSconto);
+		 
+		labelSconto = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_SCONTO);
+		labelSconto.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
+		labelSconto.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
+		pannSconto.add(labelSconto);
+		 
+		TFsconto = new JTextField();//NON E' EDITABILE VERRA' CARICATO UNO SCONTO INIZIALE
+		TFsconto.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		TFsconto.setEditable(false);
+		pannSconto.add(TFsconto);
+		
 		pannRifAgente= new JPanel();
 		FlowLayout flowLayout14 = (FlowLayout) pannRifAgente.getLayout();
 		flowLayout14.setHgap(0);
@@ -757,7 +757,19 @@ public class RiepilogoClienteView extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				try {
-					Ctrl_gestisciCliente.getInstance().modificaCliente(Integer.parseInt(TFidCliente.getText()),(String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFcell.getText(), (String)TFfax.getText());
+					cliente.setNome(TFnome.getText());
+					cliente.setCognome(TFcognome.getText());
+					cliente.setCodice_fiscale(TFcodicefiscale.getText());
+					cliente.setPartita_iva(TFpartitaiva.getText());
+					cliente.setCitta(TFcitta.getText());
+					cliente.setCAP(TFcap.getText());
+					cliente.setIndirizzo(TFindirizzo.getText());
+					cliente.setEmail(TFemail.getText());
+					cliente.setTelefono(TFtelefono.getText());
+					cliente.setCell(TFcell.getText());
+					cliente.setFax(TFfax.getText());
+					
+					Ctrl_gestisciCliente.getInstance().modificaCliente(cliente);
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -802,23 +814,24 @@ public class RiepilogoClienteView extends JPanel {
 		
 		//questo metodo inserisce i dati recuperati nelle relative TF per consultare i dati cliente
 		//manca id da recuperare dal db
-		public void setRiepilogoCliente(String id, String cognome, String nome, String codice_fiscale, String partita_iva, String citta, String cap, String indirizzo, String email, String telefono, String cellulare, String fax, String rifAgente ) {
+		public void setRiepilogoCliente(M_Cliente c) {
 			
-			this.TFidCliente.setText(id);
-			this.TFcognome.setText(cognome);
-			this.TFnome.setText(nome);
-			this.TFcodicefiscale.setText(codice_fiscale);
-			this.TFpartitaiva.setText(partita_iva);
-			this.TFindirizzo.setText(indirizzo);
-			this.TFcitta.setText(citta);
-			this.TFcap.setText(cap);
-			this.TFtelefono.setText(telefono);
-			this.TFcell.setText(cellulare);
-			this.TFfax.setText(fax);
-			this.TFemail.setText(email);
-			this.TFrifAgente.setText(rifAgente);
+			cliente = c;
 			
-			//a che serve il rif agente nel singolo agente visto che è sempre e solo lui?
+			this.TFidCliente.setText(Integer.toString(cliente.getIdCliente()));
+			this.TFcognome.setText(cliente.getCognome());
+			this.TFnome.setText(cliente.getNome());
+			this.TFcodicefiscale.setText(cliente.getCodice_fiscale());
+			this.TFpartitaiva.setText(cliente.getPartita_iva());
+			this.TFindirizzo.setText(cliente.getIndirizzo());
+			this.TFcitta.setText(cliente.getCitta());
+			this.TFcap.setText(cliente.getCAP());
+			this.TFtelefono.setText(cliente.getTelefono());
+			this.TFcell.setText(cliente.getCell());
+			this.TFfax.setText(cliente.getFax());
+			this.TFemail.setText(cliente.getEmail());
+			this.TFrifAgente.setText(cliente.getAgenteAssociato().getCognome()+" "+cliente.getAgenteAssociato().getNome());
+
 		}
 		
 		//questo metodo rende le TF modificabili per effettuare update dei dati
@@ -913,6 +926,9 @@ public class RiepilogoClienteView extends JPanel {
 		}
 		
 
+		public void setScontoCliente(String sconto) {
+			TFsconto.setText(sconto);			
+		}
 }
 		
 

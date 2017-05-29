@@ -1,5 +1,7 @@
 package agent_trade.ui.content.clienti;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -37,28 +39,36 @@ public class Ricerca_cliente extends JDialog {
 	
 	/*attributi privati*/
 
-	private JPanel panelloCerca;
-	private JPanel panelloRisultati;
-	private JPanel panelloBottoni;
+	private JPanel pannelloCerca;
+	private JPanel pannelloRisultati;
+	private JPanel pannelloBottoni;
+	private JPanel pannCognome;
+	private JPanel pannPIVA;
+	private JPanel pannCodFis;
+	private JPanel pannCitta;
+	private JPanel pannErrore;
+	private JPanel pannBottone;
 	
 	private JScrollPane scrollPane;
-
-	private JTextField TFCerca;
-
-	private JList<M_Cliente> clienti;
 	
 	private JTable table;
 	private TableModel JTableModel;
 	
+	private JLabel LabelCognome;
+	private JLabel labelPI;
+	private JLabel labelCodFis;
+	private JLabel labelCitta;
 	private JLabel labelError;
-	private JLabel LabelCerca;
+	
+	private JTextField TFCognome;
+	private JTextField TFPI;
+	private JTextField TFCodFis;
+	private JTextField TFCitta;
 	
 	private JButton BottoneVisualizza;
 	private JButton BottoneCerca;
-	private JTextField TFcercaPI;
-	private JTextField TFcercaCF;
-	private JTextField TFcercaCitta;
-	
+
+		
 	/*costruttori*/
 
 	public Ricerca_cliente() 
@@ -73,60 +83,80 @@ public class Ricerca_cliente extends JDialog {
 		setBounds(450, 250, 749, 406);
 		getContentPane().setLayout(null);
 		
-		panelloCerca = new JPanel();
-		panelloCerca.setBounds(0, 0, 743, 114);
-		getContentPane().add(panelloCerca);
-		panelloCerca.setLayout(null);
+		pannelloCerca = new JPanel();
+		pannelloCerca.setBounds(0, 0, 743, 114);
+		getContentPane().add(pannelloCerca);
 		
-		LabelCerca = new JLabel(Costanti.LABEL_COGNOME);
-		LabelCerca.setBounds(10, 11, 137, 40);
-		panelloCerca.add(LabelCerca);
+		pannCognome = new JPanel();
+		pannCognome.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannCognome);
 		
-		TFCerca = new JTextField();
-		TFCerca.setBounds(157, 21, 180, 20);
-		panelloCerca.add(TFCerca);
-		TFCerca.setColumns(10);
+		LabelCognome = new JLabel(Costanti.LABEL_COGNOME);
+		LabelCognome.setPreferredSize(new Dimension(137, 14));
+		pannCognome.add(LabelCognome);
 		
-		JLabel labelCercaPI = new JLabel(Costanti.LABEL_PARTITA_IVA);
-		labelCercaPI.setBounds(365, 11, 64, 40);
-		panelloCerca.add(labelCercaPI);
+		TFCognome = new JTextField();
+		TFCognome.setPreferredSize(new Dimension(180, 20));
+		pannCognome.add(TFCognome);
 		
-		TFcercaPI = new JTextField();
-		TFcercaPI.setColumns(10);
-		TFcercaPI.setBounds(439, 21, 180, 20);
-		panelloCerca.add(TFcercaPI);
+		pannPIVA = new JPanel();
+		pannPIVA.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannPIVA);
 		
-		JLabel labelCercaCF = new JLabel(Costanti.LABEL_COD_FISC);
-		labelCercaCF.setBounds(10, 50, 137, 40);
-		panelloCerca.add(labelCercaCF);
+		labelPI = new JLabel(Costanti.LABEL_PARTITA_IVA);
+		labelPI.setPreferredSize(new Dimension(137, 14));
+		pannPIVA.add(labelPI);
 		
-		TFcercaCF = new JTextField();
-		TFcercaCF.setColumns(10);
-		TFcercaCF.setBounds(157, 60, 180, 20);
-		panelloCerca.add(TFcercaCF);
+		TFPI = new JTextField();
+		TFPI.setPreferredSize(new Dimension(180, 20));
+		pannPIVA.add(TFPI);
 		
-		JLabel labelCercaCitta = new JLabel(Costanti.LABEL_CITTA);
-		labelCercaCitta.setBounds(365, 50, 64, 40);
-		panelloCerca.add(labelCercaCitta);
+		pannCodFis = new JPanel();
+		pannCodFis.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannCodFis);
 		
-		TFcercaCitta = new JTextField();
-		TFcercaCitta.setColumns(10);
-		TFcercaCitta.setBounds(439, 60, 180, 20);
-		panelloCerca.add(TFcercaCitta);
+		labelCodFis = new JLabel(Costanti.LABEL_COD_FISC);
+		labelCodFis.setPreferredSize(new Dimension(137, 14));
+		pannCodFis.add(labelCodFis);
 		
-		BottoneCerca = new JButton(Costanti.BOTTONE_CERCA);
-		BottoneCerca.setBounds(644, 80, 89, 23);
-		panelloCerca.add(BottoneCerca);
+		TFCodFis = new JTextField();
+		TFCodFis.setPreferredSize(new Dimension(180, 20));
+		pannCodFis.add(TFCodFis);
 		
+		pannCitta = new JPanel();
+		pannCitta.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannCitta);
+		
+		labelCitta = new JLabel(Costanti.LABEL_CITTA);
+		labelCitta.setPreferredSize(new Dimension(137, 14));
+		pannCitta.add(labelCitta);
+		
+		TFCitta = new JTextField();
+		TFCitta.setPreferredSize(new Dimension(180, 20));
+		pannCitta.add(TFCitta);
+		
+		pannErrore = new JPanel();
+		pannErrore.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannErrore);
+				
 		labelError = DefaultComponentFactory.getInstance().createLabel("");
 		labelError.setHorizontalAlignment(SwingConstants.CENTER);
-		labelError.setBounds(10, 89, 219, 14);
-		panelloCerca.add(labelError);
+		labelError.setPreferredSize(new Dimension(350, 14));
+		pannErrore.add(labelError);
 		
-		panelloRisultati = new JPanel();
-		panelloRisultati.setBounds(0, 114, 743, 216);
-		getContentPane().add(panelloRisultati);
-		panelloRisultati.setLayout(null);
+		pannBottone = new JPanel();
+		pannBottone.setPreferredSize(new Dimension(365, 30));
+		pannBottone.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+		pannelloCerca.add(pannBottone);
+		
+		BottoneCerca = new JButton(Costanti.BOTTONE_CERCA);
+		BottoneCerca.setPreferredSize(new Dimension(90, 25));
+		pannBottone.add(BottoneCerca);
+		
+		pannelloRisultati = new JPanel();
+		pannelloRisultati.setBounds(0, 114, 743, 216);
+		getContentPane().add(pannelloRisultati);
+		pannelloRisultati.setLayout(null);
 		
 		String[] colNames = Costanti.INTESTAZIONE_TABELLA_RICERCA_CLIENTI;
 		JTableModel = new DefaultTableModel(
@@ -141,22 +171,22 @@ public class Ricerca_cliente extends JDialog {
 
 	    scrollPane = new JScrollPane(table);
 	    scrollPane.setBounds(10, 11, 723, 200);
-	    panelloRisultati.add(scrollPane);
+	    pannelloRisultati.add(scrollPane);
 		 
-	  	panelloBottoni = new JPanel();
-		panelloBottoni.setBounds(0, 321, 743, 47);
-		getContentPane().add(panelloBottoni);
-		panelloBottoni.setLayout(null);
+	  	pannelloBottoni = new JPanel();
+		pannelloBottoni.setBounds(0, 321, 743, 47);
+		getContentPane().add(pannelloBottoni);
+		pannelloBottoni.setLayout(null);
 		
 		BottoneVisualizza = new JButton(Costanti.BOTTONE_VISUALIZZA);
 		BottoneVisualizza.setEnabled(false);
 		BottoneVisualizza.setBounds(634, 11, 99, 23);
-		panelloBottoni.add(BottoneVisualizza);
+		pannelloBottoni.add(BottoneVisualizza);
 		
 		//resetta i campi della ricerca e svuota la tabella
 		JButton BottoneAnnullaCerca = new JButton(Costanti.BOTTONE_ANNULLA);
 		BottoneAnnullaCerca.setBounds(506, 11, 99, 23);
-		panelloBottoni.add(BottoneAnnullaCerca);
+		pannelloBottoni.add(BottoneAnnullaCerca);
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -176,7 +206,7 @@ public class Ricerca_cliente extends JDialog {
 					}
 					//fare le modifiche a ricerca cliente!!!!
 					try {
-						Ctrl_gestisciCliente.getInstance().ricercaCliente(TFCerca.getText(), TFcercaPI.getText(), TFcercaCF.getText(), TFcercaCitta.getText());
+						Ctrl_gestisciCliente.getInstance().ricercaCliente(TFCognome.getText(), TFPI.getText(), TFCodFis.getText(), TFCitta.getText());
 					} 
 					catch (PersistentException e) {
 						e.printStackTrace();
@@ -206,6 +236,17 @@ public class Ricerca_cliente extends JDialog {
 	}
 	
 	/*metodi di classe*/
+	
+	public static Ricerca_cliente getInstance(){
+		if (instance==null)
+			instance = new Ricerca_cliente();
+		return instance;	 
+	}
+	
+	public static void cancInstanza(){
+		instance=null;	 
+	}
+	
 	/*metodi privati*/
 	/*metodi pubblici*/
 	
@@ -235,10 +276,10 @@ public class Ricerca_cliente extends JDialog {
 	
 	//resetta i campi della ricerca cliente
 	public void resetRicerca(){
-		TFCerca.setText(null);
-		TFcercaPI.setText(null);
-		TFcercaCF.setText(null);
-		TFcercaCitta.setText(null);
+		TFCognome.setText(null);
+		TFPI.setText(null);
+		TFCodFis.setText(null);
+		TFCitta.setText(null);
 	}
 	
 	public void svuotaTabella() {
@@ -256,31 +297,23 @@ public class Ricerca_cliente extends JDialog {
 		labelError.setText(err);
 	}
 	
-	public static void cancInstanza(){
-		instance=null;	 
-	}
-	
-	public String getRicerca(){
-		return TFCerca.getText();
-	}
-	
-	public static Ricerca_cliente getInstance(){
-		if (instance==null)
-			instance = new Ricerca_cliente();
-		return instance;	 
-	}
-		
-	public TableModel getJTableModel(){
-		return JTableModel;	 
-	}
-		
-	public JTable getTableInstance(){
-		return table;	 
-	}
-		
-	private void init(){
-		this.clienti = new JList<M_Cliente>();
-	}
+////	non usato
+//	public String getRicerca(){
+//		return TFCognome.getText();
+//	}
+//	
+////	non usato	
+//	public TableModel getJTableModel(){
+//		return JTableModel;	 
+//	}
+////	non usato
+//	public JTable getTableInstance(){
+//		return table;	 
+//	}
+////	non usato	
+//	private void init(){
+//		this.clienti = new JList<M_Cliente>();
+//	}
 }
 		
 

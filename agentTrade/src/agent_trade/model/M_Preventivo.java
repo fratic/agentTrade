@@ -129,6 +129,23 @@ public class M_Preventivo implements Observer {
 		}
 	}
 	
+	
+public static M_Preventivo[] caricaPreventiviParametri(int id, String codFis, String cognome, String nome) throws PersistentException{
+		
+		try{
+			PreventivoCriteria criteriaPreventivi = new PreventivoCriteria();
+			criteriaPreventivi.createCriteria("rif_Agente", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			criteriaPreventivi.idPreventivo.eq(id);
+//			criteriaPreventivi.createCriteria("rif_Cliente", "cognome", JoinType.INNER_JOIN,   Restrictions.eq("cognome", cognome)); 
+//			criteriaPreventivi.createCriteria("rif_Cliente", "nome", JoinType.INNER_JOIN,   Restrictions.eq("nome", nome));
+//			criteriaPreventivi.createCriteria("rif_Cliente", "codice_fiscale", JoinType.INNER_JOIN,   Restrictions.eq("codice_fiscale", codFis)); 
+			return criteriaPreventivi.listPreventivo();
+		}
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
 
 	/*
 	 * metodi privati

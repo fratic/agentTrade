@@ -21,6 +21,7 @@ import org.orm.PersistentException;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Agente;
+import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Sconto;
@@ -63,6 +64,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	/*attributi privati*/
 	
 	private JButton nuovo_preventivo;
+	private JButton cerca_preventivo;
 	private JButton bottoneCercaCliente;
 	private JButton bottoneNuovoCliente;
 	
@@ -204,6 +206,12 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		nuovo_preventivo.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.NUOVO_PREVENTIVO_ICON)));
 		panello_menu_preventivo.add(nuovo_preventivo);
 		
+		cerca_preventivo = new JButton("");
+		cerca_preventivo.setToolTipText(Costanti.TIP_CERCA_PREVENTIVO);
+		cerca_preventivo.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.CERCA_PREVENTIVO_ICON)));
+		cerca_preventivo.setBounds(103, 25, 50, 50);
+		panello_menu_preventivo.add(cerca_preventivo);
+		
 		/*JButton button = new JButton("");
 		button.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/save-icon.png")));
 		button.setBounds(94, 20, 50, 50);
@@ -265,6 +273,13 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 				catch (PersistentException e) {
 					e.printStackTrace();
 				}				
+			}
+		});
+		
+		cerca_preventivo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+					Ctrl_elaboraPreventivo.getInstance().btnCerca();			
 			}
 		});
 		
@@ -392,10 +407,13 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	/*metodi pubblici*/
 	
 	
-	public void setSchedaCliente(String id, String cognome, String nome, String codice_fiscale, String partita_iva,String indirizzo, String citta,  String cap, String email, String telefono,String cellulare,  String fax, M_Agente rifAgente) {
+	public void setSchedaCliente(M_Cliente cliente) {
 		
-		((RiepilogoClienteView) riep_cliente).setRiepilogoCliente(id, cognome, nome, codice_fiscale, partita_iva, citta, cap, indirizzo, email, telefono, cellulare, fax, (rifAgente.getCognome()+" "+rifAgente.getNome()));
-
+		((RiepilogoClienteView) riep_cliente).setRiepilogoCliente(cliente);
+	}
+	
+	public void setScontoCliente(String sconto){
+		((RiepilogoClienteView) riep_cliente).setScontoCliente(sconto);
 	}
 
 	//sblocca i campi per la modifica cliente
@@ -460,6 +478,10 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		nuovo_preventivo.setEnabled(b);
 	}
 	
+	public void setEnableCercaPreventivo(boolean b){
+		cerca_preventivo.setEnabled(b);
+	}
+	
 	public void setVisibleIntestazione(boolean b){
 		intestazione.setVisible(b);
 	}
@@ -476,8 +498,8 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		((IntestazioneNuovoPreventivoView) intestazione).setAgente(a);
 	}
 	
-	public void setNewIntestCliente(String cognome, String nome, String indirizzo, String email){
-		((IntestazioneNuovoPreventivoView) intestazione).setCliente(cognome, nome, indirizzo, email);
+	public void setNewIntestCliente(String cognome, String nome, String indirizzo, String email, String sconto){
+		((IntestazioneNuovoPreventivoView) intestazione).setCliente(cognome, nome, indirizzo, email, sconto);
 	}
 	
 	public void setNewIntestData (Date data){
@@ -493,13 +515,14 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		((RiepilogoIntestazionePreventivoView) riep_intestazione).setAgente(a);
 	}
 	
-	public void setRiepIntestCliente(M_Preventivo p){
+	public void setRiepIntestCliente(M_Preventivo p) throws PersistentException{
 	
 		String cognome =p.getRif_Cliente().getCognome();
 		String nome =p.getRif_Cliente().getNome();
 		String indirizzo =p.getRif_Cliente().getIndirizzo();
 		String email = p.getRif_Cliente().getEmail();
-		((RiepilogoIntestazionePreventivoView) riep_intestazione).setCliente(cognome, nome, indirizzo, email);
+		String sconto = Ctrl_gestisciCliente.getInstance().mostraScontoCliente(p.getRif_Cliente().getSconto());
+		((RiepilogoIntestazionePreventivoView) riep_intestazione).setCliente(cognome, nome, indirizzo, email, sconto);
 	}
 	
 	public void setRiepIntestData (Date data){

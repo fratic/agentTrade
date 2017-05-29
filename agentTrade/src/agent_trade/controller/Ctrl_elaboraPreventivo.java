@@ -23,10 +23,12 @@ import agent_trade.sconti.ScontoStrategyFactory;
 import agent_trade.ui.content.clienti.CercaClienteView;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
+import agent_trade.ui.content.preventivi.Ricerca_preventivo;
 import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
 import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.ui.primaryView.PrimaryAgenteView;
+import agent_trade.util.Costanti;
 
 public class Ctrl_elaboraPreventivo {
 
@@ -73,6 +75,7 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.initItem();
 		
 		PrimaryAgenteView.getInstance().setEnableNewPreventivo(false);
+		PrimaryAgenteView.getInstance().setEnableCercaPreventivo(false);
 		PrimaryAgenteView.getInstance().setEnableTabCliente(false);
 		PrimaryAgenteView.getInstance().setEnableSalva(false);
 		
@@ -81,8 +84,9 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.getInstance().setNewIntestAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
 		PrimaryAgenteView.getInstance().setNewIntestData(M_Preventivo.getInstance().getData());
 		PrimaryAgenteView.getInstance().setNewIntestNumPrev(M_Preventivo.getInstance().getIdPreventivo());
-		PrimaryAgenteView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
-
+		String sconto = Ctrl_gestisciCliente.getInstance().mostraScontoCliente(cliente.getSconto());
+		PrimaryAgenteView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail(), sconto);
+		
 		ProdottiView.getInstance().enableBottoni();
 	}
 	
@@ -97,6 +101,7 @@ public class Ctrl_elaboraPreventivo {
 		AlberoPreventivi.selezionaNodo(nodo);
 
 		PrimaryAgenteView.getInstance().setEnableNewPreventivo(true);
+		PrimaryAgenteView.getInstance().setEnableCercaPreventivo(true);
 		PrimaryAgenteView.getInstance().setEnableTabCliente(true);
 
 		PrimaryAgenteView.getInstance().setVisibleIntestazione(false);
@@ -117,6 +122,7 @@ public class Ctrl_elaboraPreventivo {
 	private void initAnnullaPrev() {
 		
 		PrimaryAgenteView.getInstance().setEnableNewPreventivo(true);
+		PrimaryAgenteView.getInstance().setEnableCercaPreventivo(true);
 		PrimaryAgenteView.getInstance().setEnableTabCliente(true);
 		PrimaryAgenteView.getInstance().setVisibleIntestazione(false);
 		PrimaryAgenteView.getInstance().setVisibleItemPreventivi(false);
@@ -141,6 +147,7 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.initItem();
 
 		PrimaryAgenteView.getInstance().setEnableNewPreventivo(false);
+		PrimaryAgenteView.getInstance().setEnableCercaPreventivo(false);
 		PrimaryAgenteView.getInstance().setEnableTabCliente(false);
 		PrimaryAgenteView.getInstance().setEnableSalva(true);
 
@@ -149,8 +156,8 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.getInstance().setNewIntestAgente(prevMod.getRif_Agente().getCognome()+" "+prevMod.getRif_Agente().getNome());
 		PrimaryAgenteView.getInstance().setNewIntestData(prevMod.getData());
 		PrimaryAgenteView.getInstance().setNewIntestNumPrev(prevMod.getIdPreventivo());
-		
-		PrimaryAgenteView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail());
+		String sconto = Ctrl_gestisciCliente.getInstance().mostraScontoCliente(cliente.getSconto());
+		PrimaryAgenteView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail(), sconto);
 
 		ProdottiView.getInstance().enableBottoni();
 						
@@ -394,6 +401,76 @@ public class Ctrl_elaboraPreventivo {
 			
 			prev.delete();
 	}
+	
+	
+public void btnCerca() {
+		
+		PrimaryAgenteView.getInstance().resetPannelloCentralePreventivo();
+		PrimaryAgenteView.getInstance().setSfondoPrev();
+		try {
+			Ricerca_preventivo.getInstance().popolaTab(Ctrl_elaboraPreventivo.getInstance().caricaPreventivi());
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		Ricerca_preventivo.getInstance().setVisible(true);
+		
+	}
+	
+	
+	public M_Preventivo[] caricaPreventivi() throws PersistentException{
+		
+		M_Preventivo[] listaPrev = M_Preventivo.caricaPreventiviAgente();
+		return listaPrev;
+	}
+	
+	
+	public void annullaRicercaPreventivo(){
+		
+		Ricerca_preventivo.getInstance().svuotaTabella();
+		Ricerca_preventivo.getInstance().resetRicerca();
+		Ricerca_preventivo.getInstance().setVisibleErroreRicercaPreventivo(false);
+	}
+	
+	
+	public void ricercaPreventivo(String id, String codFis, String cognome, String nome) throws PersistentException{
+		
+		if ((id.equals("")||id.equals(null)) && (cognome.equals("")||cognome.equals(null)) && (nome.equals("")||nome.equals(null)) && (codFis.equals("")||codFis.equals(null))){
+			
+			Ricerca_preventivo.getInstance().popolaTab(Ctrl_elaboraPreventivo.getInstance().caricaPreventivi());
+		}
+		else{
+			
+			M_Preventivo[] listaPrev = M_Preventivo.caricaPreventiviParametri(Integer.parseInt(id), codFis, cognome, nome );
+			
+			if(listaPrev.length == 0){
+				
+				Ricerca_preventivo.getInstance().setErrore(Costanti.MESSAGGIO_PREVENTIVO_NON_TROVATO);
+				Ricerca_preventivo.getInstance().setVisibleErroreRicercaPreventivo(true);
+			}
+			else{
+				
+				Ricerca_preventivo.getInstance().svuotaTabella();
+				
+				for(M_Preventivo pLoad : listaPrev){
+					Ricerca_preventivo.getInstance().updateTable(pLoad.getIdPreventivo(), pLoad.getRif_Cliente(), pLoad.getData());
+				}
+			}
+		}
+	}
+	
+	
+	public void recuperaPreventivo(int idPrev) throws PersistentException{
+		
+		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
+		
+		M_Preventivo prev = M_Preventivo.caricaPreventivo(idPrev);
+		
+		Ricerca_preventivo.getInstance().dispose();
+		Ricerca_preventivo.cancInstanza();
+		
+		initRiepilogoPreventivo(prev);
+	}
+
 	
 	
 }

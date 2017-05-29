@@ -239,6 +239,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.model.M_Cliente;
 import agent_trade.util.Costanti;
 
 public class DettaglioClienteView extends JPanel {
@@ -261,6 +262,7 @@ public class DettaglioClienteView extends JPanel {
 	private JLabel labelTelefono;
 	private JLabel labelCell;
 	private JLabel labelFax;
+	private JLabel labelSconto;
 	private JLabel labelRifAgente;
 	private JLabel labelErrore;
 	
@@ -276,6 +278,7 @@ public class DettaglioClienteView extends JPanel {
 	private JTextField TFtelefono;
 	private JTextField TFcell;
 	private JTextField TFfax;
+	private JTextField TFsconto;
 	private JTextField TFrifAgente;
 	
 	private JButton bottoneSalvaCliente;
@@ -283,50 +286,28 @@ public class DettaglioClienteView extends JPanel {
 	private JButton bottoneEsci;
 	
 	private JPanel pannelloCentro;
-
 	private JScrollPane scrollPane;
-
 	private JPanel pannelloCampi;
-
-	private JPanel pannelloOvest;
-
 	private JPanel pannelloBottoni;
-
 	private JPanel pannelloContenitore;
-
 	private JPanel pannelloIcona;
-
 	private Container contenitoreCampi;
-
 	private JPanel pannCognome;
-
 	private JPanel pannNome;
-
 	private JPanel pannCodFis;
-
 	private JPanel pannPartitaIva;
-
 	private JPanel pannIndirizzo;
-
 	private JPanel pannCitta;
-
 	private JPanel pannCap;
-
 	private JPanel pannTelefono;
-
 	private JPanel pannCellulare;
-
 	private JPanel pannFax;
-
 	private JPanel pannEmail;
-
+	private JPanel pannSconto;
 	private JPanel pannRifAgente ;
-
 	private JPanel pannErrore;
-
 	private JPanel pannelloEast;
-	
-	
+
 	/*costruttori*/
 	
 	public DettaglioClienteView() {
@@ -563,6 +544,23 @@ public class DettaglioClienteView extends JPanel {
 		TFemail.setToolTipText(Costanti.TIP_EMAIL);
 		pannEmail.add(TFemail);
 		
+		pannSconto = new JPanel();
+		FlowLayout flowLayout16 = (FlowLayout) pannSconto.getLayout();
+		flowLayout16.setHgap(0);
+		flowLayout16.setVgap(0);
+		pannSconto.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
+		contenitoreCampi.add(pannSconto);
+		 
+		labelSconto = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_SCONTO);
+		labelSconto.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
+		labelSconto.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
+		pannSconto.add(labelSconto);
+		 
+		TFsconto = new JTextField();//NON E' EDITABILE VERRA' CARICATO UNO SCONTO INIZIALE
+		TFsconto.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		TFsconto.setEditable(false);
+		pannSconto.add(TFsconto);
+		
 		pannRifAgente = new JPanel();
 		FlowLayout flowLayout14 = (FlowLayout) pannRifAgente.getLayout();
 		flowLayout14.setHgap(0);
@@ -628,7 +626,21 @@ public class DettaglioClienteView extends JPanel {
 		bottoneSalvaCliente.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-				Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente((String)TFnome.getText(), (String)TFcognome.getText(), (String)TFcodicefiscale.getText(), (String)TFpartitaiva.getText(), (String)TFcitta.getText(), (String)TFcap.getText(), (String)TFindirizzo.getText(), (String)TFemail.getText(), (String)TFtelefono.getText(), (String)TFcell.getText(), (String)TFfax.getText());
+				M_Cliente cliente = new M_Cliente();
+				
+				cliente.setNome(TFnome.getText());
+				cliente.setCognome(TFcognome.getText());
+				cliente.setCodice_fiscale(TFcodicefiscale.getText());
+				cliente.setPartita_iva(TFpartitaiva.getText());
+				cliente.setCitta(TFcitta.getText());
+				cliente.setCAP(TFcap.getText());
+				cliente.setIndirizzo(TFindirizzo.getText());
+				cliente.setEmail(TFemail.getText());
+				cliente.setTelefono(TFtelefono.getText());
+				cliente.setCell(TFcell.getText());
+				cliente.setFax(TFfax.getText());
+				
+				Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente(cliente);
 
 			} 
 			catch (PersistentException e) {
@@ -683,5 +695,6 @@ public class DettaglioClienteView extends JPanel {
 		TFtelefono.setText(null);
 		TFcell.setText(null);
 		TFfax.setText(null);
+		TFsconto.setText(null);
 	}
 }
