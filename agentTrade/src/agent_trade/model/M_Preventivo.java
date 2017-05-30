@@ -130,15 +130,35 @@ public class M_Preventivo implements Observer {
 	}
 	
 	
-public static M_Preventivo[] caricaPreventiviParametri(int id, String codFis, String cognome, String nome) throws PersistentException{
+public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis, String cognome, String nome) throws PersistentException{
 		
 		try{
 			PreventivoCriteria criteriaPreventivi = new PreventivoCriteria();
-			criteriaPreventivi.createCriteria("rif_Agente", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
-			criteriaPreventivi.idPreventivo.eq(id);
-//			criteriaPreventivi.createCriteria("rif_Cliente", "cognome", JoinType.INNER_JOIN,   Restrictions.eq("cognome", cognome)); 
-//			criteriaPreventivi.createCriteria("rif_Cliente", "nome", JoinType.INNER_JOIN,   Restrictions.eq("nome", nome));
-//			criteriaPreventivi.createCriteria("rif_Cliente", "codice_fiscale", JoinType.INNER_JOIN,   Restrictions.eq("codice_fiscale", codFis)); 
+			
+			if (!id.equals("")){
+				int id_int=Integer.parseInt(id);
+				if (id_int!=0){
+					criteriaPreventivi.idPreventivo.eq(id_int);
+				}
+			}
+			
+			criteriaPreventivi.createCriteria("rif_Cliente", "cliente");
+			
+			if (codFis!="" || codFis!=null){
+				
+				criteriaPreventivi.add(Restrictions.like("cliente.codice_fiscale", "%"+codFis+"%"));
+			}
+			
+			if (cognome!="" || cognome!=null){
+				
+				criteriaPreventivi.add(Restrictions.like("cliente.cognome", "%"+cognome+"%"));
+			}
+			
+			if (nome!="" || nome!=null){
+				
+				criteriaPreventivi.add(Restrictions.like("cliente.nome", "%"+nome+"%"));
+			}
+
 			return criteriaPreventivi.listPreventivo();
 		}
 		finally {

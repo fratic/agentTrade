@@ -21,8 +21,8 @@ public final class Costanti {
 	public static String  version = "agente";
 //	public final static String  version = "mandante";
 
-//	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
-	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
+	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
+//	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
 
 	public final static String  agente = "agente";
 	public final static String  mandante = "mandante";
@@ -42,8 +42,8 @@ public final class Costanti {
 //	public final static int  Look_Feel = 6;
 
 	
-//	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
-	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
+	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
+//	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
 
 
 	
@@ -111,7 +111,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_AZIENDA_NON_TROVATA = "Azienda non trovata";
 	public final static String MESSAGGIO_CANCELLA_AZIENDA = "Sei sicuro di voler cancellare l'azienda corrente?";
 	public final static String MESSAGGIO_CANCELLA_PRODOTTO = "Sei sicuro di voler cancellare il prodotto corrente?";
-	public final static String MESSAGGIO_PREVENTIVO_NON_TROVATO = "Previentivo non trovato";
+	public final static String MESSAGGIO_PREVENTIVO_NON_TROVATO = "Preventivo non trovato";
 	
 	
 	/**

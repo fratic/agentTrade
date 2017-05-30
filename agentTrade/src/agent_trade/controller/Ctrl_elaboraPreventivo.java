@@ -434,13 +434,14 @@ public void btnCerca() {
 	
 	public void ricercaPreventivo(String id, String codFis, String cognome, String nome) throws PersistentException{
 		
+		System.out.println("ID----"+id+"-----");
 		if ((id.equals("")||id.equals(null)) && (cognome.equals("")||cognome.equals(null)) && (nome.equals("")||nome.equals(null)) && (codFis.equals("")||codFis.equals(null))){
 			
 			Ricerca_preventivo.getInstance().popolaTab(Ctrl_elaboraPreventivo.getInstance().caricaPreventivi());
 		}
 		else{
 			
-			M_Preventivo[] listaPrev = M_Preventivo.caricaPreventiviParametri(Integer.parseInt(id), codFis, cognome, nome );
+			M_Preventivo[] listaPrev = M_Preventivo.caricaPreventiviParametri(id, codFis, cognome, nome );
 			
 			if(listaPrev.length == 0){
 				

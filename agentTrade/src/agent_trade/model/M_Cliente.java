@@ -149,6 +149,7 @@ public class M_Cliente {
 		return null;
 	}
 	
+	//è cosi complicato mettere un cazzo di nome normale per i parametri? in modo che quando uno lo usa sa chi sono i parametri?
 	public static M_Cliente[] caricaClientiParametri(String c, String pi, String cf, String city)throws PersistentException{
 		
 		try{
@@ -160,6 +161,28 @@ public class M_Cliente {
 			criteriaCliente.partita_iva.like("%"+pi+"%");
 			criteriaCliente.codice_fiscale.like("%"+cf+"%");
 			criteriaCliente.citta.like("%"+city+"%");
+			criteriaCliente.attivo.eq(1);
+			return criteriaCliente.listCliente();
+
+		}
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		return null;
+	}
+	
+	public static M_Cliente[] caricaClientiParametri(String cognome, String nome, String cf)throws PersistentException{
+		
+		try{
+			ClienteCriteria criteriaCliente= new ClienteCriteria();
+			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
+			criteriaCliente.nome.like("%"+nome+"%");
+			criteriaCliente.cognome.like("%"+cognome+"%");
+			criteriaCliente.codice_fiscale.like("%"+cf+"%");
 			criteriaCliente.attivo.eq(1);
 			return criteriaCliente.listCliente();
 
