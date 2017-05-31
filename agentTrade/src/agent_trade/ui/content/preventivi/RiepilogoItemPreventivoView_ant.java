@@ -22,7 +22,7 @@ import org.orm.PersistentException;
 import agent_trade.model.M_Preventivo;
 import agent_trade.util.Costanti;
 
-public class RiepilogoItemPreventivoView extends JPanel
+public class RiepilogoItemPreventivoView_ant extends JPanel
 {
 
 	/*attributi di classe*/
@@ -31,7 +31,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static RiepilogoItemPreventivoView instance;
+	private static RiepilogoItemPreventivoView_ant instance;
 	private static TableModel JTableModel;
 
 	
@@ -63,7 +63,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 	
 	/*costruttori*/
 	
-	public RiepilogoItemPreventivoView() {
+	public RiepilogoItemPreventivoView_ant() {
 
 		setLayout(new GridLayout(1,1));
 		
@@ -216,9 +216,9 @@ public class RiepilogoItemPreventivoView extends JPanel
 	
 	/*metodi di classe*/
 	
-	public static RiepilogoItemPreventivoView getInstance(){
+	public static RiepilogoItemPreventivoView_ant getInstance(){
 		if (instance==null)
-			instance = new RiepilogoItemPreventivoView();
+			instance = new RiepilogoItemPreventivoView_ant();
 		return instance;	 
 	}
 	

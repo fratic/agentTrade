@@ -134,6 +134,19 @@ public class M_Azienda {
 	}
 	
 
+	public static M_Azienda[] caricaAziende() throws PersistentException {
+		try{
+			
+			AziendaCriteria criteriaAzienda = new AziendaCriteria();
+			//criteriaAzienda.attivo.eq(1);
+			criteriaAzienda.setMaxResults(1000);
+
+			return criteriaAzienda.listM_Azienda();
+		}
+		finally {	
+		}
+	}
+	
 	public static void aggiornaAziendaRemoto(M_Azienda a) throws PersistentException{
 		
 		PersistentTransaction t =  AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();

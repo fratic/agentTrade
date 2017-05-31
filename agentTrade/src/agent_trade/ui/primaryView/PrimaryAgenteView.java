@@ -20,7 +20,6 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
-import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
@@ -35,6 +34,7 @@ import agent_trade.ui.content.preventivi.IntestazioneNuovoPreventivoView;
 import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoIntestazionePreventivoView;
 import agent_trade.ui.content.preventivi.RiepilogoItemPreventivoView;
+import agent_trade.ui.content.prodotti.AlberoProdotti;
 import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.util.Costanti;
 import agent_trade.util.Sfondo_Cliente;
@@ -60,7 +60,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	
 	private static JPanel pannello_centrale_cliente;
 
-	
+
 	/*attributi privati*/
 	
 	private JButton nuovo_preventivo;
@@ -70,28 +70,29 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	
 	
 	private JPanel preventivo;
-	private JPanel panello_menu_preventivo;
-	private JPanel panello_sottomenu_preventivo;
-	private JPanel panello_laterale_preventivo;
+	private JPanel pannello_menu_preventivo;
+	private JPanel pannello_sottomenu_preventivo;
+	private JPanel pannello_laterale_preventivo;
 	
 	
 	private JPanel Cliente;
-	private JPanel panello_menu_cliente;
-	private JPanel panello_sottomenu_cliente;
-	private JPanel panello_laterale_cliente;
+	private JPanel pannello_menu_cliente;
+	private JPanel pannello_sottomenu_cliente;
+	private JPanel pannello_laterale_cliente;
 	
 	
 	private JPanel Catalogo;
-	private JPanel panello_menu_catalogo;
-	private JPanel panello_sottomenu_catalogo;
-	private JPanel panello_laterale_catalogo;
-	private JPanel panello_centrale_catalogo;
+	private JPanel pannello_menu_catalogo;
+	private JPanel pannello_sottomenu_catalogo;
+	private JPanel pannello_laterale_catalogo;
+	private JPanel pannello_centrale_catalogo;
 	private JPanel pannelloProdotti;
 	
 	
 	private JPanel alberoPreventivi;
 	private JPanel alberoClienti;
-	
+	private JPanel alberoProdotti;
+
 	
 	/*costruttori*/
 	
@@ -193,72 +194,72 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		tabbedPrincipale.setBackgroundAt(0, Color.WHITE);
 		preventivo.setLayout(new BorderLayout());
 				
-		panello_menu_preventivo = new JPanel();
-		panello_menu_preventivo.setBackground(Color.WHITE);
+		pannello_menu_preventivo = new JPanel();
+		pannello_menu_preventivo.setBackground(Color.WHITE);
 	
-		panello_menu_preventivo.setPreferredSize(new Dimension(1013, 100));
-		preventivo.add(panello_menu_preventivo, BorderLayout.NORTH);
-		panello_menu_preventivo.setLayout(null);
+		pannello_menu_preventivo.setPreferredSize(new Dimension(1013, 100));
+		preventivo.add(pannello_menu_preventivo, BorderLayout.NORTH);
+		pannello_menu_preventivo.setLayout(null);
 		
 		nuovo_preventivo = new JButton("");
 		nuovo_preventivo.setBounds(30, 25, 50, 50);
 		nuovo_preventivo.setToolTipText(Costanti.TIP_NUOVO_PREVENTIVO);
 		nuovo_preventivo.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.NUOVO_PREVENTIVO_ICON)));
-		panello_menu_preventivo.add(nuovo_preventivo);
+		pannello_menu_preventivo.add(nuovo_preventivo);
 		
 		cerca_preventivo = new JButton("");
 		cerca_preventivo.setToolTipText(Costanti.TIP_CERCA_PREVENTIVO);
 		cerca_preventivo.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.CERCA_PREVENTIVO_ICON)));
 		cerca_preventivo.setBounds(103, 25, 50, 50);
-		panello_menu_preventivo.add(cerca_preventivo);
+		pannello_menu_preventivo.add(cerca_preventivo);
 		
 		/*JButton button = new JButton("");
 		button.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/save-icon.png")));
 		button.setBounds(94, 20, 50, 50);
-		panello_menu_preventivo.add(button);
+		pannello_menu_preventivo.add(button);
 		
 		JButton button_1 = new JButton("");
 		button_1.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/delete.png")));
 		button_1.setBounds(168, 20, 50, 50);
-		panello_menu_preventivo.add(button_1);
+		pannello_menu_preventivo.add(button_1);
 		
 		JButton button_2 = new JButton("");
 		button_2.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/Settings-icon.png")));
 		button_2.setBounds(246, 20, 50, 50);
-		panello_menu_preventivo.add(button_2);
+		pannello_menu_preventivo.add(button_2);
 		
 		JButton button_3 = new JButton("");
 		button_3.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/search-icon.png")));
 		button_3.setBounds(323, 20, 50, 50);
-		panello_menu_preventivo.add(button_3);
+		pannello_menu_preventivo.add(button_3);
 		
 		JButton button_4 = new JButton("");
 		button_4.setIcon(new ImageIcon(PrimaryView.class.getResource("/agent_trade/ui/img/carrelloOrdine.png")));
 		button_4.setBounds(394, 20, 50, 50);
-		panello_menu_preventivo.add(button_4);*/
+		pannello_menu_preventivo.add(button_4);*/
 		
-		panello_sottomenu_preventivo = new JPanel();
-		panello_sottomenu_preventivo.setPreferredSize(new Dimension(1013, 617));
-		preventivo.add(panello_sottomenu_preventivo, BorderLayout.CENTER);
-		panello_sottomenu_preventivo.setLayout(new BorderLayout());
+		pannello_sottomenu_preventivo = new JPanel();
+		pannello_sottomenu_preventivo.setPreferredSize(new Dimension(1013, 617));
+		preventivo.add(pannello_sottomenu_preventivo, BorderLayout.CENTER);
+		pannello_sottomenu_preventivo.setLayout(new BorderLayout());
 
 		
-		panello_laterale_preventivo = new JPanel();
-		panello_laterale_preventivo.setBackground(UIManager.getColor("ToggleButton.background"));
-		panello_laterale_preventivo.setPreferredSize(new Dimension(260, 617));
-		panello_sottomenu_preventivo.add(panello_laterale_preventivo, BorderLayout.WEST);
-		panello_laterale_preventivo.setLayout(null);
+		pannello_laterale_preventivo = new JPanel();
+		pannello_laterale_preventivo.setBackground(UIManager.getColor("ToggleButton.background"));
+		pannello_laterale_preventivo.setPreferredSize(new Dimension(260, 617));
+		pannello_sottomenu_preventivo.add(pannello_laterale_preventivo, BorderLayout.WEST);
+		pannello_laterale_preventivo.setLayout(null);
 		
 		
 		alberoPreventivi = AlberoPreventivi.getInstance();
 		alberoPreventivi.setBounds(0, 0, 260, 617);
-		panello_laterale_preventivo.add(alberoPreventivi);
+		pannello_laterale_preventivo.add(alberoPreventivi);
 
 		
 		pannello_centrale_preventivo = new JPanel();
 		pannello_centrale_preventivo.setBackground(SystemColor.control);
 		pannello_centrale_preventivo.setPreferredSize(new Dimension(753, 617));
-		panello_sottomenu_preventivo.add(pannello_centrale_preventivo, BorderLayout.CENTER);
+		pannello_sottomenu_preventivo.add(pannello_centrale_preventivo, BorderLayout.CENTER);
 		pannello_centrale_preventivo.setLayout(new BorderLayout());
 		pannello_centrale_preventivo.setBorder(new EmptyBorder(7, 7, 0, 7));
 
@@ -293,46 +294,46 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		tabbedPrincipale.addTab(Costanti.TAB_CLIENTE, new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.CLIENTE_ICON)), Cliente, Costanti.TIP_GESTISCI_CLIENTE);
 		Cliente.setLayout(new BorderLayout());
 		
-		panello_menu_cliente = new JPanel();
-		panello_menu_cliente.setPreferredSize(new Dimension(1013, 100));
-		panello_menu_cliente.setLayout(null);
+		pannello_menu_cliente = new JPanel();
+		pannello_menu_cliente.setPreferredSize(new Dimension(1013, 100));
+		pannello_menu_cliente.setLayout(null);
 
-		panello_menu_cliente.setBackground(Color.WHITE);
-		Cliente.add(panello_menu_cliente,BorderLayout.NORTH);
+		pannello_menu_cliente.setBackground(Color.WHITE);
+		Cliente.add(pannello_menu_cliente,BorderLayout.NORTH);
 		
 		bottoneNuovoCliente = new JButton();
 		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.NUOVO_CLIENTE_ICON)));
 		bottoneNuovoCliente.setToolTipText(Costanti.TIP_NUOVO_CLIENTE);
 		bottoneNuovoCliente.setBounds(25, 25, 50, 50);
-		panello_menu_cliente.add(bottoneNuovoCliente);
+		pannello_menu_cliente.add(bottoneNuovoCliente);
 		
 		bottoneCercaCliente = new JButton("");
 		bottoneCercaCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.CERCA_CLIENTE_ICON)));
 		bottoneCercaCliente.setToolTipText(Costanti.TIP_CERCA_CLIENTE);
 		bottoneCercaCliente.setBounds(103, 25, 50, 50);
-		panello_menu_cliente.add(bottoneCercaCliente);
+		pannello_menu_cliente.add(bottoneCercaCliente);
 		
-		panello_sottomenu_cliente = new JPanel();
-		panello_sottomenu_cliente.setPreferredSize(new Dimension(1013, 617));
-		panello_sottomenu_cliente.setLayout(new BorderLayout());
-		Cliente.add(panello_sottomenu_cliente, BorderLayout.CENTER);
+		pannello_sottomenu_cliente = new JPanel();
+		pannello_sottomenu_cliente.setPreferredSize(new Dimension(1013, 617));
+		pannello_sottomenu_cliente.setLayout(new BorderLayout());
+		Cliente.add(pannello_sottomenu_cliente, BorderLayout.CENTER);
 
 		
-		panello_laterale_cliente = new JPanel();
-		panello_laterale_cliente.setPreferredSize(new Dimension(260, 617));
-		panello_sottomenu_cliente.add(panello_laterale_cliente, BorderLayout.WEST);
-		panello_laterale_cliente.setLayout(null);
+		pannello_laterale_cliente = new JPanel();
+		pannello_laterale_cliente.setPreferredSize(new Dimension(260, 617));
+		pannello_sottomenu_cliente.add(pannello_laterale_cliente, BorderLayout.WEST);
+		pannello_laterale_cliente.setLayout(null);
 
 		
 		alberoClienti = new AlberoClienti();
 		alberoClienti.setBounds(0, 0, 261, 617);
-		panello_laterale_cliente.add(alberoClienti);
+		pannello_laterale_cliente.add(alberoClienti);
 		
 		pannello_centrale_cliente = new JPanel();
 		pannello_centrale_cliente.setBackground(SystemColor.control);
 
 		pannello_centrale_cliente.setPreferredSize(new Dimension(753, 617));
-		panello_sottomenu_cliente.add(pannello_centrale_cliente, BorderLayout.CENTER);
+		pannello_sottomenu_cliente.add(pannello_centrale_cliente, BorderLayout.CENTER);
 		pannello_centrale_cliente.setLayout(new GridLayout(1,1));
 		pannello_centrale_cliente.setBorder(new EmptyBorder(7, 7, 0, 7));
 		
@@ -363,29 +364,37 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		tabbedPrincipale.addTab(Costanti.TAB_CATALOGO, new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.PRODOTTI_ICON)), Catalogo, null);
 		Catalogo.setLayout(new BorderLayout());
 		
-		panello_menu_catalogo = new JPanel();
-		panello_menu_catalogo.setPreferredSize(new Dimension(1013,100));
-		panello_menu_catalogo.setLayout(null);
-		panello_menu_catalogo.setBackground(Color.WHITE);
-		Catalogo.add(panello_menu_catalogo, BorderLayout.NORTH);
+		pannello_menu_catalogo = new JPanel();
+		pannello_menu_catalogo.setPreferredSize(new Dimension(1013,100));
+		pannello_menu_catalogo.setLayout(null);
+		pannello_menu_catalogo.setBackground(Color.WHITE);
+		Catalogo.add(pannello_menu_catalogo, BorderLayout.NORTH);
 
-		panello_sottomenu_catalogo = new JPanel();
-		panello_sottomenu_catalogo.setPreferredSize(new Dimension(1013,617));
-		panello_sottomenu_catalogo.setLayout(new BorderLayout());
-		Catalogo.add(panello_sottomenu_catalogo,BorderLayout.CENTER);
+		pannello_sottomenu_catalogo = new JPanel();
+		pannello_sottomenu_catalogo.setPreferredSize(new Dimension(1013,617));
+		pannello_sottomenu_catalogo.setLayout(new BorderLayout());
+		Catalogo.add(pannello_sottomenu_catalogo,BorderLayout.CENTER);
 		
-		panello_laterale_catalogo = new JPanel();
-		panello_laterale_catalogo.setPreferredSize(new Dimension(260,617));
-		panello_sottomenu_catalogo.add(panello_laterale_catalogo,BorderLayout.WEST);
+		pannello_laterale_catalogo = new JPanel();
+		pannello_laterale_catalogo.setBackground(UIManager.getColor("ToggleButton.background"));
+		pannello_laterale_catalogo.setPreferredSize(new Dimension(260,617));
+		pannello_sottomenu_catalogo.add(pannello_laterale_catalogo,BorderLayout.WEST);
+		pannello_laterale_catalogo.setLayout(null);
+
 		
-		panello_centrale_catalogo = new JPanel();
-		panello_centrale_catalogo.setPreferredSize(new Dimension(753,617));
-		panello_centrale_catalogo.setBackground(SystemColor.control);
-		panello_sottomenu_catalogo.add(panello_centrale_catalogo,BorderLayout.CENTER);
-		panello_centrale_catalogo.setLayout(new GridLayout(1,1));
+		pannello_centrale_catalogo = new JPanel();
+		pannello_centrale_catalogo.setBorder(new EmptyBorder(0, 0, 0, 0));
+		pannello_centrale_catalogo.setPreferredSize(new Dimension(753,617));
+		pannello_centrale_catalogo.setBackground(SystemColor.control);
+		pannello_sottomenu_catalogo.add(pannello_centrale_catalogo,BorderLayout.CENTER);
+		pannello_centrale_catalogo.setLayout(new GridLayout(1,1));
 		
 		pannelloProdotti = ProdottiView.getInstance();
-		panello_centrale_catalogo.add(pannelloProdotti);
+		pannello_centrale_catalogo.add(pannelloProdotti);
+		
+		alberoProdotti = AlberoProdotti.getInstance();
+		alberoProdotti.setBounds(0, 0, 260, 617);
+		pannello_laterale_catalogo.add(alberoProdotti);
 	}
 	
 	
@@ -567,6 +576,12 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	public void resetPannelloCentraleCliente(){
 		pannello_centrale_cliente.removeAll();
 		pannello_centrale_cliente.repaint();
+		
+	}
+	
+	public void resetPannelloCentraleCatalogo(){
+		pannello_centrale_catalogo.removeAll();
+		pannello_centrale_catalogo.repaint();
 		
 	}
 	

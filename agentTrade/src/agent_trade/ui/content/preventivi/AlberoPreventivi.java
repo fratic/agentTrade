@@ -13,6 +13,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
 import org.orm.PersistentException;
@@ -32,7 +33,7 @@ public class AlberoPreventivi extends JPanel {
 
 	/*attributi privati*/
 	
-	private DefaultMutableTreeNode radice;
+	private static DefaultMutableTreeNode radice;
 
 	/*costruttori*/
 	
@@ -59,9 +60,9 @@ public class AlberoPreventivi extends JPanel {
 		albero.addTreeSelectionListener((new TreeSelectionListener() {
 
 			public void valueChanged(TreeSelectionEvent e) {
-				TreePath selection = e.getPath();
+				TreeNode selezione = (TreeNode) e.getPath().getLastPathComponent();
 				try {
-					Ctrl_elaboraPreventivo.getInstance().riepilogoPreventivo(selection.getLastPathComponent());
+					Ctrl_elaboraPreventivo.getInstance().riepilogoPreventivo(ottieniId(selezione));
 				} 
 				catch (PersistentException e1) {
 					e1.printStackTrace();
@@ -70,6 +71,22 @@ public class AlberoPreventivi extends JPanel {
 			}}));
 	}
 	
+	public int ottieniId(TreeNode selezione){
+		
+		int id;
+		
+		if (selezione.isLeaf()){
+			String idString=selezione.toString();
+			String idVett[];
+			idVett=idString.split("-");
+			String idS=idVett[0].replaceAll("-","");
+			idS=idS.replaceAll(" ","");
+			id=Integer.parseInt(idS);
+		}
+		else 
+			id=0;
+		return id;
+	}
 	
 	/*metodi di classe*/
 	
@@ -109,12 +126,22 @@ public class AlberoPreventivi extends JPanel {
 	  }
 	  
 	  
-	  
 	  public static void selezionaNodo(String nodo){
 		
-		  DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
-		  albero.setSelectionPath(new TreePath(figlio)); 
-
+			DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
+			albero.setSelectionPath(new TreePath(figlio)); 
+		  
+			Enumeration<MutableTreeNode> sottonodi = radice.children();
+			while (sottonodi.hasMoreElements())
+			{
+				DefaultMutableTreeNode nodo1 = (DefaultMutableTreeNode)sottonodi.nextElement();
+				
+				if(nodo1.toString().equals(nodo)) {
+					 TreeNode[] nodes = model.getPathToRoot(nodo1);  
+			         albero.setExpandsSelectedPaths(true);                
+			         albero.setSelectionPath(new TreePath(nodes));
+				}
+			}
 	  }
 	  
 	  

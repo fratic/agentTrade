@@ -15,10 +15,13 @@ package agent_trade.model;
 
 import java.util.ArrayList;
 
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
 import org.orm.PersistentSession;
 import org.orm.PersistentTransaction;
 
+import agent_trade.controller.Ctrl_System;
 import agent_trade.persistent.AgentTradeMandantePersistentManager;
 import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.ProdottoCriteria;
@@ -142,7 +145,22 @@ public abstract class M_Prodotto {
 		}
 	}
 	
-	
+	public static M_Prodotto[] caricaProdottiAzienda(String azienda) throws PersistentException{
+		
+		try{
+			M_Azienda az = M_Azienda.cercaAziendaNome(azienda);
+			ProdottoCriteria criteriaProdotto= new ProdottoCriteria();
+
+			criteriaProdotto.idAzienda.eq(az.getIdAzienda());
+			criteriaProdotto.versione.ne(0);
+			criteriaProdotto.setMaxResults(10000);
+			return criteriaProdotto.listProdotto();
+
+		}
+		finally {
+//			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+		}
+	}
 	public static M_Prodotto caricaProdottoRemoto(int idProdotto) throws PersistentException{
 		
 		Rem_ProdottoCriteria criteria= new Rem_ProdottoCriteria();

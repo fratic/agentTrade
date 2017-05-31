@@ -97,6 +97,7 @@ public class Ctrl_elaboraPreventivo {
 		
 		if (!AlberoPreventivi.controllaEsistenza(nodo)){
 			AlberoPreventivi.inserisciNodo(nodo);
+
 		}
 		AlberoPreventivi.selezionaNodo(nodo);
 
@@ -131,6 +132,7 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.cancItem();
 		
 		AlberoPreventivi.abilitaAlbero();
+		AlberoPreventivi.selezionaRadice();
 		ProdottiView.getInstance().disableBottoni();
 		PrimaryAgenteView.getInstance().setSfondoPrev();
 	}
@@ -280,23 +282,16 @@ public class Ctrl_elaboraPreventivo {
 	
 
 	//non mi piace, trovare un alternativa
-	public void riepilogoPreventivo(Object obj) throws PersistentException
+	public void riepilogoPreventivo(int id) throws PersistentException
 	{
-		if(((DefaultMutableTreeNode)obj).isLeaf())
+		if(id !=0)
 		{
-			String id=obj.toString();
-			id= (id.substring(0,2));
-			id=id.replaceAll("-","");
-			id=id.replaceAll(" ","");
+			M_Preventivo m =  M_Preventivo.caricaPreventivo(id);
 
-			M_Preventivo m =  M_Preventivo.caricaPreventivo(Integer.parseInt(id));
-			
-
-			//inizializza view di riepilogo preventivo
 			if (m!=null){
-			initRiepilogoPreventivo(m);
+				initRiepilogoPreventivo(m);
 			
-			RiepilogoItemPreventivoView.getInstance().setTot(m);
+				RiepilogoItemPreventivoView.getInstance().setTot(m);
 			}
 		}
 		else{
@@ -398,7 +393,7 @@ public class Ctrl_elaboraPreventivo {
 			*/
 			AlberoPreventivi.cancellaNodo();
 			PrimaryAgenteView.getInstance().resetPannelloCentralePreventivo();
-			
+			AlberoPreventivi.selezionaRadice();
 			prev.delete();
 	}
 	

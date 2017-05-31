@@ -195,10 +195,4 @@ public class M_Preventivo_Item extends Observable{
 		
 	}
 
-	public String calcolaSconto(M_Preventivo instance) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-
 }

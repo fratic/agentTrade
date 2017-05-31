@@ -12,13 +12,14 @@ import org.orm.PersistentException;
 import agent_trade.Main;
 import agent_trade.external_system.SystemDaemon;
 import agent_trade.model.M_Agente;
+import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Mandante;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Prodotto;
-import agent_trade.ui.Setting;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
+import agent_trade.ui.content.prodotti.AlberoProdotti;
 import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.ui.login.LoginViewFactory;
 import agent_trade.ui.primaryView.PrimaryViewFactory;
@@ -86,6 +87,7 @@ public class Ctrl_System {
 		
 		initAlberoPreventivi();	
 		
+		initAlberoProdotti();
 	}
 	
 	
@@ -183,10 +185,25 @@ public class Ctrl_System {
 	
 	}
 	
+	public void initAlberoProdotti() throws PersistentException{
+		
+		M_Azienda[] listAziende = M_Azienda.caricaAziende();
 
+		System.out.println("num aziende "+listAziende.length);
+		//bisognerebbe inserire un controllo se listclienti è null
+		//e se ognuno dei dati usati è null
+		AlberoProdotti.inserisciNodo("Tutti i prodotti");
+
+		for (M_Azienda azienda : listAziende) {
+			AlberoProdotti.inserisciNodo(azienda.getRagioneSociale());
+			
+		}
+	
+	}
 	public void initProdotti() throws PersistentException{
 		
 		M_Prodotto [] prodotti = M_Prodotto.caricaProdotti();
+		Ctrl_gestisciListino.getInstance().setProdottiTabella(prodotti);
 		ProdottiView.getInstance().initTable(prodotti);
 	}
 	
@@ -194,7 +211,6 @@ public class Ctrl_System {
 	public void initAlberoPreventivi() throws PersistentException{
 		
 		M_Preventivo [] preventivi = M_Preventivo.caricaPreventiviAgente(); 
-		
 		//controllare se non null
 		for (M_Preventivo p : preventivi) {
 			

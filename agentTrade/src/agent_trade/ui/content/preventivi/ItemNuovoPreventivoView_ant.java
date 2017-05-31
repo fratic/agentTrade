@@ -1,12 +1,16 @@
 package agent_trade.ui.content.preventivi;
 
-
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -15,57 +19,65 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+import javax.swing.table.TableColumnModel;
 
 import org.orm.PersistentException;
 
+import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.model.M_Preventivo;
+import agent_trade.model.M_Preventivo_Item;
+import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoPercent;
+import agent_trade.model.M_ScontoQuantita;
+import agent_trade.sconti.ScontoAssolutoProdottoStrategy;
+import agent_trade.sconti.ScontoPercentProdottoStrategy;
+import agent_trade.util.ButtonsEditorRm;
+import agent_trade.util.ButtonsRendererRm;
 import agent_trade.util.Costanti;
+import agent_trade.util.SpinnerEditor;
+import agent_trade.util.SpinnerRenderer;
 
-public class RiepilogoItemPreventivoView extends JPanel
+
+public class ItemNuovoPreventivoView_ant extends JPanel
 {
-
 	/*attributi di classe*/
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private static RiepilogoItemPreventivoView instance;
-	private static TableModel JTableModel;
+	private static final Class ButtonsEditorRm = null;
+	private static ItemNuovoPreventivoView_ant instance;
+	private static DefaultTableModel JTableModel;
 
-	
 	/*attributi privati*/
-
+	private JPanel panelloTabella;
+	private JPanel panelloRiepilogo;
+	private JPanel sottoPannRiepilogo1;
+	private JPanel sottoPannRiepilogo2;
+	private JPanel sottoPannRiepilogoCampi;
+	private JPanel PannTotNoSconto;
+	private JPanel PannImponibile;
+	private JPanel PannScontoCliente;
+	private JPanel PannIVA;
+	private JPanel PannScontoTotale;
+	private JPanel PannTotale;
+	
 	private JTextField textFieldImponibile;
 	private JTextField textFieldIVA;
 	private JTextField textFieldTotale;
-	
-	private JPanel panelloTabella;
-	private JPanel panelloRiepilogo;
-	private JPanel sottoPannello;
-
-	private JTable table;
-
-	//private JButton buttoneSalva;
-
-	private JScrollPane scrollPane;
-	private JPanel PannTotNoSconto;
 	private JTextField textFieldTotNoSconto;
-	private JPanel PannImponibile;
-	private JPanel PannScontoCliente;
 	private JTextField textFieldScontoCliente;
-	private JPanel PannIVA;
-	private JPanel PannScontoTotale;
 	private JTextField textFieldScontoTotale;
-	private JPanel PannTotale;
+	
+	private JTable table;
+	
+	private JScrollPane scrollPane;
+
+	private JButton buttoneSalva;
 
 	
 	/*costruttori*/
 	
-	public RiepilogoItemPreventivoView() {
-
-		setLayout(new GridLayout(1,1));
+	public ItemNuovoPreventivoView_ant() {
+		setLayout(new GridLayout(1, 1));
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.menu);
@@ -73,35 +85,30 @@ public class RiepilogoItemPreventivoView extends JPanel
 		add(panel);
 		
 		panelloTabella = new JPanel();
+		panelloTabella.setBackground(Color.WHITE);
+		panelloTabella.setBorder(new EmptyBorder(3, 3, 3, 3));
 		panelloTabella.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_TAB,Costanti.HEIGHT_PANN_TAB));
-		panel.add(panelloTabella, BorderLayout.CENTER);
+		panel.add(panelloTabella,BorderLayout.CENTER);
 		panelloTabella.setLayout(new GridLayout(1,1));
-		
-
-		
-		
-		JTableModel = new DefaultTableModel(
-                new String[][] { }, Costanti.INTESTAZIONE_TABELLA_RIEPILOGO_ITEM);
-			
-		table =new JTable();
-	  
-		table.setModel(JTableModel);
-		
-		table.setRowHeight(25);
-		scrollPane = new JScrollPane(table);
+	   	
+		scrollPane = new JScrollPane(creaTabellaProdotti());
 		panelloTabella.add(scrollPane);
 	  
 		panelloRiepilogo = new JPanel();
-		panelloRiepilogo.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		panelloRiepilogo.setBackground(SystemColor.scrollbar);
-		panelloRiepilogo.setBorder(new EmptyBorder(0, 0, 0, 30));
+		panelloRiepilogo.setLayout(new BorderLayout());
+		panelloRiepilogo.setBackground(SystemColor.scrollbar);		
 		panelloRiepilogo.setPreferredSize(new Dimension(780, 110));
 		panel.add(panelloRiepilogo,BorderLayout.SOUTH);
 
-		sottoPannello = new JPanel();
-		sottoPannello.setBackground(SystemColor.scrollbar);
-		sottoPannello.setPreferredSize(new Dimension(600, 105));
-		panelloRiepilogo.add(sottoPannello);
+		sottoPannRiepilogo1 = new JPanel();
+		sottoPannRiepilogo1.setBackground(SystemColor.scrollbar);
+		sottoPannRiepilogo1.setLayout(new BorderLayout());
+		panelloRiepilogo.add(sottoPannRiepilogo1,BorderLayout.CENTER);
+		
+		sottoPannRiepilogoCampi = new JPanel();
+		sottoPannRiepilogoCampi.setBackground(SystemColor.scrollbar);
+		sottoPannRiepilogoCampi.setPreferredSize(new Dimension(600, 105));
+		sottoPannRiepilogo1.add(sottoPannRiepilogoCampi,BorderLayout.EAST);
 		
 		PannTotNoSconto = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) PannTotNoSconto.getLayout();
@@ -109,11 +116,11 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout.setHgap(0);
 		PannTotNoSconto.setBackground(SystemColor.scrollbar);
 		PannTotNoSconto.setPreferredSize(new Dimension(250, 30));
-		sottoPannello.add(PannTotNoSconto);
+		sottoPannRiepilogoCampi.add(PannTotNoSconto);
 		
 		JLabel labelTotNoSconto = new JLabel(Costanti.LABEL_TOTALE_NON_SCONTATO);
 		labelTotNoSconto.setHorizontalAlignment(SwingConstants.RIGHT);
-		labelTotNoSconto.setPreferredSize(new Dimension(100, 14));
+		labelTotNoSconto.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL_PREV, Costanti.HEIGHT_LABEL_PREV));
 		PannTotNoSconto.add(labelTotNoSconto);
 		
 		textFieldTotNoSconto = new JTextField();
@@ -127,7 +134,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout1.setHgap(0);
 		PannImponibile.setBackground(SystemColor.scrollbar);
 		PannImponibile.setPreferredSize(new Dimension(250, 30));
-		sottoPannello.add(PannImponibile);
+		sottoPannRiepilogoCampi.add(PannImponibile);
 		
 		JLabel labelImponibile = new JLabel(Costanti.LABEL_IMPONIBILE);
 		labelImponibile.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -145,7 +152,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout2.setHgap(0);
 		PannScontoCliente.setBackground(SystemColor.scrollbar);
 		PannScontoCliente.setPreferredSize(new Dimension(250, 30));
-		sottoPannello.add(PannScontoCliente);
+		sottoPannRiepilogoCampi.add(PannScontoCliente);
 		
 		JLabel labelScontoCliente = new JLabel(Costanti.LABEL_SCONTO_CLIENTE);
 		labelScontoCliente.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -163,7 +170,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout3.setHgap(0);
 		PannIVA.setBackground(SystemColor.scrollbar);
 		PannIVA.setPreferredSize(new Dimension(250, 30));
-		sottoPannello.add(PannIVA);
+		sottoPannRiepilogoCampi.add(PannIVA);
 		
 		JLabel labelIVA = new JLabel(Costanti.LABEL_IVA);
 		labelIVA.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -181,7 +188,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout4.setHgap(0);
 		PannScontoTotale.setBackground(SystemColor.scrollbar);
 		PannScontoTotale.setPreferredSize(new Dimension(250, 30));
-		sottoPannello.add(PannScontoTotale);
+		sottoPannRiepilogoCampi.add(PannScontoTotale);
 		
 		JLabel labelScontoTotale = new JLabel(Costanti.LABEL_SCONTO_TOTALE);
 		labelScontoTotale.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -199,7 +206,7 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout5.setHgap(0);
 		PannTotale.setBackground(SystemColor.scrollbar);
 		PannTotale.setPreferredSize(new Dimension(250, 30));
-		sottoPannello.add(PannTotale);
+		sottoPannRiepilogoCampi.add(PannTotale);
 		
 		JLabel labelTotale = new JLabel(Costanti.LABEL_TOTALE);
 		labelTotale.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -210,44 +217,135 @@ public class RiepilogoItemPreventivoView extends JPanel
 		textFieldTotale.setColumns(10);
 		textFieldTotale.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD_PREV,Costanti.HEIGHT_TEXT_FIELD_PREV));
 		PannTotale.add(textFieldTotale);
-
 		
+		sottoPannRiepilogo2 = new JPanel();
+		panelloRiepilogo.add(sottoPannRiepilogo2, BorderLayout.EAST);
+		sottoPannRiepilogo2.setBackground(SystemColor.scrollbar);
+		sottoPannRiepilogo2.setPreferredSize(new Dimension(95, 105));
+		sottoPannRiepilogo2.setBorder(new EmptyBorder(10, 10, 0, 0));
+		
+		
+		
+		buttoneSalva = new JButton("");
+		buttoneSalva.setToolTipText(Costanti.TIP_SALVA_PREV);
+		buttoneSalva.setIcon(new ImageIcon(ItemNuovoPreventivoView_ant.class.getResource(Costanti.SAVE_ICON)));
+		buttoneSalva.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON_SALVA,Costanti.HEIGHT_BUTTON_SALVA));
+		sottoPannRiepilogo2.add(buttoneSalva);
+		
+		
+		buttoneSalva.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					Ctrl_elaboraPreventivo.getInstance().salvaPreventivo();
+				}
+				catch (PersistentException e) {
+					e.printStackTrace();
+				}	
+			}
+		});
 	}
+	
 	
 	/*metodi di classe*/
 	
-	public static RiepilogoItemPreventivoView getInstance(){
+	public static ItemNuovoPreventivoView_ant getInstance(){
 		if (instance==null)
-			instance = new RiepilogoItemPreventivoView();
+			instance = new ItemNuovoPreventivoView_ant();
 		return instance;	 
 	}
 	
-	public static DefaultTableModel getModel(){
-		
-		return (DefaultTableModel) JTableModel;	 
-	}
-	
-	public static void cancellaIstanzaRiepilogoItem(){
+	public static void cancItem(){
 		instance=null;
 	}
-
 	
 	/*metodi privati*/
-	/*metodi pubblici*/
+	
+	private JTable creaTabellaProdotti() {
 		
-	public void updateTable( String id, String nome, String categoria, String quantita, String prezzo, String sconto, String parziale, String parziale_scontato)
-	{
-		((DefaultTableModel) JTableModel).addRow(new Object[]{ id, nome, categoria, quantita, prezzo, sconto,  parziale, parziale_scontato});
-	}
-	
-	public void resetTable(){
-		int k=((DefaultTableModel) JTableModel).getRowCount();
+		String[] colNames = Costanti.INTESTAZIONE_TABELLA_PREVENTIVI;
+        
+        final Object[][] data = {};
+        
+        JTableModel = new DefaultTableModel(data, colNames);
+         
+        table = new JTable(JTableModel);
+        table.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		for (int i=k-1; i>=0;i--){
-			((DefaultTableModel) JTableModel).removeRow(i);
-		}
+        TableColumnModel colModel = table.getColumnModel();
+        colModel.getColumn(Costanti.COLONNA_QUANTITA_TAB_PROD).setCellRenderer(new SpinnerRenderer());
+        colModel.getColumn(Costanti.COLONNA_REMOVE_TAB_PROD).setCellRenderer(new ButtonsRendererRm());
+        
+        colModel.getColumn(Costanti.COLONNA_QUANTITA_TAB_PROD).setCellEditor(new SpinnerEditor(table));
+        colModel.getColumn(Costanti.COLONNA_REMOVE_TAB_PROD).setCellEditor(new ButtonsEditorRm(table));
+
+        colModel.getColumn(Costanti.COLONNA_REMOVE_TAB_PROD).setPreferredWidth(30);
+        colModel.getColumn(Costanti.COLONNA_QUANTITA_TAB_PROD).setPreferredWidth(35);
+        
+	    table.setRowHeight(30);	
+	    
+	    return table;
 	}
 	
+	/*metodi pubblici*/
+	
+	
+	public void updateRow(float parz, float parziale_scontato){
+		
+		((DefaultTableModel) JTableModel).setValueAt(parz, table.getSelectedRow(), Costanti.COLONNA_PARZIALE_TAB_PREV);
+		((DefaultTableModel) JTableModel).setValueAt(parziale_scontato, table.getSelectedRow(), Costanti.COLONNA_PARZIALE_SCONTATO_TAB_PREV);
+
+	}
+	
+	public void updateTable(M_Prodotto prod, M_Preventivo_Item prev_item) throws PersistentException{
+	
+		int id = prod.getIdProdotto();
+		M_Preventivo prev= M_Preventivo.getInstance();
+		String nome = prod.getNome();
+		String categoria = prod.getCategoria();
+		int quant = prev_item.getQuantita();
+		String prezzo = Float.toString(prod.getPrezzo()); 
+		
+		String sconto = setTipoScontoTabella(prev_item);
+		
+		String parziale = Float.toString(prev_item.calcolaParziale());
+		//sarebbe opportuno visualizzare il parziale scontato
+		String parziale_scontato = Float.toString(prev_item.calcolaParziale()-prev_item.getStrategiaProdotto().calcolaSconto(prev));
+		
+//		//se lo sconto è zero, non visualizzo nulla, altrimenti adatto a x,dd 
+//		if (prod.getSconto()!=0){
+//			sconto=(java.lang.Math.ceil(prod.getSconto()*100))+"%";
+//		}
+		
+		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quant, prezzo, sconto, parziale, parziale_scontato});
+	}
+	
+	public String setTipoScontoTabella(M_Preventivo_Item item) throws PersistentException{
+		
+			String tipoSconto="";
+			
+			M_Sconto politicaSconto = M_Sconto.caricaSconto((int) ((M_Preventivo_Item) item).getIdProdotto().getSconto());
+						
+			if (politicaSconto instanceof M_ScontoQuantita)
+			{
+				if (((M_ScontoQuantita) politicaSconto).getScontoFisso()!=0) {
+					tipoSconto="Sconto di "+((M_ScontoQuantita) politicaSconto).getScontoFisso()+" euro per q.tà superiori a "+((M_ScontoQuantita) politicaSconto).getQuantita();
+				}
+			}
+			else if (politicaSconto instanceof M_ScontoPercent)
+			{
+				if(((M_ScontoPercent) politicaSconto).getPercent()!=0)
+				{
+					tipoSconto=((M_ScontoPercent) politicaSconto).getPercent()*100+" %";
+				}
+			}
+			
+			return tipoSconto;
+	}
+	
+	public void deleteRow(int row) {
+		((DefaultTableModel) JTableModel).removeRow(row);
+		}	
 	
 	public void setImponibile(String a){
 		textFieldImponibile.setText(a);
@@ -272,16 +370,19 @@ public class RiepilogoItemPreventivoView extends JPanel
 	public void setScontoTotale(String a){
 		textFieldScontoTotale.setText(a);
 	}
-	
-	public void setTot(M_Preventivo m) throws PersistentException {
-		
-		
-		float tot_non_scontato = m.calcolaTotaleNonScontato();
-		float sconto_tot = m.calcolaScontoTotale();
+
+	public void enableSave(boolean b){
+		buttoneSalva.setEnabled(b);
+	}
+
+	public void setTot() throws PersistentException {
+			
+		float tot_non_scontato = M_Preventivo.getInstance().calcolaTotaleNonScontato();
+		float sconto_tot = M_Preventivo.getInstance().calcolaScontoTotale();
 		float totale_scontato = tot_non_scontato-sconto_tot;
-		float iva=m.calcolaIva(totale_scontato);
+		float iva=M_Preventivo.getInstance().calcolaIva(totale_scontato);
 		float totale = totale_scontato+iva;
-		float scontoCliente = m.calcolaScontoCliente();
+		float scontoCliente = M_Preventivo.getInstance().calcolaScontoCliente();
 		
 		totale_scontato= (float) (Math.ceil(totale_scontato * Math.pow(10, 2)) / Math.pow(10, 2));
 		iva= (float) (Math.ceil(iva * Math.pow(10, 2)) / Math.pow(10, 2));
@@ -296,7 +397,14 @@ public class RiepilogoItemPreventivoView extends JPanel
 		setTotNonScontato(Float.toString(tot_non_scontato));
 		setScontoTotale(Float.toString(sconto_tot));
 		setScontoCliente(Float.toString(scontoCliente));
-
+		
 	}
+
 	
+
 }
+
+
+
+  
+ 

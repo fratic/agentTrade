@@ -97,14 +97,22 @@ public class AlberoClienti extends JPanel {
 	
 	//quando viene creato un nuovo cliente aggiunge un nodo all'albero	
 	
-	public static void inserisciNodo(String nodo) {
-		    
+	public static void inserisciNodo(String nodo) {	    
 		  DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
 	
 		  model.insertNodeInto(figlio, (MutableTreeNode)model.getRoot(), ((MutableTreeNode) model.getRoot()).getChildCount());
 		  
 		  albero.expandRow(0);
+	}
+	
+	public static void inserisciFiglio(String padre, String nodo) {	    
+		
+		DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode(padre);
+
+		  model.insertNodeInto(figlio, root, ((MutableTreeNode) model.getRoot()).getChildCount());
 		  
+		  albero.expandRow(0);
 	}
 			  
 	public static void rimuoviNodo(String nodo) {
@@ -148,7 +156,8 @@ public class AlberoClienti extends JPanel {
 	}
 	
 	public static void deselezionaNodo(String nodo){
-		
+			
+		//a che serve il nodo passato come parametro?
 		  albero.clearSelection();
 
 	 }

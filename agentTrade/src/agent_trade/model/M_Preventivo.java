@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
@@ -30,9 +32,6 @@ import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.PreventivoCriteria;
-import agent_trade.sconti.ClienteScontoStrategy;
-import agent_trade.sconti.IScontoStrategy;
-import agent_trade.sconti.ScontoStrategyFactory;
 import agent_trade.util.Costanti;
 
 public class M_Preventivo implements Observer {
@@ -121,6 +120,9 @@ public class M_Preventivo implements Observer {
 			PreventivoCriteria criteriaPreventivi= new PreventivoCriteria();
 			criteriaPreventivi.createCriteria("rif_Agente", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
 			criteriaPreventivi.setMaxResults(10000);
+			
+			criteriaPreventivi.addOrder(Property.forName("id").asc());
+
 			return criteriaPreventivi.listPreventivo();
 		}
 		
@@ -326,26 +328,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 	
 	public float calcolaScontoTotale() throws PersistentException{
 		
-//		float ScontoTot=0;
-//		Iterator<?> iteraItem = null;
-//		
-//		iteraItem = this.getItem().iterator();
-//		M_Preventivo_Item item;
-//	
-//		while (iteraItem.hasNext()) 
-//		{
-//			item = (M_Preventivo_Item) iteraItem.next();
-//			ScontoTot= ScontoTot+(item.calcolaScontoxQuantita());		
-//			
-//		}
-//		
-//		
-//		ScontoTot= (float) (Math.ceil(ScontoTot * Math.pow(10, 2)) / Math.pow(10, 2));
-//		
-//		return ScontoTot;
-		
-		
-//		System.out.println("SONO IN setTOT. LO SCONTO CLIENTE (20%) è:"+ M_Preventivo.getInstance().getRif_Cliente().getStrategiaCliente().calcolaSconto(M_Preventivo.getInstance()));
 		
 		Iterator<?> iteraItem = null;
 		iteraItem = this.getItem().iterator();
@@ -356,14 +338,11 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 		while (iteraItem.hasNext()) 
 		{			
 			item = (M_Preventivo_Item) iteraItem.next();
-//				System.out.println("SONO IN setTOT. LO SCONTO Fisso qt è:"+ item.getStrategiaProdotto().calcolaSconto(M_Preventivo.getInstance()));
 
 			scontoTot = scontoTot + item.getStrategiaProdotto().calcolaSconto(this);
 			
 		}
 		scontoTot=scontoTot+calcolaScontoCliente();
-
-//		System.out.println("-------------------SET TOTALE-------"+scontoTot);
 
 		return scontoTot;
 		
@@ -455,22 +434,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 				
 	}
 	
-//	MODIFICA FUNZIONI AGGIUNTE PER IL TEST SCONTO
-	
-	
-	
-//	public void calcolaTotale() {
-//		
-//		List<M_Preventivo_Item> lista = this.getItem();
-//		Iterator<M_Preventivo_Item> itera = lista.iterator();
-//		this.totale = 0;
-//		
-//		while (itera.hasNext()){
-//			M_Preventivo_Item item = (M_Preventivo_Item) itera.next();
-//			totale = totale+ item.calcolaParziale(); 
-// 		}
-//	}
-	
 	
 	public void calcolaParziale(int idProd){ //serve per calcolare il parziale di un prodotto
 		
@@ -485,12 +448,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 		}
 	}
 
-//	public float calcolaSconto(String Type) throws PersistentException{
-//
-//		IScontoStrategy strategy = ScontoStrategyFactory.getInstance(Type);
-//		return strategy.calcolaSconto(this);
-////		return ScontoStrategyFactory.getInstance().getClienteScontoStrategy().calcolaSconto(this);
-//	}	
 	
 	public float getTotale() {
 		
@@ -525,41 +482,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 		
 	}
 
-/*	secondo me usando la factory dovrebbe essere
-	
-	private IScontoStrategy strategy;
-	
-	public IScontoStrategy getStrategy(){
-		return ScontoStrategyFactory.getInstance().getStrategy()
-	}
- 
- 	il problema è capire come far creare la strategy giusta alla factory 
- 	gli passiamo un parametro ogni volta che dice quale strategy creare? ma ha senso poi la factory?
- 	oppure gli passiamo preventivo però poi lui deve vedere ogni volta tutto il preventivo
- 
-	public float calcolaSconto(strategy){
-	 	return strategy.calcolaSconto(this);	
-	}
-*/
-	
-/*
- 	altra soluzione: facciamo come nell'esempio sul sito di dellabate (senza factory): 
- 	usiamo il client che nel nostro caso potrebbe essere il controller che dice al 
- 	preventivo "vedi che hai inserito un cliente/prodotto con questo tipo di sconto 
- 	applica questa strategia" 
- 	
- 	private IScontoStrategy strategy;
-	
-	public setStrategy(IScontoStrategy strategy){
-		this.strategy = strategy;
-	}
- 
-	public float calcolaSconto(strategy){
-	 	return strategy.calcolaSconto(this);	
-	}
- 	
- */
-	
 
 	
 }

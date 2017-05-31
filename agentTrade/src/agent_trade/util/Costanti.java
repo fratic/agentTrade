@@ -127,12 +127,13 @@ public final class Costanti {
 	public static final String PLUS_ICON= "/agent_trade/ui/img/plus.png";
 	public static final String PREVENTIVO_ICON= "/agent_trade/ui/img/preventivo.png";
 	public static final String NUOVO_PREVENTIVO_ICON= "/agent_trade/ui/img/nuovo_icon.png";
-	public static final String CERCA_PREVENTIVO_ICON= "/agent_trade/ui/img/nuovo_icon.png";
+	public static final String CERCA_PREVENTIVO_ICON= "/agent_trade/ui/img/cercaPreventivo.png";
 	public static final String CLIENTE_ICON= "/agent_trade/ui/img/cliente.png";	
 	public static final String NUOVO_CLIENTE_ICON= "/agent_trade/ui/img/new_user.png";
 	public static final String CERCA_CLIENTE_ICON= "/agent_trade/ui/img/search.png";
 	public static final String PRODOTTI_ICON= "/agent_trade/ui/img/magazzino_icon.png";
 	public static final String ALBERO_PREVENTIVI_ICON= "/agent_trade/ui/img/prev.png";
+	public static final String ALBERO_PRODOTTI_ICON= "/agent_trade/ui/img/prev.png";
 	public static final String ADD_ITEM_ICON= "/agent_trade/ui/img/add-item.png";
 	public static final String SAVE_ICON= "/agent_trade/ui/img/save-icon.png";
 	public static final String SETTING_ICON= "/agent_trade/ui/img/setting.png";

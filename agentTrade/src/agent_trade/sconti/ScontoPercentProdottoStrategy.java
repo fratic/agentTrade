@@ -19,15 +19,10 @@ public class ScontoPercentProdottoStrategy implements IScontoStrategy{
 	private int id_item;
 	
 	
-//	public ScontoPercentProdottoStrategy(float percent){
-//		this.percent = percent;
-//	}
-	
 	public ScontoPercentProdottoStrategy(int id_item, float percent){
 		this.id_item = id_item;
 		this.percent = percent;
 	}
-	
 	
 	
 	@Override

@@ -15,6 +15,8 @@ import javax.swing.table.TableColumnModel;
 
 import org.orm.PersistentException;
 
+import agent_trade.controller.Ctrl_gestisciListino;
+import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Sconto;
 import agent_trade.model.M_ScontoPercent;
@@ -37,7 +39,7 @@ public class ProdottiView extends JPanel {
 	private JPanel pannelloTabella;
 	private JPanel pannelloProdotti;
 
-	private JTable table;
+	private static JTable table;
 	private static DefaultTableModel JTableModel;
 	
 	private JScrollPane scrollPane;
@@ -68,7 +70,6 @@ public class ProdottiView extends JPanel {
         table = new JTable(JTableModel);
         table.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-	    
         TableColumnModel colModel = table.getColumnModel();
         
         colModel.getColumn(Costanti.COLONNA_ADD_ITEM).setPreferredWidth(35);
@@ -114,21 +115,51 @@ public class ProdottiView extends JPanel {
 		JButton jb;
 	
 		for (M_Prodotto p : prodotti) {
-		jb= new DisableButton();
-		jb.setEnabled(false);
-		String sconto=setTipoScontoTabella(p);
-
-        ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
-        		p.getNome(), p.getCategoria(), sconto ,Float.toString(p.getPrezzo()), jb});
-        
-		elencoBott.put(p.getIdProdotto(), jb);
-
-        TableColumn col = table.getColumnModel().getColumn(Costanti.COLONNA_ADD_ITEM);
-   	    col.setMaxWidth(60);
-	    col.setMinWidth(60);            
-	}
+			jb= new DisableButton();
+			jb.setEnabled(false);
+			String sconto=setTipoScontoTabella(p);
+	
+	        ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
+	        		p.getNome(), p.getCategoria(), sconto ,Float.toString(p.getPrezzo()), jb});
+	        
+			elencoBott.put(p.getIdProdotto(), jb);
+	
+	        TableColumn col = table.getColumnModel().getColumn(Costanti.COLONNA_ADD_ITEM);
+	   	    col.setMaxWidth(60);
+		    col.setMinWidth(60);            
+		}
 	}
 	
+
+	public void inserisciTabella(M_Prodotto[] prodotti, String azienda) throws PersistentException{
+		
+		JButton jb;
+	
+		int idAzienda = M_Azienda.cercaAziendaNome(azienda).getIdAzienda();
+
+		int k=((DefaultTableModel) JTableModel).getRowCount();
+		for (int i=k-1; i>=0;i--){
+			((DefaultTableModel) JTableModel).removeRow(i);
+		}		
+		
+		for (M_Prodotto p : prodotti) {
+			jb= new DisableButton();
+			jb.setEnabled(false);
+			String sconto=setTipoScontoTabella(p);
+	
+			if(p.getIdAzienda()!=idAzienda)
+			{
+		        ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
+		        		p.getNome(), p.getCategoria(), sconto ,Float.toString(p.getPrezzo()), jb});
+		        
+				elencoBott.put(p.getIdProdotto(), jb);
+		
+		        TableColumn col = table.getColumnModel().getColumn(Costanti.COLONNA_ADD_ITEM);
+		   	    col.setMaxWidth(60);
+			    col.setMinWidth(60);   
+		    }         
+		}
+	}
 	
 	public void enableBottoni(){
 		

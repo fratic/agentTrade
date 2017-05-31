@@ -14,6 +14,7 @@
 package agent_trade.model;
 
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
@@ -56,7 +57,7 @@ public class M_Cliente {
 	private int sconto;
 	
 
-	private IScontoStrategy strategiaCliente;
+//	private IScontoStrategy strategiaCliente;
 	
 	/*
 	 * costruttori
@@ -117,6 +118,8 @@ public class M_Cliente {
 			//JOIN per recuperare solo i clienti dell'agente loggato
 			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
 			criteriaCliente.attivo.eq(1);
+			criteriaCliente.addOrder(Property.forName("cognome").asc());
+
 			return criteriaCliente.listCliente();
 		} 
 		catch (PersistentException e) {
@@ -383,14 +386,13 @@ public class M_Cliente {
 	public IScontoStrategy getStrategiaCliente() throws PersistentException {
 		
 		IScontoStrategy strategiaCliente= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
-		this.setStrategiaCliente(strategiaCliente);
-
+//		this.setStrategiaCliente(strategiaCliente);
 		return strategiaCliente;
 	}
 
-	public void setStrategiaCliente(IScontoStrategy strategiaCliente) {
-		this.strategiaCliente = strategiaCliente;
-	}
+//	public void setStrategiaCliente(IScontoStrategy strategiaCliente) {
+//		this.strategiaCliente = strategiaCliente;
+//	}
 	
 	
 	

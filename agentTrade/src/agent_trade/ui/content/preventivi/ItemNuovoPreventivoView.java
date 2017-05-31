@@ -97,7 +97,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		panelloRiepilogo = new JPanel();
 		panelloRiepilogo.setLayout(new BorderLayout());
 		panelloRiepilogo.setBackground(SystemColor.scrollbar);		
-		panelloRiepilogo.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_RIEPILOGO,Costanti.HEIGHT_PANN_RIEPILOGO));
+		panelloRiepilogo.setPreferredSize(new Dimension(780, 110));
 		panel.add(panelloRiepilogo,BorderLayout.SOUTH);
 
 		sottoPannRiepilogo1 = new JPanel();
@@ -107,7 +107,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		
 		sottoPannRiepilogoCampi = new JPanel();
 		sottoPannRiepilogoCampi.setBackground(SystemColor.scrollbar);
-		sottoPannRiepilogoCampi.setPreferredSize(new Dimension(Costanti.WIDTH_SOTTO_PANN_RIEP_CAMPI, Costanti.HEIGHT_SOTTO_PANN_RIEP_CAMPI));
+		sottoPannRiepilogoCampi.setPreferredSize(new Dimension(600, 105));
 		sottoPannRiepilogo1.add(sottoPannRiepilogoCampi,BorderLayout.EAST);
 		
 		PannTotNoSconto = new JPanel();
@@ -115,7 +115,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout.setVgap(0);
 		flowLayout.setHgap(0);
 		PannTotNoSconto.setBackground(SystemColor.scrollbar);
-		PannTotNoSconto.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannTotNoSconto.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannTotNoSconto);
 		
 		JLabel labelTotNoSconto = new JLabel(Costanti.LABEL_TOTALE_NON_SCONTATO);
@@ -133,7 +133,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout1.setVgap(0);
 		flowLayout1.setHgap(0);
 		PannImponibile.setBackground(SystemColor.scrollbar);
-		PannImponibile.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannImponibile.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannImponibile);
 		
 		JLabel labelImponibile = new JLabel(Costanti.LABEL_IMPONIBILE);
@@ -151,7 +151,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout2.setVgap(0);
 		flowLayout2.setHgap(0);
 		PannScontoCliente.setBackground(SystemColor.scrollbar);
-		PannScontoCliente.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannScontoCliente.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannScontoCliente);
 		
 		JLabel labelScontoCliente = new JLabel(Costanti.LABEL_SCONTO_CLIENTE);
@@ -169,7 +169,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout3.setVgap(0);
 		flowLayout3.setHgap(0);
 		PannIVA.setBackground(SystemColor.scrollbar);
-		PannIVA.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannIVA.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannIVA);
 		
 		JLabel labelIVA = new JLabel(Costanti.LABEL_IVA);
@@ -187,7 +187,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout4.setVgap(0);
 		flowLayout4.setHgap(0);
 		PannScontoTotale.setBackground(SystemColor.scrollbar);
-		PannScontoTotale.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannScontoTotale.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannScontoTotale);
 		
 		JLabel labelScontoTotale = new JLabel(Costanti.LABEL_SCONTO_TOTALE);
@@ -205,7 +205,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		flowLayout5.setVgap(0);
 		flowLayout5.setHgap(0);
 		PannTotale.setBackground(SystemColor.scrollbar);
-		PannTotale.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_PREV, Costanti.HEIGHT_PANN_LABEL_PREV));
+		PannTotale.setPreferredSize(new Dimension(250, 30));
 		sottoPannRiepilogoCampi.add(PannTotale);
 		
 		JLabel labelTotale = new JLabel(Costanti.LABEL_TOTALE);
@@ -221,7 +221,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		sottoPannRiepilogo2 = new JPanel();
 		panelloRiepilogo.add(sottoPannRiepilogo2, BorderLayout.EAST);
 		sottoPannRiepilogo2.setBackground(SystemColor.scrollbar);
-		sottoPannRiepilogo2.setPreferredSize(new Dimension(Costanti.WIDTH_SOTTO_PANN_RIEPILOGO1, Costanti.HEIGHT_SOTTO_PANN_RIEPILOGO1));
+		sottoPannRiepilogo2.setPreferredSize(new Dimension(95, 105));
 		sottoPannRiepilogo2.setBorder(new EmptyBorder(10, 10, 0, 0));
 		
 		

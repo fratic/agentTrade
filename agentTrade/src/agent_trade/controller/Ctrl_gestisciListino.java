@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import javax.swing.JButton;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.hibernate.type.YesNoType;
 import org.orm.PersistentException;
@@ -16,7 +17,9 @@ import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Vini;
 import agent_trade.ui.content.aziende.Ricerca_azienda;
 import agent_trade.ui.content.listini.Ricerca_listino;
+import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.ui.content.prodotti.riepilogo.confermaCancProdotto;
+import agent_trade.ui.primaryView.PrimaryAgenteView;
 import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
 
@@ -25,12 +28,18 @@ public class Ctrl_gestisciListino {
 	/*attributi di classe*/
 	
 	private static Ctrl_gestisciListino instance;
+	
+	//a che servono?
 	private static M_Azienda azienda;
 	private static M_Prodotto[] elencoProd;
+	
+	
 	private static  String listino;
 	private static boolean abilitaAggiungi;
 	/*attributi privati*/
 	
+	
+	private M_Prodotto[] prodottiTabella;
 
 	/* costruttori*/
 	
@@ -51,6 +60,8 @@ public class Ctrl_gestisciListino {
 	
 	/*metodi pubblici*/
 	
+	
+	
 	public void btnCerca() throws PersistentException {
 		
 		PrimaryMandanteView.getInstance().resetPannelloCentraleListino();
@@ -61,6 +72,14 @@ public class Ctrl_gestisciListino {
 	}
 	
 	
+	public M_Prodotto[] getProdottiTabella() {
+		return prodottiTabella;
+	}
+
+	public void setProdottiTabella(M_Prodotto[] prodottiTabella) {
+		this.prodottiTabella = prodottiTabella;
+	}
+
 	public void btnAggiungiProdotto(){
 		
 		PrimaryMandanteView.cancRiepilogoListinoView();
@@ -283,5 +302,22 @@ public class Ctrl_gestisciListino {
 		confermaCancProdotto.getInstance().setVisible(false);
 		confermaCancProdotto.cancInst();
 	}
+	
+	public void inserisciProdottoInTabella(String azienda) throws PersistentException {
 		
+		if(!azienda.equals("Tutti i prodotti"))
+		{	
+//			M_Prodotto[] prodotti = M_Prodotto.caricaProdottiAzienda(azienda);
+//			System.out.println("numero di prodotti "+prodotti.length+" azienda "+azienda);
+//			ProdottiView.getInstance().getTable().removeAll();
+			ProdottiView.getInstance().inserisciTabella(Ctrl_gestisciListino.getInstance().getProdottiTabella(), azienda);
+		}
+	
+		else
+		{
+			M_Prodotto[] prodotti = M_Prodotto.caricaProdotti();
+//			ProdottiView.getInstance().getTable().removeAll();
+			ProdottiView.getInstance().initTable(prodotti);
+		}
+	}
 }

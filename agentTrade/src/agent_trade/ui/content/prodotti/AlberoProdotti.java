@@ -13,12 +13,14 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
 import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.controller.Ctrl_gestisciListino;
 import agent_trade.util.Costanti;
 
 public class AlberoProdotti extends JPanel {
@@ -28,11 +30,11 @@ public class AlberoProdotti extends JPanel {
 	public static DefaultTreeModel model;
 	public static JTree albero;
 	private static AlberoProdotti instance;
-	private ImageIcon imageIcon;
+
 
 	/*attributi privati*/
 	
-	private DefaultMutableTreeNode radice;
+	private static DefaultMutableTreeNode radice;
 
 	/*costruttori*/
 	
@@ -50,7 +52,7 @@ public class AlberoProdotti extends JPanel {
 
 		add(scroller);
 				
-		imageIcon = new ImageIcon(AlberoProdotti.class.getResource(Costanti.ALBERO_PREVENTIVI_ICON));
+		ImageIcon imageIcon = new ImageIcon(AlberoProdotti.class.getResource(Costanti.ALBERO_PRODOTTI_ICON));
         DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();       
         renderer.setLeafIcon(imageIcon);
 
@@ -59,9 +61,9 @@ public class AlberoProdotti extends JPanel {
 		albero.addTreeSelectionListener((new TreeSelectionListener() {
 
 			public void valueChanged(TreeSelectionEvent e) {
-				TreePath selection = e.getPath();
+				TreeNode selezione = (TreeNode) e.getPath().getLastPathComponent();
 				try {
-					Ctrl_elaboraPreventivo.getInstance().riepilogoPreventivo(selection.getLastPathComponent());
+					Ctrl_gestisciListino.getInstance().inserisciProdottoInTabella(ottieniAzienda(selezione));
 				} 
 				catch (PersistentException e1) {
 					e1.printStackTrace();
@@ -70,6 +72,15 @@ public class AlberoProdotti extends JPanel {
 			}}));
 	}
 	
+	public String ottieniAzienda(TreeNode selezione){
+		
+		String azienda=null;
+		
+		if (selezione.isLeaf()){
+			azienda=selezione.toString();
+		}
+		return azienda;
+	}
 	
 	/*metodi di classe*/
 	
@@ -109,12 +120,22 @@ public class AlberoProdotti extends JPanel {
 	  }
 	  
 	  
-	  
 	  public static void selezionaNodo(String nodo){
 		
-		  DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
-		  albero.setSelectionPath(new TreePath(figlio)); 
-
+			DefaultMutableTreeNode figlio = new DefaultMutableTreeNode(nodo);
+			albero.setSelectionPath(new TreePath(figlio)); 
+		  
+			Enumeration<MutableTreeNode> sottonodi = radice.children();
+			while (sottonodi.hasMoreElements())
+			{
+				DefaultMutableTreeNode nodo1 = (DefaultMutableTreeNode)sottonodi.nextElement();
+				
+				if(nodo1.toString().equals(nodo)) {
+					 TreeNode[] nodes = model.getPathToRoot(nodo1);  
+			         albero.setExpandsSelectedPaths(true);                
+			         albero.setSelectionPath(new TreePath(nodes));
+				}
+			}
 	  }
 	  
 	  
