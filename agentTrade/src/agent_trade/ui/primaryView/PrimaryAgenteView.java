@@ -7,19 +7,25 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.tree.TreePath;
 
 import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciListino;
+import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
@@ -99,6 +105,34 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	private PrimaryAgenteView() {
 
 		super(Costanti.TITOLO_PRIMARY_VIEW);
+		tabbedPrincipale.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(tabbedPrincipale.getSelectedIndex()==2){
+					TreePath[] path=AlberoProdotti.albero.getSelectionPaths();
+					if (path!=null){
+						String azienda = (String) path[0].getLastPathComponent().toString();
+						if(azienda==null){
+							azienda = "Tutti i prodotti";
+						}
+						try {
+							ProdottiView.getInstance().inserisciTabella(Ctrl_gestisciListino.getProdottiListino(), azienda);
+						} 
+						catch (PersistentException e1) {
+							e1.printStackTrace();
+						}
+					}
+					else{
+						try {
+							ProdottiView.getInstance().inserisciTabella(Ctrl_gestisciListino.getProdottiListino(), "Tutti i prodotti");
+						} catch (PersistentException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
+				}
+			}
+		});
 		
 		initTabPreventivo();
 		
@@ -383,7 +417,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 
 		
 		pannello_centrale_catalogo = new JPanel();
-		pannello_centrale_catalogo.setBorder(new EmptyBorder(0, 0, 0, 0));
+		pannello_centrale_catalogo.setBorder(new EmptyBorder(12, 12, 12, 12));
 		pannello_centrale_catalogo.setPreferredSize(new Dimension(753,617));
 		pannello_centrale_catalogo.setBackground(SystemColor.control);
 		pannello_sottomenu_catalogo.add(pannello_centrale_catalogo,BorderLayout.CENTER);

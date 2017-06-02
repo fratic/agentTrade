@@ -189,7 +189,6 @@ public class Ctrl_System {
 		
 		M_Azienda[] listAziende = M_Azienda.caricaAziende();
 
-		System.out.println("num aziende "+listAziende.length);
 		//bisognerebbe inserire un controllo se listclienti è null
 		//e se ognuno dei dati usati è null
 		AlberoProdotti.inserisciNodo("Tutti i prodotti");
@@ -202,9 +201,10 @@ public class Ctrl_System {
 	}
 	public void initProdotti() throws PersistentException{
 		
-		M_Prodotto [] prodotti = M_Prodotto.caricaProdotti();
-		Ctrl_gestisciListino.getInstance().setProdottiTabella(prodotti);
-		ProdottiView.getInstance().initTable(prodotti);
+//		M_Prodotto [] prodotti = M_Prodotto.caricaProdotti();
+		Ctrl_gestisciListino.setProdottiListino(M_Prodotto.caricaProdotti());
+		M_Prodotto [] prodotti = Ctrl_gestisciListino.getProdottiListino();
+		ProdottiView.getInstance().inserisciTabella(prodotti, "Tutti i prodotti");
 	}
 	
 	
@@ -213,9 +213,10 @@ public class Ctrl_System {
 		M_Preventivo [] preventivi = M_Preventivo.caricaPreventiviAgente(); 
 		//controllare se non null
 		for (M_Preventivo p : preventivi) {
-			
-				AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
-		}
+				if(p.getRif_Cliente()!=null){
+					AlberoPreventivi.inserisciNodo(p.getIdPreventivo()+" - "+p.getRif_Cliente().getCognome()+" "+p.getRif_Cliente().getNome());	
+				}
+			}
 	}
 	
 	public int getIdAgente(){

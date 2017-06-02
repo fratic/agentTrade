@@ -1,6 +1,7 @@
 package agent_trade.model;
 
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
@@ -65,7 +66,7 @@ public class M_Azienda {
 		try {
 			criteriaAzienda = new Rem_AziendaCriteria();
 			//criteriaAzienda.attivo.eq(1);
-			
+			criteriaAzienda.addOrder(Property.forName("ragioneSociale").asc());
 			return criteriaAzienda.listM_Azienda();
 		} 
 		catch (PersistentException e) {
@@ -84,7 +85,8 @@ public class M_Azienda {
 			criteriaAzienda.partitaIva.like("%"+pIva+"%");
 			criteriaAzienda.codiceFiscale.like("%"+codFis+"%");
 			criteriaAzienda.citta.like("%"+citta+"%");
-			
+			criteriaAzienda.addOrder(Property.forName("ragioneSociale").asc());
+
 			return criteriaAzienda.listM_Azienda();
 		} catch (PersistentException e) {
 			e.printStackTrace();
@@ -140,6 +142,7 @@ public class M_Azienda {
 			AziendaCriteria criteriaAzienda = new AziendaCriteria();
 			//criteriaAzienda.attivo.eq(1);
 			criteriaAzienda.setMaxResults(1000);
+			criteriaAzienda.addOrder(Property.forName("ragioneSociale").asc());
 
 			return criteriaAzienda.listM_Azienda();
 		}

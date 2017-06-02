@@ -15,7 +15,7 @@ import javax.swing.table.TableColumnModel;
 
 import org.orm.PersistentException;
 
-import agent_trade.controller.Ctrl_gestisciListino;
+import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Sconto;
@@ -60,27 +60,9 @@ public class ProdottiView extends JPanel {
 		pannelloProdotti.add(pannelloTabella);
 	    pannelloTabella.setLayout(new GridLayout(1,1));
 
-
-		String[] colNames = Costanti.INTESTAZIONE_TABELLA_PRODOTTI;
-        
-        final Object[][] data = {};
-        
-        JTableModel = new DefaultTableModel(data, colNames);
-         
-        table = new JTable(JTableModel);
-        table.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-        TableColumnModel colModel = table.getColumnModel();
-        
-        colModel.getColumn(Costanti.COLONNA_ADD_ITEM).setPreferredWidth(35);
-        table.setDefaultRenderer(Object.class, new MyRenderer());
-        table.setDefaultEditor(Object.class, new MyEditor());
-        
-	    table.setRowHeight(30);
-	    
-	    scrollPane = new JScrollPane(table);
-	    pannelloTabella.add(scrollPane);
-	  	}
+	    creaTabella();
+	  	
+	}
 	
 	
 	/*metodi di classe*/
@@ -110,54 +92,118 @@ public class ProdottiView extends JPanel {
 	}
 
 	
-	public void initTable(M_Prodotto[] prodotti) throws PersistentException{
-		
-		JButton jb;
-	
-		for (M_Prodotto p : prodotti) {
-			jb= new DisableButton();
-			jb.setEnabled(false);
-			String sconto=setTipoScontoTabella(p);
-	
-	        ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
-	        		p.getNome(), p.getCategoria(), sconto ,Float.toString(p.getPrezzo()), jb});
-	        
-			elencoBott.put(p.getIdProdotto(), jb);
-	
-	        TableColumn col = table.getColumnModel().getColumn(Costanti.COLONNA_ADD_ITEM);
-	   	    col.setMaxWidth(60);
-		    col.setMinWidth(60);            
-		}
-	}
+//	public void initTable(M_Prodotto[] prodotti) throws PersistentException{
+//		
+//		JButton jb;
+//	
+//		for (M_Prodotto p : prodotti) {
+//			
+//			jb= new DisableButton();
+//			
+//			if (Ctrl_elaboraPreventivo.prevInCorso)
+//			{
+//				if (Ctrl_elaboraPreventivo.getElencoBottDisat().containsKey(p.getIdProdotto())){
+//					
+//					jb.setEnabled(false);
+//				}
+//				else{
+//					jb.setEnabled(true);
+//				}
+//			}
+//			else{
+//				jb.setEnabled(false);
+//			}
+//			String sconto=setTipoScontoTabella(p);
+//	
+//	        ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
+//	        		p.getNome(), p.getCategoria(), sconto ,Float.toString(p.getPrezzo()), jb});
+//	        
+//			elencoBott.put(p.getIdProdotto(), jb);
+//	
+//	        TableColumn col = table.getColumnModel().getColumn(Costanti.COLONNA_ADD_ITEM);
+//	   	    col.setMaxWidth(60);
+//		    col.setMinWidth(60);            
+//		}
+//	}
 	
 
 	public void inserisciTabella(M_Prodotto[] prodotti, String azienda) throws PersistentException{
 		
 		JButton jb;
-	
-		int idAzienda = M_Azienda.cercaAziendaNome(azienda).getIdAzienda();
+		int idAzienda=0;
+		if(!azienda.equals("Tutti i prodotti")){
+			idAzienda = M_Azienda.cercaAziendaNome(azienda).getIdAzienda();
+		}
+		
+//		int k=JTableModel.getRowCount();
+//		for (int i=k-1; i>=0;i--){
+//			JTableModel.removeRow(i);
+//			
+////			System.out.println("------------Sto cancellando la riga "+i+" di "+k);
+//		}		
+		/*****/
+		
+		creaTabella();
+		
+		/******/
+//		JTableModel.getDataVector().removeAllElements();
+//		JTableModel.fireTableDataChanged();
 
-		int k=((DefaultTableModel) JTableModel).getRowCount();
-		for (int i=k-1; i>=0;i--){
-			((DefaultTableModel) JTableModel).removeRow(i);
-		}		
 		
 		for (M_Prodotto p : prodotti) {
+			
+//			if (Ctrl_elaboraPreventivo.getElencoBottDisat().containsKey(p.getIdProdotto())){
+//				
+//				jb.setEnabled(false);
+//				System.out.println("disabilitato");
+//
+//			}
+//			else{
+//				
+//				jb.setEnabled(true);
+//				System.out.println("abilitato");
+//				
+//			}
 			jb= new DisableButton();
-			jb.setEnabled(false);
+
+			if (Ctrl_elaboraPreventivo.prevInCorso)
+			{
+				if (Ctrl_elaboraPreventivo.getElencoBottDisat().containsKey(p.getIdProdotto())){
+					jb.setEnabled(false);
+				}
+				else{
+					jb.setEnabled(true);
+				}
+			}
+			else{
+				jb.setEnabled(false);
+			}
+			
 			String sconto=setTipoScontoTabella(p);
 	
-			if(p.getIdAzienda()!=idAzienda)
+			if(p.getIdAzienda()==idAzienda)
 			{
+				
 		        ((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
 		        		p.getNome(), p.getCategoria(), sconto ,Float.toString(p.getPrezzo()), jb});
 		        
-				elencoBott.put(p.getIdProdotto(), jb);
-		
+				//elencoBott.put(p.getIdProdotto(), jb);
+//		        elencoBott.get(p.getIdProdotto());
 		        TableColumn col = table.getColumnModel().getColumn(Costanti.COLONNA_ADD_ITEM);
 		   	    col.setMaxWidth(60);
 			    col.setMinWidth(60);   
-		    }         
+		    }
+			else if(idAzienda==0){
+				
+				((DefaultTableModel) JTableModel).addRow(new Object[]{ Integer.toString(p.getIdProdotto()), 
+		        		p.getNome(), p.getCategoria(), sconto ,Float.toString(p.getPrezzo()), jb});
+		        
+				//elencoBott.put(p.getIdProdotto(), jb);
+//		        elencoBott.get(p.getIdProdotto());
+		        TableColumn col = table.getColumnModel().getColumn(Costanti.COLONNA_ADD_ITEM);
+		   	    col.setMaxWidth(60);
+			    col.setMinWidth(60); 
+			}
 		}
 	}
 	
@@ -207,5 +253,29 @@ public class ProdottiView extends JPanel {
 		
 		return tipoSconto;
 }
+	
+	public void creaTabella(){
+		
+		String[] colNames = Costanti.INTESTAZIONE_TABELLA_PRODOTTI;
+        
+        final Object[][] data = {};
+        
+        JTableModel = new DefaultTableModel(data, colNames);
+         
+        table = new JTable(JTableModel);
+        table.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+        TableColumnModel colModel = table.getColumnModel();
+        
+        colModel.getColumn(Costanti.COLONNA_ADD_ITEM).setPreferredWidth(35);
+        table.setDefaultRenderer(Object.class, new MyRenderer());
+        table.setDefaultEditor(Object.class, new MyEditor());
+        
+	    table.setRowHeight(30);
+	    pannelloTabella.removeAll();
+	    scrollPane = new JScrollPane(table);
+	    pannelloTabella.add(scrollPane);
+	    pannelloTabella.repaint();
+	}
 	
 }

@@ -15,12 +15,16 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+import javax.swing.tree.TreePath;
 
 import org.orm.PersistentException;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
+import agent_trade.controller.Ctrl_gestisciListino;
+import agent_trade.ui.content.prodotti.AlberoProdotti;
+import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.ui.primaryView.PrimaryAgenteView;
 import agent_trade.util.Costanti;
 
@@ -164,7 +168,29 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			PrimaryAgenteView.getInstance().selectTabCatalogo();		
+				PrimaryAgenteView.getInstance().selectTabCatalogo();	
+				TreePath[] path=AlberoProdotti.albero.getSelectionPaths();
+				if (path!=null){
+					String azienda = (String) path[0].getLastPathComponent().toString();
+					if(azienda==null){
+						azienda = "Tutti i prodotti";
+					}
+					try {
+						ProdottiView.getInstance().inserisciTabella(Ctrl_gestisciListino.getProdottiListino(), azienda);
+					} 
+					catch (PersistentException e1) {
+						e1.printStackTrace();
+					}
+				}
+				else{
+					try {
+						ProdottiView.getInstance().inserisciTabella(Ctrl_gestisciListino.getProdottiListino(), "Tutti i prodotti");
+					} 
+					catch (PersistentException e) {
+						e.printStackTrace();
+					}
+
+				}
 			}
 		});
 		

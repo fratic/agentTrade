@@ -38,6 +38,7 @@ public class Ctrl_elaboraPreventivo {
 	
 	private static Ctrl_elaboraPreventivo instance;
 	
+	public static boolean prevInCorso=false;
 	//probabilmente non è compito suo tenere questa struttura dati
 	private static Map<Integer, JButton> elencoBottDisat=new TreeMap<>();
 	
@@ -74,7 +75,9 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.initIntestazione();
 		PrimaryAgenteView.initItem();
 		
+		
 		PrimaryAgenteView.getInstance().setEnableNewPreventivo(false);
+		
 		PrimaryAgenteView.getInstance().setEnableCercaPreventivo(false);
 		PrimaryAgenteView.getInstance().setEnableTabCliente(false);
 		PrimaryAgenteView.getInstance().setEnableSalva(false);
@@ -179,7 +182,7 @@ public class Ctrl_elaboraPreventivo {
 			elencoBott=ProdottiView.elencoBottoniProdotti();
 			jb=elencoBott.get(p.getIdProdotto());
 			elencoBottDisat.put(p.getIdProdotto(), jb);
-			jb.setEnabled(false);
+			//jb.setEnabled(false);
 		}
 	}
 	
@@ -222,7 +225,9 @@ public class Ctrl_elaboraPreventivo {
 		p.setRif_Agente(a);
 		p.setIdPrev();
 		p.setData(Ctrl_System.calendario.getTime());
-		
+	
+		Ctrl_elaboraPreventivo.prevInCorso=true;
+
 		Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();
 	}
 
@@ -267,6 +272,8 @@ public class Ctrl_elaboraPreventivo {
 		if (M_Preventivo.getInstance().salvaPreventivo())
 		{
 			initPostSalvaPrev(M_Preventivo.getInstance());	
+			Ctrl_elaboraPreventivo.prevInCorso=false;
+
 		}
 	}
 	
@@ -277,6 +284,8 @@ public class Ctrl_elaboraPreventivo {
 		initAnnullaPrev();
 		elencoBottDisat.clear();
 		M_Preventivo.getInstance().annullaPrev();
+		Ctrl_elaboraPreventivo.prevInCorso=false;
+
 		
 	}
 	
@@ -334,12 +343,12 @@ public class Ctrl_elaboraPreventivo {
 				}
 				p.removeItem(id_item);
 				ItemNuovoPreventivoView.getInstance().deleteRow(row);
-								
 				JButton jb=elencoBottDisat.get(id_item);
-				if (jb!=null){
-					jb.setEnabled(true);
+//				if (jb!=null){
+//					jb.setEnabled(true);
 					elencoBottDisat.remove(id_item);
-				}
+//				}
+
 				try {
 					if (M_Preventivo.getInstance().getItem().isEmpty()){
 						PrimaryAgenteView.getInstance().setEnableSalva(false);
@@ -374,6 +383,7 @@ public class Ctrl_elaboraPreventivo {
 		M_Preventivo prevMod= M_Preventivo.getInstance(prev);
 		
 		initModificaPrev(prevMod);
+		Ctrl_elaboraPreventivo.prevInCorso=true;
 
 		ItemNuovoPreventivoView.getInstance().setTot();
 	}
@@ -467,6 +477,18 @@ public void btnCerca() {
 		initRiepilogoPreventivo(prev);
 	}
 
+
+	public static Map<Integer, JButton> getElencoBottDisat() {
+		return elencoBottDisat;
+	}
+
+
+	public static void setElencoBottDisat(Map<Integer, JButton> elencoBottDisat) {
+		Ctrl_elaboraPreventivo.elencoBottDisat = elencoBottDisat;
+	}
+
+	
+	
 	
 	
 }

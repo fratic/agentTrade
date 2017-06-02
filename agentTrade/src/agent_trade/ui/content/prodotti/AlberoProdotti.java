@@ -38,6 +38,7 @@ public class AlberoProdotti extends JPanel {
 
 	/*costruttori*/
 	
+	
 	public AlberoProdotti() {
 		
 		radice = new DefaultMutableTreeNode(Costanti.ROOT_PRODOTTI);
@@ -63,7 +64,8 @@ public class AlberoProdotti extends JPanel {
 			public void valueChanged(TreeSelectionEvent e) {
 				TreeNode selezione = (TreeNode) e.getPath().getLastPathComponent();
 				try {
-					Ctrl_gestisciListino.getInstance().inserisciProdottoInTabella(ottieniAzienda(selezione));
+					if(selezione.isLeaf())
+						Ctrl_gestisciListino.getInstance().inserisciProdottoInTabella(ottieniAzienda(selezione));
 				} 
 				catch (PersistentException e1) {
 					e1.printStackTrace();
@@ -89,6 +91,13 @@ public class AlberoProdotti extends JPanel {
 			return ((instance == null) ? instance = new AlberoProdotti() : instance);	
 		}
 	
+		public static DefaultMutableTreeNode getRadice() {
+			return radice;
+		}
+
+		public static void setRadice(DefaultMutableTreeNode radice) {
+			AlberoProdotti.radice = radice;
+		}
 
 	/*metodi privati*/
 	/*metodi pubblici*/

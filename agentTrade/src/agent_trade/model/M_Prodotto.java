@@ -15,6 +15,7 @@ package agent_trade.model;
 
 import java.util.ArrayList;
 
+import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.orm.PersistentException;
@@ -105,6 +106,7 @@ public abstract class M_Prodotto {
 			
 			ProdottoCriteria criteriaProdotto= new ProdottoCriteria();
 			criteriaProdotto.setMaxResults(1000);
+			criteriaProdotto.addOrder(Property.forName("id").asc());
 			return criteriaProdotto.listProdotto();
 
 		}
