@@ -20,18 +20,18 @@ import org.orm.criteria.*;
 
 import agent_trade.model.M_ScontoPercent;
 
-public class SContoPercentDetachedCriteria extends AbstractORMDetachedCriteria {
+public class ScontoPercentDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression id;
 	public final FloatExpression percent;
 	
-	public SContoPercentDetachedCriteria() {
-		super(agent_trade.model.M_ScontoPercent.class, agent_trade.persistent.SContoPercentCriteria.class);
+	public ScontoPercentDetachedCriteria() {
+		super(agent_trade.model.M_ScontoPercent.class, agent_trade.persistent.ScontoPercentCriteria.class);
 		id = new IntegerExpression("id", this.getDetachedCriteria());
 		percent = new FloatExpression("percent", this.getDetachedCriteria());
 	}
 	
-	public SContoPercentDetachedCriteria(DetachedCriteria aDetachedCriteria) {
-		super(aDetachedCriteria, agent_trade.persistent.SContoPercentCriteria.class);
+	public ScontoPercentDetachedCriteria(DetachedCriteria aDetachedCriteria) {
+		super(aDetachedCriteria, agent_trade.persistent.ScontoPercentCriteria.class);
 		id = new IntegerExpression("id", this.getDetachedCriteria());
 		percent = new FloatExpression("percent", this.getDetachedCriteria());
 	}

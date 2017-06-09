@@ -22,21 +22,21 @@ import org.orm.criteria.IntegerExpression;
 
 import agent_trade.model.M_ScontoPercent;
 
-public class SContoPercentCriteria extends AbstractORMCriteria {
+public class ScontoPercentCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id;
 	public final FloatExpression percent;
 	
-	public SContoPercentCriteria(Criteria criteria) {
+	public ScontoPercentCriteria(Criteria criteria) {
 		super(criteria);
 		id = new IntegerExpression("id", this);
 		percent = new FloatExpression("percent", this);
 	}
 	
-	public SContoPercentCriteria(PersistentSession session) {
+	public ScontoPercentCriteria(PersistentSession session) {
 		this(session.createCriteria(M_ScontoPercent.class));
 	}
 	
-	public SContoPercentCriteria() throws PersistentException {
+	public ScontoPercentCriteria() throws PersistentException {
 		this(AgentTradePersistentManager.instance().getSession());
 	}
 	
