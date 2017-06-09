@@ -21,8 +21,8 @@ public final class Costanti {
 	public static String  version = "agente";
 //	public final static String  version = "mandante";
 
-	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
-//	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
+//	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
+	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
 
 	public final static String  agente = "agente";
 	public final static String  mandante = "mandante";
@@ -42,8 +42,8 @@ public final class Costanti {
 //	public final static int  Look_Feel = 6;
 
 	
-	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
-//	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
+//	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
+	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
 
 
 	
@@ -94,6 +94,12 @@ public final class Costanti {
 	public final static String TITOLO_NUOVO_PRODOTTO = "Nuovo Prodotto";	
 	public final static String TITOLO_CANCELLA_PRODOTTO = "Attenzione!";
 	
+	public final static String TITOLO_NUOVO_SCONTO = "Nuova scheda sconto";
+	public final static String TITOLO_SELEZIONA_SCONTO = "Seleziona sconto";
+	public final static String TITOLO_SCHEDA_SCONTO = "Scheda sconto";
+	public final static String TITOLO_CANCELLA_SCONTO = "Attenzione!";
+	public final static String TITOLO_CERCA_SCONTO = "Cerca Sconto";
+	
 	/**
 	 * Messaggi dei Dialog
 	 */
@@ -112,6 +118,8 @@ public final class Costanti {
 	public final static String MESSAGGIO_CANCELLA_AZIENDA = "Sei sicuro di voler cancellare l'azienda corrente?";
 	public final static String MESSAGGIO_CANCELLA_PRODOTTO = "Sei sicuro di voler cancellare il prodotto corrente?";
 	public final static String MESSAGGIO_PREVENTIVO_NON_TROVATO = "Preventivo non trovato";
+	public final static String MESSAGGIO_CANCELLA_SCONTO = "Sei sicuro di voler cancellare lo sconto corrente?";
+	public final static String MESSAGGIO_SCONTO_NON_TROVATO = "Sconto non trovato";
 	
 	
 	/**
@@ -188,6 +196,15 @@ public final class Costanti {
 	public static final String SALVA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String ANNULLA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String ALBERO_LISTINO_ICON = "/agent_trade/ui/img/ico-listino.png";
+//CAMBIARE ICONE
+	public static final String SCONTO_ICON= "/agent_trade/ui/img/cliente.png";
+	public static final String NUOVO_SCONTO_ICON= "/agent_trade/ui/img/new_user.png";
+	public static final String CERCA_SCONTO_ICON= "/agent_trade/ui/img/search.png";
+	public static final String IMG_SFONDO_SCONTO = "/agent_trade/ui/img/sfondoAgentTradeAgente.png";
+	public static final String MOD_SCONTO_ICON = "/agent_trade/ui/img/setting.png";
+	public static final String CANC_SCONTO_ICON = "/agent_trade/ui/img/delete.png";
+	public static final String SALVA_MOD_SCONTO_ICON = "/agent_trade/ui/img/save-icon.png";
+	public static final String ANNULLA_MOD_SCONTO_ICON = "/agent_trade/ui/img/back-icon.png";
 
 	
 	/**
@@ -267,7 +284,7 @@ public final class Costanti {
 	 * Dimensioni contenitori, label e TF nelle view nuovo/riepilogo intestazione preventivo
 	 */
 	public final static int WIDTH_PANN_NORD = 733;
-	public final static int HEIGHT_PANN_NORD = 75;
+	public final static int HEIGHT_PANN_NORD = 80;
 	public final static int WIDTH_PANN_DESTRA = 280;
 	public final static int HEIGHT_PANN_DESTRA = 60;
 	public final static int WIDTH_PANN_DESTRA_MIN = 200;
@@ -335,6 +352,11 @@ public final class Costanti {
 	public final static int WIDTH_TEXT_FIELD_PREV = 94;
 	public final static int HEIGHT_TEXT_FIELD_PREV = 20;
 	
+	/**
+	 * Dimensioni contenitori, label e TF nelle view nuovo/riepilogo sconto
+	 */
+	public final static int WIDTH_BOTTONE_SELEZ_SCONTO = 150;
+	public final static int HEIGHT_BOTTONE_SELEZ_SCONTO = 20;
 	
 	/**
 	 * Label e Stringhe generiche
@@ -348,6 +370,7 @@ public final class Costanti {
 	public final static String TAB_AGENTE= "Agente";
 	public final static String TAB_AZIENDA= "Azienda";
 	public final static String TAB_LISTINO= "Listino";
+	public final static String TAB_SCONTO= "Sconto";
 
 	public final static String ROOT_PREVENTIVI= "Preventivi";
 	public final static String ROOT_CLIENTI= "Clienti";
@@ -426,6 +449,12 @@ public final class Costanti {
 	public final static String LABEL_TAGLIO = "Taglio";
 	public final static String LABEL_TIPO = "Tipo";
 	public final static String LABEL_STAGIONATURA = "Stagionatura";
+	
+	public final static String LABEL_TIPO_SCONTO = "Tipo di sconto";
+	public final static String LABEL_ID_SCONTO = "ID sconto";
+	public final static String LABEL_PERCENTUALE_SCONTO = "Percentuale";
+	public final static String LABEL_QUANTITA_SCONTO = "Quanti\u00E0 prodotti";
+	public final static String LABEL_FISSO_SCONTO = "Valore sconto fisso";
 
 	/**
 	 * Tip
@@ -526,6 +555,20 @@ public final class Costanti {
 	public final static String TIP_TIPO_LATT = "Tipo";
 	public final static String TIP_STAGIONATURA_LATT = "Inserire il numero di mesi della stagionatura";
 	
+	public final static String TIP_GESTISCI_SCONTO = "Gestisci gli sconti";
+	public final static String TIP_NUOVO_SCONTO = "Inserisci un nuovo sconto";
+	public final static String TIP_CERCA_SCONTO = "Cerca uno sconto";
+	public final static String TIP_TIPO_SCONTO = "Selezionare il tipo di sconto";
+	public final static String TIP_CONFERMA_SEL = "Conferma il tipo di sconto";
+	public final static String TIP_PERCENTUALE_SCONTO = "Inserire la percentuale di sconto (ES. 0.1 = 10%)";
+	public final static String TIP_QUANTITA_SCONTO = "Inserire la quanti\u00E0 di prodotti necessari affinch\u00E8 sia valido lo sconto";
+	public final static String TIP_FISSO_SCONTO = "Inserire il valore dello sconto fisso superata una certa quantit\u00E0";
+	public final static String TIP_SALVA_SCONTO = "Salva sconto";
+	public static final String TIP_MODIFICA_SCONTO = "Modifica sconto";
+	public static final String TIP_CANCELLA_SCONTO = "Elimina sconto";
+	public final static String TIP_SALVA_MOD_SCONTO = "Salva modifiche";
+	public final static String TIP_ANNULLA_MOD_SCONTO = "Annulla modifiche";
+	
 	/**
 	 * Bottoni
 	 */
@@ -562,11 +605,15 @@ public final class Costanti {
 	
 	public final static String[] INTESTAZIONE_LISTINO_PRODOTTI = {"ID prodotto", "Nome", "Categoria", "Sconto", "Prezzo", "Visualizza" };
 	
+	public final static String[] INTESTAZIONE_TABELLA_RICERCA_SCONTI = {"ID", "Tipo", "Percentuale", "Quantit\u00E0", "Fisso"};
+	
 	public final static String[] LISTA_PRODOTTI = {"Seleziona un tipo", "vini", "dolci", "carni", "latticini"};
 	
 	public final static String[] LISTA_TAGLIO_CARNE = {"Seleziona un taglio", "Cat1", "Cat2", "Cat3"};
 		
 	public final static String[] LISTA_TIPO_CARNE = {"Seleziona un tipo", "Tipo1", "Tipo2", "Tipo3"};
+	
+	public final static String[] LISTA_TIPO_SCONTI = {"Seleziona sconto", "Cliente - Percentuale", "Prodotto - Quantit\u00E0", "Prodotto - Percentuale" };
 	
 	/**
 	 * Costanti colonne

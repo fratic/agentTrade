@@ -18,8 +18,10 @@ import org.orm.PersistentException;
 import agent_trade.controller.Ctrl_gestisciAgente;
 import agent_trade.controller.Ctrl_gestisciAzienda;
 import agent_trade.controller.Ctrl_gestisciListino;
+import agent_trade.controller.Ctrl_gestisciSconto;
 import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
 import agent_trade.ui.content.agenti.AlberoAgenti;
 import agent_trade.ui.content.agenti.DettaglioAgenteView;
 import agent_trade.ui.content.agenti.RiepilogoAgenteView;
@@ -30,10 +32,14 @@ import agent_trade.ui.content.listini.RiepilogoIntestazioneListinoView;
 import agent_trade.ui.content.listini.RiepilogoListinoView;
 import agent_trade.ui.content.prodotti.nuovo.NuovoProdottoFactoryView;
 import agent_trade.ui.content.prodotti.riepilogo.RiepilogoProdottoFactoryView;
+import agent_trade.ui.content.sconti.nuovo.NuovoScontoFactoryView;
+import agent_trade.ui.content.sconti.nuovo.SelezionaScontoView;
+import agent_trade.ui.content.sconti.riepilogo.RiepilogoScontoFactoryView;
 import agent_trade.util.Costanti;
 import agent_trade.util.Sfondo_Agente;
 import agent_trade.util.Sfondo_Azienda;
 import agent_trade.util.Sfondo_Listino;
+import agent_trade.util.Sfondo_Sconto;
 
 public class PrimaryMandanteView extends PrimaryViewFactory 
 {
@@ -54,6 +60,11 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	private static JPanel riep_intestaz_listino;	
 	private static JPanel pannello_centrale_listino;
 
+	private static JPanel dettaglio_sconto;
+	private static JPanel riep_sconto;
+	private static JPanel pannello_centrale_sconto;
+
+	
 	/*attributi privati*/
 	
 	private JButton bottoneCercaAgente;
@@ -83,6 +94,16 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	private JButton bottoneNuovoListino;
 	private JButton bottoneCercaListino;
+
+	private JPanel Sconto;
+	private JPanel pannello_menu_sconto;
+	private JPanel pannello_sottomenu_sconto;
+	private JPanel pannello_laterale_sconto;
+
+
+	private JButton bottoneNuovoSconto;
+	private JButton bottoneCercaSconto;
+
 	
 	/*costruttori*/
 	
@@ -93,7 +114,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		initTabAgente();
 		initTabAzienda();
 		initTabListino();
-		
+		initTabSconto();		
 	}
 	
 	
@@ -172,11 +193,12 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	
 	public static void cancRiepilogoProdottoView(){
-		
-		RiepilogoProdottoFactoryView.cancRiepilogoProdotto();
-		pannello_centrale_listino.remove(riep_listino);
-		//pannello_centrale_listino.removeAll();
-		riep_listino = null;
+//		if(riep_listino != null){
+			RiepilogoProdottoFactoryView.cancRiepilogoProdotto();
+			pannello_centrale_listino.remove(riep_listino);
+			//pannello_centrale_listino.removeAll();
+			riep_listino = null;
+//		}
 	}
 	
 	
@@ -193,6 +215,55 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		NuovoProdottoFactoryView.cancNuovoProdotto();
 		pannello_centrale_listino.remove(riep_listino);
 		riep_listino = null;
+	}
+	
+	
+	public static void initSelezionaSconto() {
+		
+		dettaglio_sconto = SelezionaScontoView.getInstance();
+		pannello_centrale_sconto.add(dettaglio_sconto);
+		pannello_centrale_sconto.repaint();
+	}
+	
+	
+	public static void cancSelezionaScontoView(){
+		
+		SelezionaScontoView.cancSelezionaSconto();
+		pannello_centrale_sconto.remove(dettaglio_sconto);
+		dettaglio_sconto = null;
+	}
+	
+	
+	public static void initDettaglioScontoView(String tipoSconto){
+		
+		dettaglio_sconto = NuovoScontoFactoryView.getInstance(tipoSconto);
+		pannello_centrale_sconto.add(dettaglio_sconto, BorderLayout.CENTER);
+		pannello_centrale_sconto.repaint();
+	}
+	
+	
+	public static void cancDettaglioScontoView(){
+		
+		NuovoScontoFactoryView.cancNuovoSconto();
+		pannello_centrale_sconto.remove(dettaglio_sconto);
+		dettaglio_sconto = null;
+	}
+	
+	
+	public static void initRiepilogoScontoView(M_Sconto sconto) {
+		
+		riep_sconto = RiepilogoScontoFactoryView.getInstance(sconto);
+		pannello_centrale_sconto.add(riep_sconto);
+		pannello_centrale_sconto.repaint();
+	}
+	
+	
+	public static void cancRiepilogoScontoView(){
+		if(riep_sconto != null){
+			RiepilogoScontoFactoryView.cancRiepilogoSconto();
+			pannello_centrale_sconto.remove(riep_sconto);
+			riep_sconto = null;
+		}
 	}
 		
 	/*metodi privati*/
@@ -403,14 +474,85 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 					e.printStackTrace();
 				}
 			}
-		});
-		
-		
+		});	
 	}
 	
 	
+	private void initTabSconto(){
+		
+		Sconto = new JPanel();
+		tabbedPrincipale.addTab(Costanti.TAB_SCONTO, new ImageIcon(PrimaryMandanteView.class.getResource(Costanti.SCONTO_ICON)), Sconto, Costanti.TIP_GESTISCI_SCONTO);
+		Sconto.setLayout(new BorderLayout());
+		
+		pannello_menu_sconto = new JPanel();
+		pannello_menu_sconto.setPreferredSize(new Dimension(1013, 100));
+		pannello_menu_sconto.setLayout(null);
+
+		pannello_menu_sconto.setBackground(Color.WHITE);
+		Sconto.add(pannello_menu_sconto,BorderLayout.NORTH);
+		
+		bottoneNuovoSconto = new JButton();
+		bottoneNuovoSconto.setIcon(new ImageIcon(PrimaryMandanteView.class.getResource(Costanti.NUOVO_SCONTO_ICON)));
+		bottoneNuovoSconto.setToolTipText(Costanti.TIP_NUOVO_SCONTO);
+		bottoneNuovoSconto.setBounds(25, 25, 50, 50);
+		pannello_menu_sconto.add(bottoneNuovoSconto);
+		
+		bottoneCercaSconto = new JButton("");
+		bottoneCercaSconto.setIcon(new ImageIcon(PrimaryMandanteView.class.getResource(Costanti.CERCA_SCONTO_ICON)));
+		bottoneCercaSconto.setToolTipText(Costanti.TIP_CERCA_SCONTO);
+		bottoneCercaSconto.setBounds(103, 25, 50, 50);
+		pannello_menu_sconto.add(bottoneCercaSconto);
+		
+		pannello_sottomenu_sconto = new JPanel();
+		pannello_sottomenu_sconto.setPreferredSize(new Dimension(1013, 617));
+		pannello_sottomenu_sconto.setLayout(new BorderLayout());
+		Sconto.add(pannello_sottomenu_sconto, BorderLayout.CENTER);
+
+		
+		pannello_laterale_sconto = new JPanel();
+		pannello_laterale_sconto.setPreferredSize(new Dimension(260, 617));
+		pannello_sottomenu_sconto.add(pannello_laterale_sconto, BorderLayout.WEST);
+		pannello_laterale_sconto.setLayout(null);
+
+		
+//		alberoSconti = new AlberoAgenti();
+//		alberoSconti.setBounds(0, 0, 261, 617);
+//		pannello_laterale_sconto.add(alberoSconti);
+		
+		pannello_centrale_sconto = new JPanel();
+		pannello_centrale_sconto.setBackground(SystemColor.control);
+
+		pannello_centrale_sconto.setPreferredSize(new Dimension(753, 617));
+		pannello_sottomenu_sconto.add(pannello_centrale_sconto, BorderLayout.CENTER);
+		pannello_centrale_sconto.setLayout(new GridLayout(1,1));
+		pannello_centrale_sconto.setBorder(new EmptyBorder(7, 7, 0, 7));
+		
+		setSfondoSconto();
+		
+		bottoneCercaSconto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					Ctrl_gestisciSconto.getInstance().btnCerca();
+				} 
+				catch (PersistentException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		bottoneNuovoSconto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Ctrl_gestisciSconto.getInstance().btnNewSconto();
+				
+			}
+		});
+	}
+	
 	/*metodi pubblici*/
 	
+	/****  FUNZIONI AGENTE ****/
 	
 	public void setSfondoAgente() 
 	{
@@ -494,7 +636,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	}
 	
 	
-	
+	/****  FUNZIONI AZIENDA ****/
 	
 	public void setSfondoAzienda() {
 		JPanel sfondoAzienda = new Sfondo_Azienda();
@@ -572,6 +714,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	}
 	
 	
+	/****  FUNZIONI LISTINO ****/
 	
 	public void setSfondoListino() {
 		JPanel sfondoListino = new Sfondo_Listino();
@@ -619,6 +762,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnModifica(b);
 	}
 	
+	
 	public void disattivaIndietro(boolean b){
 		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnIndietro(b);
 	}
@@ -664,4 +808,87 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	public void setInvisibleToolTipListino(){
 		((RiepilogoProdottoFactoryView) riep_listino).disabilitaToolTip();
 	}
+	
+	
+	/****  FUNZIONI SCONTO ****/
+	
+	public void setSfondoSconto() {
+		JPanel sfondoSconto = new Sfondo_Sconto();
+		pannello_centrale_sconto.add(sfondoSconto);
+	}
+	
+	
+	public void resetPannelloCentraleSconto(){
+		pannello_centrale_sconto.removeAll();
+		pannello_centrale_sconto.repaint();		
+	}
+	
+	
+	public void resetSelezioneSconto() {
+		((SelezionaScontoView) dettaglio_sconto).resetSelezioneSconto();
+	}
+	
+	
+	public void resetNuovoSconto() {
+		((NuovoScontoFactoryView) dettaglio_sconto).resetNuovoSconto();
+	}
+	
+	
+	public void setEnableCercaSconto(boolean b){
+		bottoneCercaSconto.setEnabled(b);
+	}
+	
+	public void setEnableNewSconto(boolean b) {
+		bottoneNuovoSconto.setEnabled(b);		
+	}
+	
+	
+	public void setSchedaSconto(M_Sconto sconto) {
+		((RiepilogoScontoFactoryView) riep_sconto).setSchedaSconto(sconto);
+	}
+	
+	
+	public void disattivaModificaSconto(boolean b) {
+		((RiepilogoScontoFactoryView) riep_sconto).setVisibleBtnModifica(b);
+	}
+	
+	public void disattivaSalvaModificheSconto(boolean b) {
+		((RiepilogoScontoFactoryView) riep_sconto).setVisibleBtnSalvaModifiche(b);
+	}
+	
+	
+	public void disattivaAnnullaModificheSconto(boolean b) {
+		((RiepilogoScontoFactoryView) riep_sconto).setVisibleBtnAnnullaModifiche(b);
+	}
+	
+	
+	public void setVisibleErroreRiepSconto(boolean b) {
+		((RiepilogoScontoFactoryView) riep_sconto).setVisibleErroreRiepSconto(b);
+	}
+	
+	
+	public void setModificheSconto(boolean b) {
+		((RiepilogoScontoFactoryView) riep_sconto).setTFeditable(b);
+	}
+	
+	
+	public void disattivaCancellaSconto(boolean b) {
+		((RiepilogoScontoFactoryView) riep_sconto).setVisibleBtnCancella(b);
+	}
+	
+	
+	public void setVisibleToolTipSconto() {
+		((RiepilogoScontoFactoryView) riep_sconto).abilitaToolTip();
+	}
+	
+	
+	public void setInvisibleToolTipSconto() {
+		((RiepilogoScontoFactoryView) riep_sconto).disabilitaToolTip();
+	}
+	
+	
+	public void setEnableTabSconto(boolean b ) {
+		tabbedPrincipale.setEnabledAt(3, b);
+	}
+	
 }

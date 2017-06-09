@@ -154,7 +154,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	public static void initIntestazione(){
 
 		intestazione= IntestazioneNuovoPreventivoView.getInstance();
-		intestazione.setPreferredSize(new Dimension(733,140));
+		intestazione.setPreferredSize(new Dimension(733,150));
 		pannello_centrale_preventivo.add(intestazione, BorderLayout.NORTH);
 		pannello_centrale_preventivo.repaint();
 
@@ -193,7 +193,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		PrimaryAgenteView.getInstance().resetPannelloCentralePreventivo();
 	
 		riep_intestazione =RiepilogoIntestazionePreventivoView.getInstance();
-		riep_intestazione.setPreferredSize(new Dimension(733,140));
+		riep_intestazione.setPreferredSize(new Dimension(733,150));
 		pannello_centrale_preventivo.add(riep_intestazione,BorderLayout.NORTH);
 		pannello_centrale_preventivo.repaint();
 

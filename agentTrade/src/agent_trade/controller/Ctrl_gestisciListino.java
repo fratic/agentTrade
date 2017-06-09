@@ -88,6 +88,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.initNuovoProdottoView(azienda);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(false);
 	}
 	
@@ -163,6 +164,7 @@ public class Ctrl_gestisciListino {
 		}
 				
 		PrimaryMandanteView.cancRiepilogoListinoView();
+//		PrimaryMandanteView.cancRiepilogoProdottoView();
 		PrimaryMandanteView.initRiepilogoProdottoView(prod);
 		
 		if(listino=="presente"){
@@ -183,6 +185,7 @@ public class Ctrl_gestisciListino {
 		
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		
 //		fare un	controllo per vedere se la lista non è vuota
@@ -199,6 +202,7 @@ public class Ctrl_gestisciListino {
 		
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		//vedere se c'è una soluzione migliore in quanto questa implica una chiamata al db
 		updateElencoProdotti();		
@@ -221,6 +225,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheProdotto(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(false);
 		PrimaryMandanteView.getInstance().setVisibleToolTipListino();
 	}
@@ -242,6 +247,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepProd(false);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
 	}
@@ -272,6 +278,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheProdotto(false);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
 		
@@ -305,9 +312,10 @@ public class Ctrl_gestisciListino {
 		confermaCancProdotto.cancInst();
 	}
 	
+	
 	public void inserisciProdottoInTabella(String azienda) throws PersistentException {
 		
-			ProdottiView.getInstance().inserisciTabella(Ctrl_gestisciListino.getProdottiListino(), azienda);
-		
+		ProdottiView.getInstance().inserisciTabella(Ctrl_gestisciListino.getProdottiListino(), azienda);
 	}
+
 }

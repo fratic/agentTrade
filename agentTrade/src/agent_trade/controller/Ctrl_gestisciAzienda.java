@@ -135,6 +135,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(false);
 //		AlberoAziende.abilitaAlbero();
 //		AlberoAziende.selectNode(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
@@ -162,6 +163,7 @@ public class Ctrl_gestisciAzienda {
 //			AlberoAziende.abilitaAlbero();
 			PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 			PrimaryMandanteView.getInstance().setEnableTabListino(true);
+			PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 			PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
 		}
 		else{
@@ -200,6 +202,7 @@ public class Ctrl_gestisciAzienda {
 		
 			PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 			PrimaryMandanteView.getInstance().setEnableTabListino(true);
+			PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 			
 			PrimaryMandanteView.getInstance().setEnableNewAzienda(true);
 			PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
@@ -239,6 +242,7 @@ public class Ctrl_gestisciAzienda {
 		//AlberoAziende.disabilitaAlbero();
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
 		PrimaryMandanteView.getInstance().setEnableCercaAzienda(false);
 	}
 	
@@ -250,6 +254,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreNuovaAzienda(false);
 //		AlberoAziende.abilitaAlbero();
 	}
@@ -264,6 +269,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableNewAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableCercaAzienda(false);
@@ -282,6 +288,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().disattivaVisualizzaListinoAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setEnableNewAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipAzienda();
