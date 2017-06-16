@@ -16,9 +16,15 @@ public class sincronizzazioneProdottiDBRemotoLocale {
 
 //		SystemDaemon.getInstance().sincronizzaListino();
 
+		System.out.println("SINCRONIZZA SCONTI");
 		SystemDaemon.getInstance().sincronizzaSconti();
-
 		
+		System.out.println("SINCRONIZZA AZIENDE");
+		SystemDaemon.getInstance().sincronizzaAziende();
+
+		System.out.println("SINCRONIZZA LISTINO");
+		SystemDaemon.getInstance().sincronizzaListino();
+
 	}
 
 }

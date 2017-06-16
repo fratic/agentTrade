@@ -210,6 +210,19 @@ public class M_Azienda implements Cloneable{
 		}
 	}
 	
+	public static void updateAzienda(M_Azienda a) throws PersistentException {
+
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradePersistentManager.instance().getSession().update(a);
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+	}
 	
 	public static void cancellaAziendaRemoto(M_Azienda a) throws PersistentException {
 

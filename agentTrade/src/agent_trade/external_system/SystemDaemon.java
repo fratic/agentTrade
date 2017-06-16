@@ -121,7 +121,7 @@ public class SystemDaemon {
 					AgentTradePersistentManager.instance().disposePersistentManager();
 
 					locale=remoti[i].clone();
-					M_Prodotto.salvaProdotto(locale);
+					M_Prodotto.updateProdotto(locale);
 				}
 			}
 			
@@ -155,14 +155,13 @@ public class SystemDaemon {
 					AgentTradePersistentManager.instance().disposePersistentManager();
 
 					azienda_locale=aziende_remote[i].clone();
-					M_Azienda.salvaAzienda(azienda_locale);
+					M_Azienda.updateAzienda(azienda_locale);
 					
 				}
 			}
 			
 			else
 			{
-				//in tal caso, lo sconto in locale non esiste, quindi basta inserirlo
 				M_Azienda.salvaAzienda(aziende_remote[i]);
 
 			}
@@ -192,7 +191,7 @@ public class SystemDaemon {
 					AgentTradePersistentManager.instance().disposePersistentManager();
 
 					sconto_locale=sconti_remoti[i].clone();
-					M_Sconto.salvaSconto(sconto_locale);
+					M_Sconto.updateSconto(sconto_locale);
 					
 				}
 			}

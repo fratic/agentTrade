@@ -89,6 +89,24 @@ public class M_Sconto implements Cloneable{
 		}
 	}
 	
+	public static void updateSconto(M_Sconto s)throws PersistentException{
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradePersistentManager.instance().getSession().update(s);
+
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			System.out.println("Eccezione : "+e);
+			t.rollback();
+		}
+		finally {
+			
+			System.out.println("commit a buon fine per id : "+s.getId()+" ? "+t.wasCommitted());
+		}
+	}
 	
 	public static void salvaScontoRemoto(M_Sconto s)throws PersistentException{
 		

@@ -175,7 +175,6 @@ public abstract class M_Prodotto implements Cloneable{
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try 
 		{				
-//			AgentTradePersistentManager.instance().getSession().saveOrUpdate(p);
 			AgentTradePersistentManager.instance().getSession().save(p);
 
 			// commit per il salvataggio
@@ -190,6 +189,23 @@ public abstract class M_Prodotto implements Cloneable{
 		}
 	}
 	
+	public static void updateProdotto(M_Prodotto p)throws PersistentException{
+		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradePersistentManager.instance().getSession().update(p);
+
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			System.out.println("Eccezione: "+e);
+			t.rollback();
+		}
+		finally {
+			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
+		}
+	}
 	
 	public static void salvaProdottoRemoto(M_Prodotto p)throws PersistentException{
 		
