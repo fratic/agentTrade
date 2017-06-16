@@ -10,7 +10,7 @@ License Type: Academic
 <!--  CONFIGURAZIONE PER DB REMOTO
  --> 
  
-<hibernate-configuration>
+<!-- <hibernate-configuration>
 	<session-factory>
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="connection.driver_class">org.postgresql.Driver</property>
@@ -34,12 +34,11 @@ License Type: Academic
 			
 		
 	</session-factory>
-</hibernate-configuration>
+</hibernate-configuration> -->
 
 
 <!--  CONFIGURAZIONE PER SIMULAZIONE DB REMOTO, IN LOCALE
  --> 
-<!-- 
 <hibernate-configuration>
 	<session-factory>
 	
@@ -55,7 +54,7 @@ License Type: Academic
 		<property name="hibernate.c3p0.max_size">15</property>
 		<property name="hibernate.c3p0.timeout">10</property>
 		
-		<property name="show_sql">true</property>
+		<property name="show_sql">false</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
 
 		<mapping resource="ormmapping/agent_trade/model/M_Agente.hbm.xml" />
@@ -67,4 +66,3 @@ License Type: Academic
 		
 	</session-factory>
 </hibernate-configuration>
--->

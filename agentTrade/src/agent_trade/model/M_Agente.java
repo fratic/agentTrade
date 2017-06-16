@@ -14,6 +14,7 @@
 package agent_trade.model;
 
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
@@ -160,6 +161,7 @@ public class M_Agente {
 		try {
 			criteriaAgente = new Rem_AgenteCriteria();
 			criteriaAgente.attivo.eq(1);
+			criteriaAgente.addOrder(Property.forName("cognome").asc());
 			
 			return criteriaAgente.listM_Agente();
 		} 

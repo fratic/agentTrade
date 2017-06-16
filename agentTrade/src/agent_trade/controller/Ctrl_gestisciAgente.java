@@ -123,12 +123,14 @@ public class Ctrl_gestisciAgente {
 			recuperaAgente(id);
 					
 //			AlberoAgenti.inserisciNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
-//			AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
-//			AlberoAgenti.abilitaAlbero();
+			AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+			AlberoAgenti.abilitaAlbero();
 			PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 			PrimaryMandanteView.getInstance().setEnableTabListino(true);
 			PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 			PrimaryMandanteView.getInstance().setEnableCercaAgente(true);
+			AlberoAgenti.refresh();
+
 		}
 		else{
 			PrimaryMandanteView.getInstance().setVisibleErroreNuovoAgente(true);
@@ -173,8 +175,10 @@ public class Ctrl_gestisciAgente {
 			PrimaryMandanteView.getInstance().disattivaInviaPostaAgente(true);
 			PrimaryMandanteView.getInstance().setInvisibleToolTipAgente();
 //			AlberoAgenti.updateNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
-//			AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
-//			AlberoAgenti.abilitaAlbero();
+			AlberoAgenti.abilitaAlbero();
+			AlberoAgenti.refresh();
+			AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+
 		}
 		else{
 			PrimaryMandanteView.getInstance().setVisibleErroreRiepAgente(true);
@@ -235,7 +239,8 @@ public class Ctrl_gestisciAgente {
 		
 		PrimaryMandanteView.getInstance().resetPannelloCentraleAgente();
 		PrimaryMandanteView.initDettaglioAgente();
-		//AlberoAgenti.disabilitaAlbero();
+		AlberoAgenti.deselezionaNodo();
+		AlberoAgenti.disabilitaAlbero();
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
@@ -253,29 +258,31 @@ public class Ctrl_gestisciAgente {
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreNuovoAgente(false);
-//		AlberoAgenti.abilitaAlbero();
+		AlberoAgenti.abilitaAlbero();
 		}
 	
 	
 	public void recuperaAgente(int idAgente)throws PersistentException{
 		
-		PrimaryMandanteView.getInstance().resetPannelloCentraleAgente();
-		
-		M_Agente agente = M_Agente.cercaAgenteRemoto(idAgente);
-		
-		Ricerca_agente.getInstance().dispose();
-		Ricerca_agente.cancInstanza();
-		
-		PrimaryMandanteView.initRiepilogoAgenteView();
-		PrimaryMandanteView.getInstance().setSchedaAgente(""+agente.getIdAgente(), agente.getCognome(), agente.getNome(), ""+agente.getLivello(), agente.getCitta(), agente.getCap(), agente.getIndirizzo(), agente.getEmail(), agente.getCell(), agente.getUsername(), agente.getPassword());
-		PrimaryMandanteView.getInstance().disattivaSalvaModificheAgente(false);
-		PrimaryMandanteView.getInstance().disattivaAnnullaModificheAgente(false);
-		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
-		PrimaryMandanteView.getInstance().setEnableTabListino(true);
-		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
-		PrimaryMandanteView.getInstance().setVisibleErroreRiepAgente(false);
-//		AlberoClienti.abilitaAlbero();
-//		AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
+
+			PrimaryMandanteView.getInstance().resetPannelloCentraleAgente();
+			
+			M_Agente agente = M_Agente.cercaAgenteRemoto(idAgente);
+			
+			Ricerca_agente.getInstance().dispose();
+			Ricerca_agente.cancInstanza();
+			
+			PrimaryMandanteView.initRiepilogoAgenteView();
+			PrimaryMandanteView.getInstance().setSchedaAgente(""+agente.getIdAgente(), agente.getCognome(), agente.getNome(), ""+agente.getLivello(), agente.getCitta(), agente.getCap(), agente.getIndirizzo(), agente.getEmail(), agente.getCell(), agente.getUsername(), agente.getPassword());
+			PrimaryMandanteView.getInstance().disattivaSalvaModificheAgente(false);
+			PrimaryMandanteView.getInstance().disattivaAnnullaModificheAgente(false);
+			PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
+			PrimaryMandanteView.getInstance().setEnableTabListino(true);
+			PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+			PrimaryMandanteView.getInstance().setVisibleErroreRiepAgente(false);
+			AlberoAgenti.abilitaAlbero();
+			AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+			
 	}
 	
 	public void abilitaModifica()
@@ -293,7 +300,7 @@ public class Ctrl_gestisciAgente {
 		PrimaryMandanteView.getInstance().setEnableNewAgente(false);
 		PrimaryMandanteView.getInstance().setEnableCercaAgente(false);
 		PrimaryMandanteView.getInstance().setVisibleToolTipAgente();
-		//AlberoAgenti.disabilitaAlbero();
+		AlberoAgenti.disabilitaAlbero();
 	}
 	
 	public void annullaModificheAgente(String id) throws PersistentException
@@ -311,22 +318,24 @@ public class Ctrl_gestisciAgente {
 		PrimaryMandanteView.getInstance().setEnableNewAgente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaAgente(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipAgente();
-		//AlberoClienti.abilitaAlbero();
+		AlberoAgenti.abilitaAlbero();
 	}
 	
 	public void postConfermaCancAgente(String id) throws PersistentException{
 		
+		System.out.println("sono in post conferma");
 		int idAgente=Integer.parseInt(id);
 		
 		M_Agente agente=M_Agente.cercaAgenteRemoto(idAgente);
 		agente.setAttivo(0);
 		M_Agente.aggiornaAgenteRemoto(agente);
 
-		AlberoAgenti.rimuoviNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
+		//AlberoAgenti.rimuoviNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
 		confermaCancAgente.getInstance().setVisible(false);		
 		confermaCancAgente.cancInst();
 		PrimaryMandanteView.getInstance().resetPannelloCentraleAgente();
 		PrimaryMandanteView.getInstance().setSfondoAgente();
+		AlberoAgenti.refresh();
 	}
 	
 	public void notConfermaCancAgente(){

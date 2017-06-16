@@ -18,6 +18,8 @@ import javax.swing.tree.TreePath;
 
 import org.orm.PersistentException;
 
+import agent_trade.controller.Ctrl_System;
+import agent_trade.controller.Ctrl_gestisciAgente;
 import agent_trade.util.Costanti;
 
 public class AlberoAgenti extends JPanel {
@@ -63,15 +65,19 @@ public class AlberoAgenti extends JPanel {
 	        albero.addTreeSelectionListener((new TreeSelectionListener() {
 
 				public void valueChanged(TreeSelectionEvent e) {
-					TreePath selection = e.getPath();
-//					try {if(abilitalistener == true){
-//						//System.out.println("MI ATTIVO");
-//						Ctrl_gestisciCliente.getInstance().mostraCliente(selection.getLastPathComponent());
-//					}
-//					} catch (PersistentException e1)
-//					{
-//						e1.printStackTrace();
-//					}
+					TreeNode selezione = (TreeNode) e.getPath().getLastPathComponent();
+					
+					
+					try {
+						if(selezione.isLeaf() && abilitalistener == true)
+	        			{
+							System.out.println("SELEZIONE"+selezione);
+							Ctrl_gestisciAgente.getInstance().recuperaAgente(ottieniId(selezione));
+        				}
+					} 
+					catch (PersistentException e1) {
+						e1.printStackTrace();
+					}
 					
 				}}));
 	        
@@ -105,28 +111,36 @@ public class AlberoAgenti extends JPanel {
 		  
 	}
 			  
-	public static void rimuoviNodo(String nodo) {
-		
-		Enumeration<MutableTreeNode> sottonodi = radice.children();
-		while (sottonodi.hasMoreElements())
-		{
-			//ottengo i nodi singolarmente
-			DefaultMutableTreeNode nodo1 = (DefaultMutableTreeNode)sottonodi.nextElement();
-			//System.out.print(nodo1);
-			if(nodo1.toString().equals(nodo)) {
-				abilitalistener = false;
-				model.removeNodeFromParent(nodo1);
-			}
-			abilitalistener = true;
-		}
-	}
+//	public static void rimuoviNodo(String nodo) {
+//		
+//		System.out.println("sono in rimuovi nodo");
+//		Enumeration<MutableTreeNode> sottonodi = radice.children();
+//		while (sottonodi.hasMoreElements())
+//		{
+//			//ottengo i nodi singolarmente
+//			DefaultMutableTreeNode nodo1 = (DefaultMutableTreeNode)sottonodi.nextElement();
+//			//System.out.print(nodo1);
+//			if(nodo1.toString().equals(nodo)) {
+//				abilitalistener = false;
+//				model.removeNodeFromParent(nodo1);
+//				albero.clearSelection();
+//				System.out.println("cancello il nodo "+nodo1+" e tolgo la selezione");
+//
+//			}
+//			abilitalistener = true;
+//		}
+//	}
 	
-	public static void updateNodo (String nodo) throws PersistentException{
+	public static void refresh () throws PersistentException{
 		
+		//albero.clearSelection();
+		abilitalistener = false;
+
 		((DefaultMutableTreeNode) model.getRoot()).removeAllChildren();
-	    model.reload();
-//	    Ctrl_System.getInstance().initAlberoClienti();
-		
+	   // model.reload();
+	    Ctrl_System.getInstance().initAlberoAgenti();
+		    model.reload();
+			abilitalistener = true;
 	}
 	
 	public static void selectNode (String nodo) throws PersistentException{
@@ -145,7 +159,26 @@ public class AlberoAgenti extends JPanel {
 		}
 	}
 	
-	public static void deselezionaNodo(String nodo){
+	
+	public int ottieniId(TreeNode selezione){
+		
+		int id;
+		
+		if (selezione.isLeaf()){
+			String idString=selezione.toString();
+			String idVett[];
+			idVett=idString.split("-");
+			String idS=idVett[0].replaceAll("-","");
+			idS=idS.replaceAll(" ","");
+			id=Integer.parseInt(idS);
+		}
+		else {
+			id=0;
+		}
+		return id;
+	}
+	
+	public static void deselezionaNodo(){
 		
 		  albero.clearSelection();
 

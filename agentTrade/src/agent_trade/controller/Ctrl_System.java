@@ -17,6 +17,7 @@ import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Mandante;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Prodotto;
+import agent_trade.ui.content.agenti.AlberoAgenti;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.prodotti.AlberoProdotti;
@@ -76,7 +77,7 @@ public class Ctrl_System {
 	 * metodi privati
 	 */
 
-	private void inizializzaSistema() throws PersistentException, CloneNotSupportedException, IOException
+	private void inizializzaSistemaAgente() throws PersistentException, CloneNotSupportedException, IOException
 	{
 		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
 
@@ -90,8 +91,16 @@ public class Ctrl_System {
 		initAlberoPreventivi();	
 		
 		initAlberoProdotti();
+		
 	}
 	
+	private void inizializzaSistemaMandante() throws PersistentException, CloneNotSupportedException, IOException
+	{
+
+		initAlberoAgenti();
+
+		
+	}
 	
 	
 	/*
@@ -120,7 +129,7 @@ public class Ctrl_System {
 					LoginViewFactory.getInstance().setVisible(false);
 					instanceAgenteLog=agLoad;
 					
-					inizializzaSistema();
+					inizializzaSistemaAgente();
 					
 				}
 					else{
@@ -142,7 +151,7 @@ public class Ctrl_System {
 	}
 	
 	
-	public void loginMandante(String username, String psw) throws PersistentException  {
+	public void loginMandante(String username, String psw) throws PersistentException, CloneNotSupportedException, IOException  {
 	
 		//prima di tutto va verificata la connesione. se ok si procede, altrimenti mex errore
 		
@@ -158,7 +167,7 @@ public class Ctrl_System {
 				PrimaryViewFactory.getInstance().setVisible(true);
 				LoginViewFactory.getInstance().setVisible(false);
 				
-//				inizializzaSistema();
+				inizializzaSistemaMandante();
 				
 			}
 				else{
@@ -187,6 +196,20 @@ public class Ctrl_System {
 	
 	}
 	
+	public void initAlberoAgenti() throws PersistentException{
+		
+		M_Agente [] listAgenti = M_Agente.caricaAgentiRemoto();
+
+		//bisognerebbe inserire un controllo se listclienti è null
+		//e se ognuno dei dati usati è null
+		
+		for (M_Agente aLoad : listAgenti) {
+
+			System.out.println(aLoad.getIdAgente()+ " - " + aLoad.getCognome()+ " - " +aLoad.getNome());
+			AlberoAgenti.inserisciNodo(aLoad.getIdAgente()+ " - " + aLoad.getCognome()+ " - " +aLoad.getNome());
+		}
+	
+	}
 	public void initAlberoProdotti() throws PersistentException{
 		
 		M_Azienda[] listAziende = M_Azienda.caricaAziende();

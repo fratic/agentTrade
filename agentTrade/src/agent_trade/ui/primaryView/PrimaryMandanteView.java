@@ -635,6 +635,14 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		tabbedPrincipale.setEnabledAt(0, b);
 	}
 	
+	public void nuovoAlberoAgente(){
+		AlberoAgenti.getInstance().deselezionaNodo();
+		alberoAgenti = new AlberoAgenti();
+		alberoAgenti.setBounds(0, 0, 261, 617);
+		pannello_laterale_agente.add(alberoAgenti);
+		repaint();
+		System.out.println("dopo il repaint");
+	}
 	
 	/****  FUNZIONI AZIENDA ****/
 	

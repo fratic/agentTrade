@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -104,7 +105,12 @@ public class LoginMandanteView extends LoginViewFactory {
 
 				disableAccedi();
 				try {
-					Ctrl_System.getInstance().loginMandante((String)username.getText(), (String)password.getText());
+					try {
+						Ctrl_System.getInstance().loginMandante((String)username.getText(), (String)password.getText());
+					} catch (CloneNotSupportedException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				catch (PersistentException e) {
 					e.printStackTrace();
