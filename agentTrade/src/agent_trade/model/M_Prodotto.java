@@ -28,7 +28,7 @@ import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.ProdottoCriteria;
 import agent_trade.persistent.Rem_ProdottoCriteria;
 
-public abstract class M_Prodotto {
+public abstract class M_Prodotto implements Cloneable{
 
 	
 	/*
@@ -293,56 +293,19 @@ public abstract class M_Prodotto {
 			
 			Rem_ProdottoCriteria criteria= new Rem_ProdottoCriteria();
 			criteria.idProdottoAzienda.eq(remoto.getIdProdottoAzienda());
-			M_Vini locale=(M_Vini) criteria.uniqueProdotto();
-			M_Vini rem=(M_Vini)remoto;
+			M_Prodotto locale=criteria.uniqueProdotto();
 			
 			if(locale!=null){
 		
 				if(remoto.getVersione()>locale.getVersione()){
-					/**PORCATA, TROVARE SOLUZIONE**/
-					/**
-					 *una probabile soluzione è che quando si ha un aggiornamento, 
-					 *questo viene visto come un nuovo prodotto. Quindi potremmo
-					 *continuare a tenere il vecchio impostando versione a 0.
-					 *cosi facendo, avremmo uno storico coerente. 
-					 *Ovviamente quando si mostrano i prodotti, si prenderanno 
-					 *solo quelli con versione maggiore di 0 mentre non cambierà nulla 
-					 *per il caricamento dei prodotti nei preventivi   
-					 *
-					 *
-					 *ALTRIMENTI
-					 *implementare qui e in ogni classe derivata il metodo
-					 *clone() e quindi applicare il polimorfismo
-					 */
 					
-					locale.setCategoria(remoto.getCategoria());
-					locale.setIdDescrizioneProdotto(remoto.getIdDescrizioneProdotto());
-					locale.setIdProdottoAzienda(remoto.getIdProdottoAzienda());
-					locale.setNome(remoto.getNome());
-					locale.setPrezzo(remoto.getPrezzo());
-					locale.setSconto(remoto.getSconto());
-					locale.setVersione(remoto.getVersione());
-					locale.setCantina(rem.getCantina());
-					locale.setColore(rem.getColore());
-					locale.setIndicazione_geografica(rem.getIndicazione_geografica());
+					AgentTradePersistentManager.instance().disposePersistentManager();
 
+					locale=remoto.clone();
 					
-					/***/
-					System.out.println("prodotto locale con id: "+locale.getIdProdottoAzienda()+" obsoleto. AGGIORNAMENTO");
-					sessione.saveOrUpdate(locale);
-					
-					
-										
-					/**ALTERNATIVA**/
-//					System.out.println("prodotto locale con id: "+locale.getIdProdottoAzienda()+" obsoleto. AGGIORNAMENTO");
-//				
-//					locale.setVersione(0);
-//					AgentTradeMandantePersistentManager.instance().getSession().update(locale);
-//					AgentTradeMandantePersistentManager.instance().getSession().save(remoto);
+					System.out.println("prodotto locale con id: "+locale.getIdProdotto()+" obsoleto. AGGIORNAMENTO");
+					sessione.update(locale);
 
-					
-					/***/
-					
 				}
 			}
 			
@@ -430,7 +393,6 @@ public abstract class M_Prodotto {
 	}
 	
 	public float getSconto() {
-		//PROBABILMENTE QUI DEVE CHIAMARE IL CALCOLA SCONTO FACTORY
 		return sconto;
 	}
 
@@ -468,4 +430,11 @@ public abstract class M_Prodotto {
 		return String.valueOf(getIdProdotto());
 	}
 	
+	public M_Prodotto clone() {
+		try {
+			return (M_Prodotto) super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

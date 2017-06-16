@@ -11,6 +11,8 @@ License Type: Academic
 			</generator>
 		</id>
 		<discriminator column="Discriminator" type="string"/>
+		<property name="versione" column="versione" type="integer" length="11" not-null="false" lazy="false"/>
+		
 		<subclass name="agent_trade.model.M_ScontoQuantita" discriminator-value="ScontoQuantita" lazy="false">
 			<property name="quantita" column="Quantita" type="integer" length="10" not-null="false" lazy="false"/>
 			<property name="scontoFisso" column="ScontoFisso" type="float" length="10" not-null="false" lazy="false"/>
@@ -21,5 +23,7 @@ License Type: Academic
 		<subclass name="agent_trade.model.M_ScontoCliente" discriminator-value="ScontoCliente" lazy="false">
 			<property name="percent" column="`Percent`" type="float" length="10" not-null="false" lazy="false"/>
 		</subclass>
+		
+		
 	</class>
 </hibernate-mapping>

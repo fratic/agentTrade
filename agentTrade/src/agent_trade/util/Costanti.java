@@ -21,8 +21,8 @@ public final class Costanti {
 	public static String  version = "agente";
 //	public final static String  version = "mandante";
 
-//	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
-	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
+	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
+//	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
 
 	public final static String  agente = "agente";
 	public final static String  mandante = "mandante";
@@ -42,8 +42,8 @@ public final class Costanti {
 //	public final static int  Look_Feel = 6;
 
 	
-//	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
-	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
+	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
+//	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
 
 
 	
@@ -197,9 +197,9 @@ public final class Costanti {
 	public static final String ANNULLA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String ALBERO_LISTINO_ICON = "/agent_trade/ui/img/ico-listino.png";
 //CAMBIARE ICONE
-	public static final String SCONTO_ICON= "/agent_trade/ui/img/cliente.png";
-	public static final String NUOVO_SCONTO_ICON= "/agent_trade/ui/img/new_user.png";
-	public static final String CERCA_SCONTO_ICON= "/agent_trade/ui/img/search.png";
+	public static final String SCONTO_ICON= "/agent_trade/ui/img/sconto.png";
+	public static final String NUOVO_SCONTO_ICON= "/agent_trade/ui/img/add_sconto.png";
+	public static final String CERCA_SCONTO_ICON= "/agent_trade/ui/img/cerca_sconto.png";
 	public static final String IMG_SFONDO_SCONTO = "/agent_trade/ui/img/sfondoAgentTradeAgente.png";
 	public static final String MOD_SCONTO_ICON = "/agent_trade/ui/img/setting.png";
 	public static final String CANC_SCONTO_ICON = "/agent_trade/ui/img/delete.png";

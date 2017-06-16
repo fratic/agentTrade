@@ -8,11 +8,17 @@ import agent_trade.external_system.SystemDaemon;
 
 public class sincronizzazioneProdottiDBRemotoLocale {
 
-	public static void main(String[] args) throws PersistentException, IOException {
+	public static void main(String[] args) throws PersistentException, IOException, CloneNotSupportedException {
 
 //		SystemDaemon.getInstance().sincronizzaListiniRemoti();
 		
-		SystemDaemon.getInstance().sincronizzaListino();
+//		SystemDaemon.getInstance().sincronizzaListinoRemoto("Lem");
+
+//		SystemDaemon.getInstance().sincronizzaListino();
+
+		SystemDaemon.getInstance().sincronizzaSconti();
+
+		
 	}
 
 }

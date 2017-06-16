@@ -7,8 +7,6 @@ License Type: Academic
 <hibernate-mapping>
 	<class name="agent_trade.model.M_Azienda" table="Azienda" lazy="false">
 		<id name="IdAzienda" column="IdAzienda" type="integer" unsaved-value="0">
-			<generator class="native">
-			</generator>
 		</id>
 		<property name="ragioneSociale" column="RagioneSociale" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="codiceFiscale" column="CodiceFiscale" type="string" length="255" not-null="false" lazy="false"/>
@@ -21,5 +19,7 @@ License Type: Academic
 		<property name="fax" column="Fax" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="url" column="Url" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="tipoProdotto" column="tipoProdotto" type="string" length="255" lazy="false"/>
+		<property name="versione" column="versione" type="integer" length="11" not-null="false" lazy="false"/>
+		
 	</class>
 </hibernate-mapping>

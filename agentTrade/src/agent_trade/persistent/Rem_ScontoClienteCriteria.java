@@ -24,11 +24,13 @@ import agent_trade.model.M_ScontoCliente;
 
 public class Rem_ScontoClienteCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id;
+	public final IntegerExpression versione;
 	public final FloatExpression percent;
 	
 	public Rem_ScontoClienteCriteria(Criteria criteria) {
 		super(criteria);
 		id = new IntegerExpression("id", this);
+		versione = new IntegerExpression("versione", this);
 		percent = new FloatExpression("percent", this);
 	}
 	

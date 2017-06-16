@@ -8,10 +8,12 @@ import org.orm.PersistentException;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoQuantita;
+import agent_trade.persistent.AgentTradePersistentManager;
 
 public class SystemDaemon {
 
-//	private static final Class<? extends M_Vini> M_Vini = null;
 	/*attributi di classe*/
 	private static SystemDaemon instance;
 
@@ -24,6 +26,9 @@ public class SystemDaemon {
 
 	}
 	
+	/***c'è un problema nel caricamento di costanti ed in particolare di dei sistemi esterni.getInstance() 
+	 * quando non esiste nessuna azienda
+	 * ***/
 	
 	/*metodi di classe*/
 	
@@ -39,6 +44,12 @@ public class SystemDaemon {
 	
 	
 	/*metodi pubblici*/
+	
+	
+	
+	/**Probabilmente bisogna implementare qualcosa che scarica tutto.. es, se scarico un agente, devo portarmi dietro i suoi 
+	 * clienti e quindi i suoi preventivi, quindi prev_item e quindi prodotti, sconti**/
+	
 	
 	/**
 	 * Metodo che permette di caricare un certo agente dal db remoto e salvarlo nel db locale  
@@ -59,7 +70,7 @@ public class SystemDaemon {
 	
 	/**
 	 * Metodo che permette di sincronizzare nel db remoto di agentTrade i prodotti (di una certa azienda 
-	 * passata come parametro) presenti nel db dell'azienda
+	 * passata come parametro) presenti nel db dell'azienda (SISTEMA ESTERNO)
 	 **/
 	public void sincronizzaListinoRemoto(String azienda) throws IOException, PersistentException{
 		
@@ -93,10 +104,8 @@ public class SystemDaemon {
 	 **/
 	public void sincronizzaListino() throws PersistentException{
 		
-		/**aggiustare */
 		
 		M_Prodotto[] remoti = M_Prodotto.caricaProdottiRemoto();
-		
 		
 		for (int i = 0; i < remoti.length; i++) {
 			
@@ -104,43 +113,20 @@ public class SystemDaemon {
 			
 			M_Prodotto locale=M_Prodotto.caricaProdotto(id);
 			
-//			M_Vini rem=(M_Vini) remoti[i];
-			
-
 			if(locale!=null){
-				System.out.println("locale id "+locale.getIdProdotto()+" versione "+locale.getVersione());
 
-				System.out.println("remoti id "+remoti[i].getIdProdotto()+" versione "+remoti[i].getVersione());
 
-				
-				if(remoti[i].getVersione()>locale.getVersione() && locale.getVersione()!=0 ){
-					
-					
-//					locale.setCategoria(remoti[i].getCategoria());
-//					locale.setIdDescrizioneProdotto(remoti[i].getIdDescrizioneProdotto());
-//					locale.setIdProdottoAzienda(remoti[i].getIdProdottoAzienda());
-//					locale.setNome(remoti[i].getNome());
-//					locale.setPrezzo(remoti[i].getPrezzo());
-//					locale.setSconto(remoti[i].getSconto());
-//					locale.setVersione(remoti[i].getVersione());
-//					locale.setCantina(rem.getCantina());
-//					locale.setColore(rem.getColore());
-//					locale.setIndicazione_geografica(rem.getIndicazione_geografica());
-					
-					locale.setVersione(0);
-					
+				if(remoti[i].getVersione()>locale.getVersione() && locale.getVersione()!=0 )
+				{
+					AgentTradePersistentManager.instance().disposePersistentManager();
+
+					locale=remoti[i].clone();
 					M_Prodotto.salvaProdotto(locale);
-					M_Prodotto.salvaProdotto(remoti[i]);
-					
-					System.out.println("prodotto con id "+locale.getIdProdotto()+" obsoleto. Aggiornamento");
 				}
 			}
 			
 			else{
-				
 				M_Prodotto.salvaProdotto(remoti[i]);
-				System.out.println("Nuovo prodotto. Inserimento");
-				System.out.println("prod remoto "+remoti[i].toString());
 			}
 		}
 		
@@ -154,39 +140,72 @@ public class SystemDaemon {
 	public void sincronizzaAziende() throws PersistentException{
 		
 		
-		M_Azienda[] aziende_remote = M_Azienda.caricaAziendeRemoto();
+		M_Azienda [] aziende_remote = M_Azienda.caricaAziendeRemoto();
 		
-		
-		for (int i = 0; i < aziende_remote.length; i++) {
+		for (int i = 0; i < aziende_remote.length; i++) 
+		{
 			
 			
-			/**implementare la versione, quindi controllare se esiste, ecc*/
-
-//			int id=aziende_remote[i].getIdAzienda();
-			
-			/**implementare la versione, quindi controllare se esiste, ecc*/
-
-			
-//			M_Azienda azienda_locale=M_Azienda.caricaAziendaId(id);
-			
-
-//			if(azienda_locale!=null){
+			M_Azienda azienda_locale = M_Azienda.caricaAziendaId(aziende_remote[i].getIdAzienda());
+			if(azienda_locale!=null){
 				
-				
-			//	if(remoti[i].getVersione()>locale.getVersione() && locale.getVersione()!=0 ){
+				if(aziende_remote[i].getVersione()>azienda_locale.getVersione() && azienda_locale.getVersione()!=0 )
+				{
 					
-				
-					
-					M_Azienda.salvaAzienda(aziende_remote[i]);
+					AgentTradePersistentManager.instance().disposePersistentManager();
+
+					azienda_locale=aziende_remote[i].clone();
+					M_Azienda.salvaAzienda(azienda_locale);
 					
 				}
-//			}
+			}
 			
-//			else{
-//				
-//			}
+			else
+			{
+				//in tal caso, lo sconto in locale non esiste, quindi basta inserirlo
+				M_Azienda.salvaAzienda(aziende_remote[i]);
+
+			}
+				
+			}
 		}
 	
+	/**
+	 * Metodo che permette di sincronizzare gli sconti presenti sul db remoto all'interno del db locale
+	 * @throws CloneNotSupportedException 
+	 **/
+	public void sincronizzaSconti() throws PersistentException, CloneNotSupportedException{
+		
+		
+		M_Sconto[] sconti_remoti = M_Sconto.caricaScontiRemoto();
+		
+		for (int i = 0; i < sconti_remoti.length; i++) 
+		{
+			
+			
+			M_Sconto sconto_locale = M_Sconto.caricaSconto(sconti_remoti[i].getId());
+			if(sconto_locale!=null){
+				
+				if(sconti_remoti[i].getVersione()>sconto_locale.getVersione() && sconto_locale.getVersione()!=0 )
+				{
+					
+					AgentTradePersistentManager.instance().disposePersistentManager();
+
+					sconto_locale=sconti_remoti[i].clone();
+					M_Sconto.salvaSconto(sconto_locale);
+					
+				}
+			}
+			
+			else
+			{
+				//in tal caso, lo sconto in locale non esiste, quindi basta inserirlo
+				M_Sconto.salvaSconto(sconti_remoti[i]);
+
+			}
+				
+			}
+		}
 	
 	
 }

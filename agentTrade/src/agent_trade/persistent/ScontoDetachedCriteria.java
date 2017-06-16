@@ -22,15 +22,20 @@ import agent_trade.model.M_Sconto;
 
 public class ScontoDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression id;
-	
+	public final IntegerExpression versione;
+
 	public ScontoDetachedCriteria() {
 		super(agent_trade.model.M_Sconto.class, agent_trade.persistent.ScontoCriteria.class);
 		id = new IntegerExpression("id", this.getDetachedCriteria());
+		versione = new IntegerExpression("versione", this.getDetachedCriteria());
+
 	}
 	
 	public ScontoDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, agent_trade.persistent.ScontoCriteria.class);
 		id = new IntegerExpression("id", this.getDetachedCriteria());
+		versione = new IntegerExpression("versione", this.getDetachedCriteria());
+
 	}
 	
 	public M_Sconto uniqueSconto(PersistentSession session) {

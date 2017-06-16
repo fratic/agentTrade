@@ -21,5 +21,7 @@ License Type: Academic
 		<property name="fax" column="Fax" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="url" column="Url" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="tipoProdotto" column="tipoProdotto" type="string" length="255" lazy="false"/>
+		<property name="versione" column="versione" type="integer" length="11" not-null="false" lazy="false"/>
+		
 	</class>
 </hibernate-mapping>

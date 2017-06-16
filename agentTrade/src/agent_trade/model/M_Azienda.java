@@ -13,7 +13,7 @@ import agent_trade.persistent.Rem_AziendaCriteria;
 
 
 
-public class M_Azienda {
+public class M_Azienda implements Cloneable{
 
 	private static agent_trade.model.M_Azienda instance;
 	/*attributi di classe*/
@@ -31,6 +31,7 @@ public class M_Azienda {
 	private String fax;
 	private String url;
 	private String tipoProdotto;
+	private int versione;
 
 	/*costruttori*/
 	
@@ -52,6 +53,21 @@ public class M_Azienda {
 		this.tipoProdotto=tipo;
 	}
 	
+	public M_Azienda (String ragioneSociale, String citta, String CAP, String Indirizzo, String telefono, String fax, String email, String partita_iva, String codice_fiscale, String url, String tipo, int versione)
+	{
+		this.ragioneSociale=ragioneSociale;
+		this.citta=citta;
+		this.cap=CAP;
+		this.Indirizzo=Indirizzo;
+		this.telefono=telefono;
+		this.fax=fax;
+		this.email=email;
+		this.partitaIva=partita_iva;
+		this.codiceFiscale=codice_fiscale;
+		this.url=url;
+		this.tipoProdotto=tipo;
+		this.versione=versione;
+	}
 	
 	/*metodi di classe*/
 	
@@ -331,5 +347,20 @@ public class M_Azienda {
 		return String.valueOf(getIdAzienda());
 	}
 
+	public int getVersione() {
+		return versione;
+	}
+
+	public void setVersione(int versione) {
+		this.versione = versione;
+	}
+
+	public M_Azienda clone() {
+		try {
+			return (M_Azienda) super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }

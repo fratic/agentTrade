@@ -14,7 +14,6 @@
 package agent_trade.model;
 
 import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Property;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
@@ -23,11 +22,12 @@ import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.Rem_ScontoCriteria;
 import agent_trade.persistent.ScontoCriteria;
 
-public class M_Sconto {
+public class M_Sconto implements Cloneable{
 	public M_Sconto() {
 	}
 	
 	private int id;
+	private int versione;
 	
 	public void setId(int value) {
 		this.id = value;
@@ -35,6 +35,14 @@ public class M_Sconto {
 	
 	public int getId() {
 		return id;
+	}
+	
+	public void setVersione(int versione) {
+		this.versione = versione;
+	}
+	
+	public int getVersione() {
+		return versione;
 	}
 	
 	public int getORMID() {
@@ -45,11 +53,20 @@ public class M_Sconto {
 		return String.valueOf(getId());
 	}
 	
+	public M_Sconto clone() {
+		try {
+			return (M_Sconto) super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	public static M_Sconto caricaSconto(int idSconto) throws PersistentException{
 		
 		ScontoCriteria criteria= new ScontoCriteria();
 		criteria.id.eq(idSconto);
 		return criteria.uniqueSconto();
+
 	}
 	
 	
@@ -63,10 +80,12 @@ public class M_Sconto {
 			t.commit();
 		}
 		catch (Exception e) {
+			System.out.println("Eccezione : "+e);
 			t.rollback();
 		}
 		finally {
-//			System.out.println("commit a buon fine per id : "+s.getId()+" ? "+t.wasCommitted());
+			
+			System.out.println("commit a buon fine per id : "+s.getId()+" ? "+t.wasCommitted());
 		}
 	}
 	

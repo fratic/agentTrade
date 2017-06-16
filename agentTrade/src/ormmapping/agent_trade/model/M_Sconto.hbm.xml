@@ -7,10 +7,13 @@ License Type: Academic
 <hibernate-mapping>
 	<class name="agent_trade.model.M_Sconto" table="Sconto" lazy="false" discriminator-value="Sconto">
 		<id name="id" column="Id" type="integer" unsaved-value="0">
-			<generator class="native">
+			<generator class="assigned">
 			</generator>
 		</id>
+		
 		<discriminator column="Discriminator" type="string"/>
+		<property name="versione" column="versione" type="integer" length="11" not-null="false" lazy="false"/>
+		
 		<subclass name="agent_trade.model.M_ScontoQuantita" discriminator-value="ScontoQuantita" lazy="false">
 			<property name="quantita" column="Quantita" type="integer" length="10" not-null="false" lazy="false"/>
 			<property name="scontoFisso" column="ScontoFisso" type="float" length="10" not-null="false" lazy="false"/>

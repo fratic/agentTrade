@@ -38,6 +38,8 @@ public class Rem_AziendaDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final StringExpression fax;
 	public final StringExpression url;
 	public final StringExpression tipoProdotto;
+	public final IntegerExpression versione;
+
 	
 	public Rem_AziendaDetachedCriteria() {
 		
@@ -55,6 +57,8 @@ public class Rem_AziendaDetachedCriteria extends AbstractORMDetachedCriteria {
 		fax = new StringExpression("fax", this.getDetachedCriteria());
 		url = new StringExpression("url", this.getDetachedCriteria());
 		tipoProdotto = new StringExpression("tipoProdotto", this.getDetachedCriteria());
+		versione  = new IntegerExpression("versione", this.getDetachedCriteria());
+
 	}
 	
 	public Rem_AziendaDetachedCriteria(DetachedCriteria aDetachedCriteria) {
@@ -73,6 +77,8 @@ public class Rem_AziendaDetachedCriteria extends AbstractORMDetachedCriteria {
 		fax = new StringExpression("fax", this.getDetachedCriteria());
 		url = new StringExpression("url", this.getDetachedCriteria());
 		tipoProdotto = new StringExpression("tipoProdotto", this.getDetachedCriteria());
+		versione  = new IntegerExpression("versione", this.getDetachedCriteria());
+
 	}
 	
 	public M_Azienda uniqueM_Azienda(PersistentSession session) {

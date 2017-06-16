@@ -76,11 +76,13 @@ public class Ctrl_System {
 	 * metodi privati
 	 */
 
-	private void inizializzaSistema() throws PersistentException
+	private void inizializzaSistema() throws PersistentException, CloneNotSupportedException, IOException
 	{
 		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
 
 		//probabilmente queste cose non vanno fatte qui, oppure bisogna chiedere ad una factory
+		
+
 		initAlberoClienti();
 
 		initProdotti();
@@ -97,7 +99,7 @@ public class Ctrl_System {
 	 */
 	
 
-	public void loginAgente(String username, String psw) throws PersistentException, IOException  
+	public void loginAgente(String username, String psw) throws PersistentException, IOException, CloneNotSupportedException  
 	{					
 
 			M_Agente agLoad =null;

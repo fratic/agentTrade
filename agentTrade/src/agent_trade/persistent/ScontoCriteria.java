@@ -23,10 +23,13 @@ import agent_trade.model.M_Sconto;
 
 public class ScontoCriteria extends AbstractORMCriteria {
 	public final IntegerExpression id;
+	public final IntegerExpression versione;
+
 	
 	public ScontoCriteria(Criteria criteria) {
 		super(criteria);
 		id = new IntegerExpression("id", this);
+		versione = new IntegerExpression("versione", this);
 	}
 	
 	public ScontoCriteria(PersistentSession session) {

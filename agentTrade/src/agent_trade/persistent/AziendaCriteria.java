@@ -36,6 +36,8 @@ public class AziendaCriteria extends AbstractORMCriteria {
 	public final StringExpression fax;
 	public final StringExpression url;
 	public final StringExpression tipoProdotto;
+	public final IntegerExpression versione;
+
 	
 	public AziendaCriteria(Criteria criteria) {
 		
@@ -53,6 +55,8 @@ public class AziendaCriteria extends AbstractORMCriteria {
 		fax = new StringExpression("fax", this);
 		url = new StringExpression("url", this);
 		tipoProdotto = new StringExpression("tipoProdotto", this);
+		versione  = new IntegerExpression("versione", this);
+
 	}
 	
 	public AziendaCriteria(PersistentSession session) {

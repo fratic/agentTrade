@@ -22,17 +22,20 @@ import agent_trade.model.M_ScontoCliente;
 
 public class ScontoClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression id;
+	public final IntegerExpression versione;
 	public final FloatExpression percent;
 	
 	public ScontoClienteDetachedCriteria() {
 		super(agent_trade.model.M_ScontoCliente.class, agent_trade.persistent.ScontoClienteCriteria.class);
 		id = new IntegerExpression("id", this.getDetachedCriteria());
+		versione = new IntegerExpression("versione", this.getDetachedCriteria());
 		percent = new FloatExpression("percent", this.getDetachedCriteria());
 	}
 	
 	public ScontoClienteDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, agent_trade.persistent.ScontoClienteCriteria.class);
 		id = new IntegerExpression("id", this.getDetachedCriteria());
+		versione = new IntegerExpression("versione", this.getDetachedCriteria());
 		percent = new FloatExpression("percent", this.getDetachedCriteria());
 	}
 	
