@@ -3,6 +3,8 @@ package agent_trade.controller;
 import org.orm.PersistentException;
 
 import agent_trade.model.M_Sconto;
+import agent_trade.ui.content.aziende.AlberoAziende;
+import agent_trade.ui.content.sconti.AlberoSconti;
 import agent_trade.ui.content.sconti.riepilogo.ConfermaCancSconto;
 import agent_trade.ui.content.sconti.riepilogo.Ricerca_sconto;
 import agent_trade.ui.primaryView.PrimaryMandanteView;
@@ -33,7 +35,7 @@ public class Ctrl_gestisciSconto {
 		
 		PrimaryMandanteView.getInstance().resetPannelloCentraleSconto();
 		PrimaryMandanteView.initSelezionaSconto();
-		//AlberoSconti.disabilitaAlbero();
+		AlberoSconti.disabilitaAlbero();
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
@@ -86,7 +88,7 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
-//		AlberoSconti.abilitaAlbero();
+		AlberoSconti.abilitaAlbero();
 	}
 	
 	
@@ -100,7 +102,7 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
-//		AlberoSconti.abilitaAlbero();
+		AlberoSconti.abilitaAlbero();
 	}
 
 	
@@ -122,9 +124,10 @@ public class Ctrl_gestisciSconto {
 		int id = M_Sconto.getMaxIdRemoto();
 		recuperaSconto(id);
 		
-//		AlberoSconti.inserisciNodo();
-//		AlberoSconti.selectNode();
-//		AlberoSconti.abilitaAlbero();
+		AlberoSconti.abilitaAlbero();
+		AlberoSconti.refresh();
+		AlberoSconti.selectNode(M_Sconto.getStringaSconto(sconto)[0]);
+
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
@@ -150,8 +153,8 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepSconto(false);
-//		AlberoSconti.abilitaAlbero();
-//		AlberoSconti.selectNode();
+		AlberoSconti.abilitaAlbero();
+		AlberoSconti.selectNode(M_Sconto.getStringaSconto(sconto)[0]);
 	}
 	
 	
@@ -169,7 +172,7 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableNewSconto(false);
 		PrimaryMandanteView.getInstance().setEnableCercaSconto(false);
 		PrimaryMandanteView.getInstance().setVisibleToolTipSconto();
-		//AlberoSconti.disabilitaAlbero();
+		AlberoSconti.disabilitaAlbero();
 	}
 	
 	
@@ -187,7 +190,7 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableNewSconto(true);
 		PrimaryMandanteView.getInstance().setEnableCercaSconto(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipSconto();
-		//AlberoSconti.abilitaAlbero();
+		AlberoSconti.abilitaAlbero();
 	}
 	
 	
@@ -215,7 +218,10 @@ public class Ctrl_gestisciSconto {
 			PrimaryMandanteView.getInstance().setInvisibleToolTipSconto();
 //			AlberoSconti.updateNodo();
 //			AlberoSconti.selectNode();
-//			AlberoSconti.abilitaAlbero();
+			AlberoSconti.abilitaAlbero();
+			AlberoSconti.refresh();
+			AlberoSconti.selectNode(M_Sconto.getStringaSconto(sconto)[0]);
+
 //		}
 //		else{
 //			PrimaryMandanteView.getInstance().setVisibleErroreRiepSconto(true);
@@ -247,6 +253,8 @@ public class Ctrl_gestisciSconto {
 		ConfermaCancSconto.cancInst();
 		PrimaryMandanteView.getInstance().resetPannelloCentraleSconto();
 		PrimaryMandanteView.getInstance().setSfondoSconto();
+		
+		AlberoSconti.refresh();
 	}
 	
 	

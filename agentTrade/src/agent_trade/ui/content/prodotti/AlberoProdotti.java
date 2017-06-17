@@ -44,7 +44,6 @@ public class AlberoProdotti extends JPanel {
 		radice = new DefaultMutableTreeNode(Costanti.ROOT_PRODOTTI);
 		model = new DefaultTreeModel(radice);
 		setLayout(null);
-
 		albero = new JTree(model);
 		albero.setBorder(new EmptyBorder(10, 10, 10, 10));
 	

@@ -6,11 +6,12 @@ import java.util.regex.Pattern;
 import org.orm.PersistentException;
 
 import agent_trade.model.M_Azienda;
+import agent_trade.ui.content.aziende.AlberoAziende;
 import agent_trade.ui.content.aziende.DettaglioAziendaView;
 import agent_trade.ui.content.aziende.Ricerca_azienda;
 import agent_trade.ui.content.aziende.RiepilogoAziendaView;
 import agent_trade.ui.content.aziende.confermaCancAzienda;
-import agent_trade.ui.primaryView.PrimaryAgenteView;
+import agent_trade.ui.content.listini.AlberoListini;
 import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
 
@@ -137,8 +138,8 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(false);
-//		AlberoAziende.abilitaAlbero();
-//		AlberoAziende.selectNode(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
+		AlberoAziende.abilitaAlbero();
+		AlberoAziende.selectNode(azienda.getIdAzienda()+ " - " +azienda.getRagioneSociale());
 	}
 
 	public void inserisciNuovaAzienda(String ragSoc, String pIva, String codFis, String citta, String cap, String indirizzo, String email, String tel, String fax, String url, String tipo) throws PersistentException {
@@ -158,13 +159,16 @@ public class Ctrl_gestisciAzienda {
 			int id = M_Azienda.getMaxIdRemoto();
 			recuperaAzienda(id);
 					
-//			AlberoAziende.inserisciNodo(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
-//			AlberoAziende.selectNode(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
-//			AlberoAziende.abilitaAlbero();
+			AlberoAziende.abilitaAlbero();
 			PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 			PrimaryMandanteView.getInstance().setEnableTabListino(true);
 			PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 			PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
+			AlberoAziende.refresh();
+			AlberoListini.refresh();
+
+			AlberoAziende.selectNode(azienda.getIdAzienda()+ " - " +azienda.getRagioneSociale());
+
 		}
 		else{
 			PrimaryMandanteView.getInstance().setVisibleErroreNuovaAzienda(true);
@@ -209,9 +213,13 @@ public class Ctrl_gestisciAzienda {
 			PrimaryMandanteView.getInstance().disattivaVisualizzaListinoAzienda(true);
 			PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(false);
 			PrimaryMandanteView.getInstance().setInvisibleToolTipAzienda();
-//			AlberoAziende.updateNodo(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
-//			AlberoAziende.selectNode(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
-//			AlberoAziende.abilitaAlbero();
+
+			AlberoAziende.abilitaAlbero();
+			AlberoAziende.refresh();
+			AlberoListini.refresh();
+			AlberoAziende.selectNode(azienda.getIdAzienda()+ " - " +azienda.getRagioneSociale());
+
+
 		}
 		else{
 			PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(true);
@@ -239,7 +247,9 @@ public class Ctrl_gestisciAzienda {
 		
 		PrimaryMandanteView.getInstance().resetPannelloCentraleAzienda();
 		PrimaryMandanteView.initDettaglioAzienda();
-		//AlberoAziende.disabilitaAlbero();
+		AlberoAziende.deselezionaNodo();
+		AlberoAziende.disabilitaAlbero();
+		
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
@@ -256,7 +266,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreNuovaAzienda(false);
-//		AlberoAziende.abilitaAlbero();
+		AlberoAziende.abilitaAlbero();
 	}
 
 	public void abilitaModifica() {
@@ -274,7 +284,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().setEnableNewAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableCercaAzienda(false);
 		PrimaryMandanteView.getInstance().setVisibleToolTipAzienda();
-		//AlberoAziende.disabilitaAlbero();
+		AlberoAziende.disabilitaAlbero();
 	}
 
 	public void annullaModificheAzienda (String id) throws PersistentException {
@@ -292,7 +302,7 @@ public class Ctrl_gestisciAzienda {
 		PrimaryMandanteView.getInstance().setEnableNewAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableCercaAzienda(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipAzienda();
-		//AlberoAziende.abilitaAlbero();
+		AlberoAziende.abilitaAlbero();
 	}
 	
 	public void postConfermaCancAzienda(String id) throws PersistentException{
@@ -307,6 +317,8 @@ public class Ctrl_gestisciAzienda {
 		confermaCancAzienda.cancInst();
 		PrimaryMandanteView.getInstance().resetPannelloCentraleAzienda();
 		PrimaryMandanteView.getInstance().setSfondoAzienda();
+		AlberoAziende.refresh();
+		AlberoListini.refresh();
 	}
 	
 	public void notConfermaCancAzienda(){

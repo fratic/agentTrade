@@ -370,7 +370,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 			if (item.getIdProdotto().getIdProdotto()==id)
 			{
 				item.setQuantita(qt);		
-//				System.out.println("SONO IN ADD ITEM. LO SCONTO Fisso qt è:"+ item.getStrategiaProdotto().calcolaSconto(M_Preventivo.getInstance()));
 
 			}
 		}

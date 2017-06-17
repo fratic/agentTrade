@@ -173,8 +173,8 @@ public final class Costanti {
 	
 	public static final String AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
 //	CAMBIARE ICONE
-	public static final String NUOVA_AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
-	public static final String CERCA_AZIENDA_ICON = "/agent_trade/ui/img/azienda.png";
+	public static final String NUOVA_AZIENDA_ICON = "/agent_trade/ui/img/add_azienda.png";
+	public static final String CERCA_AZIENDA_ICON = "/agent_trade/ui/img/cerca_azienda.png";
 	public static final String SALVA_AZIENDA_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String IMG_SFONDO_AZIENDA = "/agent_trade/ui/img/sfondoAgentTradeAgente.png";
 	public static final String RIEPILOGO_AZIENDA_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
@@ -188,7 +188,7 @@ public final class Costanti {
 //	CAMBIARE ICONE
 	public static final String LISTINO_ICON = "/agent_trade/ui/img/listino.png";
 	public static final String NUOVO_LISTINO_ICON = "/agent_trade/ui/img/listino.png";
-	public static final String CERCA_LISTINO_ICON = "/agent_trade/ui/img/listino.png";
+	public static final String CERCA_LISTINO_ICON = "/agent_trade/ui/img/cerca_listino.png";
 	public static final String IMG_SFONDO_LISTINO = "/agent_trade/ui/img/sfondoAgentTradePreventivo.png";
 	public static final String SHOW_ICON =  "/agent_trade/ui/img/arrow_icon.png";
 	public static final String MOD_PRODOTTO_ICON = "/agent_trade/ui/img/setting.png";
@@ -196,6 +196,8 @@ public final class Costanti {
 	public static final String SALVA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String ANNULLA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String ALBERO_LISTINO_ICON = "/agent_trade/ui/img/ico-listino.png";
+	public static final String ALBERO_SCONTO_ICON = "/agent_trade/ui/img/ico-sconto.png";
+
 //CAMBIARE ICONE
 	public static final String SCONTO_ICON= "/agent_trade/ui/img/sconto.png";
 	public static final String NUOVO_SCONTO_ICON= "/agent_trade/ui/img/add_sconto.png";
@@ -428,6 +430,10 @@ public final class Costanti {
 	public final static String LABEL_TIPO_AZIENDA = "Produce";
 	
 	public final static String ROOT_AZIENDE = "Aziende";
+	public final static String ROOT_LISTINI_AZIENDE = "Listini Aziende";
+
+	public final static String ROOT_SCONTI = "Sconti";
+
 	
 	public final static String LABEL_AZIENDA = "Azienda: ";
 	public final static String LABEL_AGGIORNAMENTO_AUTO = "Aggiornamento automatico: ";

@@ -17,11 +17,18 @@ import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Mandante;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoCliente;
+import agent_trade.model.M_ScontoPercent;
+import agent_trade.model.M_ScontoQuantita;
 import agent_trade.ui.content.agenti.AlberoAgenti;
+import agent_trade.ui.content.aziende.AlberoAziende;
 import agent_trade.ui.content.clienti.AlberoClienti;
+import agent_trade.ui.content.listini.AlberoListini;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.prodotti.AlberoProdotti;
 import agent_trade.ui.content.prodotti.ProdottiView;
+import agent_trade.ui.content.sconti.AlberoSconti;
 import agent_trade.ui.login.LoginViewFactory;
 import agent_trade.ui.primaryView.PrimaryViewFactory;
 import agent_trade.util.Costanti;
@@ -98,6 +105,12 @@ public class Ctrl_System {
 	{
 
 		initAlberoAgenti();
+	
+		initAlberoAziende();
+		
+		initAlberoListini();
+
+		initAlberoSconti();
 
 		
 	}
@@ -200,16 +213,53 @@ public class Ctrl_System {
 		
 		M_Agente [] listAgenti = M_Agente.caricaAgentiRemoto();
 
-		//bisognerebbe inserire un controllo se listclienti è null
-		//e se ognuno dei dati usati è null
 		
 		for (M_Agente aLoad : listAgenti) {
 
-			System.out.println(aLoad.getIdAgente()+ " - " + aLoad.getCognome()+ " - " +aLoad.getNome());
 			AlberoAgenti.inserisciNodo(aLoad.getIdAgente()+ " - " + aLoad.getCognome()+ " - " +aLoad.getNome());
 		}
 	
 	}
+	
+	
+	public void initAlberoAziende() throws PersistentException{
+		
+		M_Azienda[] listAziende = M_Azienda.caricaAziendeRemoto();
+
+		
+		for (M_Azienda aLoad : listAziende) {
+
+			AlberoAziende.inserisciNodo(aLoad.getIdAzienda()+ " - " + aLoad.getRagioneSociale());
+		}
+	
+	}
+	
+	
+	public void initAlberoListini() throws PersistentException{
+		
+		M_Azienda[] listAziende = M_Azienda.caricaAziendeRemoto();
+
+		
+		for (M_Azienda aLoad : listAziende) {
+
+			AlberoListini.inserisciNodo(aLoad.getIdAzienda()+ " - " + aLoad.getRagioneSociale());
+		}
+	
+	}
+	
+	
+	public void initAlberoSconti() throws PersistentException{
+		
+		M_Sconto[] listSconti = M_Sconto.caricaScontiRemoto();
+		
+		for (M_Sconto sLoad : listSconti) {
+				AlberoSconti.inserisciNodo(M_Sconto.getStringaSconto(sLoad)[0], M_Sconto.getStringaSconto(sLoad)[1]);
+
+		}
+	
+	}
+
+
 	public void initAlberoProdotti() throws PersistentException{
 		
 		M_Azienda[] listAziende = M_Azienda.caricaAziende();

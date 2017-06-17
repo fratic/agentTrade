@@ -1,4 +1,4 @@
-package agent_trade.ui.content.aziende;
+package agent_trade.ui.content.listini;
 
 import java.util.Enumeration;
 
@@ -21,9 +21,11 @@ import org.orm.PersistentException;
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_gestisciAgente;
 import agent_trade.controller.Ctrl_gestisciAzienda;
+import agent_trade.controller.Ctrl_gestisciListino;
+import agent_trade.controller.Ctrl_gestisciSconto;
 import agent_trade.util.Costanti;
 
-public class AlberoAziende extends JPanel{
+public class AlberoListini extends JPanel{
 
 	/*attributi di classe*/
 	
@@ -34,7 +36,7 @@ public class AlberoAziende extends JPanel{
 	/*attributi privati*/
 		
 	private static DefaultMutableTreeNode radice;
-	private static AlberoAziende instance;
+	private static AlberoListini instance;
 	
 //	Variabile che serve per non abilitare il listener dell'albero quando si cancella  
 	private static boolean abilitalistener = true;
@@ -42,9 +44,9 @@ public class AlberoAziende extends JPanel{
 
 	/*costruttori*/
 		
-	public AlberoAziende() {
+	public AlberoListini() {
 			
-			radice = new DefaultMutableTreeNode(Costanti.ROOT_AZIENDE);
+			radice = new DefaultMutableTreeNode(Costanti.ROOT_LISTINI_AZIENDE);
 			model = new DefaultTreeModel(radice);
 			setLayout(null);
 
@@ -56,7 +58,7 @@ public class AlberoAziende extends JPanel{
 			
 			add(scroller);
 			
-			ImageIcon imageIcon = new ImageIcon(AlberoAziende.class.getResource(Costanti.ALBERO_AZIENDE_ICON));
+			ImageIcon imageIcon = new ImageIcon(AlberoListini.class.getResource(Costanti.ALBERO_LISTINO_ICON));
 	        DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();       
 	        renderer.setLeafIcon(imageIcon);
 
@@ -71,7 +73,7 @@ public class AlberoAziende extends JPanel{
 					try {
 						if(selezione.isLeaf() && abilitalistener == true)
 	        			{
-							Ctrl_gestisciAzienda.getInstance().recuperaAzienda(ottieniId(selezione));
+							Ctrl_gestisciListino.getInstance().recuperaListino(ottieniId(selezione));
         				}
 					} 
 					catch (PersistentException e1) {
@@ -80,17 +82,15 @@ public class AlberoAziende extends JPanel{
 					
 				}}));
 	        
-	 
-						
 	}		
 	
 	
 			
 	/*metodi di classe*/
 	
-	public static AlberoAziende getInstance(){
+	public static AlberoListini getInstance(){
 		
-		return ((instance == null) ? instance = new AlberoAziende() : instance);	
+		return ((instance == null) ? instance = new AlberoListini() : instance);	
 	}
 	
 	
@@ -109,6 +109,7 @@ public class AlberoAziende extends JPanel{
 		  albero.expandRow(0);
 		  
 	}
+	
 			  
 	public static void rimuoviNodo(String nodo) {
 		
@@ -157,7 +158,7 @@ public class AlberoAziende extends JPanel{
 
 		((DefaultMutableTreeNode) model.getRoot()).removeAllChildren();
 	   // model.reload();
-	    Ctrl_System.getInstance().initAlberoAziende();
+	    Ctrl_System.getInstance().initAlberoListini();
 		    model.reload();
 			abilitalistener = true;
 	}

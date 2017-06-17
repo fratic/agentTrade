@@ -28,10 +28,12 @@ import agent_trade.ui.content.agenti.RiepilogoAgenteView;
 import agent_trade.ui.content.aziende.AlberoAziende;
 import agent_trade.ui.content.aziende.DettaglioAziendaView;
 import agent_trade.ui.content.aziende.RiepilogoAziendaView;
+import agent_trade.ui.content.listini.AlberoListini;
 import agent_trade.ui.content.listini.RiepilogoIntestazioneListinoView;
 import agent_trade.ui.content.listini.RiepilogoListinoView;
 import agent_trade.ui.content.prodotti.nuovo.NuovoProdottoFactoryView;
 import agent_trade.ui.content.prodotti.riepilogo.RiepilogoProdottoFactoryView;
+import agent_trade.ui.content.sconti.AlberoSconti;
 import agent_trade.ui.content.sconti.nuovo.NuovoScontoFactoryView;
 import agent_trade.ui.content.sconti.nuovo.SelezionaScontoView;
 import agent_trade.ui.content.sconti.riepilogo.RiepilogoScontoFactoryView;
@@ -92,6 +94,8 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	private JPanel pannello_sottomenu_listino;
 	private JPanel pannello_laterale_listino;
 	
+	private JPanel alberoListini;
+
 	private JButton bottoneNuovoListino;
 	private JButton bottoneCercaListino;
 
@@ -100,6 +104,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	private JPanel pannello_sottomenu_sconto;
 	private JPanel pannello_laterale_sconto;
 
+	private JPanel alberoSconti;
 
 	private JButton bottoneNuovoSconto;
 	private JButton bottoneCercaSconto;
@@ -450,9 +455,9 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		pannello_laterale_listino.setLayout(null);
 		pannello_sottomenu_listino.add(pannello_laterale_listino, BorderLayout.WEST);
 		
-//		alberoListini = new AlberoListini();
-//		alberoListini.setBounds(0, 0, 261, 617);
-//		pannello_laterale_listino.add(alberoListini);
+		alberoListini = new AlberoListini();
+		alberoListini.setBounds(0, 0, 261, 617);
+		pannello_laterale_listino.add(alberoListini);
 		
 		pannello_centrale_listino = new JPanel();
 		pannello_centrale_listino.setBackground(SystemColor.control);
@@ -515,9 +520,9 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		pannello_laterale_sconto.setLayout(null);
 
 		
-//		alberoSconti = new AlberoAgenti();
-//		alberoSconti.setBounds(0, 0, 261, 617);
-//		pannello_laterale_sconto.add(alberoSconti);
+		alberoSconti = new AlberoSconti();
+		alberoSconti.setBounds(0, 0, 261, 617);
+		pannello_laterale_sconto.add(alberoSconti);
 		
 		pannello_centrale_sconto = new JPanel();
 		pannello_centrale_sconto.setBackground(SystemColor.control);
@@ -641,7 +646,6 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		alberoAgenti.setBounds(0, 0, 261, 617);
 		pannello_laterale_agente.add(alberoAgenti);
 		repaint();
-		System.out.println("dopo il repaint");
 	}
 	
 	/****  FUNZIONI AZIENDA ****/

@@ -15,7 +15,9 @@ import org.orm.PersistentException;
 import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Vini;
+import agent_trade.ui.content.agenti.AlberoAgenti;
 import agent_trade.ui.content.aziende.Ricerca_azienda;
+import agent_trade.ui.content.listini.AlberoListini;
 import agent_trade.ui.content.listini.Ricerca_listino;
 import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.ui.content.prodotti.riepilogo.confermaCancProdotto;
@@ -149,6 +151,9 @@ public class Ctrl_gestisciListino {
 		
 //		fare un	controllo per vedere se la lista è vuota in caso affermativo comunicarlo al mandante
 			PrimaryMandanteView.getInstance().initTable(elencoProd);
+			AlberoListini.abilitaAlbero();
+			AlberoListini.selectNode(azienda.getIdAzienda()+ " - " +azienda.getRagioneSociale());
+
 	}
 	
 	

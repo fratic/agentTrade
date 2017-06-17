@@ -21,6 +21,7 @@ import agent_trade.persistent.AgentTradeMandantePersistentManager;
 import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.Rem_ScontoCriteria;
 import agent_trade.persistent.ScontoCriteria;
+import agent_trade.ui.content.sconti.AlberoSconti;
 
 public class M_Sconto implements Cloneable{
 	public M_Sconto() {
@@ -184,6 +185,33 @@ public class M_Sconto implements Cloneable{
 		}
 	}
 	
+	public static String[] getStringaSconto(M_Sconto sLoad) {
+		String figlio=null;
+		String parent=null;
+		String ris[]= new String[2];
+		if (sLoad instanceof M_ScontoCliente)
+		{
+			figlio=sLoad.getId()+" - "+((M_ScontoCliente)sLoad).getPercent()*100+" %";
+			parent="Sconto Cliente";
+		}
+		else if (sLoad instanceof M_ScontoPercent)
+		{
+			figlio=sLoad.getId()+" - "+((M_ScontoPercent)sLoad).getPercent()*100+" %";
+			parent="Sconto Percentuale";
+
+
+		}
+		else if (sLoad instanceof M_ScontoQuantita)
+		{
+			figlio=sLoad.getId()+" - "+((M_ScontoQuantita)sLoad).getScontoFisso()+" € - q.ta > "+((M_ScontoQuantita)sLoad).getQuantita();
+			parent="Sconto Quantità";
+
+		}
+		ris[0]=figlio;
+		ris[1]=parent;
+		return ris;
+	}
+	
 	//DA RIVEDERE FORSE MEGLIO FARE CON IL FLAG 0/1
 	public static void cancellaScontoRemoto(M_Sconto s) throws PersistentException {
 
@@ -203,19 +231,15 @@ public class M_Sconto implements Cloneable{
 		
 		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
 		try {
-			System.out.println("ID SCONTO: "+sconto.getId() + " Classe: "+ sconto.getClass());
 			
 			if(sconto instanceof M_ScontoCliente ){
 				M_ScontoCliente sc = (M_ScontoCliente) sconto;
-				System.out.println("PERCENTUALE: "+sc.getPercent());
 			}
 			else if(sconto instanceof M_ScontoPercent ){
 				M_ScontoPercent sc = (M_ScontoPercent) sconto;
-				System.out.println("PERCENTUALE: "+sc.getPercent());
 			}
 			else if(sconto instanceof M_ScontoQuantita ){
 				M_ScontoQuantita sc = (M_ScontoQuantita) sconto;
-				System.out.println("QNT: "+sc.getQuantita() +" FISSO:"+ sc.getScontoFisso());
 			}
 			AgentTradeMandantePersistentManager.instance().getSession().update(sconto);
 			t.commit();
