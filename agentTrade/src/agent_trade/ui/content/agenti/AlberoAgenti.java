@@ -71,7 +71,6 @@ public class AlberoAgenti extends JPanel {
 					try {
 						if(selezione.isLeaf() && abilitalistener == true)
 	        			{
-							System.out.println("SELEZIONE"+selezione);
 							Ctrl_gestisciAgente.getInstance().recuperaAgente(ottieniId(selezione));
         				}
 					} 

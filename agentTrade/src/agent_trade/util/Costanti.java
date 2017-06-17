@@ -176,7 +176,7 @@ public final class Costanti {
 	public static final String NUOVA_AZIENDA_ICON = "/agent_trade/ui/img/add_azienda.png";
 	public static final String CERCA_AZIENDA_ICON = "/agent_trade/ui/img/cerca_azienda.png";
 	public static final String SALVA_AZIENDA_ICON = "/agent_trade/ui/img/save-icon.png";
-	public static final String IMG_SFONDO_AZIENDA = "/agent_trade/ui/img/sfondoAgentTradeAgente.png";
+	public static final String IMG_SFONDO_AZIENDA = "/agent_trade/ui/img/sfondoAzienda.png";
 	public static final String RIEPILOGO_AZIENDA_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String COMUNICAZIONE_AZIENDA_ICON = "/agent_trade/ui/img/send-icon.png";
 	public static final String MOD_AZIENDA_ICON = "/agent_trade/ui/img/setting.png";
@@ -189,7 +189,7 @@ public final class Costanti {
 	public static final String LISTINO_ICON = "/agent_trade/ui/img/listino.png";
 	public static final String NUOVO_LISTINO_ICON = "/agent_trade/ui/img/listino.png";
 	public static final String CERCA_LISTINO_ICON = "/agent_trade/ui/img/cerca_listino.png";
-	public static final String IMG_SFONDO_LISTINO = "/agent_trade/ui/img/sfondoAgentTradePreventivo.png";
+	public static final String IMG_SFONDO_LISTINO = "/agent_trade/ui/img/sfondoListino.png";
 	public static final String SHOW_ICON =  "/agent_trade/ui/img/arrow_icon.png";
 	public static final String MOD_PRODOTTO_ICON = "/agent_trade/ui/img/setting.png";
 	public static final String CANC_PRODOTTO_ICON = "/agent_trade/ui/img/delete.png";
@@ -202,7 +202,7 @@ public final class Costanti {
 	public static final String SCONTO_ICON= "/agent_trade/ui/img/sconto.png";
 	public static final String NUOVO_SCONTO_ICON= "/agent_trade/ui/img/add_sconto.png";
 	public static final String CERCA_SCONTO_ICON= "/agent_trade/ui/img/cerca_sconto.png";
-	public static final String IMG_SFONDO_SCONTO = "/agent_trade/ui/img/sfondoAgentTradeAgente.png";
+	public static final String IMG_SFONDO_SCONTO = "/agent_trade/ui/img/sfondoSconto.png";
 	public static final String MOD_SCONTO_ICON = "/agent_trade/ui/img/setting.png";
 	public static final String CANC_SCONTO_ICON = "/agent_trade/ui/img/delete.png";
 	public static final String SALVA_MOD_SCONTO_ICON = "/agent_trade/ui/img/save-icon.png";
