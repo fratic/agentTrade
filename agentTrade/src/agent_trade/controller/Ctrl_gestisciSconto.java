@@ -32,10 +32,10 @@ public class Ctrl_gestisciSconto {
 	/*metodi pubblici*/
 	
 	public void btnNewSconto() {
-		
+		AlberoSconti.disabilitaAlbero();
+
 		PrimaryMandanteView.getInstance().resetPannelloCentraleSconto();
 		PrimaryMandanteView.initSelezionaSconto();
-		AlberoSconti.disabilitaAlbero();
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);

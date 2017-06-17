@@ -237,10 +237,11 @@ public class Ctrl_gestisciAgente {
 
 	public void btnNewAgente() {
 		
-		PrimaryMandanteView.getInstance().resetPannelloCentraleAgente();
-		PrimaryMandanteView.initDettaglioAgente();
 		AlberoAgenti.deselezionaNodo();
 		AlberoAgenti.disabilitaAlbero();
+
+		PrimaryMandanteView.getInstance().resetPannelloCentraleAgente();
+		PrimaryMandanteView.initDettaglioAgente();
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(false);

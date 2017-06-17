@@ -244,11 +244,11 @@ public class Ctrl_gestisciAzienda {
 	}
 	
 	public void btnNewAzienda() throws PersistentException {
-		
-		PrimaryMandanteView.getInstance().resetPannelloCentraleAzienda();
-		PrimaryMandanteView.initDettaglioAzienda();
 		AlberoAziende.deselezionaNodo();
 		AlberoAziende.disabilitaAlbero();
+
+		PrimaryMandanteView.getInstance().resetPannelloCentraleAzienda();
+		PrimaryMandanteView.initDettaglioAzienda();
 		
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
