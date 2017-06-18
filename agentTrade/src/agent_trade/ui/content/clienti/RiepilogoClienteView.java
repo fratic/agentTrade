@@ -768,7 +768,8 @@ public class RiepilogoClienteView extends JPanel {
 					cliente.setTelefono(TFtelefono.getText());
 					cliente.setCell(TFcell.getText());
 					cliente.setFax(TFfax.getText());
-					
+					cliente.setVersione(cliente.getVersione()+1);
+					cliente.setIdclienteagente(cliente.getIdCliente());
 					Ctrl_gestisciCliente.getInstance().modificaCliente(cliente);
 				} 
 				catch (PersistentException e) {

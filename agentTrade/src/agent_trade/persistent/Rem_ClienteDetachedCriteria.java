@@ -20,7 +20,7 @@ import org.orm.criteria.*;
 
 import agent_trade.model.M_Cliente;
 
-public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
+public class Rem_ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression idCliente;
 	public final IntegerExpression agenteAssociatoId;
 	public final AssociationExpression agenteAssociato;
@@ -38,9 +38,11 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression attivo;
 	public final IntegerExpression sconto;
 	public final IntegerExpression versione;
+	public final IntegerExpression idclienteagente;
+
 
 	
-	public ClienteDetachedCriteria() {
+	public Rem_ClienteDetachedCriteria() {
 		super(agent_trade.model.M_Cliente.class, agent_trade.persistent.ClienteCriteria.class);
 		idCliente = new IntegerExpression("idCliente", this.getDetachedCriteria());
 		agenteAssociatoId = new IntegerExpression("agenteAssociato.IdAgente", this.getDetachedCriteria());
@@ -59,10 +61,12 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		attivo= new IntegerExpression("attivo", this.getDetachedCriteria());
 		sconto= new IntegerExpression("sconto", this.getDetachedCriteria());
 		versione= new IntegerExpression("versione", this.getDetachedCriteria());
+		idclienteagente= new IntegerExpression("idclienteagente", this.getDetachedCriteria());
+
 
 	}
 	
-	public ClienteDetachedCriteria(DetachedCriteria aDetachedCriteria) {
+	public Rem_ClienteDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, agent_trade.persistent.ClienteCriteria.class);
 		idCliente = new IntegerExpression("idCliente", this.getDetachedCriteria());
 		agenteAssociatoId = new IntegerExpression("agenteAssociato.IdAgente", this.getDetachedCriteria());
@@ -81,6 +85,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		attivo= new IntegerExpression("attivo", this.getDetachedCriteria());
 		sconto= new IntegerExpression("sconto", this.getDetachedCriteria());
 		versione= new IntegerExpression("versione", this.getDetachedCriteria());
+		idclienteagente= new IntegerExpression("idclienteagente", this.getDetachedCriteria());
 
 	}
 	

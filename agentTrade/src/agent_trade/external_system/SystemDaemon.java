@@ -7,9 +7,10 @@ import org.orm.PersistentException;
 
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Azienda;
+import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Sconto;
-import agent_trade.model.M_ScontoQuantita;
+import agent_trade.persistent.AgentTradeMandantePersistentManager;
 import agent_trade.persistent.AgentTradePersistentManager;
 
 public class SystemDaemon {
@@ -207,4 +208,46 @@ public class SystemDaemon {
 		}
 	
 	
+	/**
+	 * Metodo che permette di sincronizzare i clienti di un certo agente presenti sul 
+	 * suo db locale verso il db remoto
+	 * @throws CloneNotSupportedException 
+	 **/
+	public void sincronizzaClienti() throws PersistentException, CloneNotSupportedException{
+		
+		M_Cliente[] clienti_locali = M_Cliente.caricaClientiAgente();
+		
+		for (int i = 0; i < clienti_locali.length; i++) 
+		{
+						
+			M_Cliente cliente_remoto = M_Cliente.cercaClienteRemoto(clienti_locali[i].getIdCliente());
+			if(cliente_remoto!=null){
+				
+				if(clienti_locali[i].getVersione()>cliente_remoto.getVersione() && clienti_locali[i].getVersione()!=0 )
+				{
+					
+					AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+					
+					int id=cliente_remoto.getIdCliente();
+					cliente_remoto=clienti_locali[i].clone();
+					cliente_remoto.setIdCliente(id);
+					System.out.println("aggiornamento del cliente: "+cliente_remoto.getCognome());
+					M_Cliente.updateClienteRemoto(cliente_remoto);
+					System.out.println("ID "+clienti_locali[i].getIdCliente());
+				}
+			}
+			
+			else
+			{
+				System.out.println("Inserimento nuovo cliente: "+clienti_locali[i].getIdCliente()+clienti_locali[i].getCognome());
+				M_Cliente c= clienti_locali[i].clone();
+				c.setIdclienteagente(clienti_locali[i].getIdCliente());
+				c.setIdCliente(0);
+				M_Cliente.salvaClienteRemoto(c);
+				System.out.println("ID nuovo insert "+clienti_locali[i].getIdCliente());
+
+			}
+				
+			}
+		}
 }

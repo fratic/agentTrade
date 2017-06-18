@@ -197,6 +197,7 @@ public class Ctrl_gestisciCliente {
 		{
 			
 			cliente.setAttivo(1);
+			cliente.setVersione(1);
 //			AGGIUNGERE IL TIPO DI SCONTO
 			
 			M_Cliente.salvaCliente(cliente);
@@ -214,6 +215,8 @@ public class Ctrl_gestisciCliente {
 			PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);
 			PrimaryAgenteView.getInstance().setEnableTabCatalogo(true);
 			PrimaryAgenteView.getInstance().setEnableCercaCliente(true);
+			PrimaryAgenteView.getInstance().setEnableUpdateCliente(true);
+
 			
 		}
 		else{
@@ -240,6 +243,7 @@ public class Ctrl_gestisciCliente {
 			PrimaryAgenteView.getInstance().setEnableTabCatalogo(true);
 			PrimaryAgenteView.getInstance().setEnableNewCliente(true);
 			PrimaryAgenteView.getInstance().setEnableCercaCliente(true);
+			PrimaryAgenteView.getInstance().setEnableUpdateCliente(true);
 			PrimaryAgenteView.getInstance().disattivaInviaPosta(true);
 			PrimaryAgenteView.getInstance().setInvisibleToolTip();
 			AlberoClienti.updateNodo(c.getIdCliente()+ " - " +c.getCognome()+ " - " +c.getNome());
@@ -282,6 +286,8 @@ public class Ctrl_gestisciCliente {
 		PrimaryAgenteView.getInstance().setEnableTabPreventivo(false);
 		PrimaryAgenteView.getInstance().setEnableTabCatalogo(false);
 		PrimaryAgenteView.getInstance().setEnableCercaCliente(false);
+		PrimaryAgenteView.getInstance().setEnableUpdateCliente(false);
+
 	}
 	
 	public void annullaNewCliente()
@@ -298,6 +304,7 @@ public class Ctrl_gestisciCliente {
 		PrimaryAgenteView.getInstance().setEnableTabCatalogo(true);
 		PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);
 		PrimaryAgenteView.getInstance().setEnableCercaCliente(true);
+		PrimaryAgenteView.getInstance().setEnableUpdateCliente(true);
 		PrimaryAgenteView.getInstance().setVisibleErroreNuovoCliente(false);
 		AlberoClienti.abilitaAlbero();
 		
@@ -330,6 +337,7 @@ public class Ctrl_gestisciCliente {
 		PrimaryAgenteView.getInstance().setVisibleErroreRiepCliente(false);
 		PrimaryAgenteView.getInstance().setEnableNewCliente(false);
 		PrimaryAgenteView.getInstance().setEnableCercaCliente(false);
+		PrimaryAgenteView.getInstance().setEnableUpdateCliente(false);
 		PrimaryAgenteView.getInstance().setVisibleToolTip();
 		AlberoClienti.disabilitaAlbero();
 	}
@@ -348,6 +356,7 @@ public class Ctrl_gestisciCliente {
 		PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);
 		PrimaryAgenteView.getInstance().setEnableNewCliente(true);
 		PrimaryAgenteView.getInstance().setEnableCercaCliente(true);
+		PrimaryAgenteView.getInstance().setEnableUpdateCliente(true);
 		PrimaryAgenteView.getInstance().setInvisibleToolTip();
 		AlberoClienti.abilitaAlbero();
 	}

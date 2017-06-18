@@ -16,11 +16,14 @@ package agent_trade.persistent;
 import org.hibernate.Criteria;
 import org.orm.PersistentException;
 import org.orm.PersistentSession;
-import org.orm.criteria.*;
+import org.orm.criteria.AbstractORMCriteria;
+import org.orm.criteria.AssociationExpression;
+import org.orm.criteria.IntegerExpression;
+import org.orm.criteria.StringExpression;
 
 import agent_trade.model.M_Cliente;
 
-public class ClienteCriteria extends AbstractORMCriteria {
+public class Rem_ClienteCriteria extends AbstractORMCriteria {
 	public final IntegerExpression idCliente;
 	public final IntegerExpression agenteAssociatoId;
 	public final AssociationExpression agenteAssociato;
@@ -38,10 +41,11 @@ public class ClienteCriteria extends AbstractORMCriteria {
 	public final IntegerExpression attivo;
 	public final IntegerExpression sconto;
 	public final IntegerExpression versione;
+	public final IntegerExpression idclienteagente;
 
 
 	
-	public ClienteCriteria(Criteria criteria) {
+	public Rem_ClienteCriteria(Criteria criteria) {
 		super(criteria);
 		idCliente = new IntegerExpression("idCliente", this);
 		agenteAssociatoId = new IntegerExpression("agenteAssociato.IdAgente", this);
@@ -60,16 +64,17 @@ public class ClienteCriteria extends AbstractORMCriteria {
 		attivo = new IntegerExpression("attivo", this);
 		sconto = new IntegerExpression("sconto", this);
 		versione = new IntegerExpression("versione", this);
+		idclienteagente = new IntegerExpression("idclienteagente", this);
 
 
 	}
 	
-	public ClienteCriteria(PersistentSession session) {
+	public Rem_ClienteCriteria(PersistentSession session) {
 		this(session.createCriteria(M_Cliente.class));
 	}
 	
-	public ClienteCriteria() throws PersistentException {
-		this(agent_trade.persistent.AgentTradePersistentManager.instance().getSession());
+	public Rem_ClienteCriteria() throws PersistentException {
+		this(agent_trade.persistent.AgentTradeMandantePersistentManager.instance().getSession());
 	}
 	
 	public AgenteCriteria createAgenteAssociatoCriteria() {

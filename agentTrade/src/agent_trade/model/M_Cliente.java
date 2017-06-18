@@ -21,13 +21,15 @@ import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
 import agent_trade.controller.Ctrl_System;
+import agent_trade.persistent.AgentTradeMandantePersistentManager;
 import agent_trade.persistent.AgentTradePersistentManager;
 import agent_trade.persistent.ClienteCriteria;
+import agent_trade.persistent.Rem_ClienteCriteria;
 import agent_trade.sconti.ClienteScontoStrategy;
 import agent_trade.sconti.IScontoStrategy;
 import agent_trade.sconti.ScontoStrategyFactory;
 
-public class M_Cliente {
+public class M_Cliente implements Cloneable{
 
 	/*
 	 * attributi di classe
@@ -55,7 +57,10 @@ public class M_Cliente {
 	private String cell;
 	private int attivo;
 	private int sconto;
-	
+	private int versione;
+	private int idclienteagente;
+
+
 
 //	private IScontoStrategy strategiaCliente;
 	
@@ -80,6 +85,8 @@ public class M_Cliente {
 		this.cell=cel;
 		this.fax=fax;
 		this.agenteAssociato = Ctrl_System.getAgenteLog();
+		this.idclienteagente=id;
+		this.versione=1;
 	}
 	
 	
@@ -110,11 +117,47 @@ public class M_Cliente {
 		}
 	}
 	
+	public static M_Cliente cercaClienteRemoto(int id_cliente) throws PersistentException{
+		
+		try{
+			
+			Rem_ClienteCriteria criteriaCliente= new Rem_ClienteCriteria();
+			
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			criteriaCliente.idclienteagente.eq(id_cliente);
+			criteriaCliente.attivo.eq(1);
+			return criteriaCliente.uniqueM_Cliente();
+		}
+		finally {
+		}
+	}
+	
 	public static M_Cliente[] caricaClientiAgente() throws PersistentException {
 		
 		ClienteCriteria criteriaCliente;
 		try {
 			criteriaCliente = new ClienteCriteria();
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			criteriaCliente.attivo.eq(1);
+			criteriaCliente.addOrder(Property.forName("cognome").asc());
+
+			return criteriaCliente.listCliente();
+		} 
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+		}
+		return null;
+	}
+	
+	public static M_Cliente[] caricaClientiAgenteRemoto() throws PersistentException {
+		
+		Rem_ClienteCriteria criteriaCliente;
+		try {
+			criteriaCliente = new Rem_ClienteCriteria();
 			//JOIN per recuperare solo i clienti dell'agente loggato
 			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
 			criteriaCliente.attivo.eq(1);
@@ -215,6 +258,43 @@ public class M_Cliente {
 		}
 	}
 	
+	
+	public static void salvaClienteRemoto(M_Cliente c)throws PersistentException{
+		AgentTradePersistentManager.instance().disposePersistentManager();
+
+		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradeMandantePersistentManager.instance().getSession().save(c);
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+			System.out.println("ECCEZIONE "+e);
+
+		}
+		finally {
+			System.out.println("commit a buon fine? "+t.wasCommitted());
+		}
+	} 
+	
+	
+	public static void updateClienteRemoto(M_Cliente c)throws PersistentException{
+		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+		try 
+		{				
+			AgentTradeMandantePersistentManager.instance().getSession().update(c);
+			// commit per il salvataggio
+			t.commit();
+		}
+		catch (Exception e) {
+			t.rollback();
+		}
+		finally {
+		}
+	}
+	
 	public static void aggiornaCliente(M_Cliente c)throws PersistentException{
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try {
@@ -249,9 +329,7 @@ public class M_Cliente {
 	 * metodi privati
 	 */
 	
-	private void setIdCliente(int value) {
-		this.idCliente = value;
-	}
+
 
 	
 	/*
@@ -261,6 +339,14 @@ public class M_Cliente {
 
 	public int getIdCliente() {
 		return idCliente;
+	}
+	
+	public void setIdCliente(int value) {
+		this.idCliente = value;
+	}
+	
+	public void setIdCliente() {
+		this.idCliente = (Integer) null;
 	}
 	
 	public int getORMID() {
@@ -383,6 +469,23 @@ public class M_Cliente {
 		return String.valueOf(getIdCliente());
 	}
 
+	
+	public int getVersione() {
+		return versione;
+	}
+
+	public void setVersione(int versione) {
+		this.versione = versione;
+	}
+
+	public int getIdclienteagente() {
+		return idclienteagente;
+	}
+
+	public void setIdclienteagente(int idclienteagente) {
+		this.idclienteagente = idclienteagente;
+	}
+
 	public IScontoStrategy getStrategiaCliente() throws PersistentException {
 		
 		IScontoStrategy strategiaCliente= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
@@ -394,6 +497,14 @@ public class M_Cliente {
 //		this.strategiaCliente = strategiaCliente;
 //	}
 	
+	
+	public M_Cliente clone() {
+		try {
+			return (M_Cliente) super.clone();
+		} catch (CloneNotSupportedException e) {
+			throw new RuntimeException(e);
+		}
+	}
 	
 	
 }

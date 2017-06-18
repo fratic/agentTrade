@@ -62,6 +62,7 @@ License Type: Academic
 		<mapping resource="ormmapping/agent_trade/model/Rem_M_Azienda.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/Rem_M_Prodotto.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/Rem_M_Sconto.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/Rem_M_Cliente.hbm.xml" />
 			
 		
 	</session-factory>

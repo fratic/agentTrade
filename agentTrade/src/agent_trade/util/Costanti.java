@@ -139,6 +139,7 @@ public final class Costanti {
 	public static final String CLIENTE_ICON= "/agent_trade/ui/img/cliente.png";	
 	public static final String NUOVO_CLIENTE_ICON= "/agent_trade/ui/img/new_user.png";
 	public static final String CERCA_CLIENTE_ICON= "/agent_trade/ui/img/search.png";
+	public static final String UPDATE_CLIENTE_ICON= "/agent_trade/ui/img/update_cliente.png";
 	public static final String PRODOTTI_ICON= "/agent_trade/ui/img/magazzino_icon.png";
 	public static final String ALBERO_PREVENTIVI_ICON= "/agent_trade/ui/img/prev.png";
 	public static final String ALBERO_PRODOTTI_ICON= "/agent_trade/ui/img/prev.png";
@@ -471,6 +472,7 @@ public final class Costanti {
 	public final static String TIP_GESTISCI_CLIENTE= "Gestisci i clienti";
 	public final static String TIP_INSERISCI_CLIENTE= "Inserisci un nuovo cliente";
 	public final static String TIP_CERCA_CLIENTE= "Cerca il cliente";
+	public final static String TIP_UPDATE_CLIENTE= "Carica i clienti sul database centrale";
 	public final static String TIP_ANNULLA_PREV= "Annulla il preventivo in corso";
 	public final static String TIP_ADD_ITEM= "Aggiungi prodotti a questo preventivo";
 	public final static String TIP_SALVA_PREV= "Salva preventivo";

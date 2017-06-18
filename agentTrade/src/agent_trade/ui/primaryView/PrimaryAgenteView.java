@@ -14,7 +14,6 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -25,7 +24,7 @@ import org.orm.PersistentException;
 import agent_trade.controller.Ctrl_elaboraPreventivo;
 import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.controller.Ctrl_gestisciListino;
-import agent_trade.model.M_Azienda;
+import agent_trade.external_system.SystemDaemon;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
@@ -73,8 +72,9 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	private JButton cerca_preventivo;
 	private JButton bottoneCercaCliente;
 	private JButton bottoneNuovoCliente;
-	
-	
+	private JButton bottoneUpdateCliente;
+
+
 	private JPanel preventivo;
 	private JPanel pannello_menu_preventivo;
 	private JPanel pannello_sottomenu_preventivo;
@@ -347,6 +347,12 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		bottoneCercaCliente.setBounds(103, 25, 50, 50);
 		pannello_menu_cliente.add(bottoneCercaCliente);
 		
+		bottoneUpdateCliente = new JButton("");
+		bottoneUpdateCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.UPDATE_CLIENTE_ICON)));
+		bottoneUpdateCliente.setToolTipText(Costanti.TIP_UPDATE_CLIENTE);
+		bottoneUpdateCliente.setBounds(181, 25, 50, 50);
+		pannello_menu_cliente.add(bottoneUpdateCliente);
+		
 		pannello_sottomenu_cliente = new JPanel();
 		pannello_sottomenu_cliente.setPreferredSize(new Dimension(1013, 617));
 		pannello_sottomenu_cliente.setLayout(new BorderLayout());
@@ -385,6 +391,20 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Ctrl_gestisciCliente.getInstance().newCliente();
+				
+			}
+		});
+		
+		bottoneUpdateCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					SystemDaemon.getInstance().sincronizzaClienti();
+				} 
+				catch (PersistentException | CloneNotSupportedException e) 
+				{
+					e.printStackTrace();
+				}
 				
 			}
 		});
@@ -517,6 +537,10 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		bottoneCercaCliente.setEnabled(b);
 	}
 	
+	public void setEnableUpdateCliente(boolean b){
+		bottoneUpdateCliente.setEnabled(b);
+	}
+	
 	public void setEnableNewPreventivo(boolean b){
 		nuovo_preventivo.setEnabled(b);
 	}
@@ -612,6 +636,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		pannello_centrale_cliente.repaint();
 		
 	}
+	
 	
 	public void resetPannelloCentraleCatalogo(){
 		pannello_centrale_catalogo.removeAll();
