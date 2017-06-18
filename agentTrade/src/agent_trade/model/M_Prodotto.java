@@ -143,7 +143,7 @@ public abstract class M_Prodotto implements Cloneable{
 
 		}
 		finally {
-			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+			//AgentTradeMandantePersistentManager.instance().disposePersistentManager();
 		}
 	}
 	

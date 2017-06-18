@@ -23,6 +23,7 @@ import agent_trade.controller.Ctrl_gestisciAgente;
 import agent_trade.controller.Ctrl_gestisciAzienda;
 import agent_trade.controller.Ctrl_gestisciListino;
 import agent_trade.controller.Ctrl_gestisciSconto;
+import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
 
 public class AlberoListini extends JPanel{
@@ -75,6 +76,10 @@ public class AlberoListini extends JPanel{
 	        			{
 							Ctrl_gestisciListino.getInstance().recuperaListino(ottieniId(selezione));
         				}
+						else if(!selezione.isLeaf()){
+							PrimaryMandanteView.getInstance().resetPannelloCentraleListino();
+							PrimaryMandanteView.getInstance().setSfondoListino();
+						}
 					} 
 					catch (PersistentException e1) {
 						e1.printStackTrace();

@@ -21,6 +21,7 @@ import org.orm.PersistentException;
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_gestisciAgente;
 import agent_trade.controller.Ctrl_gestisciAzienda;
+import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
 
 public class AlberoAziende extends JPanel{
@@ -73,6 +74,10 @@ public class AlberoAziende extends JPanel{
 	        			{
 							Ctrl_gestisciAzienda.getInstance().recuperaAzienda(ottieniId(selezione));
         				}
+						else if(!selezione.isLeaf()){
+							PrimaryMandanteView.getInstance().resetPannelloCentraleAzienda();
+							PrimaryMandanteView.getInstance().setSfondoAzienda();
+						}
 					} 
 					catch (PersistentException e1) {
 						e1.printStackTrace();

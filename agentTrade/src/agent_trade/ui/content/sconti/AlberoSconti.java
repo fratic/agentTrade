@@ -20,6 +20,7 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_gestisciSconto;
+import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
 
 public class AlberoSconti extends JPanel {
@@ -77,6 +78,10 @@ public class AlberoSconti extends JPanel {
 				if(selezione.isLeaf() && abilitalistener == true)
     			{
 					Ctrl_gestisciSconto.getInstance().recuperaSconto(ottieniId(selezione));
+				}
+				else if(!selezione.isLeaf()){
+					PrimaryMandanteView.getInstance().resetPannelloCentraleSconto();
+					PrimaryMandanteView.getInstance().setSfondoSconto();
 				}
 			} 
 			catch (PersistentException e1) {
