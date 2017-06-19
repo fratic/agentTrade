@@ -195,6 +195,7 @@ public class Ctrl_gestisciAzienda {
 			azienda.setTelefono(tel);;
 			azienda.setFax(fax);
 			azienda.setUrl(url);
+			azienda.setVersione(azienda.getVersione()+1);
 			
 			M_Azienda.aggiornaAziendaRemoto(azienda);
 							

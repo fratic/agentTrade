@@ -14,6 +14,7 @@
 package agent_trade.model;
 
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
 import org.orm.PersistentException;
 import org.orm.PersistentTransaction;
 
@@ -147,6 +148,7 @@ public class M_Sconto implements Cloneable{
 		Rem_ScontoCriteria criteriaSconto;
 		try {
 			criteriaSconto = new Rem_ScontoCriteria();
+			criteriaSconto.addOrder(Property.forName("id").asc());
 			return criteriaSconto.listSconto();
 		} 
 		catch (PersistentException e) {
@@ -165,6 +167,7 @@ public class M_Sconto implements Cloneable{
 			int idSconto = Integer.parseInt(id);
 			
 			criteriaSconto.id.eq(idSconto);
+			criteriaSconto.addOrder(Property.forName("id").asc());
 
 			return criteriaSconto.listSconto();
 		} catch (PersistentException e) {

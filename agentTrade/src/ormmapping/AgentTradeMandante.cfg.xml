@@ -10,7 +10,7 @@ License Type: Academic
 <!--  CONFIGURAZIONE PER DB REMOTO
  --> 
  
-<!-- <hibernate-configuration>
+<hibernate-configuration>
 	<session-factory>
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="connection.driver_class">org.postgresql.Driver</property>
@@ -31,15 +31,16 @@ License Type: Academic
 		<mapping resource="ormmapping/agent_trade/model/Rem_M_Azienda.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/Rem_M_Prodotto.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/Rem_M_Sconto.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/Rem_M_Cliente.hbm.xml" />
 			
 		
 	</session-factory>
-</hibernate-configuration> -->
+</hibernate-configuration> 
 
 
 <!--  CONFIGURAZIONE PER SIMULAZIONE DB REMOTO, IN LOCALE
  --> 
-<hibernate-configuration>
+<!--<hibernate-configuration>
 	<session-factory>
 	
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
@@ -66,4 +67,4 @@ License Type: Academic
 			
 		
 	</session-factory>
-</hibernate-configuration>
+</hibernate-configuration>-->

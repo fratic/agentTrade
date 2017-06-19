@@ -475,7 +475,11 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		((RiepilogoClienteView) riep_cliente).setRiepilogoCliente(cliente);
 	}
 	
-	public void setScontoCliente(String sconto){
+//	public void setScontoCliente(String sconto){
+//		((RiepilogoClienteView) riep_cliente).setScontoCliente(sconto);
+//	}
+	
+	public void setScontoCliente(M_Sconto sconto) throws PersistentException{
 		((RiepilogoClienteView) riep_cliente).setScontoCliente(sconto);
 	}
 
@@ -518,6 +522,15 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	//cambiato il nome
 	public void disattivaCancella(boolean b){
 		((RiepilogoClienteView) riep_cliente).setVisibleBtnCancella(b);
+	}
+	
+	public void disattivaModSconto(boolean b){
+		((RiepilogoClienteView) riep_cliente).setVisibleBtnModSconto(b);
+	}
+
+
+	public void disattivaModAgente(boolean b){
+		((RiepilogoClienteView) riep_cliente).setVisibleBtnModAgente(b);
 	}
 	
 	public void resetNuovoCliente() {

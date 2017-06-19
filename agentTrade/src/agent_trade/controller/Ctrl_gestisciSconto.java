@@ -49,6 +49,8 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setSfondoSconto();
 		
 		Ricerca_sconto.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
+		Ricerca_sconto.getInstance().setVisibleBtnVisualizza(true);
+		Ricerca_sconto.getInstance().setVisibleBtnModifica(false);
 		Ricerca_sconto.getInstance().setVisible(true);
 	}
 	

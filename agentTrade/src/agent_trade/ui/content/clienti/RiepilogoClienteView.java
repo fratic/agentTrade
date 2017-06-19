@@ -318,7 +318,10 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoCliente;
 import agent_trade.util.Costanti;
 
 public class RiepilogoClienteView extends JPanel {
@@ -367,6 +370,8 @@ public class RiepilogoClienteView extends JPanel {
 	private JButton bottoneSalvaModifiche;
 	private JButton bottoneAnnullaModifica;
 	private JButton bottoneInviaComunicazione;
+	private JButton bottoneModificaSconto;
+	private JButton bottoneModificaAgente;
 	
 	private JPanel pannelloCampi;
 	private JPanel pannelloBottoni;
@@ -738,6 +743,20 @@ public class RiepilogoClienteView extends JPanel {
 		bottoneAnnullaModifica.setToolTipText(Costanti.TIP_ANNULLA_MOD_CLIENTE);
 		bottoneAnnullaModifica.setIcon(new ImageIcon(DettaglioClienteView.class.getResource(Costanti.ANNULLA_MOD_CLIENTE_ICON)));
 		
+		
+		bottoneModificaSconto = new JButton("");
+		bottoneModificaSconto.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
+		bottoneModificaSconto.setToolTipText(Costanti.TIP_MOD_SCONTO_CLIENTE);
+		bottoneModificaSconto.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource(Costanti.MOD_SCONTO_CLIENTE_ICON)));
+//		bottoneModificaSconto.setVisible(false);
+		pannelloBottoni.add(bottoneModificaSconto);
+			
+		bottoneModificaAgente = new JButton("");
+		bottoneModificaAgente.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
+		bottoneModificaAgente.setToolTipText(Costanti.TIP_MOD_AGENTE_CLIENTE);
+		bottoneModificaAgente.setIcon(new ImageIcon(RiepilogoClienteView.class.getResource(Costanti.MOD_AGENTE_CLIENTE_ICON)));
+//		bottoneModificaAgente.setVisible(false);
+		pannelloBottoni.add(bottoneModificaAgente);
 
 		
 		bottoneModificaCliente.addActionListener(new ActionListener() {
@@ -781,8 +800,7 @@ public class RiepilogoClienteView extends JPanel {
 		bottoneAnnullaModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 	
-				
-				try {
+			try {
 					Ctrl_gestisciCliente.getInstance().annullaModificheCliente(TFidCliente.getText());
 				} 
 				catch (PersistentException e) {
@@ -797,6 +815,29 @@ public class RiepilogoClienteView extends JPanel {
 			}
 		});
 		
+		
+		bottoneModificaSconto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Ctrl_gestisciCliente.getInstance().btnCercaSconto();
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
+
+		bottoneModificaAgente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Ctrl_gestisciCliente.getInstance().btnCercaAgente();
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+						e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 		
@@ -927,8 +968,47 @@ public class RiepilogoClienteView extends JPanel {
 		}
 		
 
-		public void setScontoCliente(String sconto) {
-			TFsconto.setText(sconto);			
+//		public void setScontoCliente(String sconto) {
+//			TFsconto.setText(sconto);			
+//		}
+		
+		public void setScontoCliente(M_Sconto sconto) throws PersistentException {
+			
+			String scnt = "0%";
+			
+			if (sconto instanceof M_ScontoCliente){
+				scnt = ((M_ScontoCliente) sconto).getPercent()*100 + "%"; 
+			}
+			
+			TFsconto.setText(scnt);	
+			
+			if(Costanti.version.equals(Costanti.mandante)){
+				
+				cliente.setSconto(sconto.getId());
+				cliente.setVersione(cliente.getVersione()+1);
+				
+				Ctrl_gestisciCliente.getInstance().modificaCliente(cliente);
+			}
+		}		
+		
+		public void setVisibleBtnModSconto(boolean b) {
+			bottoneModificaSconto.setVisible(b);
+		}
+				
+				
+		public void setVisibleBtnModAgente(boolean b) {
+			bottoneModificaAgente.setVisible(b);
+		}
+
+
+		public void setAgenteRif(M_Agente agenteRif) throws PersistentException{
+			
+			cliente.setAgenteAssociato(agenteRif);
+			cliente.setVersione(cliente.getVersione()+1);
+			
+			TFrifAgente.setText(cliente.getAgenteAssociato().getCognome()+" "+cliente.getAgenteAssociato().getNome());
+			
+			Ctrl_gestisciCliente.getInstance().modificaCliente(cliente);
 		}
 }
 		

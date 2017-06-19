@@ -97,6 +97,7 @@ public class RiepilogoScontoQuantitaView  extends RiepilogoScontoFactoryView{
 				try {
 					scontoQnt.setQuantita(Integer.parseInt(TFQnt.getText()));
 					scontoQnt.setScontoFisso(Float.valueOf(TFFisso.getText()).floatValue());
+					scontoQnt.setVersione(scontoQnt.getVersione()+1);
 					
 					Ctrl_gestisciSconto.getInstance().modificaSconto(scontoQnt);
 				} catch (PersistentException e) {

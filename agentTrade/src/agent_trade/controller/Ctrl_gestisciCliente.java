@@ -7,16 +7,20 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.orm.PersistentException;
 
+import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Sconto;
 import agent_trade.model.M_ScontoCliente;
+import agent_trade.ui.content.agenti.Ricerca_agente;
 import agent_trade.ui.content.clienti.AlberoClienti;
 import agent_trade.ui.content.clienti.CercaClienteView;
 import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.Ricerca_cliente;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
 import agent_trade.ui.content.clienti.confermaCancCliente;
+import agent_trade.ui.content.sconti.riepilogo.Ricerca_sconto;
 import agent_trade.ui.primaryView.PrimaryAgenteView;
+import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
 
 public class Ctrl_gestisciCliente {
@@ -139,7 +143,14 @@ public class Ctrl_gestisciCliente {
 		}
 		else {
 			
-			M_Cliente [] listClienti = M_Cliente.caricaClientiParametri(c, pi, cf, city);
+			M_Cliente [] listClienti = null;
+//			A seconda della versione carico i clienti relativi all'agente o al mandante
+			if(Costanti.version.equals(Costanti.agente)){
+				listClienti = M_Cliente.caricaClientiParametri(c, pi, cf, city);
+			}
+			else if(Costanti.version.equals(Costanti.mandante)){
+				listClienti = M_Cliente.caricaClientiParametriRemoto(c, pi, cf, city);
+			}
 			
 			if(listClienti.length==0) {
 		
@@ -166,26 +177,72 @@ public class Ctrl_gestisciCliente {
 	}
 	
 	
-	public void recuperaCliente(int idCliente) throws PersistentException
+	public void recuperaCliente(int idCliente) throws PersistentException{
+
+		if(Costanti.version.equals(Costanti.agente)){
+			recuperaClienteAgente(idCliente);
+		}
+		else if(Costanti.version.equals(Costanti.mandante)){
+			recuperaClienteMandante(idCliente);
+		}
+	}
+	
+	
+	public void recuperaClienteAgente(int idCliente) throws PersistentException
 	{	
 	
 			PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 			
 			M_Cliente cliente = M_Cliente.cercaCliente(idCliente);
 			
+			M_Sconto sconto = M_Sconto.caricaSconto(cliente.getSconto());
+			
 			Ricerca_cliente.getInstance().dispose();
 			Ricerca_cliente.cancInstanza();
 			
 			PrimaryAgenteView.initRiepilogoClienteView();
 			PrimaryAgenteView.getInstance().setSchedaCliente(cliente);
-			PrimaryAgenteView.getInstance().setScontoCliente(mostraScontoCliente(cliente.getSconto()));
+			PrimaryAgenteView.getInstance().setScontoCliente(sconto);
 			PrimaryAgenteView.getInstance().disattivaSalvaModifiche(false);
 			PrimaryAgenteView.getInstance().disattivaAnnullaModifiche(false);
+			PrimaryAgenteView.getInstance().disattivaModSconto(false);
+			PrimaryAgenteView.getInstance().disattivaModAgente(false);
 			PrimaryAgenteView.getInstance().setEnableTabPreventivo(true);
 			PrimaryAgenteView.getInstance().setEnableTabCatalogo(true);
 			PrimaryAgenteView.getInstance().setVisibleErroreRiepCliente(false);
 			AlberoClienti.abilitaAlbero();
 			AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
+	}
+	
+	
+	public void recuperaClienteMandante(int idCliente) throws PersistentException
+	{	
+		
+		PrimaryMandanteView.getInstance().resetPannelloCentraleCliente();
+				
+		M_Cliente cliente = M_Cliente.cercaClienteRemotoMandante(idCliente);
+		
+		M_Sconto sconto = M_Sconto.caricaScontoRemoto(cliente.getSconto());
+				
+		Ricerca_cliente.getInstance().dispose();
+		Ricerca_cliente.cancInstanza();
+				
+		PrimaryMandanteView.initRiepilogoClienteView();
+		PrimaryMandanteView.getInstance().setSchedaCliente(cliente);
+		PrimaryMandanteView.getInstance().setScontoCliente(sconto);
+		PrimaryMandanteView.getInstance().disattivaSalvaModifiche(false);
+		PrimaryMandanteView.getInstance().disattivaAnnullaModifiche(false);
+		PrimaryMandanteView.getInstance().disattivaInviaPosta(false);
+		PrimaryMandanteView.getInstance().disattivaModifica(false);
+		PrimaryMandanteView.getInstance().disattivaCancella(false);
+		PrimaryMandanteView.getInstance().disattivaModSconto(true);
+		PrimaryMandanteView.getInstance().disattivaModAgente(true);
+		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
+		PrimaryMandanteView.getInstance().setEnableTabListino(true);
+		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+//		AlberoClienti.abilitaAlbero();
+//		AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 	}
 	
 	
@@ -198,7 +255,8 @@ public class Ctrl_gestisciCliente {
 			
 			cliente.setAttivo(1);
 			cliente.setVersione(1);
-//			AGGIUNGERE IL TIPO DI SCONTO
+			M_ScontoCliente scontoBase = M_ScontoCliente.caricaScontoBase();
+			cliente.setSconto(scontoBase.getId());
 			
 			M_Cliente.salvaCliente(cliente);
 
@@ -226,7 +284,18 @@ public class Ctrl_gestisciCliente {
 	}
 	
 	
-	public void modificaCliente(M_Cliente c) throws PersistentException
+	public void modificaCliente(M_Cliente c) throws PersistentException{
+		
+		if(Costanti.version.equals(Costanti.agente)){
+			modificaClienteAgente(c);
+		}
+		else if(Costanti.version.equals(Costanti.mandante)){
+			modificaClienteMandante(c);
+		}
+	}
+	
+	
+	public void modificaClienteAgente(M_Cliente c) throws PersistentException
 	{
 		String errore = ControlloCampi(c);
 		
@@ -257,6 +326,12 @@ public class Ctrl_gestisciCliente {
 		}
 	}
 	
+	
+	public void modificaClienteMandante(M_Cliente c) throws PersistentException
+	{
+		M_Cliente.updateClienteRemoto(c);
+	}
+	
 
 	public void cancellaCliente(String id){
 		
@@ -267,7 +342,14 @@ public class Ctrl_gestisciCliente {
 	//bisogna decidere il criterio di caricamento. Decidere se è adeguata questa struttura dati
 	public M_Cliente [] caricaClienti() throws PersistentException 
 	{
-		M_Cliente [] listClienti = M_Cliente.caricaClientiAgente();
+		M_Cliente [] listClienti = null;
+//		A seconda della versione carico i clienti relativi all'agente o al mandante
+		if(Costanti.version.equals(Costanti.agente)){
+			listClienti = M_Cliente.caricaClientiAgente();
+		}
+		else if(Costanti.version.equals(Costanti.mandante)){
+			listClienti = M_Cliente.caricaClientiRemoto();
+		}
 		return listClienti;
 	}
 
@@ -310,7 +392,19 @@ public class Ctrl_gestisciCliente {
 		
 	}
 	
-	public void btnCerca() 
+	
+	public void btnCerca(){
+		
+		if(Costanti.version.equals(Costanti.agente)){
+			btnCercaClientiAgente();
+		}
+		else if(Costanti.version.equals(Costanti.mandante)){
+			btnCercaClientiMandante();
+		}
+	}
+	
+	
+	public void btnCercaClientiAgente() 
 	{	
 		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 		PrimaryAgenteView.getInstance().setSfondoCliente();
@@ -322,6 +416,21 @@ public class Ctrl_gestisciCliente {
 		Ricerca_cliente.getInstance().setVisible(true);
 		
 	}
+	
+	
+	public void btnCercaClientiMandante() {
+		
+		PrimaryMandanteView.getInstance().resetPannelloCentraleCliente();
+		PrimaryMandanteView.getInstance().setSfondoCliente();
+		try {
+			Ricerca_cliente.getInstance().popolaTab(Ctrl_gestisciCliente.getInstance().caricaClienti());
+		} catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		Ricerca_cliente.getInstance().setVisible(true);
+			
+	}
+	
 	
 	public void abilitaModifica()
 	{
@@ -415,6 +524,47 @@ public class Ctrl_gestisciCliente {
 			scnt = ((M_ScontoCliente) sconto).getPercent()*100 + "%"; 
 		}
 		return scnt;
+	}
+	
+//	SPOSTARE IN CTRL SCONTO?
+	public void btnCercaSconto() throws PersistentException{
+		
+		Ricerca_sconto.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
+		Ricerca_sconto.getInstance().setVisibleBtnVisualizza(false);
+		Ricerca_sconto.getInstance().setVisibleBtnModifica(true);
+		Ricerca_sconto.getInstance().setVisible(true);
+		
+	}
+		
+//	SPOSTARE IN CTRL SCONTO?	
+	public void assegnaSconto(int idSconto) throws PersistentException{
+		
+		Ricerca_sconto.getInstance().dispose();
+		Ricerca_sconto.cancInstanza();
+		
+		M_Sconto sconto = M_Sconto.caricaScontoRemoto(idSconto);
+		
+		PrimaryMandanteView.getInstance().setScontoCliente(sconto);
+	}
+		
+//	SPOSTARE IN CTRL AGENTE?
+	public void btnCercaAgente()throws PersistentException{
+		
+		Ricerca_agente.getInstance().popolaTab(M_Agente.caricaAgentiRemoto());
+		Ricerca_agente.getInstance().setVisibleBtnVisualizza(false);
+		Ricerca_agente.getInstance().setVisibleBtnModifica(true);
+		Ricerca_agente.getInstance().setVisible(true);
+	}
+		
+//	SPOSTARE IN CTRL AGENTE?
+	public void assegnaAgente(int idAgente) throws PersistentException{
+		
+		Ricerca_agente.getInstance().dispose();
+		Ricerca_agente.cancInstanza();
+		
+		M_Agente agenteRif = M_Agente.cercaAgenteRemoto(idAgente);
+		
+		PrimaryMandanteView.getInstance().setAgenteRif(agenteRif);
 	}
 	
 	

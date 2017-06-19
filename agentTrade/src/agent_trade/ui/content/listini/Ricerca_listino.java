@@ -248,7 +248,7 @@ public class Ricerca_listino extends JDialog {
 	
 	public void updateTable(int id, String ragSoc, String codFis, String pIva, String citta){
 
-		svuotaTabella();
+//		svuotaTabella();
 		labelError.setText("");
         ((DefaultTableModel) JTableModel).addRow(new Object[]{id, ragSoc, codFis, pIva, citta});
 	}

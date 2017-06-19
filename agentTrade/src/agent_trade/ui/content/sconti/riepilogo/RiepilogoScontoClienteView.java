@@ -77,6 +77,7 @@ public class RiepilogoScontoClienteView extends RiepilogoScontoFactoryView {
 				try {
 					
 					scontoCliente.setPercent(Float.valueOf(TFPercent.getText()).floatValue());
+					scontoCliente.setVersione(scontoCliente.getVersione()+1);
 					
 					Ctrl_gestisciSconto.getInstance().modificaSconto(scontoCliente);
 				} catch (PersistentException e) {

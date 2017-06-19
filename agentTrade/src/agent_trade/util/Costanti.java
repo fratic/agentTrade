@@ -21,8 +21,8 @@ public final class Costanti {
 	public static String  version = "agente";
 //	public final static String  version = "mandante";
 
-	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
-//	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
+//	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
+	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
 
 	public final static String  agente = "agente";
 	public final static String  mandante = "mandante";
@@ -42,8 +42,8 @@ public final class Costanti {
 //	public final static int  Look_Feel = 6;
 
 	
-	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
-//	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
+//	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
+	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
 
 
 	
@@ -156,6 +156,8 @@ public final class Costanti {
 	public static final String CANC_CLIENTE_ICON = "/agent_trade/ui/img/delete.png";
 	public static final String SALVA_MOD_CLIENTE_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String ANNULLA_MOD_CLIENTE_ICON = "/agent_trade/ui/img/back-icon.png";
+	public static final String MOD_SCONTO_CLIENTE_ICON = "/agent_trade/ui/img/add_sconto.png";
+	public static final String MOD_AGENTE_CLIENTE_ICON = "/agent_trade/ui/img/new_user.png";
 	public static final String RIEPILOGO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String DETTAGLIO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
 	
@@ -499,6 +501,8 @@ public final class Costanti {
 	public final static String TIP_SALVA_MOD_CLIENTE = "Salva modifiche";
 	public final static String TIP_ANNULLA_MOD_CLIENTE = "Annulla modifiche";
 	public final static String TIP_NUOVO_CLIENTE= "Inserisci un nuovo cliente";
+	public final static String TIP_MOD_SCONTO_CLIENTE = "Assegna un nuovo sconto";
+	public final static String TIP_MOD_AGENTE_CLIENTE = "Assegna ad un altro agente";
 
 	public final static String TIP_NUOVO_AGENTE= "Inserisci un nuovo agente";
 	public final static String TIP_CERCA_AGENTE= "Cerca un agente";
@@ -587,6 +591,7 @@ public final class Costanti {
 	public final static String BOTTONE_CONFERMA = "Ok";
 	public final static String BOTTONE_ANNULLA = "Annulla";
 	public final static String BOTTONE_VISUALIZZA = "Visualizza";
+	public final static String BOTTONE_MODIFICA = "Modifica";
 	public final static String BOTTONE_VISUALIZZA_LISTINO = "Mostra Listino";
 	public final static String BOTTONE_AGIIUNGI_PRODOTTO = "Aggiungi prodotto";
 	

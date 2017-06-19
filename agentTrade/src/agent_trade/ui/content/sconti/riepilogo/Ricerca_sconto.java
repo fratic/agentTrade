@@ -25,6 +25,7 @@ import org.orm.PersistentException;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
+import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.controller.Ctrl_gestisciSconto;
 import agent_trade.model.M_Sconto;
 import agent_trade.model.M_ScontoCliente;
@@ -69,6 +70,7 @@ public class Ricerca_sconto extends JDialog {
 	private JLabel LabelCercaCitta;
 	
 	private JButton BottoneVisualizza;
+	private JButton BottoneModifica;
 	private JButton BottoneCerca;
 	
 
@@ -185,6 +187,12 @@ public class Ricerca_sconto extends JDialog {
 		BottoneVisualizza.setBounds(624, 11, 110, 23);
 		pannelloBottoni.add(BottoneVisualizza);
 		
+		BottoneModifica = new JButton(Costanti.BOTTONE_MODIFICA);
+		BottoneModifica.setEnabled(false);
+		BottoneModifica.setBounds(624, 11, 110, 23);
+		BottoneModifica.setVisible(false);
+		pannelloBottoni.add(BottoneModifica);
+		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		BottoneCerca.addActionListener(new ActionListener() {
@@ -212,12 +220,25 @@ public class Ricerca_sconto extends JDialog {
 				}
 			}
 		});
+		
+		BottoneModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+					try {
+						Ctrl_gestisciCliente.getInstance().assegnaSconto((int) table.getValueAt(table.getSelectedRow(),0));
+					} catch (PersistentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			}
+		});
 
 		
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
 				BottoneVisualizza.setEnabled(true);
-			     }
+				BottoneModifica.setEnabled(true);
+			}
 		});	
 		
 	}
@@ -300,5 +321,15 @@ public class Ricerca_sconto extends JDialog {
 		
 	public JTable getTableInstance(){
 		return table;	 
+	}
+	
+	
+	public void setVisibleBtnVisualizza(boolean b){
+		BottoneVisualizza.setVisible(b);
+	}
+	
+	
+	public void setVisibleBtnModifica(boolean b){
+		BottoneModifica.setVisible(b);
 	}
 }

@@ -17,9 +17,12 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_gestisciAgente;
 import agent_trade.controller.Ctrl_gestisciAzienda;
+import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.controller.Ctrl_gestisciListino;
 import agent_trade.controller.Ctrl_gestisciSconto;
+import agent_trade.model.M_Agente;
 import agent_trade.model.M_Azienda;
+import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Sconto;
 import agent_trade.ui.content.agenti.AlberoAgenti;
@@ -28,6 +31,8 @@ import agent_trade.ui.content.agenti.RiepilogoAgenteView;
 import agent_trade.ui.content.aziende.AlberoAziende;
 import agent_trade.ui.content.aziende.DettaglioAziendaView;
 import agent_trade.ui.content.aziende.RiepilogoAziendaView;
+import agent_trade.ui.content.clienti.AlberoClienti;
+import agent_trade.ui.content.clienti.RiepilogoClienteView;
 import agent_trade.ui.content.listini.AlberoListini;
 import agent_trade.ui.content.listini.RiepilogoIntestazioneListinoView;
 import agent_trade.ui.content.listini.RiepilogoListinoView;
@@ -40,6 +45,7 @@ import agent_trade.ui.content.sconti.riepilogo.RiepilogoScontoFactoryView;
 import agent_trade.util.Costanti;
 import agent_trade.util.Sfondo_Agente;
 import agent_trade.util.Sfondo_Azienda;
+import agent_trade.util.Sfondo_Cliente;
 import agent_trade.util.Sfondo_Listino;
 import agent_trade.util.Sfondo_Sconto;
 
@@ -65,6 +71,9 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	private static JPanel dettaglio_sconto;
 	private static JPanel riep_sconto;
 	private static JPanel pannello_centrale_sconto;
+	
+	private static JPanel riep_cliente;	
+	private static JPanel pannello_centrale_cliente;
 
 	
 	/*attributi privati*/
@@ -108,6 +117,14 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 
 	private JButton bottoneNuovoSconto;
 	private JButton bottoneCercaSconto;
+	
+	private JPanel Cliente;
+	private JPanel pannello_menu_cliente;
+	private JPanel pannello_sottomenu_cliente;
+	private JPanel pannello_laterale_cliente;
+	private JPanel alberoClienti;
+
+	private JButton bottoneCercaCliente;
 
 	
 	/*costruttori*/
@@ -119,7 +136,8 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		initTabAgente();
 		initTabAzienda();
 		initTabListino();
-		initTabSconto();		
+		initTabSconto();	
+		initTabCliente();
 	}
 	
 	
@@ -270,6 +288,16 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 			riep_sconto = null;
 		}
 	}
+	
+	
+	public static void initRiepilogoClienteView() {
+		
+		riep_cliente= RiepilogoClienteView.getInstance();
+		pannello_centrale_cliente.add(riep_cliente);
+		pannello_centrale_cliente.repaint();
+			
+	}
+	
 		
 	/*metodi privati*/
 	
@@ -554,6 +582,68 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 			}
 		});
 	}
+	
+	
+	private void initTabCliente(){
+		
+		Cliente = new JPanel();
+		tabbedPrincipale.addTab(Costanti.TAB_CLIENTE, new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.CLIENTE_ICON)), Cliente, Costanti.TIP_GESTISCI_CLIENTE);
+		Cliente.setLayout(new BorderLayout());
+		
+		pannello_menu_cliente = new JPanel();
+		pannello_menu_cliente.setPreferredSize(new Dimension(1013, 100));
+		pannello_menu_cliente.setLayout(null);
+
+		pannello_menu_cliente.setBackground(Color.WHITE);
+		Cliente.add(pannello_menu_cliente,BorderLayout.NORTH);
+			
+//		bottoneNuovoCliente = new JButton();
+//		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.NUOVO_CLIENTE_ICON)));
+//		bottoneNuovoCliente.setToolTipText(Costanti.TIP_NUOVO_CLIENTE);
+//		bottoneNuovoCliente.setBounds(25, 25, 50, 50);
+//		pannello_menu_cliente.add(bottoneNuovoCliente);
+		
+		bottoneCercaCliente = new JButton("");
+		bottoneCercaCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.CERCA_CLIENTE_ICON)));
+		bottoneCercaCliente.setToolTipText(Costanti.TIP_CERCA_CLIENTE);
+		bottoneCercaCliente.setBounds(25, 25, 50, 50);
+		pannello_menu_cliente.add(bottoneCercaCliente);
+			
+		pannello_sottomenu_cliente = new JPanel();
+		pannello_sottomenu_cliente.setPreferredSize(new Dimension(1013, 617));
+		pannello_sottomenu_cliente.setLayout(new BorderLayout());
+		Cliente.add(pannello_sottomenu_cliente, BorderLayout.CENTER);
+
+			
+		pannello_laterale_cliente = new JPanel();
+		pannello_laterale_cliente.setPreferredSize(new Dimension(260, 617));
+		pannello_sottomenu_cliente.add(pannello_laterale_cliente, BorderLayout.WEST);
+		pannello_laterale_cliente.setLayout(null);
+
+		alberoClienti = new AlberoClienti();
+		alberoClienti.setBounds(0, 0, 261, 617);
+		pannello_laterale_cliente.add(alberoClienti);
+		
+		pannello_centrale_cliente = new JPanel();
+		pannello_centrale_cliente.setBackground(SystemColor.control);
+
+		pannello_centrale_cliente.setPreferredSize(new Dimension(753, 617));
+		pannello_sottomenu_cliente.add(pannello_centrale_cliente, BorderLayout.CENTER);
+		pannello_centrale_cliente.setLayout(new GridLayout(1,1));
+		pannello_centrale_cliente.setBorder(new EmptyBorder(7, 7, 0, 7));
+		
+		setSfondoCliente();
+		
+		bottoneCercaCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Ctrl_gestisciCliente.getInstance().btnCerca();
+			
+			}
+		});
+				
+	}
+	
 	
 	/*metodi pubblici*/
 	
@@ -902,5 +992,82 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	public void setEnableTabSconto(boolean b ) {
 		tabbedPrincipale.setEnabledAt(3, b);
 	}
+	
+	
+	/****  FUNZIONI CLIENTE ****/
+
+	
+	public void setSfondoCliente() 
+	{
+		JPanel sfondoCliente = new Sfondo_Cliente();
+		pannello_centrale_cliente.add(sfondoCliente);	
+	}
+
+	
+	public void resetPannelloCentraleCliente(){
+		pannello_centrale_cliente.removeAll();
+		pannello_centrale_cliente.repaint();		
+	}
+	
+	
+	public void setEnableCercaCliente(boolean b){
+		bottoneCercaCliente.setEnabled(b);
+	}
+	
+	
+	public void setSchedaCliente(M_Cliente cliente) {		
+		((RiepilogoClienteView) riep_cliente).setRiepilogoCliente(cliente);
+	}
+	
+	
+//	public void setScontoCliente(String sconto){
+//		((RiepilogoClienteView) riep_cliente).setScontoCliente(sconto);
+//	}
+//	
+	
+	public void setScontoCliente(M_Sconto sconto) throws PersistentException{
+		((RiepilogoClienteView) riep_cliente).setScontoCliente(sconto);
+	}
+	
+	
+	public void setAgenteRif(M_Agente agenteRif) throws PersistentException{
+		((RiepilogoClienteView) riep_cliente).setAgenteRif(agenteRif);
+	}
+	
+	
+	public void disattivaModifica(boolean b){
+		((RiepilogoClienteView) riep_cliente).setVisibleBtnModifiche(b);
+	}
+		
+		
+	public void disattivaSalvaModifiche(boolean b){
+		((RiepilogoClienteView) riep_cliente).setVisibleBtnSalvaModifiche(b);
+	}
+
+
+	public void disattivaAnnullaModifiche(boolean b){
+		((RiepilogoClienteView) riep_cliente).setVisibleBtnAnnullaModifiche(b);
+	}
+		
+		
+	public void disattivaInviaPosta(boolean b){
+		((RiepilogoClienteView) riep_cliente).setVisibleBtnInviaPosta(b);
+	}
+		
+		
+	public void disattivaCancella(boolean b){
+		((RiepilogoClienteView) riep_cliente).setVisibleBtnCancella(b);
+	}
+		
+		
+	public void disattivaModSconto(boolean b){
+		((RiepilogoClienteView) riep_cliente).setVisibleBtnModSconto(b);
+	}
+
+
+	public void disattivaModAgente(boolean b){
+		((RiepilogoClienteView) riep_cliente).setVisibleBtnModAgente(b);
+	}
+
 	
 }

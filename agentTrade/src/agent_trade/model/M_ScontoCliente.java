@@ -13,11 +13,24 @@
  */
 package agent_trade.model;
 
+import org.orm.PersistentException;
+
+import agent_trade.persistent.ScontoClienteCriteria;
+
 public class M_ScontoCliente extends agent_trade.model.M_Sconto {
 	public M_ScontoCliente() {
 	}
 	
 	private float percent;
+	
+	
+	public static M_ScontoCliente caricaScontoBase() throws PersistentException{
+		
+		ScontoClienteCriteria criteria= new ScontoClienteCriteria();
+		criteria.percent.eq(0);
+		return criteria.uniqueScontoCliente();
+	}
+	
 	
 	public void setPercent(float value) {
 		this.percent = value;

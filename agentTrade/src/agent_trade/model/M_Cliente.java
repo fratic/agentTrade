@@ -153,6 +153,44 @@ public class M_Cliente implements Cloneable{
 		return null;
 	}
 	
+	
+	public static M_Cliente cercaClienteRemotoMandante(int id_cliente) throws PersistentException{
+		
+		try{
+			
+			Rem_ClienteCriteria criteriaCliente= new Rem_ClienteCriteria();
+			
+			criteriaCliente.idCliente.eq(id_cliente);
+			criteriaCliente.attivo.eq(1);
+			return criteriaCliente.uniqueM_Cliente();
+		}
+		finally {
+//			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+		}
+	}
+	
+	
+	public static M_Cliente[] caricaClientiRemoto() throws PersistentException {
+		
+		Rem_ClienteCriteria criteriaCliente;
+		try {
+			criteriaCliente = new Rem_ClienteCriteria();
+			criteriaCliente.attivo.eq(1);
+			criteriaCliente.addOrder(Property.forName("cognome").asc());
+
+			return criteriaCliente.listCliente();
+		} 
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+//			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+		}
+		return null;
+	}
+	
+	
+//	NON VIENE USATA
 	public static M_Cliente[] caricaClientiAgenteRemoto() throws PersistentException {
 		
 		Rem_ClienteCriteria criteriaCliente;
@@ -220,6 +258,29 @@ public class M_Cliente implements Cloneable{
 		return null;
 	}
 	
+	
+	public static M_Cliente[] caricaClientiParametriRemoto(String cognome, String piva, String codfis, String city)throws PersistentException{
+		
+		try{
+			Rem_ClienteCriteria criteriaCliente= new Rem_ClienteCriteria();
+			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE ? CASE SENSITIVE				
+			criteriaCliente.cognome.like("%"+cognome+"%");
+			criteriaCliente.partita_iva.like("%"+piva+"%");
+			criteriaCliente.codice_fiscale.like("%"+codfis+"%");
+			criteriaCliente.citta.like("%"+city+"%");
+			criteriaCliente.attivo.eq(1);
+			return criteriaCliente.listCliente();
+		}
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+//			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+		}
+		return null;
+	}
+	
+	
 	public static M_Cliente[] caricaClientiParametri(String cognome, String nome, String cf)throws PersistentException{
 		
 		try{
@@ -281,6 +342,7 @@ public class M_Cliente implements Cloneable{
 	
 	
 	public static void updateClienteRemoto(M_Cliente c)throws PersistentException{
+		
 		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
 		try 
 		{				

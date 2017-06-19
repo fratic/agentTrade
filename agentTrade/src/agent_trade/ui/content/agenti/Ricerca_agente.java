@@ -25,6 +25,7 @@ import org.orm.PersistentException;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_gestisciAgente;
+import agent_trade.controller.Ctrl_gestisciCliente;
 import agent_trade.model.M_Agente;
 import agent_trade.util.Costanti;
 
@@ -65,6 +66,7 @@ public class Ricerca_agente extends JDialog {
 	private TableModel JTableModel;
 	
 	private JButton BottoneVisualizza;
+	private JButton BottoneModifica;
 	private JButton BottoneCerca;	
 	
 	
@@ -179,8 +181,16 @@ public class Ricerca_agente extends JDialog {
 		
 		BottoneVisualizza = new JButton(Costanti.BOTTONE_VISUALIZZA);
 		BottoneVisualizza.setEnabled(false);
+		BottoneVisualizza.setVisible(false);
 		BottoneVisualizza.setBounds(634, 11, 99, 23);
 		pannelloBottoni.add(BottoneVisualizza);
+
+		BottoneModifica = new JButton(Costanti.BOTTONE_MODIFICA);
+		BottoneModifica.setEnabled(false);
+		BottoneModifica.setVisible(false);
+		BottoneModifica.setBounds(634, 11, 99, 23);
+		pannelloBottoni.add(BottoneModifica);
+
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -209,12 +219,25 @@ public class Ricerca_agente extends JDialog {
 			}
 		});
 
+		BottoneModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					Ctrl_gestisciCliente.getInstance().assegnaAgente((int) table.getValueAt(table.getSelectedRow(),0));
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 		
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
 				BottoneVisualizza.setEnabled(true);
+				BottoneModifica.setEnabled(true);
 			     }
-		});		 
+		});
+		
 	}
 	
 	/*metodi di classe*/
@@ -246,7 +269,7 @@ public class Ricerca_agente extends JDialog {
 	
 	public void updateTable(int id, String cognome, String nome, int lvl, String email, String citta){
 
-		svuotaTabella();
+//		svuotaTabella();
 		labelError.setText("");
         ((DefaultTableModel) JTableModel).addRow(new Object[]{id, cognome, nome, lvl, email, citta});
 	}
@@ -273,6 +296,15 @@ public class Ricerca_agente extends JDialog {
 		
 	public JTable getTableInstance(){
 		return table;	 
+	}
+	
+	public void setVisibleBtnVisualizza(boolean b){
+		BottoneVisualizza.setVisible(b);
+	}
+	
+	
+	public void setVisibleBtnModifica(boolean b){
+		BottoneModifica.setVisible(b);
 	}
 		
 }

@@ -200,6 +200,8 @@ public class Ctrl_gestisciAgente {
 		PrimaryMandanteView.getInstance().setSfondoAgente();
 		
 		Ricerca_agente.getInstance().popolaTab(M_Agente.caricaAgentiRemoto());
+		Ricerca_agente.getInstance().setVisibleBtnVisualizza(true);
+		Ricerca_agente.getInstance().setVisibleBtnModifica(false);
 		
 		Ricerca_agente.getInstance().setVisible(true);
 	}
