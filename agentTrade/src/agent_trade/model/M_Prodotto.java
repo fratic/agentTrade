@@ -340,16 +340,19 @@ public abstract class M_Prodotto implements Cloneable{
 	
 	public static void aggiornaProdottoRemoto(M_Prodotto prod) throws PersistentException{
 		
+		AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+
 		PersistentTransaction t =  AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
 		try {
 			 AgentTradeMandantePersistentManager.instance().getSession().update(prod);
 			t.commit();
 		}
 		catch (Exception e) {
+			System.out.println("Eccezione: "+e);
 			t.rollback();
 		}
 		finally {
-
+			System.out.println("SONO QUI: aggiornamento prodotto a buon fine? "+t.wasCommitted());
 		}
 	}
 

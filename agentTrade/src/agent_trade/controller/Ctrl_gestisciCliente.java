@@ -476,6 +476,7 @@ public class Ctrl_gestisciCliente {
 		
 		M_Cliente cliente=M_Cliente.cercaCliente(idCliente);
 		cliente.setAttivo(0);
+		cliente.setVersione(cliente.getVersione()+1);
 		M_Cliente.aggiornaCliente(cliente);
 
 		AlberoClienti.rimuoviNodo(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());

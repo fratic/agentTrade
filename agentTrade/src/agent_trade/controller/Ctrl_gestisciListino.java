@@ -262,6 +262,7 @@ public class Ctrl_gestisciListino {
 		
 		prod.setVersione(prod.getVersione()+ 1);
 		
+		
 		M_Prodotto.aggiornaProdottoRemoto(prod);
 		
 //		for (M_Prodotto p : elencoProd) {

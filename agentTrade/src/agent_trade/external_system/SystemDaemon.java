@@ -215,7 +215,7 @@ public class SystemDaemon {
 	 **/
 	public void sincronizzaClienti() throws PersistentException, CloneNotSupportedException{
 		
-		M_Cliente[] clienti_locali = M_Cliente.caricaClientiAgente();
+		M_Cliente[] clienti_locali = M_Cliente.caricaTuttiClientiAgente();
 		
 		for (int i = 0; i < clienti_locali.length; i++) 
 		{
@@ -237,7 +237,7 @@ public class SystemDaemon {
 				}
 			}
 			
-			else
+			else if (clienti_locali[i].getAttivo()!=0)
 			{
 				System.out.println("Inserimento nuovo cliente: "+clienti_locali[i].getIdCliente()+clienti_locali[i].getCognome());
 				M_Cliente c= clienti_locali[i].clone();
