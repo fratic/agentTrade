@@ -13,6 +13,7 @@ import agent_trade.model.M_Sconto;
 import agent_trade.model.M_ScontoCliente;
 import agent_trade.ui.content.agenti.Ricerca_agente;
 import agent_trade.ui.content.clienti.AlberoClienti;
+import agent_trade.ui.content.clienti.AlberoClienti_Mandante;
 import agent_trade.ui.content.clienti.CercaClienteView;
 import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.Ricerca_cliente;
@@ -566,6 +567,7 @@ public class Ctrl_gestisciCliente {
 		M_Agente agenteRif = M_Agente.cercaAgenteRemoto(idAgente);
 		
 		PrimaryMandanteView.getInstance().setAgenteRif(agenteRif);
+		AlberoClienti_Mandante.refresh();
 	}
 	
 	

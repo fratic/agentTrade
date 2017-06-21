@@ -161,9 +161,9 @@ public final class Costanti {
 	public static final String RIEPILOGO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String DETTAGLIO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
 	
-	public static final String AGENTE_ICON= "/agent_trade/ui/img/cliente.png";
-	public static final String NUOVO_AGENTE_ICON= "/agent_trade/ui/img/new_user.png";
-	public static final String CERCA_AGENTE_ICON= "/agent_trade/ui/img/search.png";
+	public static final String AGENTE_ICON= "/agent_trade/ui/img/agente.png";
+	public static final String NUOVO_AGENTE_ICON= "/agent_trade/ui/img/new_agente.png";
+	public static final String CERCA_AGENTE_ICON= "/agent_trade/ui/img/cerca_agente.png";
 	public static final String SALVA_AGENTI_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String COMUNICAZIONE_AGENTE_ICON = "/agent_trade/ui/img/send-icon.png";
 	public static final String MOD_AGENTE_ICON = "/agent_trade/ui/img/setting.png";

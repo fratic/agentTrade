@@ -32,6 +32,7 @@ import agent_trade.ui.content.aziende.AlberoAziende;
 import agent_trade.ui.content.aziende.DettaglioAziendaView;
 import agent_trade.ui.content.aziende.RiepilogoAziendaView;
 import agent_trade.ui.content.clienti.AlberoClienti;
+import agent_trade.ui.content.clienti.AlberoClienti_Mandante;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
 import agent_trade.ui.content.listini.AlberoListini;
 import agent_trade.ui.content.listini.RiepilogoIntestazioneListinoView;
@@ -620,7 +621,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		pannello_sottomenu_cliente.add(pannello_laterale_cliente, BorderLayout.WEST);
 		pannello_laterale_cliente.setLayout(null);
 
-		alberoClienti = new AlberoClienti();
+		alberoClienti = new AlberoClienti_Mandante();
 		alberoClienti.setBounds(0, 0, 261, 617);
 		pannello_laterale_cliente.add(alberoClienti);
 		

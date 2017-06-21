@@ -6,8 +6,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.orm.PersistentException;
+
+import com.mchange.util.impl.LinkedListIntChecklistImpl;
 
 import agent_trade.Main;
 import agent_trade.external_system.SystemDaemon;
@@ -24,6 +28,7 @@ import agent_trade.model.M_ScontoQuantita;
 import agent_trade.ui.content.agenti.AlberoAgenti;
 import agent_trade.ui.content.aziende.AlberoAziende;
 import agent_trade.ui.content.clienti.AlberoClienti;
+import agent_trade.ui.content.clienti.AlberoClienti_Mandante;
 import agent_trade.ui.content.listini.AlberoListini;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.prodotti.AlberoProdotti;
@@ -111,6 +116,8 @@ public class Ctrl_System {
 		initAlberoListini();
 
 		initAlberoSconti();
+		
+		initAlberoClienti_Mandante();
 
 		
 	}
@@ -255,6 +262,35 @@ public class Ctrl_System {
 		for (M_Sconto sLoad : listSconti) {
 				AlberoSconti.inserisciNodo(M_Sconto.getStringaSconto(sLoad)[0], M_Sconto.getStringaSconto(sLoad)[1]);
 
+		}
+	
+	}
+
+
+	public void initAlberoClienti_Mandante() throws PersistentException{
+		
+		try {
+			Set<M_Agente> agenti = new HashSet<M_Agente>();
+			M_Cliente[] listclienti = M_Cliente.caricaClientiRemoto();
+			for (M_Cliente cLoad : listclienti) {
+				agenti.add(cLoad.getAgenteAssociato());
+			}
+			
+			for (M_Agente aLoad : agenti) {
+				AlberoClienti_Mandante.inserisciNodo("Agente: "+ aLoad.getCognome()+ " " +aLoad.getNome());
+			}
+		} 
+		catch (PersistentException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		M_Cliente [] listClienti = M_Cliente.caricaClientiRemoto();
+
+		for (M_Cliente cLoad : listClienti) {
+
+			AlberoClienti_Mandante.inserisciNodo(cLoad.getIdCliente()+ " - " + cLoad.getCognome()+ " - " +cLoad.getNome(), 
+					"Agente: "+cLoad.getAgenteAssociato().getCognome()+" "+cLoad.getAgenteAssociato().getNome());
 		}
 	
 	}
