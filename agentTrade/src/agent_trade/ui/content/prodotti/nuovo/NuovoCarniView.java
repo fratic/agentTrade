@@ -117,7 +117,7 @@ public class NuovoCarniView extends NuovoProdottoFactoryView {
 					carne.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					carne.setCategoria(TFCategoria.getText());
 					carne.setIdDescrizioneProdotto(TADescrizione.getText());
-					carne.setSconto(Float.parseFloat(TFSconto.getText()));
+//					carne.setSconto(Float.parseFloat(TFSconto.getText()));
 					carne.setIdAzienda(aziendaRif.getIdAzienda());
 					carne.setVersione(1);
 					carne.setProvenienza(TFProvenienza.getText());

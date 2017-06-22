@@ -144,7 +144,7 @@ public class RiepilogoListinoView extends JPanel {
 					
 					try {
 						Ctrl_gestisciListino.getInstance().mostraProdotto(Integer.parseInt(sel));
-					} catch (NumberFormatException e) {
+					} catch (NumberFormatException | PersistentException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}

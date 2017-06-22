@@ -3,6 +3,9 @@ package agent_trade.controller;
 import org.orm.PersistentException;
 
 import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoCliente;
+import agent_trade.model.M_ScontoPercent;
+import agent_trade.model.M_ScontoQuantita;
 import agent_trade.ui.content.aziende.AlberoAziende;
 import agent_trade.ui.content.sconti.AlberoSconti;
 import agent_trade.ui.content.sconti.riepilogo.ConfermaCancSconto;
@@ -39,6 +42,7 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(false);
 		PrimaryMandanteView.getInstance().setEnableCercaSconto(false);
 	}
 	
@@ -50,34 +54,80 @@ public class Ctrl_gestisciSconto {
 		
 		Ricerca_sconto.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
 		Ricerca_sconto.getInstance().setVisibleBtnVisualizza(true);
-		Ricerca_sconto.getInstance().setVisibleBtnModifica(false);
+		Ricerca_sconto.getInstance().setVisibleBtnModificaCliente(false);
+		Ricerca_sconto.getInstance().setVisibleBtnModificaProdotto(false);
 		Ricerca_sconto.getInstance().setVisible(true);
 	}
 	
 	
-	public void ricercaSconto(String id) throws PersistentException {
+	public void ricercaSconto(String tipoSconto) throws PersistentException {
 
-		if ((id.equals("") || id==null)){
+		M_Sconto[] listSconti = null;
+		
+		if (tipoSconto.equals("Tutti gli sconti")){
 			
 			Ricerca_sconto.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
 		}
-		else {
+		else if (tipoSconto.equals("Tutti gli sconti cliente")) {
 			
-			M_Sconto [] listSconti = M_Sconto.caricaScontoRemotoParametri(id);
+			listSconti = M_Sconto.caricaScontiRemoto();							
 			
-			if(listSconti.length==0) {
-		
-				Ricerca_sconto.getInstance().setErrore(Costanti.MESSAGGIO_SCONTO_NON_TROVATO);
-				Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(true);
-			}
-			else{
-				Ricerca_sconto.getInstance().svuotaTabella();
-				for (M_Sconto sconto : listSconti) {
+			Ricerca_sconto.getInstance().svuotaTabella();
+				
+			for (M_Sconto sconto : listSconti) {
+					
+				if(sconto instanceof M_ScontoCliente)
 					Ricerca_sconto.getInstance().updateTable(sconto);
 				}
+		}
+		else if (tipoSconto.equals("Tutti gli sconti prodotto")) {
+			
+			listSconti = M_Sconto.caricaScontiRemoto();			
+				
+			Ricerca_sconto.getInstance().svuotaTabella();
+				
+			for (M_Sconto sconto : listSconti) {
+					
+				if(sconto instanceof M_ScontoPercent || sconto instanceof M_ScontoQuantita)
+					Ricerca_sconto.getInstance().updateTable(sconto);
 			}
 		}
+		else if (tipoSconto.equals("Cliente - Percentuale")) {
+			
+			listSconti = M_Sconto.caricaScontiRemoto();
 		
+			Ricerca_sconto.getInstance().svuotaTabella();
+				
+			for (M_Sconto sconto : listSconti) {
+					
+			if(sconto instanceof M_ScontoCliente)
+					Ricerca_sconto.getInstance().updateTable(sconto);
+				}
+		}
+		else if (tipoSconto.equals("Prodotto - Percentuale")) {
+			
+			listSconti = M_Sconto.caricaScontiRemoto();
+			
+			Ricerca_sconto.getInstance().svuotaTabella();
+			
+			for (M_Sconto sconto : listSconti) {
+				
+				if(sconto instanceof M_ScontoPercent)
+					Ricerca_sconto.getInstance().updateTable(sconto);
+			}
+		}
+		else if (tipoSconto.equals("Prodotto - Quantit\u00E0")) {
+			
+			listSconti = M_Sconto.caricaScontiRemoto();			
+				
+			Ricerca_sconto.getInstance().svuotaTabella();
+				
+			for (M_Sconto sconto : listSconti) {
+					
+				if(sconto instanceof M_ScontoQuantita)
+					Ricerca_sconto.getInstance().updateTable(sconto);
+			}
+		}
 	}
 	
 	
@@ -90,6 +140,7 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		AlberoSconti.abilitaAlbero();
 	}
 	
@@ -104,6 +155,7 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		AlberoSconti.abilitaAlbero();
 	}
 
@@ -132,6 +184,7 @@ public class Ctrl_gestisciSconto {
 
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableCercaSconto(true);
 	}
@@ -154,6 +207,7 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepSconto(false);
 		AlberoSconti.abilitaAlbero();
 		AlberoSconti.selectNode(M_Sconto.getStringaSconto(sconto)[0]);
@@ -170,6 +224,7 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(false);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepSconto(false);
 		PrimaryMandanteView.getInstance().setEnableNewSconto(false);
 		PrimaryMandanteView.getInstance().setEnableCercaSconto(false);
@@ -189,6 +244,7 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableNewSconto(true);
 		PrimaryMandanteView.getInstance().setEnableCercaSconto(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipSconto();
@@ -213,6 +269,7 @@ public class Ctrl_gestisciSconto {
 			PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 			PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 			PrimaryMandanteView.getInstance().setEnableTabListino(true);
+			PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 			
 			PrimaryMandanteView.getInstance().setEnableNewSconto(true);
 			PrimaryMandanteView.getInstance().setEnableCercaSconto(true);

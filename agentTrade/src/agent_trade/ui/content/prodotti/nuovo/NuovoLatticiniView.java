@@ -92,7 +92,7 @@ public class NuovoLatticiniView extends NuovoProdottoFactoryView{
 					latticino.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					latticino.setCategoria(TFCategoria.getText());
 					latticino.setIdDescrizioneProdotto(TADescrizione.getText());
-					latticino.setSconto(Float.parseFloat(TFSconto.getText()));
+//					latticino.setSconto(Float.parseFloat(TFSconto.getText()));
 					latticino.setIdAzienda(aziendaRif.getIdAzienda());
 					latticino.setVersione(1);
 					latticino.setStagionatura(Integer.parseInt(TFStagionatura.getText()));

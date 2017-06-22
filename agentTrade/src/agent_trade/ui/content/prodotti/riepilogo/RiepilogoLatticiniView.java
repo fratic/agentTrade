@@ -92,7 +92,7 @@ public class RiepilogoLatticiniView extends RiepilogoProdottoFactoryView {
 					latticino.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					latticino.setCategoria(TFCategoria.getText());
 					latticino.setIdDescrizioneProdotto(TADescrizione.getText());
-					latticino.setSconto(Float.parseFloat(TFSconto.getText()));
+					latticino.setSconto(idSconto);
 					latticino.setIdAzienda(prodotto.getIdAzienda());
 					latticino.setVersione(prodotto.getVersione());
 					latticino.setStagionatura(Integer.parseInt(TFStagionatura.getText()));

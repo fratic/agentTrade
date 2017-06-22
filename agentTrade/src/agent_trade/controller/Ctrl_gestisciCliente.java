@@ -533,8 +533,10 @@ public class Ctrl_gestisciCliente {
 		
 		Ricerca_sconto.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
 		Ricerca_sconto.getInstance().setVisibleBtnVisualizza(false);
-		Ricerca_sconto.getInstance().setVisibleBtnModifica(true);
-		Ricerca_sconto.getInstance().setVisible(true);
+		Ricerca_sconto.getInstance().setVisibleBtnModificaCliente(true);
+		Ricerca_sconto.getInstance().setVisibleBtnModificaProdotto(false);
+		Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(false);
+		Ricerca_sconto.getInstance().setVisible(true);	
 		
 	}
 		
@@ -546,7 +548,17 @@ public class Ctrl_gestisciCliente {
 		
 		M_Sconto sconto = M_Sconto.caricaScontoRemoto(idSconto);
 		
-		PrimaryMandanteView.getInstance().setScontoCliente(sconto);
+		Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(false);
+		
+		if(sconto instanceof M_ScontoCliente){
+			Ricerca_sconto.getInstance().dispose();
+			Ricerca_sconto.cancInstanza();
+			PrimaryMandanteView.getInstance().setScontoCliente(sconto);
+		}
+		else{
+			Ricerca_sconto.getInstance().setErrore(Costanti.MESSAGGIO_SCONTO_CLIENTE_ERRATO);
+			Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(true);
+		}	
 	}
 		
 //	SPOSTARE IN CTRL AGENTE?

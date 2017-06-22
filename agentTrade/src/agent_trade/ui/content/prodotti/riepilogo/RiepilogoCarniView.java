@@ -117,7 +117,7 @@ public class RiepilogoCarniView extends RiepilogoProdottoFactoryView{
 					carne.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					carne.setCategoria(TFCategoria.getText());
 					carne.setIdDescrizioneProdotto(TADescrizione.getText());
-					carne.setSconto(Float.parseFloat(TFSconto.getText()));
+					carne.setSconto(idSconto);
 					carne.setIdAzienda(prodotto.getIdAzienda());
 					carne.setVersione(prodotto.getVersione());
 					carne.setProvenienza(TFProvenienza.getText());

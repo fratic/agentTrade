@@ -26,6 +26,9 @@ import agent_trade.model.M_Carni;
 import agent_trade.model.M_Dolci;
 import agent_trade.model.M_Latticini;
 import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoPercent;
+import agent_trade.model.M_ScontoQuantita;
 import agent_trade.model.M_Vini;
 import agent_trade.util.Costanti;
 
@@ -37,6 +40,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 	protected static RiepilogoProdottoFactoryView instance;
 	
 	protected M_Prodotto prodotto;
+	protected int idSconto;
 	
 	protected JPanel pannelloCentro;
 	protected JScrollPane scrollPane;
@@ -74,6 +78,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 	protected JButton bottoneCancellaProdotto;
 	protected JButton bottoneIndietro;
 	protected JButton bottoneSalvaModifiche;
+	protected JButton bottoneModificaSconto;
 	protected JButton bottoneAnnullaModifica;
 	/*attributi privati*/
 	
@@ -303,6 +308,12 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		bottoneAnnullaModifica.setToolTipText(Costanti.TIP_ANNULLA_MOD_PRODOTTO);
 		bottoneAnnullaModifica.setIcon(new ImageIcon(RiepilogoProdottoFactoryView.class.getResource(Costanti.ANNULLA_MOD_PRODOTTO_ICON)));
 		
+		bottoneModificaSconto = new JButton("");
+		bottoneModificaSconto.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
+		bottoneModificaSconto.setToolTipText(Costanti.TIP_MOD_SCONTO_CLIENTE);
+		bottoneModificaSconto.setIcon(new ImageIcon(RiepilogoProdottoFactoryView.class.getResource(Costanti.MOD_SCONTO_CLIENTE_ICON)));
+		pannelloBottoni.add(bottoneModificaSconto);
+		
 		bottoneIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -328,7 +339,23 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		
 		bottoneAnnullaModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-					Ctrl_gestisciListino.getInstance().annullaModifica(prodotto);
+					try {
+						Ctrl_gestisciListino.getInstance().annullaModifica(prodotto);
+					} catch (PersistentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			}
+		});
+		
+		bottoneModificaSconto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Ctrl_gestisciListino.getInstance().btnCercaSconto();
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}
@@ -343,7 +370,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		TFNome.setText(prodotto.getNome());
 		TFCategoria.setText(prodotto.getCategoria());
 		TFPrezzo.setText(""+prodotto.getPrezzo());
-		TFSconto.setText(""+prodotto.getSconto());
+//		TFSconto.setText(""+prodotto.getSconto());
 		TFVersione.setText(""+prodotto.getVersione());
 		TADescrizione.setText(prodotto.getIdDescrizioneProdotto());
 	}
@@ -378,11 +405,16 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 	}
 	
 	
+	public void setVisibleBtnModSconto(boolean b) {		
+		bottoneModificaSconto.setVisible(b);
+	}
+	
+	
 	public void setTFeditable(boolean b) {
 		TFNome.setEditable(b);
 		//TFCategoria.setEditable(b);
 		TFPrezzo.setEditable(b);
-		TFSconto.setEditable(b);
+		//TFSconto.setEditable(b);
 		TADescrizione.setEditable(b);
 	}
 	
@@ -400,7 +432,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		TFNome.setToolTipText(Costanti.TIP_NOME_PRODOTTO);
 		//TFCategoria.setToolTipText(Costanti.TIP_CATEGORIA_PRODOTTO);
 		TFPrezzo.setToolTipText(Costanti.TIP_PREZZO_PRODOTTO);
-		TFSconto.setToolTipText(Costanti.TIP_SCONTO_PRODOTTO);
+		//TFSconto.setToolTipText(Costanti.TIP_SCONTO_PRODOTTO);
 		TADescrizione.setToolTipText(Costanti.TIP_DESCRIZIONE_PRODOTTO);
 	}
 	
@@ -408,8 +440,26 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		TFNome.setToolTipText(null);
 		//TFCategoria.setToolTipText(null);
 		TFPrezzo.setToolTipText(null);
-		TFSconto.setToolTipText(null);
+		//TFSconto.setToolTipText(null);
 		TADescrizione.setToolTipText(null);
 	}
+	
+	
+	public void setScontoProdotto(M_Sconto sconto){
+		
+		String scnt = "0%";
+			
+		if (sconto instanceof M_ScontoPercent){
+			scnt = ((M_ScontoPercent) sconto).getPercent()*100 + "%"; 
+		}
+		else if (sconto instanceof M_ScontoQuantita){
+			scnt = "Sconto di "+((M_ScontoQuantita) sconto).getScontoFisso()+" euro per q.t? superiori a "+((M_ScontoQuantita) sconto).getQuantita();
+		}
+		
+		idSconto = sconto.getId();
+		
+		TFSconto.setText(scnt);	
+	}
+
 	
 }

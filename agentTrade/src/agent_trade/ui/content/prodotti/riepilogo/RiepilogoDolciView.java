@@ -113,7 +113,7 @@ public class RiepilogoDolciView extends RiepilogoProdottoFactoryView {
 					dolce.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					dolce.setCategoria(TFCategoria.getText());
 					dolce.setIdDescrizioneProdotto(TADescrizione.getText());
-					dolce.setSconto(Float.parseFloat(TFSconto.getText()));
+					dolce.setSconto(idSconto);
 					dolce.setIdAzienda(prodotto.getIdAzienda());
 					dolce.setVersione(prodotto.getVersione());
 					dolce.setArtigianale(JRArtiTrue.isSelected());

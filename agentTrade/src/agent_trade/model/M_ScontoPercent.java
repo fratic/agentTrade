@@ -13,11 +13,22 @@
  */
 package agent_trade.model;
 
+import org.orm.PersistentException;
+
+import agent_trade.persistent.Rem_ScontoPercentCriteria;
+
 public class M_ScontoPercent extends agent_trade.model.M_Sconto {
 	public M_ScontoPercent() {
 	}
 	
 	private float percent;
+	
+	public static M_ScontoPercent caricaScontoBase() throws PersistentException{
+		
+		Rem_ScontoPercentCriteria criteria= new Rem_ScontoPercentCriteria();
+		criteria.percent.eq(0);
+		return criteria.uniqueSContoPercent();
+	}
 	
 	public void setPercent(float value) {
 		this.percent = value;

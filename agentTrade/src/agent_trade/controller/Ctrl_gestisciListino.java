@@ -14,6 +14,9 @@ import org.orm.PersistentException;
 
 import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoPercent;
+import agent_trade.model.M_ScontoQuantita;
 import agent_trade.model.M_Vini;
 import agent_trade.ui.content.agenti.AlberoAgenti;
 import agent_trade.ui.content.aziende.Ricerca_azienda;
@@ -21,6 +24,7 @@ import agent_trade.ui.content.listini.AlberoListini;
 import agent_trade.ui.content.listini.Ricerca_listino;
 import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.ui.content.prodotti.riepilogo.confermaCancProdotto;
+import agent_trade.ui.content.sconti.riepilogo.Ricerca_sconto;
 import agent_trade.ui.primaryView.PrimaryAgenteView;
 import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
@@ -91,6 +95,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(false);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(false);
 	}
 	
@@ -157,7 +162,7 @@ public class Ctrl_gestisciListino {
 	}
 	
 	
-	public void mostraProdotto (int idProd){
+	public void mostraProdotto (int idProd) throws PersistentException{
 		
 		M_Prodotto prod = null;
 		
@@ -179,7 +184,16 @@ public class Ctrl_gestisciListino {
 		
 		PrimaryMandanteView.getInstance().disattivaSalvaModificheProdotto(false);
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheProdotto(false);
+		PrimaryMandanteView.getInstance().disattivaModificaScontoProdotto(false);
+		
+		//NON VA BENE CAMBIARE IL CAMPO SCONTO DI PRODOTTO DA FLOAT A INT
+		int idSconto = (int) prod.getSconto();
+		System.out.println(idSconto);
+				
+		M_Sconto sconto = M_Sconto.caricaScontoRemoto(idSconto);
+		
 		PrimaryMandanteView.getInstance().setSchedaProdotto(prod);
+		PrimaryMandanteView.getInstance().setScontoProdotto(sconto);
 	}
 	
 	
@@ -191,6 +205,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		
 //		fare un	controllo per vedere se la lista non è vuota
@@ -200,6 +215,10 @@ public class Ctrl_gestisciListino {
 	
 	public void salvaProdotto(M_Prodotto prod) throws PersistentException {
 		
+		M_ScontoPercent scontoBase = M_ScontoPercent.caricaScontoBase();
+		System.out.println("ID SCONTO: " + scontoBase.getId() + "Percent: "+ scontoBase.getPercent());
+		prod.setSconto(scontoBase.getId());
+		
 		M_Prodotto.salvaProdottoRemoto(prod);
 		
 		PrimaryMandanteView.getInstance().resetNuovoProdotto();
@@ -208,6 +227,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		//vedere se c'è una soluzione migliore in quanto questa implica una chiamata al db
 		updateElencoProdotti();		
@@ -228,15 +248,17 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepProd(false);
 		PrimaryMandanteView.getInstance().disattivaSalvaModificheProdotto(true);
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheProdotto(true);
+		PrimaryMandanteView.getInstance().disattivaModificaScontoProdotto(true);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(false);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(false);
 		PrimaryMandanteView.getInstance().setVisibleToolTipListino();
 	}
 	
 	
-	public void annullaModifica(M_Prodotto prod){
+	public void annullaModifica(M_Prodotto prod) throws PersistentException{
 		
 //		PrimaryMandanteView.cancRiepilogoProdottoView();
 //		PrimaryMandanteView.initRiepilogoProdottoView(prod);
@@ -249,10 +271,12 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().disattivaIndietro(true);
 		PrimaryMandanteView.getInstance().disattivaSalvaModificheProdotto(false);
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheProdotto(false);
+		PrimaryMandanteView.getInstance().disattivaModificaScontoProdotto(false);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepProd(false);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
 	}
@@ -282,9 +306,11 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().disattivaCancellaProd(true);
 		PrimaryMandanteView.getInstance().disattivaIndietro(true);
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheProdotto(false);
+		PrimaryMandanteView.getInstance().disattivaModificaScontoProdotto(false);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
 		
@@ -322,6 +348,36 @@ public class Ctrl_gestisciListino {
 	public void inserisciProdottoInTabella(String azienda) throws PersistentException {
 		
 		ProdottiView.getInstance().inserisciTabella(Ctrl_gestisciListino.getProdottiListino(), azienda);
+	}
+
+	
+	public void btnCercaSconto() throws PersistentException{
+		
+		Ricerca_sconto.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
+//		Ricerca_sconto.getInstance().setSelectionSconto(2);
+		Ricerca_sconto.getInstance().setVisibleBtnVisualizza(false);
+		Ricerca_sconto.getInstance().setVisibleBtnModificaCliente(false);
+		Ricerca_sconto.getInstance().setVisibleBtnModificaProdotto(true);
+		Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(false);
+		Ricerca_sconto.getInstance().setVisible(true);	
+	}
+
+
+	public void assegnaSconto(int idSconto) throws PersistentException{
+			
+		M_Sconto sconto = M_Sconto.caricaScontoRemoto(idSconto);
+			
+		Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(false);
+			
+		if(sconto instanceof M_ScontoPercent || sconto instanceof M_ScontoQuantita){
+			Ricerca_sconto.getInstance().dispose();
+			Ricerca_sconto.cancInstanza();
+			PrimaryMandanteView.getInstance().setScontoProdotto(sconto);
+		}
+		else{
+			Ricerca_sconto.getInstance().setErrore(Costanti.MESSAGGIO_SCONTO_PRODOTTO_ERRATO);
+			Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(true);
+		}		
 	}
 
 }

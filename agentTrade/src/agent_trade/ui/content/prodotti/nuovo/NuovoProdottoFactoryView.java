@@ -221,7 +221,8 @@ public class NuovoProdottoFactoryView extends JPanel{
 
 		TFSconto = new JTextField();
 		TFSconto.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		TFSconto.setToolTipText(Costanti.TIP_SCONTO_PRODOTTO);
+		//TFSconto.setToolTipText(Costanti.TIP_SCONTO_PRODOTTO);
+		TFSconto.setEditable(false);
 		pannSconto.add(TFSconto);
 		
 //		pannVersione = new JPanel();
@@ -312,7 +313,7 @@ public class NuovoProdottoFactoryView extends JPanel{
 		TFNome.setText(null);
 		//TFCategoria.setText(null);
 		TFPrezzo.setText(null);
-		TFSconto.setText(null);
+//		TFSconto.setText(null);
 		TADescrizione.setText(null);
 	}
 }

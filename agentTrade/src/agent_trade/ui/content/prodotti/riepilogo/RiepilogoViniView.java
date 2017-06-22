@@ -111,7 +111,7 @@ public class RiepilogoViniView extends RiepilogoProdottoFactoryView{
 					vino.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					vino.setCategoria(TFCategoria.getText());
 					vino.setIdDescrizioneProdotto(TADescrizione.getText());
-					vino.setSconto(Float.parseFloat(TFSconto.getText()));
+					vino.setSconto(idSconto);
 					vino.setIdAzienda(prodotto.getIdAzienda());
 					vino.setVersione(prodotto.getVersione());
 					vino.setColore(TFColore.getText());

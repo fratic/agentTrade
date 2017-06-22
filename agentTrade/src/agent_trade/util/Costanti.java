@@ -120,6 +120,8 @@ public final class Costanti {
 	public final static String MESSAGGIO_PREVENTIVO_NON_TROVATO = "Preventivo non trovato";
 	public final static String MESSAGGIO_CANCELLA_SCONTO = "Sei sicuro di voler cancellare lo sconto corrente?";
 	public final static String MESSAGGIO_SCONTO_NON_TROVATO = "Sconto non trovato";
+	public final static String MESSAGGIO_SCONTO_CLIENTE_ERRATO = "Si possono assegnare solo sconti di tipo cliente";
+	public final static String MESSAGGIO_SCONTO_PRODOTTO_ERRATO = "Si possono assegnare solo sconti di tipo prodotto";
 	
 	
 	/**
@@ -580,6 +582,7 @@ public final class Costanti {
 	public static final String TIP_CANCELLA_SCONTO = "Elimina sconto";
 	public final static String TIP_SALVA_MOD_SCONTO = "Salva modifiche";
 	public final static String TIP_ANNULLA_MOD_SCONTO = "Annulla modifiche";
+	public final static String TIP_MOD_SCONTO_PRODOTTO = "Assegna un nuovo sconto";
 	
 	/**
 	 * Bottoni
@@ -627,6 +630,9 @@ public final class Costanti {
 	public final static String[] LISTA_TIPO_CARNE = {"Seleziona un tipo", "Tipo1", "Tipo2", "Tipo3"};
 	
 	public final static String[] LISTA_TIPO_SCONTI = {"Seleziona sconto", "Cliente - Percentuale", "Prodotto - Quantit\u00E0", "Prodotto - Percentuale" };
+	
+	public final static String[] LISTA_CERCA_SCONTI = {"Tutti gli sconti", "Tutti gli sconti cliente", "Tutti gli sconti prodotto", "Cliente - Percentuale", "Prodotto - Quantit\u00E0", "Prodotto - Percentuale"};
+	
 	
 	/**
 	 * Costanti colonne

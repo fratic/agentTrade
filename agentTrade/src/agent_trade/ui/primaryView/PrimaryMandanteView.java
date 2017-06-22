@@ -861,6 +861,11 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	}
 
 	
+	public void disattivaModificaScontoProdotto(boolean b){
+		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnModSconto(b);
+	}
+	
+	
 	public void disattivaModificaProd(boolean b){
 		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnModifica(b);
 	}
@@ -910,6 +915,11 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	public void setInvisibleToolTipListino(){
 		((RiepilogoProdottoFactoryView) riep_listino).disabilitaToolTip();
+	}
+	
+	
+	public void setScontoProdotto(M_Sconto sconto){
+		((RiepilogoProdottoFactoryView) riep_listino).setScontoProdotto(sconto);
 	}
 	
 	
@@ -1068,6 +1078,11 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 
 	public void disattivaModAgente(boolean b){
 		((RiepilogoClienteView) riep_cliente).setVisibleBtnModAgente(b);
+	}
+	
+	
+	public void setEnableTabCliente(boolean b ) {
+		tabbedPrincipale.setEnabledAt(4, b);
 	}
 
 	

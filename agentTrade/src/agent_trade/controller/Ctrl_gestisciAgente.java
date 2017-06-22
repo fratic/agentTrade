@@ -128,6 +128,7 @@ public class Ctrl_gestisciAgente {
 			PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 			PrimaryMandanteView.getInstance().setEnableTabListino(true);
 			PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+			PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 			PrimaryMandanteView.getInstance().setEnableCercaAgente(true);
 			AlberoAgenti.refresh();
 
@@ -169,6 +170,8 @@ public class Ctrl_gestisciAgente {
 			PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 			PrimaryMandanteView.getInstance().setEnableTabListino(true);
 			PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+
+			PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 			
 			PrimaryMandanteView.getInstance().setEnableNewAgente(true);
 			PrimaryMandanteView.getInstance().setEnableCercaAgente(true);
@@ -247,6 +250,7 @@ public class Ctrl_gestisciAgente {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(false);
 		PrimaryMandanteView.getInstance().setEnableCercaAgente(false);
 	}
 	
@@ -260,6 +264,7 @@ public class Ctrl_gestisciAgente {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setVisibleErroreNuovoAgente(false);
 		AlberoAgenti.abilitaAlbero();
 		}
@@ -282,6 +287,7 @@ public class Ctrl_gestisciAgente {
 			PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 			PrimaryMandanteView.getInstance().setEnableTabListino(true);
 			PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+			PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 			PrimaryMandanteView.getInstance().setVisibleErroreRiepAgente(false);
 			AlberoAgenti.abilitaAlbero();
 			AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
@@ -299,6 +305,7 @@ public class Ctrl_gestisciAgente {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
 		PrimaryMandanteView.getInstance().setEnableTabListino(false);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(false);
 		PrimaryMandanteView.getInstance().setVisibleErroreRiepAgente(false);
 		PrimaryMandanteView.getInstance().setEnableNewAgente(false);
 		PrimaryMandanteView.getInstance().setEnableCercaAgente(false);
@@ -318,6 +325,7 @@ public class Ctrl_gestisciAgente {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
+		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableNewAgente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaAgente(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipAgente();

@@ -122,7 +122,7 @@ public class NuovoDolciView extends NuovoProdottoFactoryView{
 					dolce.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					dolce.setCategoria(TFCategoria.getText());
 					dolce.setIdDescrizioneProdotto(TADescrizione.getText());
-					dolce.setSconto(Float.parseFloat(TFSconto.getText()));
+//					dolce.setSconto(Float.parseFloat(TFSconto.getText()));
 					dolce.setIdAzienda(aziendaRif.getIdAzienda());
 					dolce.setVersione(1);
 					dolce.setArtigianale(JRArtiTrue.isSelected());

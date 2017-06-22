@@ -112,7 +112,7 @@ public class NuovoViniView extends NuovoProdottoFactoryView{
 					vino.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					vino.setCategoria(TFCategoria.getText());
 					vino.setIdDescrizioneProdotto(TADescrizione.getText());
-					vino.setSconto(Float.parseFloat(TFSconto.getText()));
+//					vino.setSconto(Float.parseFloat(TFSconto.getText()));
 					vino.setIdAzienda(aziendaRif.getIdAzienda());
 					vino.setVersione(1);
 					vino.setColore(TFColore.getText());

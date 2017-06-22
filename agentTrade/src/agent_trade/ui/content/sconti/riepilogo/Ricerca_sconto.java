@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,6 +27,7 @@ import org.orm.PersistentException;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciListino;
 import agent_trade.controller.Ctrl_gestisciSconto;
 import agent_trade.model.M_Sconto;
 import agent_trade.model.M_ScontoCliente;
@@ -46,33 +48,30 @@ public class Ricerca_sconto extends JDialog {
 	private JPanel pannelloCerca;
 	private JPanel pannelloRisultati;
 	private JPanel pannelloBottoni;
-	private JPanel pannID;
-	private JPanel pannPIVA;
-	private JPanel pannCodFis;
-	private JPanel pannCitta;
+	private JPanel pannTipo;
+	private JPanel pannVuoto1;
+	//private JPanel pannVuoto2;
+	//private JPanel pannVuoto3;
 	private JPanel pannErrore;
 	private JPanel pannBottone;
 	
 	private JScrollPane scrollPane;
 
-	private JTextField TFCercaID;
-	private JTextField TFcercaPIVA;
-	private JTextField TFcercaCodFisc;
-	private JTextField TFcercaCitta;
+	private JComboBox JCTipo;
 
 	private JTable table;
 	private TableModel JTableModel;
 	
 	private JLabel labelError;
-	private JLabel LabelCercaID;
-	private JLabel LabelCercaPIVA;
-	private JLabel LabelCercaCodFisc;
-	private JLabel LabelCercaCitta;
+	private JLabel LabelTipoSconto;
 	
 	private JButton BottoneVisualizza;
 	private JButton BottoneModifica;
 	private JButton BottoneCerca;
-	
+//	serve per assegnare lo sconto al cliente
+	private JButton BottoneModificaCliente;
+//	serve per assegnare lo sconto al prodotto
+	private JButton BottoneModificaProdotto;
 
 	/*attributi privati*/
 	
@@ -88,56 +87,26 @@ public class Ricerca_sconto extends JDialog {
 		getContentPane().setLayout(null);
 		
 		pannelloCerca = new JPanel();
-		pannelloCerca.setBounds(0, 0, 743, 114);
+		pannelloCerca.setBounds(0, 0, 743, 84);
 		getContentPane().add(pannelloCerca);
 		
-		pannID = new JPanel();
-		pannID.setPreferredSize(new Dimension(365, 30));
-		pannelloCerca.add(pannID);
+		pannTipo = new JPanel();
+		pannTipo.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannTipo);
 
-		LabelCercaID = new JLabel(Costanti.LABEL_ID_SCONTO);
-		LabelCercaID.setPreferredSize(new Dimension(137, 14));
-		pannID.add(LabelCercaID);
-		
-		TFCercaID = new JTextField();
-		TFCercaID.setPreferredSize(new Dimension(180, 20));
-		pannID.add(TFCercaID);
-		
-		pannPIVA = new JPanel();
-		pannPIVA.setPreferredSize(new Dimension(365, 30));
-		pannelloCerca.add(pannPIVA);
-		
-//		LabelCercaPIVA = new JLabel(Costanti.LABEL_PARTITA_IVA);
-//		LabelCercaPIVA.setPreferredSize(new Dimension(137, 14));
-//		pannPIVA.add(LabelCercaPIVA);
-//		
-//		TFcercaPIVA = new JTextField();
-//		TFcercaPIVA.setPreferredSize(new Dimension(180, 20));
-//		pannPIVA.add(TFcercaPIVA);
-		
-		pannCodFis = new JPanel();
-		pannCodFis.setPreferredSize(new Dimension(365, 30));
-		pannelloCerca.add(pannCodFis);
-		
-//		LabelCercaCodFisc = new JLabel(Costanti.LABEL_COD_FISC);
-//		LabelCercaCodFisc.setPreferredSize(new Dimension(137, 14));
-//		pannCodFis.add(LabelCercaCodFisc);
-//		
-//		TFcercaCodFisc = new JTextField();
-//		TFcercaCodFisc.setPreferredSize(new Dimension(180, 20));
-//		pannCodFis.add(TFcercaCodFisc);
-		
-		pannCitta = new JPanel();
-		pannCitta.setPreferredSize(new Dimension(365, 30));
-		pannelloCerca.add(pannCitta);
-		
-//		LabelCercaCitta = new JLabel(Costanti.LABEL_CITTA);
-//		LabelCercaCitta.setPreferredSize(new Dimension(137, 14));
-//		pannCitta.add(LabelCercaCitta);
-//		
-//		TFcercaCitta = new JTextField();
-//		TFcercaCitta.setPreferredSize(new Dimension(180, 20));
-//		pannCitta.add(TFcercaCitta);
+		LabelTipoSconto = new JLabel(Costanti.LABEL_TIPO_SCONTO);
+		LabelTipoSconto.setPreferredSize(new Dimension(137, 14));
+		pannTipo.add(LabelTipoSconto);
+
+		JCTipo = new JComboBox(Costanti.LISTA_CERCA_SCONTI);
+		JCTipo.setPreferredSize(new Dimension(180, 20));
+		JCTipo.setToolTipText(Costanti.TIP_TIPO_SCONTO);
+		JCTipo.setSelectedIndex(0);
+		pannTipo.add(JCTipo);
+
+		pannVuoto1 = new JPanel();
+		pannVuoto1.setPreferredSize(new Dimension(365, 30));
+		pannelloCerca.add(pannVuoto1);
 		
 		pannErrore = new JPanel();
 		pannErrore.setPreferredSize(new Dimension(365, 30));
@@ -158,7 +127,7 @@ public class Ricerca_sconto extends JDialog {
 		pannBottone.add(BottoneCerca);
 		
 		pannelloRisultati = new JPanel();
-		pannelloRisultati.setBounds(0, 114, 743, 216);
+		pannelloRisultati.setBounds(0, 84, 743, 246);
 		getContentPane().add(pannelloRisultati);
 		pannelloRisultati.setLayout(null);
 		
@@ -187,11 +156,17 @@ public class Ricerca_sconto extends JDialog {
 		BottoneVisualizza.setBounds(624, 11, 110, 23);
 		pannelloBottoni.add(BottoneVisualizza);
 		
-		BottoneModifica = new JButton(Costanti.BOTTONE_MODIFICA);
-		BottoneModifica.setEnabled(false);
-		BottoneModifica.setBounds(624, 11, 110, 23);
-		BottoneModifica.setVisible(false);
-		pannelloBottoni.add(BottoneModifica);
+		BottoneModificaCliente = new JButton(Costanti.BOTTONE_MODIFICA);
+		BottoneModificaCliente.setEnabled(false);
+		BottoneModificaCliente.setBounds(624, 11, 110, 23);
+		BottoneModificaCliente.setVisible(false);
+		pannelloBottoni.add(BottoneModificaCliente);
+			
+		BottoneModificaProdotto = new JButton(Costanti.BOTTONE_MODIFICA);
+		BottoneModificaProdotto.setEnabled(false);
+		BottoneModificaProdotto.setBounds(624, 11, 110, 23);
+		BottoneModificaProdotto.setVisible(false);
+		pannelloBottoni.add(BottoneModificaProdotto);
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -201,7 +176,7 @@ public class Ricerca_sconto extends JDialog {
 				svuotaTabella();					
 				try {
 					
-					Ctrl_gestisciSconto.getInstance().ricercaSconto(TFCercaID.getText());
+					Ctrl_gestisciSconto.getInstance().ricercaSconto(JCTipo.getSelectedItem().toString());
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -221,11 +196,23 @@ public class Ricerca_sconto extends JDialog {
 			}
 		});
 		
-		BottoneModifica.addActionListener(new ActionListener() {
+		BottoneModificaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 					try {
 						Ctrl_gestisciCliente.getInstance().assegnaSconto((int) table.getValueAt(table.getSelectedRow(),0));
+					} catch (PersistentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			}
+		});
+		
+		BottoneModificaProdotto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+					try {
+						Ctrl_gestisciListino.getInstance().assegnaSconto((int) table.getValueAt(table.getSelectedRow(),0));
 					} catch (PersistentException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -237,7 +224,8 @@ public class Ricerca_sconto extends JDialog {
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
 				BottoneVisualizza.setEnabled(true);
-				BottoneModifica.setEnabled(true);
+				BottoneModificaCliente.setEnabled(true);
+				BottoneModificaProdotto.setEnabled(true);
 			}
 		});	
 		
@@ -281,7 +269,6 @@ public class Ricerca_sconto extends JDialog {
 	
 	public void updateTable(M_Sconto s){
 
-		svuotaTabella();
 		labelError.setText("");
 		
 		if(s instanceof M_ScontoCliente){
@@ -329,7 +316,17 @@ public class Ricerca_sconto extends JDialog {
 	}
 	
 	
-	public void setVisibleBtnModifica(boolean b){
-		BottoneModifica.setVisible(b);
+	public void setVisibleBtnModificaCliente(boolean b){
+		BottoneModificaCliente.setVisible(b);
 	}
+
+
+	public void setVisibleBtnModificaProdotto(boolean b){
+		BottoneModificaProdotto.setVisible(b);
+	}
+
+
+//		public void setSelectionSconto(int i){
+//			JCTipo.setSelectedIndex(i);
+//		}
 }
