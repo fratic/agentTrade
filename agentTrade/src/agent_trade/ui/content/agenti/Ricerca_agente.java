@@ -25,7 +25,7 @@ import org.orm.PersistentException;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_gestisciAgente;
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.model.M_Agente;
 import agent_trade.util.Costanti;
 
@@ -223,7 +223,7 @@ public class Ricerca_agente extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				try {
-					Ctrl_gestisciCliente.getInstance().assegnaAgente((int) table.getValueAt(table.getSelectedRow(),0));
+					Ctrl_gestisciClienteFactory.getInstance().assegnaAgente((int) table.getValueAt(table.getSelectedRow(),0));
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -317,7 +317,7 @@ import org.orm.PersistentException;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_System;
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Sconto;
@@ -761,14 +761,14 @@ public class RiepilogoClienteView extends JPanel {
 		
 		bottoneModificaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().abilitaModifica();
+				Ctrl_gestisciClienteFactory.getInstance().abilitaModifica();
 			}
 		});
 		
 		bottoneCancellaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 	
-				Ctrl_gestisciCliente.getInstance().cancellaCliente((String)TFidCliente.getText());
+				Ctrl_gestisciClienteFactory.getInstance().cancellaCliente((String)TFidCliente.getText());
 			}
 		});
 		
@@ -787,9 +787,9 @@ public class RiepilogoClienteView extends JPanel {
 					cliente.setTelefono(TFtelefono.getText());
 					cliente.setCell(TFcell.getText());
 					cliente.setFax(TFfax.getText());
-					cliente.setVersione(cliente.getVersione()+1);
+					cliente.setVersione(cliente.getVersione());
 					cliente.setIdclienteagente(cliente.getIdCliente());
-					Ctrl_gestisciCliente.getInstance().modificaCliente(cliente);
+					Ctrl_gestisciClienteFactory.getInstance().modificaCliente(cliente);
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -801,7 +801,7 @@ public class RiepilogoClienteView extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 	
 			try {
-					Ctrl_gestisciCliente.getInstance().annullaModificheCliente(TFidCliente.getText());
+				Ctrl_gestisciClienteFactory.getInstance().annullaModificheCliente(TFidCliente.getText());
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -819,7 +819,7 @@ public class RiepilogoClienteView extends JPanel {
 		bottoneModificaSconto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					Ctrl_gestisciCliente.getInstance().btnCercaSconto();
+					Ctrl_gestisciClienteFactory.getInstance().btnCercaSconto();
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -831,7 +831,7 @@ public class RiepilogoClienteView extends JPanel {
 		bottoneModificaAgente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					Ctrl_gestisciCliente.getInstance().btnCercaAgente();
+					Ctrl_gestisciClienteFactory.getInstance().btnCercaAgente();
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -985,9 +985,8 @@ public class RiepilogoClienteView extends JPanel {
 			if(Costanti.version.equals(Costanti.mandante)){
 				
 				cliente.setSconto(sconto.getId());
-				cliente.setVersione(cliente.getVersione()+1);
 				
-				Ctrl_gestisciCliente.getInstance().modificaCliente(cliente);
+				Ctrl_gestisciClienteFactory.getInstance().modificaCliente(cliente);
 			}
 		}		
 		
@@ -1004,11 +1003,10 @@ public class RiepilogoClienteView extends JPanel {
 		public void setAgenteRif(M_Agente agenteRif) throws PersistentException{
 			
 			cliente.setAgenteAssociato(agenteRif);
-			cliente.setVersione(cliente.getVersione()+1);
 			
 			TFrifAgente.setText(cliente.getAgenteAssociato().getCognome()+" "+cliente.getAgenteAssociato().getNome());
 			
-			Ctrl_gestisciCliente.getInstance().modificaCliente(cliente);
+			Ctrl_gestisciClienteFactory.getInstance().modificaCliente(cliente);
 		}
 }
 		

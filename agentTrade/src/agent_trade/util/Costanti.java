@@ -365,6 +365,14 @@ public final class Costanti {
 	public final static int WIDTH_BOTTONE_SELEZ_SCONTO = 150;
 	public final static int HEIGHT_BOTTONE_SELEZ_SCONTO = 20;
 	
+	
+	/**
+	 * Dimensioni contenitori, label e TF nelle view nuovo/riepilogo prodotto
+	 */
+	public final static int WIDTH_PANN_CAMPI_PROD = 485;
+	public final static int HEIGHT_PANN_CAMPI_PROD = 430;
+	
+	
 	/**
 	 * Label e Stringhe generiche
 	 */

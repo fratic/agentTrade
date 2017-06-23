@@ -19,7 +19,7 @@ import javax.swing.tree.TreePath;
 import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_System;
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 
 public class AlberoClienti extends JPanel {
@@ -68,7 +68,7 @@ public class AlberoClienti extends JPanel {
 					TreePath selection = e.getPath();
 					try {if(abilitalistener == true){
 						//System.out.println("MI ATTIVO");
-						Ctrl_gestisciCliente.getInstance().mostraCliente(selection.getLastPathComponent());
+						Ctrl_gestisciClienteFactory.getInstance().mostraCliente(selection.getLastPathComponent());
 					}
 					} catch (PersistentException e1)
 					{

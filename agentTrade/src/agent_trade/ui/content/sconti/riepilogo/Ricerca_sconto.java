@@ -26,7 +26,7 @@ import org.orm.PersistentException;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.controller.Ctrl_gestisciListino;
 import agent_trade.controller.Ctrl_gestisciSconto;
 import agent_trade.model.M_Sconto;
@@ -200,7 +200,7 @@ public class Ricerca_sconto extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				
 					try {
-						Ctrl_gestisciCliente.getInstance().assegnaSconto((int) table.getValueAt(table.getSelectedRow(),0));
+						Ctrl_gestisciClienteFactory.getInstance().assegnaSconto((int) table.getValueAt(table.getSelectedRow(),0));
 					} catch (PersistentException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

@@ -17,7 +17,7 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_gestisciAgente;
 import agent_trade.controller.Ctrl_gestisciAzienda;
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.controller.Ctrl_gestisciListino;
 import agent_trade.controller.Ctrl_gestisciSconto;
 import agent_trade.model.M_Agente;
@@ -638,7 +638,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		bottoneCercaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Ctrl_gestisciCliente.getInstance().btnCerca();
+				Ctrl_gestisciClienteFactory.getInstance().btnCerca();
 			
 			}
 		});

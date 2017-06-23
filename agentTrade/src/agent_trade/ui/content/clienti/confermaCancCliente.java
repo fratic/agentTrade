@@ -10,7 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.util.Costanti;
 
 import org.orm.PersistentException;
@@ -78,7 +78,7 @@ public class confermaCancCliente extends JDialog {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					Ctrl_gestisciCliente.getInstance().postConfermaCancCliente(cliente);
+					Ctrl_gestisciClienteFactory.getInstance().postConfermaCancCliente(cliente);
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -88,7 +88,7 @@ public class confermaCancCliente extends JDialog {
 	
 		cancelButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().notConfermaCancCliente();
+				Ctrl_gestisciClienteFactory.getInstance().notConfermaCancCliente();
 			}
 		});
 		 

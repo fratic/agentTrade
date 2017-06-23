@@ -23,7 +23,7 @@ import javax.swing.table.TableRowSorter;
 
 import org.orm.PersistentException;
 
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.model.M_Cliente;
 import agent_trade.util.Costanti;
 
@@ -192,7 +192,7 @@ public class Ricerca_cliente extends JDialog {
 
 		BottoneAnnullaCerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().annullaRicercaCliente();
+				Ctrl_gestisciClienteFactory.getInstance().annullaRicercaCliente();
 			}
 		});
 		
@@ -206,7 +206,7 @@ public class Ricerca_cliente extends JDialog {
 					}
 					//fare le modifiche a ricerca cliente!!!!
 					try {
-						Ctrl_gestisciCliente.getInstance().ricercaCliente(TFCognome.getText(), TFPI.getText(), TFCodFis.getText(), TFCitta.getText());
+						Ctrl_gestisciClienteFactory.getInstance().ricercaCliente(TFCognome.getText(), TFPI.getText(), TFCodFis.getText(), TFCitta.getText());
 					} 
 					catch (PersistentException e) {
 						e.printStackTrace();
@@ -219,7 +219,7 @@ public class Ricerca_cliente extends JDialog {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
 				try {
 					//SE QUI VA PASSATO L'ID (e va fatto), BISOGNA INSERIRLO ANCHE IN TABELLA
-					Ctrl_gestisciCliente.getInstance().recuperaCliente((int) table.getValueAt(table.getSelectedRow(),0));
+					Ctrl_gestisciClienteFactory.getInstance().recuperaCliente((int) table.getValueAt(table.getSelectedRow(),0));
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

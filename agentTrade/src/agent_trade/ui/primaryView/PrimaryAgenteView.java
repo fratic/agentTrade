@@ -22,7 +22,7 @@ import javax.swing.tree.TreePath;
 import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.controller.Ctrl_gestisciListino;
 import agent_trade.external_system.SystemDaemon;
 import agent_trade.model.M_Cliente;
@@ -382,7 +382,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		bottoneCercaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Ctrl_gestisciCliente.getInstance().btnCerca();
+				Ctrl_gestisciClienteFactory.getInstance().btnCerca();
 			
 			}
 		});
@@ -390,7 +390,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		bottoneNuovoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Ctrl_gestisciCliente.getInstance().newCliente();
+				Ctrl_gestisciClienteFactory.getInstance().newCliente();
 				
 			}
 		});
@@ -601,7 +601,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		String nome =p.getRif_Cliente().getNome();
 		String indirizzo =p.getRif_Cliente().getIndirizzo();
 		String email = p.getRif_Cliente().getEmail();
-		String sconto = Ctrl_gestisciCliente.getInstance().mostraScontoCliente(p.getRif_Cliente().getSconto());
+		String sconto = Ctrl_gestisciClienteFactory.getInstance().mostraScontoCliente(p.getRif_Cliente().getSconto());
 		((RiepilogoIntestazionePreventivoView) riep_intestazione).setCliente(cognome, nome, indirizzo, email, sconto);
 	}
 	

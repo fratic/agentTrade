@@ -87,7 +87,7 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.getInstance().setNewIntestAgente(Ctrl_System.getAgenteLog().getCognome()+" "+Ctrl_System.getAgenteLog().getNome());
 		PrimaryAgenteView.getInstance().setNewIntestData(M_Preventivo.getInstance().getData());
 		PrimaryAgenteView.getInstance().setNewIntestNumPrev(M_Preventivo.getInstance().getIdPreventivo());
-		String sconto = Ctrl_gestisciCliente.getInstance().mostraScontoCliente(cliente.getSconto());
+		String sconto = Ctrl_gestisciClienteFactory.getInstance().mostraScontoCliente(cliente.getSconto());
 		PrimaryAgenteView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail(), sconto);
 		
 		ProdottiView.getInstance().enableBottoni();
@@ -161,7 +161,7 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.getInstance().setNewIntestAgente(prevMod.getRif_Agente().getCognome()+" "+prevMod.getRif_Agente().getNome());
 		PrimaryAgenteView.getInstance().setNewIntestData(prevMod.getData());
 		PrimaryAgenteView.getInstance().setNewIntestNumPrev(prevMod.getIdPreventivo());
-		String sconto = Ctrl_gestisciCliente.getInstance().mostraScontoCliente(cliente.getSconto());
+		String sconto = Ctrl_gestisciClienteFactory.getInstance().mostraScontoCliente(cliente.getSconto());
 		PrimaryAgenteView.getInstance().setNewIntestCliente(cliente.getCognome(),cliente.getNome(), cliente.getIndirizzo(), cliente.getEmail(), sconto);
 
 		ProdottiView.getInstance().enableBottoni();
@@ -228,7 +228,7 @@ public class Ctrl_elaboraPreventivo {
 	
 		Ctrl_elaboraPreventivo.prevInCorso=true;
 
-		Ctrl_gestisciCliente.getInstance().apriViewCercaCliente();
+		Ctrl_gestisciClienteFactory.getInstance().apriViewCercaCliente();
 	}
 
 	//CO2 

@@ -238,7 +238,7 @@ import org.orm.PersistentException;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import agent_trade.controller.Ctrl_System;
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.model.M_Cliente;
 import agent_trade.util.Costanti;
 
@@ -278,7 +278,7 @@ public class DettaglioClienteView extends JPanel {
 	private JTextField TFtelefono;
 	private JTextField TFcell;
 	private JTextField TFfax;
-	private JTextField TFsconto;
+//	private JTextField TFsconto;
 	private JTextField TFrifAgente;
 	
 	private JButton bottoneSalvaCliente;
@@ -544,22 +544,22 @@ public class DettaglioClienteView extends JPanel {
 		TFemail.setToolTipText(Costanti.TIP_EMAIL);
 		pannEmail.add(TFemail);
 		
-		pannSconto = new JPanel();
-		FlowLayout flowLayout16 = (FlowLayout) pannSconto.getLayout();
-		flowLayout16.setHgap(0);
-		flowLayout16.setVgap(0);
-		pannSconto.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
-		contenitoreCampi.add(pannSconto);
-		 
-		labelSconto = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_SCONTO);
-		labelSconto.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
-		labelSconto.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
-		pannSconto.add(labelSconto);
-		 
-		TFsconto = new JTextField();//NON E' EDITABILE VERRA' CARICATO UNO SCONTO INIZIALE
-		TFsconto.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		TFsconto.setEditable(false);
-		pannSconto.add(TFsconto);
+//		pannSconto = new JPanel();
+//		FlowLayout flowLayout16 = (FlowLayout) pannSconto.getLayout();
+//		flowLayout16.setHgap(0);
+//		flowLayout16.setVgap(0);
+//		pannSconto.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
+//		contenitoreCampi.add(pannSconto);
+//		 
+//		labelSconto = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_SCONTO);
+//		labelSconto.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
+//		labelSconto.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
+//		pannSconto.add(labelSconto);
+//		 
+//		TFsconto = new JTextField();//NON E' EDITABILE VERRA' CARICATO UNO SCONTO INIZIALE
+//		TFsconto.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+//		TFsconto.setEditable(false);
+//		pannSconto.add(TFsconto);
 		
 		pannRifAgente = new JPanel();
 		FlowLayout flowLayout14 = (FlowLayout) pannRifAgente.getLayout();
@@ -640,7 +640,7 @@ public class DettaglioClienteView extends JPanel {
 				cliente.setCell(TFcell.getText());
 				cliente.setFax(TFfax.getText());
 				
-				Ctrl_gestisciCliente.getInstance().inserisciNuovoCliente(cliente);
+				Ctrl_gestisciClienteFactory.getInstance().inserisciNuovoCliente(cliente);
 
 			} 
 			catch (PersistentException e) {
@@ -653,7 +653,7 @@ public class DettaglioClienteView extends JPanel {
 		
 		bottoneEsci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ctrl_gestisciCliente.getInstance().esciNewCliente();
+				Ctrl_gestisciClienteFactory.getInstance().esciNewCliente();
 			}
 		});
 		
@@ -695,6 +695,6 @@ public class DettaglioClienteView extends JPanel {
 		TFtelefono.setText(null);
 		TFcell.setText(null);
 		TFfax.setText(null);
-		TFsconto.setText(null);
+//		TFsconto.setText(null);
 	}
 }

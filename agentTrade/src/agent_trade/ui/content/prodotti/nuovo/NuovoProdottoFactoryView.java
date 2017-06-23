@@ -124,7 +124,7 @@ public class NuovoProdottoFactoryView extends JPanel{
 		pannelloCampi = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pannelloCampi.getLayout();
 		flowLayout.setAlignment(FlowLayout.CENTER);
-		pannelloCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
+		pannelloCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CAMPI_PROD, Costanti.HEIGHT_PANN_CAMPI_PROD));
 		
 		scrollPane = new JScrollPane(pannelloCampi);
 		scrollPane.setBorder(null);

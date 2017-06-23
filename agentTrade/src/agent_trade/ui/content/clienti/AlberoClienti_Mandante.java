@@ -19,7 +19,7 @@ import javax.swing.tree.TreePath;
 import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_System;
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
 
@@ -71,7 +71,7 @@ public class AlberoClienti_Mandante extends JPanel{
 					try {
 						if(selezione.isLeaf() && abilitalistener == true)
 	        			{
-							Ctrl_gestisciCliente.getInstance().recuperaClienteMandante(ottieniId(selezione));
+							Ctrl_gestisciClienteFactory.getInstance().recuperaCliente(ottieniId(selezione));
         				}
 						else if(!selezione.isLeaf()){
 							PrimaryMandanteView.getInstance().resetPannelloCentraleCliente();

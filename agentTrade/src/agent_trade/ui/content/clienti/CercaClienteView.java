@@ -22,7 +22,7 @@ import javax.swing.table.TableRowSorter;
 import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_elaboraPreventivo;
-import agent_trade.controller.Ctrl_gestisciCliente;
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.model.M_Cliente;
 import agent_trade.util.Costanti;
 
@@ -138,7 +138,7 @@ public class CercaClienteView extends JDialog {
 						((DefaultTableModel) JTableModel).removeRow(i);
 					}
 				try {
-					Ctrl_gestisciCliente.getInstance().cercaCliente(textFieldCerca.getText());
+					Ctrl_gestisciClienteFactory.getInstance().cercaCliente(textFieldCerca.getText());
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();

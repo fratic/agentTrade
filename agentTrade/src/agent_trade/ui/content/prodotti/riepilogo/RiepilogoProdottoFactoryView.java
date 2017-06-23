@@ -131,7 +131,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		pannelloCampi = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pannelloCampi.getLayout();
 		flowLayout.setAlignment(FlowLayout.CENTER);
-		pannelloCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
+		pannelloCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CAMPI_PROD, Costanti.HEIGHT_PANN_CAMPI_PROD));
 		
 		scrollPane = new JScrollPane(pannelloCampi);
 		scrollPane.setBorder(null);
@@ -453,7 +453,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 			scnt = ((M_ScontoPercent) sconto).getPercent()*100 + "%"; 
 		}
 		else if (sconto instanceof M_ScontoQuantita){
-			scnt = "Sconto di "+((M_ScontoQuantita) sconto).getScontoFisso()+" euro per q.t? superiori a "+((M_ScontoQuantita) sconto).getQuantita();
+			scnt = "Sconto di "+((M_ScontoQuantita) sconto).getScontoFisso()+" euro per q.tu00E0 superiori a "+((M_ScontoQuantita) sconto).getQuantita();
 		}
 		
 		idSconto = sconto.getId();
