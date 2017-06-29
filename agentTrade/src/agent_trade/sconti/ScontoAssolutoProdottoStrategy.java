@@ -43,8 +43,6 @@ public class ScontoAssolutoProdottoStrategy implements IScontoStrategy {
 			item = (M_Preventivo_Item) iteraItem.next();
 			if (item.getIdProdotto().getIdProdotto()==this.id_item)
 			{
-			
-
 				if(item.getQuantita() >= quantita){
 					int multiplo= (int) item.getQuantita()/quantita;
 					scontoQt = scontoQt+sconto*multiplo;

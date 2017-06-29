@@ -318,8 +318,10 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 		while (iteraItem.hasNext()) 
 		{
 			item = (M_Preventivo_Item) iteraItem.next();
-			totaleNoScont= totaleNoScont+(item.getQuantita()*item.getIdProdotto().getPrezzo());
-			
+			//MODIFICA. se ci sono problemi 
+//			totaleNoScont= totaleNoScont+(item.getQuantita()*item.getIdProdotto().getPrezzo());
+			totaleNoScont= totaleNoScont+item.calcolaParziale();
+
 		}
 		totaleNoScont= (float) (Math.ceil(totaleNoScont * Math.pow(10, 2)) / Math.pow(10, 2));
 		
@@ -450,8 +452,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 	
 	public float getTotale() {
 		
-		//per problemi di inconsistenza dei dati forse è meglio calcolare il tot ogni volta
-		
 		List<M_Preventivo_Item> lista = this.getItem();
 		Iterator<M_Preventivo_Item> itera = lista.iterator();
 		float tot=0;
@@ -463,9 +463,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 		return tot;
 	}
 
-//	public void setTotale(float totale) {
-//		this.totale = totale;
-//	}
 
 	public float getParziale() {
 		return parziale;

@@ -58,14 +58,12 @@ public class SystemDaemon {
 	public boolean sincronizzaAgente(String username) throws PersistentException{
 		
 		M_Agente agente = M_Agente.caricaAgenteRemoto(username);
-
+		boolean ok = false;
 		if (agente!=null){
-
 			M_Agente.salvaAgente(agente); 
-			return true;
+			ok = true;
 		}
-		else
-			return false;
+		return ok;
 	}
 	
 	

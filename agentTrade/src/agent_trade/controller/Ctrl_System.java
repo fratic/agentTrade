@@ -52,7 +52,7 @@ public class Ctrl_System {
 	
 	Impostazioni frame;
 	
-	/*	la responsabilità di tenere l'istanza dell'agente loggato è stata assegnata ad crtl_system, in quanto è il creatore*/
+	/*la responsabilità di tenere l'istanza dell'agente loggato è stata assegnata ad crtl_system, in quanto è il creatore*/
 	private static M_Agente instanceAgenteLog;
 
 	/*
@@ -94,7 +94,8 @@ public class Ctrl_System {
 		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
 
 		//probabilmente queste cose non vanno fatte qui, oppure bisogna chiedere ad una factory
-		
+
+		/*******AGGIORNA listini****/
 
 		initAlberoClienti();
 

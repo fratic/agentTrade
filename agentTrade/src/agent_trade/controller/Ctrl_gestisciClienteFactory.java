@@ -9,7 +9,7 @@ public class Ctrl_gestisciClienteFactory {
 
 /*attributi di classe*/
 	
-	protected static Ctrl_gestisciClienteFactory instance;
+	private static Ctrl_gestisciClienteFactory instance;
 	
 	/*attributi privati*/
 

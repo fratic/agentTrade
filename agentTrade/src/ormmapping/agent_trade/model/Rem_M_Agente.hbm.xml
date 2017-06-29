@@ -7,6 +7,8 @@ License Type: Academic
 <hibernate-mapping>
 	<class name="agent_trade.model.M_Agente" table="Agente" lazy="false">
 		<id name="IdAgente" column="IdAgente" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
 		</id>
 		<property name="nome" column="Nome" type="string" length="255" not-null="false" lazy="false"/>
 		<property name="cognome" column="Cognome" type="string" length="255" not-null="false" lazy="false"/>

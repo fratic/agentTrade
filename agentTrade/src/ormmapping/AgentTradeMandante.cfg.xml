@@ -26,7 +26,7 @@ License Type: Academic
 		
 		<property name="show_sql">true</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
-		<mapping resource="ormmapping/agent_trade/model/M_Agente.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/Rem_M_Agente.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/M_Mandante.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/Rem_M_Azienda.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/Rem_M_Prodotto.hbm.xml" />
@@ -58,7 +58,7 @@ License Type: Academic
 		<property name="show_sql">false</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
 
-		<mapping resource="ormmapping/agent_trade/model/M_Agente.hbm.xml" />
+		<mapping resource="ormmapping/agent_trade/model/Rem_M_Agente.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/M_Mandante.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/Rem_M_Azienda.hbm.xml" />
 		<mapping resource="ormmapping/agent_trade/model/Rem_M_Prodotto.hbm.xml" />

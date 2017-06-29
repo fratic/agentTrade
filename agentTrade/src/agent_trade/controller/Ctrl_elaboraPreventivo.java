@@ -262,7 +262,6 @@ public class Ctrl_elaboraPreventivo {
 		
 		ItemNuovoPreventivoView.getInstance().setTot();
 
-		
 	}
 
 	
@@ -290,7 +289,6 @@ public class Ctrl_elaboraPreventivo {
 	}
 	
 
-	//non mi piace, trovare un alternativa
 	public void riepilogoPreventivo(int id) throws PersistentException
 	{
 		if(id !=0)
@@ -330,7 +328,6 @@ public class Ctrl_elaboraPreventivo {
 
 	
 	public void rimuoviItem(final int id_item, final int row) {
-		//controllare se l'id è dell'item o del prodotto
 		EventQueue.invokeLater(new Runnable() {
 			@Override public void run() {
 				M_Preventivo p = null;
@@ -374,11 +371,6 @@ public class Ctrl_elaboraPreventivo {
 			
 		M_Preventivo prev = M_Preventivo.caricaPreventivo(id_Preventivo);
 
-		/**
-		 * AgentTradePersistentManager qui?????
-		 */
-		 
-//		AgentTradePersistentManager.instance().disposePersistentManager();
 
 		M_Preventivo prevMod= M_Preventivo.getInstance(prev);
 		

@@ -59,7 +59,6 @@ public class M_Preventivo_Item extends Observable{
 		IScontoStrategy strategiaProdotto= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
 		this.setStrategiaProdotto(strategiaProdotto);
 
-
 	}
 	
 	
@@ -121,7 +120,6 @@ public class M_Preventivo_Item extends Observable{
 
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
-//		DA COMMENTARE PER IL TEST SCONTO
 		NotifyObservers();
 	}
 
