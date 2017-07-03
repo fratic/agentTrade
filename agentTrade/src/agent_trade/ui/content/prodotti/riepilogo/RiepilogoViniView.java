@@ -23,6 +23,8 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class RiepilogoViniView extends RiepilogoProdottoFactoryView{
 
+	private M_Vini vino;
+	
 	private JPanel pannColore;
 	private JPanel pannIndGeograf;
 	private JPanel pannCantina;
@@ -101,19 +103,36 @@ public class RiepilogoViniView extends RiepilogoProdottoFactoryView{
 		labelErrore.setForeground(Color.RED);
 		labelErrore.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL_ERRORE, Costanti.HEIGHT_LABEL_ERRORE));
 		pannErrore.add(labelErrore);
+		
+		bottoneCancellaProdotto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Ctrl_gestisciListino.getInstance().cancellaProdotto(vino);
+			}
+		});
+	
+		bottoneAnnullaModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Ctrl_gestisciListino.getInstance().annullaModifica(vino);
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
 	
 		bottoneSalvaModifiche.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					M_Vini vino = new M_Vini();
-					vino.setIdProdotto(prodotto.getIdProdotto());
+//					M_Vini vino = new M_Vini();
+//					vino.setIdProdotto(prodotto.getIdProdotto());
 					vino.setNome(TFNome.getText());
 					vino.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					vino.setCategoria(TFCategoria.getText());
 					vino.setIdDescrizioneProdotto(TADescrizione.getText());
 					vino.setSconto(idSconto);
-					vino.setIdAzienda(prodotto.getIdAzienda());
-					vino.setVersione(prodotto.getVersione());
+//					vino.setIdAzienda(prodotto.getIdAzienda());
+//					vino.setVersione(prodotto.getVersione());
 					vino.setColore(TFColore.getText());
 					vino.setIndicazione_geografica(TFGeo.getText());
 					vino.setCantina(TFCantina.getText());
@@ -133,10 +152,21 @@ public class RiepilogoViniView extends RiepilogoProdottoFactoryView{
 		return  (RiepilogoViniView) instance;
 	}
 	
+//	public static void cancRiepilogoProdotto(){
+//		instance = null;
+//	}
+	
 	
 	public void setSchedaProdotto(M_Prodotto prod){
-		super.setSchedaProdotto(prod);
-		M_Vini vino = (M_Vini)prod;
+//		super.setSchedaProdotto(prod);
+		vino = (M_Vini)prod;
+		
+		TFidProdotto.setText(""+vino.getIdProdotto());
+		TFNome.setText(vino.getNome());
+		TFCategoria.setText(vino.getCategoria());
+		TFPrezzo.setText(""+vino.getPrezzo());
+//		TFSconto.setText(""+prodotto.getSconto());
+		TFVersione.setText(""+vino.getVersione());
 		TFColore.setText(vino.getColore());
 		TFGeo.setText(vino.getIndicazione_geografica());
 		TFCantina.setText(vino.getCantina());

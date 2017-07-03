@@ -66,6 +66,8 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	private static JPanel pannello_centrale_azienda;
 
 	private static JPanel riep_listino;
+	private static JPanel riep_prodotto;
+	private static JPanel dettaglio_prodotto;
 	private static JPanel riep_intestaz_listino;	
 	private static JPanel pannello_centrale_listino;
 
@@ -106,7 +108,6 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	private JPanel alberoListini;
 
-	private JButton bottoneNuovoListino;
 	private JButton bottoneCercaListino;
 
 	private JPanel Sconto;
@@ -200,45 +201,47 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	
 	public static void cancRiepilogoListinoView(){
-		
-		RiepilogoListinoView.cancRiepilogoListino();
-		pannello_centrale_listino.remove(riep_listino);
-		//pannello_centrale_listino.removeAll();
-		riep_listino = null;
+		if(riep_listino != null){
+			RiepilogoListinoView.cancRiepilogoListino();
+			pannello_centrale_listino.remove(riep_listino);
+			//pannello_centrale_listino.removeAll();
+			riep_listino = null;
+		}
 	}
 	
 	
 	public static void initRiepilogoProdottoView(M_Prodotto prod){
 		
-		riep_listino = RiepilogoProdottoFactoryView.getInstance(prod);
-		pannello_centrale_listino.add(riep_listino, BorderLayout.CENTER);
+		riep_prodotto = RiepilogoProdottoFactoryView.getInstance(prod);
+		pannello_centrale_listino.add(riep_prodotto, BorderLayout.CENTER);
 		pannello_centrale_listino.repaint();
 	}
 	
 	
 	public static void cancRiepilogoProdottoView(){
-//		if(riep_listino != null){
+		if(riep_prodotto != null){
 			RiepilogoProdottoFactoryView.cancRiepilogoProdotto();
-			pannello_centrale_listino.remove(riep_listino);
+			pannello_centrale_listino.remove(riep_prodotto);
 			//pannello_centrale_listino.removeAll();
-			riep_listino = null;
-//		}
+			riep_prodotto = null;
+		}
 	}
 	
 	
 	public static void initNuovoProdottoView(M_Azienda azienda){
 		
-		riep_listino = NuovoProdottoFactoryView.getInstance(azienda);
-		pannello_centrale_listino.add(riep_listino, BorderLayout.CENTER);
+		dettaglio_prodotto = NuovoProdottoFactoryView.getInstance(azienda);
+		pannello_centrale_listino.add(dettaglio_prodotto, BorderLayout.CENTER);
 		pannello_centrale_listino.repaint();
 	}
 	
 	
 	public static void cancNuovoProdottoView(){
-		
-		NuovoProdottoFactoryView.cancNuovoProdotto();
-		pannello_centrale_listino.remove(riep_listino);
-		riep_listino = null;
+		if(dettaglio_prodotto != null){
+			NuovoProdottoFactoryView.cancNuovoProdotto();
+			pannello_centrale_listino.remove(dettaglio_prodotto);
+			riep_prodotto = null;
+		}
 	}
 	
 	
@@ -731,13 +734,14 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		tabbedPrincipale.setEnabledAt(0, b);
 	}
 	
-	public void nuovoAlberoAgente(){
-		AlberoAgenti.getInstance().deselezionaNodo();
-		alberoAgenti = new AlberoAgenti();
-		alberoAgenti.setBounds(0, 0, 261, 617);
-		pannello_laterale_agente.add(alberoAgenti);
-		repaint();
-	}
+//	NON USATA
+//	public void nuovoAlberoAgente(){
+//		AlberoAgenti.getInstance().deselezionaNodo();
+//		alberoAgenti = new AlberoAgenti();
+//		alberoAgenti.setBounds(0, 0, 261, 617);
+//		pannello_laterale_agente.add(alberoAgenti);
+//		repaint();
+//	}
 	
 	/****  FUNZIONI AZIENDA ****/
 	
@@ -847,36 +851,36 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	
 	public void setSchedaProdotto(M_Prodotto prod){
-		((RiepilogoProdottoFactoryView) riep_listino).setSchedaProdotto(prod);
+		((RiepilogoProdottoFactoryView) riep_prodotto).setSchedaProdotto(prod);
 	}
 
 	
 	public void disattivaSalvaModificheProdotto(boolean b){
-		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnSalvaModifiche(b);
+		((RiepilogoProdottoFactoryView) riep_prodotto).setVisibleBtnSalvaModifiche(b);
 	}
 
 
 	public void disattivaAnnullaModificheProdotto(boolean b){
-		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnAnnullaModifiche(b);
+		((RiepilogoProdottoFactoryView) riep_prodotto).setVisibleBtnAnnullaModifiche(b);
 	}
 
 	
 	public void disattivaModificaScontoProdotto(boolean b){
-		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnModSconto(b);
+		((RiepilogoProdottoFactoryView) riep_prodotto).setVisibleBtnModSconto(b);
 	}
 	
 	
 	public void disattivaModificaProd(boolean b){
-		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnModifica(b);
+		((RiepilogoProdottoFactoryView) riep_prodotto).setVisibleBtnModifica(b);
 	}
 	
 	
 	public void disattivaIndietro(boolean b){
-		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnIndietro(b);
+		((RiepilogoProdottoFactoryView) riep_prodotto).setVisibleBtnIndietro(b);
 	}
 	
 	public void disattivaCancellaProd(boolean b){
-		((RiepilogoProdottoFactoryView) riep_listino).setVisibleBtnCancella(b);
+		((RiepilogoProdottoFactoryView) riep_prodotto).setVisibleBtnCancella(b);
 	}
 	
 	
@@ -889,7 +893,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	 }
 	
 	public void resetNuovoProdotto() {
-		((NuovoProdottoFactoryView) riep_listino).resetNewProdotto();
+		((NuovoProdottoFactoryView) dettaglio_prodotto).resetNewProdotto();
 	}
 
 	
@@ -899,27 +903,27 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	
 	public void setModificheProdotto(boolean b){
-		((RiepilogoProdottoFactoryView) riep_listino).setTFeditable(b);
+		((RiepilogoProdottoFactoryView) riep_prodotto).setTFeditable(b);
 	}
 	
 	
 	public void setVisibleErroreRiepProd(boolean b){
-		((RiepilogoProdottoFactoryView) riep_listino).setVisibleErroreRiepProdotto(b);
+		((RiepilogoProdottoFactoryView) riep_prodotto).setVisibleErroreRiepProdotto(b);
 	}
 	
 	
 	public void setVisibleToolTipListino(){
-		((RiepilogoProdottoFactoryView) riep_listino).abilitaToolTip();
+		((RiepilogoProdottoFactoryView) riep_prodotto).abilitaToolTip();
 	}
 	
 	
 	public void setInvisibleToolTipListino(){
-		((RiepilogoProdottoFactoryView) riep_listino).disabilitaToolTip();
+		((RiepilogoProdottoFactoryView) riep_prodotto).disabilitaToolTip();
 	}
 	
 	
 	public void setScontoProdotto(M_Sconto sconto){
-		((RiepilogoProdottoFactoryView) riep_listino).setScontoProdotto(sconto);
+		((RiepilogoProdottoFactoryView) riep_prodotto).setScontoProdotto(sconto);
 	}
 	
 	
@@ -1021,9 +1025,9 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	}
 	
 	
-	public void setEnableCercaCliente(boolean b){
-		bottoneCercaCliente.setEnabled(b);
-	}
+//	public void setEnableCercaCliente(boolean b){
+//		bottoneCercaCliente.setEnabled(b);
+//	}
 	
 	
 	public void setSchedaCliente(M_Cliente cliente) {		

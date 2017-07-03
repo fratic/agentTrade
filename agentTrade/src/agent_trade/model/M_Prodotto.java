@@ -147,22 +147,24 @@ public abstract class M_Prodotto implements Cloneable{
 		}
 	}
 	
-	public static M_Prodotto[] caricaProdottiAzienda(String azienda) throws PersistentException{
-		
-		try{
-			M_Azienda az = M_Azienda.cercaAziendaNome(azienda);
-			ProdottoCriteria criteriaProdotto= new ProdottoCriteria();
-
-			criteriaProdotto.idAzienda.eq(az.getIdAzienda());
-			criteriaProdotto.versione.ne(0);
-			criteriaProdotto.setMaxResults(10000);
-			return criteriaProdotto.listProdotto();
-
-		}
-		finally {
-//			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
-		}
-	}
+//	public static M_Prodotto[] caricaProdottiAzienda(String azienda) throws PersistentException{
+//		
+//		try{
+//			M_Azienda az = M_Azienda.cercaAziendaNome(azienda);
+//			ProdottoCriteria criteriaProdotto= new ProdottoCriteria();
+//
+//			criteriaProdotto.idAzienda.eq(az.getIdAzienda());
+//			criteriaProdotto.versione.ne(0);
+//			criteriaProdotto.setMaxResults(10000);
+//			return criteriaProdotto.listProdotto();
+//
+//		}
+//		finally {
+////			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+//		}
+//	}
+	
+	
 	public static M_Prodotto caricaProdottoRemoto(int idProdotto) throws PersistentException{
 		
 		Rem_ProdottoCriteria criteria= new Rem_ProdottoCriteria();

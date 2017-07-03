@@ -33,13 +33,16 @@ import agent_trade.model.M_Vini;
 import agent_trade.util.Costanti;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.ScrollPaneConstants;
 
-public abstract class RiepilogoProdottoFactoryView extends JPanel {
+public class RiepilogoProdottoFactoryView extends JPanel {
 
 	/*attributi di classe*/
 	protected static RiepilogoProdottoFactoryView instance;
 	
-	protected M_Prodotto prodotto;
+//	protected M_Prodotto prodotto;
 	protected int idSconto;
 	
 	protected JPanel pannelloCentro;
@@ -53,6 +56,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 	protected JPanel pannSconto;
 	protected JPanel pannVersione;
 	protected JPanel pannDescrizione;
+	protected JScrollPane scrollPaneTAD;
 	protected JPanel pannErrore;
 	protected JPanel pannelloEast;
 	protected JPanel pannelloBottoni;
@@ -80,6 +84,8 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 	protected JButton bottoneSalvaModifiche;
 	protected JButton bottoneModificaSconto;
 	protected JButton bottoneAnnullaModifica;
+
+	
 	/*attributi privati*/
 	
 	
@@ -87,7 +93,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 	/*costruttori*/
 	
 	protected RiepilogoProdottoFactoryView(){
-		this.initComponent();
+		initComponent();
 	}
 	
 	
@@ -125,16 +131,20 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		
 		pannelloCentro = new JPanel();
 		pannelloCentro.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
-		pannelloCentro.setLayout(new GridLayout(1,1));
+		GridLayout gl_pannelloCentro = new GridLayout(1,1);
+		gl_pannelloCentro.setVgap(5);
+		pannelloCentro.setLayout(gl_pannelloCentro);
 		this.add(pannelloCentro, BorderLayout.CENTER);
 		
 		pannelloCampi = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pannelloCampi.getLayout();
+		flowLayout.setVgap(0);
 		flowLayout.setAlignment(FlowLayout.CENTER);
-		pannelloCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CAMPI_PROD, Costanti.HEIGHT_PANN_CAMPI_PROD));
+//		pannelloCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CAMPI_PROD, Costanti.HEIGHT_PANN_CAMPI_PROD));
 		
 		scrollPane = new JScrollPane(pannelloCampi);
 		scrollPane.setBorder(null);
+		scrollPane.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
 		pannelloCentro.add(scrollPane);
 		
 		contenitoreCampi = new JPanel();
@@ -142,7 +152,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		flowLayout1.setVgap(15);
 		flowLayout1.setHgap(0);
 		flowLayout1.setAlignment(FlowLayout.CENTER);
-		contenitoreCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
+		contenitoreCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CAMPI_PROD, Costanti.HEIGHT_PANN_CAMPI_PROD));
 		pannelloCampi.add(contenitoreCampi);
 		
 		pannIdProdotto = new JPanel();
@@ -249,9 +259,11 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		
 		pannDescrizione = new JPanel();
 		FlowLayout flowLayout8 = (FlowLayout) pannDescrizione.getLayout();
+		flowLayout8.setAlignment(FlowLayout.LEADING);
+		flowLayout8.setAlignOnBaseline(true);
 		flowLayout8.setHgap(0);
 		flowLayout8.setVgap(0);
-		pannDescrizione.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, 60));
+		pannDescrizione.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_DESCRIZIONE, Costanti.HEIGHT_PANN_LABEL_DESCRIZIONE));
 		contenitoreCampi.add(pannDescrizione);
 		
 		labelDescrizione = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_DESCRIZIONE_PROD);
@@ -260,11 +272,18 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 		pannDescrizione.add(labelDescrizione);
 
 		TADescrizione = new JTextArea();
-		TADescrizione.setBorder(new LineBorder(UIManager.getColor("Button.shadow")));
-		TADescrizione.setBackground(UIManager.getColor("CheckBox.background"));
-		TADescrizione.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,60));
+		TADescrizione.setColumns(33);
+		TADescrizione.setBackground(SystemColor.control);
+		TADescrizione.setBorder(new LineBorder(new Color(160, 160, 160), 0));
+		//TADescrizione.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,60));
+		TADescrizione.setLineWrap(true);
+		TADescrizione.setWrapStyleWord(true);
 		TADescrizione.setEditable(false);
-		pannDescrizione.add(TADescrizione);
+		
+		scrollPaneTAD = new JScrollPane(TADescrizione);
+		scrollPaneTAD.setBorder(new LineBorder(Color.GRAY));
+		scrollPaneTAD.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_AREA_DESCRIZIONE, Costanti.HEIGHT_TEXT_AREA_DESCRIZIONE));
+		pannDescrizione.add(scrollPaneTAD);
 		
 		pannelloEast = new JPanel();
 		pannelloEast.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_EAST, Costanti.HEIGHT_PANN_EAST));
@@ -331,22 +350,22 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 			}
 		});
 		
-		bottoneCancellaProdotto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-					Ctrl_gestisciListino.getInstance().cancellaProdotto(prodotto);
-			}
-		});
+//		bottoneCancellaProdotto.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//					Ctrl_gestisciListino.getInstance().cancellaProdotto(prodotto);
+//			}
+//		});
 		
-		bottoneAnnullaModifica.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-					try {
-						Ctrl_gestisciListino.getInstance().annullaModifica(prodotto);
-					} catch (PersistentException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-			}
-		});
+//		bottoneAnnullaModifica.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//					try {
+//						Ctrl_gestisciListino.getInstance().annullaModifica(prodotto);
+//					} catch (PersistentException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//			}
+//		});
 		
 		bottoneModificaSconto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -364,15 +383,15 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 	
 	public void setSchedaProdotto(M_Prodotto prod) {
 
-		prodotto = prod;
+//		prodotto = prod;
 		
-		TFidProdotto.setText(""+prodotto.getIdProdotto());
-		TFNome.setText(prodotto.getNome());
-		TFCategoria.setText(prodotto.getCategoria());
-		TFPrezzo.setText(""+prodotto.getPrezzo());
-//		TFSconto.setText(""+prodotto.getSconto());
-		TFVersione.setText(""+prodotto.getVersione());
-		TADescrizione.setText(prodotto.getIdDescrizioneProdotto());
+//		TFidProdotto.setText(""+prodotto.getIdProdotto());
+//		TFNome.setText(prodotto.getNome());
+//		TFCategoria.setText(prodotto.getCategoria());
+//		TFPrezzo.setText(""+prodotto.getPrezzo());
+////		TFSconto.setText(""+prodotto.getSconto());
+//		TFVersione.setText(""+prodotto.getVersione());
+//		TADescrizione.setText(prodotto.getIdDescrizioneProdotto());
 	}
 
 
@@ -453,7 +472,7 @@ public abstract class RiepilogoProdottoFactoryView extends JPanel {
 			scnt = ((M_ScontoPercent) sconto).getPercent()*100 + "%"; 
 		}
 		else if (sconto instanceof M_ScontoQuantita){
-			scnt = "Sconto di "+((M_ScontoQuantita) sconto).getScontoFisso()+" euro per q.tu00E0 superiori a "+((M_ScontoQuantita) sconto).getQuantita();
+			scnt = "Sconto di "+((M_ScontoQuantita) sconto).getScontoFisso()+" euro per q.tà superiori a "+((M_ScontoQuantita) sconto).getQuantita();
 		}
 		
 		idSconto = sconto.getId();

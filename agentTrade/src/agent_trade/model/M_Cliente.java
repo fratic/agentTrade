@@ -210,26 +210,26 @@ public class M_Cliente implements Cloneable{
 	
 	
 //	NON VIENE USATA
-	public static M_Cliente[] caricaClientiAgenteRemoto() throws PersistentException {
-		
-		Rem_ClienteCriteria criteriaCliente;
-		try {
-			criteriaCliente = new Rem_ClienteCriteria();
-			//JOIN per recuperare solo i clienti dell'agente loggato
-			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
-			criteriaCliente.attivo.eq(1);
-			criteriaCliente.addOrder(Property.forName("cognome").asc());
-
-			return criteriaCliente.listCliente();
-		} 
-		catch (PersistentException e) {
-			e.printStackTrace();
-		}
-		finally {
-//			AgentTradePersistentManager.instance().disposePersistentManager();
-		}
-		return null;
-	}
+//	public static M_Cliente[] caricaClientiAgenteRemoto() throws PersistentException {
+//		
+//		Rem_ClienteCriteria criteriaCliente;
+//		try {
+//			criteriaCliente = new Rem_ClienteCriteria();
+//			//JOIN per recuperare solo i clienti dell'agente loggato
+//			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+//			criteriaCliente.attivo.eq(1);
+//			criteriaCliente.addOrder(Property.forName("cognome").asc());
+//
+//			return criteriaCliente.listCliente();
+//		} 
+//		catch (PersistentException e) {
+//			e.printStackTrace();
+//		}
+//		finally {
+////			AgentTradePersistentManager.instance().disposePersistentManager();
+//		}
+//		return null;
+//	}
 	
 	public static M_Cliente[] caricaClientiCognome(String c)throws PersistentException{
 		
@@ -299,29 +299,29 @@ public class M_Cliente implements Cloneable{
 		return null;
 	}
 	
-	
-	public static M_Cliente[] caricaClientiParametri(String cognome, String nome, String cf)throws PersistentException{
-		
-		try{
-			ClienteCriteria criteriaCliente= new ClienteCriteria();
-			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
-			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
-			criteriaCliente.nome.like("%"+nome+"%");
-			criteriaCliente.cognome.like("%"+cognome+"%");
-			criteriaCliente.codice_fiscale.like("%"+cf+"%");
-			criteriaCliente.attivo.eq(1);
-			return criteriaCliente.listCliente();
-
-		}
-		catch (PersistentException e) {
-			e.printStackTrace();
-		}
-		finally {
-//			AgentTradePersistentManager.instance().disposePersistentManager();
-		}
-		return null;
-	}
-	
+//	NON USATA
+//	public static M_Cliente[] caricaClientiParametri(String cognome, String nome, String cf)throws PersistentException{
+//		
+//		try{
+//			ClienteCriteria criteriaCliente= new ClienteCriteria();
+//			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+//			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
+//			criteriaCliente.nome.like("%"+nome+"%");
+//			criteriaCliente.cognome.like("%"+cognome+"%");
+//			criteriaCliente.codice_fiscale.like("%"+cf+"%");
+//			criteriaCliente.attivo.eq(1);
+//			return criteriaCliente.listCliente();
+//
+//		}
+//		catch (PersistentException e) {
+//			e.printStackTrace();
+//		}
+//		finally {
+////			AgentTradePersistentManager.instance().disposePersistentManager();
+//		}
+//		return null;
+//	}
+//	
 	public static void salvaCliente(M_Cliente c)throws PersistentException{
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try 

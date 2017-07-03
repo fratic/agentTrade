@@ -27,7 +27,7 @@ public class M_ScontoPercent extends agent_trade.model.M_Sconto {
 		
 		Rem_ScontoPercentCriteria criteria= new Rem_ScontoPercentCriteria();
 		criteria.percent.eq(0);
-		return criteria.uniqueSContoPercent();
+		return criteria.uniqueScontoPercent();
 	}
 	
 	public void setPercent(float value) {

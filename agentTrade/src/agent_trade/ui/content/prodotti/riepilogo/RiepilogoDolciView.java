@@ -23,6 +23,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class RiepilogoDolciView extends RiepilogoProdottoFactoryView {
 
+	private M_Dolci dolce;
 	
 	private JPanel pannArtigianale;
 	private JPanel pannFreeGluten;
@@ -104,18 +105,35 @@ public class RiepilogoDolciView extends RiepilogoProdottoFactoryView {
 		labelErrore.setPreferredSize(new Dimension(426,15));
 		pannErrore.add(labelErrore);
 		
+		bottoneCancellaProdotto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Ctrl_gestisciListino.getInstance().cancellaProdotto(dolce);
+			}
+		});
+	
+		bottoneAnnullaModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Ctrl_gestisciListino.getInstance().annullaModifica(dolce);
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
 		bottoneSalvaModifiche.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					M_Dolci dolce = new M_Dolci();
-					dolce.setIdProdotto(prodotto.getIdProdotto());
+//					M_Dolci dolce = new M_Dolci();
+//					dolce.setIdProdotto(dolce.getIdProdotto());
 					dolce.setNome(TFNome.getText());
 					dolce.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					dolce.setCategoria(TFCategoria.getText());
 					dolce.setIdDescrizioneProdotto(TADescrizione.getText());
 					dolce.setSconto(idSconto);
-					dolce.setIdAzienda(prodotto.getIdAzienda());
-					dolce.setVersione(prodotto.getVersione());
+//					dolce.setIdAzienda(prodotto.getIdAzienda());
+//					dolce.setVersione(prodotto.getVersione());
 					dolce.setArtigianale(JRArtiTrue.isSelected());
 					dolce.setFree_gluten(JRFreeTrue.isSelected());
 					
@@ -137,9 +155,21 @@ public class RiepilogoDolciView extends RiepilogoProdottoFactoryView {
 	}
 
 	
+//	public static void cancRiepilogoProdotto(){
+//		instance = null;
+//	}
+	
+	
 	public void setSchedaProdotto(M_Prodotto prod){
-		super.setSchedaProdotto(prod);
-		M_Dolci dolce = (M_Dolci)prod;
+//		super.setSchedaProdotto(prod);
+		
+		dolce = (M_Dolci)prod;
+		TFidProdotto.setText(""+dolce.getIdProdotto());
+		TFNome.setText(dolce.getNome());
+		TFCategoria.setText(dolce.getCategoria());
+		TFPrezzo.setText(""+dolce.getPrezzo());
+//		TFSconto.setText(""+prodotto.getSconto());
+		TFVersione.setText(""+dolce.getVersione());
 		JRArtiTrue.setSelected(dolce.getArtigianale());
 		JRArtiFalse.setSelected(!dolce.getArtigianale());
 		JRFreeTrue.setSelected(dolce.getFree_gluten());

@@ -1,10 +1,12 @@
 package agent_trade.ui.content.prodotti.nuovo;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,8 +25,6 @@ import org.orm.PersistentException;
 
 import agent_trade.controller.Ctrl_gestisciListino;
 import agent_trade.model.M_Azienda;
-import agent_trade.model.M_Prodotto;
-import agent_trade.model.M_Vini;
 import agent_trade.util.Costanti;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -48,6 +48,7 @@ public class NuovoProdottoFactoryView extends JPanel{
 	protected JPanel pannSconto;
 	protected JPanel pannVersione;
 	protected JPanel pannDescrizione;
+	protected JScrollPane scrollPaneTAD;
 	protected JPanel pannelloEast;
 	protected JPanel pannelloBottoni;
 	protected JPanel pannErrore;
@@ -71,6 +72,8 @@ public class NuovoProdottoFactoryView extends JPanel{
 	
 	protected JButton bottoneSalvaProdotto;
 	protected JButton bottoneAnnullaNuovo;
+
+	
 	/*attributi privati*/
 	
 	
@@ -123,11 +126,13 @@ public class NuovoProdottoFactoryView extends JPanel{
 		
 		pannelloCampi = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pannelloCampi.getLayout();
+		flowLayout.setVgap(0);
 		flowLayout.setAlignment(FlowLayout.CENTER);
-		pannelloCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CAMPI_PROD, Costanti.HEIGHT_PANN_CAMPI_PROD));
+		//pannelloCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CAMPI_PROD, Costanti.HEIGHT_PANN_CAMPI_PROD));
 		
 		scrollPane = new JScrollPane(pannelloCampi);
 		scrollPane.setBorder(null);
+		scrollPane.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
 		pannelloCentro.add(scrollPane);
 		
 		contenitoreCampi = new JPanel();
@@ -135,7 +140,7 @@ public class NuovoProdottoFactoryView extends JPanel{
 		flowLayout1.setVgap(15);
 		flowLayout1.setHgap(0);
 		flowLayout1.setAlignment(FlowLayout.CENTER);
-		contenitoreCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
+		contenitoreCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CAMPI_PROD, Costanti.HEIGHT_PANN_CAMPI_PROD));
 		pannelloCampi.add(contenitoreCampi);
 		
 //		pannIdProdotto = new JPanel();
@@ -207,23 +212,23 @@ public class NuovoProdottoFactoryView extends JPanel{
 		TFPrezzo.setToolTipText(Costanti.TIP_PREZZO_PRODOTTO);
 		pannPrezzo.add(TFPrezzo);
 		
-		pannSconto = new JPanel();
-		FlowLayout flowLayout6 = (FlowLayout) pannSconto.getLayout();
-		flowLayout6.setHgap(0);
-		flowLayout6.setVgap(0);
-		pannSconto.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
-		contenitoreCampi.add(pannSconto);
-		
-		labelSconto = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_SCONTO_PROD);
-		labelSconto.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
-		labelSconto.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
-		pannSconto.add(labelSconto);
-
-		TFSconto = new JTextField();
-		TFSconto.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		//TFSconto.setToolTipText(Costanti.TIP_SCONTO_PRODOTTO);
-		TFSconto.setEditable(false);
-		pannSconto.add(TFSconto);
+//		pannSconto = new JPanel();
+//		FlowLayout flowLayout6 = (FlowLayout) pannSconto.getLayout();
+//		flowLayout6.setHgap(0);
+//		flowLayout6.setVgap(0);
+//		pannSconto.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
+//		contenitoreCampi.add(pannSconto);
+//		
+//		labelSconto = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_SCONTO_PROD);
+//		labelSconto.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
+//		labelSconto.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
+//		pannSconto.add(labelSconto);
+//
+//		TFSconto = new JTextField();
+//		TFSconto.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+//		//TFSconto.setToolTipText(Costanti.TIP_SCONTO_PRODOTTO);
+//		TFSconto.setEditable(false);
+//		pannSconto.add(TFSconto);
 		
 //		pannVersione = new JPanel();
 //		FlowLayout flowLayout7 = (FlowLayout) pannVersione.getLayout();
@@ -247,7 +252,7 @@ public class NuovoProdottoFactoryView extends JPanel{
 		FlowLayout flowLayout8 = (FlowLayout) pannDescrizione.getLayout();
 		flowLayout8.setHgap(0);
 		flowLayout8.setVgap(0);
-		pannDescrizione.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, 60));
+		pannDescrizione.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL_DESCRIZIONE, Costanti.HEIGHT_PANN_LABEL_DESCRIZIONE));
 		contenitoreCampi.add(pannDescrizione);
 		
 		labelDescrizione = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_DESCRIZIONE_PROD);
@@ -256,11 +261,17 @@ public class NuovoProdottoFactoryView extends JPanel{
 		pannDescrizione.add(labelDescrizione);
 
 		TADescrizione = new JTextArea();
-		TADescrizione.setBorder(new LineBorder(UIManager.getColor("Button.shadow")));
-		TADescrizione.setBackground(UIManager.getColor("CheckBox.background"));
-		TADescrizione.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,60));
-		TADescrizione.setToolTipText(Costanti.TIP_DESCRIZIONE_PRODOTTO);
-		pannDescrizione.add(TADescrizione);
+		TADescrizione.setColumns(33);
+		TADescrizione.setBackground(SystemColor.control);
+		TADescrizione.setBorder(new LineBorder(new Color(160, 160, 160), 0));
+		//TADescrizione.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,60));
+		TADescrizione.setLineWrap(true);
+		TADescrizione.setWrapStyleWord(true);
+		
+		scrollPaneTAD = new JScrollPane(TADescrizione);
+		scrollPaneTAD.setBorder(new LineBorder(Color.GRAY));
+		scrollPaneTAD.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_AREA_DESCRIZIONE, Costanti.HEIGHT_TEXT_AREA_DESCRIZIONE));
+		pannDescrizione.add(scrollPaneTAD);
 		
 		pannelloEast = new JPanel();
 		pannelloEast.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_EAST, Costanti.HEIGHT_PANN_EAST));

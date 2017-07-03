@@ -21,8 +21,8 @@ public final class Costanti {
 	public static String  version = "agente";
 //	public final static String  version = "mandante";
 
-	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
-//	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
+//	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
+	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
 
 	public final static String  agente = "agente";
 	public final static String  mandante = "mandante";
@@ -42,8 +42,8 @@ public final class Costanti {
 //	public final static int  Look_Feel = 6;
 
 	
-	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
-//	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
+//	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
+	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
 
 
 	
@@ -370,7 +370,11 @@ public final class Costanti {
 	 * Dimensioni contenitori, label e TF nelle view nuovo/riepilogo prodotto
 	 */
 	public final static int WIDTH_PANN_CAMPI_PROD = 485;
-	public final static int HEIGHT_PANN_CAMPI_PROD = 430;
+	public final static int HEIGHT_PANN_CAMPI_PROD = 427;
+	public final static int WIDTH_PANN_LABEL_DESCRIZIONE = 421;
+	public final static int HEIGHT_PANN_LABEL_DESCRIZIONE = 60;
+	public final static int WIDTH_TEXT_AREA_DESCRIZIONE = 261;
+	public final static int HEIGHT_TEXT_AREA_DESCRIZIONE = 60;
 	
 	
 	/**

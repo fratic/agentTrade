@@ -23,6 +23,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class RiepilogoCarniView extends RiepilogoProdottoFactoryView{
 
+	private M_Carni carne;
 	
 	private JPanel pannProvenienza;
 	private JPanel pannTaglio;
@@ -107,19 +108,36 @@ public class RiepilogoCarniView extends RiepilogoProdottoFactoryView{
 		labelErrore.setPreferredSize(new Dimension(426,15));
 		pannErrore.add(labelErrore);
 		
+		bottoneCancellaProdotto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Ctrl_gestisciListino.getInstance().cancellaProdotto(carne);
+			}
+		});
+	
+		bottoneAnnullaModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Ctrl_gestisciListino.getInstance().annullaModifica(carne);
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
 		bottoneSalvaModifiche.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					M_Carni carne = new M_Carni();
+//					M_Carni carne = new M_Carni();
 					
-					carne.setIdProdotto(prodotto.getIdProdotto());
+//					carne.setIdProdotto(carne.getIdProdotto());
 					carne.setNome(TFNome.getText());
 					carne.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					carne.setCategoria(TFCategoria.getText());
 					carne.setIdDescrizioneProdotto(TADescrizione.getText());
 					carne.setSconto(idSconto);
-					carne.setIdAzienda(prodotto.getIdAzienda());
-					carne.setVersione(prodotto.getVersione());
+//					carne.setIdAzienda(prodotto.getIdAzienda());
+//					carne.setVersione(prodotto.getVersione());
 					carne.setProvenienza(TFProvenienza.getText());
 					carne.setTaglio(JCTaglio.getSelectedItem().toString());
 					carne.setTipo(JCTipo.getSelectedItem().toString());
@@ -139,11 +157,21 @@ public class RiepilogoCarniView extends RiepilogoProdottoFactoryView{
 		return  (RiepilogoCarniView) instance;
 	}
 	
+//	public static void cancRiepilogoProdotto(){
+//		instance = null;
+//	}
 	
 	public void setSchedaProdotto(M_Prodotto prod){
-		super.setSchedaProdotto(prod);
+//		super.setSchedaProdotto(prod);
 		
-		M_Carni carne = (M_Carni) prod;
+		carne = (M_Carni) prod;
+		TFidProdotto.setText(""+carne.getIdProdotto());
+		TFNome.setText(carne.getNome());
+		TFCategoria.setText(carne.getCategoria());
+		TFPrezzo.setText(""+carne.getPrezzo());
+//		TFSconto.setText(""+prodotto.getSconto());
+		TFVersione.setText(""+carne.getVersione());
+		TADescrizione.setText(carne.getIdDescrizioneProdotto());
 		TFProvenienza.setText(carne.getProvenienza());
 		JCTaglio.setSelectedItem(carne.getTaglio());
 		JCTipo.setSelectedItem(carne.getTipo());

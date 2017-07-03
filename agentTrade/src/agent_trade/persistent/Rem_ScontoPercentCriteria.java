@@ -40,11 +40,11 @@ public class Rem_ScontoPercentCriteria extends AbstractORMCriteria {
 		this(AgentTradeMandantePersistentManager.instance().getSession());
 	}
 	
-	public M_ScontoPercent uniqueSContoPercent() {
+	public M_ScontoPercent uniqueScontoPercent() {
 		return (M_ScontoPercent) super.uniqueResult();
 	}
 	
-	public M_ScontoPercent[] listSContoPercent() {
+	public M_ScontoPercent[] listScontoPercent() {
 		java.util.List list = super.list();
 		return (M_ScontoPercent[]) list.toArray(new M_ScontoPercent[list.size()]);
 	}

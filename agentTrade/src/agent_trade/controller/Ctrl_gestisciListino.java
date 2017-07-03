@@ -90,7 +90,10 @@ public class Ctrl_gestisciListino {
 
 	public void btnAggiungiProdotto(){
 		
+		AlberoListini.disabilitaAlbero();
+		
 		PrimaryMandanteView.cancRiepilogoListinoView();
+		PrimaryMandanteView.cancRiepilogoProdottoView();
 		PrimaryMandanteView.initNuovoProdottoView(azienda);
 		PrimaryMandanteView.getInstance().setEnableTabAgente(false);
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(false);
@@ -174,7 +177,7 @@ public class Ctrl_gestisciListino {
 		}
 				
 		PrimaryMandanteView.cancRiepilogoListinoView();
-//		PrimaryMandanteView.cancRiepilogoProdottoView();
+		PrimaryMandanteView.cancRiepilogoProdottoView();
 		PrimaryMandanteView.initRiepilogoProdottoView(prod);
 		
 		if(listino=="presente"){
@@ -186,7 +189,6 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().disattivaAnnullaModificheProdotto(false);
 		PrimaryMandanteView.getInstance().disattivaModificaScontoProdotto(false);
 		
-		//NON VA BENE CAMBIARE IL CAMPO SCONTO DI PRODOTTO DA FLOAT A INT
 		int idSconto = (int) prod.getSconto();
 		System.out.println(idSconto);
 				
@@ -199,7 +201,10 @@ public class Ctrl_gestisciListino {
 	
 	public void mostraCatalogo() throws PersistentException{
 		
+		AlberoListini.abilitaAlbero();
+		
 		PrimaryMandanteView.cancRiepilogoProdottoView();
+		PrimaryMandanteView.cancNuovoProdottoView();
 		PrimaryMandanteView.initRiepilogoListinoView();
 		
 		PrimaryMandanteView.getInstance().setEnableTabAgente(true);
@@ -215,8 +220,10 @@ public class Ctrl_gestisciListino {
 	
 	public void salvaProdotto(M_Prodotto prod) throws PersistentException {
 		
+		AlberoListini.abilitaAlbero();
+		
 		M_ScontoPercent scontoBase = M_ScontoPercent.caricaScontoBase();
-		System.out.println("ID SCONTO: " + scontoBase.getId() + "Percent: "+ scontoBase.getPercent());
+//		System.out.println("ID SCONTO: " + scontoBase.getId() + "Percent: "+ scontoBase.getPercent());
 		prod.setSconto(scontoBase.getId());
 		
 		M_Prodotto.salvaProdottoRemoto(prod);
@@ -240,6 +247,10 @@ public class Ctrl_gestisciListino {
 	
 	
 	public void abilitaModifica(){
+		
+		AlberoListini.disabilitaAlbero();
+		
+		PrimaryMandanteView.getInstance().setAbilitaAggiungi(false);
 		
 		PrimaryMandanteView.getInstance().setModificheProdotto(true);
 		PrimaryMandanteView.getInstance().disattivaModificaProd(false);
@@ -265,6 +276,8 @@ public class Ctrl_gestisciListino {
 		
 		mostraProdotto(prod.getIdProdotto());
 		
+		AlberoListini.abilitaAlbero();
+		
 		PrimaryMandanteView.getInstance().setModificheProdotto(false);
 		PrimaryMandanteView.getInstance().disattivaModificaProd(true);
 		PrimaryMandanteView.getInstance().disattivaCancellaProd(true);
@@ -279,6 +292,16 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
+		
+		if (azienda.getUrl()== null || azienda.getUrl()== "" ){
+			listino = "assente";
+			abilitaAggiungi = true;
+		}
+		else{
+			listino = "presente";
+			abilitaAggiungi = false;
+		}
+		PrimaryMandanteView.getInstance().setAbilitaAggiungi(abilitaAggiungi);
 	}
 	
 	
@@ -313,7 +336,17 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
+		AlberoListini.abilitaAlbero();
 		
+		if (azienda.getUrl()== null || azienda.getUrl()== "" ){
+			listino = "assente";
+			abilitaAggiungi = true;
+		}
+		else{
+			listino = "presente";
+			abilitaAggiungi = false;
+		}
+		PrimaryMandanteView.getInstance().setAbilitaAggiungi(abilitaAggiungi);		
 	}
 	
 	

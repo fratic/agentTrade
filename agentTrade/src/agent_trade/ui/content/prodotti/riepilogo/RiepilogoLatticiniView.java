@@ -22,6 +22,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class RiepilogoLatticiniView extends RiepilogoProdottoFactoryView {
 
+	private M_Latticini latticino;
 	
 	private JPanel pannStagionatura;
 	private JPanel pannTipo;
@@ -83,18 +84,35 @@ public class RiepilogoLatticiniView extends RiepilogoProdottoFactoryView {
 		labelErrore.setPreferredSize(new Dimension(426,15));
 		pannErrore.add(labelErrore);
 		
+		bottoneCancellaProdotto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Ctrl_gestisciListino.getInstance().cancellaProdotto(latticino);
+			}
+		});
+	
+		bottoneAnnullaModifica.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Ctrl_gestisciListino.getInstance().annullaModifica(latticino);
+				} catch (PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
 		bottoneSalvaModifiche.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					M_Latticini latticino = new M_Latticini();
-					latticino.setIdProdotto(prodotto.getIdProdotto());
+//					M_Latticini latticino = new M_Latticini();
+//					latticino.setIdProdotto(prodotto.getIdProdotto());
 					latticino.setNome(TFNome.getText());
 					latticino.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					latticino.setCategoria(TFCategoria.getText());
 					latticino.setIdDescrizioneProdotto(TADescrizione.getText());
 					latticino.setSconto(idSconto);
-					latticino.setIdAzienda(prodotto.getIdAzienda());
-					latticino.setVersione(prodotto.getVersione());
+//					latticino.setIdAzienda(prodotto.getIdAzienda());
+//					latticino.setVersione(prodotto.getVersione());
 					latticino.setStagionatura(Integer.parseInt(TFStagionatura.getText()));
 					latticino.setTipo(TFTipo.getText());
 					Ctrl_gestisciListino.getInstance().modificaProdotto(latticino);
@@ -114,9 +132,22 @@ public class RiepilogoLatticiniView extends RiepilogoProdottoFactoryView {
 	}
 	
 	
+//	public static void cancRiepilogoProdotto(){
+//		instance = null;
+//	}
+	
+	
 	public void setSchedaProdotto(M_Prodotto prod){
-		super.setSchedaProdotto(prod);
-		M_Latticini latticino = (M_Latticini)prod;
+//		super.setSchedaProdotto(prod);
+		
+		latticino = (M_Latticini)prod;
+		
+		TFidProdotto.setText(""+latticino.getIdProdotto());
+		TFNome.setText(latticino.getNome());
+		TFCategoria.setText(latticino.getCategoria());
+		TFPrezzo.setText(""+latticino.getPrezzo());
+//		TFSconto.setText(""+prodotto.getSconto());
+		TFVersione.setText(""+latticino.getVersione());
 		TFStagionatura.setText(""+latticino.getStagionatura());
 		TFTipo.setText(latticino.getTipo());
 	}
