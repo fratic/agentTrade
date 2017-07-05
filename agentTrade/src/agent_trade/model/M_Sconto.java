@@ -158,25 +158,6 @@ public class M_Sconto implements Cloneable{
 	}
 	
 	
-	public static M_Sconto[] caricaScontoRemotoParametri(String id) throws PersistentException{
-		
-		Rem_ScontoCriteria criteriaSconto;
-		try {
-			criteriaSconto = new Rem_ScontoCriteria();
-			
-			int idSconto = Integer.parseInt(id);
-			
-			criteriaSconto.id.eq(idSconto);
-			criteriaSconto.addOrder(Property.forName("id").asc());
-
-			return criteriaSconto.listSconto();
-		} catch (PersistentException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
-	
 	public static int getMaxIdRemoto() throws PersistentException{
 		try{
 			Rem_ScontoCriteria criteriaSconto = new Rem_ScontoCriteria();

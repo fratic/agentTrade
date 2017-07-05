@@ -329,7 +329,7 @@ public class RiepilogoClienteView extends JPanel {
 	/*attributi di classe*/
 	
 	private static RiepilogoClienteView instance;
-	private static M_Cliente cliente;
+	public static M_Cliente cliente;
 	
 	/*attributi privati*/
 	
@@ -982,12 +982,12 @@ public class RiepilogoClienteView extends JPanel {
 			
 			TFsconto.setText(scnt);	
 			
-			if(Costanti.version.equals(Costanti.mandante)){
-				
-				cliente.setSconto(sconto.getId());
-				
-				Ctrl_gestisciClienteFactory.getInstance().modificaCliente(cliente);
-			}
+//			if(Costanti.version.equals(Costanti.mandante)){
+//				
+//				cliente.setSconto(sconto.getId());
+//				
+////				Ctrl_gestisciClienteFactory.getInstance().modificaCliente(cliente);
+//			}
 		}		
 		
 		public void setVisibleBtnModSconto(boolean b) {
@@ -1002,11 +1002,12 @@ public class RiepilogoClienteView extends JPanel {
 
 		public void setAgenteRif(M_Agente agenteRif) throws PersistentException{
 			
-			cliente.setAgenteAssociato(agenteRif);
+//			cliente.setAgenteAssociato(agenteRif);
 			
-			TFrifAgente.setText(cliente.getAgenteAssociato().getCognome()+" "+cliente.getAgenteAssociato().getNome());
-			
-			Ctrl_gestisciClienteFactory.getInstance().modificaCliente(cliente);
+//			TFrifAgente.setText(cliente.getAgenteAssociato().getCognome()+" "+cliente.getAgenteAssociato().getNome());
+			TFrifAgente.setText(agenteRif.getCognome()+" "+agenteRif.getNome());
+
+//			Ctrl_gestisciClienteFactory.getInstance().modificaCliente(cliente);
 		}
 }
 		

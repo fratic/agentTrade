@@ -26,8 +26,7 @@ public class M_Carni extends M_Prodotto {
 
 	private String provenienza;
 	private String taglio;
-	private String tipo;
-	private float peso;
+	private String tipo;//tipoAnimale
 	
 	/*
 	 * costruttori
@@ -90,12 +89,4 @@ public class M_Carni extends M_Prodotto {
 		return super.toString();
 	}
 	
-	public float getPeso() {
-		return peso;
-	}
-
-
-	public void setPeso(float peso) {
-		this.peso = peso;
-	}
 }

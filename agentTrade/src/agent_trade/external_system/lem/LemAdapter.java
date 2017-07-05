@@ -73,9 +73,8 @@ public class LemAdapter extends AziendaCarniAdapter {
 			carne.setProvenienza(elencoCarni[i].getProvenienza());
 			carne.setTaglio(elencoCarni[i].getTaglio());
 			carne.setTipo(elencoCarni[i].getAnimale());
-			carne.setPeso(elencoCarni[i].getPeso());
+//			carne.setPeso(elencoCarni[i].getPeso());
 			carne.setIdAzienda(idAzienda);
-
 			
 			carni.add(carne);
 

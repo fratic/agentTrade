@@ -40,7 +40,7 @@ public class Ctrl_gestisciClienteFactory {
 		
 	}
 
-	public void assegnaAgente(int idAgente) throws PersistentException {
+	public void assegnaAgente(M_Cliente cliente, int idAgente) throws PersistentException {
 		// TODO Auto-generated method stub
 		
 	}

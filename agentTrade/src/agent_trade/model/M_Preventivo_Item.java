@@ -158,36 +158,8 @@ public class M_Preventivo_Item extends Observable{
 		float parziale=(this.getIdProdotto().getPrezzo()*this.getQuantita());
 		parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2));
 		return parziale;
-		
-//		MODIFICA DA FARE PER IL TEST SCONTO
-//		float parziale=(this.getIdProdotto().getPrezzo()*this.getQuantita())/**(1-this.getIdProdotto().getSconto());
-//		parziale= (float) (Math.ceil(parziale * Math.pow(10, 2)) / Math.pow(10, 2))*/;
-//		return parziale;
 	}
 	
-	public float calcolaParzialeScontato() {
-		
-		//per il momento si suppone che .getSconto ci da la percentuale espresso in 0,x
-		//quando decideremo basterà cambiare questa funzione. 
-		
-		float parziale_scontato=this.calcolaParziale()*(1-this.getIdProdotto().getSconto());
-		parziale_scontato= (float) (Math.ceil(parziale_scontato * Math.pow(10, 2)) / Math.pow(10, 2));
-		return parziale_scontato;
-		
-	}
-	
-	
-	public float calcolaScontoxQuantita(){
-		
-		//per il momento si suppone che .getSconto ci da la percentuale espresso in 0,x
-		//quando decideremo basterà cambiare questa funzione. 
-		
-		float scontoXQuantita=this.calcolaParziale()*this.getIdProdotto().getSconto();
-		scontoXQuantita= (float) (Math.ceil(scontoXQuantita * Math.pow(10, 2)) / Math.pow(10, 2));
-		return scontoXQuantita;
-		
-	}
-
 	public void setStrategiaCliente(IScontoStrategy strategiaProdotto2) {
 		// TODO Auto-generated method stub
 		

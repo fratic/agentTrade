@@ -26,6 +26,7 @@ License Type: Academic
 		<property name="attivo" column="Attivo" type="integer" length="11" not-null="false" lazy="false"/>
 		<property name="sconto" column="sconto" type="integer" length="11" not-null="false" lazy="false"/>
 		<property name="versione" column="versione" type="integer" length="11" not-null="false" lazy="false"/>
+		<property name="versione_download" column="versione_download" type="integer" length="11" not-null="false" lazy="false"/>
 		<property name="idclienteagente" column="idclienteagente" type="integer" length="11" not-null="false" lazy="false"/>
 		
 	</class>

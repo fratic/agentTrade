@@ -103,7 +103,6 @@ public class SystemDaemon {
 	 **/
 	public void sincronizzaListino() throws PersistentException{
 		
-		
 		M_Prodotto[] remoti = M_Prodotto.caricaProdottiRemoto();
 		
 		for (int i = 0; i < remoti.length; i++) {
@@ -180,7 +179,6 @@ public class SystemDaemon {
 		for (int i = 0; i < sconti_remoti.length; i++) 
 		{
 			
-			
 			M_Sconto sconto_locale = M_Sconto.caricaSconto(sconti_remoti[i].getId());
 			if(sconto_locale!=null){
 				
@@ -211,7 +209,7 @@ public class SystemDaemon {
 	 * suo db locale verso il db remoto
 	 * @throws CloneNotSupportedException 
 	 **/
-	public void sincronizzaClienti() throws PersistentException, CloneNotSupportedException{
+	public void sincronizzaClientiUpload() throws PersistentException, CloneNotSupportedException{
 		
 		M_Cliente[] clienti_locali = M_Cliente.caricaTuttiClientiAgente();
 		
@@ -221,14 +219,17 @@ public class SystemDaemon {
 			M_Cliente cliente_remoto = M_Cliente.cercaClienteRemoto(clienti_locali[i].getIdCliente());
 			if(cliente_remoto!=null){
 				
-				if(clienti_locali[i].getVersione()>cliente_remoto.getVersione() && clienti_locali[i].getVersione()!=0 )
+				if(clienti_locali[i].getVersione()>cliente_remoto.getVersione() /*&& clienti_locali[i].getVersione()!=0 */)
 				{
-					
+					System.out.println("Sono in SINC CLIENTI UPLOAD: AGGIORNAMENTO CLIENTE:"+clienti_locali[i]);
+
 					AgentTradeMandantePersistentManager.instance().disposePersistentManager();
 					
 					int id=cliente_remoto.getIdCliente();
 					cliente_remoto=clienti_locali[i].clone();
+					/**Questa operazione viene fatta per gli id del remoto e del locale differiscono*/
 					cliente_remoto.setIdCliente(id);
+					cliente_remoto.setIdclienteagente(clienti_locali[i].getIdCliente());
 					System.out.println("aggiornamento del cliente: "+cliente_remoto.getCognome());
 					M_Cliente.updateClienteRemoto(cliente_remoto);
 					System.out.println("ID "+clienti_locali[i].getIdCliente());
@@ -243,9 +244,71 @@ public class SystemDaemon {
 				c.setIdCliente(0);
 				M_Cliente.salvaClienteRemoto(c);
 				System.out.println("ID nuovo insert "+clienti_locali[i].getIdCliente());
-
-			}
 				
 			}
+				
 		}
+	}
+	
+	public void sincronizzaClientiDownload() throws PersistentException{
+		
+		M_Cliente[] clienti_remoti = M_Cliente.caricaClientiAgenteRemoto();
+		
+		for (int i = 0; i < clienti_remoti.length; i++) 
+		{
+			
+			M_Cliente cliente_locale = M_Cliente.cercaCliente(clienti_remoti[i].getIdclienteagente());
+			if(cliente_locale!=null){
+				
+				if(clienti_remoti[i].getVersione_download()>cliente_locale.getVersione_download())
+				{
+					System.out.println("Sono in SINC CLIENTI DOWNLOAD: AGGIORNAMENTO CLIENTE:"+cliente_locale);
+					AgentTradePersistentManager.instance().disposePersistentManager();
+					
+					cliente_locale.setAttivo(clienti_remoti[i].getAttivo());
+					//cliente_locale.setAgenteAssociato(clienti_remoti[i].getAgenteAssociato());
+					cliente_locale.setSconto(clienti_remoti[i].getSconto());
+
+					M_Cliente.aggiornaCliente(cliente_locale);
+					
+				}
+			}
+			else
+			{
+
+				//fatto per recuperare l'id nel db locale per poi aggiornarlo nel remoto
+				M_Cliente c= new M_Cliente();
+				c=clienti_remoti[i].clone();
+				M_Cliente.salvaCliente(c);
+				System.out.println("Sono in SINC CLIENTI DOWNLOAD: NUOVO CLIENTE:"+c);
+
+//				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    l'IDagentecliente è: "+ c.getIdCliente());
+//				M_Cliente.aggiornaCliente(c);
+				clienti_remoti[i].setIdclienteagente(c.getIdCliente());
+				//M_Cliente.salvaCliente(clienti_remoti[i]);
+//				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    l'IDagentecliente è: "+ clienti_remoti[i].getIdclienteagente());
+				M_Cliente.updateClienteRemoto(clienti_remoti[i]);
+				System.out.println("Sono in SINC CLIENTI DOWNLOAD: AGGIORNAMENTO REMOTO CLIENTE:"+clienti_remoti[i]);
+
+			}
+			
+		}
+	}
+	
+	
+	public void sincronizzaClienti() throws PersistentException, CloneNotSupportedException{
+		sincronizzaClientiDownload();
+		sincronizzaClientiUpload();
+	}
+	
+	
+	public void sincronizza() throws PersistentException, CloneNotSupportedException{
+		
+		sincronizzaSconti();
+		sincronizzaAziende();
+		sincronizzaListino();
+		sincronizzaClienti();
+
+	}
+	
 }

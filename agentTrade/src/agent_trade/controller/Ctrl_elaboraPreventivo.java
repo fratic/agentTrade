@@ -8,7 +8,6 @@ import java.util.Observable;
 import java.util.TreeMap;
 
 import javax.swing.JButton;
-import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.orm.PersistentException;
 
@@ -17,9 +16,6 @@ import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Preventivo_Item;
 import agent_trade.model.M_Prodotto;
-import agent_trade.sconti.ClienteScontoStrategy;
-import agent_trade.sconti.IScontoStrategy;
-import agent_trade.sconti.ScontoStrategyFactory;
 import agent_trade.ui.content.clienti.CercaClienteView;
 import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.preventivi.ItemNuovoPreventivoView;

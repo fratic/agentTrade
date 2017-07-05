@@ -96,7 +96,10 @@ public class Ctrl_System {
 		//probabilmente queste cose non vanno fatte qui, oppure bisogna chiedere ad una factory
 
 		/*******AGGIORNA listini****/
-
+		
+		SystemDaemon.getInstance().sincronizza();
+		
+		
 		initAlberoClienti();
 
 		initProdotti();

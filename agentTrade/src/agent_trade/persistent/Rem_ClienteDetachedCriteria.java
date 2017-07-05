@@ -39,6 +39,7 @@ public class Rem_ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression sconto;
 	public final IntegerExpression versione;
 	public final IntegerExpression idclienteagente;
+	public final IntegerExpression versione_download;
 
 
 	
@@ -62,6 +63,7 @@ public class Rem_ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		sconto= new IntegerExpression("sconto", this.getDetachedCriteria());
 		versione= new IntegerExpression("versione", this.getDetachedCriteria());
 		idclienteagente= new IntegerExpression("idclienteagente", this.getDetachedCriteria());
+		versione_download= new IntegerExpression("versione_download", this.getDetachedCriteria());
 
 
 	}
@@ -86,6 +88,7 @@ public class Rem_ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		sconto= new IntegerExpression("sconto", this.getDetachedCriteria());
 		versione= new IntegerExpression("versione", this.getDetachedCriteria());
 		idclienteagente= new IntegerExpression("idclienteagente", this.getDetachedCriteria());
+		versione_download= new IntegerExpression("versione_download", this.getDetachedCriteria());
 
 	}
 	

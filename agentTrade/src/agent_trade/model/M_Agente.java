@@ -108,6 +108,15 @@ public class M_Agente {
 		return AgenteCriteria.uniqueAgente();
 	}
 	
+	
+	public static M_Agente caricaAgenteRemoto(int id) throws PersistentException{
+		Rem_AgenteCriteria AgenteCriteria = new Rem_AgenteCriteria();
+		AgenteCriteria.IdAgente.eq(id);
+		AgenteCriteria.attivo.eq(1);
+		return AgenteCriteria.uniqueM_Agente();
+	}
+	
+	
 	public static M_Agente caricaAgenteRemoto(String username) throws PersistentException{
 		Rem_AgenteCriteria AgenteCriteria = new Rem_AgenteCriteria();
 		AgenteCriteria.username.eq(username);

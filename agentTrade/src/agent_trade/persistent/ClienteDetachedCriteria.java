@@ -38,6 +38,8 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression attivo;
 	public final IntegerExpression sconto;
 	public final IntegerExpression versione;
+	public final IntegerExpression versione_download;
+
 
 	
 	public ClienteDetachedCriteria() {
@@ -59,6 +61,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		attivo= new IntegerExpression("attivo", this.getDetachedCriteria());
 		sconto= new IntegerExpression("sconto", this.getDetachedCriteria());
 		versione= new IntegerExpression("versione", this.getDetachedCriteria());
+		versione_download= new IntegerExpression("versione_download", this.getDetachedCriteria());
 
 	}
 	
@@ -81,6 +84,7 @@ public class ClienteDetachedCriteria extends AbstractORMDetachedCriteria {
 		attivo= new IntegerExpression("attivo", this.getDetachedCriteria());
 		sconto= new IntegerExpression("sconto", this.getDetachedCriteria());
 		versione= new IntegerExpression("versione", this.getDetachedCriteria());
+		versione_download= new IntegerExpression("versione_download", this.getDetachedCriteria());
 
 	}
 	

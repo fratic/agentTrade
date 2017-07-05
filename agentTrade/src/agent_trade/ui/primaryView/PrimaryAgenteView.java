@@ -399,7 +399,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 			public void actionPerformed(ActionEvent arg0) {
 				
 				try {
-					SystemDaemon.getInstance().sincronizzaClienti();
+					SystemDaemon.getInstance().sincronizzaClientiUpload();
 				} 
 				catch (PersistentException | CloneNotSupportedException e) 
 				{

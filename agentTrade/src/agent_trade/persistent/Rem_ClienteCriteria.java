@@ -42,6 +42,7 @@ public class Rem_ClienteCriteria extends AbstractORMCriteria {
 	public final IntegerExpression sconto;
 	public final IntegerExpression versione;
 	public final IntegerExpression idclienteagente;
+	public final IntegerExpression versione_download;
 
 
 	
@@ -65,6 +66,7 @@ public class Rem_ClienteCriteria extends AbstractORMCriteria {
 		sconto = new IntegerExpression("sconto", this);
 		versione = new IntegerExpression("versione", this);
 		idclienteagente = new IntegerExpression("idclienteagente", this);
+		versione_download = new IntegerExpression("versione_download", this);
 
 
 	}

@@ -58,6 +58,7 @@ public class M_Cliente implements Cloneable{
 	private int attivo;
 	private int sconto;
 	private int versione;
+	private int versione_download;
 	private int idclienteagente;
 
 
@@ -109,7 +110,7 @@ public class M_Cliente implements Cloneable{
 			//JOIN per recuperare solo i clienti dell'agente loggato
 			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
 			criteriaCliente.idCliente.eq(id_cliente);
-			criteriaCliente.attivo.eq(1);
+//			criteriaCliente.attivo.eq(1);
 			return criteriaCliente.uniqueM_Cliente();
 		}
 		finally {
@@ -209,27 +210,27 @@ public class M_Cliente implements Cloneable{
 	}
 	
 	
-//	NON VIENE USATA
-//	public static M_Cliente[] caricaClientiAgenteRemoto() throws PersistentException {
-//		
-//		Rem_ClienteCriteria criteriaCliente;
-//		try {
-//			criteriaCliente = new Rem_ClienteCriteria();
-//			//JOIN per recuperare solo i clienti dell'agente loggato
-//			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+	public static M_Cliente[] caricaClientiAgenteRemoto() throws PersistentException {
+		
+		Rem_ClienteCriteria criteriaCliente;
+		try {
+			criteriaCliente = new Rem_ClienteCriteria();
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
 //			criteriaCliente.attivo.eq(1);
-//			criteriaCliente.addOrder(Property.forName("cognome").asc());
-//
-//			return criteriaCliente.listCliente();
-//		} 
-//		catch (PersistentException e) {
-//			e.printStackTrace();
-//		}
-//		finally {
-////			AgentTradePersistentManager.instance().disposePersistentManager();
-//		}
-//		return null;
-//	}
+			criteriaCliente.addOrder(Property.forName("cognome").asc());
+
+			return criteriaCliente.listCliente();
+		} 
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		finally {
+//			AgentTradePersistentManager.instance().disposePersistentManager();
+		}
+		return null;
+	}
+	
 	
 	public static M_Cliente[] caricaClientiCognome(String c)throws PersistentException{
 		
@@ -565,6 +566,14 @@ public class M_Cliente implements Cloneable{
 
 	public void setIdclienteagente(int idclienteagente) {
 		this.idclienteagente = idclienteagente;
+	}
+	
+	public int getVersione_download() {
+		return versione_download;
+	}
+
+	public void setVersione_download(int versione_download) {
+		this.versione_download = versione_download;
 	}
 
 	public IScontoStrategy getStrategiaCliente() throws PersistentException {

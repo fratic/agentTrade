@@ -60,10 +60,6 @@ public class M_Preventivo implements Observer {
 //	private XScontoStrategy strategiaCliente;
 
 	
-//	private float totale;
-	private float parziale;
-	
-	
 	/*
 	 * costruttori
 	 */
@@ -435,21 +431,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 				
 	}
 	
-	
-	public void calcolaParziale(int idProd){ //serve per calcolare il parziale di un prodotto
-		
-		List<M_Preventivo_Item> lista = this.getItem();
-		Iterator<M_Preventivo_Item> itera = lista.iterator();
-		
-		while (itera.hasNext()){
-			M_Preventivo_Item item = (M_Preventivo_Item) itera.next();
-			if(item.getIdProdotto().getIdProdotto()== idProd){
-				this.parziale = item.calcolaParziale();
-			}
-		}
-	}
-
-	
 	public float getTotale() {
 		
 		List<M_Preventivo_Item> lista = this.getItem();
@@ -463,21 +444,10 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 		return tot;
 	}
 
-
-	public float getParziale() {
-		return parziale;
-	}
-
-	public void setParziale(float parziale) {
-		this.parziale = parziale;
-	}
-
 	public float calcolaScontoCliente() throws PersistentException {
 		
 		return this.getRif_Cliente().getStrategiaCliente().calcolaSconto(this);		
 		
 	}
 
-
-	
 }

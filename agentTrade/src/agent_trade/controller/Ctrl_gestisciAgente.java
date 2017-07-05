@@ -98,13 +98,6 @@ public class Ctrl_gestisciAgente {
 	
 	/*metodi pubblici*/
 	
-//	uasta in example (test insert agente)
-	public void nuovoAgente(String nome, String cognome, String username, String password, String citta, String cap, String indirizzo, String email, String cell, int livello) throws PersistentException
-	{
-		M_Agente agente = new M_Agente(nome, cognome, password, username, citta, indirizzo, livello, cell, email, cap);
-		M_Agente.salvaAgenteRemoto(agente); 
-		
-	}
 	
 	public void inserisciNuovoAgente(String nome, String cognome, String livello, String citta, String cap, String indirizzo, String email, String cell, String user, String psw) throws PersistentException
 	{
@@ -122,7 +115,6 @@ public class Ctrl_gestisciAgente {
 			int id = M_Agente.getMaxIdRemoto();
 			recuperaAgente(id);
 					
-//			AlberoAgenti.inserisciNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
 			AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
 			AlberoAgenti.abilitaAlbero();
 			PrimaryMandanteView.getInstance().setEnableTabAzienda(true);

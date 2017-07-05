@@ -38,6 +38,7 @@ public class ClienteCriteria extends AbstractORMCriteria {
 	public final IntegerExpression attivo;
 	public final IntegerExpression sconto;
 	public final IntegerExpression versione;
+	public final IntegerExpression versione_download;
 
 
 	
@@ -60,6 +61,7 @@ public class ClienteCriteria extends AbstractORMCriteria {
 		attivo = new IntegerExpression("attivo", this);
 		sconto = new IntegerExpression("sconto", this);
 		versione = new IntegerExpression("versione", this);
+		versione_download = new IntegerExpression("versione_download", this);
 
 
 	}

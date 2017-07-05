@@ -190,7 +190,7 @@ public class AlberoClienti_Mandante extends JPanel{
 	}
 	
 	public static void refresh () throws PersistentException{
-		
+		System.out.println("sono in refresh albero clienti");
 		//albero.clearSelection();
 		abilitalistener = false;
 
