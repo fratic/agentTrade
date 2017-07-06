@@ -10,6 +10,8 @@ import agent_trade.ui.content.aziende.AlberoAziende;
 import agent_trade.ui.content.sconti.AlberoSconti;
 import agent_trade.ui.content.sconti.riepilogo.ConfermaCancSconto;
 import agent_trade.ui.content.sconti.riepilogo.Ricerca_sconto;
+import agent_trade.ui.content.sconti.riepilogo.Ricerca_scontoCliente;
+import agent_trade.ui.content.sconti.riepilogo.Ricerca_scontoProdotto;
 import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
 
@@ -53,9 +55,6 @@ public class Ctrl_gestisciSconto {
 		PrimaryMandanteView.getInstance().setSfondoSconto();
 		
 		Ricerca_sconto.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
-		Ricerca_sconto.getInstance().setVisibleBtnVisualizza(true);
-		Ricerca_sconto.getInstance().setVisibleBtnModificaCliente(false);
-		Ricerca_sconto.getInstance().setVisibleBtnModificaProdotto(false);
 		Ricerca_sconto.getInstance().setVisible(true);
 	}
 	
@@ -127,6 +126,80 @@ public class Ctrl_gestisciSconto {
 				if(sconto instanceof M_ScontoQuantita)
 					Ricerca_sconto.getInstance().updateTable(sconto);
 			}
+		}
+	}
+	
+	
+	public void ricercaScontoProdotto(String tipoSconto) throws PersistentException {
+
+		M_Sconto[] listSconti = null;
+		
+		if (tipoSconto.equals("Tutti gli sconti prodotto")) {
+			
+			listSconti = M_Sconto.caricaScontiRemoto();			
+				
+			Ricerca_scontoProdotto.getInstance().svuotaTabella();
+				
+			for (M_Sconto sconto : listSconti) {
+					
+				if(sconto instanceof M_ScontoPercent || sconto instanceof M_ScontoQuantita)
+					Ricerca_scontoProdotto.getInstance().updateTable(sconto);
+			}
+		}
+		else if (tipoSconto.equals("Prodotto - Percentuale")) {
+			
+			listSconti = M_Sconto.caricaScontiRemoto();
+			
+			Ricerca_scontoProdotto.getInstance().svuotaTabella();
+			
+			for (M_Sconto sconto : listSconti) {
+				
+				if(sconto instanceof M_ScontoPercent)
+					Ricerca_scontoProdotto.getInstance().updateTable(sconto);
+			}
+		}
+		else if (tipoSconto.equals("Prodotto - Quantit\u00E0")) {
+			
+			listSconti = M_Sconto.caricaScontiRemoto();			
+				
+			Ricerca_scontoProdotto.getInstance().svuotaTabella();
+				
+			for (M_Sconto sconto : listSconti) {
+					
+				if(sconto instanceof M_ScontoQuantita)
+					Ricerca_scontoProdotto.getInstance().updateTable(sconto);
+			}
+		}
+	}
+	
+	
+	public void ricercaScontoCliente(String tipoSconto) throws PersistentException {
+
+		M_Sconto[] listSconti = null;
+		
+		if (tipoSconto.equals("Tutti gli sconti cliente")) {
+			
+			listSconti = M_Sconto.caricaScontiRemoto();							
+			
+			Ricerca_scontoCliente.getInstance().svuotaTabella();
+				
+			for (M_Sconto sconto : listSconti) {
+					
+				if(sconto instanceof M_ScontoCliente)
+					Ricerca_scontoCliente.getInstance().updateTable(sconto);
+				}
+		}
+		else if (tipoSconto.equals("Cliente - Percentuale")) {
+			
+			listSconti = M_Sconto.caricaScontiRemoto();
+		
+			Ricerca_scontoCliente.getInstance().svuotaTabella();
+				
+			for (M_Sconto sconto : listSconti) {
+					
+			if(sconto instanceof M_ScontoCliente)
+				Ricerca_scontoCliente.getInstance().updateTable(sconto);
+				}
 		}
 	}
 	

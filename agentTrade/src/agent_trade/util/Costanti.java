@@ -109,6 +109,7 @@ public final class Costanti {
 	public final static String MESSAGGIO_CLOSE_APP= "Chiudere l'applicazione?";
 	public final static String MESSAGGIO_COPYRIGHT= "Copyright \u00A9 2017 Agent Trade";
 	public final static String MESSAGGIO_CAMPI_VUOTI = "Inserisci tutti i campi";
+	public final static String MESSAGGIO_CAMPI_VUOTI_CLIENTE = "I campi con * sono obbligatori";
 	public final static String MESSAGGIO_CAMPI_ERRATI = "I seguenti campi sono errati: ";
 	public final static String MESSAGGIO_CLIENTE_NON_TROVATO = "Cliente non trovato";
 	public final static String MESSAGGIO_CANCELLA_CLIENTE = "Sei sicuro di voler cancellare il cliente corrente?";
@@ -257,8 +258,8 @@ public final class Costanti {
 	
 	public final static int WIDTH_PRIMARY = 1024;
 	public final static int HEIGHT_PRIMARY = 784;
-	public final static int MIN_WIDTH_PRIMARY = 784;
-	public final static int MIN_HEIGHT_PRIMARY = 512;
+	public final static int MIN_WIDTH_PRIMARY = 900;
+	public final static int MIN_HEIGHT_PRIMARY = 530;
 
 	/**
 	 * Dimensioni contenitori, label e TF nelle view dettaglio/riepilogo cliente/agente/azienda
@@ -419,7 +420,7 @@ public final class Costanti {
 	public final static String LABEL_CERCA_CLIENTE = "Cerca Cliente";
 	
 	public final static String LABEL_ID = "Codice cliente";
-	public final static String LABEL_COGNOME = "Cognome o Ragione sociale";
+	public final static String LABEL_COGNOME = "Cognome o Rag. sociale";
 	public final static String LABEL_NOME_CLIENTE = "Nome";
 	public final static String LABEL_COD_FISC = "Codice Fiscale";
 	public final static String LABEL_PARTITA_IVA = "Partita Iva";
@@ -433,6 +434,15 @@ public final class Costanti {
 	public final static String LABEL_SCONTO = "Sconto";
 	public final static String LABEL_AGENTE_RIF = "Agente di riferimento";
 	public final static String LABEL_ERRORE_CAMPI = "";
+	
+	public final static String LABEL_COGNOME_OBB = "Cognome o Rag. sociale*";
+	public final static String LABEL_NOME_CLIENTE_OBB = "Nome*";
+	public final static String LABEL_COD_FISC_OBB = "Codice Fiscale*";
+	public final static String LABEL_PARTITA_IVA_OBB = "Partita Iva*";
+	public final static String LABEL_INDIRIZZO_OBB = "Indirizzo*";
+	public final static String LABEL_CITTA_OBB = "Citt\u00E0*";
+	public final static String LABEL_CAP_OBB = "CAP*";
+	public final static String LABEL_CELLULARE_OBB = "Cellulare*";
 	
 	public final static String LABEL_CERCA_AGENTE = "Cerca Agente";
 
@@ -478,7 +488,7 @@ public final class Costanti {
 	public final static String LABEL_TIPO_SCONTO = "Tipo di sconto";
 	public final static String LABEL_ID_SCONTO = "ID sconto";
 	public final static String LABEL_PERCENTUALE_SCONTO = "Percentuale";
-	public final static String LABEL_QUANTITA_SCONTO = "Quanti\u00E0 prodotti";
+	public final static String LABEL_QUANTITA_SCONTO = "Quantit\u00E0 prodotti";
 	public final static String LABEL_FISSO_SCONTO = "Valore sconto fisso";
 
 	/**
@@ -591,7 +601,7 @@ public final class Costanti {
 	public final static String TIP_TIPO_SCONTO = "Selezionare il tipo di sconto";
 	public final static String TIP_CONFERMA_SEL = "Conferma il tipo di sconto";
 	public final static String TIP_PERCENTUALE_SCONTO = "Inserire la percentuale di sconto (ES. 0.1 = 10%)";
-	public final static String TIP_QUANTITA_SCONTO = "Inserire la quanti\u00E0 di prodotti necessari affinch\u00E8 sia valido lo sconto";
+	public final static String TIP_QUANTITA_SCONTO = "Inserire la quantit\u00E0 di prodotti necessari affinch\u00E8 sia valido lo sconto";
 	public final static String TIP_FISSO_SCONTO = "Inserire il valore dello sconto fisso superata una certa quantit\u00E0";
 	public final static String TIP_SALVA_SCONTO = "Salva sconto";
 	public static final String TIP_MODIFICA_SCONTO = "Modifica sconto";
@@ -649,6 +659,9 @@ public final class Costanti {
 	
 	public final static String[] LISTA_CERCA_SCONTI = {"Tutti gli sconti", "Tutti gli sconti cliente", "Tutti gli sconti prodotto", "Cliente - Percentuale", "Prodotto - Quantit\u00E0", "Prodotto - Percentuale"};
 	
+public final static String[] LISTA_CERCA_SCONTI_CLIENTE = {"Tutti gli sconti cliente", "Cliente - Percentuale"};
+	
+	public final static String[] LISTA_CERCA_SCONTI_PRODOTTO = {"Tutti gli sconti prodotto", "Prodotto - Quantit\u00E0", "Prodotto - Percentuale"};
 	
 	/**
 	 * Costanti colonne

@@ -531,8 +531,12 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 
 	//sblocca i campi per la modifica cliente
 	public void setModifiche(boolean b) {
-		((RiepilogoClienteView) riep_cliente).setTFeditable(b);
-		
+		((RiepilogoClienteView) riep_cliente).setTFeditable(b);		
+	}
+	
+	//Cambia le label in modifica
+	public void setLabel(boolean b) {
+		((RiepilogoClienteView) riep_cliente).setLabel(b);
 	}
 	
 	//rende visibili i tooltip solo quando si modifica il cliente

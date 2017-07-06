@@ -250,7 +250,7 @@ public class DettaglioClienteView extends JPanel {
 	
 	/*attributi privati*/
 	
-	private JLabel labelIdCliente;
+//	private JLabel labelIdCliente;
 	private JLabel labelCognome;
 	private JLabel labelNome;
 	private JLabel labelCodiceFiscale;
@@ -262,7 +262,7 @@ public class DettaglioClienteView extends JPanel {
 	private JLabel labelTelefono;
 	private JLabel labelCell;
 	private JLabel labelFax;
-	private JLabel labelSconto;
+//	private JLabel labelSconto;
 	private JLabel labelRifAgente;
 	private JLabel labelErrore;
 	
@@ -343,13 +343,14 @@ public class DettaglioClienteView extends JPanel {
 				
 		pannelloCampi = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pannelloCampi.getLayout();
+		flowLayout.setVgap(0);
 		flowLayout.setAlignment(FlowLayout.CENTER);
 		pannelloCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
 		pannelloContenitore.add(pannelloCampi, BorderLayout.CENTER);
 	
 		contenitoreCampi = new JPanel();
 		FlowLayout flowLayout2 = (FlowLayout) contenitoreCampi.getLayout();
-		flowLayout2.setVgap(15);
+		flowLayout2.setVgap(14);
 		flowLayout2.setHgap(0);
 		flowLayout2.setAlignment(FlowLayout.CENTER);
 		contenitoreCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
@@ -364,7 +365,7 @@ public class DettaglioClienteView extends JPanel {
 		pannCognome.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannCognome);
 		
-		labelCognome = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_COGNOME);
+		labelCognome = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_COGNOME_OBB);
 		labelCognome.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelCognome.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannCognome.add(labelCognome);
@@ -381,7 +382,7 @@ public class DettaglioClienteView extends JPanel {
 		pannNome.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannNome);
 		
-		labelNome = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_NOME_CLIENTE);
+		labelNome = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_NOME_CLIENTE_OBB);
 		labelNome.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelNome.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannNome.add(labelNome);
@@ -398,7 +399,7 @@ public class DettaglioClienteView extends JPanel {
 		pannCodFis.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannCodFis);
 		 
-		labelCodiceFiscale = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_COD_FISC);
+		labelCodiceFiscale = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_COD_FISC_OBB);
 		labelCodiceFiscale.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelCodiceFiscale.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannCodFis.add(labelCodiceFiscale);
@@ -415,7 +416,7 @@ public class DettaglioClienteView extends JPanel {
 		pannPartitaIva.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannPartitaIva);
 		 
-		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_PARTITA_IVA);
+		labelPartitaIva = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_PARTITA_IVA_OBB);
 		labelPartitaIva.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelPartitaIva.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannPartitaIva.add(labelPartitaIva);
@@ -432,7 +433,7 @@ public class DettaglioClienteView extends JPanel {
 		pannIndirizzo.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannIndirizzo);
 		 
-		labelIndirizzo = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_INDIRIZZO);
+		labelIndirizzo = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_INDIRIZZO_OBB);
 		labelIndirizzo.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelIndirizzo.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannIndirizzo.add(labelIndirizzo);
@@ -449,7 +450,7 @@ public class DettaglioClienteView extends JPanel {
 		pannCitta.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannCitta);
 		
-		labelCitta = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_CITTA);
+		labelCitta = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_CITTA_OBB);
 		labelCitta.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelCitta.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannCitta.add(labelCitta);
@@ -466,7 +467,7 @@ public class DettaglioClienteView extends JPanel {
 		pannCap.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannCap);
 		
-		labelCAP = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_CAP);
+		labelCAP = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_CAP_OBB);
 		labelCAP.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelCAP.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannCap.add(labelCAP);
@@ -500,7 +501,7 @@ public class DettaglioClienteView extends JPanel {
 		pannCellulare.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_LABEL, Costanti.HEIGHT_PANN_LABEL));
 		contenitoreCampi.add(pannCellulare);
 		
-		labelCell = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_CELLULARE);
+		labelCell = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_CELLULARE_OBB);
 		labelCell.setFont(new Font("Tahoma", Font.PLAIN, Costanti.FONT));
 		labelCell.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannCellulare.add(labelCell);

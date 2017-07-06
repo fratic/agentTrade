@@ -262,7 +262,7 @@ public class NuovoProdottoFactoryView extends JPanel{
 
 		TADescrizione = new JTextArea();
 		TADescrizione.setColumns(33);
-		TADescrizione.setBackground(SystemColor.control);
+		TADescrizione.setBackground(Color.WHITE);
 		TADescrizione.setBorder(new LineBorder(new Color(160, 160, 160), 0));
 		//TADescrizione.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,60));
 		TADescrizione.setLineWrap(true);

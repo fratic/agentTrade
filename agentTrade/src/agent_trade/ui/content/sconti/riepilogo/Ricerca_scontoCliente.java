@@ -21,20 +21,19 @@ import javax.swing.table.TableRowSorter;
 
 import org.orm.PersistentException;
 
+import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.controller.Ctrl_gestisciSconto;
 import agent_trade.model.M_Sconto;
 import agent_trade.model.M_ScontoCliente;
-import agent_trade.model.M_ScontoPercent;
-import agent_trade.model.M_ScontoQuantita;
 import agent_trade.util.Costanti;
 
-public class Ricerca_sconto extends JDialog {
+public class Ricerca_scontoCliente extends JDialog {
 
 	/*attributi di classe*/
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static Ricerca_sconto instance;
+	private static Ricerca_scontoCliente instance;
 	
 	/*attributi privati*/
 
@@ -43,8 +42,6 @@ public class Ricerca_sconto extends JDialog {
 	private JPanel pannelloBottoni;
 	private JPanel pannTipo;
 	private JPanel pannVuoto1;
-	//private JPanel pannVuoto2;
-	//private JPanel pannVuoto3;
 	private JPanel pannErrore;
 	private JPanel pannBottone;
 	
@@ -57,13 +54,13 @@ public class Ricerca_sconto extends JDialog {
 	
 //	private JLabel labelError;
 	private JLabel LabelTipoSconto;
-	
-	private JButton BottoneVisualizza;
+
 	private JButton BottoneCerca;
+	private JButton BottoneModificaCliente;
 
 	/*costruttori*/
 	
-	public Ricerca_sconto(){
+	public Ricerca_scontoCliente(){
 		
 		setType(Type.UTILITY);
 		setResizable(false);
@@ -86,7 +83,7 @@ public class Ricerca_sconto extends JDialog {
 		LabelTipoSconto.setPreferredSize(new Dimension(137, 14));
 		pannTipo.add(LabelTipoSconto);
 
-		JCTipo = new JComboBox(Costanti.LISTA_CERCA_SCONTI);
+		JCTipo = new JComboBox(Costanti.LISTA_CERCA_SCONTI_CLIENTE);
 		JCTipo.setPreferredSize(new Dimension(180, 20));
 		JCTipo.setToolTipText(Costanti.TIP_TIPO_SCONTO);
 		JCTipo.setSelectedIndex(0);
@@ -139,10 +136,10 @@ public class Ricerca_sconto extends JDialog {
 		getContentPane().add(pannelloBottoni);
 		pannelloBottoni.setLayout(null);
 		
-		BottoneVisualizza = new JButton(Costanti.BOTTONE_VISUALIZZA);
-		BottoneVisualizza.setEnabled(false);
-		BottoneVisualizza.setBounds(624, 11, 110, 23);
-		pannelloBottoni.add(BottoneVisualizza);
+		BottoneModificaCliente = new JButton(Costanti.BOTTONE_MODIFICA);
+		BottoneModificaCliente.setEnabled(false);
+		BottoneModificaCliente.setBounds(624, 11, 110, 23);
+		pannelloBottoni.add(BottoneModificaCliente);
 		
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
@@ -152,7 +149,7 @@ public class Ricerca_sconto extends JDialog {
 				svuotaTabella();					
 				try {
 					
-					Ctrl_gestisciSconto.getInstance().ricercaSconto(JCTipo.getSelectedItem().toString());
+					Ctrl_gestisciSconto.getInstance().ricercaScontoCliente(JCTipo.getSelectedItem().toString());
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -160,26 +157,26 @@ public class Ricerca_sconto extends JDialog {
 			}
 		});
 		
-		BottoneVisualizza.addActionListener(new ActionListener() {
+		BottoneModificaCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				try {
-					Ctrl_gestisciSconto.getInstance().recuperaSconto((int) table.getValueAt(table.getSelectedRow(),0));
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					try {
+						Ctrl_gestisciClienteFactory.getInstance().assegnaSconto((int) table.getValueAt(table.getSelectedRow(),0));
+					} catch (PersistentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			}
 		});
-
+		
 		
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
-				BottoneVisualizza.setEnabled(true);
+				BottoneModificaCliente.setEnabled(true);
 			}
 		});	
-		
 	}
+	
 	
 	/*metodi di classe*/
 	
@@ -187,11 +184,12 @@ public class Ricerca_sconto extends JDialog {
 		instance = null;	 
 	}
 	
-	public static Ricerca_sconto getInstance(){
+	public static Ricerca_scontoCliente getInstance(){
 		if (instance == null)
-			instance = new Ricerca_sconto();
+			instance = new Ricerca_scontoCliente();
 		return instance;	 
 	}
+	
 	
 	/*metodi privati*/
 	
@@ -201,17 +199,11 @@ public class Ricerca_sconto extends JDialog {
 	public void popolaTab(M_Sconto[] sconti){
 		
 		svuotaTabella();
-//		labelError.setText("");
+		//labelError.setText("");
 		
 		for (M_Sconto s : sconti) {
 			if(s instanceof M_ScontoCliente){
 				((DefaultTableModel) JTableModel).addRow(new Object[]{s.getId(), "Sconto Cliente", ((M_ScontoCliente) s).getPercent(), null, null });
-			}
-			else if(s instanceof M_ScontoPercent){
-				((DefaultTableModel) JTableModel).addRow(new Object[]{s.getId(), "Sconto Prodotto - Percentuale", ((M_ScontoPercent) s).getPercent(), null, null });
-			}
-			else if(s instanceof M_ScontoQuantita){
-				((DefaultTableModel) JTableModel).addRow(new Object[]{s.getId(), "Sconto Prodotto - Quantit\u00E0", null, ((M_ScontoQuantita) s).getQuantita(), ((M_ScontoQuantita) s).getScontoFisso() });
 			}			
 		}	
 	}
@@ -219,17 +211,11 @@ public class Ricerca_sconto extends JDialog {
 	
 	public void updateTable(M_Sconto s){
 
-//		labelError.setText("");
+		//labelError.setText("");
 		
 		if(s instanceof M_ScontoCliente){
 			((DefaultTableModel) JTableModel).addRow(new Object[]{s.getId(), "Sconto Cliente", ((M_ScontoCliente) s).getPercent(), null, null });
 		}
-		else if(s instanceof M_ScontoPercent){
-			((DefaultTableModel) JTableModel).addRow(new Object[]{s.getId(), "Sconto Prodotto - Percentuale", ((M_ScontoPercent) s).getPercent(), null, null });
-		}
-		else if(s instanceof M_ScontoQuantita){
-			((DefaultTableModel) JTableModel).addRow(new Object[]{s.getId(), "Sconto Prodotto - Quantit\u00E0", null, ((M_ScontoQuantita) s).getQuantita(), ((M_ScontoQuantita) s).getScontoFisso() });
-		}	
 	}
 	
 	
@@ -248,16 +234,6 @@ public class Ricerca_sconto extends JDialog {
 //	
 //	public void setErrore(String err) {
 //		labelError.setText(err);
-//	}
-	
-
-//	public TableModel getJTableModel(){
-//		return JTableModel;	 
-//	}
-//	
-//		
-//	public JTable getTableInstance(){
-//		return table;	 
 //	}
 
 }

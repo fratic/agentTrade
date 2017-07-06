@@ -48,8 +48,8 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 		String errore= null;
 		String campoErrato = "";
 		
-		if(cliente.getNome().equals("") || cliente.getCognome().equals("") || cliente.getCodice_fiscale().equals("") || cliente.getPartita_iva().equals("") || cliente.getCitta().equals("") || cliente.getCAP().equals("") || cliente.getIndirizzo().equals("") || cliente.getEmail().equals("") || cliente.getTelefono().equals("") || cliente.getCell().equals("") || cliente.getFax().equals("")){
-			return errore = Costanti.MESSAGGIO_CAMPI_VUOTI;
+		if(cliente.getNome().equals("") || cliente.getCognome().equals("") || cliente.getCodice_fiscale().equals("") || cliente.getPartita_iva().equals("") || cliente.getCitta().equals("") || cliente.getCAP().equals("") || cliente.getIndirizzo().equals("") || cliente.getCell().equals("")){
+			return errore = Costanti.MESSAGGIO_CAMPI_VUOTI_CLIENTE;
 		}
 		if(!check(Costanti.REG_EX_COGNOME, cliente.getCognome())){
 			campoErrato = campoErrato + "cognome ";
@@ -72,17 +72,20 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 		if(!check(Costanti.REG_EX_CAP, cliente.getCAP())){
 			campoErrato = campoErrato +"cap ";
 		}
-		if(!check(Costanti.REG_EX_TELEFONO, cliente.getTelefono())){
-			campoErrato = campoErrato +"telefono ";
+		if(cliente.getTelefono()!= null && !cliente.getTelefono().equals("")){
+			if(!check(Costanti.REG_EX_TELEFONO, cliente.getTelefono()))
+				campoErrato = campoErrato +"telefono ";
 		}
 		if(!check(Costanti.REG_EX_CELLULARE, cliente.getCell())){
 			campoErrato = campoErrato +"cellulare ";
 		}
-		if(!check(Costanti.REG_EX_FAX, cliente.getFax())){
-			campoErrato = campoErrato +"fax ";
+		if(cliente.getFax()!= null && !cliente.getFax().equals("")){
+			if(!check(Costanti.REG_EX_FAX, cliente.getFax()))
+				campoErrato = campoErrato +"fax ";
 		}
-		if(!check(Costanti.REG_EX_EMAIL, cliente.getEmail())){
-			campoErrato = campoErrato +"email ";
+		if(cliente.getEmail()!= null && !cliente.getEmail().equals("")){
+			if(!check(Costanti.REG_EX_EMAIL, cliente.getEmail()))
+				campoErrato = campoErrato +"email ";
 		}
 		if (errore == null && campoErrato != "")
 		{
@@ -243,6 +246,7 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 			PrimaryAgenteView.getInstance().setEnableUpdateCliente(true);
 			PrimaryAgenteView.getInstance().disattivaInviaPosta(true);
 			PrimaryAgenteView.getInstance().setInvisibleToolTip();
+			PrimaryAgenteView.getInstance().setLabel(false);
 			AlberoClienti.updateNodo(c.getIdCliente()+ " - " +c.getCognome()+ " - " +c.getNome());
 			AlberoClienti.selectNode(c.getIdCliente()+ " - " +c.getCognome()+ " - " +c.getNome());
 			AlberoClienti.abilitaAlbero();
@@ -335,6 +339,7 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 	public void abilitaModifica() {
 
 		PrimaryAgenteView.getInstance().setModifiche(true);
+		PrimaryAgenteView.getInstance().setLabel(true);
 		PrimaryAgenteView.getInstance().disattivaModifica(false);
 		PrimaryAgenteView.getInstance().disattivaCancella(false);
 		PrimaryAgenteView.getInstance().disattivaInviaPosta(false);
@@ -370,6 +375,7 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 		PrimaryAgenteView.getInstance().setEnableCercaCliente(true);
 		PrimaryAgenteView.getInstance().setEnableUpdateCliente(true);
 		PrimaryAgenteView.getInstance().setInvisibleToolTip();
+		PrimaryAgenteView.getInstance().setLabel(false);
 		AlberoClienti.abilitaAlbero();
 	}
 	

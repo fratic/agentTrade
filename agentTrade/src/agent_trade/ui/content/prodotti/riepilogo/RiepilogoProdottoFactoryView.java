@@ -435,6 +435,12 @@ public class RiepilogoProdottoFactoryView extends JPanel {
 		TFPrezzo.setEditable(b);
 		//TFSconto.setEditable(b);
 		TADescrizione.setEditable(b);
+		if(b==true){
+			TADescrizione.setBackground(Color.WHITE);
+		}
+		else{
+			TADescrizione.setBackground(SystemColor.control);
+		}
 	}
 	
 	

@@ -5,13 +5,11 @@ import org.orm.PersistentException;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Sconto;
-import agent_trade.model.M_ScontoCliente;
 import agent_trade.ui.content.agenti.Ricerca_agente;
-import agent_trade.ui.content.agenti.RiepilogoAgenteView;
 import agent_trade.ui.content.clienti.AlberoClienti_Mandante;
 import agent_trade.ui.content.clienti.Ricerca_cliente;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
-import agent_trade.ui.content.sconti.riepilogo.Ricerca_sconto;
+import agent_trade.ui.content.sconti.riepilogo.Ricerca_scontoCliente;
 import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
 
@@ -29,8 +27,6 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 	
 	
 	public void ricercaCliente(String c, String pi, String cf, String city) throws PersistentException {
-		
-//		super.ricercaCliente(c, pi, cf, city);
 		
 		if ((c.equals("") || c==null) && (pi.equals("") || pi==null) && (cf.equals("") || cf==null) && (city.equals("") || city==null)){
 			
@@ -62,7 +58,7 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 	
 	//reset campi finestra ricerca cliente e reset tabella
 	public void annullaRicercaCliente() {
-//		super.annullaRicercaCliente();
+
 		Ricerca_cliente.getInstance().svuotaTabella();
 		Ricerca_cliente.getInstance().resetRicerca();
 		Ricerca_cliente.getInstance().setVisibleErroreRicercaCliente(false);
@@ -70,8 +66,6 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 	
 	
 	public void recuperaCliente(int idCliente) throws PersistentException {	
-		
-//		super.recuperaCliente(idCliente);
 		
 		PrimaryMandanteView.getInstance().resetPannelloCentraleCliente();
 				
@@ -122,8 +116,6 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 	
 	public void btnCerca() {
 		
-//		super.btnCerca();
-		
 		PrimaryMandanteView.getInstance().resetPannelloCentraleCliente();
 		PrimaryMandanteView.getInstance().setSfondoCliente();
 		try {
@@ -137,24 +129,13 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 	
 	public void btnCercaSconto() throws PersistentException{
 		
-		
-		Ricerca_sconto.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
-		Ricerca_sconto.getInstance().setVisibleBtnVisualizza(false);
-		Ricerca_sconto.getInstance().setVisibleBtnModificaCliente(true);
-		Ricerca_sconto.getInstance().setVisibleBtnModificaProdotto(false);
-		Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(false);
-		Ricerca_sconto.getInstance().setVisible(true);	
+		Ricerca_scontoCliente.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
+		Ricerca_scontoCliente.getInstance().setVisible(true);	
 		
 	}
 		
 
 	public void assegnaSconto(int idSconto) throws PersistentException{
-		
-		
-
-		
-		Ricerca_sconto.getInstance().dispose();
-		Ricerca_sconto.cancInstanza();
 		
 		M_Sconto sconto = M_Sconto.caricaScontoRemoto(idSconto);
 	
@@ -162,23 +143,15 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 		RiepilogoClienteView.cliente.setSconto(sconto.getId());
 		Ctrl_gestisciClienteFactory.getInstance().modificaCliente(RiepilogoClienteView.cliente);
 		/****/
-		Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(false);
 		
-		if(sconto instanceof M_ScontoCliente){
-			Ricerca_sconto.getInstance().dispose();
-			Ricerca_sconto.cancInstanza();
-			PrimaryMandanteView.getInstance().setScontoCliente(sconto);
-		}
-		else{
-			Ricerca_sconto.getInstance().setErrore(Costanti.MESSAGGIO_SCONTO_CLIENTE_ERRATO);
-			Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(true);
-		}	
+		Ricerca_scontoCliente.getInstance().dispose();
+		Ricerca_scontoCliente.cancInstanza();
+		PrimaryMandanteView.getInstance().setScontoCliente(sconto);	
 	}
 		
 
 	public void btnCercaAgente()throws PersistentException {
-		
-		
+			
 		Ricerca_agente.getInstance().popolaTab(M_Agente.caricaAgentiRemoto());
 		Ricerca_agente.getInstance().setVisibleBtnVisualizza(false);
 		Ricerca_agente.getInstance().setVisibleBtnModifica(true);
@@ -187,17 +160,14 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 		
 
 	public void assegnaAgente(M_Cliente cliente, int idAgente) throws PersistentException{
-		
-		
+			
 		M_Agente agente = M_Agente.caricaAgenteRemoto(idAgente);
 		M_Cliente nuovoCliente=cliente.clone();
 		nuovoCliente.setAgenteAssociato(agente);
 		nuovoCliente.setVersione(1);
 		nuovoCliente.setIdclienteagente(0);
 		M_Cliente.salvaClienteRemoto(nuovoCliente);
-		
-		
-		
+			
 		cliente.setAttivo(0);
 
 		/***/
@@ -221,5 +191,4 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 		AlberoClienti_Mandante.refresh();
 	}
 	
-
 }

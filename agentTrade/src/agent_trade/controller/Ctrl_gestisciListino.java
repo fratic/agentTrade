@@ -24,7 +24,7 @@ import agent_trade.ui.content.listini.AlberoListini;
 import agent_trade.ui.content.listini.Ricerca_listino;
 import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.ui.content.prodotti.riepilogo.confermaCancProdotto;
-import agent_trade.ui.content.sconti.riepilogo.Ricerca_sconto;
+import agent_trade.ui.content.sconti.riepilogo.Ricerca_scontoProdotto;
 import agent_trade.ui.primaryView.PrimaryAgenteView;
 import agent_trade.ui.primaryView.PrimaryMandanteView;
 import agent_trade.util.Costanti;
@@ -386,31 +386,19 @@ public class Ctrl_gestisciListino {
 	
 	public void btnCercaSconto() throws PersistentException{
 		
-		Ricerca_sconto.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
-//		Ricerca_sconto.getInstance().setSelectionSconto(2);
-		Ricerca_sconto.getInstance().setVisibleBtnVisualizza(false);
-		Ricerca_sconto.getInstance().setVisibleBtnModificaCliente(false);
-		Ricerca_sconto.getInstance().setVisibleBtnModificaProdotto(true);
-		Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(false);
-		Ricerca_sconto.getInstance().setVisible(true);	
+		Ricerca_scontoProdotto.getInstance().popolaTab(M_Sconto.caricaScontiRemoto());
+		Ricerca_scontoProdotto.getInstance().setVisible(true);	
 	}
 
 
 	public void assegnaSconto(int idSconto) throws PersistentException{
 			
 		M_Sconto sconto = M_Sconto.caricaScontoRemoto(idSconto);
-			
-		Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(false);
-			
-		if(sconto instanceof M_ScontoPercent || sconto instanceof M_ScontoQuantita){
-			Ricerca_sconto.getInstance().dispose();
-			Ricerca_sconto.cancInstanza();
-			PrimaryMandanteView.getInstance().setScontoProdotto(sconto);
-		}
-		else{
-			Ricerca_sconto.getInstance().setErrore(Costanti.MESSAGGIO_SCONTO_PRODOTTO_ERRATO);
-			Ricerca_sconto.getInstance().setVisibleErroreRicercaSconto(true);
-		}		
+
+		Ricerca_scontoProdotto.getInstance().dispose();
+		Ricerca_scontoProdotto.cancInstanza();
+		PrimaryMandanteView.getInstance().setScontoProdotto(sconto);
+				
 	}
 
 }

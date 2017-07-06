@@ -439,7 +439,7 @@ public class RiepilogoClienteView extends JPanel {
 		
 		contenitoreCampi = new JPanel();
 		FlowLayout flowLayout1 = (FlowLayout) contenitoreCampi.getLayout();
-		flowLayout1.setVgap(15);
+		flowLayout1.setVgap(13);
 		flowLayout1.setHgap(0);
 		flowLayout1.setAlignment(FlowLayout.CENTER);
 		contenitoreCampi.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_CENTRO, Costanti.HEIGHT_PANN_CENTRO));
@@ -890,6 +890,32 @@ public class RiepilogoClienteView extends JPanel {
 			TFfax.setEditable(b);
 			TFemail.setEditable(b);
 		}
+		
+		
+//		cambia le label che sono obbligatorie a seconda che siano da modificare o meno
+		public void setLabel(boolean b){
+			if (b){
+				labelCognome.setText(Costanti.LABEL_COGNOME_OBB);
+				labelNome.setText(Costanti.LABEL_NOME_CLIENTE_OBB);
+				labelCodiceFiscale.setText(Costanti.LABEL_COD_FISC_OBB);
+				labelPartitaIva.setText(Costanti.LABEL_PARTITA_IVA_OBB);
+				labelCitta.setText(Costanti.LABEL_CITTA_OBB);
+				labelCAP.setText(Costanti.LABEL_CAP_OBB);
+				labelIndirizzo.setText(Costanti.LABEL_INDIRIZZO_OBB);
+				labelCell.setText(Costanti.LABEL_CELLULARE_OBB);
+			}
+			else{
+				labelCognome.setText(Costanti.LABEL_COGNOME);
+				labelNome.setText(Costanti.LABEL_NOME_CLIENTE);
+				labelCodiceFiscale.setText(Costanti.LABEL_COD_FISC);
+				labelPartitaIva.setText(Costanti.LABEL_PARTITA_IVA);
+				labelCitta.setText(Costanti.LABEL_CITTA);
+				labelCAP.setText(Costanti.LABEL_CAP);
+				labelIndirizzo.setText(Costanti.LABEL_INDIRIZZO);
+				labelCell.setText(Costanti.LABEL_CELLULARE);
+			}
+		}
+		
 		
 		public void resetCampiModifica(){
 //			TFcognome.setText(null);
