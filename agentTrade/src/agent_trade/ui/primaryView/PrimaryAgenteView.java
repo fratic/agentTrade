@@ -72,8 +72,10 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	private JButton cerca_preventivo;
 	private JButton bottoneCercaCliente;
 	private JButton bottoneNuovoCliente;
-	private JButton bottoneUpdateCliente;
+	private JButton bottoneUploadCliente;
+	private JButton bottoneDownloadCliente;
 
+	
 
 	private JPanel preventivo;
 	private JPanel pannello_menu_preventivo;
@@ -93,7 +95,8 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	private JPanel pannello_laterale_catalogo;
 	private JPanel pannello_centrale_catalogo;
 	private JPanel pannelloProdotti;
-	
+	private JButton bottoneDownloadListino;
+
 	
 	private JPanel alberoPreventivi;
 	private JPanel alberoClienti;
@@ -347,11 +350,18 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		bottoneCercaCliente.setBounds(103, 25, 50, 50);
 		pannello_menu_cliente.add(bottoneCercaCliente);
 		
-		bottoneUpdateCliente = new JButton("");
-		bottoneUpdateCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.UPDATE_CLIENTE_ICON)));
-		bottoneUpdateCliente.setToolTipText(Costanti.TIP_UPDATE_CLIENTE);
-		bottoneUpdateCliente.setBounds(181, 25, 50, 50);
-		pannello_menu_cliente.add(bottoneUpdateCliente);
+		bottoneUploadCliente = new JButton("");
+		bottoneUploadCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.UPLOAD_CLIENTE_ICON)));
+		bottoneUploadCliente.setToolTipText(Costanti.TIP_UPDATE_CLIENTE);
+		bottoneUploadCliente.setBounds(181, 25, 50, 50);
+		pannello_menu_cliente.add(bottoneUploadCliente);
+		
+		
+		bottoneDownloadCliente = new JButton("");
+		bottoneDownloadCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.DOWNLOAD_CLIENTE_ICON)));
+		bottoneDownloadCliente.setToolTipText(Costanti.TIP_DOWNLOAD_CLIENTE);
+		bottoneDownloadCliente.setBounds(259, 25, 50, 50);
+		pannello_menu_cliente.add(bottoneDownloadCliente);
 		
 		pannello_sottomenu_cliente = new JPanel();
 		pannello_sottomenu_cliente.setPreferredSize(new Dimension(1013, 617));
@@ -395,7 +405,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 			}
 		});
 		
-		bottoneUpdateCliente.addActionListener(new ActionListener() {
+		bottoneUploadCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				try {
@@ -408,6 +418,21 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 				
 			}
 		});
+		
+		bottoneDownloadCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+					try {
+						SystemDaemon.getInstance().sincronizzaClientiDownload();
+					} 
+					catch (PersistentException e) {
+						e.printStackTrace();
+					}
+			
+				
+			}
+		});
+
 			
 	}
 	
@@ -443,12 +468,33 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		pannello_sottomenu_catalogo.add(pannello_centrale_catalogo,BorderLayout.CENTER);
 		pannello_centrale_catalogo.setLayout(new GridLayout(1,1));
 		
+		bottoneDownloadListino = new JButton();
+		bottoneDownloadListino.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.SINC_LISTINO_ICON)));
+		bottoneDownloadListino.setToolTipText(Costanti.TIP_SINC_LISTINO);
+		bottoneDownloadListino.setBounds(25, 25, 50, 50);
+		pannello_menu_catalogo.add(bottoneDownloadListino);
+
+		
 		pannelloProdotti = ProdottiView.getInstance();
 		pannello_centrale_catalogo.add(pannelloProdotti);
 		
 		alberoProdotti = AlberoProdotti.getInstance();
 		alberoProdotti.setBounds(0, 0, 260, 617);
 		pannello_laterale_catalogo.add(alberoProdotti);
+		
+		
+		bottoneDownloadListino.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					SystemDaemon.getInstance().sincronizzaListino();
+				} 
+				catch (PersistentException e) {
+					e.printStackTrace();
+				}				
+			}
+		});
+		
+		
 	}
 	
 	
@@ -551,7 +597,11 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 	}
 	
 	public void setEnableUpdateCliente(boolean b){
-		bottoneUpdateCliente.setEnabled(b);
+		bottoneUploadCliente.setEnabled(b);
+	}
+	
+	public void setEnableDownloadCliente(boolean b){
+		bottoneDownloadCliente.setEnabled(b);
 	}
 	
 	public void setEnableNewPreventivo(boolean b){

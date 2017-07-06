@@ -124,6 +124,13 @@ public class M_Agente {
 		return AgenteCriteria.uniqueM_Agente();
 	}
 	
+	public static M_Agente caricaAgenteRemotoDisattivo(String username) throws PersistentException{
+		Rem_AgenteCriteria AgenteCriteria = new Rem_AgenteCriteria();
+		AgenteCriteria.username.eq(username);
+		return AgenteCriteria.uniqueM_Agente();
+	}
+	
+	
 	public static void salvaAgente(M_Agente a)throws PersistentException{
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try 

@@ -141,7 +141,8 @@ public final class Costanti {
 	public static final String CLIENTE_ICON= "/agent_trade/ui/img/cliente.png";	
 	public static final String NUOVO_CLIENTE_ICON= "/agent_trade/ui/img/new_user.png";
 	public static final String CERCA_CLIENTE_ICON= "/agent_trade/ui/img/search.png";
-	public static final String UPDATE_CLIENTE_ICON= "/agent_trade/ui/img/update_cliente.png";
+	public static final String UPLOAD_CLIENTE_ICON= "/agent_trade/ui/img/upload-clienti.png";
+	public static final String DOWNLOAD_CLIENTE_ICON= "/agent_trade/ui/img/download-clienti.png";
 	public static final String PRODOTTI_ICON= "/agent_trade/ui/img/magazzino_icon.png";
 	public static final String ALBERO_PREVENTIVI_ICON= "/agent_trade/ui/img/prev.png";
 	public static final String ALBERO_PRODOTTI_ICON= "/agent_trade/ui/img/prev.png";
@@ -158,8 +159,8 @@ public final class Costanti {
 	public static final String CANC_CLIENTE_ICON = "/agent_trade/ui/img/delete.png";
 	public static final String SALVA_MOD_CLIENTE_ICON = "/agent_trade/ui/img/save-icon.png";
 	public static final String ANNULLA_MOD_CLIENTE_ICON = "/agent_trade/ui/img/back-icon.png";
-	public static final String MOD_SCONTO_CLIENTE_ICON = "/agent_trade/ui/img/add_sconto.png";
-	public static final String MOD_AGENTE_CLIENTE_ICON = "/agent_trade/ui/img/new_user.png";
+	public static final String MOD_SCONTO_CLIENTE_ICON = "/agent_trade/ui/img/replace-sconto.png";
+	public static final String MOD_AGENTE_CLIENTE_ICON = "/agent_trade/ui/img/replace-agente.png";
 	public static final String RIEPILOGO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_riepilogo.png";
 	public static final String DETTAGLIO_CLIENTE_ICON = "/agent_trade/ui/img/Img_cliente_dettaglio.png";
 	
@@ -202,6 +203,7 @@ public final class Costanti {
 	public static final String ANNULLA_MOD_PRODOTTO_ICON = "/agent_trade/ui/img/back-icon.png";
 	public static final String ALBERO_LISTINO_ICON = "/agent_trade/ui/img/ico-listino.png";
 	public static final String ALBERO_SCONTO_ICON = "/agent_trade/ui/img/ico-sconto.png";
+	public static final String SINC_LISTINO_ICON = "/agent_trade/ui/img/sinc-listino.png";
 
 //CAMBIARE ICONE
 	public static final String SCONTO_ICON= "/agent_trade/ui/img/sconto.png";
@@ -489,6 +491,7 @@ public final class Costanti {
 	public final static String TIP_INSERISCI_CLIENTE= "Inserisci un nuovo cliente";
 	public final static String TIP_CERCA_CLIENTE= "Cerca il cliente";
 	public final static String TIP_UPDATE_CLIENTE= "Carica i clienti sul database centrale";
+	public final static String TIP_DOWNLOAD_CLIENTE= "Scarica i clienti dal database centrale";
 	public final static String TIP_ANNULLA_PREV= "Annulla il preventivo in corso";
 	public final static String TIP_ADD_ITEM= "Aggiungi prodotti a questo preventivo";
 	public final static String TIP_SALVA_PREV= "Salva preventivo";
@@ -528,7 +531,7 @@ public final class Costanti {
 	public final static String TIP_CANCELLA_AGENTE = "Cancella agente";
 	public final static String TIP_SALVA_MOD_AGENTE = "Salva modifiche";
 	public final static String TIP_ANNULLA_MOD_AGENTE = "Annulla modifiche";
-	
+
 	
 	public final static String TIP_NOME = "Non sono ammessi caratteri numerici";
 	public final static String TIP_LIVELLO = "Inserire il livello dell'agente (da 1 a 5)";	
@@ -561,7 +564,8 @@ public final class Costanti {
 	public final static String TIP_SALVA_MOD_PRODOTTO = "Salva modifiche";
 	public final static String TIP_ANNULLA_MOD_PRODOTTO = "Annulla modifiche";
 	public final static String TIP_TORNA_ELENCO = "Ritorna al catalogo";
-	
+	public final static String TIP_SINC_LISTINO = "Scarica i prodotti dal database centrale";
+
 	public final static String TIP_NOME_PRODOTTO = "Nome prodotto";
 	public final static String TIP_CATEGORIA_PRODOTTO = "Categoria prodotto";
 	public final static String TIP_PREZZO_PRODOTTO = "Prezzo prodotto";	

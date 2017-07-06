@@ -304,11 +304,34 @@ public class SystemDaemon {
 	
 	public void sincronizza() throws PersistentException, CloneNotSupportedException{
 		
-		sincronizzaSconti();
-		sincronizzaAziende();
-		sincronizzaListino();
-		sincronizzaClienti();
+		if (checkConnessione()){
+			System.out.println("Connessione verso il db remoto OK");
 
+			sincronizzaSconti();
+			sincronizzaAziende();
+			sincronizzaListino();
+			sincronizzaClienti();
+			
+			//sarebbe opportuno mostrare un dialog che dice se ci sono stati aggiornamenti e cosa
+		}
+		else{
+			System.out.println("Connessione verso il db remoto assente");
+			//sarebbe opportuno mostrare un dialog che dice che si è fuori rete
+
+		}
 	}
 	
+	/***
+	 * Funzione che carica un agente fittizio al fine di testare la connessione verso il db remoto 
+	 * Va quindi inserito nel db remoto un agente disattivato con username "testconnessione"
+	 **/
+	public boolean checkConnessione() throws PersistentException{
+		M_Agente agente = M_Agente.caricaAgenteRemotoDisattivo("testconnessione");
+		boolean result = false;
+		if (agente!=null){
+			result= true;
+		}
+		return result;
+	}
+
 }
