@@ -169,5 +169,17 @@ public class AlberoClienti extends JPanel {
 	public static void abilitaAlbero() {
 			albero.setEnabled(true);
 	}
-					  	
+		
+	public static void refresh () throws PersistentException{
+		
+		//albero.clearSelection();
+		abilitalistener = false;
+
+		((DefaultMutableTreeNode) model.getRoot()).removeAllChildren();
+	   // model.reload();
+	    Ctrl_System.getInstance().initAlberoClienti();
+		    model.reload();
+			abilitalistener = true;
+	}
+	
 }

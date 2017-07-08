@@ -99,13 +99,12 @@ public class Ctrl_System {
 		
 		SystemDaemon.getInstance().sincronizza();
 		
-		
 		initAlberoClienti();
-
-		initProdotti();
 		
 		initAlberoPreventivi();	
 		
+		initProdotti();
+
 		initAlberoProdotti();
 		
 	}
@@ -224,7 +223,6 @@ public class Ctrl_System {
 		
 		M_Agente [] listAgenti = M_Agente.caricaAgentiRemoto();
 
-		
 		for (M_Agente aLoad : listAgenti) {
 
 			AlberoAgenti.inserisciNodo(aLoad.getIdAgente()+ " - " + aLoad.getCognome()+ " - " +aLoad.getNome());
@@ -310,10 +308,11 @@ public class Ctrl_System {
 
 		for (M_Azienda azienda : listAziende) {
 			AlberoProdotti.inserisciNodo(azienda.getRagioneSociale());
-			
+			System.out.println("sono qui");
 		}
 	
 	}
+	
 	public void initProdotti() throws PersistentException{
 		
 //		M_Prodotto [] prodotti = M_Prodotto.caricaProdotti();

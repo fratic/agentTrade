@@ -409,7 +409,9 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 			public void actionPerformed(ActionEvent arg0) {
 				
 				try {
-					SystemDaemon.getInstance().sincronizzaClientiUpload();
+					
+					SystemDaemon.getInstance().sincClientiUpload();
+
 				} 
 				catch (PersistentException | CloneNotSupportedException e) 
 				{
@@ -423,9 +425,13 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 			public void actionPerformed(ActionEvent arg0) {
 				
 					try {
-						SystemDaemon.getInstance().sincronizzaClientiDownload();
+						SystemDaemon.getInstance().sincClientiDonwload();
+
 					} 
 					catch (PersistentException e) {
+						e.printStackTrace();
+					} catch (CloneNotSupportedException e) {
+						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 			
@@ -486,7 +492,8 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		bottoneDownloadListino.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					SystemDaemon.getInstance().sincronizzaListino();
+					SystemDaemon.getInstance().sincListino();
+
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
@@ -732,6 +739,11 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		alberoPreventivi.enable();
 	}
 
+	public void setUpdate(boolean b) {
+		
+		bottoneDownloadListino.setEnabled(b);
+	}	
+	
 	public void setEnableSalva(boolean b) {
 		
 		((ItemNuovoPreventivoView) item).enableSave(b);

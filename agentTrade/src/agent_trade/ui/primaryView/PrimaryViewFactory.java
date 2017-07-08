@@ -2,6 +2,7 @@ package agent_trade.ui.primaryView;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -92,7 +93,11 @@ public class PrimaryViewFactory extends JFrame
 
 		getContentPane().add(tabbedPrincipale);
 		
-		this.setBounds(150,50,Costanti.WIDTH_PRIMARY,Costanti.HEIGHT_PRIMARY);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screen.width-Costanti.WIDTH_PRIMARY)/2;
+        int y = (screen.height-Costanti.HEIGHT_PRIMARY)/2;
+		
+		this.setBounds(x,y,Costanti.WIDTH_PRIMARY,Costanti.HEIGHT_PRIMARY);
 		this.setMinimumSize(new Dimension(Costanti.MIN_WIDTH_PRIMARY, Costanti.MIN_HEIGHT_PRIMARY));
 
 	}

@@ -69,7 +69,8 @@ public class RiepilogoAziendaView extends JPanel {
 	private JButton bottoneSalvaModifiche;
 	private JButton bottoneAnnullaModifica;
 	private JButton bottoneVisualizzaElenco;
-	
+	private JButton bottoneSincListino;
+
 	private JPanel pannelloCampi;
 	private JPanel pannelloBottoni;
 	private JPanel pannelloCentro;
@@ -379,6 +380,12 @@ public class RiepilogoAziendaView extends JPanel {
 		bottoneVisualizzaElenco.setToolTipText(Costanti.TIP_VISUALIZZA_LISTINO);
 		bottoneVisualizzaElenco.setIcon(new ImageIcon(RiepilogoAziendaView.class.getResource(Costanti.LISTINO_ICON)));
 		
+		bottoneSincListino= new JButton("");
+		bottoneSincListino.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
+		pannelloBottoni.add(bottoneSincListino);
+		bottoneSincListino.setToolTipText(Costanti.TIP_SINC_LISTINO_AZIENDA);
+		bottoneSincListino.setIcon(new ImageIcon(RiepilogoAziendaView.class.getResource(Costanti.SINC_LISTINO_ICON)));
+
 		bottoneModificaAzienda = new JButton("");
 		bottoneModificaAzienda.setPreferredSize(new Dimension(Costanti.WIDTH_BUTTON,Costanti.HEIGHT_BUTTON));
 		pannelloBottoni.add(bottoneModificaAzienda);
@@ -404,7 +411,6 @@ public class RiepilogoAziendaView extends JPanel {
 		bottoneAnnullaModifica.setIcon(new ImageIcon(RiepilogoAziendaView.class.getResource(Costanti.ANNULLA_MOD_AZIENDA_ICON)));
 		
 
-		
 		bottoneModificaAzienda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Ctrl_gestisciAzienda.getInstance().abilitaModifica();
@@ -415,6 +421,20 @@ public class RiepilogoAziendaView extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 	
 				Ctrl_gestisciAzienda.getInstance().cancellaAzienda((String)TFidAzienda.getText());
+			}
+		});
+		
+		bottoneSincListino.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+	
+				try {
+					System.out.println("sono in action: "+TFRagioneSociale.getText());
+					SystemDaemon.getInstance().sincListinoRemoto(TFRagioneSociale.getText());
+				} 
+				catch (IOException | PersistentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		
@@ -477,7 +497,14 @@ public class RiepilogoAziendaView extends JPanel {
 		this.TFFax.setText(fax);
 		this.TFUrl.setText(url);
 		this.TFTipo.setText(tipo);
+		
+		if (url==null || url.equals("")){
+			bottoneSincListino.setVisible(false);
 		}
+		else{
+			bottoneSincListino.setVisible(true);
+		}
+	}
 	
 	//questo metodo rende le TF modificabili per effettuare update dei dati
 	public void setTFeditable(boolean b) {

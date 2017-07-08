@@ -30,6 +30,13 @@ public class M_ScontoPercent extends agent_trade.model.M_Sconto {
 		return criteria.uniqueScontoPercent();
 	}
 	
+	public static M_ScontoPercent caricaSconto(float sconto) throws PersistentException{
+		
+		Rem_ScontoPercentCriteria criteria= new Rem_ScontoPercentCriteria();
+		criteria.percent.eq(sconto);
+		return criteria.uniqueScontoPercent();
+	}
+	
 	public void setPercent(float value) {
 		this.percent = value;
 	}

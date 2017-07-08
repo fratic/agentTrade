@@ -196,6 +196,7 @@ public final class Costanti {
 	public static final String LISTINO_ICON = "/agent_trade/ui/img/listino.png";
 	public static final String NUOVO_LISTINO_ICON = "/agent_trade/ui/img/listino.png";
 	public static final String CERCA_LISTINO_ICON = "/agent_trade/ui/img/cerca_listino.png";
+	public static final String UPDATE_LISTINO_ICON = "/agent_trade/ui/img/sinc-listino.png";
 	public static final String IMG_SFONDO_LISTINO = "/agent_trade/ui/img/sfondoListino.png";
 	public static final String SHOW_ICON =  "/agent_trade/ui/img/arrow_icon.png";
 	public static final String MOD_PRODOTTO_ICON = "/agent_trade/ui/img/setting.png";
@@ -561,12 +562,14 @@ public final class Costanti {
 	public final static String TIP_CANCELLA_AZIENDA = "Cancella azienda";
 	public final static String TIP_SALVA_MOD_AZIENDA = "Salva modifiche";
 	public final static String TIP_ANNULLA_MOD_AZIENDA = "Annulla modifiche";
-	
+	public final static String TIP_SINC_LISTINO_AZIENDA = "Sincronizza il listino di questa azienda";
+
 
 	public final static String TIP_VISUALIZZA_LISTINO = "Visualizza listino";
 	public final static String TIP_GESTISCI_LISTINO = "Gestisci i listini";
 	public final static String TIP_NUOVO_LISTINO = "Crea un nuovo listino";
 	public final static String TIP_CERCA_LISTINO = "Cerca un listino";
+	public final static String TIP_UPDATE_LISTINO = "Scarica gli aggiornamenti di tutte le aziende";
 	public static final String TIP_AGGIUNGI_PRODOTTO = "aggiungi un prodotto al catalogo (possibile solo se l'azienda non possiede un aggiornamento automatico del catalogo)";
 	public static final String TIP_DETTAGLIO_PRODOTTO = "Visualizza il prodotto nel dettaglio (consente la modifica e la cancellazione del prodotto)";
 	public static final String TIP_MODIFICA_PRODOTTO = "Modifica il prodotto (possibile solo se l'azienda non possiede un aggiornamento automatico del catalogo)";

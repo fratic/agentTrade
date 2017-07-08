@@ -11,6 +11,8 @@ import com.google.gson.Gson;
 import agent_trade.external_system.AziendaViniAdapter;
 import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoPercent;
 import agent_trade.model.M_Vini;
 import agent_trade.util.Costanti;
 
@@ -68,10 +70,17 @@ public class RiveraAdapter extends AziendaViniAdapter {
 			vino.setIndicazione_geografica(elencoVini[i].getIndicazione_geografica());
 			vino.setNome(elencoVini[i].getNome());
 			vino.setPrezzo(elencoVini[i].getPrezzo());
-			vino.setSconto((float) elencoVini[i].getSconto());	
+//			vino.setSconto((float) elencoVini[i].getSconto());	
 			vino.setVersione(elencoVini[i].getVersione());
 			vino.setIdAzienda(idAzienda);
 
+			try {
+				vino.setSconto(determinaSconto((float) elencoVini[i].getSconto()));
+			} 
+			catch (PersistentException e) {
+				e.printStackTrace();
+			}	
+			
 			vini.add(vino);
 
 		}
@@ -80,7 +89,7 @@ public class RiveraAdapter extends AziendaViniAdapter {
 	}
 
 	@Override
-	public ArrayList<M_Prodotto> sincronizzaListino() throws IOException {
+	public ArrayList<M_Prodotto> sincListinoRemoto() throws IOException {
 	
 		HashMap<String, String> parametri= new HashMap<>();
 		parametri.put("update", "true");
@@ -88,4 +97,23 @@ public class RiveraAdapter extends AziendaViniAdapter {
 		return creaViniDaJSON(this.ricerca(parametri));
 	}
 
+	public int determinaSconto(float sconto) throws PersistentException{
+		
+		int idSconto=0;
+		M_ScontoPercent Sc = M_ScontoPercent.caricaSconto(sconto);
+		if (Sc!=null){
+			idSconto=Sc.getId();
+
+		}
+		else{
+			M_ScontoPercent nuovo = new M_ScontoPercent();
+			nuovo.setPercent(sconto);
+			nuovo.setVersione(1);
+			M_Sconto.salvaScontoRemoto(nuovo);
+			idSconto=nuovo.getId();
+
+		}
+		return idSconto;
+	}
+	
 }

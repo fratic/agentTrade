@@ -18,6 +18,7 @@ import agent_trade.model.M_Sconto;
 import agent_trade.model.M_ScontoPercent;
 import agent_trade.model.M_ScontoQuantita;
 import agent_trade.model.M_Vini;
+import agent_trade.persistent.AgentTradeMandantePersistentManager;
 import agent_trade.ui.content.agenti.AlberoAgenti;
 import agent_trade.ui.content.aziende.Ricerca_azienda;
 import agent_trade.ui.content.listini.AlberoListini;
@@ -359,6 +360,8 @@ public class Ctrl_gestisciListino {
 	
 	public void postConfermaCancProdotto(M_Prodotto prod) throws PersistentException{
 		
+//		prod.setVersione(prod.getVersione());
+		
 		prod.setVersione(0);
 		
 		M_Prodotto.aggiornaProdottoRemoto(prod);
@@ -400,5 +403,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setScontoProdotto(sconto);
 				
 	}
+	
+	
 
 }

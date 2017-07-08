@@ -106,6 +106,7 @@ public abstract class M_Prodotto implements Cloneable{
 			
 			ProdottoCriteria criteriaProdotto= new ProdottoCriteria();
 			criteriaProdotto.setMaxResults(1000);
+			criteriaProdotto.versione.ne(0);
 			criteriaProdotto.addOrder(Property.forName("id").asc());
 			return criteriaProdotto.listProdotto();
 
@@ -121,6 +122,7 @@ public abstract class M_Prodotto implements Cloneable{
 		try{
 			
 			Rem_ProdottoCriteria criteriaProdotto= new Rem_ProdottoCriteria();
+			criteriaProdotto.versione.ne(0);
 			criteriaProdotto.setMaxResults(10000);
 			return criteriaProdotto.listProdotto();
 
@@ -168,6 +170,7 @@ public abstract class M_Prodotto implements Cloneable{
 	public static M_Prodotto caricaProdottoRemoto(int idProdotto) throws PersistentException{
 		
 		Rem_ProdottoCriteria criteria= new Rem_ProdottoCriteria();
+		criteria.versione.ne(0);
 		criteria.IdProdotto.eq(idProdotto);
 		return criteria.uniqueProdotto();
 	}
@@ -301,11 +304,9 @@ public abstract class M_Prodotto implements Cloneable{
 	
 	
 	
-	public static void aggiornaProdottiRemoto(ArrayList<M_Prodotto> prodotti)throws PersistentException{
+	public static String aggiornaProdottiRemoto(ArrayList<M_Prodotto> prodotti)throws PersistentException{
 
-		
-		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
-		PersistentSession sessione = AgentTradeMandantePersistentManager.instance().getSession();
+		String mex="";
 		
 		for (M_Prodotto remoto : prodotti) {
 			
@@ -313,29 +314,39 @@ public abstract class M_Prodotto implements Cloneable{
 			criteria.idProdottoAzienda.eq(remoto.getIdProdottoAzienda());
 			M_Prodotto locale=criteria.uniqueProdotto();
 			
+			AgentTradeMandantePersistentManager.instance().disposePersistentManager();	
+
 			if(locale!=null){
 		
-				if(remoto.getVersione()>locale.getVersione()){
+				if(remoto.getVersione()>locale.getVersione() || (remoto.getVersione()==0 && locale.getVersione()!=0) ){
 					
-					AgentTradePersistentManager.instance().disposePersistentManager();
-
+			
+					int idlocale=locale.getIdProdotto();
 					locale=remoto.clone();
+					locale.setIdProdotto(idlocale);
 					
-					System.out.println("prodotto locale con id: "+locale.getIdProdotto()+" obsoleto. AGGIORNAMENTO");
-					sessione.update(locale);
-
+					aggiornaProdottoRemoto(locale);
+					mex= mex+"Prodotto locale con ID: "+locale.getIdProdotto()+" obsoleto. AGGIORNAMENTO\n";
+//					System.out.println("prodotto locale con id: "+locale.getIdProdotto()+" obsoleto. AGGIORNAMENTO");
+//					AgentTradePersistentManager.instance().getSession().update(locale);
+//					t.commit();
 				}
 			}
-			
 			else{
-				
-				System.out.println("prodotto remoto nuovo. id: "+remoto.getIdProdottoAzienda()+" new insert");
-				
-				sessione.save(remoto);
+				mex= mex+"Nuovo prodotto: "+ remoto.getNome()+". INSERIMENTO\n";
+				salvaProdottoRemoto(remoto);
+//				sessione.save(remoto);
+//				t.commit();
 
 			}
 		}
-		t.commit();
+		
+		if (mex.equals("")){
+			mex="Nessun prodotto da aggiornare\n";
+		}
+	
+//		t.commit();
+		return mex;
 
 	}
 	

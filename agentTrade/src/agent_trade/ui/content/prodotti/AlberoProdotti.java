@@ -30,6 +30,8 @@ public class AlberoProdotti extends JPanel {
 	public static DefaultTreeModel model;
 	public static JTree albero;
 	private static AlberoProdotti instance;
+	
+	private static boolean abilitalistener = true;
 
 
 	/*attributi privati*/
@@ -188,4 +190,16 @@ public class AlberoProdotti extends JPanel {
 		  model.reload();
 		  Ctrl_System.getInstance().initAlberoPreventivi();
 	}	
+	  
+	public static void refresh () throws PersistentException{
+		
+		//albero.clearSelection();
+		abilitalistener = false;
+
+		((DefaultMutableTreeNode) model.getRoot()).removeAllChildren();
+	   // model.reload();
+	    Ctrl_System.getInstance().initAlberoProdotti();
+		    model.reload();
+			abilitalistener = true;
+	}
 }

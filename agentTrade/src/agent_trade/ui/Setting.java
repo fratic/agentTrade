@@ -129,116 +129,6 @@ public class Setting extends JPanel {
 
 		
 		
-//		JPanel databaseLocale = new JPanel();
-//		databaseLocale.setMinimumSize(new Dimension(800, 800));
-//		panel.add(databaseLocale);
-//		//				panel.setPreferredSize(new Dimension(500, 1000));
-//		
-//		databaseLocale.setAlignmentX(Component.RIGHT_ALIGNMENT);
-//		databaseLocale.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Impostazioni Database Locale", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-//		databaseLocale.setLayout(new BoxLayout(databaseLocale, BoxLayout.PAGE_AXIS));
-//		
-//		JPanel panel_1 = new JPanel();
-//		panel_1.setBorder(new EmptyBorder(10, 15, 0, 0));
-//		databaseLocale.add(panel_1);
-//		panel_1.setLayout(new GridLayout(6, 2, 10, 10));
-//		
-//		JLabel label = new JLabel("Host");
-//		panel_1.add(label);
-//		
-//		textField = new JTextField();
-//		textField.setColumns(10);
-//		panel_1.add(textField);
-//		
-//		JLabel label_1 = new JLabel("Nome database");
-//		panel_1.add(label_1);
-//		
-//		textField_1 = new JTextField();
-//		textField_1.setColumns(10);
-//		panel_1.add(textField_1);
-//		
-//		JLabel label_2 = new JLabel("N\u00B0 porta");
-//		panel_1.add(label_2);
-//		
-//		textField_2 = new JTextField();
-//		textField_2.setColumns(10);
-//		panel_1.add(textField_2);
-//		
-//		JLabel label_3 = new JLabel("Nome utente");
-//		panel_1.add(label_3);
-//		
-//		textField_3 = new JTextField();
-//		textField_3.setColumns(10);
-//		panel_1.add(textField_3);
-//		
-//		JLabel label_4 = new JLabel("Password");
-//		panel_1.add(label_4);
-//		
-//		textField_4 = new JTextField();
-//		textField_4.setColumns(10);
-//		panel_1.add(textField_4);
-//		
-//		JLabel label_5 = new JLabel("URL");
-//		panel_1.add(label_5);
-//		
-//		textField_5 = new JTextField();
-//		textField_5.setColumns(10);
-//		panel_1.add(textField_5);
-//		
-//		JPanel databaseRemoto = new JPanel();
-//		panel.add(databaseRemoto);
-//		databaseRemoto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Impostazioni Database Remoto", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-//		databaseRemoto.setAlignmentX(1.0f);
-//		databaseRemoto.setLayout(new BoxLayout(databaseRemoto, BoxLayout.Y_AXIS));
-//		
-//		JPanel panel_2 = new JPanel();
-//		panel_2.setPreferredSize(new Dimension(100, 100));
-//		databaseRemoto.add(panel_2);
-//		panel_2.setLayout(new GridLayout(6, 2, 0, 0));
-//		
-//		JLabel label_6 = new JLabel("Host");
-//		panel_2.add(label_6);
-//		
-//		textField_6 = new JTextField();
-//		textField_6.setColumns(10);
-//		
-//		panel_2.add(textField_6);
-//		
-//		JLabel label_7 = new JLabel("Nome database");
-//		panel_2.add(label_7);
-//		
-//		textField_7 = new JTextField();
-//		textField_7.setColumns(10);
-//		panel_2.add(textField_7);
-//		
-//		JLabel label_8 = new JLabel("N\u00B0 porta");
-//		panel_2.add(label_8);
-//		
-//		textField_8 = new JTextField();
-//		textField_8.setColumns(10);
-//		panel_2.add(textField_8);
-//		
-//		JLabel label_9 = new JLabel("Nome utente");
-//		panel_2.add(label_9);
-//		
-//		textField_9 = new JTextField();
-//		textField_9.setColumns(10);
-//		panel_2.add(textField_9);
-//		
-//		JLabel label_10 = new JLabel("Password");
-//		panel_2.add(label_10);
-//		
-//		textField_10 = new JTextField();
-//		textField_10.setColumns(10);
-//		panel_2.add(textField_10);
-//		
-//		JLabel label_11 = new JLabel("URL");
-//		panel_2.add(label_11);
-//		
-//		textField_11 = new JTextField();
-//		textField_11.setColumns(10);
-//		panel_2.add(textField_11);
-		
 		JPanel bottoni = new JPanel();
 		panel.add(bottoni);
 		bottoni.setLayout(new GridLayout(1, 2, 0, 0));
@@ -293,6 +183,16 @@ public class Setting extends JPanel {
 			}
 		});
 		
+		
+		btnRipristinaDefault.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String versione = "agente";
+				String look = "5";		
+				Ctrl_System.getInstance().salvaSetting(versione, look);
+				
+			}
+		});
 		
 	}
 	

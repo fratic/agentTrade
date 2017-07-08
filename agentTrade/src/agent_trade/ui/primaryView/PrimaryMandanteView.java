@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +21,7 @@ import agent_trade.controller.Ctrl_gestisciAzienda;
 import agent_trade.controller.Ctrl_gestisciClienteFactory;
 import agent_trade.controller.Ctrl_gestisciListino;
 import agent_trade.controller.Ctrl_gestisciSconto;
+import agent_trade.external_system.SystemDaemon;
 import agent_trade.model.M_Agente;
 import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Cliente;
@@ -109,6 +111,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	private JPanel alberoListini;
 
 	private JButton bottoneCercaListino;
+	private JButton bottoneSincListino;
 
 	private JPanel Sconto;
 	private JPanel pannello_menu_sconto;
@@ -477,6 +480,13 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		bottoneCercaListino.setBounds(25, 25, 50, 50);
 		pannello_menu_listino.add(bottoneCercaListino);
 		
+		bottoneSincListino = new JButton();		
+		bottoneSincListino.setIcon(new ImageIcon(PrimaryMandanteView.class.getResource(Costanti.UPDATE_LISTINO_ICON)));
+		bottoneSincListino.setToolTipText(Costanti.TIP_UPDATE_LISTINO);
+		bottoneSincListino.setBounds(103, 25, 50, 50);
+		pannello_menu_listino.add(bottoneSincListino);
+
+		
 		pannello_sottomenu_listino = new JPanel();
 		pannello_sottomenu_listino.setPreferredSize(new Dimension(1013, 617));
 		pannello_sottomenu_listino.setLayout(new BorderLayout());
@@ -512,6 +522,25 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 				}
 			}
 		});	
+		
+		
+		bottoneSincListino.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					SystemDaemon.getInstance().sincListinoRemoto();
+				} 
+				catch (PersistentException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});	
+		
+		
+		
 	}
 	
 	

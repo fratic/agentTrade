@@ -11,6 +11,8 @@ import com.google.gson.Gson;
 import agent_trade.external_system.AziendaViniAdapter;
 import agent_trade.model.M_Azienda;
 import agent_trade.model.M_Prodotto;
+import agent_trade.model.M_Sconto;
+import agent_trade.model.M_ScontoPercent;
 import agent_trade.model.M_Vini;
 import agent_trade.util.Costanti;
 
@@ -25,6 +27,7 @@ public class BeverageAdapter extends AziendaViniAdapter {
 		try {
 			int id=M_Azienda.cercaAziendaNome(Costanti.BEVERAGE).getIdAzienda();
 			idAzienda=id;
+			System.out.println("Azienda appena caricata BEVERAGE: "+idAzienda);
 
 		} 
 		catch (PersistentException e) {
@@ -49,7 +52,7 @@ public class BeverageAdapter extends AziendaViniAdapter {
 	@SuppressWarnings("null")
 	@Override
 	public ArrayList<M_Prodotto> creaViniDaJSON(String jsonVINO) {
-	
+		
 		Gson gson = new Gson();
 		
 		ProdottiBeverageJSON js = gson.fromJson(jsonVINO, ProdottiBeverageJSON.class);
@@ -60,6 +63,7 @@ public class BeverageAdapter extends AziendaViniAdapter {
 		
 		for (int i = 0; i < elencoVini.length; i++) {
 
+
 			M_Vini vino = new M_Vini();
 			vino.setIdProdottoAzienda(elencoVini[i].getIdprodotto());
 			vino.setCantina(elencoVini[i].getCantina());
@@ -69,10 +73,16 @@ public class BeverageAdapter extends AziendaViniAdapter {
 			vino.setIndicazione_geografica(elencoVini[i].getIndicazione_geografica());
 			vino.setNome(elencoVini[i].getNome());
 			vino.setPrezzo(elencoVini[i].getPrezzo());
-			vino.setSconto((float) elencoVini[i].getSconto());	
 			vino.setVersione(elencoVini[i].getVersione());
-
+			vino.setIdAzienda(idAzienda);
+			try {
+				vino.setSconto(determinaSconto((float) elencoVini[i].getSconto()));
+			} 
+			catch (PersistentException e) {
+				e.printStackTrace();
+			}	
 			vini.add(vino);
+			
 
 		}
 
@@ -80,7 +90,7 @@ public class BeverageAdapter extends AziendaViniAdapter {
 	}
 
 	@Override
-	public ArrayList<M_Prodotto> sincronizzaListino() throws IOException {
+	public ArrayList<M_Prodotto> sincListinoRemoto() throws IOException {
 	
 		HashMap<String, String> parametri= new HashMap<>();
 		parametri.put("update", "true");
@@ -88,4 +98,23 @@ public class BeverageAdapter extends AziendaViniAdapter {
 		return creaViniDaJSON(this.ricerca(parametri));
 	}
 
+	public int determinaSconto(float sconto) throws PersistentException{
+		
+		int idSconto=0;
+		M_ScontoPercent Sc = M_ScontoPercent.caricaSconto(sconto);
+		if (Sc!=null){
+			idSconto=Sc.getId();
+
+		}
+		else{
+			M_ScontoPercent nuovo = new M_ScontoPercent();
+			nuovo.setPercent(sconto);
+			nuovo.setVersione(1);
+			M_Sconto.salvaScontoRemoto(nuovo);
+			idSconto=nuovo.getId();
+
+		}
+		return idSconto;
+	}
+	
 }

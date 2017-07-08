@@ -34,6 +34,7 @@ public class AlberoPreventivi extends JPanel {
 	/*attributi privati*/
 	
 	private static DefaultMutableTreeNode radice;
+	private static boolean abilitalistener = true;
 
 	/*costruttori*/
 	
@@ -186,4 +187,17 @@ public class AlberoPreventivi extends JPanel {
 		  model.reload();
 		  Ctrl_System.getInstance().initAlberoPreventivi();
 	}	
+	  
+		public static void refresh () throws PersistentException{
+			
+			//albero.clearSelection();
+			abilitalistener = false;
+
+			((DefaultMutableTreeNode) model.getRoot()).removeAllChildren();
+		   // model.reload();
+		    Ctrl_System.getInstance().initAlberoPreventivi();
+			    model.reload();
+				abilitalistener = true;
+		}
+	  
 }

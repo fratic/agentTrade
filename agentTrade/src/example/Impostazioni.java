@@ -6,13 +6,10 @@ import java.awt.Toolkit;
 
 import javax.swing.BoxLayout;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.ui.Setting;
-import agent_trade.util.Costanti;
 
 public class Impostazioni extends JDialog {
 

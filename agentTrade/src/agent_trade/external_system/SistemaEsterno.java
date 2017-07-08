@@ -78,7 +78,7 @@ public abstract class SistemaEsterno {
 		return response;
 	};
 	
-	protected abstract ArrayList<M_Prodotto> sincronizzaListino() throws IOException;
+	protected abstract ArrayList<M_Prodotto> sincListinoRemoto() throws IOException;
 
 	public String getNomeAzienda() {
 		return nomeAzienda;

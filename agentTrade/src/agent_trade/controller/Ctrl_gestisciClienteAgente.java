@@ -16,6 +16,7 @@ import agent_trade.ui.content.clienti.DettaglioClienteView;
 import agent_trade.ui.content.clienti.Ricerca_cliente;
 import agent_trade.ui.content.clienti.RiepilogoClienteView;
 import agent_trade.ui.content.clienti.confermaCancCliente;
+import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.primaryView.PrimaryAgenteView;
 import agent_trade.util.Costanti;
 
@@ -250,6 +251,8 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 			AlberoClienti.updateNodo(c.getIdCliente()+ " - " +c.getCognome()+ " - " +c.getNome());
 			AlberoClienti.selectNode(c.getIdCliente()+ " - " +c.getCognome()+ " - " +c.getNome());
 			AlberoClienti.abilitaAlbero();
+			AlberoClienti.refresh();
+			AlberoPreventivi.refresh();
 		}
 		else{
 			PrimaryAgenteView.getInstance().setVisibleErroreRiepCliente(true);

@@ -77,6 +77,8 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.getInstance().setEnableCercaPreventivo(false);
 		PrimaryAgenteView.getInstance().setEnableTabCliente(false);
 		PrimaryAgenteView.getInstance().setEnableSalva(false);
+		PrimaryAgenteView.getInstance().setUpdate(false);
+
 		
 		AlberoPreventivi.disabilitaAlbero();
 		
@@ -106,7 +108,8 @@ public class Ctrl_elaboraPreventivo {
 
 		PrimaryAgenteView.getInstance().setVisibleIntestazione(false);
 		PrimaryAgenteView.getInstance().setVisibleItemPreventivi(false);
-		
+		PrimaryAgenteView.getInstance().setUpdate(true);
+
 		PrimaryAgenteView.cancIntestazione();
 		PrimaryAgenteView.cancItem();
 		
@@ -126,7 +129,8 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.getInstance().setEnableTabCliente(true);
 		PrimaryAgenteView.getInstance().setVisibleIntestazione(false);
 		PrimaryAgenteView.getInstance().setVisibleItemPreventivi(false);
-		
+		PrimaryAgenteView.getInstance().setUpdate(true);
+
 		PrimaryAgenteView.cancIntestazione();
 		PrimaryAgenteView.cancItem();
 		
@@ -151,6 +155,7 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.getInstance().setEnableCercaPreventivo(false);
 		PrimaryAgenteView.getInstance().setEnableTabCliente(false);
 		PrimaryAgenteView.getInstance().setEnableSalva(true);
+		PrimaryAgenteView.getInstance().setUpdate(false);
 
 		AlberoPreventivi.disabilitaAlbero();
 				

@@ -103,7 +103,6 @@ public class RiepilogoIntestazioneListinoView extends JPanel {
 		btnAggiungi.setToolTipText(Costanti.TIP_AGGIUNGI_PRODOTTO); 
 		pannelloDestra.add(btnAggiungi);
 		
-		 //Implementare
 	    btnAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Ctrl_gestisciListino.getInstance().btnAggiungiProdotto();
