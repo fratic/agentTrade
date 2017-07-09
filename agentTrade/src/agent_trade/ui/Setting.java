@@ -2,6 +2,7 @@ package agent_trade.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,18 +21,6 @@ import agent_trade.controller.Ctrl_System;
 import agent_trade.util.Costanti;
 
 public class Setting extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
 	
 	JRadioButton radioAgente;
 	JRadioButton radioMandante;
@@ -50,51 +39,45 @@ public class Setting extends JPanel {
 	 * Create the panel.
 	 */
 	public Setting() {
-
-		setBorder(new EmptyBorder(10, 15, 10, 15));
-		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-
+//		setBorder(new EmptyBorder(0, 15, 10, 15));
+		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
 		JPanel panel = new JPanel();
+		panel.setLayout(new FlowLayout());
+		panel.setPreferredSize(new Dimension(250, 320));
 		add(panel);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+		
 		
 		JPanel Version = new JPanel();
-//		Version.setPreferredSize(new Dimension(600, 100));
+		Version.setPreferredSize(new Dimension(250, 100));
+		Version.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Versione del software", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.add(Version);
-				Version.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Versione del software", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				Version.setLayout(new BoxLayout(Version, BoxLayout.PAGE_AXIS));
 				
-				JPanel panelJRadioButton = new JPanel();
-				panelJRadioButton.setLayout(new GridLayout(1, 2, 0, 0));
-				
-				radioAgente = new JRadioButton("Agente");
-//				radioAgente.setSelected(true);
-				panelJRadioButton.add(radioAgente);
-				
-				radioMandante = new JRadioButton("Mandante");
-				panelJRadioButton.add(radioMandante);
-				
-				Version.add(panelJRadioButton);
-				
-		        ButtonGroup groupVersione = new ButtonGroup();
-		        groupVersione.add(radioAgente);
-		        groupVersione.add(radioMandante);
-
-				
-				
-				
-				
+		JPanel panelJRadioButton = new JPanel();
+		panelJRadioButton.setLayout(new GridLayout(1, 2, 0, 0));
+		panelJRadioButton.setPreferredSize(new Dimension(240, 60));
+		Version.add(panelJRadioButton);
+			
+		radioAgente = new JRadioButton("Agente");
+		panelJRadioButton.add(radioAgente);
 		
-		JPanel LookandFeel = new JPanel();
-		LookandFeel.setMinimumSize(new Dimension(800, 1000));
-
+		radioMandante = new JRadioButton("Mandante");
+		panelJRadioButton.add(radioMandante);
+				
+        ButtonGroup groupVersione = new ButtonGroup();
+        groupVersione.add(radioAgente);
+        groupVersione.add(radioMandante);
+		
+        
+		JPanel LookandFeel = new JPanel();		
+		LookandFeel.setBorder(new TitledBorder(null, "Scegli la tua grafica", TitledBorder.LEADING, TitledBorder.TOP, null,new Color(0, 0, 0)));
+		LookandFeel.setPreferredSize(new Dimension(250, 100));
 		panel.add(LookandFeel);
-		LookandFeel.setBorder(new TitledBorder(null, "Scegli la tua grafica", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		LookandFeel.setLayout(new BoxLayout(LookandFeel, BoxLayout.PAGE_AXIS));
 		
 		JPanel panelJRadioLook = new JPanel();
-		LookandFeel.add(panelJRadioLook);
 		panelJRadioLook.setLayout(new GridLayout(2, 3, 0, 0));
+		panelJRadioLook.setPreferredSize(new Dimension(240, 60));
+		LookandFeel.add(panelJRadioLook);
 		
 		radioButton_0 = new JRadioButton("0");
 		panelJRadioLook.add(radioButton_0);
@@ -128,17 +111,34 @@ public class Setting extends JPanel {
         groupLook.add(radioButton_5);
         groupLook.add(radioButton_6);
 
-		
+		JPanel pannVuoto = new JPanel();
+		pannVuoto.setPreferredSize(new Dimension(240, 10));
+		panel.add(pannVuoto);
 		
 		JPanel bottoni = new JPanel();
+		FlowLayout flowLayout_2 = (FlowLayout) bottoni.getLayout();
+		flowLayout_2.setVgap(0);
+		flowLayout_2.setHgap(0);
+		bottoni.setPreferredSize(new Dimension(240, 50));
 		panel.add(bottoni);
-		bottoni.setLayout(new GridLayout(1, 2, 0, 0));
+		
+		JPanel pannDefault = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) pannDefault.getLayout();
+		pannDefault.setPreferredSize(new Dimension(160, 50));
+		flowLayout.setVgap(10);
+		bottoni.add(pannDefault);
 		
 		JButton btnRipristinaDefault = new JButton("Ripristina Default");
-		bottoni.add(btnRipristinaDefault);
+		pannDefault.add(btnRipristinaDefault);
+		
+		JPanel pannSalva = new JPanel();
+		FlowLayout flowLayout_1 = (FlowLayout) pannSalva.getLayout();
+		pannSalva.setPreferredSize(new Dimension(80, 50));
+		flowLayout_1.setVgap(10);
+		bottoni.add(pannSalva);
 		
 		JButton btnSalva = new JButton("Salva");
-		bottoni.add(btnSalva);
+		pannSalva.add(btnSalva);
 
 		
 		btnSalva.addActionListener(new ActionListener() {
@@ -146,8 +146,7 @@ public class Setting extends JPanel {
 				
 				String versione = null;
 				String look = null;
-				
-				
+							
 				if (radioAgente.isSelected()){
 					versione="agente";
 				}
@@ -178,8 +177,7 @@ public class Setting extends JPanel {
 				if(radioButton_6.isSelected()){
 					look="6";
 				}
-					
-				
+								
 				Ctrl_System.getInstance().salvaSetting(versione, look);
 			}
 		});

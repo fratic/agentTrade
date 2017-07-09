@@ -25,6 +25,7 @@ import agent_trade.model.M_Sconto;
 import agent_trade.model.M_ScontoCliente;
 import agent_trade.model.M_ScontoPercent;
 import agent_trade.model.M_ScontoQuantita;
+import agent_trade.ui.Impostazioni;
 import agent_trade.ui.content.agenti.AlberoAgenti;
 import agent_trade.ui.content.aziende.AlberoAziende;
 import agent_trade.ui.content.clienti.AlberoClienti;
@@ -37,7 +38,6 @@ import agent_trade.ui.content.sconti.AlberoSconti;
 import agent_trade.ui.login.LoginViewFactory;
 import agent_trade.ui.primaryView.PrimaryViewFactory;
 import agent_trade.util.Costanti;
-import example.Impostazioni;
 
 
 public class Ctrl_System {

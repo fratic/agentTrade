@@ -1,4 +1,4 @@
-package example;
+package agent_trade.ui;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -9,14 +9,13 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 
 import agent_trade.controller.Ctrl_System;
-import agent_trade.ui.Setting;
 
 public class Impostazioni extends JDialog {
 
 	private JPanel contentPane;
 	
-	 private final int WIDTH = 600;
-	 private final int HEIGHT = 400;
+	 private final int WIDTH = 250;
+	 private final int HEIGHT = 320;
 
 
 	/**
@@ -40,7 +39,7 @@ public class Impostazioni extends JDialog {
 	 * Create the frame.
 	 */
 	public Impostazioni() {
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(Impostazioni.DO_NOTHING_ON_CLOSE);
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setModal(true);
@@ -54,7 +53,7 @@ public class Impostazioni extends JDialog {
 		pannello.setImpostazioni(Ctrl_System.readVersion(), Ctrl_System.readLook());
 		contentPane = pannello;
 		setContentPane(contentPane);
-		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
+//		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		
 	}
 

@@ -144,7 +144,7 @@ public class Ctrl_gestisciListino {
 		
 //		se l'azienda ha un'api i bottoni per la modifica del listino devono essere disabilitati
 		
-		if (azienda.getUrl()== null || azienda.getUrl()== "" ){
+		if (azienda.getUrl()== null || azienda.getUrl().equals("")){
 			listino = "assente";
 			abilitaAggiungi = true;
 		}
@@ -291,7 +291,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
 		
-		if (azienda.getUrl()== null || azienda.getUrl()== "" ){
+		if (azienda.getUrl()== null || azienda.getUrl().equals("") ){
 			listino = "assente";
 			abilitaAggiungi = true;
 		}

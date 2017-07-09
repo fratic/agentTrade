@@ -31,6 +31,7 @@ import agent_trade.model.M_Cliente;
 import agent_trade.model.M_Preventivo;
 import agent_trade.util.Costanti;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 
 
 public class Ricerca_preventivo extends JDialog {
@@ -83,7 +84,11 @@ public class Ricerca_preventivo extends JDialog {
 		
 		
 		setTitle(Costanti.TITOLO_CERCA_PREVENTIVO);
-		setBounds(450, 250, 749, 406);
+//		setBounds(450, 250, 749, 406);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int x = (screen.width-749)/2;
+	    int y = (screen.height-406)/2;
+	    setBounds(x,y,749,406);
 		getContentPane().setLayout(null);
 		
 		pannelloCerca = new JPanel();

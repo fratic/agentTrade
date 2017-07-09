@@ -2,6 +2,7 @@ package agent_trade.ui.content.agenti;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -82,7 +83,11 @@ public class Ricerca_agente extends JDialog {
 		
 		
 		setTitle(Costanti.TITOLO_CERCA_AGENTE);
-		setBounds(450, 250, 749, 406);
+//		setBounds(450, 250, 749, 406);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int x = (screen.width-749)/2;
+	    int y = (screen.height-406)/2;
+	    setBounds(x,y,749,406);
 		getContentPane().setLayout(null);
 		
 		pannelloCerca = new JPanel();

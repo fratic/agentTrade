@@ -1,5 +1,7 @@
 package agent_trade.ui.content.agenti;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -66,7 +68,11 @@ public class CercaAgenteView extends JDialog {
 		
 		
 		setTitle(Costanti.TITOLO_CERCA_AGENTE);
-		setBounds(450, 250, 576, 324);
+//		setBounds(450, 250, 576, 324);
+		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+		int x = (screen.width-576)/2;
+	    int y = (screen.height-324)/2;
+	    setBounds(x,y,576,324);
 		getContentPane().setLayout(null);
 		
 		panelloCerca = new JPanel();

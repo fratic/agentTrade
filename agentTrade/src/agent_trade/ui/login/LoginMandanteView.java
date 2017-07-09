@@ -81,13 +81,13 @@ public class LoginMandanteView extends LoginViewFactory {
 		layeredPane.add(password);
 		
 		buttoneAccedi = new JButton(Costanti.BOTTONE_ACCEDI);
-		buttoneAccedi.setBounds(201, 150, 89, 23);
+		buttoneAccedi.setBounds(201, 155, 89, 23);
 		layeredPane.add(buttoneAccedi);
 		
 
 		buttoneSetting = new JButton();
 		buttoneSetting.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.SETTING_ICON)));
-		buttoneSetting.setBounds(35, 140, 32, 32);
+		buttoneSetting.setBounds(35, 150, 32, 32);
 		layeredPane.add(buttoneSetting);
 		
 		
@@ -96,7 +96,7 @@ public class LoginMandanteView extends LoginViewFactory {
 		layeredPane.add(labelInfo);
 		
 		mex = DefaultComponentFactory.getInstance().createLabel("");
-		mex.setBounds(35, 140, 156, 14);
+		mex.setBounds(35, 135, 156, 14);
 		layeredPane.add(mex);
 				
 
