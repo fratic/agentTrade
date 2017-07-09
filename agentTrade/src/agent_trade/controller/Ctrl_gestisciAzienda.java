@@ -148,9 +148,7 @@ public class Ctrl_gestisciAzienda {
 		String errore = ControlloCampi(ragSoc, pIva, codFis, citta, cap, indirizzo, email, tel, fax, url, tipo);
 		
 		if(errore == null){
-////			NON VA BENE
-//			if(url == "") url = null;			
-			
+
 			M_Azienda azienda = new M_Azienda( ragSoc, citta, cap, indirizzo, tel, fax, email, pIva, codFis, url, tipo);
 			M_Azienda.salvaAziendaRemoto(azienda); 
 
@@ -182,8 +180,6 @@ public class Ctrl_gestisciAzienda {
 		
 		String errore = ControlloCampi(ragSoc, pIva, codFis, citta, cap, indirizzo, email, tel, fax, url, tipo);
 		if(errore==null){
-////			NON VA BENE
-//			if(url == "") url = null;
 			
 			M_Azienda azienda = M_Azienda.cercaAziendaRemoto(id);
 						
@@ -320,7 +316,6 @@ public class Ctrl_gestisciAzienda {
 		M_Azienda azienda = M_Azienda.cercaAziendaRemoto(idAzienda);
 		M_Azienda.cancellaAziendaRemoto(azienda);
 
-//		AlberoAziende.rimuoviNodo(azienda.getIdAzienda()+ " - " +azienda.getCognome()+ " - " +azienda.getNome());
 		confermaCancAzienda.getInstance().setVisible(false);		
 		confermaCancAzienda.cancInst();
 		PrimaryMandanteView.getInstance().resetPannelloCentraleAzienda();
@@ -337,8 +332,8 @@ public class Ctrl_gestisciAzienda {
 	public void visualizzaListino(int idAzienda){
 		try {
 			Ctrl_gestisciListino.getInstance().recuperaListino(idAzienda);
-		} catch (PersistentException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (PersistentException e) {
 			e.printStackTrace();
 		}
 		PrimaryMandanteView.getInstance().selectTabListino();

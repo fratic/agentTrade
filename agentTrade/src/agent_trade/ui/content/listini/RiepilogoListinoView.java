@@ -172,7 +172,7 @@ public class RiepilogoListinoView extends JPanel {
 		
 		String tipoSconto="";
 		
-		M_Sconto politicaSconto = M_Sconto.caricaSconto((int) prodotto.getSconto());
+		M_Sconto politicaSconto = M_Sconto.caricaScontoRemoto((int) prodotto.getSconto());
 					
 		if (politicaSconto instanceof M_ScontoQuantita)
 		{

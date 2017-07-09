@@ -43,7 +43,7 @@ public class ItemNuovoPreventivoView extends JPanel
 {
 	/*attributi di classe*/
 	
-	private static final Class ButtonsEditorRm = null;
+//	private static final Class ButtonsEditorRm = null;
 	private static ItemNuovoPreventivoView instance;
 	private static DefaultTableModel JTableModel;
 
@@ -309,13 +309,7 @@ public class ItemNuovoPreventivoView extends JPanel
 		String sconto = setTipoScontoTabella(prev_item);
 		
 		String parziale = Float.toString(prev_item.calcolaParziale());
-		//sarebbe opportuno visualizzare il parziale scontato
 		String parziale_scontato = Float.toString(prev_item.calcolaParziale()-prev_item.getStrategiaProdotto().calcolaSconto(prev));
-		
-//		//se lo sconto è zero, non visualizzo nulla, altrimenti adatto a x,dd 
-//		if (prod.getSconto()!=0){
-//			sconto=(java.lang.Math.ceil(prod.getSconto()*100))+"%";
-//		}
 		
 		((DefaultTableModel) JTableModel).addRow(new Object[]{null, Integer.toString(id), nome, categoria, quant, prezzo, sconto, parziale, parziale_scontato});
 	}
@@ -399,8 +393,6 @@ public class ItemNuovoPreventivoView extends JPanel
 		setScontoCliente(Float.toString(scontoCliente));
 		
 	}
-
-	
 
 }
 

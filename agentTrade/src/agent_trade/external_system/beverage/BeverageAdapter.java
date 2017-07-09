@@ -27,8 +27,6 @@ public class BeverageAdapter extends AziendaViniAdapter {
 		try {
 			int id=M_Azienda.cercaAziendaNome(Costanti.BEVERAGE).getIdAzienda();
 			idAzienda=id;
-			System.out.println("Azienda appena caricata BEVERAGE: "+idAzienda);
-
 		} 
 		catch (PersistentException e) {
 			e.printStackTrace();

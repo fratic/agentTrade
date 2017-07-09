@@ -58,7 +58,6 @@ public class LemAdapter extends AziendaCarniAdapter {
 		ProdottiLemJSON js = gson.fromJson(jsonCARNE, ProdottiLemJSON.class);
 
 		ProdottoLem[] elencoCarni=js.getProdotti();
-		//controllare se nullo altrimenti da errore
 		ArrayList<M_Prodotto> carni = new ArrayList<M_Prodotto>();
 		
 		for (int i = 0; i < elencoCarni.length; i++) {
@@ -70,12 +69,10 @@ public class LemAdapter extends AziendaCarniAdapter {
 			carne.setIdDescrizioneProdotto(elencoCarni[i].getIddescrizioneprodotto());
 			carne.setNome(elencoCarni[i].getNome());
 			carne.setPrezzo(elencoCarni[i].getPrezzo());
-//			carne.setSconto((float) elencoCarni[i].getSconto());	
 			carne.setVersione(elencoCarni[i].getVersione());
 			carne.setProvenienza(elencoCarni[i].getProvenienza());
 			carne.setTaglio(elencoCarni[i].getTaglio());
 			carne.setTipo(elencoCarni[i].getAnimale());
-//			carne.setPeso(elencoCarni[i].getPeso());
 			carne.setIdAzienda(idAzienda);
 			try {
 				carne.setSconto(determinaSconto((float) elencoCarni[i].getSconto()));

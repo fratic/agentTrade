@@ -159,6 +159,8 @@ public class Ctrl_gestisciListino {
 		elencoProd = M_Prodotto.caricaProdottiRemotoAzienda(azienda.getIdAzienda());		
 		
 //		fare un	controllo per vedere se la lista è vuota in caso affermativo comunicarlo al mandante
+			
+			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
 			PrimaryMandanteView.getInstance().initTable(elencoProd);
 			AlberoListini.abilitaAlbero();
 			AlberoListini.selectNode(azienda.getIdAzienda()+ " - " +azienda.getRagioneSociale());
@@ -224,7 +226,6 @@ public class Ctrl_gestisciListino {
 		AlberoListini.abilitaAlbero();
 		
 		M_ScontoPercent scontoBase = M_ScontoPercent.caricaScontoBase();
-//		System.out.println("ID SCONTO: " + scontoBase.getId() + "Percent: "+ scontoBase.getPercent());
 		prod.setSconto(scontoBase.getId());
 		
 		M_Prodotto.salvaProdottoRemoto(prod);
@@ -237,7 +238,6 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
-		//vedere se c'è una soluzione migliore in quanto questa implica una chiamata al db
 		updateElencoProdotti();		
 		
 		PrimaryMandanteView.initRiepilogoListinoView();
@@ -271,9 +271,6 @@ public class Ctrl_gestisciListino {
 	
 	
 	public void annullaModifica(M_Prodotto prod) throws PersistentException{
-		
-//		PrimaryMandanteView.cancRiepilogoProdottoView();
-//		PrimaryMandanteView.initRiepilogoProdottoView(prod);
 		
 		mostraProdotto(prod.getIdProdotto());
 		
@@ -313,14 +310,7 @@ public class Ctrl_gestisciListino {
 		
 		M_Prodotto.aggiornaProdottoRemoto(prod);
 		
-//		for (M_Prodotto p : elencoProd) {
-//			if(p.getIdProdotto()== prod.getIdProdotto()){
-//				p = prod;
-//			}
-//		}
 		updateElencoProdotti();
-//		PrimaryMandanteView.cancRiepilogoProdottoView();
-//		PrimaryMandanteView.initRiepilogoProdottoView(prod);
 		
 		mostraProdotto(prod.getIdProdotto());
 		
@@ -359,8 +349,6 @@ public class Ctrl_gestisciListino {
 	
 	
 	public void postConfermaCancProdotto(M_Prodotto prod) throws PersistentException{
-		
-//		prod.setVersione(prod.getVersione());
 		
 		prod.setVersione(0);
 		

@@ -36,7 +36,6 @@ public class AlberoAgenti extends JPanel {
 	private static DefaultMutableTreeNode radice;
 	private static AlberoAgenti instance;
 	
-//	Variabile che serve per non abilitare il listener dell'albero quando si cancella un cliente 
 	private static boolean abilitalistener = true;
 
 
@@ -62,7 +61,6 @@ public class AlberoAgenti extends JPanel {
 
 	        albero.setCellRenderer(renderer);
 				
-			//quando seleziono il cliente, mostra nel panel centrale il dettaglio
 	        albero.addTreeSelectionListener((new TreeSelectionListener() {
 
 				public void valueChanged(TreeSelectionEvent e) {
@@ -84,13 +82,9 @@ public class AlberoAgenti extends JPanel {
 					}
 					
 				}}));
-	        
-	 
-						
 	}		
 	
 	
-			
 	/*metodi di classe*/
 	
 	public static AlberoAgenti getInstance(){
@@ -103,7 +97,6 @@ public class AlberoAgenti extends JPanel {
 	/*metodi pubblici*/
 	
 	
-	//quando viene creato un nuovo cliente aggiunge un nodo all'albero	
 	
 	public static void inserisciNodo(String nodo) {
 		    
@@ -115,33 +108,12 @@ public class AlberoAgenti extends JPanel {
 		  
 	}
 			  
-//	public static void rimuoviNodo(String nodo) {
-//		
-//		System.out.println("sono in rimuovi nodo");
-//		Enumeration<MutableTreeNode> sottonodi = radice.children();
-//		while (sottonodi.hasMoreElements())
-//		{
-//			//ottengo i nodi singolarmente
-//			DefaultMutableTreeNode nodo1 = (DefaultMutableTreeNode)sottonodi.nextElement();
-//			//System.out.print(nodo1);
-//			if(nodo1.toString().equals(nodo)) {
-//				abilitalistener = false;
-//				model.removeNodeFromParent(nodo1);
-//				albero.clearSelection();
-//				System.out.println("cancello il nodo "+nodo1+" e tolgo la selezione");
-//
-//			}
-//			abilitalistener = true;
-//		}
-//	}
 	
 	public static void refresh () throws PersistentException{
 		
-		//albero.clearSelection();
 		abilitalistener = false;
 
 		((DefaultMutableTreeNode) model.getRoot()).removeAllChildren();
-	   // model.reload();
 	    Ctrl_System.getInstance().initAlberoAgenti();
 		    model.reload();
 			abilitalistener = true;
@@ -156,7 +128,6 @@ public class AlberoAgenti extends JPanel {
 			
 			if(nodo1.toString().equals(nodo)) {
 				 TreeNode[] nodes = model.getPathToRoot(nodo1);  
-		         //TreePath path = new TreePath(nodes);    
 		         albero.setExpandsSelectedPaths(true);                
 		         albero.setSelectionPath(new TreePath(nodes));
 			}

@@ -68,11 +68,6 @@ public class NuovoDolciView extends NuovoProdottoFactoryView{
 		pannArtigianale.add(JRArtiTrue);
 		pannArtigianale.add(JRArtiFalse);
 
-//		JCArtigianale = new JComboBox(Costanti.LISTA_SI_NO);
-//		JCArtigianale.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-//		//JCArtigianale.setToolTipText(Costanti.TIP_ARTIGIANALE_DOLCE);
-//		pannArtigianale.add(JCArtigianale);
-		
 		pannFreeGluten = new JPanel();
 		FlowLayout flowLayout10 = (FlowLayout) pannFreeGluten.getLayout();
 		flowLayout10.setAlignment(FlowLayout.LEFT);
@@ -96,11 +91,6 @@ public class NuovoDolciView extends NuovoProdottoFactoryView{
 		pannFreeGluten.add(JRFreeTrue);
 		pannFreeGluten.add(JRFreeFalse);
 		
-//		JCFreeGluten = new JComboBox(Costanti.LISTA_SI_NO);
-//		JCFreeGluten.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-//		//JCFreeGluten.setToolTipText(Costanti.TIP_FREE_GLUTEN_DOLCE);
-//		pannFreeGluten.add(JCFreeGluten);
-		
 		pannErrore = new JPanel();
 		FlowLayout flowLayout15 = (FlowLayout) pannErrore.getLayout();
 		flowLayout15.setHgap(0);
@@ -122,15 +112,14 @@ public class NuovoDolciView extends NuovoProdottoFactoryView{
 					dolce.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					dolce.setCategoria(TFCategoria.getText());
 					dolce.setIdDescrizioneProdotto(TADescrizione.getText());
-//					dolce.setSconto(Float.parseFloat(TFSconto.getText()));
 					dolce.setIdAzienda(aziendaRif.getIdAzienda());
 					dolce.setVersione(1);
 					dolce.setArtigianale(JRArtiTrue.isSelected());
 					dolce.setFree_gluten(JRFreeTrue.isSelected());
 					
 					Ctrl_gestisciListino.getInstance().salvaProdotto(dolce);
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
+				} 
+				catch (PersistentException e) {
 					e.printStackTrace();
 				}
 			}

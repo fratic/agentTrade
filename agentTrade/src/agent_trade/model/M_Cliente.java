@@ -300,29 +300,7 @@ public class M_Cliente implements Cloneable{
 		return null;
 	}
 	
-//	NON USATA
-//	public static M_Cliente[] caricaClientiParametri(String cognome, String nome, String cf)throws PersistentException{
-//		
-//		try{
-//			ClienteCriteria criteriaCliente= new ClienteCriteria();
-//			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
-//			//BISOGNA RIPORTARE LA STRINGA TUTTA IN MINUSCOLO PERCHE è CASE SENSITIVE				
-//			criteriaCliente.nome.like("%"+nome+"%");
-//			criteriaCliente.cognome.like("%"+cognome+"%");
-//			criteriaCliente.codice_fiscale.like("%"+cf+"%");
-//			criteriaCliente.attivo.eq(1);
-//			return criteriaCliente.listCliente();
-//
-//		}
-//		catch (PersistentException e) {
-//			e.printStackTrace();
-//		}
-//		finally {
-////			AgentTradePersistentManager.instance().disposePersistentManager();
-//		}
-//		return null;
-//	}
-//	
+
 	public static void salvaCliente(M_Cliente c)throws PersistentException{
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try 
@@ -579,14 +557,9 @@ public class M_Cliente implements Cloneable{
 	public IScontoStrategy getStrategiaCliente() throws PersistentException {
 		
 		IScontoStrategy strategiaCliente= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
-//		this.setStrategiaCliente(strategiaCliente);
 		return strategiaCliente;
 	}
 
-//	public void setStrategiaCliente(IScontoStrategy strategiaCliente) {
-//		this.strategiaCliente = strategiaCliente;
-//	}
-	
 	
 	public M_Cliente clone() {
 		try {

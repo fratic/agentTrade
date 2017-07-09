@@ -35,7 +35,7 @@ public class Ctrl_elaboraPreventivo {
 	private static Ctrl_elaboraPreventivo instance;
 	
 	public static boolean prevInCorso=false;
-	//probabilmente non è compito suo tenere questa struttura dati
+
 	private static Map<Integer, JButton> elencoBottDisat=new TreeMap<>();
 	
 	
@@ -71,14 +71,12 @@ public class Ctrl_elaboraPreventivo {
 		PrimaryAgenteView.initIntestazione();
 		PrimaryAgenteView.initItem();
 		
-		
 		PrimaryAgenteView.getInstance().setEnableNewPreventivo(false);
 		
 		PrimaryAgenteView.getInstance().setEnableCercaPreventivo(false);
 		PrimaryAgenteView.getInstance().setEnableTabCliente(false);
 		PrimaryAgenteView.getInstance().setEnableSalva(false);
 		PrimaryAgenteView.getInstance().setUpdate(false);
-
 		
 		AlberoPreventivi.disabilitaAlbero();
 		
@@ -183,7 +181,6 @@ public class Ctrl_elaboraPreventivo {
 			elencoBott=ProdottiView.elencoBottoniProdotti();
 			jb=elencoBott.get(p.getIdProdotto());
 			elencoBottDisat.put(p.getIdProdotto(), jb);
-			//jb.setEnabled(false);
 		}
 	}
 	
@@ -342,10 +339,7 @@ public class Ctrl_elaboraPreventivo {
 				p.removeItem(id_item);
 				ItemNuovoPreventivoView.getInstance().deleteRow(row);
 				JButton jb=elencoBottDisat.get(id_item);
-//				if (jb!=null){
-//					jb.setEnabled(true);
-					elencoBottDisat.remove(id_item);
-//				}
+				elencoBottDisat.remove(id_item);
 
 				try {
 					if (M_Preventivo.getInstance().getItem().isEmpty()){
@@ -366,12 +360,8 @@ public class Ctrl_elaboraPreventivo {
 	public void modificaPreventivo(int id_Preventivo) throws PersistentException{
 
 //		Bisogna controllare se il preventivo è ancora valido, ed in caso affermativo, 
-//		bisogna mantentere i prezzi del preventivo originario
-//		in caso negativo, comunicarlo oppure non attivare il bottone di modifica preventivamente
-				
 			
 		M_Preventivo prev = M_Preventivo.caricaPreventivo(id_Preventivo);
-
 
 		M_Preventivo prevMod= M_Preventivo.getInstance(prev);
 		
@@ -387,13 +377,6 @@ public class Ctrl_elaboraPreventivo {
 	
 			M_Preventivo prev = M_Preventivo.caricaPreventivo(id_Preventivo);
 
-			/**
-			*non va bene. se lo faccio a transazione completa non funziona 
-			*l'albero, cosi invece potrebbe capitare che non si cancella sul db 
-			* e si cancella apparentemente nel software
-			*una possibile soluzione potrebbe essere quella di fare un refesh completo 
-			*dell'albero ogni qual volta c'è una modifica
-			*/
 			AlberoPreventivi.cancellaNodo();
 			PrimaryAgenteView.getInstance().resetPannelloCentralePreventivo();
 			AlberoPreventivi.selezionaRadice();
@@ -401,7 +384,7 @@ public class Ctrl_elaboraPreventivo {
 	}
 	
 	
-public void btnCerca() {
+	public void btnCerca() {
 		
 		PrimaryAgenteView.getInstance().resetPannelloCentralePreventivo();
 		PrimaryAgenteView.getInstance().setSfondoPrev();
@@ -479,8 +462,5 @@ public void btnCerca() {
 		Ctrl_elaboraPreventivo.elencoBottDisat = elencoBottDisat;
 	}
 
-	
-	
-	
 	
 }

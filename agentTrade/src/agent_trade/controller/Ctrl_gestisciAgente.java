@@ -169,7 +169,6 @@ public class Ctrl_gestisciAgente {
 			PrimaryMandanteView.getInstance().setEnableCercaAgente(true);
 			PrimaryMandanteView.getInstance().disattivaInviaPostaAgente(true);
 			PrimaryMandanteView.getInstance().setInvisibleToolTipAgente();
-//			AlberoAgenti.updateNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
 			AlberoAgenti.abilitaAlbero();
 			AlberoAgenti.refresh();
 			AlberoAgenti.selectNode(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
@@ -333,7 +332,6 @@ public class Ctrl_gestisciAgente {
 		agente.setAttivo(0);
 		M_Agente.aggiornaAgenteRemoto(agente);
 
-		//AlberoAgenti.rimuoviNodo(agente.getIdAgente()+ " - " +agente.getCognome()+ " - " +agente.getNome());
 		confermaCancAgente.getInstance().setVisible(false);		
 		confermaCancAgente.cancInst();
 		PrimaryMandanteView.getInstance().resetPannelloCentraleAgente();

@@ -58,10 +58,6 @@ public class SystemDaemon {
 	
 	
 	
-	/**Probabilmente bisogna implementare qualcosa che scarica tutto.. es, se scarico un agente, devo portarmi dietro i suoi 
-	 * clienti e quindi i suoi preventivi, quindi prev_item e quindi prodotti, sconti**/
-	
-	
 	/**
 	 * Metodo che permette di caricare un certo agente dal db remoto e salvarlo nel db locale  
 	 **/
@@ -109,8 +105,6 @@ public class SystemDaemon {
 	}
 
 	
-	
-	
 	/**
 	 * Metodo che permette di sincronizzare i prodotti presenti sul db remoto all'interno del db locale
 	 **/
@@ -143,7 +137,6 @@ public class SystemDaemon {
 					AgentTradePersistentManager.instance().disposePersistentManager();
 
 					locale=remoti[i].clone();
-//					locale.setVersione(remoti[i].getVersione());
 					M_Prodotto.updateProdotto(locale);
 					aggiornamenti=aggiornamenti+"Prodotto con ID="+locale.getIdProdotto()+" cancellato\n";
 				}
@@ -165,9 +158,10 @@ public class SystemDaemon {
 	}
 	
 	
-	public void sincListino() throws PersistentException{
+	public void sincListino() throws PersistentException, CloneNotSupportedException{
 		String mex = this.sincronizzaAziende();
-		mex=mex+this.sincronizzaListino();
+		mex = mex + this.sincronizzaSconti();
+		mex = mex + this.sincronizzaListino();
 		new DialogAggiornamenti(mex);
 		Ctrl_System.getInstance().initProdotti();
 		AlberoProdotti.refresh();
@@ -176,26 +170,29 @@ public class SystemDaemon {
 	
 	
 	public void sincListinoRemoto() throws IOException, PersistentException{
-//		contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+		PrimaryMandanteView.getInstance().getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		String mex = sincronizzaListiniRemoti();
 		PrimaryMandanteView.getInstance().resetPannelloCentraleListino();
 		PrimaryMandanteView.getInstance().setSfondoListino();
 		AlberoListini.refresh();
 		AlberoSconti.refresh();
 		new DialogAggiornamenti(mex);
+		PrimaryMandanteView.getInstance().getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+
 	}
 	
 	public void sincListinoRemoto(String azienda) throws IOException, PersistentException{
-		
+		PrimaryMandanteView.getInstance().getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		SistemaEsterno sistemaEsterno= SistemaEsternoFactory.getInstance().getAdapter(azienda);
 		String mex= ("\nSistema Esterno: "+sistemaEsterno.getNomeAzienda()+"\n");
-		mex= mex + M_Prodotto.aggiornaProdottiRemoto(sistemaEsterno.sincListinoRemoto());
-		
+		mex = mex + M_Prodotto.aggiornaProdottiRemoto(sistemaEsterno.sincListinoRemoto());
 		PrimaryMandanteView.getInstance().resetPannelloCentraleListino();
 		PrimaryMandanteView.getInstance().setSfondoListino();
 		AlberoListini.refresh();
 		AlberoSconti.refresh();
 		new DialogAggiornamenti(mex);
+		PrimaryMandanteView.getInstance().getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+
 	}
 	
 	
@@ -209,7 +206,8 @@ public class SystemDaemon {
 	}
 	
 	public void sincClientiDonwload() throws PersistentException, CloneNotSupportedException{
-		String mex = this.sincronizzaClientiDownload();
+		String mex = this.sincronizzaSconti();
+		mex = mex + this.sincronizzaClientiDownload();
 		new DialogAggiornamenti(mex);
 		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 		PrimaryAgenteView.getInstance().setSfondoCliente();
@@ -323,7 +321,6 @@ public class SystemDaemon {
 				
 				if(clienti_locali[i].getVersione()>cliente_remoto.getVersione() /*&& clienti_locali[i].getVersione()!=0 */)
 				{
-					System.out.println("Sono in SINC CLIENTI UPLOAD: AGGIORNAMENTO CLIENTE:"+clienti_locali[i]);
 
 					AgentTradeMandantePersistentManager.instance().disposePersistentManager();
 					
@@ -332,24 +329,19 @@ public class SystemDaemon {
 					/**Questa operazione viene fatta per gli id del remoto e del locale differiscono*/
 					cliente_remoto.setIdCliente(id);
 					cliente_remoto.setIdclienteagente(clienti_locali[i].getIdCliente());
-					System.out.println("aggiornamento del cliente: "+cliente_remoto.getCognome());
 					M_Cliente.updateClienteRemoto(cliente_remoto);
-					System.out.println("ID "+clienti_locali[i].getIdCliente());
 					
 					aggiornamenti=aggiornamenti+"UPLOAD del cliente con ID="+clienti_locali[i].getIdCliente()+"\n";
 
-					
 				}
 			}
 			
 			else if (clienti_locali[i].getAttivo()!=0)
 			{
-				System.out.println("Inserimento nuovo cliente: "+clienti_locali[i].getIdCliente()+clienti_locali[i].getCognome());
 				M_Cliente c= clienti_locali[i].clone();
 				c.setIdclienteagente(clienti_locali[i].getIdCliente());
 				c.setIdCliente(0);
 				M_Cliente.salvaClienteRemoto(c);
-				System.out.println("ID nuovo insert "+clienti_locali[i].getIdCliente());
 				
 				aggiornamenti=aggiornamenti+"UPLOAD Nuovo Cliente con ID="+clienti_locali[i].getIdCliente()+"\n";
 
@@ -379,19 +371,13 @@ public class SystemDaemon {
 			
 			M_Cliente cliente_locale = M_Cliente.cercaCliente(clienti_remoti[i].getIdclienteagente());
 			if(cliente_locale!=null){
-				System.out.println("---------------------------");
-				System.out.println("cliente_locale "+cliente_locale+" versione dwn "+cliente_locale.getVersione_download());
-				System.out.println("clienti_remoti "+clienti_remoti[i]+" versione dwn "+clienti_remoti[i].getVersione_download());
-				System.out.println("---------------------------");
 
 				if(clienti_remoti[i].getVersione_download()>cliente_locale.getVersione_download())
 				{
-					System.out.println("Sono in SINC CLIENTI DOWNLOAD: AGGIORNAMENTO CLIENTE:"+cliente_locale);
 					AgentTradePersistentManager.instance().disposePersistentManager();
 					
 					cliente_locale.setAttivo(clienti_remoti[i].getAttivo());
 					cliente_locale.setVersione_download(clienti_remoti[i].getVersione_download());
-					//cliente_locale.setAgenteAssociato(clienti_remoti[i].getAgenteAssociato());
 					cliente_locale.setSconto(clienti_remoti[i].getSconto());
 
 					M_Cliente.aggiornaCliente(cliente_locale);
@@ -403,19 +389,11 @@ public class SystemDaemon {
 			else
 			{
 
-				//fatto per recuperare l'id nel db locale per poi aggiornarlo nel remoto
 				M_Cliente c= new M_Cliente();
 				c=clienti_remoti[i].clone();
 				M_Cliente.salvaCliente(c);
-				System.out.println("Sono in SINC CLIENTI DOWNLOAD: NUOVO CLIENTE:"+c);
-
-//				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    l'IDagentecliente è: "+ c.getIdCliente());
-//				M_Cliente.aggiornaCliente(c);
 				clienti_remoti[i].setIdclienteagente(c.getIdCliente());
-				//M_Cliente.salvaCliente(clienti_remoti[i]);
-//				System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    l'IDagentecliente è: "+ clienti_remoti[i].getIdclienteagente());
 				M_Cliente.updateClienteRemoto(clienti_remoti[i]);
-				System.out.println("Sono in SINC CLIENTI DOWNLOAD: AGGIORNAMENTO REMOTO CLIENTE:"+clienti_remoti[i]);
 				
 				aggiornamenti=aggiornamenti+"Nuovo Cliente con ID="+clienti_remoti[i].getIdCliente()+" inserito\n";
 
@@ -450,15 +428,13 @@ public class SystemDaemon {
 			mex= mex + sincronizzaListino();
 			mex= mex + sincronizzaClienti();
 			
-			
-			DialogAggiornamenti_test example = new DialogAggiornamenti_test(mex);
-//			SwingUtilities.invokeLater(example);
-
-			//sarebbe opportuno mostrare un dialog che dice se ci sono stati aggiornamenti e cosa
+			new DialogAggiornamenti_test(mex);
 		}
 		else{
-			System.out.println("Connessione verso il db remoto assente");
-			//sarebbe opportuno mostrare un dialog che dice che si è fuori rete
+			String m = "Connessione verso il db remoto assente.\n"
+					+ "Non è possibile aggiornare i prodotti \n"
+					+ "ma si può lavorare comunque offline";
+			new DialogAggiornamenti_test(m);
 
 		}
 	}

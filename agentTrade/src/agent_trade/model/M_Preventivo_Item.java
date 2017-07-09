@@ -161,7 +161,6 @@ public class M_Preventivo_Item extends Observable{
 	}
 	
 	public void setStrategiaCliente(IScontoStrategy strategiaProdotto2) {
-		// TODO Auto-generated method stub
 		
 	}
 

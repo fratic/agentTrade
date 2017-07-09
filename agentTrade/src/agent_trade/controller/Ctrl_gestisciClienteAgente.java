@@ -24,14 +24,11 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 
 	private static Ctrl_gestisciClienteAgente instance;
 	
-	
-	
 	public static Ctrl_gestisciClienteAgente getInstance(){
 		if (instance==null)
 			instance = new Ctrl_gestisciClienteAgente();
 		return instance;	 
 	}
-	
 	
 	private boolean check(String regex, String input){
 		
@@ -96,27 +93,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 	}
 	
 	
-//	//serve in nuovo preventivo per cercare ed inserire i clienti
-//	public void cercaCliente(String c) throws PersistentException//qui andrebbe cambiato il modo di ricerca
-//	{		
-////		super.cercaCliente(c);
-//		
-//		if (c.equals("") || c==null){
-//			CercaClienteView.getInstance().popolaTab(Ctrl_gestisciClienteAgente.getInstance().caricaClienti());
-//		}
-//		else{
-//		
-//				M_Cliente [] listClienti = M_Cliente.caricaClientiCognome(c);
-//						
-//				if (listClienti.length!=0){
-//				CercaClienteView.getInstance().popolaTab(listClienti);
-//				}
-//				else{		
-//					CercaClienteView.getInstance().setErrore(Costanti.MESSAGGIO_CLIENTE_NON_TROVATO);
-//				}
-//			}
-//		}
-		
 		
 	//per la tabella cerca cliente in gestione cliente
 	public void ricercaCliente(String c, String pi, String cf, String city) throws PersistentException {
@@ -152,7 +128,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 		
 	//reset campi finestra ricerca cliente e reset tabella
 	public void annullaRicercaCliente() {
-//		super.annullaRicercaCliente();
 		Ricerca_cliente.getInstance().svuotaTabella();
 		Ricerca_cliente.getInstance().resetRicerca();
 		Ricerca_cliente.getInstance().setVisibleErroreRicercaCliente(false);
@@ -187,7 +162,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 	
 	public void inserisciNuovoCliente(M_Cliente cliente) throws PersistentException	{
 		
-//		super.inserisciNuovoCliente(cliente);
 		
 //		la stringa errore serve per il controllo campi se viene restituita null vuol dire che non ci sono errori
 		String errore= ControlloCampi(cliente);
@@ -225,7 +199,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 		
 	public void modificaCliente(M_Cliente c) throws PersistentException {
 		
-//		super.modificaCliente(c);
 		
 		String errore = ControlloCampi(c);
 		
@@ -263,8 +236,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 	
 	public void cancellaCliente(String id){
 		
-//		super.cancellaCliente(id);
-		
 		confermaCancCliente.getInstance().setCliente(id);
 		confermaCancCliente.getInstance().setVisible(true);
 	}
@@ -280,7 +251,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 		
 	public void apriViewCercaCliente() throws PersistentException {
 		//relativo alla ricerca del cliente in nuovo preventivo
-//		super.apriViewCercaCliente();
 		
 		CercaClienteView.getInstance().popolaTab(Ctrl_gestisciClienteAgente.getInstance().caricaClienti());
 		CercaClienteView.getInstance().setVisible(true);
@@ -288,8 +258,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 		
 		
 	public void newCliente() {	
-		
-//		super.newCliente();
 		
 		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 		PrimaryAgenteView.initDettaglioCliente();
@@ -310,8 +278,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 	
 	public void esciNewCliente() {
 		
-//		super.esciNewCliente();
-		
 		PrimaryAgenteView.getInstance().resetNuovoCliente();
 		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 		PrimaryAgenteView.getInstance().setSfondoCliente();
@@ -325,8 +291,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 	
 	
 	public void btnCerca() {	
-		
-//		super.btnCerca();
 		
 		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 		PrimaryAgenteView.getInstance().setSfondoCliente();
@@ -361,10 +325,7 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 	
 	public void annullaModificheCliente(String id) throws PersistentException {
 		
-//		super.annullaModificheCliente(id);
-		
 		PrimaryAgenteView.getInstance().resetCliente();
-//		M: trasforma stringa in intero
 		int idCliente=Integer.parseInt(id);
 		recuperaCliente(idCliente);
 		
@@ -385,8 +346,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 	
 	public void postConfermaCancCliente(String id) throws PersistentException {
 		
-//		super.postConfermaCancCliente(id);
-		
 		int idCliente=Integer.parseInt(id);
 		
 		M_Cliente cliente=M_Cliente.cercaCliente(idCliente);
@@ -403,15 +362,12 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 	
 	
 	public void notConfermaCancCliente(){
-//		super.notConfermaCancCliente();
 		confermaCancCliente.getInstance().setVisible(false);
 		confermaCancCliente.cancInst();
 	}
 	
 
 	public void mostraCliente(Object obj) throws PersistentException {
-		
-//		super.mostraCliente(obj);
 		
 		if(((DefaultMutableTreeNode)obj).isLeaf()) {
 			
@@ -436,8 +392,6 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 
 	public String mostraScontoCliente(int idSconto) throws PersistentException{
 		
-//		super.mostraScontoCliente(idSconto);
-		
 		String scnt = "0%";
 		
 		M_Sconto sconto = M_Sconto.caricaSconto(idSconto);		
@@ -447,7 +401,5 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 		}
 		return scnt;
 	}
-	
-	
 	
 }

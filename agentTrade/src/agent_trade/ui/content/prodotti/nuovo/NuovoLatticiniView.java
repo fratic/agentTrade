@@ -92,14 +92,13 @@ public class NuovoLatticiniView extends NuovoProdottoFactoryView{
 					latticino.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					latticino.setCategoria(TFCategoria.getText());
 					latticino.setIdDescrizioneProdotto(TADescrizione.getText());
-//					latticino.setSconto(Float.parseFloat(TFSconto.getText()));
 					latticino.setIdAzienda(aziendaRif.getIdAzienda());
 					latticino.setVersione(1);
 					latticino.setStagionatura(Integer.parseInt(TFStagionatura.getText()));
 					latticino.setTipo(TFTipo.getText());
 					Ctrl_gestisciListino.getInstance().salvaProdotto(latticino);
-				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
+				} 
+				catch (PersistentException e) {
 					e.printStackTrace();
 				}
 			}

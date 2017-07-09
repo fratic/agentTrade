@@ -43,7 +43,7 @@ public class ItemNuovoPreventivoView_ant extends JPanel
 {
 	/*attributi di classe*/
 	
-	private static final Class ButtonsEditorRm = null;
+//	private static final Class ButtonsEditorRm = null;
 	private static ItemNuovoPreventivoView_ant instance;
 	private static DefaultTableModel JTableModel;
 

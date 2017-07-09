@@ -57,9 +57,6 @@ public class M_Preventivo implements Observer {
 	
 	private boolean modificato=false;
 	
-//	private XScontoStrategy strategiaCliente;
-
-	
 	/*
 	 * costruttori
 	 */
@@ -67,7 +64,6 @@ public class M_Preventivo implements Observer {
 	private M_Preventivo(M_Preventivo prev) throws PersistentException{		
 		
 		this.idPreventivo=prev.idPreventivo;
-//		this.data=prev.getData();
 		this.data=Ctrl_System.calendario.getTime();
 		this.rif_Agente=prev.getRif_Agente();
 		this.rif_Cliente=prev.getRif_Cliente();
@@ -128,7 +124,7 @@ public class M_Preventivo implements Observer {
 	}
 	
 	
-public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis, String cognome, String nome) throws PersistentException{
+	public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis, String cognome, String nome) throws PersistentException{
 		
 		try{
 			PreventivoCriteria criteriaPreventivi = new PreventivoCriteria();
@@ -247,8 +243,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 	public void annullaPrev() throws PersistentException
 	{
 
-		//e se è stato aperto in modifica un preventivo e si clicca su annulla? cancella il prev? 
-		//sbagliatissimo
 		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
 		try{
 			if (!modificato){
@@ -275,13 +269,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 		
 		M_Preventivo_Item it= new M_Preventivo_Item(M_Preventivo.getInstance(), Prodotto);
 		
-		/**
-		 * l'item è stato creato. Di conseguenza posso chiedere alla factory se il prodotto associato all'item  
-		 * ha un qualche tipo di sconto, e quindi posso salvarmi l'interfaccia per poi usarla a tempo debito
-		 * */
-		
-		//quindi, recupero l'id dello sconto e quindi eventualmente la sua percentuale
-		
 		this.item.add(it);
 
 		return it;
@@ -291,8 +278,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 	public void update(Observable observer, Object obj) {
 		
 		try {
-			
-//			alto accoppiamento
 			
 			Ctrl_elaboraPreventivo.getInstance().refresh(observer, this);
 		} 
@@ -314,8 +299,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 		while (iteraItem.hasNext()) 
 		{
 			item = (M_Preventivo_Item) iteraItem.next();
-			//MODIFICA. se ci sono problemi 
-//			totaleNoScont= totaleNoScont+(item.getQuantita()*item.getIdProdotto().getPrezzo());
 			totaleNoScont= totaleNoScont+item.calcolaParziale();
 
 		}
@@ -336,7 +319,6 @@ public static M_Preventivo[] caricaPreventiviParametri(String id, String codFis,
 		while (iteraItem.hasNext()) 
 		{			
 			item = (M_Preventivo_Item) iteraItem.next();
-
 			scontoTot = scontoTot + item.getStrategiaProdotto().calcolaSconto(this);
 			
 		}

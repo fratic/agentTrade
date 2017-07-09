@@ -348,8 +348,6 @@ public class Ctrl_gestisciSconto {
 			PrimaryMandanteView.getInstance().setEnableCercaSconto(true);
 			PrimaryMandanteView.getInstance().setVisibleErroreRiepSconto(false);
 			PrimaryMandanteView.getInstance().setInvisibleToolTipSconto();
-//			AlberoSconti.updateNodo();
-//			AlberoSconti.selectNode();
 			AlberoSconti.abilitaAlbero();
 			AlberoSconti.refresh();
 			AlberoSconti.selectNode(M_Sconto.getStringaSconto(sconto)[0]);
@@ -380,7 +378,6 @@ public class Ctrl_gestisciSconto {
 		M_Sconto sconto = M_Sconto.caricaScontoRemoto(idSconto);
 		M_Sconto.cancellaScontoRemoto(sconto);
 
-//		AlberoSconti.rimuoviNodo();
 		ConfermaCancSconto.getInstance().setVisible(false);		
 		ConfermaCancSconto.cancInst();
 		PrimaryMandanteView.getInstance().resetPannelloCentraleSconto();

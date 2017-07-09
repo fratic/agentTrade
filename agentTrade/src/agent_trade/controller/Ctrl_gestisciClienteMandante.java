@@ -90,16 +90,12 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 		PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 		PrimaryMandanteView.getInstance().setEnableTabListino(true);
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
-//		AlberoClienti.abilitaAlbero();
-//		AlberoClienti.selectNode(cliente.getIdCliente()+ " - " +cliente.getCognome()+ " - " +cliente.getNome());
 	}
 	
 	
 	public void modificaCliente(M_Cliente c) throws PersistentException { 
 		
 		c.setVersione_download(c.getVersione_download()+1);
-//		c.setAttivo(0);
-		
 		M_Cliente.updateClienteRemoto(c);
 	}
 	
@@ -133,16 +129,13 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 		Ricerca_scontoCliente.getInstance().setVisible(true);	
 		
 	}
-		
 
 	public void assegnaSconto(int idSconto) throws PersistentException{
 		
 		M_Sconto sconto = M_Sconto.caricaScontoRemoto(idSconto);
 	
-		/****/
 		RiepilogoClienteView.cliente.setSconto(sconto.getId());
 		Ctrl_gestisciClienteFactory.getInstance().modificaCliente(RiepilogoClienteView.cliente);
-		/****/
 		
 		Ricerca_scontoCliente.getInstance().dispose();
 		Ricerca_scontoCliente.cancInstanza();
@@ -170,17 +163,7 @@ public class Ctrl_gestisciClienteMandante extends Ctrl_gestisciClienteFactory {
 			
 		cliente.setAttivo(0);
 
-		/***/
 		Ctrl_gestisciClienteFactory.getInstance().modificaCliente(cliente);
-		
-//		cliente.setVersione_download(cliente.getVersione_download()+1);
-//		cliente.setAttivo(0);
-//		M_Cliente.updateClienteRemoto(cliente);
-		
-		
-		/***/
-//		cliente.setAgenteAssociato(agente);
-//		M_Cliente.salvaClienteRemoto(cliente);
 		
 		Ricerca_agente.getInstance().dispose();
 		Ricerca_agente.cancInstanza();

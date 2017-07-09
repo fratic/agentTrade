@@ -91,12 +91,11 @@ public class Ctrl_System {
 
 	private void inizializzaSistemaAgente() throws PersistentException, CloneNotSupportedException, IOException
 	{
-		//qui andrebbero inizializzati tutti gli oggetti che vogliamo siano presenti all'avvio
-
-		//probabilmente queste cose non vanno fatte qui, oppure bisogna chiedere ad una factory
-
-		/*******AGGIORNA listini****/
 		
+		/*******AGGIORNAMENTO delle aziende, degli sconti, 
+		 * dei prodotti e dei listini dal db 
+		 * remoto e upload cliente
+		 * ****/
 		SystemDaemon.getInstance().sincronizza();
 		
 		initAlberoClienti();

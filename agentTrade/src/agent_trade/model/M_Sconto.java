@@ -64,7 +64,6 @@ public class M_Sconto implements Cloneable{
 	}
 	
 	public static M_Sconto caricaSconto(int idSconto) throws PersistentException{
-		
 		ScontoCriteria criteria= new ScontoCriteria();
 		criteria.id.eq(idSconto);
 		return criteria.uniqueSconto();
@@ -87,7 +86,7 @@ public class M_Sconto implements Cloneable{
 		}
 		finally {
 			
-			System.out.println("commit a buon fine per id : "+s.getId()+" ? "+t.wasCommitted());
+//			System.out.println("commit a buon fine per id : "+s.getId()+" ? "+t.wasCommitted());
 		}
 	}
 	
@@ -106,7 +105,7 @@ public class M_Sconto implements Cloneable{
 		}
 		finally {
 			
-			System.out.println("commit a buon fine per id : "+s.getId()+" ? "+t.wasCommitted());
+//			System.out.println("commit a buon fine per id : "+s.getId()+" ? "+t.wasCommitted());
 		}
 	}
 	
@@ -124,17 +123,17 @@ public class M_Sconto implements Cloneable{
 			t.rollback();
 		}
 		finally {
-			System.out.println("commit a buon fine per id : "+s.getId()+" ? "+t.wasCommitted());
+//			System.out.println("commit a buon fine per id : "+s.getId()+" ? "+t.wasCommitted());
 		}
 	}
 
 	
 	public static M_Sconto caricaScontoRemoto(int idSconto) throws PersistentException{
 		try
-		{			
+		{		
+
 			Rem_ScontoCriteria criteriaSconto = new Rem_ScontoCriteria();
 			criteriaSconto.id.eq(idSconto);
-			//criteriaAzienda.attivo.eq(1);
 
 			return criteriaSconto.uniqueSconto();
 		}
@@ -144,7 +143,7 @@ public class M_Sconto implements Cloneable{
 	
 	
 	public static M_Sconto[] caricaScontiRemoto()throws PersistentException{
-		
+
 		Rem_ScontoCriteria criteriaSconto;
 		try {
 			criteriaSconto = new Rem_ScontoCriteria();
@@ -173,6 +172,7 @@ public class M_Sconto implements Cloneable{
 		String figlio=null;
 		String parent=null;
 		String ris[]= new String[2];
+
 		if (sLoad instanceof M_ScontoCliente)
 		{
 			figlio=sLoad.getId()+" - "+((M_ScontoCliente)sLoad).getPercent()*100+" %";
@@ -233,7 +233,7 @@ public class M_Sconto implements Cloneable{
 			System.out.println(e);
 		}
 		finally {
-			System.out.println("commit a buon fine per id : "+sconto.getId()+" ? "+t.wasCommitted());
+//			System.out.println("commit a buon fine per id : "+sconto.getId()+" ? "+t.wasCommitted());
 		}
 	}
 	

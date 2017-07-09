@@ -51,29 +51,6 @@ public class M_Vini extends M_Prodotto {
 	}
 
 
-	/*
-	 * metodi di classe
-	 */
-//	public static void salvaProdotto(M_Vini p)throws PersistentException{
-//		
-//		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
-//		try 
-//		{				
-////			AgentTradePersistentManager.instance().getSession().saveOrUpdate(p);
-//			AgentTradePersistentManager.instance().getSession().save(p);
-//
-//			// commit per il salvataggio
-//			t.commit();
-//		}
-//		catch (Exception e) {
-//			System.out.println("Eccezione: "+e);
-//			t.rollback();
-//		}
-//		finally {
-//			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
-//		}
-//	}
-	
 	
 	/*
 	 * metodi privati

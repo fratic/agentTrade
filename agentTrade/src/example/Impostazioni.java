@@ -44,7 +44,7 @@ public class Impostazioni extends JDialog {
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setModal(true);
-		
+
 		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (screen.width-WIDTH)/2;
         int y = (screen.height-HEIGHT)/2;

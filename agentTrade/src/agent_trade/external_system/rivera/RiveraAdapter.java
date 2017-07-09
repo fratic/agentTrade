@@ -70,7 +70,6 @@ public class RiveraAdapter extends AziendaViniAdapter {
 			vino.setIndicazione_geografica(elencoVini[i].getIndicazione_geografica());
 			vino.setNome(elencoVini[i].getNome());
 			vino.setPrezzo(elencoVini[i].getPrezzo());
-//			vino.setSconto((float) elencoVini[i].getSconto());	
 			vino.setVersione(elencoVini[i].getVersione());
 			vino.setIdAzienda(idAzienda);
 

@@ -81,7 +81,6 @@ public class M_Azienda implements Cloneable{
 		Rem_AziendaCriteria criteriaAzienda;
 		try {
 			criteriaAzienda = new Rem_AziendaCriteria();
-			//criteriaAzienda.attivo.eq(1);
 			criteriaAzienda.addOrder(Property.forName("ragioneSociale").asc());
 			return criteriaAzienda.listM_Azienda();
 		} 
@@ -118,7 +117,6 @@ public class M_Azienda implements Cloneable{
 			
 			Rem_AziendaCriteria criteriaAzienda = new Rem_AziendaCriteria();
 			criteriaAzienda.IdAzienda.eq(idAzienda);
-			//criteriaAzienda.attivo.eq(1);
 
 			return criteriaAzienda.uniqueM_Azienda();
 		}
@@ -131,7 +129,7 @@ public class M_Azienda implements Cloneable{
 			
 			AziendaCriteria criteriaAzienda = new AziendaCriteria();
 			criteriaAzienda.ragioneSociale.eq(nome);
-			//criteriaAzienda.attivo.eq(1);
+
 			return criteriaAzienda.uniqueM_Azienda();
 		}
 		finally {	
@@ -144,7 +142,7 @@ public class M_Azienda implements Cloneable{
 			
 			AziendaCriteria criteriaAzienda = new AziendaCriteria();
 			criteriaAzienda.IdAzienda.eq(id);
-			//criteriaAzienda.attivo.eq(1);
+
 			return criteriaAzienda.uniqueM_Azienda();
 		}
 		finally {	
@@ -156,7 +154,6 @@ public class M_Azienda implements Cloneable{
 		try{
 			
 			AziendaCriteria criteriaAzienda = new AziendaCriteria();
-			//criteriaAzienda.attivo.eq(1);
 			criteriaAzienda.setMaxResults(1000);
 			criteriaAzienda.addOrder(Property.forName("ragioneSociale").asc());
 

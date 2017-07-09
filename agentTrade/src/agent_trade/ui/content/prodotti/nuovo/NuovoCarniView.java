@@ -117,7 +117,6 @@ public class NuovoCarniView extends NuovoProdottoFactoryView {
 					carne.setPrezzo(Float.parseFloat(TFPrezzo.getText()));
 					carne.setCategoria(TFCategoria.getText());
 					carne.setIdDescrizioneProdotto(TADescrizione.getText());
-//					carne.setSconto(Float.parseFloat(TFSconto.getText()));
 					carne.setIdAzienda(aziendaRif.getIdAzienda());
 					carne.setVersione(1);
 					carne.setProvenienza(TFProvenienza.getText());
@@ -125,7 +124,6 @@ public class NuovoCarniView extends NuovoProdottoFactoryView {
 					carne.setTipo(JCTipo.getSelectedItem().toString());
 					Ctrl_gestisciListino.getInstance().salvaProdotto(carne);
 				} catch (PersistentException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

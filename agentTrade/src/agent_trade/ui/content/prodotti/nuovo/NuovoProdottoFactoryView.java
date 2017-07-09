@@ -34,7 +34,6 @@ public class NuovoProdottoFactoryView extends JPanel{
 	/*attributi di classe*/
 	protected static NuovoProdottoFactoryView instance;
 	
-//	protected M_Prodotto prodotto;
 	protected static M_Azienda aziendaRif;
 	
 	protected JPanel pannelloCentro;

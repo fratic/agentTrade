@@ -149,23 +149,6 @@ public abstract class M_Prodotto implements Cloneable{
 		}
 	}
 	
-//	public static M_Prodotto[] caricaProdottiAzienda(String azienda) throws PersistentException{
-//		
-//		try{
-//			M_Azienda az = M_Azienda.cercaAziendaNome(azienda);
-//			ProdottoCriteria criteriaProdotto= new ProdottoCriteria();
-//
-//			criteriaProdotto.idAzienda.eq(az.getIdAzienda());
-//			criteriaProdotto.versione.ne(0);
-//			criteriaProdotto.setMaxResults(10000);
-//			return criteriaProdotto.listProdotto();
-//
-//		}
-//		finally {
-////			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
-//		}
-//	}
-	
 	
 	public static M_Prodotto caricaProdottoRemoto(int idProdotto) throws PersistentException{
 		
@@ -190,7 +173,7 @@ public abstract class M_Prodotto implements Cloneable{
 			t.rollback();
 		}
 		finally {
-			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
+//			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
 		}
 	}
 	
@@ -208,7 +191,7 @@ public abstract class M_Prodotto implements Cloneable{
 			t.rollback();
 		}
 		finally {
-			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
+//			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
 		}
 	}
 	
@@ -226,81 +209,9 @@ public abstract class M_Prodotto implements Cloneable{
 			t.rollback();
 		}
 		finally {
-			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
+//			System.out.println("commit a buon fine per id : "+p.getIdProdotto()+" ? "+t.wasCommitted());
 		}
 	}
-	
-	
-	/**funziona per il db locale, ma questa op va fatta nel remoto**/
-//	public static void aggiornaProdotti(ArrayList<M_Prodotto> prodotti)throws PersistentException{
-//
-//		
-//		PersistentTransaction t = AgentTradePersistentManager.instance().getSession().beginTransaction();
-//		
-//		for (M_Prodotto remoto : prodotti) {
-//			
-//			ProdottoCriteria criteria= new ProdottoCriteria();
-//			criteria.idProdottoAzienda.eq(remoto.getIdProdottoAzienda());
-//			M_Vini locale=(M_Vini) criteria.uniqueProdotto();
-//			M_Vini rem=(M_Vini)remoto;
-//			
-//			if(locale!=null){
-//		
-//				if(remoto.getVersione()>locale.getVersione()){
-//					/**PROCATA, TROVARE SOLUZIONE**/
-//					/**
-//					 *una probabile soluzione è che quando si ha un aggiornamento, 
-//					 *questo viene visto come un nuovo prodotto. Quindi potremmo
-//					 *continuare a tenere il vecchio impostando versione a 0.
-//					 *cosi facendo, avremmo uno storico coerente. 
-//					 *Ovviamente quando si mostrano i prodotti, si prenderanno 
-//					 *solo quelli con versione maggiore di 0 mentre non cambierà nulla 
-//					 *per il caricamento dei prodotti nei preventivi   
-//					 *
-//					 */
-//					
-//					locale.setCategoria(remoto.getCategoria());
-//					locale.setIdDescrizioneProdotto(remoto.getIdDescrizioneProdotto());
-//					locale.setIdProdottoAzienda(remoto.getIdProdottoAzienda());
-//					locale.setNome(remoto.getNome());
-//					locale.setPrezzo(remoto.getPrezzo());
-//					locale.setSconto(remoto.getSconto());
-//					locale.setVersione(remoto.getVersione());
-//					locale.setCantina(rem.getCantina());
-//					locale.setColore(rem.getColore());
-//					locale.setIndicazione_geografica(rem.getIndicazione_geografica());
-//
-//					
-//					/***/
-//					System.out.println("prodotto locale con id: "+locale.getIdProdottoAzienda()+" obsoleto. AGGIORNAMENTO");
-//						AgentTradePersistentManager.instance().getSession().saveOrUpdate(locale);
-//					
-//					
-//										
-//					/**ALTERNATIVA**/
-////					System.out.println("prodotto locale con id: "+locale.getIdProdottoAzienda()+" obsoleto. AGGIORNAMENTO");
-////				
-////					locale.setVersione(0);
-////					AgentTradePersistentManager.instance().getSession().update(locale);
-////					AgentTradePersistentManager.instance().getSession().save(remoto);
-//
-//					
-//					/***/
-//					
-//				}
-//			}
-//			
-//			else{
-//				
-//				System.out.println("prodotto remoto nuovo. id: "+remoto.getIdProdottoAzienda()+" new insert");
-//				
-//				AgentTradePersistentManager.instance().getSession().save(remoto);
-//
-//			}
-//		}
-//		t.commit();
-//
-//	}
 	
 	
 	
@@ -365,7 +276,7 @@ public abstract class M_Prodotto implements Cloneable{
 			t.rollback();
 		}
 		finally {
-			System.out.println("SONO QUI: aggiornamento prodotto a buon fine? "+t.wasCommitted());
+//			System.out.println("SONO QUI: aggiornamento prodotto a buon fine? "+t.wasCommitted());
 		}
 	}
 

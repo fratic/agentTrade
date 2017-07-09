@@ -497,6 +497,9 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 				} 
 				catch (PersistentException e) {
 					e.printStackTrace();
+				} catch (CloneNotSupportedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}				
 			}
 		});

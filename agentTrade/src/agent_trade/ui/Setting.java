@@ -50,9 +50,10 @@ public class Setting extends JPanel {
 	 * Create the panel.
 	 */
 	public Setting() {
+
 		setBorder(new EmptyBorder(10, 15, 10, 15));
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		
+
 		JPanel panel = new JPanel();
 		add(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));

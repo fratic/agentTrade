@@ -47,7 +47,6 @@ public class RiepilogoItemPreventivoView extends JPanel
 
 	private JTable table;
 
-	//private JButton buttoneSalva;
 
 	private JScrollPane scrollPane;
 	private JPanel PannTotNoSconto;
@@ -76,9 +75,6 @@ public class RiepilogoItemPreventivoView extends JPanel
 		panelloTabella.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_TAB,Costanti.HEIGHT_PANN_TAB));
 		panel.add(panelloTabella, BorderLayout.CENTER);
 		panelloTabella.setLayout(new GridLayout(1,1));
-		
-
-		
 		
 		JTableModel = new DefaultTableModel(
                 new String[][] { }, Costanti.INTESTAZIONE_TABELLA_RIEPILOGO_ITEM);

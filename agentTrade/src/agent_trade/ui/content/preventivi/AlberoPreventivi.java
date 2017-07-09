@@ -190,14 +190,12 @@ public class AlberoPreventivi extends JPanel {
 	  
 		public static void refresh () throws PersistentException{
 			
-			//albero.clearSelection();
 			abilitalistener = false;
 
 			((DefaultMutableTreeNode) model.getRoot()).removeAllChildren();
-		   // model.reload();
 		    Ctrl_System.getInstance().initAlberoPreventivi();
-			    model.reload();
-				abilitalistener = true;
+		    model.reload();
+			abilitalistener = true;
 		}
 	  
 }
