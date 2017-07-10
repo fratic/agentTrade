@@ -3,6 +3,7 @@ package agent_trade.ui.primaryView;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -283,13 +284,14 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		
 		pannello_laterale_preventivo = new JPanel();
 		pannello_laterale_preventivo.setBackground(UIManager.getColor("ToggleButton.background"));
-		pannello_laterale_preventivo.setPreferredSize(new Dimension(260, 617));
+		pannello_laterale_preventivo.setPreferredSize(new Dimension(260, 0));
 		pannello_sottomenu_preventivo.add(pannello_laterale_preventivo, BorderLayout.WEST);
-		pannello_laterale_preventivo.setLayout(null);
+		pannello_laterale_preventivo.setLayout(new GridLayout(1,1));
+//		pannello_laterale_preventivo.setLayout(new FlowLayout());
 		
 		
 		alberoPreventivi = AlberoPreventivi.getInstance();
-		alberoPreventivi.setBounds(0, 0, 260, 617);
+//		alberoPreventivi.setBounds(0, 0, 260, 100);
 		pannello_laterale_preventivo.add(alberoPreventivi);
 
 		
