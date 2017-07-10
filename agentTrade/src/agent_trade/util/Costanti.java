@@ -21,8 +21,8 @@ public final class Costanti {
 	public static String  version = "agente";
 //	public final static String  version = "mandante";
 
-//	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
-	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
+	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
+//	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
 
 	public final static String  agente = "agente";
 	public final static String  mandante = "mandante";
@@ -42,8 +42,8 @@ public final class Costanti {
 //	public final static int  Look_Feel = 6;
 
 	
-//	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
-	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
+	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
+//	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
 
 
 	
@@ -255,7 +255,7 @@ public final class Costanti {
 	 * Dimensioni finestre
 	 */
 	public final static int WIDTH_LOGIN = 370;
-	public final static int HEIGHT_LOGIN = 240;
+	public final static int HEIGHT_LOGIN = 250;
 	
 	public final static int WIDTH_PRIMARY = 1024;
 	public final static int HEIGHT_PRIMARY = 784;

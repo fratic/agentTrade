@@ -8,7 +8,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import agent_trade.controller.Ctrl_System;
 import agent_trade.ui.SplashScreen;
-import agent_trade.ui.login.LoginViewFactory;
+import agent_trade.ui.login.LoginViewFactoryMethod;
 import agent_trade.util.Costanti;
 import de.javasoft.plaf.synthetica.SyntheticaAluOxideLookAndFeel;
 import de.javasoft.plaf.synthetica.SyntheticaBlueSteelLookAndFeel;
@@ -31,7 +31,7 @@ public class Main {
 					Thread.sleep(1500);
 					setLook();
 					setVersione();
-				    LoginViewFactory.getInstance().setVisible(true);
+				    LoginViewFactoryMethod.getInstance().setVisible(true);
 					splash.dispose();
 					
 			    } 

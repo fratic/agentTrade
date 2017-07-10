@@ -11,8 +11,6 @@ import java.util.Set;
 
 import org.orm.PersistentException;
 
-import com.mchange.util.impl.LinkedListIntChecklistImpl;
-
 import agent_trade.Main;
 import agent_trade.external_system.SystemDaemon;
 import agent_trade.model.M_Agente;
@@ -22,9 +20,6 @@ import agent_trade.model.M_Mandante;
 import agent_trade.model.M_Preventivo;
 import agent_trade.model.M_Prodotto;
 import agent_trade.model.M_Sconto;
-import agent_trade.model.M_ScontoCliente;
-import agent_trade.model.M_ScontoPercent;
-import agent_trade.model.M_ScontoQuantita;
 import agent_trade.ui.Impostazioni;
 import agent_trade.ui.content.agenti.AlberoAgenti;
 import agent_trade.ui.content.aziende.AlberoAziende;
@@ -35,7 +30,7 @@ import agent_trade.ui.content.preventivi.AlberoPreventivi;
 import agent_trade.ui.content.prodotti.AlberoProdotti;
 import agent_trade.ui.content.prodotti.ProdottiView;
 import agent_trade.ui.content.sconti.AlberoSconti;
-import agent_trade.ui.login.LoginViewFactory;
+import agent_trade.ui.login.LoginViewFactoryMethod;
 import agent_trade.ui.primaryView.PrimaryViewFactory;
 import agent_trade.util.Costanti;
 
@@ -148,25 +143,25 @@ public class Ctrl_System {
 				if (agLoad.getUsername().equals(username) & agLoad.getPassword().equals(psw))
 				{
 					PrimaryViewFactory.getInstance().setVisible(true);
-					LoginViewFactory.getInstance().setVisible(false);
+					LoginViewFactoryMethod.getInstance().setVisible(false);
 					instanceAgenteLog=agLoad;
 					
 					inizializzaSistemaAgente();
 					
 				}
 					else{
-						LoginViewFactory.getInstance().setMex(Costanti.MESSAGGIO_NO_LOGIN);
-						LoginViewFactory.getInstance().enableAccedi();
+						LoginViewFactoryMethod.getInstance().setMex(Costanti.MESSAGGIO_NO_LOGIN);
+						LoginViewFactoryMethod.getInstance().enableAccedi();
 				}
 			}
 			else{
-				LoginViewFactory.getInstance().setMex("Sincronizzazione database centrale");
+				LoginViewFactoryMethod.getInstance().setMex("Sincronizzazione database centrale");
 
 				if (SystemDaemon.getInstance().sincronizzaAgente(username))
 					loginAgente(username,psw);
 				else{
-					LoginViewFactory.getInstance().setMex(Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
-					LoginViewFactory.getInstance().enableAccedi();
+					LoginViewFactoryMethod.getInstance().setMex(Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
+					LoginViewFactoryMethod.getInstance().enableAccedi();
 				}
 
 			}	
@@ -187,19 +182,19 @@ public class Ctrl_System {
 			if (mandante.getUsername().equals(username) & mandante.getPassword().equals(psw))
 			{
 				PrimaryViewFactory.getInstance().setVisible(true);
-				LoginViewFactory.getInstance().setVisible(false);
+				LoginViewFactoryMethod.getInstance().setVisible(false);
 				
 				inizializzaSistemaMandante();
 				
 			}
 				else{
-					LoginViewFactory.getInstance().setMex(Costanti.MESSAGGIO_NO_LOGIN);
-					LoginViewFactory.getInstance().enableAccedi();
+					LoginViewFactoryMethod.getInstance().setMex(Costanti.MESSAGGIO_NO_LOGIN);
+					LoginViewFactoryMethod.getInstance().enableAccedi();
 			}
 		}
 		else{
-				LoginViewFactory.getInstance().setMex(Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
-				LoginViewFactory.getInstance().enableAccedi();
+				LoginViewFactoryMethod.getInstance().setMex(Costanti.MESSAGGIO_UTENTE_NON_TROVATO);
+				LoginViewFactoryMethod.getInstance().enableAccedi();
 			}
 
 		}	
@@ -432,9 +427,9 @@ public class Ctrl_System {
 	public void settingWindows() {
 		//centrare al centro dello schermo
 		
-		LoginViewFactory.getInstance().setVisible(false);
+		LoginViewFactoryMethod.getInstance().setVisible(false);
 
-		LoginViewFactory.getInstance().destroyInstanceLogin();
+		LoginViewFactoryMethod.getInstance().destroyInstanceLogin();
 
 		
 		

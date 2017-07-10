@@ -27,11 +27,10 @@ import agent_trade.ui.SplashScreen;
 import agent_trade.ui.primaryView.PrimaryAgenteView;
 import agent_trade.util.Costanti;
 
-public class LoginAgenteView extends LoginViewFactory {
+public class LoginAgenteView extends LoginViewFactoryMethod {
 
 	/*attributi di classe*/
 	
-	private static LoginViewFactory instance;
 
 	
 	/*attributi privati*/
@@ -135,7 +134,7 @@ public class LoginAgenteView extends LoginViewFactory {
 
 	/*metodi di classe*/
 	
-	public static LoginViewFactory getInstance(){
+	public static LoginViewFactoryMethod getInstance(){
 		if(instance == null)
 			instance = new LoginAgenteView();
 		

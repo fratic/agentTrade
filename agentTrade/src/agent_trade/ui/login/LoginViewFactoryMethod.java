@@ -13,11 +13,15 @@ import javax.swing.JTextField;
 import agent_trade.controller.Ctrl_System;
 import agent_trade.util.Costanti;
 
-public class LoginViewFactory extends JFrame {
+public class LoginViewFactoryMethod extends JFrame {
 
 	/*attributi di classe*/
 	
-	private static LoginViewFactory instance;
+	/**
+	 * 
+	 */
+
+	protected static LoginViewFactoryMethod instance;
 
 	
 	/*attributi privati*/
@@ -42,14 +46,15 @@ public class LoginViewFactory extends JFrame {
 
 	/*costruttori*/
 	
-	public LoginViewFactory() {
+	public LoginViewFactoryMethod() {
 		
 	}
 
 
 	/*metodi di classe*/
-	
-	public static LoginViewFactory getInstance(){
+
+	//questo è il nostro FactoryMethod
+	public static LoginViewFactoryMethod getInstance(){
 		
 		if(instance == null){
 			if(Costanti.version.equals(Costanti.agente))
@@ -59,16 +64,6 @@ public class LoginViewFactory extends JFrame {
 		}
 		return instance;
 			
-//		String versione=Ctrl_System.getVersion();
-//		System.out.println("versione: "+versione);
-//		if(instance == null){
-//			if(versione.equals(Costanti.agente))
-//				instance = LoginAgenteView.getInstance();
-//			else if(versione.equals(Costanti.mandante))
-//				instance = LoginMandanteView.getInstance();
-//		}
-//		return instance;
-		
 	}
 	
 

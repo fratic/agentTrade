@@ -158,9 +158,8 @@ public class Ctrl_gestisciListino {
 		
 		elencoProd = M_Prodotto.caricaProdottiRemotoAzienda(azienda.getIdAzienda());		
 		
-//		fare un	controllo per vedere se la lista è vuota in caso affermativo comunicarlo al mandante
 			
-			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+//			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
 			PrimaryMandanteView.getInstance().initTable(elencoProd);
 			AlberoListini.abilitaAlbero();
 			AlberoListini.selectNode(azienda.getIdAzienda()+ " - " +azienda.getRagioneSociale());
