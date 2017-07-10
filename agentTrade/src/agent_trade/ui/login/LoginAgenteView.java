@@ -80,13 +80,13 @@ public class LoginAgenteView extends LoginViewFactoryMethod {
 		layeredPane.add(password);
 		
 		buttoneAccedi = new JButton(Costanti.BOTTONE_ACCEDI);
-		buttoneAccedi.setBounds(201, 155, 89, 23);
+		buttoneAccedi.setBounds(201, 165, 89, 23);
 		layeredPane.add(buttoneAccedi);
 		
 
 		buttoneSetting = new JButton();
 		buttoneSetting.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.SETTING_ICON)));
-		buttoneSetting.setBounds(35, 150, 32, 32);
+		buttoneSetting.setBounds(35, 160, 32, 32);
 		layeredPane.add(buttoneSetting);
 
 		

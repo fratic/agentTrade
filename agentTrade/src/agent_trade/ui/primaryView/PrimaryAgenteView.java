@@ -287,11 +287,9 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		pannello_laterale_preventivo.setPreferredSize(new Dimension(260, 0));
 		pannello_sottomenu_preventivo.add(pannello_laterale_preventivo, BorderLayout.WEST);
 		pannello_laterale_preventivo.setLayout(new GridLayout(1,1));
-//		pannello_laterale_preventivo.setLayout(new FlowLayout());
 		
 		
 		alberoPreventivi = AlberoPreventivi.getInstance();
-//		alberoPreventivi.setBounds(0, 0, 260, 100);
 		pannello_laterale_preventivo.add(alberoPreventivi);
 
 		
@@ -374,11 +372,10 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		pannello_laterale_cliente = new JPanel();
 		pannello_laterale_cliente.setPreferredSize(new Dimension(260, 617));
 		pannello_sottomenu_cliente.add(pannello_laterale_cliente, BorderLayout.WEST);
-		pannello_laterale_cliente.setLayout(null);
+		pannello_laterale_cliente.setLayout(new GridLayout(1,1));
 
 		
 		alberoClienti = new AlberoClienti();
-		alberoClienti.setBounds(0, 0, 261, 617);
 		pannello_laterale_cliente.add(alberoClienti);
 		
 		pannello_centrale_cliente = new JPanel();
@@ -466,7 +463,7 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		pannello_laterale_catalogo.setBackground(UIManager.getColor("ToggleButton.background"));
 		pannello_laterale_catalogo.setPreferredSize(new Dimension(260,617));
 		pannello_sottomenu_catalogo.add(pannello_laterale_catalogo,BorderLayout.WEST);
-		pannello_laterale_catalogo.setLayout(null);
+		pannello_laterale_catalogo.setLayout(new GridLayout(1,1));
 
 		
 		pannello_centrale_catalogo = new JPanel();
@@ -487,7 +484,6 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		pannello_centrale_catalogo.add(pannelloProdotti);
 		
 		alberoProdotti = AlberoProdotti.getInstance();
-		alberoProdotti.setBounds(0, 0, 260, 617);
 		pannello_laterale_catalogo.add(alberoProdotti);
 		
 		
@@ -699,8 +695,16 @@ public class PrimaryAgenteView extends PrimaryViewFactory
 		((DettaglioClienteView) dettaglioCliente).setVisibleErroreNuovoCliente(b);
 	}
 	
+	public void setErroreNuovoCliente(String errore){
+		((DettaglioClienteView) dettaglioCliente).setErrore(errore);
+	}
+	
 	public void setVisibleErroreRiepCliente(boolean b){
 		((RiepilogoClienteView) riep_cliente).setVisibleErroreRiepCliente(b);
+	}
+	
+	public void setErroreRiepCliente(String errore){
+		((RiepilogoClienteView) riep_cliente).setErrore(errore);
 	}
 	
 	

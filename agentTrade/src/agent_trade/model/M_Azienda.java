@@ -75,13 +75,14 @@ public class M_Azienda implements Cloneable{
 
 		return ((instance == null) ? instance = new M_Azienda() : instance);	
 	}
-	
+//	USATA DAL CTRL E DAL DAEMON
 	public static M_Azienda[] caricaAziendeRemoto()throws PersistentException{
 		
 		Rem_AziendaCriteria criteriaAzienda;
 		try {
 			criteriaAzienda = new Rem_AziendaCriteria();
 			criteriaAzienda.addOrder(Property.forName("ragioneSociale").asc());
+			criteriaAzienda.versione.ne(0);
 			return criteriaAzienda.listM_Azienda();
 		} 
 		catch (PersistentException e) {
@@ -100,6 +101,7 @@ public class M_Azienda implements Cloneable{
 			criteriaAzienda.partitaIva.like("%"+pIva+"%");
 			criteriaAzienda.codiceFiscale.like("%"+codFis+"%");
 			criteriaAzienda.citta.like("%"+citta+"%");
+			criteriaAzienda.versione.ne(0);
 			criteriaAzienda.addOrder(Property.forName("ragioneSociale").asc());
 
 			return criteriaAzienda.listM_Azienda();
@@ -117,18 +119,20 @@ public class M_Azienda implements Cloneable{
 			
 			Rem_AziendaCriteria criteriaAzienda = new Rem_AziendaCriteria();
 			criteriaAzienda.IdAzienda.eq(idAzienda);
+			criteriaAzienda.versione.ne(0);
 
 			return criteriaAzienda.uniqueM_Azienda();
 		}
 		finally {	
 		}
 	}
-
+//	USATA IN TUTTI I SISTEMI ESTERNI E PER CARICARE I PRODOTTI LATO AGENTE
 	public static M_Azienda cercaAziendaNome(String nome) throws PersistentException {
 		try{
 			
 			AziendaCriteria criteriaAzienda = new AziendaCriteria();
 			criteriaAzienda.ragioneSociale.eq(nome);
+			criteriaAzienda.versione.ne(0);
 
 			return criteriaAzienda.uniqueM_Azienda();
 		}
@@ -136,7 +140,7 @@ public class M_Azienda implements Cloneable{
 		}
 	}
 	
-	
+//	NON DOVREBBE SERVIRE (criteriaAzienda.versione.ne(0);)
 	public static M_Azienda caricaAziendaId (int id) throws PersistentException {
 		try{
 			
@@ -155,6 +159,7 @@ public class M_Azienda implements Cloneable{
 			
 			AziendaCriteria criteriaAzienda = new AziendaCriteria();
 			criteriaAzienda.setMaxResults(1000);
+			criteriaAzienda.versione.ne(0);
 			criteriaAzienda.addOrder(Property.forName("ragioneSociale").asc());
 
 			return criteriaAzienda.listM_Azienda();
@@ -221,19 +226,19 @@ public class M_Azienda implements Cloneable{
 		}
 	}
 	
-	public static void cancellaAziendaRemoto(M_Azienda a) throws PersistentException {
-
-		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
-		try 
-		{				
-			AgentTradeMandantePersistentManager.instance().getSession().delete(a);
-			// commit per il salvataggio
-			t.commit();
-		}
-		catch (Exception e) {
-			t.rollback();
-		}
-	}
+//	public static void cancellaAziendaRemoto(M_Azienda a) throws PersistentException {
+//
+//		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
+//		try 
+//		{				
+//			AgentTradeMandantePersistentManager.instance().getSession().delete(a);
+//			// commit per il salvataggio
+//			t.commit();
+//		}
+//		catch (Exception e) {
+//			t.rollback();
+//		}
+//	}
 
 	public static int getMaxIdRemoto() throws PersistentException{
 		

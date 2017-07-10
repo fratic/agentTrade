@@ -127,7 +127,7 @@ public class Ctrl_gestisciAgente {
 		}
 		else{
 			PrimaryMandanteView.getInstance().setVisibleErroreNuovoAgente(true);
-			DettaglioAgenteView.getInstance().setErrore(errore);
+			PrimaryMandanteView.getInstance().setErroreNuovoAgente(errore);
 		}		
 	}
 	
@@ -176,7 +176,7 @@ public class Ctrl_gestisciAgente {
 		}
 		else{
 			PrimaryMandanteView.getInstance().setVisibleErroreRiepAgente(true);
-			RiepilogoAgenteView.getInstance().setErrore(errore);
+			PrimaryMandanteView.getInstance().setErroreRiepAgente(errore);
 		}
 	}
 	

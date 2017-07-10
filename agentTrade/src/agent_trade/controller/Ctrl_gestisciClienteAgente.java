@@ -192,7 +192,7 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 		}
 		else{
 			PrimaryAgenteView.getInstance().setVisibleErroreNuovoCliente(true);
-			DettaglioClienteView.getInstance().setErrore(errore);
+			PrimaryAgenteView.getInstance().setErroreNuovoCliente(errore);
 		}
 	}
 		
@@ -229,7 +229,7 @@ public class Ctrl_gestisciClienteAgente extends Ctrl_gestisciClienteFactory{
 		}
 		else{
 			PrimaryAgenteView.getInstance().setVisibleErroreRiepCliente(true);
-			RiepilogoClienteView.getInstance().setErrore(errore);
+			PrimaryAgenteView.getInstance().setErroreRiepCliente(errore);
 		}
 	}
 	

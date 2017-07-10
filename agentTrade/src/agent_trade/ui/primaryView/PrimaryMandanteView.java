@@ -344,11 +344,10 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		pannello_laterale_agente = new JPanel();
 		pannello_laterale_agente.setPreferredSize(new Dimension(260, 617));
 		pannello_sottomenu_agente.add(pannello_laterale_agente, BorderLayout.WEST);
-		pannello_laterale_agente.setLayout(null);
+		pannello_laterale_agente.setLayout(new GridLayout(1,1));
 
 		
 		alberoAgenti = new AlberoAgenti();
-		alberoAgenti.setBounds(0, 0, 261, 617);
 		pannello_laterale_agente.add(alberoAgenti);
 		
 		pannello_centrale_agente = new JPanel();
@@ -418,10 +417,9 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		pannello_laterale_azienda = new JPanel();
 		pannello_laterale_azienda.setPreferredSize(new Dimension(260, 617));
 		pannello_sottomenu_azienda.add(pannello_laterale_azienda, BorderLayout.WEST);
-		pannello_laterale_azienda.setLayout(null);
+		pannello_laterale_azienda.setLayout(new GridLayout(1,1));
 		
 		alberoAziende = new AlberoAziende();
-		alberoAziende.setBounds(0, 0, 261, 617);
 		pannello_laterale_azienda.add(alberoAziende);
 		
 		pannello_centrale_azienda = new JPanel();
@@ -494,11 +492,10 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		
 		pannello_laterale_listino = new JPanel();
 		pannello_laterale_listino.setPreferredSize(new Dimension(260, 617));
-		pannello_laterale_listino.setLayout(null);
+		pannello_laterale_listino.setLayout(new GridLayout(1,1));
 		pannello_sottomenu_listino.add(pannello_laterale_listino, BorderLayout.WEST);
 		
 		alberoListini = new AlberoListini();
-		alberoListini.setBounds(0, 0, 261, 617);
 		pannello_laterale_listino.add(alberoListini);
 		
 		pannello_centrale_listino = new JPanel();
@@ -578,11 +575,10 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		pannello_laterale_sconto = new JPanel();
 		pannello_laterale_sconto.setPreferredSize(new Dimension(260, 617));
 		pannello_sottomenu_sconto.add(pannello_laterale_sconto, BorderLayout.WEST);
-		pannello_laterale_sconto.setLayout(null);
+		pannello_laterale_sconto.setLayout(new GridLayout(1,1));
 
 		
 		alberoSconti = new AlberoSconti();
-		alberoSconti.setBounds(0, 0, 261, 617);
 		pannello_laterale_sconto.add(alberoSconti);
 		
 		pannello_centrale_sconto = new JPanel();
@@ -629,13 +625,7 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 
 		pannello_menu_cliente.setBackground(Color.WHITE);
 		Cliente.add(pannello_menu_cliente,BorderLayout.NORTH);
-			
-//		bottoneNuovoCliente = new JButton();
-//		bottoneNuovoCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.NUOVO_CLIENTE_ICON)));
-//		bottoneNuovoCliente.setToolTipText(Costanti.TIP_NUOVO_CLIENTE);
-//		bottoneNuovoCliente.setBounds(25, 25, 50, 50);
-//		pannello_menu_cliente.add(bottoneNuovoCliente);
-		
+
 		bottoneCercaCliente = new JButton("");
 		bottoneCercaCliente.setIcon(new ImageIcon(PrimaryAgenteView.class.getResource(Costanti.CERCA_CLIENTE_ICON)));
 		bottoneCercaCliente.setToolTipText(Costanti.TIP_CERCA_CLIENTE);
@@ -651,10 +641,9 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		pannello_laterale_cliente = new JPanel();
 		pannello_laterale_cliente.setPreferredSize(new Dimension(260, 617));
 		pannello_sottomenu_cliente.add(pannello_laterale_cliente, BorderLayout.WEST);
-		pannello_laterale_cliente.setLayout(null);
+		pannello_laterale_cliente.setLayout(new GridLayout(1,1));
 
 		alberoClienti = new AlberoClienti_Mandante();
-		alberoClienti.setBounds(0, 0, 261, 617);
 		pannello_laterale_cliente.add(alberoClienti);
 		
 		pannello_centrale_cliente = new JPanel();
@@ -750,6 +739,10 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		((RiepilogoAgenteView) riep_agente).setVisibleErroreRiepAgente(b);
 	}
 	
+	public void setErroreRiepAgente(String errore){
+		((RiepilogoAgenteView) riep_agente).setErrore(errore);
+	}
+	
 	public void setSchedaAgente(String id, String cognome, String nome, String livello, String citta, String cap, String indirizzo, String email, String cellulare,  String username, String password) {
 		
 		((RiepilogoAgenteView) riep_agente).setRiepilogoAgente(id, cognome, nome, livello, citta, cap, indirizzo, email, cellulare, username, password);
@@ -757,6 +750,10 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	public void setVisibleErroreNuovoAgente(boolean b){
 		((DettaglioAgenteView) dettaglio_agente).setVisibleErroreNuovoAgente(b);
+	}
+	
+	public void setErroreNuovoAgente(String errore){
+		((DettaglioAgenteView) dettaglio_agente).setErrore(errore);
 	}
 	
 	public void setEnableTabAgente(boolean b ) {
@@ -812,6 +809,10 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	public void setVisibleErroreRiepAzienda(boolean b) {
 		((RiepilogoAziendaView) riep_azienda).setVisibleErroreRiepAzienda(b);
 	}
+	
+	public void setErroreRiepAzienda(String errore) {
+		((RiepilogoAziendaView) riep_azienda).setErrore(errore);
+	}
 
 	public void disattivaCancellaAzienda(boolean b) {
 		((RiepilogoAziendaView) riep_azienda).setVisibleBtnCancella(b);
@@ -839,6 +840,10 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	
 	public void setVisibleErroreNuovaAzienda(boolean b){
 		((DettaglioAziendaView) dettaglio_azienda).setVisibleErroreNuovaAzienda(b);
+	}
+	
+	public void setErroreNuovaAzienda(String errore){
+		((DettaglioAziendaView) dettaglio_azienda).setErrore(errore);
 	}
 	
 	public void resetNuovaAzienda() {

@@ -149,7 +149,7 @@ public class Ctrl_gestisciAzienda {
 		
 		if(errore == null){
 
-			M_Azienda azienda = new M_Azienda( ragSoc, citta, cap, indirizzo, tel, fax, email, pIva, codFis, url, tipo);
+			M_Azienda azienda = new M_Azienda( ragSoc, citta, cap, indirizzo, tel, fax, email, pIva, codFis, url, tipo, 1);
 			M_Azienda.salvaAziendaRemoto(azienda); 
 
 			PrimaryMandanteView.getInstance().resetNuovaAzienda();
@@ -172,7 +172,7 @@ public class Ctrl_gestisciAzienda {
 		}
 		else{
 			PrimaryMandanteView.getInstance().setVisibleErroreNuovaAzienda(true);
-			DettaglioAziendaView.getInstance().setErrore(errore);
+			PrimaryMandanteView.getInstance().setErroreNuovaAzienda(errore);
 		}	
 	}
 	
@@ -223,7 +223,7 @@ public class Ctrl_gestisciAzienda {
 		}
 		else{
 			PrimaryMandanteView.getInstance().setVisibleErroreRiepAzienda(true);
-			RiepilogoAziendaView.getInstance().setErrore(errore);
+			PrimaryMandanteView.getInstance().setErroreRiepAzienda(errore);
 		}
 	}
 
@@ -314,7 +314,8 @@ public class Ctrl_gestisciAzienda {
 		int idAzienda = Integer.parseInt(id);
 		
 		M_Azienda azienda = M_Azienda.cercaAziendaRemoto(idAzienda);
-		M_Azienda.cancellaAziendaRemoto(azienda);
+		azienda.setVersione(0);
+		M_Azienda.aggiornaAziendaRemoto(azienda);
 
 		confermaCancAzienda.getInstance().setVisible(false);		
 		confermaCancAzienda.cancInst();

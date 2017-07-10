@@ -1,5 +1,6 @@
 package agent_trade.ui.content.agenti;
 
+import java.awt.GridLayout;
 import java.util.Enumeration;
 
 import javax.swing.ImageIcon;
@@ -45,14 +46,12 @@ public class AlberoAgenti extends JPanel {
 			
 			radice = new DefaultMutableTreeNode(Costanti.ROOT_AGENTI);
 			model = new DefaultTreeModel(radice);
-			setLayout(null);
+			setLayout(new GridLayout(1,1));
 
 			albero = new JTree(model);
 			albero.setBorder(new EmptyBorder(10, 10, 10, 10));
 			
-			JScrollPane scroller = new JScrollPane(albero);
-			scroller.setBounds(10, 12, 250, 595);
-			
+			JScrollPane scroller = new JScrollPane(albero);			
 			add(scroller);
 			
 			ImageIcon imageIcon = new ImageIcon(AlberoAgenti.class.getResource(Costanti.ALBERO_AGENTI_ICON));
