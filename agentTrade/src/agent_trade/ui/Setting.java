@@ -24,7 +24,7 @@ public class Setting extends JPanel {
 	
 	JRadioButton radioAgente;
 	JRadioButton radioMandante;
-	JRadioButton radioButton_0;
+//	JRadioButton radioButton_0;
 	JRadioButton radioButton_1;
 	JRadioButton radioButton_2;
 	JRadioButton radioButton_3;
@@ -79,8 +79,8 @@ public class Setting extends JPanel {
 		panelJRadioLook.setPreferredSize(new Dimension(240, 60));
 		LookandFeel.add(panelJRadioLook);
 		
-		radioButton_0 = new JRadioButton("0");
-		panelJRadioLook.add(radioButton_0);
+//		radioButton_0 = new JRadioButton("0");
+//		panelJRadioLook.add(radioButton_0);
 
 		radioButton_1 = new JRadioButton("1");
 		panelJRadioLook.add(radioButton_1);
@@ -103,7 +103,7 @@ public class Setting extends JPanel {
 		
 		
         groupLook = new ButtonGroup();
-        groupLook.add(radioButton_0);
+//        groupLook.add(radioButton_0);
         groupLook.add(radioButton_1);
         groupLook.add(radioButton_2);
         groupLook.add(radioButton_3);
@@ -154,9 +154,9 @@ public class Setting extends JPanel {
 					versione="mandante";
 				}
 				
-				if(radioButton_0.isSelected()){
-					look="0";
-				}
+//				if(radioButton_0.isSelected()){
+//					look="0";
+//				}
 				
 				if(radioButton_1.isSelected()){
 					look="1";
@@ -213,18 +213,18 @@ public class Setting extends JPanel {
 		
 		switch (readLook) {
 		
-		case 0:
-			radioButton_0.setSelected(true);
-			radioButton_1.setSelected(false);
-			radioButton_2.setSelected(false);
-			radioButton_3.setSelected(false);
-			radioButton_4.setSelected(false);
-			radioButton_5.setSelected(false);
-			radioButton_6.setSelected(false);
-
-			break;
+//		case 0:
+////			radioButton_0.setSelected(true);
+//			radioButton_1.setSelected(false);
+//			radioButton_2.setSelected(false);
+//			radioButton_3.setSelected(false);
+//			radioButton_4.setSelected(false);
+//			radioButton_5.setSelected(false);
+//			radioButton_6.setSelected(false);
+//
+//			break;
 		case 1:
-			radioButton_0.setSelected(false);
+//			radioButton_0.setSelected(false);
 			radioButton_1.setSelected(true);
 			radioButton_2.setSelected(false);
 			radioButton_3.setSelected(false);
@@ -235,7 +235,7 @@ public class Setting extends JPanel {
 			break;
 
 		case 2:
-			radioButton_0.setSelected(false);
+//			radioButton_0.setSelected(false);
 			radioButton_1.setSelected(false);
 			radioButton_2.setSelected(true);
 			radioButton_3.setSelected(false);
@@ -245,7 +245,7 @@ public class Setting extends JPanel {
 					
 			break;
 		case 3:
-			radioButton_0.setSelected(false);
+//			radioButton_0.setSelected(false);
 			radioButton_1.setSelected(false);
 			radioButton_2.setSelected(false);
 			radioButton_3.setSelected(true);
@@ -255,7 +255,7 @@ public class Setting extends JPanel {
 
 			break;
 		case 4:
-			radioButton_0.setSelected(false);
+//			radioButton_0.setSelected(false);
 			radioButton_1.setSelected(false);
 			radioButton_2.setSelected(false);
 			radioButton_3.setSelected(false);
@@ -265,7 +265,7 @@ public class Setting extends JPanel {
 
 			break;
 		case 5:
-			radioButton_0.setSelected(false);
+//			radioButton_0.setSelected(false);
 			radioButton_1.setSelected(false);
 			radioButton_2.setSelected(false);
 			radioButton_3.setSelected(false);
@@ -275,7 +275,7 @@ public class Setting extends JPanel {
 
 			break;
 		case 6:
-			radioButton_0.setSelected(false);
+//			radioButton_0.setSelected(false);
 			radioButton_1.setSelected(false);
 			radioButton_2.setSelected(false);
 			radioButton_3.setSelected(false);

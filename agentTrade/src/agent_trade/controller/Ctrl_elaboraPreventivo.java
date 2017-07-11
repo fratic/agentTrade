@@ -359,8 +359,6 @@ public class Ctrl_elaboraPreventivo {
 
 	public void modificaPreventivo(int id_Preventivo) throws PersistentException{
 
-//		Bisogna controllare se il preventivo è ancora valido, ed in caso affermativo, 
-			
 		M_Preventivo prev = M_Preventivo.caricaPreventivo(id_Preventivo);
 
 		M_Preventivo prevMod= M_Preventivo.getInstance(prev);

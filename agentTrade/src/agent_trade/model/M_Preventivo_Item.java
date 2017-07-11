@@ -40,7 +40,7 @@ public class M_Preventivo_Item extends Observable{
 	private int quantita;
 	private List<Observer> observer = new ArrayList<Observer>();
 	
-	private IScontoStrategy strategiaProdotto;
+//	private IScontoStrategy strategiaProdotto;
 
 	
 	/*
@@ -56,8 +56,8 @@ public class M_Preventivo_Item extends Observable{
 		this.AddObserver(rifPreventivo);
 		this.quantita=1;
 
-		IScontoStrategy strategiaProdotto= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
-		this.setStrategiaProdotto(strategiaProdotto);
+//		IScontoStrategy strategiaProdotto= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
+//		this.setStrategiaProdotto(strategiaProdotto);
 
 	}
 	
@@ -140,14 +140,14 @@ public class M_Preventivo_Item extends Observable{
 
 	public IScontoStrategy getStrategiaProdotto() throws PersistentException {
 		IScontoStrategy strategiaProdotto= (IScontoStrategy) ScontoStrategyFactory.getStrategy(this);
-		this.setStrategiaProdotto(strategiaProdotto);
+//		this.setStrategiaProdotto(strategiaProdotto);
 
 		return strategiaProdotto;
 	}
 
-	public void setStrategiaProdotto(IScontoStrategy strategiaProdotto) {
-		this.strategiaProdotto = strategiaProdotto;
-	}
+//	public void setStrategiaProdotto(IScontoStrategy strategiaProdotto) {
+//		this.strategiaProdotto = strategiaProdotto;
+//	}
 
 	public String toString() {
 		return String.valueOf(getIdPreventivo_Item());
@@ -160,8 +160,8 @@ public class M_Preventivo_Item extends Observable{
 		return parziale;
 	}
 	
-	public void setStrategiaCliente(IScontoStrategy strategiaProdotto2) {
-		
-	}
+//	public void setStrategiaCliente(IScontoStrategy strategiaProdotto2) {
+//		
+//	}
 
 }
