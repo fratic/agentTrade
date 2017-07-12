@@ -1,0 +1,3 @@
+il db locale è: DB_AgentTrade_locale.sql
+il db remoto in locale è: DB_AgentTrade_REMOTO.sql
+il db remoto vero è: DB_AgentTrade_REMOTO_VERO.sql
