@@ -134,6 +134,21 @@ public class M_Cliente implements Cloneable{
 		}
 	}
 	
+	public static M_Cliente cercaTuttiClienteRemoto(int id_cliente) throws PersistentException{
+		
+		try{
+			
+			Rem_ClienteCriteria criteriaCliente= new Rem_ClienteCriteria();
+			
+			//JOIN per recuperare solo i clienti dell'agente loggato
+			criteriaCliente.createCriteria("agenteAssociato", "IdAgente", JoinType.INNER_JOIN,   Restrictions.eq("IdAgente", Ctrl_System.getAgenteLog().getIdAgente())); 
+			criteriaCliente.idclienteagente.eq(id_cliente);
+//			criteriaCliente.attivo.eq(1);
+			return criteriaCliente.uniqueM_Cliente();
+		}
+		finally {
+		}
+	} 
 	public static M_Cliente[] caricaClientiAgente() throws PersistentException {
 		
 		ClienteCriteria criteriaCliente;

@@ -318,12 +318,15 @@ public class SystemDaemon {
 		
 		String aggiornamenti="";
 		
+		AgentTradePersistentManager.instance().disposePersistentManager();
+
 		M_Cliente[] clienti_locali = M_Cliente.caricaTuttiClientiAgente();
 		
 		for (int i = 0; i < clienti_locali.length; i++) 
 		{
-						
-			M_Cliente cliente_remoto = M_Cliente.cercaClienteRemoto(clienti_locali[i].getIdCliente());
+			AgentTradeMandantePersistentManager.instance().disposePersistentManager();
+
+			M_Cliente cliente_remoto = M_Cliente.cercaTuttiClienteRemoto(clienti_locali[i].getIdCliente());
 			if(cliente_remoto!=null){
 				
 				if(clienti_locali[i].getVersione()>cliente_remoto.getVersione() /*&& clienti_locali[i].getVersione()!=0 */)
@@ -334,12 +337,19 @@ public class SystemDaemon {
 					int id=cliente_remoto.getIdCliente();
 					int sconto = cliente_remoto.getSconto();
 					M_Agente a = cliente_remoto.getAgenteAssociato();
+					int versionedownload = cliente_remoto.getVersione_download();
+					int attivo = cliente_remoto.getAttivo();
 					cliente_remoto=clienti_locali[i].clone();
 					/**Questa operazione viene fatta per gli id del remoto e del locale differiscono*/
 					cliente_remoto.setIdCliente(id);
 					cliente_remoto.setIdclienteagente(clienti_locali[i].getIdCliente());
 					cliente_remoto.setSconto(sconto);
 					cliente_remoto.setAgenteAssociato(a);
+					cliente_remoto.setVersione_download(versionedownload);
+					if(clienti_locali[i].getAttivo()!=0){
+						cliente_remoto.setAttivo(attivo);
+					}
+					
 					M_Cliente.updateClienteRemoto(cliente_remoto);
 					
 					aggiornamenti=aggiornamenti+"UPLOAD del cliente con ID="+clienti_locali[i].getIdCliente()+"\n";
@@ -355,7 +365,6 @@ public class SystemDaemon {
 				M_Cliente.salvaClienteRemoto(c);
 				
 				aggiornamenti=aggiornamenti+"UPLOAD Nuovo Cliente con ID="+clienti_locali[i].getIdCliente()+"\n";
-
 				
 			}
 				
@@ -379,6 +388,7 @@ public class SystemDaemon {
 		
 		for (int i = 0; i < clienti_remoti.length; i++) 
 		{
+			AgentTradePersistentManager.instance().disposePersistentManager();
 			
 			M_Cliente cliente_locale = M_Cliente.cercaCliente(clienti_remoti[i].getIdclienteagente());
 			if(cliente_locale!=null){
