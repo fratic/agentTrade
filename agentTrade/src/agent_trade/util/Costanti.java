@@ -455,7 +455,7 @@ public final class Costanti {
 	public final static String ROOT_AGENTI= "Agenti";
 
 	public final static String LABEL_NOME_AZIENDA = "Ragione sociale";
-	public final static String LABEL_ID_AZIENDA = "Codice azienda";
+	public final static String LABEL_ID_AZIENDA = "Cod. azienda";
 	public final static String LABEL_URL_AZIENDA = "Url";
 	public final static String LABEL_TIPO_AZIENDA = "Produce";
 	

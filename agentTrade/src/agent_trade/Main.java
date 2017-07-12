@@ -1,5 +1,6 @@
 package agent_trade;
 
+import java.awt.GraphicsEnvironment;
 import java.text.ParseException;
 
 import javax.swing.SwingUtilities;
@@ -57,7 +58,7 @@ public class Main {
 	
 	public static void setLook() throws UnsupportedLookAndFeelException, ParseException, ClassNotFoundException, InstantiationException, IllegalAccessException{
 		
-		Ctrl_System.readLook();						
+		Ctrl_System.readLook();	
 
 		switch (Costanti.Look_Feel) {
 		

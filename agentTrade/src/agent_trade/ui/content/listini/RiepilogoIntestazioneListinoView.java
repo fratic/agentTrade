@@ -56,11 +56,11 @@ public class RiepilogoIntestazioneListinoView extends JPanel {
 		this.add(pannelloNord, BorderLayout.NORTH);
 		
 		pannelloSinistra = new JPanel();
-		pannelloSinistra.setPreferredSize(new Dimension(280,50));
+		pannelloSinistra.setPreferredSize(new Dimension(310, 50));
 		pannelloNord.add(pannelloSinistra, BorderLayout.WEST);
 		
 		labelAzienda = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_AZIENDA);
-		labelAzienda.setPreferredSize(new Dimension(50,14));
+		labelAzienda.setPreferredSize(new Dimension(90, 14));
 		pannelloSinistra.add(labelAzienda);
 		
 		labelAz = DefaultComponentFactory.getInstance().createLabel("");
@@ -68,15 +68,15 @@ public class RiepilogoIntestazioneListinoView extends JPanel {
 		pannelloSinistra.add(labelAz);
 		
 		labelID = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_ID_AZIENDA);
-		labelID.setPreferredSize(new Dimension(76, 14));
+		labelID.setPreferredSize(new Dimension(90, 14));
 		pannelloSinistra.add(labelID);
 		
 		labelID_Azienda = DefaultComponentFactory.getInstance().createLabel("");
-		labelID_Azienda.setPreferredSize(new Dimension(180, 14));
+		labelID_Azienda.setPreferredSize(new Dimension(206, 14));
 		pannelloSinistra.add(labelID_Azienda);
 		
 		labelCitta = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_CITTA);
-		labelCitta.setPreferredSize(new Dimension(50,14));
+		labelCitta.setPreferredSize(new Dimension(90, 14));
 		pannelloSinistra.add(labelCitta);
 		
 		labelCitta_Azienda = DefaultComponentFactory.getInstance().createLabel("");
@@ -86,7 +86,7 @@ public class RiepilogoIntestazioneListinoView extends JPanel {
 		pannelloDestra = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) pannelloDestra.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
-		pannelloDestra.setPreferredSize(new Dimension(280,50));
+		pannelloDestra.setPreferredSize(new Dimension(315, 50));
 		pannelloNord.add(pannelloDestra, BorderLayout.EAST);
 		
 		labelInfo_Aggiornamento = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_AGGIORNAMENTO_AUTO);
@@ -95,11 +95,11 @@ public class RiepilogoIntestazioneListinoView extends JPanel {
 		pannelloDestra.add(labelInfo_Aggiornamento);
 		
 		labelInfo = DefaultComponentFactory.getInstance().createLabel("");
-		labelInfo.setPreferredSize(new Dimension(50,14));
+		labelInfo.setPreferredSize(new Dimension(90, 14));
 		pannelloDestra.add(labelInfo);
 		
 		btnAggiungi = new JButton(Costanti.BOTTONE_AGIIUNGI_PRODOTTO); 
-		btnAggiungi.setPreferredSize(new Dimension(150, 20));
+		btnAggiungi.setPreferredSize(new Dimension(170, 20));
 		btnAggiungi.setToolTipText(Costanti.TIP_AGGIUNGI_PRODOTTO); 
 		pannelloDestra.add(btnAggiungi);
 		

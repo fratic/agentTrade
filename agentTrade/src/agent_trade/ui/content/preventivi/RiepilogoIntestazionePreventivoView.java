@@ -78,12 +78,12 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		this.add(pannelloNord,BorderLayout.NORTH);
 		
 		pannelloDestra = new JPanel();
-		pannelloDestra.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_DESTRA, Costanti.HEIGHT_PANN_DESTRA));
+		pannelloDestra.setPreferredSize(new Dimension(290, 60));
 		pannelloDestra.setMinimumSize(new Dimension(Costanti.WIDTH_PANN_DESTRA_MIN, Costanti.HEIGHT_PANN_DESTRA_MIN));
 		pannelloNord.add(pannelloDestra, BorderLayout.EAST);
 		
 		labelPrev = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_NPREV);
-		labelPrev.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_PREV_INT, Costanti. HEIGHT_LABEL_PREV_INT));
+		labelPrev.setPreferredSize(new Dimension(100, 14));
 		pannelloDestra.add(labelPrev);
 		
 		labelNumPrev = DefaultComponentFactory.getInstance().createLabel("");
@@ -95,11 +95,11 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		pannelloDestra.add(labelDel);
 		
 		labelData = DefaultComponentFactory.getInstance().createLabel("");
-		labelData.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_DATA, Costanti. HEIGHT_LABEL_DATA));
+		labelData.setPreferredSize(new Dimension(89, 14));
 		pannelloDestra.add(labelData);
 
 		lblNewLabel = new JLabel(Costanti.LABEL_EFFETTUATO_AG);
-		lblNewLabel.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_EFFETTUATO, Costanti. HEIGHT_LABEL_EFFETTUATO));
+		lblNewLabel.setPreferredSize(new Dimension(140, 14));
 		pannelloDestra.add(lblNewLabel);
 		
 		labelAgente = new JLabel();
@@ -108,11 +108,11 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		
 		
 		pannelloSinistra = new JPanel();
-		pannelloSinistra.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_SINISTRA, Costanti.HEIGHT_PANN_SINISTRA));
+		pannelloSinistra.setPreferredSize(new Dimension(300, 60));
 		pannelloNord.add(pannelloSinistra, BorderLayout.WEST);
 		
 		labelCl = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_Cliente);
-		labelCl.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_CL_PREV, Costanti. HEIGHT_LABEL_CL_PREV));
+		labelCl.setPreferredSize(new Dimension(55, 14));
 		pannelloSinistra.add(labelCl);
 		
 		labelCliente = DefaultComponentFactory.getInstance().createLabel("");
@@ -132,11 +132,11 @@ public class RiepilogoIntestazionePreventivoView extends JPanel
 		pannelloSinistra.add(labelvuota2);
 		
 		altreInfoCliente = new JLabel("");
-		altreInfoCliente.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_ALTRE_INFO, Costanti. HEIGHT_LABEL_ALTRE_INFO));
+		altreInfoCliente.setPreferredSize(new Dimension(206, 16));
 		pannelloSinistra.add(altreInfoCliente);
 		
 		labelSconto = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_SCONTO_INTESTAZ);
-		labelSconto.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_SCONTO_PREV, Costanti. HEIGHT_LABEL_SCONTO_PREV));
+		labelSconto.setPreferredSize(new Dimension(101, 14));
 		pannelloSinistra.add(labelSconto);
 		
 		labelScontoCl = DefaultComponentFactory.getInstance().createLabel("");

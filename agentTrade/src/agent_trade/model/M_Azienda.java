@@ -91,6 +91,21 @@ public class M_Azienda implements Cloneable{
 		return null;
 	}
 	
+	public static M_Azienda[] caricaTutteAziendeRemoto()throws PersistentException{
+		
+		Rem_AziendaCriteria criteriaAzienda;
+		try {
+			criteriaAzienda = new Rem_AziendaCriteria();
+			criteriaAzienda.addOrder(Property.forName("ragioneSociale").asc());
+//			criteriaAzienda.versione.ne(0);
+			return criteriaAzienda.listM_Azienda();
+		} 
+		catch (PersistentException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static M_Azienda[] caricaAziendeRemotoParametri(String ragSoc, String pIva, String codFis, String citta) throws PersistentException{
 		
 		Rem_AziendaCriteria criteriaAzienda;

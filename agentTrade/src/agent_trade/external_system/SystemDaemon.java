@@ -222,7 +222,7 @@ public class SystemDaemon {
 		
 		String aggiornamenti="";
 		
-		M_Azienda [] aziende_remote = M_Azienda.caricaAziendeRemoto();
+		M_Azienda [] aziende_remote = M_Azienda.caricaTutteAziendeRemoto();
 		
 		for (int i = 0; i < aziende_remote.length; i++) 
 		{
@@ -231,7 +231,7 @@ public class SystemDaemon {
 			M_Azienda azienda_locale = M_Azienda.caricaAziendaId(aziende_remote[i].getIdAzienda());
 			if(azienda_locale!=null){
 				
-				if(aziende_remote[i].getVersione()>azienda_locale.getVersione() /*&& azienda_locale.getVersione()!=0*/ )
+				if(aziende_remote[i].getVersione()>azienda_locale.getVersione())
 				{
 					
 					AgentTradePersistentManager.instance().disposePersistentManager();
@@ -240,6 +240,13 @@ public class SystemDaemon {
 					M_Azienda.updateAzienda(azienda_locale);
 					aggiornamenti=aggiornamenti+"Azienda con ID="+azienda_locale.getIdAzienda()+" aggiornata\n";
 
+				}
+				else if(aziende_remote[i].getVersione()==0){
+					AgentTradePersistentManager.instance().disposePersistentManager();
+
+					azienda_locale=aziende_remote[i].clone();
+					M_Azienda.updateAzienda(azienda_locale);
+					aggiornamenti=aggiornamenti+"Azienda con ID="+azienda_locale.getIdAzienda()+" cancellata\n";
 				}
 			}
 			

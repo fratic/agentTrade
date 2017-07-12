@@ -104,12 +104,12 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout.setVgap(0);
 		flowLayout.setHgap(0);
 		PannTotNoSconto.setBackground(SystemColor.scrollbar);
-		PannTotNoSconto.setPreferredSize(new Dimension(250, 30));
+		PannTotNoSconto.setPreferredSize(new Dimension(265, 30));
 		sottoPannello.add(PannTotNoSconto);
 		
 		JLabel labelTotNoSconto = new JLabel(Costanti.LABEL_TOTALE_NON_SCONTATO);
 		labelTotNoSconto.setHorizontalAlignment(SwingConstants.RIGHT);
-		labelTotNoSconto.setPreferredSize(new Dimension(100, 14));
+		labelTotNoSconto.setPreferredSize(new Dimension(114, 14));
 		PannTotNoSconto.add(labelTotNoSconto);
 		
 		textFieldTotNoSconto = new JTextField();
@@ -140,12 +140,12 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout2.setVgap(0);
 		flowLayout2.setHgap(0);
 		PannScontoCliente.setBackground(SystemColor.scrollbar);
-		PannScontoCliente.setPreferredSize(new Dimension(250, 30));
+		PannScontoCliente.setPreferredSize(new Dimension(265, 30));
 		sottoPannello.add(PannScontoCliente);
 		
 		JLabel labelScontoCliente = new JLabel(Costanti.LABEL_SCONTO_CLIENTE);
 		labelScontoCliente.setHorizontalAlignment(SwingConstants.RIGHT);
-		labelScontoCliente.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL_PREV, Costanti.HEIGHT_LABEL_PREV));
+		labelScontoCliente.setPreferredSize(new Dimension(114, 14));
 		PannScontoCliente.add(labelScontoCliente);
 		
 		textFieldScontoCliente = new JTextField();
@@ -176,12 +176,12 @@ public class RiepilogoItemPreventivoView extends JPanel
 		flowLayout4.setVgap(0);
 		flowLayout4.setHgap(0);
 		PannScontoTotale.setBackground(SystemColor.scrollbar);
-		PannScontoTotale.setPreferredSize(new Dimension(250, 30));
+		PannScontoTotale.setPreferredSize(new Dimension(265, 30));
 		sottoPannello.add(PannScontoTotale);
 		
 		JLabel labelScontoTotale = new JLabel(Costanti.LABEL_SCONTO_TOTALE);
 		labelScontoTotale.setHorizontalAlignment(SwingConstants.RIGHT);
-		labelScontoTotale.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL_PREV, Costanti.HEIGHT_LABEL_PREV));
+		labelScontoTotale.setPreferredSize(new Dimension(114, 14));
 		PannScontoTotale.add(labelScontoTotale);
 		
 		textFieldScontoTotale = new JTextField();

@@ -72,7 +72,7 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		this.add(pannelloNord,BorderLayout.NORTH);
 		
 		pannelloDestra = new JPanel();
-		pannelloDestra.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_DESTRA, Costanti.HEIGHT_PANN_DESTRA));
+		pannelloDestra.setPreferredSize(new Dimension(291, 60));
 		pannelloDestra.setMinimumSize(new Dimension(Costanti.WIDTH_PANN_DESTRA_MIN, Costanti.HEIGHT_PANN_DESTRA_MIN));
 		pannelloNord.add(pannelloDestra, BorderLayout.EAST);
 		
@@ -89,15 +89,15 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloDestra.add(labelDel);
 		
 		labelData = DefaultComponentFactory.getInstance().createLabel("");
-		labelData.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_DATA, Costanti. HEIGHT_LABEL_DATA));
+		labelData.setPreferredSize(new Dimension(90, 14));
 		pannelloDestra.add(labelData);
 		
 		lblNewLabel = new JLabel(Costanti.LABEL_EFFETTUATO_AG);
-		lblNewLabel.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_EFFETTUATO, Costanti. HEIGHT_LABEL_EFFETTUATO));
+		lblNewLabel.setPreferredSize(new Dimension(140, 14));
 		pannelloDestra.add(lblNewLabel);
 		
 		labelAgente = new JLabel();
-		labelAgente.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_AG, Costanti. HEIGHT_LABEL_AG));
+		labelAgente.setPreferredSize(new Dimension(139, 14));
 		pannelloDestra.add(labelAgente);
 		
 		JLabel labelvuota1 = new JLabel("");
@@ -115,11 +115,11 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloDestra.add(bottoneAnnulla);
 		
 		pannelloSinistra = new JPanel();
-		pannelloSinistra.setPreferredSize(new Dimension(Costanti.WIDTH_PANN_SINISTRA, Costanti.HEIGHT_PANN_SINISTRA));
+		pannelloSinistra.setPreferredSize(new Dimension(300, 60));
 		pannelloNord.add(pannelloSinistra, BorderLayout.WEST);
 		
 		labelCl = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_Cliente);
-		labelCl.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_CL_PREV, Costanti. HEIGHT_LABEL_CL_PREV));
+		labelCl.setPreferredSize(new Dimension(82, 14));
 		pannelloSinistra.add(labelCl);
 		
 		labelCliente = DefaultComponentFactory.getInstance().createLabel("");
@@ -127,7 +127,7 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloSinistra.add(labelCliente);
 		
 		JLabel labelvuota2 = new JLabel("");
-		labelvuota2.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_VUOTA_2, Costanti. HEIGHT_LABEL_VUOTA_2));
+		labelvuota2.setPreferredSize(new Dimension(82, 14));
 		pannelloSinistra.add(labelvuota2);
 		
 		indirizzoCliente = new JLabel("");
@@ -135,15 +135,15 @@ public class IntestazioneNuovoPreventivoView extends JPanel {
 		pannelloSinistra.add(indirizzoCliente);
 		
 		JLabel labelvuota3 = new JLabel("");
-		labelvuota3.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_VUOTA_3, Costanti. HEIGHT_LABEL_VUOTA_3));
+		labelvuota3.setPreferredSize(new Dimension(82, 14));
 		pannelloSinistra.add(labelvuota3);
 		
 		altreInfoCliente = new JLabel("");
-		altreInfoCliente.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_ALTRE_INFO, Costanti. HEIGHT_LABEL_ALTRE_INFO));
+		altreInfoCliente.setPreferredSize(new Dimension(206, 16));
 		pannelloSinistra.add(altreInfoCliente);
 		
 		labelSconto = DefaultComponentFactory.getInstance().createLabel(Costanti.LABEL_SCONTO_INTESTAZ);
-		labelSconto.setPreferredSize(new Dimension(Costanti. WIDTH_LABEL_SCONTO_PREV, Costanti. HEIGHT_LABEL_SCONTO_PREV));
+		labelSconto.setPreferredSize(new Dimension(103, 14));
 		pannelloSinistra.add(labelSconto);
 		
 		labelScontoCl = DefaultComponentFactory.getInstance().createLabel("");
