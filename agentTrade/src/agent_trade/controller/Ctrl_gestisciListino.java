@@ -101,6 +101,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
 		PrimaryMandanteView.getInstance().setEnableTabCliente(false);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(false);
+		PrimaryMandanteView.getInstance().setEnableSincListino(false);
 	}
 	
 	
@@ -214,6 +215,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
+		PrimaryMandanteView.getInstance().setEnableSincListino(true);
 		
 //		fare un	controllo per vedere se la lista non è vuota
 		PrimaryMandanteView.getInstance().initTable(elencoProd);
@@ -237,6 +239,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
+		PrimaryMandanteView.getInstance().setEnableSincListino(true);
 		updateElencoProdotti();		
 		
 		PrimaryMandanteView.initRiepilogoListinoView();
@@ -265,6 +268,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabSconto(false);
 		PrimaryMandanteView.getInstance().setEnableTabCliente(false);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(false);
+		PrimaryMandanteView.getInstance().setEnableSincListino(false);
 		PrimaryMandanteView.getInstance().setVisibleToolTipListino();
 	}
 	
@@ -288,6 +292,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
+		PrimaryMandanteView.getInstance().setEnableSincListino(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
 		
 		if (azienda.getUrl()== null || azienda.getUrl().equals("") ){
@@ -325,6 +330,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 		PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 		PrimaryMandanteView.getInstance().setEnableCercaListino(true);
+		PrimaryMandanteView.getInstance().setEnableSincListino(true);
 		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
 		AlberoListini.abilitaAlbero();
 		

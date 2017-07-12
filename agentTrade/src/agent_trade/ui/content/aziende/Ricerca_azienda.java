@@ -195,6 +195,7 @@ public class Ricerca_azienda extends JDialog {
 					
 				svuotaTabella();					
 				try {
+					BottoneVisualizza.setEnabled(false);
 					Ctrl_gestisciAzienda.getInstance().ricercaAzienda(TFCercaNome.getText(), TFcercaPIVA.getText(), TFcercaCodFisc.getText(), TFcercaCitta.getText());
 				} 
 				catch (PersistentException e) {

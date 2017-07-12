@@ -156,7 +156,7 @@ public class Ricerca_sconto extends JDialog {
 					
 				svuotaTabella();					
 				try {
-					
+					BottoneVisualizza.setEnabled(false);
 					Ctrl_gestisciSconto.getInstance().ricercaSconto(JCTipo.getSelectedItem().toString());
 				} 
 				catch (PersistentException e) {

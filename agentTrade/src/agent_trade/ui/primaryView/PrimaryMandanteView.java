@@ -825,6 +825,10 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 	public void disattivaVisualizzaListinoAzienda(boolean b) {
 		((RiepilogoAziendaView) riep_azienda).setVisibleBtnListino(b);
 	}
+	
+	public void disattivaSincListinoAzienda(boolean b) {
+		((RiepilogoAziendaView) riep_azienda).setVisibleBtnSinc(b);
+	}
 
 	public void setInvisibleToolTipAzienda() {
 		((RiepilogoAziendaView) riep_azienda).disabilitaToolTip();
@@ -935,6 +939,9 @@ public class PrimaryMandanteView extends PrimaryViewFactory
 		bottoneCercaListino.setEnabled(b);
 	}
 	
+	public void setEnableSincListino(boolean b){
+		bottoneSincListino.setEnabled(b);
+	}	
 	
 	public void setModificheProdotto(boolean b){
 		((RiepilogoProdottoFactoryView) riep_prodotto).setTFeditable(b);

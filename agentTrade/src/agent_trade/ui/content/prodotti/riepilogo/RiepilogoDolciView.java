@@ -170,6 +170,7 @@ public class RiepilogoDolciView extends RiepilogoProdottoFactoryView {
 		TFPrezzo.setText(""+dolce.getPrezzo());
 //		TFSconto.setText(""+prodotto.getSconto());
 		TFVersione.setText(""+dolce.getVersione());
+		TADescrizione.setText(dolce.getIdDescrizioneProdotto());
 		JRArtiTrue.setSelected(dolce.getArtigianale());
 		JRArtiFalse.setSelected(!dolce.getArtigianale());
 		JRFreeTrue.setSelected(dolce.getFree_gluten());

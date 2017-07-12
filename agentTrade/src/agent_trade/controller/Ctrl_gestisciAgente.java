@@ -111,6 +111,7 @@ public class Ctrl_gestisciAgente {
 
 			PrimaryMandanteView.getInstance().resetNuovoAgente();
 			PrimaryMandanteView.getInstance().resetPannelloCentraleAgente();
+			PrimaryMandanteView.getInstance().setVisibleErroreNuovoAgente(false);
 					
 			int id = M_Agente.getMaxIdRemoto();
 			recuperaAgente(id);
@@ -122,6 +123,7 @@ public class Ctrl_gestisciAgente {
 			PrimaryMandanteView.getInstance().setEnableTabSconto(true);
 			PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 			PrimaryMandanteView.getInstance().setEnableCercaAgente(true);
+			
 			AlberoAgenti.refresh();
 
 		}
@@ -154,6 +156,7 @@ public class Ctrl_gestisciAgente {
 			M_Agente.aggiornaAgenteRemoto(agente);
 							
 			PrimaryMandanteView.getInstance().resetAgente();
+			PrimaryMandanteView.getInstance().setVisibleErroreRiepAgente(false);
 			PrimaryMandanteView.getInstance().disattivaModificaAgente(true);
 			PrimaryMandanteView.getInstance().disattivaSalvaModificheAgente(false);
 			PrimaryMandanteView.getInstance().disattivaCancellaAgente(true);
@@ -162,7 +165,6 @@ public class Ctrl_gestisciAgente {
 			PrimaryMandanteView.getInstance().setEnableTabAzienda(true);
 			PrimaryMandanteView.getInstance().setEnableTabListino(true);
 			PrimaryMandanteView.getInstance().setEnableTabSconto(true);
-
 			PrimaryMandanteView.getInstance().setEnableTabCliente(true);
 			
 			PrimaryMandanteView.getInstance().setEnableNewAgente(true);

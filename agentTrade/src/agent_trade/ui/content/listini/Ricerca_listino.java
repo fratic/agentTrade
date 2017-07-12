@@ -194,7 +194,7 @@ public class Ricerca_listino extends JDialog {
 					
 				svuotaTabella();					
 				try {
-					
+					BottoneVisualizza.setEnabled(false);
 					Ctrl_gestisciListino.getInstance().ricercaAzienda(TFCercaNome.getText(), TFcercaPIVA.getText(), TFcercaCodFisc.getText(), TFcercaCitta.getText());
 				} 
 				catch (PersistentException e) {

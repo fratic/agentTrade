@@ -167,6 +167,7 @@ public class RiepilogoViniView extends RiepilogoProdottoFactoryView{
 		TFPrezzo.setText(""+vino.getPrezzo());
 //		TFSconto.setText(""+prodotto.getSconto());
 		TFVersione.setText(""+vino.getVersione());
+		TADescrizione.setText(vino.getIdDescrizioneProdotto());
 		TFColore.setText(vino.getColore());
 		TFGeo.setText(vino.getIndicazione_geografica());
 		TFCantina.setText(vino.getCantina());

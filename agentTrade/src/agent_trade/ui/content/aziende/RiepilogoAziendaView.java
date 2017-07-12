@@ -544,6 +544,10 @@ public class RiepilogoAziendaView extends JPanel {
 		bottoneVisualizzaElenco.setVisible(b);
 	}
 	
+	public void setVisibleBtnSinc(boolean b) {
+		bottoneSincListino.setVisible(b);
+	}
+	
 	public void setErrore(String err){
 		labelErrore.setText(err);
 	}

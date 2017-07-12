@@ -205,6 +205,8 @@ public class Ricerca_agente extends JDialog {
 					
 				svuotaTabella();					
 				try {
+					BottoneVisualizza.setEnabled(false);
+					BottoneModifica.setEnabled(false);
 					Ctrl_gestisciAgente.getInstance().ricercaAgente(TFCognome.getText(), TFLVL.getText(), TFEmail.getText(), TFCitta.getText());
 				} 
 				catch (PersistentException e) {

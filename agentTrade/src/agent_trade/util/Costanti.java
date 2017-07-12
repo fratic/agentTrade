@@ -546,8 +546,8 @@ public final class Costanti {
 	
 	public final static String TIP_NOME = "Non sono ammessi caratteri numerici";
 	public final static String TIP_LIVELLO = "Inserire il livello dell'agente (da 1 a 5)";	
-	public final static String TIP_USERNAME = "Inserire un username di almeno 4 caratteri";
-	public final static String TIP_PASSWORD = "Inserire un password di almeno 4 caratteri";
+	public final static String TIP_USERNAME = "Inserire un username di almeno 3 caratteri";
+	public final static String TIP_PASSWORD = "Inserire un password di almeno 3 caratteri";
 	
 	public final static String TIP_GESTISCI_AZIENDA = "Gestisci le aziende";
 	public final static String TIP_NUOVA_AZIENDA = "Inserisci una nuova azienda";

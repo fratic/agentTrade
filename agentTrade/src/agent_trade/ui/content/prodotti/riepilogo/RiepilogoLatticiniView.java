@@ -148,6 +148,7 @@ public class RiepilogoLatticiniView extends RiepilogoProdottoFactoryView {
 		TFPrezzo.setText(""+latticino.getPrezzo());
 //		TFSconto.setText(""+prodotto.getSconto());
 		TFVersione.setText(""+latticino.getVersione());
+		TADescrizione.setText(latticino.getIdDescrizioneProdotto());
 		TFStagionatura.setText(""+latticino.getStagionatura());
 		TFTipo.setText(latticino.getTipo());
 	}
