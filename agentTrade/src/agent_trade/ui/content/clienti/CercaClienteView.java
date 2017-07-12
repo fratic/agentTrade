@@ -157,6 +157,7 @@ public class CercaClienteView extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				//qui andrebbe passato o l'id del cliente oppure (meglio) l'oggetto cliente. AGGIUSTARE	
 				try {
+					 BottoneInserisci.setEnabled(false);
 					Ctrl_elaboraPreventivo.getInstance().inserisciCliente((Integer)table.getValueAt(table.getSelectedRow(),0));
 				} 
 				catch (PersistentException e) {

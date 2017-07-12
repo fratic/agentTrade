@@ -199,6 +199,7 @@ public class Ricerca_preventivo extends JDialog {
 
 		BottoneAnnullaCerca.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				BottoneVisualizza.setEnabled(false);
 				Ctrl_elaboraPreventivo.getInstance().annullaRicercaPreventivo();
 			}
 		});

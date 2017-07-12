@@ -211,6 +211,7 @@ public class Ricerca_cliente extends JDialog {
 					}
 					//fare le modifiche a ricerca cliente!!!!
 					try {
+						BottoneVisualizza.setEnabled(false);
 						Ctrl_gestisciClienteFactory.getInstance().ricercaCliente(TFCognome.getText(), TFPI.getText(), TFCodFis.getText(), TFCitta.getText());
 					} 
 					catch (PersistentException e) {
