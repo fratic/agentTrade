@@ -332,10 +332,14 @@ public class SystemDaemon {
 					AgentTradeMandantePersistentManager.instance().disposePersistentManager();
 					
 					int id=cliente_remoto.getIdCliente();
+					int sconto = cliente_remoto.getSconto();
+					M_Agente a = cliente_remoto.getAgenteAssociato();
 					cliente_remoto=clienti_locali[i].clone();
 					/**Questa operazione viene fatta per gli id del remoto e del locale differiscono*/
 					cliente_remoto.setIdCliente(id);
 					cliente_remoto.setIdclienteagente(clienti_locali[i].getIdCliente());
+					cliente_remoto.setSconto(sconto);
+					cliente_remoto.setAgenteAssociato(a);
 					M_Cliente.updateClienteRemoto(cliente_remoto);
 					
 					aggiornamenti=aggiornamenti+"UPLOAD del cliente con ID="+clienti_locali[i].getIdCliente()+"\n";
@@ -379,7 +383,7 @@ public class SystemDaemon {
 			M_Cliente cliente_locale = M_Cliente.cercaCliente(clienti_remoti[i].getIdclienteagente());
 			if(cliente_locale!=null){
 
-				if(clienti_remoti[i].getVersione_download()>cliente_locale.getVersione_download())
+				if(clienti_remoti[i].getVersione_download()>cliente_locale.getVersione_download() && cliente_locale.getAttivo()!=0)
 				{
 					AgentTradePersistentManager.instance().disposePersistentManager();
 					
@@ -389,7 +393,6 @@ public class SystemDaemon {
 
 					M_Cliente.aggiornaCliente(cliente_locale);
 					aggiornamenti=aggiornamenti+"Cliente con ID="+cliente_locale.getIdCliente()+" aggiornato\n";
-					
 					
 				}
 			}
