@@ -159,12 +159,14 @@ public class SystemDaemon {
 	
 	
 	public void sincListino() throws PersistentException, CloneNotSupportedException{
+		PrimaryAgenteView.getInstance().getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		String mex = this.sincronizzaAziende();
 		mex = mex + this.sincronizzaSconti();
 		mex = mex + this.sincronizzaListino();
 		new DialogAggiornamenti(mex);
 		Ctrl_System.getInstance().initProdotti();
 		AlberoProdotti.refresh();
+		PrimaryAgenteView.getInstance().getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 
 	}
 	
@@ -197,21 +199,25 @@ public class SystemDaemon {
 	
 	
 	public void sincClientiUpload() throws PersistentException, CloneNotSupportedException{
+		PrimaryAgenteView.getInstance().getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		String mex = this.sincronizzaClientiUpload();
 		new DialogAggiornamenti(mex);
 		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 		PrimaryAgenteView.getInstance().setSfondoCliente();
 		AlberoClienti.refresh();
+		PrimaryAgenteView.getInstance().getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 
 	}
 	
 	public void sincClientiDonwload() throws PersistentException, CloneNotSupportedException{
+		PrimaryAgenteView.getInstance().getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		String mex = this.sincronizzaSconti();
 		mex = mex + this.sincronizzaClientiDownload();
 		new DialogAggiornamenti(mex);
 		PrimaryAgenteView.getInstance().resetPannelloCentraleCliente();
 		PrimaryAgenteView.getInstance().setSfondoCliente();
 		AlberoClienti.refresh();
+		PrimaryAgenteView.getInstance().getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 
 	}
 	
@@ -241,7 +247,7 @@ public class SystemDaemon {
 					aggiornamenti=aggiornamenti+"Azienda con ID="+azienda_locale.getIdAzienda()+" aggiornata\n";
 
 				}
-				else if(aziende_remote[i].getVersione()==0){
+				else if(aziende_remote[i].getVersione()==0 && azienda_locale.getVersione()!=0 ){
 					AgentTradePersistentManager.instance().disposePersistentManager();
 
 					azienda_locale=aziende_remote[i].clone();

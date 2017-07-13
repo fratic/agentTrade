@@ -242,6 +242,7 @@ public class Ctrl_gestisciSconto {
 	
 	public void inserisciNuovoSconto(M_Sconto sconto) throws PersistentException {
 		
+		sconto.setVersione(sconto.getVersione()+1);
 		M_Sconto.salvaScontoRemoto(sconto);
 		
 		PrimaryMandanteView.getInstance().resetNuovoSconto();

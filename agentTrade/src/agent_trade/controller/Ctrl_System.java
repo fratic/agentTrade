@@ -302,7 +302,6 @@ public class Ctrl_System {
 
 		for (M_Azienda azienda : listAziende) {
 			AlberoProdotti.inserisciNodo(azienda.getRagioneSociale());
-			System.out.println("sono qui");
 		}
 	
 	}

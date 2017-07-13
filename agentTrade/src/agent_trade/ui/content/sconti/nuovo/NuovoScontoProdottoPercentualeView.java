@@ -66,7 +66,6 @@ public class NuovoScontoProdottoPercentualeView extends NuovoScontoFactoryView {
 		bottoneSalvaSconto.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			try {
-				System.out.print("SALVA SCONTO PRODOTTO PERCENT");
 				M_ScontoPercent sconto = new M_ScontoPercent();
 				sconto.setPercent( Float.valueOf(TFPercent.getText()).floatValue());
 				Ctrl_gestisciSconto.getInstance().inserisciNuovoSconto(sconto);

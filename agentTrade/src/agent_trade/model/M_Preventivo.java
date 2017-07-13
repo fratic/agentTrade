@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;

@@ -66,6 +66,7 @@ public class M_Sconto implements Cloneable{
 	public static M_Sconto caricaSconto(int idSconto) throws PersistentException{
 		ScontoCriteria criteria= new ScontoCriteria();
 		criteria.id.eq(idSconto);
+		criteria.versione.ne(0);
 		return criteria.uniqueSconto();
 
 	}
@@ -134,6 +135,7 @@ public class M_Sconto implements Cloneable{
 
 			Rem_ScontoCriteria criteriaSconto = new Rem_ScontoCriteria();
 			criteriaSconto.id.eq(idSconto);
+			criteriaSconto.versione.ne(0);
 
 			return criteriaSconto.uniqueSconto();
 		}
@@ -148,6 +150,7 @@ public class M_Sconto implements Cloneable{
 		try {
 			criteriaSconto = new Rem_ScontoCriteria();
 			criteriaSconto.addOrder(Property.forName("id").asc());
+			criteriaSconto.versione.ne(0);
 			return criteriaSconto.listSconto();
 		} 
 		catch (PersistentException e) {
@@ -196,11 +199,11 @@ public class M_Sconto implements Cloneable{
 		return ris;
 	}
 	
-	//DA RIVEDERE FORSE MEGLIO FARE CON IL FLAG 0/1
 	public static void cancellaScontoRemoto(M_Sconto s) throws PersistentException {
 
 		PersistentTransaction t = AgentTradeMandantePersistentManager.instance().getSession().beginTransaction();
-		try {				
+		try {			
+			s.setVersione(0);
 			AgentTradeMandantePersistentManager.instance().getSession().delete(s);
 			
 			t.commit();

@@ -25,9 +25,7 @@ public static void main(String[] args)
   {
 
 	Dimension screenSize = Toolkit.getDefaultToolkit ().getScreenSize ();
-	System.out.println("dimensione schermo"+screenSize);
 	Dimension frameSize = PrimaryViewFactory.getInstance().getSize ();
-	System.out.println("dimensione finestra"+frameSize);
 
 	frame.setLocation ((screenSize.width - frameSize.width) / 2,
 	(screenSize.height - frameSize.height) / 2);

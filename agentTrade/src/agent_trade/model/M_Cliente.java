@@ -349,7 +349,7 @@ public class M_Cliente implements Cloneable{
 
 		}
 		finally {
-			System.out.println("commit a buon fine? "+t.wasCommitted());
+//			System.out.println("commit a buon fine? "+t.wasCommitted());
 		}
 	} 
 	
