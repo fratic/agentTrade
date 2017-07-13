@@ -32,9 +32,11 @@ public class NuovoCarniView extends NuovoProdottoFactoryView {
 	private JLabel labelTipo;
 	
 	private JTextField TFProvenienza;
+	private JTextField TFTaglio;
+	private JTextField TFTipo;
 	
-	private JComboBox JCTaglio;
-	private JComboBox JCTipo;
+//	private JComboBox JCTaglio;
+//	private JComboBox JCTipo;
 	
 	public NuovoCarniView() {
 		
@@ -71,11 +73,14 @@ public class NuovoCarniView extends NuovoProdottoFactoryView {
 		labelTaglio.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannTaglio.add(labelTaglio);
 
-		JCTaglio = new JComboBox(Costanti.LISTA_TAGLIO_CARNE);
-		JCTaglio.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		JCTaglio.setToolTipText(Costanti.TIP_TAGLIO_CARNE);
-		JCTaglio.setSelectedIndex(0);
-		pannTaglio.add(JCTaglio);
+//		JCTaglio = new JComboBox(Costanti.LISTA_TAGLIO_CARNE);
+//		JCTaglio.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+//		JCTaglio.setToolTipText(Costanti.TIP_TAGLIO_CARNE);
+//		JCTaglio.setSelectedIndex(0);
+		TFTaglio = new JTextField();
+		TFTaglio.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		TFTaglio.setToolTipText(Costanti.TIP_TAGLIO_CARNE);
+		pannTaglio.add(TFTaglio);
 		
 		pannTipo = new JPanel();
 		FlowLayout flowLayout11 = (FlowLayout) pannTipo.getLayout();
@@ -90,11 +95,14 @@ public class NuovoCarniView extends NuovoProdottoFactoryView {
 		pannTipo.add(labelTipo);
 
 		
-		JCTipo = new JComboBox(Costanti.LISTA_TIPO_CARNE);
-		JCTipo.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		JCTipo.setToolTipText(Costanti.TIP_TIPO_CARNE);
-		JCTipo.setSelectedIndex(0);
-		pannTipo.add(JCTipo);
+//		JCTipo = new JComboBox(Costanti.LISTA_TIPO_CARNE);
+//		JCTipo.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+//		JCTipo.setToolTipText(Costanti.TIP_TIPO_CARNE);
+//		JCTipo.setSelectedIndex(0);
+		TFTipo = new JTextField();
+		TFTipo.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		TFTipo.setToolTipText(Costanti.TIP_TIPO_CARNE);
+		pannTipo.add(TFTipo);
 		
 		pannErrore= new JPanel();
 		FlowLayout flowLayout15 = (FlowLayout) pannErrore.getLayout();
@@ -120,8 +128,8 @@ public class NuovoCarniView extends NuovoProdottoFactoryView {
 					carne.setIdAzienda(aziendaRif.getIdAzienda());
 					carne.setVersione(1);
 					carne.setProvenienza(TFProvenienza.getText());
-					carne.setTaglio(JCTaglio.getSelectedItem().toString());
-					carne.setTipo(JCTipo.getSelectedItem().toString());
+					carne.setTaglio(TFTaglio.getText());
+					carne.setTipo(TFTipo.getText());
 					Ctrl_gestisciListino.getInstance().salvaProdotto(carne);
 				} catch (PersistentException e) {
 					e.printStackTrace();
@@ -141,7 +149,7 @@ public class NuovoCarniView extends NuovoProdottoFactoryView {
 	public void resetNewProdotto(){
 		super.resetNewProdotto();
 		TFProvenienza.setText(null);
-		JCTaglio.setSelectedIndex(0);
-		JCTipo.setSelectedIndex(0);
+		TFTaglio.setText(null);
+		TFTipo.setText(null);
 	}
 }

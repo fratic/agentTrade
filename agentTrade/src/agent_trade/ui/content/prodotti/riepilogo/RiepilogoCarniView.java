@@ -34,9 +34,11 @@ public class RiepilogoCarniView extends RiepilogoProdottoFactoryView{
 	private JLabel labelTipo;
 	
 	private JTextField TFProvenienza;
+	private JTextField TFTaglio;
+	private JTextField TFTipo;
 	
-	private JComboBox JCTaglio;
-	private JComboBox JCTipo;
+//	private JComboBox JCTaglio;
+//	private JComboBox JCTipo;
 	
 	public RiepilogoCarniView() {
 		
@@ -71,11 +73,14 @@ public class RiepilogoCarniView extends RiepilogoProdottoFactoryView{
 		labelTaglio.setPreferredSize(new Dimension(Costanti.WIDTH_LABEL, Costanti.HEIGHT_LABEL));
 		pannTaglio.add(labelTaglio);
 
-		JCTaglio = new JComboBox(Costanti.LISTA_TAGLIO_CARNE);
-		JCTaglio.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		JCTaglio.setEnabled(false);
+//		JCTaglio = new JComboBox(Costanti.LISTA_TAGLIO_CARNE);
+//		JCTaglio.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+//		JCTaglio.setEnabled(false);
 //		JCTaglio.setSelectedIndex(0);
-		pannTaglio.add(JCTaglio);
+		TFTaglio = new JTextField();
+		TFTaglio.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		TFTaglio.setEditable(false);
+		pannTaglio.add(TFTaglio);
 		
 		pannTipo = new JPanel();
 		FlowLayout flowLayout11 = (FlowLayout) pannTipo.getLayout();
@@ -90,11 +95,14 @@ public class RiepilogoCarniView extends RiepilogoProdottoFactoryView{
 		pannTipo.add(labelTipo);
 
 		
-		JCTipo = new JComboBox(Costanti.LISTA_TIPO_CARNE);
-		JCTipo.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
-		JCTipo.setEnabled(false);
+//		JCTipo = new JComboBox(Costanti.LISTA_TIPO_CARNE);
+//		JCTipo.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+//		JCTipo.setEnabled(false);
 //		JCTipo.setSelectedIndex(0);
-		pannTipo.add(JCTipo);
+		TFTipo = new JTextField();
+		TFTipo.setPreferredSize(new Dimension(Costanti.WIDTH_TEXT_FIELD,Costanti.HEIGHT_TEXT_FIELD));
+		TFTipo.setEditable(false);
+		pannTipo.add(TFTipo);
 		
 		pannErrore= new JPanel();
 		FlowLayout flowLayout15 = (FlowLayout) pannErrore.getLayout();
@@ -139,8 +147,8 @@ public class RiepilogoCarniView extends RiepilogoProdottoFactoryView{
 //					carne.setIdAzienda(prodotto.getIdAzienda());
 //					carne.setVersione(prodotto.getVersione());
 					carne.setProvenienza(TFProvenienza.getText());
-					carne.setTaglio(JCTaglio.getSelectedItem().toString());
-					carne.setTipo(JCTipo.getSelectedItem().toString());
+					carne.setTaglio(TFTaglio.getText());
+					carne.setTipo(TFTipo.getText());
 					Ctrl_gestisciListino.getInstance().modificaProdotto(carne);
 				} catch (PersistentException e) {
 					// TODO Auto-generated catch block
@@ -173,31 +181,31 @@ public class RiepilogoCarniView extends RiepilogoProdottoFactoryView{
 		TFVersione.setText(""+carne.getVersione());
 		TADescrizione.setText(carne.getIdDescrizioneProdotto());
 		TFProvenienza.setText(carne.getProvenienza());
-		JCTaglio.setSelectedItem(carne.getTaglio());
-		JCTipo.setSelectedItem(carne.getTipo());
+		TFTaglio.setText(carne.getTaglio());
+		TFTipo.setText(carne.getTipo());
 	}
 	
 	
 	public void setTFeditable(boolean b){
 		super.setTFeditable(b);
 		TFProvenienza.setEditable(b);
-		JCTaglio.setEnabled(b);
-		JCTipo.setEnabled(b);
+		TFTaglio.setEditable(b);
+		TFTipo.setEditable(b);
 	}
 	
 	
 	public void abilitaToolTip(){
 		super.abilitaToolTip();
 		TFProvenienza.setToolTipText(Costanti.TIP_PROV_CARNE);
-		JCTaglio.setToolTipText(Costanti.TIP_TAGLIO_CARNE);
-		JCTipo.setToolTipText(Costanti.TIP_TIPO_CARNE);
+		TFTaglio.setToolTipText(Costanti.TIP_TAGLIO_CARNE);
+		TFTipo.setToolTipText(Costanti.TIP_TIPO_CARNE);
 	}
 	
 	
 	public void disabilitaToolTip(){
 		super.disabilitaToolTip();
 		TFProvenienza.setToolTipText(null);
-		JCTaglio.setToolTipText(null);
-		JCTipo.setToolTipText(null);
+		TFTaglio.setToolTipText(null);
+		TFTipo.setToolTipText(null);
 	}
 }

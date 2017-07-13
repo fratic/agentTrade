@@ -334,7 +334,7 @@ public class Ctrl_gestisciListino {
 		PrimaryMandanteView.getInstance().setInvisibleToolTipListino();
 		AlberoListini.abilitaAlbero();
 		
-		if (azienda.getUrl()== null || azienda.getUrl()== "" ){
+		if (azienda.getUrl()== null || azienda.getUrl().equals("") ){
 			listino = "assente";
 			abilitaAggiungi = true;
 		}

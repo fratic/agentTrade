@@ -21,8 +21,8 @@ public final class Costanti {
 	public static String  version = "agente";
 //	public final static String  version = "mandante";
 
-	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
-//	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
+//	public final static String  pathVersion = "C:/Users/Antonio/Documents/versione.txt";
+	public final static String  pathVersion = "C:/Users/pc/Desktop/versione.txt";
 
 	public final static String  agente = "agente";
 	public final static String  mandante = "mandante";
@@ -42,8 +42,8 @@ public final class Costanti {
 //	public final static int  Look_Feel = 6;
 
 	
-	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
-//	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
+//	public final static String  pathLook = "C:/Users/Antonio/Documents/look.txt";
+	public final static String  pathLook = "C:/Users/pc/Desktop/look.txt";
 
 
 	
@@ -592,8 +592,8 @@ public final class Costanti {
 	public final static String TIP_CANTINA_VINO = "Cantina vino";
 	
 	public final static String TIP_PROV_CARNE = "Provenienza";
-	public final static String TIP_TAGLIO_CARNE = "Selezionare il taglio";
-	public final static String TIP_TIPO_CARNE = "Selezionare il tipo";
+	public final static String TIP_TAGLIO_CARNE = "Taglio del prodotto";
+	public final static String TIP_TIPO_CARNE = "Tipo di prodotto";
 		
 	public final static String TIP_TIPO_LATT = "Tipo";
 	public final static String TIP_STAGIONATURA_LATT = "Inserire il numero di mesi della stagionatura";
